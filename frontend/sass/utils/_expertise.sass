@@ -1,7 +1,7 @@
 
 //  Academic Expertise
 @use './misc'
-@use './fonts'
+@use './mixins' as mix
 @use './colors' as color
 @use './lang-filter'
 
@@ -28,21 +28,21 @@ main
             .h3-links
                 margin: auto
                 font-size: 2em
-                @extend %work-sans-font
+                @include mix.font-style('Work Sans')
                 transition: 0.3s ease-in-out
-            
-                &:hover
-                    font-size: 2em
-                    transform: scale(1.1)
-                    @extend %work-sans-font
-                    text-decoration: underline
+
+            &:hover
+                font-size: 2em
+                transform: scale(1.1)
+                text-decoration: underline
+
             .no-select
                 @extend %user-select
 
             p
                 inline-size: 100%
                 text-align: justify
-                @extend %roboto-font
+                @include mix.font-style('Roboto')
                 
             .tech-container
                 inline-size: 100%
@@ -70,7 +70,7 @@ main
                     color: color.$h4 !important
                     margin: auto
                     font-size: 1.3em
-                    @extend %work-sans-font
+                    @include mix.font-style('Work Sans')
                     transition: 0.3s ease-in-out
 
                 .tech-wrapper
