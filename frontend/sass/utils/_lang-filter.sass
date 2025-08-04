@@ -1,6 +1,6 @@
 // Technologies colors
 @use './misc'
-@use './fonts'
+@use './mixins' as mix
 @use './colors' as color
 
 // Interpreted language
@@ -56,6 +56,7 @@ div.tech-ui-ux
         
 .tech-wrapper
     margin: 0.1em
-    @extend %roboto-font
+    
     border-radius: 10px
     @extend %user-select
+    @include mix.font-style('Roboto')
