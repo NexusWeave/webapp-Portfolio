@@ -1,10 +1,10 @@
 //  Sony Devices Media Queries
 
 //  Importing dependencies
-@import breakpoints
+@use './breakpoints' as device
 
 // Ericsson Portrait
-@media only screen and ($sony-ericsson-u-width <= width <= 499px) and ($sony-ericsson-u-height <= height <= 900px) and (orientation: portrait)
+@media only screen and (device.$sony-ericsson-u-width <= width <= 499px) and (device.$sony-ericsson-u-height <= height <= 900px) and (orientation: portrait)
 
     main
         section.info
@@ -38,7 +38,7 @@
                     inline-size: 39vw !important
 
 // Ericsson Lanscape
-@media only screen and ($sony-ericsson-u-height <= width <= 899px) and (min-height: $sony-ericsson-u-width) and (orientation: landscape)
+@media only screen and (device.$sony-ericsson-u-height <= width <= 899px) and (min-height: device.$sony-ericsson-u-width) and (orientation: landscape)
 
     main
         section.info

@@ -1,6 +1,9 @@
 
-//  Education    
-@import misc, fonts, colour, lang-filter
+//  Academic Expertise
+@use './misc'
+@use './fonts'
+@use './colors' as color
+@use './lang-filter'
 
 //  Education
 main
@@ -22,7 +25,7 @@ main
                 color: rgb(64, 64, 64)
                 transition: 0.3s
 
-            .h3-link
+            .h3-links
                 margin: auto
                 font-size: 2em
                 @extend %work-sans-font
@@ -64,7 +67,7 @@ main
                     transition: 0.3s
 
                 .h4-link
-                    color: $h4 !important
+                    color: color.$h4 !important
                     margin: auto
                     font-size: 1.3em
                     @extend %work-sans-font
@@ -73,8 +76,8 @@ main
                 .tech-wrapper
 
                     padding: 0.5em
-                    background-color: $white
+                    background-color: color.$white
 
                     &:hover
-                        background-color: $bg-light
-    
+                        background-color: color.$bg-light
+

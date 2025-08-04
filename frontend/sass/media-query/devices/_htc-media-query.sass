@@ -1,11 +1,11 @@
 //  HTC Devices Media Query
 
 //  Importing dependencies
-@import breakpoints
+@use './breakpoints' as device
 
 
 //  Portrait
-@media only screen and ($htc-desire-width <= width <= 343px) and (min-height: $htc-desire-height) and (orientation: portrait)
+@media only screen and (device.$htc-desire-width <= width <= 343px) and (min-height: device.$htc-desire-height) and (orientation: portrait)
     main
         section.info
             .carosel
@@ -31,7 +31,7 @@
                         .img-svg
                             block-size: 6vh !important
 
-@media only screen and ($htc-one-width <= width <= 399px) and (min-height: $htc-one-height) and (orientation: portrait)
+@media only screen and (device.$htc-one-width <= width <= 399px) and (min-height: device.$htc-one-height) and (orientation: portrait)
     header
         .slogan-wrapper
             font-size: .496em !important
@@ -60,7 +60,7 @@
                         .img-svg
                             block-size: 4vh !important
 
-@media only screen and ($htc-sensation-width <= width <= 600px)and (min-height: $htc-sensation-height) and (orientation: portrait)
+@media only screen and (device.$htc-sensation-width <= width <= 600px) and (min-height: device.$htc-sensation-height) and (orientation: portrait)
     header
         .slogan-wrapper
             font-size: .7em !important
@@ -103,7 +103,7 @@
                     margin-inline-start: 8vw !important
 
 //  Landscape
-@media only screen and ($htc-desire-height <= width <= 550px) and (min-height: $htc-desire-width) and (orientation: landscape)
+@media only screen and (device.$htc-desire-height <= width <= 550px) and (min-height: device.$htc-desire-width) and (orientation: landscape)
     header
         .slogan-wrapper
             font-size: .7em !important
@@ -145,7 +145,7 @@
                     inline-size: 32vw !important
                     margin-inline-start: 4vw !important
 
-@media only screen and (min-width: $htc-one-height) and (min-height: $htc-one-width) and (orientation: landscape)
+@media only screen and (min-width: device.$htc-one-height) and (min-height: device.$htc-one-width) and (orientation: landscape)
     header
         img
             inline-size: 15vw !important
@@ -190,7 +190,7 @@
                     inline-size: 38vw !important
                     margin-inline-start: 3vw !important
 
-@media only screen and (min-width: $htc-sensation-height) and (min-height: $htc-sensation-width) and (max-height: 639px) and (orientation: landscape)
+@media only screen and (min-width: device.$htc-sensation-height) and (min-height: device.$htc-sensation-width) and (max-height: 639px) and (orientation: landscape)
     header
         .slogan-wrapper
             font-size: .9em !important

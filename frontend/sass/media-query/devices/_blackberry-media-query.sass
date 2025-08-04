@@ -1,10 +1,10 @@
 //  Black Berry Devices Media Queries
 
 //  Importing dependencies
-@import breakpoints
+@use './breakpoints' as device
 
 //  Portrait
-@media only screen and ($bberry-width <= width <= 539px) and ($bberry-height <= height <= 853px) and (orientation: portrait)
+@media only screen and (device.$bberry-width <= width <= 539px) and (device.$bberry-height <= height <= 853px) and (orientation: portrait)
     header
         .slogan-wrapper
             font-size: .7em !important
@@ -46,7 +46,7 @@
         form input[type="text"]
             margin-block-end: 2vh
 
-@media only screen and ( $bberry-bt-width <= width <= 539px)and ($bberry-bt-height <= height <= 799px) and (orientation: portrait)
+@media only screen and (device.$bberry-bt-width <= width <= 539px)and (device.$bberry-bt-height <= height <= 799px) and (orientation: portrait)
 
     header
         .slogan-wrapper
@@ -89,7 +89,7 @@
         form input[type="text"]
             margin-block-end: 2vh
 
-@media only screen and ($bberry-curve-width <= width <= 374px) and ($bberry-curve-height <= height <= 639px)and (orientation: portrait)
+@media only screen and (device.$bberry-curve-width <= width <= 374px) and (device.$bberry-curve-height <= height <= 639px)and (orientation: portrait)
 
     header
         .slogan-wrapper
@@ -123,7 +123,7 @@
             margin-block-end: 2vh
 
 //  Landscape
-@media only screen and ($bberry-height <= width <= 828)and ($bberry-width <= height <= 599px) and (orientation: landscape)
+@media only screen and (device.$bberry-height <= width <= 828)and (device.$bberry-width <= height <= 599px) and (orientation: landscape)
     header
         img
             inline-size: 11vw !important
@@ -170,7 +170,7 @@
         form input[type="text"]
             margin-block-end: 2vh
 
-@media only screen and ($bberry-bt-height<= width <= 640px) and (min-height: $bberry-bt-width) and (orientation: landscape)
+@media only screen and (device.$bberry-bt-height<= width <= 640px) and (min-height: device.$bberry-bt-width) and (orientation: landscape)
 
     header
         img
@@ -229,7 +229,7 @@
         form input[type="text"]
             margin-block-end: 2vh
 
-@media only screen and ($bberry-curve-height <= width <=  500px) and (min-height: $bberry-curve-width) and (orientation: landscape)
+@media only screen and (device.$bberry-curve-height <= width <=  500px) and (min-height: device.$bberry-curve-width) and (orientation: landscape)
 
     header
         img

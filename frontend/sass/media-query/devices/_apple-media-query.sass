@@ -1,10 +1,10 @@
 //  Apple Devices Media Queries
 
 //  Importing dependencies
-@import breakpoints
+@use './breakpoints' as device
 
 //  Media Queries Portrait
-@media only screen and ($iphone-7-width <= width <= 389px) and (min-height: $iphone-7-height) and (orientation: portrait)
+@media only screen and (device.$iphone-7-width <= width <= 389px) and (min-height: device.$iphone-7-height) and (orientation: portrait)
     header
         img
             inline-size: 15vw !important
@@ -79,7 +79,7 @@
                     font-size: 1em !important
                     margin-inline-start: 13vw !important
 
-@media only screen and ($iphone-plus-width <= width <= 429px) and ($iphone-plus-height <= height <= 895px) and (orientation: portrait)
+@media only screen and (device.$iphone-plus-width <= width <= 429px) and (device.$iphone-plus-height <= height <= 895px) and (orientation: portrait)
     header
         img
             inline-size: 15vw !important
@@ -157,7 +157,7 @@
                         .img-svg
                             block-size: 4vh !important
 
-@media only screen and ($iphone-xr-width <= width <= 429px) and (min-height: $iphone-xr-height) and (orientation: portrait)
+@media only screen and (device.$iphone-xr-width <= width <= 429px) and (min-height: device.$iphone-xr-height) and (orientation: portrait)
     header
         img
             inline-size: 15vw !important
@@ -204,7 +204,7 @@
                     font-size: 1em !important
                     margin-inline-start: 13vw !important
 
-@media only screen and ($iphone-pro-width <= width <= 414px) and ($iphone-pro-height <= height <= 895px) and (orientation: portrait)
+@media only screen and (device.$iphone-pro-width <= width <= 414px) and (device.$iphone-pro-height <= height <= 895px) and (orientation: portrait)
     header
         img
             inline-size: 15vw !important
@@ -280,7 +280,7 @@
                     font-size: 1em !important
                     margin-inline-start: 13vw !important
 
-@media only screen and ($iphone-pro-max-width <= width <=  479px) and (min-height: $iphone-pro-max-height) and (orientation: portrait)
+@media only screen and (device.$iphone-pro-max-width <= width <=  479px) and (min-height: device.$iphone-pro-max-height) and (orientation: portrait)
     header
         img
             inline-size: 15vw !important
@@ -361,7 +361,7 @@
                     font-size: 1em !important
                     margin-inline-start: 13vw !important
 
-@media only screen and ($Ipad-Pro-width <= width <=  1113px) and (min-height: $Ipad-Pro-height) and (orientation: portrait)
+@media only screen and (device.$Ipad-Pro-width <= width <=  1113px) and (min-height: device.$Ipad-Pro-height) and (orientation: portrait)
     main
         section.info
             .carosel
@@ -418,7 +418,7 @@
                     inline-size: 34vw !important
                     margin-inline-start: 6vw !important
 
-@media only screen and ($Ipad-air-width <= width <= 849px) and (min-height: $Ipad-air-height) and (orientation: portrait)
+@media only screen and (device.$Ipad-air-width <= width <= 849px) and (min-height: device.$Ipad-air-height) and (orientation: portrait)
     header
         img
             inline-size: 11vw !important
@@ -503,7 +503,7 @@
                     margin-inline-start: 6vw !important
 
 //  Media Queries Landscape
-@media only screen and ($iphone-7-height <= width <= 735px) and (min-height: $iphone-7-width) and (orientation: landscape)
+@media only screen and (device.$iphone-7-height <= width <= 735px) and (min-height: device.$iphone-7-width) and (orientation: landscape)
     header 
         .slogan-wrapper 
             font-size: .7em !important
@@ -589,7 +589,7 @@
                         .img-svg
                             block-size: 7vh !important
 
-@media only screen and ($iphone-plus-height <= width <= 750px) and (min-height: $iphone-plus-width) and (orientation: landscape)
+@media only screen and (device.$iphone-plus-height <= width <= 750px) and (min-height: device.$iphone-plus-width) and (orientation: landscape)
     header
         img
             inline-size: 11vw !important
@@ -643,7 +643,7 @@
                     margin-inline-end: 0vw !important
                     margin-inline-start: 7vw !important
 
-@media only screen and ($iphone-xr-height <= width <= 900px) and (min-height: $iphone-xr-width) and (orientation: landscape)
+@media only screen and (device.$iphone-xr-height <= width <= 900px) and (min-height: device.$iphone-xr-width) and (orientation: landscape)
     header
         img
             inline-size: 11vw !important
@@ -720,7 +720,7 @@
                     inline-size: 28vw !important
                     margin-inline-start: 7vw !important
 
-@media only screen and ($iphone-pro-height <= width <= 850px) and (min-height: $iphone-pro-width) and (orientation: landscape)
+@media only screen and (device.$iphone-pro-height <= width <= 850px) and (min-height: device.$iphone-pro-width) and (orientation: landscape)
     header
         img
             inline-size: 11vw !important
@@ -801,7 +801,7 @@
                     inline-size: 32vw !important
                     margin-inline-start: 6vw !important
 
-@media only screen and ($iphone-pro-max-height <= width <= 959px) and (min-height: $iphone-pro-max-width) and (orientation: landscape)
+@media only screen and (device.$iphone-pro-max-height <= width <= 959px) and (min-height: device.$iphone-pro-max-width) and (orientation: landscape)
     header
         img
             inline-size: 15vw !important
@@ -882,7 +882,7 @@
                     inline-size: 21vw !important
                     margin-inline-start: 4vw !important
 
-@media only screen and ($Ipad-air-height <= width <= 1200px) and (min-height: $Ipad-air-width) and (orientation: landscape)
+@media only screen and (device.$Ipad-air-height <= width <= 1200px) and (min-height: device.$Ipad-air-width) and (orientation: landscape)
     header
         img
             inline-size: 11vw !important
@@ -964,7 +964,7 @@
                     inline-size: 21vw !important
                     margin-inline-start: 4vw !important
 
-@media only screen and (min-width: $Ipad-Pro-height) and (min-height: $Ipad-Pro-width) and (orientation: landscape)
+@media only screen and (min-width: device.$Ipad-Pro-height) and (min-height: device.$Ipad-Pro-width) and (orientation: landscape)
     header
         img
             inline-size: 11vw !important

@@ -1,10 +1,10 @@
 //  Samsung Devices Media Queries
 
 //  Importing dependencies
-@import breakpoints
+@use './breakpoints' as device
 
 //  Portrait Media Queries
-@media only screen and ($samsung-tab-width <= width <= 413px) and (min-height: $samsung-tab-height) and (orientation: portrait)
+@media only screen and (device.$samsung-tab-width <= width <= 413px) and (min-height: device.$samsung-tab-height) and (orientation: portrait)
 
     header
         .slogan-wrapper
@@ -41,7 +41,7 @@
                 p
                     inline-size: 70vw
 
-@media only screen and ( $samsung-gcz5-width <= width <= 359px) and (min-height: $samsung-gcz5-height) and (orientation: portrait)
+@media only screen and (device.$samsung-gcz5-width <= width <= 359px) and (min-height: device.$samsung-gcz5-height) and (orientation: portrait)
     header
         .slogan-wrapper
             font-size: 0.5em !important
@@ -69,7 +69,7 @@
                         .img-svg
                             block-size: 4vh !important
 
-@media only screen and ($samsung-gfz5-width <= width <=  719px) and (min-height: $samsung-gfz5-height) and (orientation: portrait)
+@media only screen and (device.$samsung-gfz5-width <= width <=  719px) and (min-height: device.$samsung-gfz5-height) and (orientation: portrait)
     header
         .slogan-wrapper
             font-size: 0.5em !important
@@ -112,7 +112,7 @@
                     inline-size: 31vw !important
                     margin-inline-start: 11vw !important
 
-@media only screen and ($samsung-gs8-width <= width <= 374px) and (min-height: $samsung-gs8-height) and (orientation: portrait)
+@media only screen and (device.$samsung-gs8-width <= width <= 374px) and (min-height: device.$samsung-gs8-height) and (orientation: portrait)
     header
         img
             inline-size: 15vw !important
@@ -130,7 +130,7 @@
                 .caption
                     bottom: 6.8vh !important
 
-@media only screen and ($samsung-ga5171-width <= width <= 429px) and (min-height: $samsung-ga5171-height) and (orientation: portrait)
+@media only screen and (device.$samsung-ga5171-width <= width <= 429px) and (min-height: device.$samsung-ga5171-height) and (orientation: portrait)
     main
         section.info
             .carosel
@@ -150,7 +150,7 @@
                             block-size: 4vh !important
 
 //  Landscape Media Queries
-@media only screen and ($samsung-tab-height <= width <= 735px) and (min-height: $samsung-tab-width) and (orientation: landscape)
+@media only screen and (device.$samsung-tab-height <= width <= 735px) and (min-height: device.$samsung-tab-width) and (orientation: landscape)
     header
         img
             inline-size: 15vw !important
@@ -184,7 +184,7 @@
                 p
                     inline-size: 31vw !important
 
-@media only screen and ($samsung-gs8-height <= width <= 828px) and (min-height: $samsung-gs8-width) and (orientation: landscape)
+@media only screen and (device.$samsung-gs8-height <= width <= 828px) and (min-height: device.$samsung-gs8-width) and (orientation: landscape)
     header
         img
             inline-size: 15vw !important
@@ -213,7 +213,7 @@
                 p
                     inline-size: 36vw !important
 
-@media only screen and ($samsung-gcz5-height <= width <= 895px) and (min-height: $samsung-gcz5-width) and (orientation: landscape)
+@media only screen and (device.$samsung-gcz5-height <= width <= 895px) and (min-height: device.$samsung-gcz5-width) and (orientation: landscape)
     header
         .slogan-wrapper
             font-size: 0.5em !important
@@ -259,7 +259,7 @@
                     inline-size: 23vw !important
                     margin-inline-start: 3vw !important
 
-@media only screen and ($samsung-gfz5-height <= width <= 853px) and (min-height: $samsung-gfz5-width) and (orientation: landscape)
+@media only screen and (device.$samsung-gfz5-height <= width <= 853px) and (min-height: device.$samsung-gfz5-width) and (orientation: landscape)
     header
         .slogan-wrapper
             font-size: 0.5em !important
@@ -300,7 +300,7 @@
                 p
                     inline-size: 40vw !important
 
-@media only screen and ($samsung-ga5171-height <= width <= 925px) and (min-height: $samsung-ga5171-width) and (orientation: landscape)
+@media only screen and (device.$samsung-ga5171-height <= width <= 925px) and (min-height: device.$samsung-ga5171-width) and (orientation: landscape)
     header
         .slogan-wrapper
             font-size: 0.5em !important

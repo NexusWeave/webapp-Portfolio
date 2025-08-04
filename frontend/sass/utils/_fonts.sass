@@ -1,14 +1,14 @@
 //  Fonts for the project
-
+@use './colors' as color
 //  Importing fonts for the project
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"), colour
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
 
 %roboto-font
-    color: $font-light
+    color: color.$font-light
     font-family: 'Roboto', sans-serif
 
 %work-sans-font
     font-weight: 100
-    color: $font-light
+    color: color.$font-light
     font-family: 'Work Sans', sans-serif
     

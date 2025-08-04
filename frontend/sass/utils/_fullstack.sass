@@ -1,5 +1,8 @@
 //  Technical repository
-@import misc, fonts, colour, lang-filter
+@use './colors' as color
+@use './misc'
+@use './fonts'
+@use './lang-filter'
 
 
 .cnn-ctr 
@@ -18,12 +21,12 @@ button.tech-btn
     padding: 1em
     cursor: pointer
     border-radius: 10px
-    background-color: $nav-bar
-    
+    background-color: color.$nav-bar
+
     &:disabled
-        color: $dark-grey
+        color: color.$dark-grey
         cursor: not-allowed
-        background-color: $bg-light !important
+        background-color: color.$bg-light !important
 
     &:hover
         transition: 0.5s
@@ -43,7 +46,7 @@ button.tech-btn
     inline-size: 100%
     background-size: 32vw
     background-repeat: no-repeat
-    box-shadow: 4px 4px 20px 4px $dark-grey
+    box-shadow: 4px 4px 20px 4px color.$dark-grey
     background-image: url(../assets/img/businessCard/topper-left-corner.svg)
 
     .tech-container
@@ -90,12 +93,12 @@ button.tech-btn
         padding: 0.5em
         cursor: pointer
         border-radius: 10px
-        background-color: $nav-bar
-        border: 1px solid $white
-                        
+        background-color: color.$nav-bar
+        border: 1px solid color.$white
+
         &:hover
             transition: 1s
-            background-color: $nav-bar-hover
+            background-color: color.$nav-bar-hover
             transform: scale(1.2)
 
     .pro-nav
@@ -105,11 +108,11 @@ button.tech-btn
         .tech-btn
             padding: 0.5em
             border-radius: 10px
-            border: 1px solid $white
+            border: 1px solid color.$white
                         
             &:hover
                 transition: 1s
-                background-color: $h4
+                background-color: color.$h4
                 transform: scale(1.2)
 
     span.tech-label

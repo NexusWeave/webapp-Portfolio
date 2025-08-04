@@ -1,5 +1,5 @@
 //  Bootstrap icons
-@import colour
+@use './colors' as color
 
 %icon-size
     margin: 1vw
@@ -23,43 +23,43 @@ nav.ext-bar
         @extend %icon-link
 
         .bi-facebook
-            color: $facebook
+            color: color.$facebook
             @extend %icon-btn
 
             &:hover
-                color: $facebook-hover
+                color: color.$facebook-hover
             &:active
-                color: $facebook-active
+                color: color.$facebook-active
 
         .bi-instagram
-            color: $instagram
+            color: color.$instagram
             @extend %icon-btn
 
             &:hover
-                color: $instagram-hover
+                color: color.$instagram-hover
 
             &:active
-                color: $instagram-active
-        
+                color: color.$instagram-active
+
         .bi-linkedin
             @extend %icon-btn
-            color: $linked-in
-        
+            color: color.$linked-in
+
             &:hover
-                color: $linked-in-hover
+                color: color.$linked-in-hover
 
             &:active
-                color: $linked-in-active
+                color: color.$linked-in-active
         
         .bi-mailbox
-            color: $dark-grey
+            color: color.$dark-grey
             @extend %icon-btn
         
             &:hover
-                color: $linked-in-hover
+                color: color.$linked-in-hover
 
             &:active
-                color: $linked-in-active
+                color: color.$linked-in-active
 
         .bi-youtube
             @extend %icon-btn
@@ -71,31 +71,31 @@ nav.ext-bar
             @extend %icon-btn
 
 .bi-code
-    color: $dark-grey
+    color: color.$dark-grey
 
 .bi-youtube
     font-size: 2em
-    color: $youtube
+    color: color.$youtube
 
     &:hover
-        color: $youtube-hover
+        color: color.$youtube-hover
 
 .bi-globe
     font-size: 2em
-    color: $dark-grey
+    color: color.$dark-grey
 
     &:hover
-        color: $dark-grey-hover
-    
+        color: color.$dark-grey-hover
+
 .bi-github
     font-size: 2em
-    color: $github
-    
+    color: color.$github
+
     &:hover
-        color: $github-hover
+        color: color.$github-hover
 
     &:active
-        color: $github-active
+        color: color.$github-active
 
 .specialization-container
 

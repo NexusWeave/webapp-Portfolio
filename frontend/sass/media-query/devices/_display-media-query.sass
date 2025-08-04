@@ -1,8 +1,8 @@
 //  Display Media Queries
-@import breakpoints
+@use './breakpoints' as device
 
 //  Portrait
-@media only screen and (min-width: $apple-cd-width) and (min-height: $apple-cd-height) and (orientation: portrait)
+@media only screen and (min-width: device.$apple-cd-width) and (min-height: device.$apple-cd-height) and (orientation: portrait)
     main
         section.info
             .carosel
@@ -36,7 +36,7 @@
                 p
                     inline-size: 21vw !important
 
-@media only screen and (min-width: $display-hd-1080p-height) and (min-height : $display-hd-1080p-width) and (orientation: portrait)
+@media only screen and (min-width: device.$display-hd-1080p-height) and (min-height : device.$display-hd-1080p-width) and (orientation: portrait)
     main
         section.info
             .carosel
@@ -69,7 +69,7 @@
                 p
                     inline-size: 19vw !important
 
-@media only screen and (min-width: $display-hd-1080i-width) and (min-height : $display-hd-1080i-height) and (orientation: portrait)
+@media only screen and (min-width: device.$display-hd-1080i-width) and (min-height : device.$display-hd-1080i-height) and (orientation: portrait)
     main
         section.info
             .carosel
@@ -109,7 +109,7 @@
                     inline-size: 25vw !important
                     margin-inline-start: 4vw !important
 
-@media only screen and ($display-hd-720p-width <= width <= 1365px) and (min-height : $display-hd-720p-height) and (orientation: portrait)
+@media only screen and (device.$display-hd-720p-width <= width <= 1365px) and (min-height : device.$display-hd-720p-height) and (orientation: portrait)
     main
         section.info
             .carosel
@@ -151,7 +151,7 @@
                     inline-size: 37vw !important
                     margin-inline-start: 4vw !important
 
-@media only screen and ($display-asus-zbc-width <= width <=  1023px) and (min-height: $display-asus-zbc-height) and (orientation: portrait)
+@media only screen and (device.$display-asus-zbc-width <= width <=  1023px) and (min-height: device.$display-asus-zbc-height) and (orientation: portrait)
     header
         .slogan-wrapper
             font-size: .7em !important
@@ -197,7 +197,7 @@
                 p
                     inline-size: 25vw !important
 
-@media only screen and (min-width: $display-asus-zbf-height) and (min-height: $display-asus-zbf-width) and (orientation: portrait)
+@media only screen and (min-width: device.$display-asus-zbf-height) and (min-height: device.$display-asus-zbf-width) and (orientation: portrait)
     header
         .slogan-wrapper
             font-size: .7em !important
@@ -249,7 +249,7 @@
 
 
 //  Landscape
-@media only screen and (min-width: $display-hd-1080p-width) and (min-height : $display-hd-1080p-height) and (orientation: landscape)
+@media only screen and (min-width: device.$display-hd-1080p-width) and (min-height : device.$display-hd-1080p-height) and (orientation: landscape)
     header
         img
             inline-size: 8vw !important
@@ -311,7 +311,7 @@
             nav#tech-bar
                 inline-size: 47vw !important
 
-@media only screen and (min-width: $display-hd-1080i-height) and (min-height : $display-hd-1080i-width) and (orientation: landscape)
+@media only screen and (min-width: device.$display-hd-1080i-height) and (min-height : device.$display-hd-1080i-width) and (orientation: landscape)
     main
         section.info
             .carosel
@@ -345,7 +345,7 @@
                 p
                     inline-size: 19vw !important
 
-@media only screen and (min-width: $display-hd-720p-height) and (min-height : $display-hd-720p-width) and (orientation: landscape)
+@media only screen and (min-width: device.$display-hd-720p-height) and (min-height : device.$display-hd-720p-width) and (orientation: landscape)
     main
         section.info
             .carosel
@@ -390,7 +390,7 @@
                 p
                     inline-size: 23vw !important
 
-@media only screen and ($display-asus-zbc-height <= width <= 1300px)and ($display-asus-zbc-width <= height <= 1023px) and (orientation: landscape)
+@media only screen and (device.$display-asus-zbc-height <= width <= 1300px)and (device.$display-asus-zbc-width <= height <= 1023px) and (orientation: landscape)
     header
         .slogan-wrapper
             font-size: .7em !important
@@ -434,7 +434,7 @@
                     inline-size: 23vw !important
                     margin-inline-start: 4vw !important
 
-@media only screen and (min-width: $display-asus-zbf-width) and (min-height: $display-asus-zbf-height) and (orientation: landscape)
+@media only screen and (min-width: device.$display-asus-zbf-width) and (min-height: device.$display-asus-zbf-height) and (orientation: landscape)
     header
         .slogan-wrapper
             font-size: .7em !important

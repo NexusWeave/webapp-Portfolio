@@ -16,11 +16,21 @@ flex-wrap-reversed-column
     align-content: center
     @extend flex-wrap-column
 
-.flex-wrap-column-align-items-center
+.flex-column-align-items-center
     align-items: center
-    @extend flex-wrap-column
+    @extend flex-column
 
-.flex-wrap-column-justify-center
+.flex-column-justify-center
     justify-content: center
+    @extend flex-column
+
+
+.flex-wrap-column-align-center-justify-space-evenly
+    align-content: center
     @extend flex-wrap-column
+    justify-content: space-evenly
+
+.flex-column-align-items-end
+    @extend flex-column 
+    align-items: flex-end
     

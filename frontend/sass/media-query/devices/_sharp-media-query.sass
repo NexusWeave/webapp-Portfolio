@@ -1,10 +1,10 @@
 // Sharp Media Queries
 // Issues with mq
 //  Import dependencies
-@import breakpoints
+@use './breakpoints' as device
 
 
-@media only screen and (min-width: $sharp-941sh-width) and (min-height: $sharp-941sh-height) and (orientation: portrait)
+@media only screen and (min-width: device.$sharp-941sh-width) and (min-height: device.$sharp-941sh-height) and (orientation: portrait)
     header 
         .slogan-wrapper 
             font-size: .7em !important
@@ -43,7 +43,7 @@
                     inline-size: 56vw !important
                     margin-inline-start: 6vw !important
 
-@media only screen and (min-width: $sharp-is03-width) and (min-height: $sharp-is03-height) and (orientation: portrait)
+@media only screen and (min-width: device.$sharp-is03-width) and (min-height: device.$sharp-is03-height) and (orientation: portrait)
     header 
         img
             inline-size: 11vw !important
@@ -95,7 +95,7 @@
                     margin-inline-start: 4vw !important
 
 
-@media only screen and ($sharp-941sh-height <= width <= 1113px) and ($sharp-941sh-width <= height <= 599px) and (orientation: landscape)
+@media only screen and (device.$sharp-941sh-height <= width <= 1113px) and (device.$sharp-941sh-width <= height <= 599px) and (orientation: landscape)
     header
         img
             inline-size: 11vw !important
@@ -146,8 +146,8 @@
                     inline-size: 27vw !important
                     margin-inline-start: 4vw !important
 
-@media only screen and (min-width: $sharp-is03-height) and (min-height: $sharp-is03-width) and (orientation: landscape)
-    header 
+@media only screen and (min-width: device.$sharp-is03-height) and (min-height: device.$sharp-is03-width) and (orientation: landscape)
+    header
         img
             inline-size: 11vw !important
 

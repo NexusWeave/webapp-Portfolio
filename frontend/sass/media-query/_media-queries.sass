@@ -1,17 +1,21 @@
 // Media Queries
-
-@import media_queries/breakpoints, media_queries/htc-media-query
-@import media_queries/sony-media-query, media_queries/sharp-media-query
-@import media_queries/apple-media-query, media_queries/amazon-media-query
-@import media_queries/display-media-query, media_queries/samsung-media-query
-@import media_queries/blackberry-media-query, media_queries/google-media-query
-@import media_queries/motorola-media-query, media_queries/microsoft-media-query
-
+@use 'devices/breakpoints' as device
+@forward 'devices/htc-media-query'
+@forward 'devices/sony-media-query'
+@forward 'devices/sharp-media-query'
+@forward 'devices/apple-media-query'
+@forward 'devices/amazon-media-query'
+@forward 'devices/display-media-query'
+@forward 'devices/samsung-media-query'
+@forward 'devices/google-media-query'
+@forward 'devices/motorola-media-query'
+@forward 'devices/microsoft-media-query'
+@forward 'devices/blackberry-media-query'
 
 //  Generally media queries
 
 //  Portrait
-@media only screen and (min-width: $iphone-width) and (max-width: 343px) and (min-height: $iphone-height) and (max-height: 532px) and (orientation: portrait)
+@media only screen and (min-width: device.$iphone-width) and (max-width: 343px) and (min-height: device.$iphone-height) and (max-height: 532px) and (orientation: portrait)
 
     header 
         .slogan-wrapper 
@@ -67,7 +71,7 @@
         form input[type="text"]
             margin-block-end: 2vh
 
-@media only screen and (min-width: $tablet-width) and (max-width: 639px) and (min-height: $tablet-height)  and (max-height: 1023px) and (orientation: portrait)
+@media only screen and (min-width: device.$tablet-width) and (max-width: 639px) and (min-height: device.$tablet-height)  and (max-height: 1023px) and (orientation: portrait)
     header
         img
             inline-size: 15vw !important
@@ -167,9 +171,9 @@
             inline-size: 77vw !important
             margin-block-end: 2vh
 
-@media only screen and (min-width: $Ipad-width) and (max-width: 799px) and (min-height: $Ipad-height) and (orientation: portrait)
-    header 
-        .slogan-wrapper 
+@media only screen and (min-width: device.$Ipad-width) and (max-width: 799px) and (min-height: device.$Ipad-height) and (orientation: portrait)
+    header
+        .slogan-wrapper
             font-size: 0.7em
 
     main
@@ -230,9 +234,9 @@
                 margin-block-end: 2vh
 
 //  Landscape
-@media only screen and (min-width: $iphone-height)  and (max-width: 500px) and (min-height: $iphone-width) and (orientation: landscape)
-    header 
-        .slogan-wrapper 
+@media only screen and (min-width: device.$iphone-height)  and (max-width: 500px) and (min-height: device.$iphone-width) and (orientation: landscape)
+    header
+        .slogan-wrapper
             font-size: 0.7em !important
 
     main
@@ -289,7 +293,7 @@
         form input[type="text"]
             margin-block-end: 2vh
 
-@media only screen and (min-width: $tablet-height) and (max-width: 828px) and (min-height: $tablet-width) and (max-height: 689px) and (orientation: landscape)
+@media only screen and (min-width: device.$tablet-height) and (max-width: 828px) and (min-height: device.$tablet-width) and (max-height: 689px) and (orientation: landscape)
     header
         img
             inline-size: 10vw !important
@@ -387,9 +391,9 @@
         form input[type="text"]
             margin-block-end: 2vh
 
-@media only screen and (min-width: $Ipad-height) and (max-width: 1114px) and (min-height: $Ipad-width) and (max-height: 799px) and (orientation: landscape)
-    header 
-        .slogan-wrapper 
+@media only screen and (min-width: device.$Ipad-height) and (max-width: 1114px) and (min-height: device.$Ipad-width) and (max-height: 799px) and (orientation: landscape)
+    header
+        .slogan-wrapper
             font-size: 0.7em !important
 
     main
@@ -461,9 +465,9 @@
                 margin-block-end: 2vh
 
 //  WideScreen
-@media only screen and (min-width: $wideScreen-width) and (min-height: $wideScreen-height) and (max-height: 799px)
-    header 
-        .slogan-wrapper 
+@media only screen and (min-width: device.$wideScreen-width) and (min-height: device.$wideScreen-height) and (max-height: 799px)
+    header
+        .slogan-wrapper
             font-size: 0.7em !important
 
     main

@@ -1,11 +1,10 @@
 //  Google Devices Media Query
 
-//  import dependencies
-@import breakpoints
+@use './breakpoints' as device
 
 //  Portrait
-@media only screen and ($google-pixel-width <= width <= 429px) and (min-height: $google-pixel-height) and (orientation: portrait)
-    
+@media only screen and (device.$google-pixel-width <= width <= 429px) and (min-height: device.$google-pixel-height) and (orientation: portrait)
+
     header a
         font-size: 0.57em 
 
@@ -27,8 +26,8 @@
                     bottom : 5vh !important
 
 // Landscape
-@media only screen and ($google-pixel-height <= width <= 1000px) and (min-height: $google-pixel-width) and (orientation: landscape)
-    
+@media only screen and (device.$google-pixel-height <= width <= 1000px) and (min-height: device.$google-pixel-width) and (orientation: landscape)
+
     header a
         font-size: 0.57em 
 
@@ -49,7 +48,7 @@
             .pp
                 background-size: 11vw !important
 
-@media only screen and ($google-nh-width <= width <= 1100px) and (min-height: $google-nh-height) and (orientation: landscape)
+@media only screen and (device.$google-nh-width <= width <= 1100px) and (min-height: device.$google-nh-height) and (orientation: landscape)
     main
         section.info
             .carosel
@@ -77,7 +76,7 @@
                         .img-svg
                             block-size: 5vh !important
 
-@media only screen and ($google-nhm-width <= width <= 852px) and (min-height: $google-nhm-height) and (orientation: landscape)
+@media only screen and (device.$google-nhm-width <= width <= 852px) and (min-height: device.$google-nhm-height) and (orientation: landscape)
     main
         section.info
             .carosel

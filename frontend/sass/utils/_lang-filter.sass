@@ -1,50 +1,52 @@
-// Technologies colours
-@import misc, fonts, colour
+// Technologies colors
+@use './misc'
+@use './fonts'
+@use './colors' as color
 
 // Interpreted language
 div.tech-interpreted
     @extend %filter-content
-    background-color: $Cyan-Blue-Azure
+    background-color: color.$Cyan-Blue-Azure
 
 .tech-wrapper:has(.tech-interpreted)
     //transition: all .3s ease-out
-    //background-color: $Cyan-Blue-Azure !important
+    //background-color: color.$Cyan-Blue-Azure !important
 
 // Compiled languageC, C++, C#,
 div.tech-compiled
-    background-color: $c
+    background-color: color.$c
     @extend %filter-content
 
 .tech-wrapper:has(.tech-compiled)
     //transition: all .3s ease-out
-    //background-color: $c-light !important
+    //background-color: color.$c-light !important
 
 // Database
 div.tech-db
     @extend %filter-content
-    background-color: $db
+    background-color: color.$db
 
 .tech-wrapper:has(.tech-db)
     //transition: all .3s ease-out
-    //background-color: $db-light
+    //background-color: color.$db-light
 
 // UI / UX / Frontend
 div.tech-ui-ux
     @extend %filter-content
-    background-color: $webapp
+    background-color: color.$webapp
 
 .tech-wrapper:has(.tech-ui-ux)
     //transition: all .3s ease-out
-    //background-color: $webapp-light !important
+    //background-color: color.$webapp-light !important
 
 // Workflow
 .tech-workflow
     @extend %filter-content
-    background-color: $work-flow
+    background-color: color.$work-flow
 
 .tech-wrapper:has(.tech-workflow)
     //transition: all .3s ease-out
-    //background-color: $work-flow-light !important
+    //background-color: color.$work-flow-light !important
 
 .tech-container
     .relative
