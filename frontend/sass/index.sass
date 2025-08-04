@@ -1,6 +1,6 @@
 //  Index file for the main SASS styles of the frontend Elements styles
 @use './utils/grid'
-@use './utils/fonts'
+@use './utils/mixins' as mix
 @use './utils/colors' as color
 @use './utils/flexbox'
 @use './utils/expertise'
@@ -35,7 +35,7 @@ header
     a
         padding: 1em
         font-weight: 300
-        @extend %roboto-font
+        @include mix.font-style('Roboto')
         text-decoration: none
 
     .slogan-wrapper
