@@ -1,0 +1,15 @@
+.grid-news-container {
+  gap: 1em;
+  display: grid;
+  margin-block: 2em;
+  inline-size: 100%;
+}
+
+.grid-news-container {
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+}
+
+.col {
+  inline-size: 25em;
+}/*# sourceMappingURL=grid-container.css.map */

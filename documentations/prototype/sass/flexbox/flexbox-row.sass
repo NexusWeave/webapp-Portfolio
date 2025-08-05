@@ -1,0 +1,75 @@
+flex-row
+    display: flex
+    flex-direction: row
+
+flex-wrap-row
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+
+flex-wrap-reversed-row
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row-reverse
+
+.flex-row-align-items-center
+    @extend flex-row
+    align-items: center
+
+//  Flexbox row with wrap
+//  Justify content
+.flex-wrap-row-justify-flex-start
+    @extend flex-wrap-row
+    justify-content: flex-start
+
+.flex-wrap-row-justify-flex-end
+    @extend flex-wrap-row
+    justify-content: flex-end
+
+
+.flex-wrap-row-justify-space-evenly
+    @extend flex-wrap-row
+    justify-content: space-evenly
+
+.flex-wrap-row-justify-space-between
+    @extend flex-wrap-row
+    justify-content: space-between
+
+.flex-wrap-row-justify-space-around
+    @extend flex-wrap-row
+    justify-content: space-around
+
+.flex-wrap-row-justify-center
+    @extend flex-wrap-row
+    justify-content: center
+
+//  Align items
+.flex-wrap-row-align-items-end
+    @extend flex-wrap-row
+    align-items: flex-end
+
+.flex-wrap-row-align-items-center
+    align-items: center
+    @extend flex-wrap-row
+  
+
+//  Align and Justify-content mix
+.flex-wrap-row-align-items-center-justify-center
+    align-items: center
+    @extend flex-wrap-row
+    justify-content: center
+
+.flex-wrap-row-align-items-center-justify-space-between
+    align-items: center
+    @extend flex-wrap-row
+    justify-content: space-between
+
+.flex-wrap-row-align-items-center-justify-space-evenly
+    align-items: center
+    @extend flex-wrap-row
+    justify-content: space-evenly
+
+.flex-wrap-row-align-items-center-justify-space-around
+    align-items: center
+    @extend flex-wrap-row
+    justify-content: space-around

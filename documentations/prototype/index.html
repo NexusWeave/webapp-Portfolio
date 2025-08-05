@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-OK-Compatible" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="static/css/index.css">
+        <link rel="icon" href="./static/media/logo/SosEnT-favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <title> SOSENT -- NORGE</title>
+
+        <script src="static/js/model.js"></script>
+        
+        <script src="static/js/view.js"></script>
+        <script src="static/js/dev/view.js"></script>
+        <script src="static/js/aboutme/view.js"></script>
+        <script src="static/js/portofolio/view.js"></script>
+
+        <script src="static/js/controller.js"></script>
+        <script src="static/js/dev/controller.js"></script>
+        <script src="static/js/aboutme/controller.js"></script>
+        <script src="static/js/portofolio/controller.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+    </head>
+    <body>
+        <div id="app"></div>
+        <script>
+            updateView();
+            function updateView() 
+            {
+
+                /*
+                    Ensures that the correct view is displayed.
+                    The view is determined by the currentPage,
+                    property of the model.
+                */
+                let html;
+                const page = model.app.currentPage;
+
+                // Ensure that the requested page is valid
+                switch (page)
+                {
+                    case 'aboutMe':
+                        html = aboutView(1);
+                        break;  
+
+                    case 'dev':
+                        html = devView(2);
+                        break;
+
+                    default:
+                        html = portfolioView(0);
+                        break;
+                }
+
+                document.getElementById('app').innerHTML = html;
+            }
+        </script>
+    </body>
+</html>

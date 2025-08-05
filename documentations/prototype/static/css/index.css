@@ -1,0 +1,358 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap);
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wdth,wght,YTLC@0,6..12,75..125,200..1000,440..540;1,6..12,75..125,200..1000,440..540&display=swap");
+@import url(https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css);
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css);
+work-sans-heading, body h2 {
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Work Sans", sans-serif;
+}
+
+roboto-font, section .about-us, h3.h3, h1.h1, body button, body {
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Roboto", sans-serif;
+}
+
+nunito-font-regular, .card, div.link, nav button {
+  font: caption;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+flex-row, .flex-wrap-row-justify-content-flex-end, .flex-row, .flex-row-align-items-center {
+  display: flex;
+  flex-direction: row;
+}
+
+flex-wrap-row, .flex-wrap-row, .flex-wrap-row-align-items-center-justify-space-around, .flex-wrap-row-align-items-center-justify-space-evenly, .flex-wrap-row-align-items-center-justify-space-between, .flex-wrap-row-align-items-center-justify-center, .flex-wrap-row-align-items-center, .flex-wrap-row-align-items-end, .flex-wrap-row-justify-center, .flex-wrap-row-justify-space-around, .flex-wrap-row-justify-space-between, .flex-wrap-row-justify-space-evenly, .flex-wrap-row-justify-flex-end, .flex-wrap-row-justify-flex-start {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+flex-wrap-reversed-row, .flex-wrap-reversed-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+
+.flex-row-align-items-center {
+  align-items: center;
+}
+
+.flex-wrap-row-justify-flex-start {
+  justify-content: flex-start;
+}
+
+.flex-wrap-row-justify-flex-end {
+  justify-content: flex-end;
+}
+
+.flex-wrap-row-justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.flex-wrap-row-justify-space-between {
+  justify-content: space-between;
+}
+
+.flex-wrap-row-justify-space-around {
+  justify-content: space-around;
+}
+
+.flex-wrap-row-justify-center {
+  justify-content: center;
+}
+
+.flex-wrap-row-align-items-end {
+  align-items: flex-end;
+}
+
+.flex-wrap-row-align-items-center {
+  align-items: center;
+}
+
+.flex-wrap-row-align-items-center-justify-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-wrap-row-align-items-center-justify-space-between {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-wrap-row-align-items-center-justify-space-evenly {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.flex-wrap-row-align-items-center-justify-space-around {
+  align-items: center;
+  justify-content: space-around;
+}
+
+flex-column, .flex-column, .flex-column-align-items-center {
+  display: flex;
+  flex-direction: column;
+}
+
+flex-wrap-column, .flex-wrap-column, .flex-wrap-column-align-content-center-justify-space-evenly, .flex-wrap-column-align-items-center, .flex-wrap-column-align-content-center {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+flex-wrap-reversed-column, .flex-wrap-reversed-column {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+}
+
+.flex-wrap-column-align-content-center {
+  align-content: center;
+}
+
+.flex-wrap-column-align-items-center {
+  align-items: center;
+}
+
+.flex-wrap-column-align-content-center-justify-space-evenly {
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.flex-column-align-items-center {
+  align-items: center;
+}
+
+.flex-justify-center {
+  display: flex;
+}
+
+.flex-justify-center {
+  justify-content: center;
+}
+
+.flex-wrap-row-justify-content-flex-end {
+  justify-content: flex-end;
+}
+
+.grid-news-container {
+  gap: 1em;
+  display: grid;
+  margin-block: 2em;
+  inline-size: 100%;
+}
+
+.grid-news-container {
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+}
+
+.col {
+  inline-size: 25em;
+}
+
+* {
+  box-sizing: border-box;
+  writing-mode: horizontal-tb;
+}
+
+body {
+  color: rgb(55, 40, 45) !important;
+  font-size: 1em;
+}
+body button {
+  padding: 1em;
+}
+
+main {
+  padding-block: 1em;
+}
+
+header div {
+  inline-size: 100%;
+}
+
+nav button {
+  border: none;
+  background: inherit;
+}
+nav button:hover {
+  background: inherit;
+  color: rgb(255, 95, 25) !important;
+}
+
+nav.navbar {
+  inline-size: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1.h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+h4.h4 {
+  font-weight: bold;
+}
+
+h5.h5 {
+  text-align: left;
+  font-size: 12px;
+  font-weight: bold !important;
+}
+
+h3.h3 {
+  margin: 0.5em;
+  font-size: 23px !important;
+  font-weight: 500;
+}
+
+article {
+  inline-size: 100%;
+  align-items: center;
+  text-align: justify;
+  align-content: center;
+}
+article .news-article h3 {
+  font-size: 0.885em;
+  font-weight: bold;
+}
+article .news-article p {
+  font-size: 0.8em;
+}
+article img.banner-image {
+  inline-size: 12em;
+  block-size: 10em;
+}
+article img.article-image {
+  block-size: 11em;
+  inline-size: 13em;
+}
+
+article.news-banner {
+  margin-block: 1em;
+  inline-size: 26em;
+}
+
+section {
+  inline-size: 100%;
+  margin-block: 1em;
+}
+section .article-container {
+  margin: 1em;
+  inline-size: 26em;
+}
+section .news-container {
+  inline-size: 14em;
+  color: rgb(55, 40, 45);
+}
+section .about-us {
+  font-size: 1.1em;
+  inline-size: 32em;
+  text-align: justify;
+}
+section .contact {
+  inline-size: 30em;
+  margin-inline-start: 2em;
+}
+section .card-body {
+  margin-block: 0em;
+  font-size: 0.8em;
+  text-align: justify;
+}
+
+.membership-container {
+  inline-size: 30em;
+}
+
+div.link {
+  padding: 1em;
+  color: rgb(255, 95, 25) !important;
+}
+div.link:hover {
+  text-decoration: underline !important;
+  color: rgb(255, 95, 25) !important;
+}
+
+.nav-item {
+  margin-inline-start: 0.9em;
+}
+
+.logo-container {
+  inline-size: 14em;
+}
+
+.banner {
+  padding: 1em;
+  border: 1px solid black;
+}
+
+.card a {
+  color: rgb(255, 95, 25) !important;
+}
+.card a:hover {
+  text-decoration: underline !important;
+}
+
+.card-img-top {
+  block-size: 10em;
+  inline-size: 15em;
+}
+
+.is-31 {
+  inline-size: 31vw;
+}
+
+.is-60 {
+  inline-size: 37em;
+}
+
+.is-100 {
+  inline-size: 100%;
+}
+
+.relative {
+  position: relative;
+  bottom: 21em;
+}
+
+.carousel {
+  inline-size: 79em;
+}
+
+.carousel-inner {
+  inline-size: 45em;
+}
+
+.bg-brown {
+  padding-block: 1em;
+  background: rgb(55, 40, 45);
+  color: rgb(245, 245, 245);
+}
+
+.partner img {
+  inline-size: 10em;
+}
+
+.documents {
+  inline-size: 25em;
+}
+
+.member-logo {
+  inline-size: 10em;
+  block-size: 10em;
+  margin-inline-end: 1em;
+}
+
+.nav-separator {
+  border-left: 1px solid rgb(255, 95, 25);
+}/*# sourceMappingURL=index.css.map */

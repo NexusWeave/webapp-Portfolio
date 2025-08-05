@@ -1,0 +1,33 @@
+flex-column, .flex-column-align-items-center {
+  display: flex;
+  flex-direction: column;
+}
+
+flex-wrap-column, .flex-wrap-column-align-content-center-justify-space-evenly, .flex-wrap-column-align-items-center, .flex-wrap-column-align-content-center {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+flex-wrap-reversed-column {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+}
+
+.flex-wrap-column-align-content-center {
+  align-content: center;
+}
+
+.flex-wrap-column-align-items-center {
+  align-items: center;
+}
+
+.flex-wrap-column-align-content-center-justify-space-evenly {
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.flex-column-align-items-center {
+  align-items: center;
+}/*# sourceMappingURL=flexbox-column.css.map */
