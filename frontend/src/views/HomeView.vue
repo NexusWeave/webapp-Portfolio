@@ -12,8 +12,11 @@
 </template>
 <script setup>
     import Timeline from '@/components/academic/Timeline.vue'
-import { computed, reactive } from 'vue';
+import { reactive } from 'vue';
 
+    import { timelineStore } from '@/store/timeline.js';
+
+    const tl = timelineStore();
     const timeline = reactive(
     [
         {
@@ -75,7 +78,7 @@ import { computed, reactive } from 'vue';
         {
             id: 2,
             year: 2022,
-            title: 'Introduction To Computer Science with Python',
+            title: 'CS50x :Introduction To Computer Science',
             description: 'Fullført Introduction To Computer Science with Python med gode resultater.',
 
             content:
@@ -84,60 +87,32 @@ import { computed, reactive } from 'vue';
 
                 school :
                 {
+                    end: 2022,
+                    start: 2022,
                     name: 'HarvardX',
-                    location: 'Nettet',
-                    description: 'Nettbasert kurs fra Harvard University',
-                    
+                    location: 'Nettbasert',
+                    description: 'Professional Certificate in Computer Science',
+
                     anchor:
                     {
                         type: ['external'],
                         label: 'HarvardX',
-                        href: 'https://example.com/',
+                        href: 'https://www.edx.org/school/harvardx',
                     },
                 },
 
                 anchor:
                 {
-                    label: 'Certified Course',
-                    href: 'https://example.com/vitnemal',
+                    label: 'Certified Certificate',
+                    href: 'https://courses.edx.org/certificates/cc7f7cb258a24538af14c876023cf932',
                 },
             },
         },
+
         {
-            id: 2,
-            year: 2023,
-            title: 'Introduction To Computer Science',
-            description: 'Fullført Introduction To Computer Science med gode resultater.',
-
-            content:
-            {
-                isVisable: false,
-
-                school :
-                {
-                    name: 'HarvardX',
-                    location: 'Nettet',
-                    description: 'Nettbasert kurs fra Harvard University',
-                    
-                    anchor:
-                    {
-                        type: ['external'],
-                        label: 'HarvardX',
-                        href: 'https://example.com/',
-                    },
-                },
-
-                anchor:
-                {
-                    label: 'Certified Course',
-                    href: 'https://example.com/vitnemal',
-                },
-            },
-        },
-        {
-            id: 3,
+            id: 4,
             year: 2024,
-            title: 'GetAcademy',
+            title: 'It- Utviklings faget',
             description: 'Fullført GetAcademy med gode resultater.',
 
             content:
@@ -168,8 +143,14 @@ import { computed, reactive } from 'vue';
     ]);
 
     const toggleVisibility = (id) => {
+        
+        timeline.forEach(item => {
+            if (item.id === id) {
+                item.content.isVisable = !item.content.isVisable;
+            } else {
+                item.content.isVisable = false; // Collapse other items
+            }
+        });
         console.log('Toggling visibility for ID:', id);
-        const data = timeline.find(item => item.id === id);
-        if (!!data) {data.content.isVisable = !data.content.isVisable;}
     };
 </script>
