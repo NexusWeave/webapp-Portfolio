@@ -21,7 +21,7 @@ export const timelineStore = defineStore("Data",
                 const timeline = this.data.timeline
                 
                 item.content.isVisible = false;
-                this.data.timeline.push(item);
+                timeline.push(item);
                 //console.warn("Adding data to store:", item, this.data);
             },
             async fetchData()
