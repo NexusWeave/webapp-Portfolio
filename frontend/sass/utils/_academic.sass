@@ -1,0 +1,61 @@
+@use './mixins' as mix
+@use '../colors/colors' as color
+
+.timeline-container
+    padding: 1em
+    
+    @include mix.transitions(block-size, 1s, ease-out)
+    @include mix.component-color($color: color.$primary, $background-color: color.$acent-3)
+    
+    .timeline-item
+        z-index: 1
+    .timeline-active
+        opacity: 1 !important
+        @include mix.transitions(opacity, 10s, ease-out)
+
+    .timeline-content
+        opacity: 0
+        
+        padding: 1em
+        overflow: hidden
+        margin-block: 2em
+        margin-inline: auto
+        max-inline-size: 22em
+        @include mix.component-color($color: color.$acent-3, $background-color: color.$acent-3-card)
+
+    
+        .timeline-h3
+            font-size: 1.5em
+            font-weight: 600
+            margin-block: .5em
+            text-align: center
+
+        .timeline-h4
+            font-size: 1.2em
+            font-weight: 600
+            margin-block: .5em
+            text-align: center
+            display: inline-block
+
+        p
+            font-size: 1.1em
+    
+        .tech-container
+            .tech-item
+                margin-inline:.5em
+
+        .timeline-description
+            .timeline-list
+                .timeline-item
+                    margin-block: .5em
+                    font-size: 1.1em
+
+.timeline-line
+    &::before
+        top: 2.2em
+        content: ""
+        left: 13.1em
+        inline-size: .1em
+        position: relative
+        background-color: red
+        transform: scaleX(2.5) rotate(90deg)
