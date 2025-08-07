@@ -1,4 +1,4 @@
-export const timeline =
+const timeline =
 [
     {
         id: 0,
@@ -8,9 +8,7 @@ export const timeline =
 
         content:
         {
-            isVisable: false,
-
-            school :
+            school:
             {
                 name: 'Borgund VGS',
                 location: 'Ålesund, Norge',
@@ -36,8 +34,6 @@ export const timeline =
 
         content:
         {
-            isVisable: false,
-
             school :
             {
                 name: 'Borgund VGS',
@@ -64,8 +60,6 @@ export const timeline =
 
         content:
         {
-            isVisable: false,
-
             school :
             {
                 end: 2022,
@@ -97,8 +91,6 @@ export const timeline =
 
         content:
         {
-            isVisable: false,
-
             school :
             {
                 name: 'GetAcademy',
@@ -121,3 +113,10 @@ export const timeline =
         },
     },
 ]
+
+export const fetchData = async () =>
+{
+    return new Promise(resolve => {
+        setTimeout(() => {resolve(timeline);}, 10);
+    })
+}

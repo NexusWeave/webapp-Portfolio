@@ -1,46 +1,50 @@
 import { defineStore } from "pinia";
 
-import { timeline } from "@/services/timeline.js";
-import { fetchData } from "@/services/response.js";
-export const useTimelineStore = defineStore("timeline", {
-    state: () => ({
-        data: {
-            timeline: [],
-            isLoaded: false,
-        }
-    }),
-    actions: {
-        addToStore(data)
-        {
-            const timeline = this.data.timeline
-            data.forEach((item) => 
+import { fetchData } from "@/services/timeline-api.js";
+import { isRuntimeOnly } from "vue";
+//import { fetchData } from "@/services/utils/response.js";
+
+export const timelineStore = defineStore("Data",
+    {
+        state:() => ({
+            data:
             {
-
-            })
-            timeline.push(data);
-
-        },
-        sortStore()
+                timeline: [],
+                isLoaded: false,
+                
+            }
+        }),
+        actions:
         {
-            this.data.timeline.sort((a, b) => a.year - b.year);
+            addToStore(item)
+            {
+                const timeline = this.data.timeline
+                
+                item.content.isVisible = false;
+                this.data.timeline.push(item);
+                //console.warn("Adding data to store:", item, this.data);
+            },
+            async fetchData()
+            {
+                const data = this.data
+                //if (data.isLoaded) return;
+                
+                await fetchData().then((response) =>
+                    {
+                        response.forEach((item) =>
+                            {
+                                this.addToStore(item);
+                            });
+                            this.data.isLoaded = true;
+                }).catch((error) => {
+                    console.error("Error fetching timeline data:", error);
+                    this.data.isLoaded = false;
+                });
+            },
         },
-        fetchData()
-        {
-            const data = this.data;
-            if (data.isLoaded) return;
-            fetchData(timeline).then((response) => {
-                this.addToStore(response);
-                data.isLoaded = true;
+        getters: {
+            timelines: (state) => state.data.timeline,
+            isLoaded: (state) => state.data.isLoaded,
 
-                this.sortStore();
-            }).catch((error) => {
-                data.isLoaded = false;
-                console.error("Error fetching timeline data:", error);
-            });
-        }
-    },
-    getters: {
-        data: (state) => state.data.timeline,
-    },
-    
+        },  
 });

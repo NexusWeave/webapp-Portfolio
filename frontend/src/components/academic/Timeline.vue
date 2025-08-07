@@ -47,5 +47,5 @@
         action: () => emits('toggleVisibility', data.id)
     };
 
-    console.log(data.value);
+    console.log("Timeline data:", data.value);
 </script>

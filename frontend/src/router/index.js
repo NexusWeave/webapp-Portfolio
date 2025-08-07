@@ -1,17 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/HomeView.vue'
 
+import { timelineStore } from '@/stores/timelineStore.js';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: () => import('../views/HomeView.vue')
+      component: () => import('../views/HomeView.vue'),
+
+      beforeEnter: async (to, from, next) => {
+
+        const timeline = timelineStore();
+        await timeline.fetchData();
+        !!timeline.timeline ? next() : next();
+
+      }
     },
     {
-      path: '/about',
       name: 'About',
+      path: '/about',
       //component: () => import('../views/AboutView.vue')
     },
     {
