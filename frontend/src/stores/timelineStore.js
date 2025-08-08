@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 
 import { fetchData } from "@/services/timeline-api.js";
-import { isRuntimeOnly } from "vue";
 //import { fetchData } from "@/services/utils/response.js";
 
 export const timelineStore = defineStore("Data",
