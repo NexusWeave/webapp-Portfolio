@@ -1,0 +1,14 @@
+@use 'sass:map'
+@use '../mappings/flexbox' as fb
+
+@function flexbox($type)
+    $flexbox: map.get(fb.$flexbox, $type)
+    @if not $flexbox
+        @error ' Icon for "#{type}" was not found ! Using the standard'
+        $flexbox: map.get(fb.$flexbox, "flex-row")
+
+    @return map.merge($flexbox, (
+        display: map.get($flexbox, "display"),
+        flex-wrap: map.get($flexbox, "flex-wrap"),
+        flex-direction: map.get($flexbox, "flex-direction"),
+    ))
