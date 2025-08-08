@@ -29,4 +29,5 @@ coverage
 *.local
 *.production
 *.css
+*.css.map
 *.tsbuildinfo
