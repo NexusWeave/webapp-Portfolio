@@ -99,7 +99,7 @@ const timeline =
         },
     },
     {
-        id: 4,
+        id: 3,
         year: 2024,
         title: 'It- Utviklings faget',
         description:
@@ -133,7 +133,7 @@ const timeline =
         },
     },
     {
-        id: 5,
+        id: 4,
         year: 2025,
         title: 'Internships',
         description: {
@@ -149,7 +149,6 @@ const timeline =
         },
         content:
         {
-
             employer :
             {
                 start: 2025,
