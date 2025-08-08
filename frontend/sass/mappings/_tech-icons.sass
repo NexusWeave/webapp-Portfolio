@@ -1,0 +1,79 @@
+@use '../colors/colors' as color
+
+$compiled-tech-language:(
+    'c-tag': (
+        path:"", 
+        svg-color: color.$compiled, 
+        svg-hover: color.$compiled-light
+    ),
+    'go-tag': (
+        path:"", 
+        svg-color: color.$compiled, 
+        svg-hover: color.$compiled-light
+            ),
+    'cpp-tag': (
+        path:"", 
+        svg-color: color.$compiled, 
+        svg-hover: color.$compiled-light
+    ),
+    'csharp-tag': (
+        path:"", 
+        svg-color: color.$compiled, 
+        svg-hover: color.$compiled-light
+    ),
+    'sass-tag': (
+        path:"", 
+        svg-color: color.$Cyan-Blue-Azure, 
+        svg-hover: color.$Cyan-Blue-Azure-light
+    )
+)
+
+$interpreted-tech-language:(
+    'python-tag': (
+        path:"", 
+        svg-color: color.$Cyan-Blue-Azure, 
+        svg-hover: color.$Cyan-Blue-Azure-light
+    ),
+    'javascript-tag': (
+        path:"", 
+        svg-color: color.$Cyan-Blue-Azure,
+        svg-hover: color.$Cyan-Blue-Azure-light
+    ),
+)
+
+$database-tech-language:(
+    'mariadb-tag': (
+        path:"", 
+        svg-color: color.$db, 
+        svg-hover: color.$db-light
+    ),
+    'MSSQL-tag': (
+        path:"", 
+        svg-color: color.$db, 
+        svg-hover: color.$db-light
+    ),
+    'sqlite-tag': (
+        path:"", 
+        svg-color: color.$db, 
+        svg-hover: color.$db-light
+    ),
+    'default-tag': (
+        path:"", 
+        svg-color: color.$db, 
+        svg-hover: color.$db-light
+    )
+)
+
+$workflow-tools:(
+    'git-tag': (
+        path:"", 
+        svg-color: color.$work-flow, 
+        svg-hover: color.$work-flow-light
+    ),
+)
+$tech-languages: (
+    'workflow': $workflow-tools,
+    'compiled': $compiled-tech-language,
+    'database': $database-tech-language,
+    'interpreted': $interpreted-tech-language,
+)
