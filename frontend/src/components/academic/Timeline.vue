@@ -1,7 +1,8 @@
 <template>
     <section class ="flex-column-align-items-center timeline-item">
-        <h2 class ="timelineStore-h2">{{ data.year }}</h2>
-        <button :class="['btn', 'timeline-btn']" @click="btn.action(data.id)"></button>
+        <h2 v-for="h2 in data.timeline" :key="h2.id"
+        class ="timelineStore-h2">{{ h2.year }}</h2>
+        <Inputs :data="data.field" :cls="['timeline-input-label', 'timeline-input']"/>
     </section>
     <section>
     </section>
@@ -11,6 +12,7 @@
 
     import { computed, defineProps, defineEmits } from 'vue';
     import Anchor from '../navigation/Anchor.vue';
+import Inputs from '../form/inputs.vue';
 
     const props = defineProps({
         data:
