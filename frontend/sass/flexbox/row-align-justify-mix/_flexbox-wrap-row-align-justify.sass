@@ -27,12 +27,12 @@
     justify-content: space-between
     @include mix.flexbox-generator('flex-wrap-row')
 
-.flex-wrap-row-align-items-flex-end-justify-space-between
-    align-items: flex-end
-    justify-content: space-evenly
-    @include mix.flexbox-generator('flex-wrap-row')
-
 .flex-wrap-row-align-items-end-justify-space-between
     align-items: flex-end
     justify-content: space-between
+    @include mix.flexbox-generator('flex-wrap-row')
+
+.flex-wrap-row-align-items-end-justify-space-evenly
+    align-items: flex-end
+    justify-content: space-evenly
     @include mix.flexbox-generator('flex-wrap-row')
