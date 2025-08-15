@@ -13,7 +13,7 @@
         <template v-else-if="!!isAnchor">
                 <li v-for="item in data" :key="item.id"
                     :class="cls[2]">
-                    <Anchor :data="item.anchor" :Cls="item.cls"/>
+                    <Anchor :data="item.anchor" :cls="item.cls"/>
                 </li>
         </template>
         </ul>
