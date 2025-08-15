@@ -20,15 +20,10 @@ const timeline =
                 location: ['Ålesund, Norge'],
                 anchor:
                 {
+                    type: ['external'],
                     label: 'Borgund VGS Skole',
-                    href: 'https://example.com/',
+                    href: 'https://borgund.vgs.no/',
                 },
-            },
-
-            anchor:
-            {
-                label: 'Vitnemål',
-                href: 'https://example.com/vitnemal',
             },
         },
     },
@@ -52,15 +47,10 @@ const timeline =
                 
                 anchor:
                 {
+                    type: ['external'],
                     label: 'Borgund VGS Skole',
-                    href: 'https://example.com/',
+                    href: 'https://borgund.vgs.no/',
                 },
-            },
-
-            anchor:
-            {
-                label: 'Vitnemål',
-                href: 'https://example.com/vitnemal',
             },
         },
     },
@@ -81,6 +71,7 @@ const timeline =
                 start: 2022,
                 name: 'HarvardX',
                 location: ['Nettbasert'],
+                tech: ['C', 'python', 'js', 'flask', 'Github'],
                 description: 'Profesjonell sertifikat i Computer Science',
 
                 anchor:
@@ -104,7 +95,7 @@ const timeline =
         title: 'It- Utviklings faget',
         description:
         {
-            summary: 'Fullført GetAcademy med gode resultater.',
+            summary: 'Godkjent kurs.',
         },
 
         content:
@@ -114,8 +105,9 @@ const timeline =
                 end: 2024,
                 start: 2024,
                 name: 'GetAcademy',
+                tech: ['C#', 'HTML', 'CSS', 'JS', 'vuejs', 'UML', 'Github'],
                 location: ['Larvik, Vestfold, Norge', 'Hybrid undervisning'],
-                description: 'OnCampus / Nettbasert kurs fra GetAcademy',
+                description: '20 ukers hybrid intens undervisning',
 
                 anchor:
                 {
@@ -124,18 +116,12 @@ const timeline =
                     href: 'https://example.com/',
                 },
             },
-
-            anchor:-
-            {
-                label: 'Vitnemål',
-                href: 'https://example.com/vitnemal',
-            },
         },
     },
     {
         id: 4,
         year: 2025,
-        title: 'Internships',
+        title: 'Intern',
         description: {
             summary: 'Oppnådde praktisk erfaring med full-stack IT-utvikling.',
             list: [
@@ -154,7 +140,7 @@ const timeline =
                 start: 2025,
                 //end: 2025,
                 name: 'GetAcademy',
-                location: ['Larvik, Norge', 'Hybrid'],
+                location: ['Larvik, Vestfold, Norge', 'Hybrid'],
                 tech: ['C#', 'Sass', 'vuejs', 'UML', 'Github'],
  
                 anchor:
