@@ -1,24 +1,23 @@
 //  Bootstrap icons
 @use './colors' as color
+@use '../functions/icons' as icons
+@use '../mappings/icons' as icons-mapping
 
 .icon
     font-size: 1em
     display: inline-block
     font-family: "Bootstrap-icons"
 
-%icon-size
-    margin: 1vw
-    padding: 1vw
-    font-size: 1.5vw
-    text-align: center
-    min-inline-size: 50px
+@each $icon-type, $props in icons-mapping.$icons
 
+    $file-style: icons.icon-types($icon-type)
 
-%icon-link
-    color: inherit
-    text-decoration: none 
-    
-%icon-btn
-    padding : 2vw
-    font-size : 1.5em
-    cursor  : pointer
+    .#{$icon-type}
+        .icon
+            
+            content: map.get($file-style, icon)
+            color: map.get($file-style, text-color)
+
+            &::before
+                padding: 0.5em
+                content: map.get($file-style, icon)
