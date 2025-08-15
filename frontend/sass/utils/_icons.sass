@@ -1,23 +1,9 @@
 //  Bootstrap icons
-@use './colors' as color
-@use '../functions/icons' as icons
-@use '../mappings/icons' as icons-mapping
+@use './mixins' as mix
 
 .icon
     font-size: 1em
     display: inline-block
     font-family: "Bootstrap-icons"
 
-@each $icon-type, $props in icons-mapping.$icons
-
-    $file-style: icons.icon-types($icon-type)
-
-    .#{$icon-type}
-        .icon
-            
-            content: map.get($file-style, icon)
-            color: map.get($file-style, text-color)
-
-            &::before
-                padding: 0.5em
-                content: map.get($file-style, icon)
+@include mix.icon-generator()
