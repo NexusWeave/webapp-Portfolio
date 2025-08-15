@@ -18,7 +18,7 @@ export const timelineStore = defineStore("Data",
         {
             addToStore(item)
             {
-                item.content.isVisible = false;
+                item.isVisible = false;
                 const timeline = this.data.timeline;
                 timeline.push(item);
                 console.warn("Adding data to store:", item, this.data);
