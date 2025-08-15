@@ -22,13 +22,24 @@
                         {{ value }}
                     </span>
                 </section>
-                        
+
+                <section v-if="!!data.content.school.tech">
+                    <h4 :class="cls[2]">Teknologi : </h4>
+                    <span :class="cls[5]">
+                        <span v-for="tech in data.content.school.tech" :key="tech"
+                            :class="cls[6]">
+                            {{ tech }}
+                        </span>
+                    </span>
+                </section>
+
                 <section v-if="!!data.content.anchor"
                     :class="cls[4]">
                     <h4 :class="cls[2]">Sertifisering :</h4>
                     <Anchor :data="data.content.anchor" />
                 </section>
             </section>
+
         </template>
 
         <template v-if="!!data.content.employer">
