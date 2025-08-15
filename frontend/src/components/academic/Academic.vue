@@ -10,9 +10,9 @@
             @toggle-visibility="toggleVisibility"/>
         </section>
         <section class="flex-wrap-row-justify-space-evenly component-blue">
+            <Date />
                 <Card v-for="data in timeline.timelines" :key="data.id"
-                    :data="data"
-                    v-show="!!data.content.isVisible"/>
+                    :data="data"/>
         </section>
     </section>  
 </template>
@@ -27,12 +27,18 @@
 
     const toggleVisibility = (id) => {
         const data = timeline.timelines;
+        id = parseInt(id);
 
         data.forEach(item => {
-            if (item.id != id) item.content.isVisible = false;
-            else item.content.isVisible = !item.content.isVisible;
+            if (item.id === id) 
+            
+            {
+                item.isVisible = true;
+                console.log(item.id, id, item);
+            }
+            else item.isVisible = false;
         });
-        console.warn("Toggling visibility for ID:", data[id]);
+        console.warn(`Toggling visibility for ID:${id}`, data[id].isVisible);
     };
-    console.warn("Timeline data on load:", timeline.timelines);
+    //console.warn("Timeline data on load:", timeline.timelines);
 </script>
