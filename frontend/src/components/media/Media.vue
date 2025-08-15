@@ -4,7 +4,7 @@
             :class="cls[2]">
             <h4 class="title-h4">
                 <Anchor :data="media.anchor"
-                    :Cls="[media.type]" />
+                    :cls="[media.type]" />
             </h4>
             <p>
                 <Date :data="media.date" :Cls="['meta-date', 'calendar']" />
