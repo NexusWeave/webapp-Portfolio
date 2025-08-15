@@ -14,10 +14,8 @@
         </template>
 
         <template v-else-if="isMedia() == cls[cls.length - 1]">
-            <span :class="cls[0]">
-            <i :class="cls[cls.length - 1]" :aria-label="data.label"></i> 
-                {{ data.label }}
-            </span>
+            <Icon :type="data.type[0]" :label="data.label" :cls="[cls[cls.length - 1], data.type[0]]"/>
+            {{ data.label }}
         </template>
 
         <template v-else>
@@ -32,6 +30,7 @@
 
     import { defineProps } from 'vue';
 
+    import Icon from '@/components/utils/Icon.vue';
     import Figure from '@/components/media/Figure.vue';
 
     const props = defineProps({
@@ -39,7 +38,7 @@
             type: Object,
             required: true
         },
-        Cls: {
+        cls: {
             type: [String, Array],
             required: false,
         },
@@ -52,16 +51,16 @@
     const media = 
     {
         files: ['pdf'],
-        contact: ['email', 'telephone'],
         images: ['jpg', 'jpeg', 'png', 'svg'],
         downloadFiles: ['docx', 'xlsx', 'csv'],
+        icons: ['email', 'telephone', 'school', 'globe', 'map-pin', 'diploma'],
     }
 
     const data = props.data;
     const img = !!data.img ? data.img : null;
 
     const classList = () => {
-        const cls = props.Cls ? props.Cls : (Array.isArray(data.cls) ? data.cls : [data.cls]);
+        const cls = props.cls ? props.cls : (Array.isArray(data.cls) ? data.cls : [data.cls]);
         cls.push('icon');
 
         return cls;
@@ -85,15 +84,18 @@
 
         const search = Array.isArray(data.type) ? data.type[0] : data.type ? data.type : img.type ?? null
 
+        if (!search) return false;
+        else if (search === 'external') return false;
+
         const files = media.files.find(item => item === search);
+        const icons = media.icons.find(item => item === search);
         const images = media.images.find(item => item === search);
-        const contact = media.contact.find(item => item === search);
         const download = media.downloadFiles.find(item => item === search);
-        console.log("Search type:", search, "Data type:", data.type, "Image type:", img ? img.type : 'No image');
+        //console.log("Search type:", search, "Data type:", data.type, "Image type:", img ? img.type : 'No image');
         
         switch (search)
         {
-            case files || contact:
+            case files || icons:
                 return cls[cls.length - 1];
 
             case download:
@@ -103,10 +105,10 @@
                 return 'img';
 
             default:
-                console.warn('Data type is illegal:', search, data);
+                //console.warn('Data type is Not a media type:', search, data);
                 return false;
         }
     };
 
-    console.log("Link component loaded with data: ", data, img);
+    //console.log("Link component loaded with data: ", data, img);
 </script>
