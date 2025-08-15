@@ -51,17 +51,15 @@ export const timelineStore = defineStore("Data",
                 const n = 1;
                 const data = reactive({});
                 const timeline = state.data.timeline;
-                timeline.sort((a, b) => a.year - b.year);
 
                 data.field = 
                 {
-                    title: 'Academic Timeline',
                     value: '0',
                     type: 'range',
                     name: "Academic-timeline",
+                    title: 'Academic Timeline',
                     rangeMax: timeline.length - n,
                 }
-                data.timeline = timeline;
 
                 return data;
 
