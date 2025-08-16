@@ -60,7 +60,7 @@ export const timelineStore = defineStore("Data",
                     title: 'Academic Timeline',
                     rangeMax: timeline.length - n,
                 }
-
+                data.timeline = timeline;
                 return data;
 
             },
