@@ -82,6 +82,12 @@
 
     const btn = computed(() => props.btn);
     const cls = !!props.cls ? props.cls : null;
+    const classList = computed(() => 
+    {
+        const cls = props.cls || [];
+        if (!!data.isVisible) cls.push('timeline-active');
+        return cls;
+    });
     const content = computed(() => props.data);
     const emits = defineEmits(['toggleVisibility']);
 
