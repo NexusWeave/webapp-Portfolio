@@ -1,9 +1,7 @@
 <template>
-    <section class="flex-wrap-column-justify-space-evenly component-blue"></section>
-    <h3 v-if="!!data.isVisible" :class="cls[2]">{{ data.year }}</h3>
     <section v-if="!!data.isVisible"
     v-for="content in data.content" :key="data.year"
-    :class="[cls[0], {'timeline-active': !!content.isVisible }]">
+    :class="[cls[0], {'timeline-active': !!data.isVisible }]">
         <h3 :class="cls[1]">{{ content.name }}</h3>
         <h4 :class="cls[2]"> {{ content.title }} </h4>
 
@@ -29,7 +27,7 @@
 
         <section v-if="!!content.description"
             :class="cls[7]">
-            <p>{{ content.description }}</p>
+            <p>{{ content.description.summary }}</p>
             <ul v-if="!!content.description.list" :class="cls[8]">
                 <li v-for="item in content.description.list" :key="item"
                     :class="cls[9]">
