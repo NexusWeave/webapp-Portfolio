@@ -10,6 +10,7 @@
     import { watch, computed, defineProps, defineEmits, reactive } from 'vue';
 
     import Inputs from '../form/inputs.vue';
+import Year from '../Date/Year.vue';
 
     const props = defineProps({
         data:
