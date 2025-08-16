@@ -18,7 +18,7 @@
 <script setup>
 
     import { computed, defineProps } from 'vue';
-    import Date from '@/components/utils/Date.vue';
+    import Date from '@/components/Date/Date.vue';
     import Anchor from '@/components/navigation/Anchor.vue';
 
     const props = defineProps({
