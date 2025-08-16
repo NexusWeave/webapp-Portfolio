@@ -11,7 +11,10 @@ const timeline =
                 start: 2010,
                 name: 'Borgund VGS',
                 title: 'Bygg og Anlegg',
-                description: 'Utviklet praktisk forståelse for byggeprosesser og materialer.',
+                description: 
+                {
+                    summary: 'Utviklet praktisk forståelse for byggeprosesser og materialer.',
+                },
 
                 location:
                 {
@@ -31,20 +34,19 @@ const timeline =
     {
         id: 1,
         year: 2011,
-        description:
-        {
-            summary: 'Utviklet grunnleggende kunnskap om helse, etikk, og mellommenneskelig kommunikasjon.',
-        },
 
         content:
         [
             {
                 id: 0,
-                end: 2011,
-                start: 2010,
+                end: '2011.06.20',
+                start: '2010.08.20',
                 name: 'Borgund VGS',
                 title: 'Bygg og Anlegg',
-                description: 'Utviklet praktisk forståelse for byggeprosesser og materialer.',
+                description: 
+                {
+                    summary: 'Utviklet praktisk forståelse for byggeprosesser og materialer.',
+                },
 
                 location:
                 {
@@ -65,8 +67,11 @@ const timeline =
                 start: 2011,
                 name: 'Borgund VGS',
                 title: 'Helse og oppvekstfag',
-                description: 'Utviklet grunnleggende kunnskap om helse, etikk, og mellommenneskelig kommunikasjon.',
 
+                description:
+                {
+                    summary: 'Utviklet grunnleggende kunnskap om helse, etikk, og mellommenneskelig kommunikasjon.',
+                },
                 location:
                 {
                     type: ['map-pin', 'external'],
@@ -85,11 +90,8 @@ const timeline =
     {
         id: 2,
         year: 2022,
-        title: 'CS50x :Introduction To Computer Science',
-        description:
-        {
-            summary: 'Videre utviklet praktisk forståelse for programmering, algoritmer, og datastrukturer.',
-        },
+        
+        
         content:
         [
             {
@@ -97,10 +99,13 @@ const timeline =
                 end: 2022,
                 start: 2022,
                 name: 'HarvardX',
-                description: 'Profesjonell sertifikat i Computer Science',
+                title: 'CS50x :Introduction To Computer Science',
 
                 tech: ['C', 'python', 'js', 'flask', 'Github', 'frontend'],
-
+                description:
+                {
+                    summary: 'Videre utviklet praktisk forståelse for programmering, algoritmer, og datastrukturer.',
+                },
                 diploma:
                 {
                     type: ['diploma', 'external'],
@@ -124,11 +129,6 @@ const timeline =
     {
         id: 3,
         year: 2024,
-        
-        description:
-        {
-            summary: 'Godkjent kurs.',
-        },
 
         content:
         [
@@ -138,7 +138,10 @@ const timeline =
                 start: 2024,
                 name: 'GetAcademy',
                 title: 'It- Utviklings faget',
-                description: '20 ukers hybrid intens undervisning',
+                description: 
+                {
+                    summary: '20 ukers hybrid intens undervisning',
+                },
                 
                 tech: ['C#', 'frontend', 'vuejs', 'UML', 'Github'],
 
@@ -165,7 +168,7 @@ const timeline =
             {
                 id: 0,
                 start: 2025,
-                //end: 2025,
+                //end: 2026,
                 title: 'Intern',
                 name: 'GetAcademy',
                 
