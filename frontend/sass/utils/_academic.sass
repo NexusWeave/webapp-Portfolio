@@ -13,7 +13,8 @@
 
     .timeline-active
         opacity: 1 !important
-        @include mix.transitions(opacity, 3s, ease-out)
+        visibility: visible !important
+        
         
     .timeline-h3
         font-size: 1.5em
@@ -24,12 +25,10 @@
     .timeline-content
         opacity: 0
         padding: 1em
-        block-size: 100%
+        visibility: hidden
         max-inline-size: 22em
+        @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
         @include mix.component-color($color: color.$acent-3, $background-color: color.$acent-3-card)
-        &:active
-            opacity: 1
-            @include mix.transitions(opacity, 3s, ease-out)
 
         .timeline-h4
             font-size: 1.2em
