@@ -13,10 +13,7 @@
         </time>
 
         <template v-if="cls.includes('icon')">
-            <span :class="cls[1]">
-                
-                <i :class="cls[cls.length - 1]" :aria-label="dateObject.type"></i>
-            </span>
+            <Icon :cls="[cls[0], cls[1]]" :label="dateObject.type"/>
         </template>
     </span>
 
