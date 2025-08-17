@@ -36,9 +36,9 @@ coverage
 *.production
 *.tsbuildinfo
 
-#   VueClient related files & folders
+#   frontend related files & folders
 /build
 /coverage/
 node_modules/
-src/assets/
+frontend/src/assets/
 
