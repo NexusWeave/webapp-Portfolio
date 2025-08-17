@@ -17,6 +17,7 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -28,11 +29,10 @@ coverage
 *.sw?
 *.local
 *.production
-*.css
-*.css.map
 *.tsbuildinfo
 
 #   VueClient related files & folders
 /build
 /coverage/
 node_modules/
+src/assets/
