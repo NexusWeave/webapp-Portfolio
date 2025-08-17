@@ -1,19 +1,17 @@
 //  Achivements Timeline Store
 
-//  Academic Timeline Store
-
 import { reactive } from "vue";
 import { defineStore } from "pinia";
 
 import { achivements } from "@/services/achivements-api.js";
 import { fetchData } from "@/services/utils/response.js";
 
-export const achivementStore = defineStore("Data",
+export const achivementStore = defineStore("achivements",
     {
         state:() => ({
             data:
             {
-                timeline: [],
+                achivements: [],
                 isLoaded: false,
                 
             }
@@ -22,24 +20,27 @@ export const achivementStore = defineStore("Data",
         {
             addToStore(item)
             {
-                item.isVisible = false;
-                const timeline = this.data.timeline;
-                timeline.push(item);
-                console.warn("Adding data to store:", item, this.data);
+                const achivement = this.data.achivements;
+                
+                if (item.id == 0) item.isVisible = true;
+                else item.isVisible = false;
+                achivement.push(item);
+                console.warn("Adding data to store:", item);
             },
 
             async fetchData()
             {
                 const data = this.data
-                //if (data.isLoaded) return;
+                if (data.isLoaded) return;
 
                 await fetchData(achivements).then((response) =>
+                {
+                    response.forEach((item) =>
                     {
-                        response.forEach((item) =>
-                            {
-                                this.addToStore(item);
-                            });
-                            this.data.isLoaded = true;
+                        this.addToStore(item);
+                    });
+                    this.data.isLoaded = true;
+
                 }).catch((error) => {
                     console.error("Error fetching timeline data:", error);
                     this.data.isLoaded = false;
@@ -48,23 +49,23 @@ export const achivementStore = defineStore("Data",
         },
         getters: {
             isLoaded: (state) => state.data.isLoaded,
-            timeline: (state) => state.data.timeline,
+            achivements: (state) => state.data.achivements,
             timelineRange : (state) =>
             {
                 
                 const n = 1;
                 const data = reactive({});
-                const timeline = state.data.timeline;
+                const achivements = state.data.achivements;
 
                 data.field = 
                 {
                     value: '0',
                     type: 'range',
-                    name: "Academic-timeline",
-                    title: 'Academic Timeline',
-                    rangeMax: timeline.length - n,
+                    name: "achivement-timeline",
+                    title: 'Achivement Timeline',
+                    rangeMax: achivements.length - n,
                 }
-                data.timeline = timeline;
+                data.timeline = achivements;
                 return data;
 
             },
