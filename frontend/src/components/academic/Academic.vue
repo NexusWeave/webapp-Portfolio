@@ -20,7 +20,7 @@
     </section>  
 </template>
 <script setup>
-    import { timelineStore } from '@/stores/timelineStore.js';
+    import { timelineStore } from '@/stores/academicStore.js';
 
     import Year from '@/components/Date/Year.vue';
     import Card from '@/components/academic/Card.vue';
