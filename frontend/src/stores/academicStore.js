@@ -1,7 +1,9 @@
+//  Academic Timeline Store
+
+import { reactive } from "vue";
 import { defineStore } from "pinia";
 
-import { fetchData } from "@/services/timeline-api.js";
-import { reactive } from "vue";
+import { fetchData } from "@/services/academic-api.js";
 //import { fetchData } from "@/services/utils/response.js";
 
 export const timelineStore = defineStore("Data",
