@@ -10,13 +10,17 @@ export const achievements =
         [
             {
                 title: "Startet på en selvstyrt reise for å lære webutvikling",
+                
+                tech: ['HTML', 'CSS'],
+                
                 description:
                 {
                     summary: `Gjennom denne fasen lærte jeg meg grunnleggende
                     HTML's beste praksier og hvordan man bruker sematisk HTML
                     elementer effektivt og hvordan man legger til CSS stiler
                     på HTML elementene.`
-                }
+                },
+                
             },
         ],
     },
@@ -28,6 +32,7 @@ export const achievements =
         [
             {
                 title: "Dykke inn i en verden av backend",
+                tech: ['discord.py', 'numpy.py', 'pandas.py', 'django.py'],
                 description:
                 {
                     summary: `I denne fasen begynte jeg å lære om backend-utvikling,
@@ -60,6 +65,7 @@ export const achievements =
         [
             {
                 title: "Min første jobb som utvikler",
+                tech: ['ASP.NET', '.NET', 'SASS', 'TypeScript', 'Entinity.NET'],
                 description:
                 {
                     summary: `I denne fasen fikk jeg min første jobb som utvikler,
@@ -69,6 +75,8 @@ export const achievements =
             },
             {
                 title: "Mitt første prosjekt som frilanser",
+
+                tech: ['Vue.js', 'flask.py'],
                 description:
                 {
                     summary: `I denne fasen fikk jeg mitt første prosjekt som
