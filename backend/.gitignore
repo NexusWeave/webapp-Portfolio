@@ -1,0 +1,8 @@
+#  Flask related files & folders
+.logs/
+.venv/
+.vscode/
+__pycache__/
+.pytest_cache/
+flask_session/
+tests/assets/
