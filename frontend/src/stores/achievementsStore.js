@@ -1,4 +1,4 @@
-//  Achivements Timeline Store
+//  Achievements Timeline Store
 
 import { reactive } from "vue";
 import { defineStore } from "pinia";
