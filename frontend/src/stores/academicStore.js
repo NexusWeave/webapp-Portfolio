@@ -60,8 +60,8 @@ export const academicStore = defineStore("Academic",
                 {
                     value: '0',
                     type: 'range',
-                    name: "Academic-timeline",
-                    title: 'Academic Timeline',
+                    name: "akademic-timeline",
+                    title: 'Akademisk Tidslinje',
                     rangeMax: timeline.length - n,
                 }
                 data.timeline = timeline;
