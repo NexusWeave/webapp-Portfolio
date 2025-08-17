@@ -19,7 +19,7 @@
             </section>
             <section class="flex-wrap-row-justify-space-evenly component-blue">
                     <Card v-for="data in achievement.achievements" :key="data.id"
-                        :data="data"/>
+                        :data="data" />
             </section>
 
         </section>
