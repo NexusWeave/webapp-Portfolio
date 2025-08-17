@@ -6,7 +6,7 @@ import { defineStore } from "pinia";
 import { fetchData } from "@/services/academic-api.js";
 //import { fetchData } from "@/services/utils/response.js";
 
-export const academicStore = defineStore("Data",
+export const academicStore = defineStore("Academic",
     {
         state:() => ({
             data:
@@ -20,7 +20,9 @@ export const academicStore = defineStore("Data",
         {
             addToStore(item)
             {
-                item.isVisible = false;
+                if (item.id == 0) item.isVisible = true;
+                else item.isVisible = false;
+
                 const timeline = this.data.timeline;
                 timeline.push(item);
                 //console.warn("Adding data to store:", item, this.data);
