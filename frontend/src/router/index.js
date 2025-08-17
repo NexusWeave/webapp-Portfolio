@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { timelineStore } from '@/stores/timelineStore.js';
+import { timelineStore } from '@/stores/academicStore.js';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
