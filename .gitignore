@@ -1,25 +1,7 @@
 #   Github Ignores these files (https://help.github.com/articles/ignoring-files/) for more about ignoring files.
 
-#  Flask related files & folders
-.logs/
-.venv/
-.vscode/
-__pycache__/
-.pytest_cache/
-flask_session/
-tests/assets/
-
-# Other folders and files
+# misc folders and files
 *.env
-
-
-
-
-#   VueClient related files & folders
-/build
-/coverage/
-node_modules/
-frontend/src/assets
 
 
 
