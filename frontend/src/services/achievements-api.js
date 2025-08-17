@@ -65,7 +65,7 @@ export const achievements =
         [
             {
                 title: "Min første jobb som utvikler",
-                tech: ['ASP.NET', '.NET', 'SASS', 'TypeScript', 'Entinity.NET'],
+                tech: ['ASP.NET', '.NET', 'SASS', 'TypeScript', 'Entity Framework'],
                 description:
                 {
                     summary: `I denne fasen fikk jeg min første jobb som utvikler,
