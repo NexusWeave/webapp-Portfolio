@@ -4,23 +4,22 @@
 .logs/
 .venv/
 .vscode/
-sass-lib/
 __pycache__/
 .pytest_cache/
 flask_session/
 tests/assets/
 
 # Other folders and files
-routes/
-
 *.env
+
+
 
 
 #   VueClient related files & folders
 /build
 /coverage/
 node_modules/
-
+frontend/src/assets
 
 
 
