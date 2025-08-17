@@ -32,8 +32,8 @@
     import { achievementStore } from '@/stores/achievementsStore.js';
 
     import Year from '@/components/Date/Year.vue';
-    import Card from '@/components/academic/Card.vue';
-    import Timeline from '@/components/academic/Timeline.vue';
+    import Card from '@/components/timeline/Card.vue';
+    import Timeline from '@/components/timeline/Timeline.vue';
 
     const achievement = achievementStore();
 
