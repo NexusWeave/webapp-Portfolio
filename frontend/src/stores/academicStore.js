@@ -6,7 +6,7 @@ import { defineStore } from "pinia";
 import { fetchData } from "@/services/academic-api.js";
 //import { fetchData } from "@/services/utils/response.js";
 
-export const timelineStore = defineStore("Data",
+export const academicStore = defineStore("Data",
     {
         state:() => ({
             data:
