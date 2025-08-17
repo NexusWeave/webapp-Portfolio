@@ -4,7 +4,7 @@ export const achivements =
 [
     {
         id: 0,
-        year: 2008,
+        year: 2010,
 
         content:
         [
@@ -12,10 +12,10 @@ export const achivements =
                 title: "Startet på en selvstyrt reise for å lære webutvikling",
                 description:
                 {
-                    summary: `Gjennom denne fasen lærte jeg meg
-                    grunnleggende HTML's beste praksier og hvordan man
-                    bruker sematisk HTML elementer effektivt og hvordan man
-                    legger til CSS stiler på HTML elementene.`
+                    summary: `Gjennom denne fasen lærte jeg meg grunnleggende
+                    HTML's beste praksier og hvordan man bruker sematisk HTML
+                    elementer effektivt og hvordan man legger til CSS stiler
+                    på HTML elementene.`
                 }
             },
         ],
@@ -63,7 +63,23 @@ export const achivements =
                 description:
                 {
                     summary: `I denne fasen fikk jeg min første jobb som utvikler,
-                    hvor jeg jobbet med spennende prosjekter og lærte mye.`
+                    hvor jeg jobbet med blant annet TypeScript som frontend
+                    og C# som backend.`
+                }
+            },
+            {
+                title: "Mitt første prosjekt som frilanser",
+                description:
+                {
+                    summary: `I denne fasen fikk jeg mitt første prosjekt som
+                    frilanser, hvor jeg med et prosjekt for SosEnT.
+                    Gjennom dette prosjektet lærte jeg mye om`,
+                    list:
+                    [
+                        "Tidsstyring",
+                        "Kundesamarbeid og kommunikasjon",
+                        "Planleggingsprosessen og UML dokumentasjon",
+                    ]
                 }
             },
         ],
