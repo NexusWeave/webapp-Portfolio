@@ -5,38 +5,66 @@ export const achivements =
     {
         id: 0,
         year: 2008,
+
         content:
         [
             {
-                title: "Embarking on a self-guided journey to learn web development",
-                description: `during this phase i started to learn about html's best
-                practices. How to use semantic HTML tags effectively and how 
-                to apply CSS styles to the elements on the page.`
+                title: "Startet på en selvstyrt reise for å lære webutvikling",
+                description:
+                {
+                    summary: `Gjennom denne fasen lærte jeg meg
+                    grunnleggende HTML's beste praksier og hvordan man
+                    bruker sematisk HTML elementer effektivt og hvordan man
+                    legger til CSS stiler på HTML elementene.`
+                }
             },
         ],
     },
     {
         id: 1,
         year: 2020,
+
         content:
         [
             {
                 title: "Dykke inn i en verden av backend",
-                description: `I denne fasen begynte jeg å lære om backend-utvikling,
-                Startet med python, gjennom boken "How To Learn Python Within One Day - Migel Firtsman,
-                Videre fortsatte jeg med integrering av Discord bots.`
+                description:
+                {
+                    summary: `I denne fasen begynte jeg å lære om backend-utvikling,
+                    Startet med python, gjennom boken "How To Learn Python Within One Day - Migel Firtsman,
+                    Videre fortsatte jeg med integrering av Discord bots.`
+                }
             },
         ],
     },
     {
         id: 2,
         year: 2024,
+
         content:
         [
             {
                 title: "Starten på forfølgelsen av drømmen",
-                description: `Denne fasen markerer begynnelsen på
-                den profesjonelle reisen min som utvikler.`
+                description:
+                {
+                    summary: `Denne fasen markerer begynnelsen på
+                    den profesjonelle reisen min som utvikler.`
+                }
+            },
+        ],
+    },
+    {
+        id: 3,
+        year: 2025,
+        content:
+        [
+            {
+                title: "Min første jobb som utvikler",
+                description:
+                {
+                    summary: `I denne fasen fikk jeg min første jobb som utvikler,
+                    hvor jeg jobbet med spennende prosjekter og lærte mye.`
+                }
             },
         ],
     },
