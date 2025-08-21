@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import { academicStore } from '@/stores/academicStore.js';
+import { portfolioStore } from '@/stores/portfolioStore.js';
 import { achievementStore } from '@/stores/achievementsStore.js';
 
 const router = createRouter({
@@ -19,7 +20,10 @@ const router = createRouter({
         const achievement = achievementStore();
         await achievement.fetchData();
 
-        !!academic.timelines && achievement.isLoaded ? next() : next();
+        const portfolio = portfolioStore();
+        await portfolio.fetchData("http://127.0.0.1:5000/api/github");
+
+        !!academic.timelines && !!achievement.isLoaded && !!portfolio.isLoaded ? next() : next();
 
       }
     },
