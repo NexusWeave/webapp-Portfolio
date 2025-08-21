@@ -1,9 +1,8 @@
 //  Portfolio Store
-import axios from 'axios';
 import { defineStore } from 'pinia';
-import { computed } from 'vue';
+import { FetchApiResponse } from '../utils/apiHandler.js';
 
-const portfolio = defineStore('portfolio', 
+export const portfolioStore = defineStore('portfolio', 
     {
         state: () => (
             {
@@ -23,17 +22,25 @@ const portfolio = defineStore('portfolio',
                     const repo = this.splitName(repository);
                     const repositories = this.data.repositories;
                     repositories.push(repo);
+                    //console.warn("Added repository:", repo);
                 },
                 splitName(repository)
                 {
                     return repository.name.split('-');
                 },
-                async fetchData()
+                async fetchData(data)
                 {
+                    //console.warn("Fetching portfolio data from:", data);
                     try
                     {
-                        const response = await axios.get('https://api.github.com/users/USERNAME/repos');
-                        response.data.forEach(repo => this.addToStore(repo));
+                        FetchApiResponse(data).then(response =>
+                        {
+                            this.data.total = response.total;
+                            response.data.forEach(repo => this.addToStore(repo));
+                            
+                            //console.warn("portfolioStore.js Api response :", response);
+                        });
+                        this.data.isLoaded = true;
                     }
                     catch (error)
                     {
@@ -46,14 +53,14 @@ const portfolio = defineStore('portfolio',
                 repositories: (state) => state.data.repositories,
                 displayRepositories: (state) => (filter, start, end, n = 9) =>
                     {
-                        const n = state.data.repositories.length;
+                        n = state.data.repositories.length;
                         const repositories = state.data.repositories;
 
                         if (!state.data.isLoaded) return false;
                         if (filter.name) return repositories.filter(item => item.name.includes(filter.name.toLowerCase()));
 
-                        const end = (start * n);
-                        const start = (start-1) * n;
+                        end = (start * n);
+                        start = (start-1) * n;
 
                         const data = repositories.slice(start, end);
                         return data;
