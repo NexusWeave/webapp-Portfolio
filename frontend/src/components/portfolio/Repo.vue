@@ -1,12 +1,11 @@
 <template>
-    <div class="flex-wrap-row" v-for="data in pfolio.displayData()" :key="data.id">
+    <section class="flex-wrap-row" v-for="data in pfolio.displayData()" :key="data.id">
         <TechCard :data="data" />
-    </div>
+    </section>
 </template>
 <script setup>
 
     //  Importing dependencies
-    import { reactive, onMounted, computed } from 'vue';
     import { portfolioStore } from '@/stores/portfolioStore.js';
 
     //  Importing components
