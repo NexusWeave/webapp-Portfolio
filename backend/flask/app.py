@@ -42,8 +42,9 @@ match os.getenv('ENV'):
     logger.info("Loading the Development Environment")
 
   case _:
-    raise ValueError("Invalid environment variable. Set ENV to either 'production' or 'development'.")
     logger.error("Invalid environment variable. Set ENV to either 'production' or 'development'.")
+    raise ValueError("Invalid environment variable. Set ENV to either 'production' or 'development'.")
+    
   
 logger.info(f"App running on {app.config['ENV']}")
 
