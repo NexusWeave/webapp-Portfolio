@@ -37,7 +37,6 @@ class GithubAPI(APIConfig):
             Fetching the repositories
             API : https://api.github.com/users/repos
         """
-
         start = time.perf_counter()
 
         #   Initialize an API call
@@ -61,20 +60,23 @@ class GithubAPI(APIConfig):
             repoObject['description'] = response[i]['description']
             repoObject['date'] = datetime.datetime.strptime(response[i]['updated_at'], '%Y-%m-%dT%H:%M:%SZ').strftime('%d-%m-%y')
             repoObject['lang'] = [await self.fetch_languages(repoObject, f"{self.API_URL}/repos/{repoObject['owner']}/{repoObject['name']}/languages")]
-            repoObject['links'] = [
+            repoObject['anchor'] =[
+                # { 'id': uuid.uuid4().hex, 'ytube_url': None,},
                 {
-                    'demo_url': None,
-                    'ytube_url': None,                    
-                    'github_url': response[i]['html_url'],
-                }]
+                    'name': 'github',
+                    'id': uuid.uuid4().hex,
+                    'href': response[i]['html_url'],
+                },
+                ]
             if response[i]['homepage'] or response[i]['homepage'] == "None":
 
-                repoObject['links'].append(
+                repoObject['anchor'].append(
                     {
-                        'icon':"bi bi-globe", 
-                        'url':response[i]['homepage']
+                        'name': 'webapp',
+                        'id': uuid.uuid4().hex,
+                        'href': response[i]['homepage']
                     })
-
+                
             repo.append(repoObject)
 
         logger.info(f"Repositories fetched successfully. {repo}\nTime Complexity: {time.perf_counter() - start:.2f}s\n")
