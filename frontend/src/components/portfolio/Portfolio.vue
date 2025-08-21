@@ -2,8 +2,11 @@
     <template v-if="!!pfolio.isLoaded">
         <section class="flex-wrap-column repo-container">
         <h2>Technical Repositories</h2>
-        
         <section class="flex-wrap-column-align-items-center">
+        </section>
+
+        <section v-if="!!pfolio.totalPages > 0" 
+            class="flex-wrap-column-align-items-center">
             <Pagination class='flex-wrap-row-justify-space-evenly tech-bar':data="pfolio.data.Total" @update="pfolio.current = $event" v-if="pfolio.data.Total"/>
         </section>
 
@@ -12,8 +15,6 @@
         </section>
 
     </section>
-
-    {{ pfolio.displayData() }}
 
     </template>
 
