@@ -7,7 +7,9 @@
 
     </template>
     <template v-else>
-        <img :src="data.src" :alt="data.alt" :class="cls[1]">
+        <figure :class="cls[0]">
+            <img :src="data.src" :alt="data.alt" :class="cls[1]">
+        </figure>
     </template>
 
 </template>
@@ -21,7 +23,8 @@
         },
         cls: {
             type: Array,
-            required: false
+            required: false,
+            //default: () => ['figure-container55', 'figure-img234']
         }
     });
 
@@ -30,6 +33,6 @@
     const isFigure = computed(() => {
         return !!data.caption;
     });
-    const cls = props.cls ? props.cls : data.cls ?? [];
+    const cls = props.cls;
     //console.log('Figure data:', data);
 </script>
