@@ -3,3 +3,47 @@
     block-size: 100%
 
     .card-container
+        content: ''
+        margin: 1em
+        padding: 1em
+        block-size: 15em
+        inline-size: 28em
+        background-size: 9em
+        border: 1px solid black
+        background-repeat: no-repeat
+        box-shadow: 4px 4px 20px 4px rgba(0, 0, 0, 0.1)
+        background-image: url(../media/images/cards/portfolio-card.svg)
+
+        p
+            font-size: 1.1em
+
+    .grid-container
+        gap: 1em
+        display: grid
+        grid-template-areas: 'tech-icon' 'text' 'date' 'links'
+        grid-template-rows: repeat(auto-fill, minmax(3em, 1fr))
+        grid-template-columns: repeat(auto-fill, calc(100% / 4))
+
+        .grid-item-1
+            inline-size: 3em
+            grid-area: 'tech-icon'
+            
+
+        .grid-item-2
+            grid-area: 'text'
+            inline-size: 24em
+            
+            &:nth-child(1)
+                text-align: center
+
+        .grid-item-3
+            inline-size: 7.5em
+            grid-area: 'date'
+            text-align: right
+            
+
+        .grid-item-4
+            grid-area: 'links'
+            inline-size: 24em
+
+
