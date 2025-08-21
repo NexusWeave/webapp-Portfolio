@@ -3,7 +3,7 @@
         <h2 :class="cls[1]">{{ data.field.title }}</h2>
         <Inputs :data="data.field" :cls="cls[2]" v-model="modelValue" />
     </section>
-</template>
+</template>cd
 
 <script setup>
 
