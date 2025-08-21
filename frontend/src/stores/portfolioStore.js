@@ -20,13 +20,19 @@ export const portfolioStore = defineStore('portfolio',
                 addToStore(repo)
                 {
                     repo.name = this.splitName(repo.name.toLowerCase());
+
                     repo.anchor.forEach(link => {
                         if (link.name === 'app') link.type = ['cmd', 'anchor', 'external'];
                         if (link.name === 'webapp') link.type = ['globe', 'anchor', 'external'];
                         if (link.name === 'youtube') link.type = ['ytube', 'anchor', 'external'];
                         if (link.name === 'github') link.type = ['github', 'anchor', 'external'];
-
                     });
+
+                    repo.lang.forEach(lang => {
+                            lang.alt = `${lang.lang}.svg`,
+                            lang.src = `/media/tech-lang-icons/${lang.lang}.svg`
+                    });
+
                     const repositories = this.data.repositories;
                     repositories.push(repo);
                     //console.warn("Added repository:", repo);
