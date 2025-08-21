@@ -20,7 +20,13 @@ export const portfolioStore = defineStore('portfolio',
                 addToStore(repo)
                 {
                     repo.name = this.splitName(repo.name.toLowerCase());
+                    repo.anchor.forEach(link => {
+                        if (link.name === 'app') link.type = ['cmd', 'anchor', 'external'];
+                        if (link.name === 'webapp') link.type = ['globe', 'anchor', 'external'];
+                        if (link.name === 'youtube') link.type = ['ytube', 'anchor', 'external'];
+                        if (link.name === 'github') link.type = ['github', 'anchor', 'external'];
 
+                    });
                     const repositories = this.data.repositories;
                     repositories.push(repo);
                     //console.warn("Added repository:", repo);
@@ -67,7 +73,7 @@ export const portfolioStore = defineStore('portfolio',
                         const end = ref((start.value * n));
 
 
-                        console.warn("Displaying data from:", start.value, "to:", end.value, "of total:", n);
+                        //console.warn("Displaying data from:", start.value, "to:", end.value, "of total:", n);
                         const date = reactive(repositories.slice(start.value, end.value));
 
                         return date;
