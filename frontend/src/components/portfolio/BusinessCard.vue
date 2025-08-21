@@ -27,7 +27,7 @@
         },
         cls: {
             type: Array,
-            default: () => [['tech-container','flex-wrap-column'], 
+            default: () => [['card-container','flex-wrap-column'], 
             ['figure-container', 'flex-wrap-row-justify-space-between', 'relative'],
             'figure-img', 'date-container', 'title-h3', 'tech-description',
             ['nav-container', 'flex-wrap-row-justify-space-evenly']]
