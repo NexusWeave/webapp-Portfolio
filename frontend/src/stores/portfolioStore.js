@@ -1,4 +1,5 @@
 //  Portfolio Store
+import { reactive, ref } from 'vue';
 import { defineStore } from 'pinia';
 import { FetchApiResponse } from '../utils/apiHandler.js';
 
@@ -16,17 +17,17 @@ export const portfolioStore = defineStore('portfolio',
                 },
             }),
             actions: {
-                addToStore(repository)
+                addToStore(repo)
                 {
+                    repo.name = this.splitName(repo.name.toLowerCase());
 
-                    const repo = this.splitName(repository);
                     const repositories = this.data.repositories;
                     repositories.push(repo);
                     //console.warn("Added repository:", repo);
                 },
-                splitName(repository)
+                splitName(name)
                 {
-                    return repository.name.split('-');
+                    return name.split('-');
                 },
                 async fetchData(data)
                 {
@@ -51,19 +52,22 @@ export const portfolioStore = defineStore('portfolio',
             getters: {
                 isLoaded: (state) => state.data.isLoaded,
                 repositories: (state) => state.data.repositories,
-                displayRepositories: (state) => (filter, start, end, n = 9) =>
+                displayData: (state) => (filter = null) =>
                     {
-                        n = state.data.repositories.length;
+                        const n = 9;
                         const repositories = state.data.repositories;
-
+                        
                         if (!state.data.isLoaded) return false;
-                        if (filter.name) return repositories.filter(item => item.name.includes(filter.name.toLowerCase()));
+                        if (filter) return repositories.filter(item => item.name.includes(filter.name.toLowerCase()));
 
-                        end = (start * n);
-                        start = (start-1) * n;
+                        const start = ref(1);
+                        const end = ref((start.value * n));
 
-                        const data = repositories.slice(start, end);
-                        return data;
+
+                        console.warn("Displaying data from:", start.value, "to:", end.value, "of total:", n);
+                        const date = reactive(repositories.slice(start.value, end.value));
+
+                        return date;
 
                     }
             }
