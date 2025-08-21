@@ -41,12 +41,15 @@ export const portfolioStore = defineStore('portfolio',
                             
                             //console.warn("portfolioStore.js Api response :", response);
                         });
-                        this.data.isLoaded = true;
+                        
                     }
                     catch (error)
                     {
+                        this.data.isLoaded = false;
                         console.error('Error fetching data:', error);
+                        return;
                     }
+                    this.data.isLoaded = true;
                 }
             },
             getters: {
