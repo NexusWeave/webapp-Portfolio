@@ -11,7 +11,7 @@
         </section>
 
         <section class="repo-container flex-wrap-row-justify-center">
-            <Repo :data="pfolio.displayData()"/>
+            <Repo v-if="pfolio.isLoaded" :data="pfolio.displayData()"/>
         </section>
 
     </section>
