@@ -63,10 +63,6 @@ class GithubAPI(APIConfig):
             repoObject['lang'] = [await self.fetch_languages(repoObject, f"{self.API_URL}/repos/{repoObject['owner']}/{repoObject['name']}/languages")]
             repoObject['links'] = [
                 {
-                    'code': 'bi bi-code',
-                    'globe':'bi bi-globe',
-                    'ytube': "bi bi-youtube",
-                    
                     'demo_url': None,
                     'ytube_url': None,                    
                     'github_url': response[i]['html_url'],
