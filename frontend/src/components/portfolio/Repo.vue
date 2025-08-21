@@ -1,11 +1,7 @@
 <template>
-<section class="tech-repo flex-wrap-row-justify-center">
-            
-            <div class="flex-wrap-row" v-for="data in pfolio.displayData()" :key="data.id">
-                <TechCard :data="data" />
-
-            </div>
-        </section>
+    <div class="flex-wrap-row" v-for="data in pfolio.displayData()" :key="data.id">
+        <TechCard :data="data" />
+    </div>
 </template>
 <script setup>
 
@@ -14,7 +10,7 @@
     import { portfolioStore } from '@/stores/portfolioStore.js';
 
     //  Importing components
-    import TechCard from './TechCard.vue';
+    import TechCard from './BusinessCard.vue';
 
 
 
