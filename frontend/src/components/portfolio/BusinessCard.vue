@@ -2,11 +2,10 @@
     <div :class="cls[0]">
         <div v-for="lang in data.lang" :key="lang.id" 
             :class="cls[1]">
-            <!--Anchor :cls="[cls[2]]"/-->
-            <img 
-                :class="[cls[2]]"
-                :src="'/media/tech-lang-icons/' + lang.lang + '.svg'" 
-                :alt="lang.lang + '.svg'" />
+            <Figure
+                :data="lang"
+                :cls="['tech-figure', 'tech-img']"
+            />
         </div>
         <h3 :class="[cls[3]]" v-if="Array.isArray(data.name)">{{ data.name[1] }}</h3>
         <h3 :class="[cls[3]]" v-else>{{ data.name }}</h3>
@@ -24,7 +23,10 @@
 </template>
 <script setup>
     import { defineProps } from 'vue';
+
+    import Figure from '../media/Figure.vue';
     import Navigation from '@/components/navigation/NavMenu.vue';
+
     const props = defineProps({
         data: {
             type: Object,
@@ -34,7 +36,7 @@
             type: Array,
             default: () => [['card-container', 'grid-container','flex-wrap-column'], 
             ['grid-item-1', 'flex-wrap-row-justify-space-between'],
-            'figure-img', 'grid-item-2', 'grid-item-3', 
+            'figure-img55', 'grid-item-2', 'grid-item-3', 
             ['nav-container', 'flex-wrap-row-justify-space-evenly', 'grid-item-4']]
         }
     });
