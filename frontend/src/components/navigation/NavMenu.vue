@@ -28,7 +28,7 @@
     import Btn from './Button.vue';
 
     import { RouterLink } from 'vue-router';
-    import { ref, defineProps, computed } from 'vue';
+    import { ref, watch, defineProps, computed } from 'vue';
 
     const props = defineProps({
         data: 
