@@ -1,13 +1,10 @@
 <template>
     <section :class="cls[0]">
-        <div v-for="lang in data.lang" :key="lang.id" 
-            :class="cls[1]">
-            <Figure
+        <section :class="cls[1]">
+            <Figure  v-for="lang in data.lang" :key="lang.id" 
                 :data="lang"
                 :cls="['tech-figure', 'tech-img']"
             />
-        </div>
-        <section class="flex-wrap-row">
             <h3 :class="[cls[2]]" v-if="Array.isArray(data.name)">{{ data.name[1] }}</h3>
             <h3 :class="[cls[2]]" v-else>{{ data.name }}</h3>
             <span :class="[cls[3]]">
@@ -15,7 +12,8 @@
             </span>
         </section>
 
-        <section class="flex-column">
+
+        <section class="flex-column-items-center">
             <p :class="[cls[4]]">{{ data.description }}</p>
 
             <Navigation :cls="cls[5]"
@@ -38,12 +36,13 @@
         cls: {
             type: Array,
             default: () => [
-                ['card-container', 'flex-column','flex-wrap-column'], 
-                ['grid-item-1', 'flex-wrap-row-justify-space-between'],
+                ['card-container', 'flex-column','flex-wrap-column'],
+                ['flex-wrap-row-justify-space-between', 'card-content'],
                 'title-h3', 'date-container',  'ts',
-                [ ['nav-bar'], ['nav-list', 'flex-row-align-items-center'],
-                ['nav-item'], ['anchor-item'],
-                'grid-item-4']
+                [
+                    ['portefolio-bar', 'flex-wrap-row-justify-space-evenly'], ['nav-list', 'flex-row-align-items-center'],
+                    ['nav-item'], ['anchor-item']
+                ]
         ]
         }
     });
