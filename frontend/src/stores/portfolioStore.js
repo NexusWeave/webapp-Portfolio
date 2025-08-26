@@ -22,10 +22,10 @@ export const portfolioStore = defineStore('portfolio',
                     repo.name = this.splitName(repo.name.toLowerCase());
 
                     repo.anchor.forEach(link => {
-                        if (link.name === 'app') link.type = ['cmd', 'anchor', 'external'];
                         if (link.name === 'webapp') link.type = ['globe', 'anchor', 'external'];
                         if (link.name === 'youtube') link.type = ['ytube', 'anchor', 'external'];
                         if (link.name === 'github') link.type = ['github', 'anchor', 'external'];
+                        if (link.name === 'console') link.type = ['console', 'anchor', 'external'];
                     });
 
                     repo.lang.forEach(lang => {
@@ -41,7 +41,6 @@ export const portfolioStore = defineStore('portfolio',
                 splitName(name)
                 {
                     if(!name) return;
-                    console.log(name);
                     const delimeter = '-';
                     if (name.includes(delimeter)) return name.split(delimeter);
                 },
