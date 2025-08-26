@@ -5,10 +5,6 @@
                 :data="lang"
                 :cls="['tech-figure', 'tech-img']"
             />
-            <img 
-                :class="[cls[2]]"
-                :src="'/media/tech-lang-icons/' + lang.lang + '.svg'" 
-                :alt="lang.lang + '.svg'" />
 
             <h3 :class="[cls[2]]" v-if="Array.isArray(data.name)">{{ data.name[1] }}</h3>
             <h3 :class="[cls[2]]" v-else>{{ data.name }}</h3>
