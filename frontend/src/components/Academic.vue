@@ -1,7 +1,6 @@
 <template>
     <template  v-if="academic.isLoaded" >
         <section class="timeline-container component-blue timeline-container">
-
             <section class="flex-wrap-row-justify-space-evenly component-blue timeline-line">
                 <Timeline
                 :data="academic.timelineRange"
