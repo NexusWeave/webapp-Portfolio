@@ -29,7 +29,7 @@
         }
     });
 
-    const img = props.data.img;
+    const img = props.data.img ?? props.data;
     const anchor = props.data.anchor;
     const caption = props.data.caption;
 
