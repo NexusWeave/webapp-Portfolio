@@ -27,26 +27,29 @@ export const achievementStore = defineStore("achievements",
                 achievement.push(item);
                 console.warn("Adding data to store:", item);
             },
-
             async fetchData()
             {
                 const data = this.data
                 if (data.isLoaded) return;
 
-                await fetchData(achievements).then((response) =>
-                {
-                    response.forEach((item) =>
+                await fetchData(achievements).then(async () =>
                     {
-                        this.addToStore(item);
-                    });
-                    this.data.isLoaded = true;
+                        const json = await fetch('/apis/academic-api.json');
 
-                }).catch((error) => {
-                    console.error("Error fetching timeline data:", error);
-                    this.data.isLoaded = false;
-                });
+                        const jsonData = await json.json();
+                        console.warn("Fetched data:", jsonData);
+
+                        for (let i = 0; i < jsonData.length; i++) { this.addToStore(jsonData[i]); }
+                        this.data.isLoaded = true;
+
+                    }).catch((error) =>
+                        {
+                                console.error("Error fetching timeline data:", error);
+                                this.data.isLoaded = false;
+                        });
             },
         },
+        
         getters: {
             isLoaded: (state) => state.data.isLoaded,
             achievements: (state) => state.data.achievements,
