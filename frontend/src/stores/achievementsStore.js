@@ -25,7 +25,7 @@ export const achievementStore = defineStore("achievements",
                 if (item.id == 0) item.isVisible = true;
                 else item.isVisible = false;
                 achievement.push(item);
-                console.warn("Adding data to store:", item);
+                //console.warn("Adding data to AchivementStore:", item);
             },
             async fetchData()
             {
@@ -37,9 +37,7 @@ export const achievementStore = defineStore("achievements",
                         const json = await fetch('/apis/academic-api.json');
 
                         const jsonData = await json.json();
-                        console.warn("Fetched data:", jsonData);
-
-                        for (let i = 0; i < jsonData.length; i++) { this.addToStore(jsonData[i]); }
+                        jsonData.data.forEach(element => { this.addToStore(element);});
                         this.data.isLoaded = true;
 
                     }).catch((error) =>
