@@ -2,10 +2,7 @@
 
 import { reactive } from "vue";
 import { defineStore } from "pinia";
-
-import { fetchData } from "@/services/academic-api.js";
-import js from "@eslint/js";
-//import { fetchData } from "@/services/utils/response.js";
+import { fetchData } from "./utils/response.js";
 
 export const academicStore = defineStore("Academic",
     {
