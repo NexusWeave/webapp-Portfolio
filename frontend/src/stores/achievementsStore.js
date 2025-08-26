@@ -2,9 +2,7 @@
 
 import { reactive } from "vue";
 import { defineStore } from "pinia";
-
-import { achievements } from "@/services/achievements-api.js";
-import { fetchData } from "@/services/utils/response.js";
+import { fetchData } from "./utils/response.js";
 
 export const achievementStore = defineStore("achievements",
     {
@@ -32,7 +30,7 @@ export const achievementStore = defineStore("achievements",
                 const data = this.data
                 if (data.isLoaded) return;
 
-                await fetchData(achievements).then(async () =>
+                await fetchData().then(async () =>
                     {
                         const json = await fetch('/apis/academic-api.json');
 
