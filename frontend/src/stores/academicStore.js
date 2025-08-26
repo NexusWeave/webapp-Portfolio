@@ -31,15 +31,20 @@ export const academicStore = defineStore("Academic",
             async fetchData()
             {
                 const data = this.data
-                //if (data.isLoaded) return;
-                
-                await fetchData().then((response) =>
+                if (data.isLoaded) return;
+
+                await fetchData().then(async () =>
                     {
-                        response.forEach((item) =>
-                            {
-                                this.addToStore(item);
-                            });
-                            this.data.isLoaded = true;
+                    const json = await fetch('/apis/academic-api.json');
+                    
+                    const jsonData = await json.json();
+                    console.warn("Fetched data:", jsonData);
+
+                    for (let i = 0; i < jsonData.length; i++) {
+                        this.addToStore(jsonData[i]);
+                    }
+                    this.data.isLoaded = true;
+
                 }).catch((error) => {
                     console.error("Error fetching timeline data:", error);
                     this.data.isLoaded = false;
