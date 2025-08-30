@@ -60,7 +60,7 @@
                     "tech": ["ASP.NET", ".NET", "SASS", "TypeScript", "Entity Framework"],
                     "description":
                     {
-                        "summary": "I denne fasen fikk jeg min første jobb som utvikler, hvor jeg jobbet med blant annet TypeScript som frontend og C# som backend."
+                        "summary": "Dette året markerte min inntreden i arbeidslivet som utvikler. I denne arbeidsplassen fikk jeg utvikle ferdigheter med teknologier som TypeScript for frontend og C# for backend. Jeg utviklet også kunnskapen om mermaid.js (UML) for å visualisere og dokumentere backend-strukturen. I tillegg utviklet jeg en erfaring med nyere teknologier som Headless CMS, utvidet min kompentanse innen for feltet."
                     }
                 },
                 {
@@ -69,12 +69,14 @@
                     "tech": ["Vue.js", "flask.py"],
                     "description":
                     {
-                        "summary": "I denne fasen fikk jeg mitt første prosjekt som frilanser, hvor jeg med et prosjekt for SosEnT.",
+                        "summary": "Denne delen av min reise, fikk jeg muligheten til å arbeide med et prosjekt for SosEnt, hvor jeg fikk muligheten til å få erfaringer knyttet til:",
                         "list":
                         [
                             "Tidsstyring",
                             "Kundesamarbeid og kommunikasjon",
+                            "Anbefaling av teknologier og verktøy",
                             "Planleggingsprosessen og UML dokumentasjon"
+                            
                         ]
                     }
                 }
