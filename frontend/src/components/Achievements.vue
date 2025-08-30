@@ -1,25 +1,28 @@
 <template>
 <template v-if="achievement.isLoaded">
-        <section class="timeline-container timeline-container">
-            
-            <section class="flex-wrap-row-justify-space-evenly timeline-line">
-                
+        <section class="timeline-container component-w-g-t">
+            <section class="flex-wrap-row-justify-space-evenly timeline-line component-w-g-t">
+
                 <Timeline
                 :data="achievement.timelineRange"
                 :cls="[['flex-column-align-items-center', 'timeline-item'],
-                    'title-h2-teal', ['timeline-input-label', 'timeline-input']]"
+                    '', ['timeline-input-label', 'timeline-input']]"
                 @toggle-visibility="toggleVisibility"/>
             </section>
-            
+
             <section class="flex-wrap-row-justify-space-evenly">
-                    <h3 class="title-h3-teal">
+                    <h3>
                         <Year v-for="data in achievement.achievements" :key="data.id"
                             :year="data.year" :isVisible="data.isVisible"/>
                     </h3>
             </section>
             <section class="flex-wrap-row-justify-space-evenly">
                     <Card v-for="data in achievement.achievements" :key="data.id"
-                        :data="data" />
+                        :data="data" :cls="[['flex-wrap-column', 'achievement-content'], 
+                        'flex-column-justify-center-align-center',
+                        'flex-wrap-row-align-content-start-justify-space-evenly',
+                        ['tech-container', 'flex-wrap-row-justify-space-evenly'], 'tech-item', 'timeline-description',
+                        'timeline-list', 'timeline-item']"/>
             </section>
 
         </section>
