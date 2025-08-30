@@ -29,7 +29,7 @@ export const portfolioStore = defineStore('portfolio',
                     });
 
                     repo.lang.forEach(lang => {
-                        lang.name = lang.lang[0];
+                        lang.label = lang.lang[0];
                         lang.alt = `${lang.lang}`,
                         lang.src = `/media/tech-lang-icons/${lang.lang[0]}.svg`
                     });
