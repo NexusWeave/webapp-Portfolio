@@ -2,11 +2,11 @@
     <section v-if="!!data.isVisible"
     v-for="content in data.content" :key="data.year"
     :class="[cls[0], {'timeline-active': !!data.isVisible }]">
-        <h3 :class="cls[1]">{{ content.name }}</h3>
-        <h4 :class="cls[2]"> {{ content.title }} </h4>
+        <h3>{{ content.title }}</h3>
+        <h4 v-if="!!content.name"> {{ content.name }} </h4>
 
         <section v-if="!!content.start || !!content.end"
-        :class="cls[3]">
+        :class="cls[1]">
             <section class="flex-wrap-row-justify-center">
                 <Icon :cls="['icon', 'calendar']" :label="'school year'"/>
                 <span>{{ content.start}}</span>
@@ -16,27 +16,27 @@
         </section>
 
         <section v-if="!!content.tech">
-            <h4 :class="cls[2]">Teknologi : </h4>
-            <span :class="cls[5]">
+            <h4>Teknologi : </h4>
+            <span :class="cls[3]">
                 <span v-for="tech in content.tech" :key="tech"
-                    :class="cls[6]">
+                    :class="cls[4]">
                     {{ tech }}
                 </span>
             </span>
         </section>
 
         <section v-if="!!content.description"
-            :class="cls[7]">
+            :class="cls[5]">
             <p>{{ content.description.summary }}</p>
-            <ul v-if="!!content.description.list" :class="cls[8]">
+            <ul v-if="!!content.description.list" :class="cls[6]">
                 <li v-for="item in content.description.list" :key="item"
-                    :class="cls[9]">
+                    :class="cls[7]">
                     {{ item }}
                 </li>
             </ul>
         </section>
 
-        <section :class="cls[4]">
+        <section :class="cls[2]">
             <span v-if="!!content.anchor">
                 <Anchor :data="content.anchor" />
             </span>
@@ -70,11 +70,11 @@
         {
             type: Array,
             required: false,
-            default: () => [['flex-wrap-column', 'timeline-content'], 
-                        'timeline-h3', 'timeline-h4',
+            default: () => [['flex-wrap-column', 'academic-content'], 
                         'flex-column-justify-center-align-center',
                         'flex-wrap-row-align-content-start-justify-space-evenly',
-                        ['tech-container', 'flex-wrap-row-justify-space-evenly'], 'tech-item', 'timeline-description',
+                        ['tech-container', 'flex-wrap-row-justify-space-evenly'],
+                        'tech-item', 'timeline-description',
                         'timeline-list', 'timeline-item']
         },
         btn :
