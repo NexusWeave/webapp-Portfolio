@@ -5,7 +5,7 @@
                 <Timeline
                 :data="academic.timelineRange"
                 :cls="[['flex-column-align-items-center', 'timeline-item'],
-                ['timeline-input-label', 'timeline-input']]"
+                'timeline-input-label', 'timeline-input']"
                 @toggle-visibility="toggleVisibility"/>
             </section>
             <h3 class="timeline-h3">
