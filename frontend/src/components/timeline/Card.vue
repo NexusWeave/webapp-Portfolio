@@ -2,8 +2,9 @@
     <section v-if="!!data.isVisible"
     v-for="content in data.content" :key="data.year"
     :class="[cls[0], {'timeline-active': !!data.isVisible }]">
-        <h3>{{ content.title }}</h3>
-        <h4 v-if="!!content.name"> {{ content.name }} </h4>
+        <h3 v-if="!!content.name">{{ content.name }}</h3>
+        <h3 v-else>{{ content.title }}</h3>
+        <h4 v-if="!!content.title && !!content.name"> {{ content.title }} </h4>
 
         <section v-if="!!content.start || !!content.end"
         :class="cls[1]">
