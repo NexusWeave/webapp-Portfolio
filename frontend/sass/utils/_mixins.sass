@@ -4,8 +4,6 @@
 @use '../mappings/flexbox' as flexbox-mapping
 @use '../mappings/devices-breakpoints' as Devices
 
-
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
 
 @mixin media-queries ($size: null, $breakpoint: null)
@@ -47,19 +45,34 @@
         color: color.$primary
         background-color: color.$secondary
 
-@mixin component-color($color: color.$primary, $background-color: color.$secondary)
+@mixin component-color($color, $background-color, $title: null, $link-color: null, $link-hover-color: null, $link-active-color: null, $link-visited-color: null)
 
-    h1, h2, h3, h4, h5, h6
-        color: $color
+    @if $title == null
+        $title: $color
+
+    h2, h3, h4, h5, h6
+        color: $title
+        font-weight: 600
+        margin-block: .5em
+        text-align: center
         @include font-style('Work Sans')
+
+    h3
+        font-size: 1.2em
+
     p
-        color: $color
         @include font-style('Roboto')
 
+    @include background-style($background-color, $color, $link-color, $link-hover-color, $link-active-color, $link-visited-color)
+
+@mixin background-style($bg-color, $color, $link-color: null, $link-hover-color: null, $active-color: null, $link-visited-color: null)
+
+    @if $link-color != null and $link-hover-color != null and $active-color != null
+        @include link-styles($link-color, $link-hover-color, $active-color, $link-visited-color)
+
     color: $color
-    //border-radius: 0.5em
-    background-color: $background-color
-    
+    background-color: $bg-color
+
 @mixin font-style($font, $family: null)
 
     $roboto: 'Roboto'
@@ -70,19 +83,8 @@
 
     font-family: $font, $family
 
-@mixin link-styles($link-color: null, $link-hover-color: null, $link-active-color: null, $link-visited-color: null)
+@mixin link-styles($link-color, $link-hover-color, $link-active-color, $link-visited-color)
 
-    @if $link-color == null
-        $link-color: color.$link-color
-
-    @if $link-hover-color == null
-        $link-hover-color: color.$link-hover-color
-
-    @if $link-active-color == null
-        $link-active-color: color.$link-active-color
-
-    @if $link-visited-color == null
-        $link-visited-color: color.$link-visited-color
     a
         color: $link-color
         text-decoration: none
@@ -90,7 +92,7 @@
     
         [aria-disabled='true']
             cursor: not-allowed
-            color: color.$link-disabled-color
+            color: color.$sea-green-color
             
         &:hover
             color: $link-hover-color
@@ -138,3 +140,24 @@
                 color: map.get($props, icon-color)
                 &:before
                     content: map.get($props, icon)
+
+@mixin input-styles($background-color)
+
+    input[type="range"]
+        inline-size: 100%
+
+        &::-webkit-slider-runnable-track,
+        &::-moz-range-track
+            cursor: pointer
+            block-size: .9em
+            border-radius: 1em
+            -webkit-appearance: none
+            background: $background-color
+
+        &::-webkit-slider-thumb,
+        &::-moz-range-thumb
+            cursor: pointer
+            block-size: .9em
+            border-radius: 1em
+            -webkit-appearance: none
+            background: $background-color
