@@ -19,7 +19,7 @@ export const portfolioStore = defineStore('portfolio',
             actions: {
                 addToStore(repo)
                 {
-                    repo.name = this.splitName(repo.name.toLowerCase());
+                    repo.name = this.splitName(repo.name);
 
                     repo.anchor.forEach(link => {
                         if (link.name === 'webapp') link.type = ['globe', 'anchor', 'external'];
@@ -41,8 +41,9 @@ export const portfolioStore = defineStore('portfolio',
                 splitName(name)
                 {
                     if(!name) return;
-                    const delimeter = '-';
+                    const delimeter = "-";
                     if (name.includes(delimeter)) return name.split(delimeter);
+                    else return name;
                 },
                 async fetchData(data)
                 {
