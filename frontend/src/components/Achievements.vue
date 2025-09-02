@@ -16,7 +16,7 @@
                             :year="data.year" :isVisible="data.isVisible"/>
                     </h3>
             </section>
-            <section class="flex-wrap-row-justify-space-evenly">
+            <section class="flex-column-items-center">
                     <Card v-for="data in achievement.achievements" :key="data.id"
                         :data="data" :cls="[['flex-wrap-column', 'component-w-g-t', 'achievement-content'], 
                         'flex-column-justify-center-align-center',
