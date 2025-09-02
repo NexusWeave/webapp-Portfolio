@@ -8,7 +8,7 @@
     .timeline-item
         z-index: 1
         inline-size: 100%
-        @include mix.input-styles(color.$sea-green-color)
+        @include mix.input-styles(color.$sea-green)
 
         input[type="range"]
             inline-size: 100%
@@ -19,7 +19,7 @@
                 block-size: .9em
                 border-radius: 1em
                 -webkit-appearance: none
-                background: color.$sea-green-color
+                background: color.$sea-green
 
             &::-webkit-slider-thumb,
             &::-moz-range-thumb
@@ -27,7 +27,7 @@
                 block-size: .9em
                 border-radius: 1em
                 -webkit-appearance: none
-                background: color.$sea-green-color
+                background: color.$sea-green
     .timeline-active
         opacity: 1 !important
         visibility: visible !important
@@ -50,9 +50,10 @@
                         margin-block: .5em
                         font-size: 1.1em
 
-    .academic-content    
+    .academic-content, .achievement-content
         @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
 
-    .achievement-content
-        @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
+        &:nth-of-child(odd)
+            margin-inline: 1em
+            
 

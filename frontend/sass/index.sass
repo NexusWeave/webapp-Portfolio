@@ -1,7 +1,8 @@
 //  Index file for the main SASS styles of the frontend Elements styles
+@use './colors/colors' as color
 @use './utils/mixins' as mix
+
 @forward './utils/icons'
-@forward './colors/colors'
 @forward './utils/buttons'
 @forward './utils/flexbox'
 @forward './utils/timeline'
@@ -20,7 +21,8 @@
     writing-mode: horizontal-tb
 
 body
-    @include mix.theme-color
+    @include mix.font-style('Nunito')
+    @include mix.background-style(color.$off-white, color.$dark-grey)
 
 footer
     padding: 1vw

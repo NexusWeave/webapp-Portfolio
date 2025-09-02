@@ -1,4 +1,6 @@
-@use 'sass:map'
+@use 'sass:map' as map
+@use 'sass:list' as list
+
 @use '../colors/colors' as color
 @use '../mappings/icons' as icons-mapping
 @use '../mappings/flexbox' as flexbox-mapping
@@ -28,62 +30,18 @@
     @media screen and (min-width: $size)
         @content
 
-@mixin theme-color()
 
-    color: color.$secondary
-    background-color: color.$primary
-
-    h1,h2,h3,h4,h5,h6
-        text-align: center
-        color: color.$secondary
-        @include font-style('Work Sans')
-
-    button, a
-        cursor: pointer
-
-    p, a, li, button
-        @include font-style('Roboto')
-
-    .component
-        color: color.$primary
-        background-color: color.$secondary
-
-@mixin component-color($color, $background-color, $title: null, $link-color: null, $link-hover-color: null, $link-active-color: null, $link-visited-color: null)
-
-    @if $title == null
-        $title: $color
-
-    h2, h3, h4, h5, h6
-        color: $title
-        font-weight: 600
-        margin-block: .5em
-
-
-    h3
-        font-size: 1.2em
-
-    p
-        @include font-style('Nunito', 'sans-serif')
-    li
-        @include font-style('Roboto')
-
-    @include background-style($background-color, $color, $link-color, $link-hover-color, $link-active-color, $link-visited-color)
-
-@mixin background-style($bg-color, $color, $link-color: null, $link-hover-color: null, $active-color: null, $link-visited-color: null)
-
-    @if $link-color != null and $link-hover-color != null and $active-color != null
-        @include link-styles($link-color, $link-hover-color, $active-color, $link-visited-color)
+@mixin background-style($bg-color, $color)
 
     color: $color
     background-color: $bg-color
 
 @mixin font-style($font, $family: null)
 
-    $roboto: 'Roboto'
-    $work-sans: 'Work Sans'
+    $sans-serif: ('Roboto', 'Work Sans', 'Nunito')
 
-    @if $family == null and $font == $roboto or $font == $work-sans
-        $family : sans-serif
+    @if list.index($sans-serif, $font)
+        $family: sans-serif
 
     font-family: $font, $family
 
@@ -96,8 +54,8 @@
     
         [aria-disabled='true']
             cursor: not-allowed
-            color: color.$sea-green-color
-            
+            color: color.$dark-grey
+
         &:hover
             color: $link-hover-color
 

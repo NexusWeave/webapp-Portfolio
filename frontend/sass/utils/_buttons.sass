@@ -1,7 +1,9 @@
+@use './mixins' as mix
 @use '../colors/colors' as color
+
 
 .timeline-btn
     block-size: 1em
     inline-size: 1em
     border-radius: 100%
-    background-color: color.$secondary
+    @include mix.background-style(color.$dark-grey, color.$soft-white)
