@@ -2,24 +2,24 @@
 @use '../colors/colors' as color
 
 .component-blue
-    @include mix.background-style(color.$deep-midnight-blue, color.$white)
+    @include mix.background-style(color.$deep-midnight-blue, color.$off-white)
     
     h2, h3, h4
         @include mix.font-style('Work Sans')
-        text-align: center
-
-    border-radius: .5em
 
 .component-w-g-b
     @include mix.background-style(color.$off-white, color.$deep-midnight-blue)
     @include mix.link-styles(color.$light-blue , rgb(147, 200, 236), rgb(233, 244, 251), rgb(12, 44, 65))
 
-    border-radius: .5em
-
-.component-w-g-t
+.component-seagreen
+    @include mix.background-style(color.$sea-green, color.$off-white)
     @include mix.link-styles(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
     h2, h3, h4
-        color: color.$sea-green
         @include mix.font-style('Work Sans')
+
+.component-w-g-t
+    @include mix.background-style(color.$off-white, color.$sea-green)
+    @include mix.link-styles(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
+
 

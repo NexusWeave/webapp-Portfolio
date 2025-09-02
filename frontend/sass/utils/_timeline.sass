@@ -2,10 +2,27 @@
 @use '../colors/colors' as color
 
 .timeline-container
-    padding: 1em
-    margin-block: 2.5em
     
     .timeline-item
+        input[type="range"]
+            &::-webkit-slider-runnable-track,
+            &::-moz-range-track
+                cursor: pointer
+                block-size: .9em
+                border-radius: 1em
+                -webkit-appearance: none
+                background: color.$sea-green
+
+            &::-webkit-slider-thumb,
+            &::-moz-range-thumb
+                cursor: pointer
+                block-size: .9em
+                border-radius: 1em
+                -webkit-appearance: none
+                background: color.$sea-green
+
+            inline-size: 100%
+
         z-index: 1
         inline-size: 100%
         @include mix.input-styles(color.$sea-green)
@@ -28,17 +45,31 @@
                 border-radius: 1em
                 -webkit-appearance: none
                 background: color.$sea-green
+
     .timeline-active
         opacity: 1 !important
         visibility: visible !important
 
     .academic-content,
     .achievement-content
+
+        h2, h3, h4
+            text-align: center
+            @include mix.font-style('Work Sans')
+        p
+            text-align: center
+
+        &:nth-of-type(odd)
+            margin-inline: 1em
+
         opacity: 0
         padding: 1em
         visibility: hidden
+        border-radius: .5em
         max-inline-size: 22em
         box-shadow: 0 2px 4px rgba(64, 64, 64, .5)
+        
+        @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
 
         .tech-container
             .tech-item
@@ -50,10 +81,6 @@
                         margin-block: .5em
                         font-size: 1.1em
 
-    .academic-content, .achievement-content
-        @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
-
-        &:nth-of-child(odd)
-            margin-inline: 1em
-            
-
+    padding: 1em
+    margin-block: 2.5em
+    border-radius: .5em

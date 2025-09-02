@@ -30,11 +30,18 @@
     @media screen and (min-width: $size)
         @content
 
-
 @mixin background-style($bg-color, $color)
-
     color: $color
     background-color: $bg-color
+
+@mixin background-image($size, $path, $bg-size: null)
+
+    @if $bg-size == null
+        $bg-size: no-repeat
+
+    background-size: $size
+    background-repeat: $bg-size
+    background-image: url($path)
 
 @mixin font-style($font, $family: null)
 
@@ -48,10 +55,6 @@
 @mixin link-styles($link-color, $link-hover-color, $link-active-color, $link-visited-color)
 
     a
-        color: $link-color
-        text-decoration: none
-        transition: 0.3s ease-in-out
-    
         [aria-disabled='true']
             cursor: not-allowed
             color: color.$dark-grey
@@ -64,6 +67,10 @@
 
         &:visited
             color: $link-visited-color
+
+        color: $link-color
+        text-decoration: none
+        transition: 0.3s ease-in-out
 
 @mixin transitions($property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
 
@@ -95,19 +102,16 @@
         @error '"#{$name}" not found in flexbox mapping.'
 
 @mixin icon-generator()
-
     @each $category, $maps in icons-mapping.$icons
         @each $icon, $props in $maps
             .#{$icon}
-                color: map.get($props, icon-color)
                 &:before
                     content: map.get($props, icon)
 
+                color: map.get($props, icon-color)
+
 @mixin input-styles($background-color)
-
     input[type="range"]
-        inline-size: 100%
-
         &::-webkit-slider-runnable-track,
         &::-moz-range-track
             cursor: pointer
@@ -123,3 +127,5 @@
             border-radius: 1em
             -webkit-appearance: none
             background: $background-color
+
+        inline-size: 100%

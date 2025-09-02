@@ -2,6 +2,7 @@
 @use './colors/colors' as color
 @use './utils/mixins' as mix
 
+@forward './utils/cards'
 @forward './utils/icons'
 @forward './utils/buttons'
 @forward './utils/flexbox'
@@ -9,6 +10,10 @@
 @forward './views/portfolio'
 @forward './utils/navigation'
 @forward './utils/components'
+@forward './utils/tech-content'
+@forward './utils/grid-container'
+
+
 
 
 //  Importing bootstrap for the project
@@ -23,6 +28,10 @@
 body
     @include mix.font-style('Nunito')
     @include mix.background-style(color.$off-white, color.$dark-grey)
+
+    h1, h2, h3, h4, h5, h6
+        text-align: center
+        margin: 0.5em auto
 
 footer
     padding: 1vw

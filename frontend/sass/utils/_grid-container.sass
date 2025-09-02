@@ -1,0 +1,21 @@
+// Grid-layout, simplified for clarity
+.grid-container
+    .grid-item-1
+        grid-area: header
+
+    .grid-item-2
+        grid-area: main
+        text-align: center
+        
+    .grid-item-3
+        grid-area: aside
+        text-align: right
+
+    .grid-item-4
+        grid-area: footer
+
+    gap: 1em
+    display: grid
+    grid-template-columns: 3em 24em 7.5em 24em
+    grid-template-areas: "header main aside footer"
+    

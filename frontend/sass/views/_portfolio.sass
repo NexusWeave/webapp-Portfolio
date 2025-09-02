@@ -1,59 +1,31 @@
+// Base container for the whole section
 .repo-container
-    inline-size: 100%
+    .icon
+        font-size: 2em
+
     block-size: 100%
+    inline-size: 100%
 
-    .card-container
-        content: ''
-        margin: 1em
-        padding: 1em
-        max-block-size: 16em
-        inline-size: 28em
-        background-size: 9em
-        border: 1px solid black
-        background-repeat: no-repeat
-        box-shadow: 4px 4px 20px 4px rgba(0, 0, 0, 0.1)
-        background-image: url(../media/images/cards/portfolio-card.svg)
-
-        p
-            font-size: 1.1em
-            text-align: center
-        
-        .card-content
-            inline-size: 100%
-
-        .tech-figure
-            margin: 0
-            max-inline-size: 3em
-
-            .tech-img
-                inline-size: 100%
 
     .grid-container
-        gap: 1em
-        display: grid
-        grid-template-areas: 'tech-icon' 'text' 'date' 'links'
-        grid-template-rows: repeat(auto-fill, minmax(3em, 1fr))
-        grid-template-columns: repeat(auto-fill, calc(100% / 4))
-
         .grid-item-1
-            inline-size: 3em
-            grid-area: 'tech-icon'
+            grid-area: tech-icon
 
         .grid-item-2
-            grid-area: 'text'
-            inline-size: 24em
+            grid-area: text
+            text-align: center
             
-            &:nth-child(1)
-                text-align: center
-
         .grid-item-3
-            inline-size: 7.5em
-            grid-area: 'date'
+            grid-area: date
             text-align: right
 
         .grid-item-4
-            grid-area: 'links'
-            inline-size: 24em
+            grid-area: links
 
-    .icon
-        font-size: 2em
+        gap: 1em
+        display: grid
+        grid-template-areas: "tech-icon text date links"
+        // Bruker grid-template-areas for layout
+        // Definerer størrelsen på kolonnene basert på de navngitte områdene
+        grid-template-columns: 3em 24em 7.5em 24em
+
