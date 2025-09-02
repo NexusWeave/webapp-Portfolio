@@ -1,16 +1,15 @@
 <template>
-    <section>
+    <section :class="['flex-wrap-row-justify-space-evenly']">
         <Achievements />
-    </section>
-    <section>
-        <Academiic/>
+        <Academic />
     </section>
     <section>
         <Portfolio />
     </section>
 </template>
+
 <script setup>
-    import Portfolio from '@/components/portfolio/Portfolio.vue';
+    import Academic from '@/components/Academic.vue';
     import Achievements from '@/components/Achievements.vue';
-    import Academiic from '@/components/Academic.vue';
+    import Portfolio from '@/components/portfolio/Portfolio.vue';
 </script>

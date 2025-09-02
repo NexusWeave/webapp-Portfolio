@@ -1,7 +1,7 @@
 <template>
 <template v-if="achievement.isLoaded">
-        <section class="timeline-container component-w-g-t">
-            <section class="flex-wrap-row-justify-space-evenly timeline-line component-w-g-t">
+        <section class="timeline-container component-seagreen">
+            <section class="flex-wrap-row-justify-space-evenly timeline-line ">
 
                 <Timeline
                 :data="achievement.timelineRange"
@@ -18,7 +18,7 @@
             </section>
             <section class="flex-wrap-row-justify-space-evenly">
                     <Card v-for="data in achievement.achievements" :key="data.id"
-                        :data="data" :cls="[['flex-wrap-column', 'achievement-content'], 
+                        :data="data" :cls="[['flex-wrap-column', 'component-w-g-t', 'achievement-content'], 
                         'flex-column-justify-center-align-center',
                         'flex-wrap-row-align-content-start-justify-space-evenly',
                         ['tech-container', 'flex-wrap-row-justify-space-evenly'], 'tech-item', 'timeline-description',

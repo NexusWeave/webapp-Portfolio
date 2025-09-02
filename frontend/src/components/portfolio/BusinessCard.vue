@@ -43,7 +43,7 @@
         cls: {
             type: Array,
             default: () => [
-                ['card-container', 'flex-column','flex-wrap-column'],
+                ['business-card', 'flex-column','flex-wrap-column'],
                 ['flex-wrap-row-justify-space-between', 'card-content'],
                 'date-container',
                 [
