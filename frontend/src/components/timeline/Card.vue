@@ -56,7 +56,6 @@
 
 <script setup>
 
-    import { computed, defineProps, defineEmits } from 'vue';
 
     import Icon from '../utils/Icon.vue';
     import Anchor from '../navigation/Anchor.vue';
@@ -71,7 +70,8 @@
         {
             type: Array,
             required: false,
-            default: () => [['flex-wrap-column', 'academic-content'], 
+            default: () => [['flex-wrap-column', 'academic-content', 'component-w-g-b'],
+
                         'flex-column-justify-center-align-center',
                         'flex-wrap-row-align-content-start-justify-space-evenly',
                         ['tech-container', 'flex-wrap-row-justify-space-evenly'],
@@ -84,15 +84,7 @@
         },
     });
 
-    const btn = computed(() => props.btn);
     const cls = !!props.cls ? props.cls : null;
-    const classList = computed(() => 
-    {
-        const cls = props.cls || [];
-        if (!!data.isVisible) cls.push('timeline-active');
-        return cls;
-    });
-    const content = computed(() => props.data);
     const emits = defineEmits(['toggleVisibility']);
 
     //console.log("Card data:", content.value);
