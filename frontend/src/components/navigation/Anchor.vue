@@ -51,7 +51,7 @@
     const media = 
     {
         files: ['pdf'],
-        images: ['jpg', 'jpeg', 'png', 'svg'],
+        images: ['jpg', 'jpeg', 'png', 'svg', "webp"],
         downloadFiles: ['docx', 'xlsx', 'csv'],
         icons: ['email', 'telephone', 'school', 'globe', 'map-pin', 'diploma', 'github', 'ytube'],
     }
