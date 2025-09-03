@@ -1,16 +1,17 @@
-<template >
-    <figure :class="cls[0]">
-    <img :src="img.src" :alt="img.alt" :class="cls[1]">
-
+<template>
     <template v-if="!!isFigure">
-        <figcaption v-if="!!data.caption">{{ data.caption }}</figcaption>
+        <figure :class="cls[0]">
+            <img :src="img.src" :alt="img.alt" :class="cls[1]">
+            <figcaption>{{ data.caption }}</figcaption>
+        </figure>
     </template>
 
-    <template v-if="!!anchor">
-        <Anchor :data="anchor" :cls="cls[2]" />
+    <template v-else>
+        <picture>
+            <source v-if="!!isImageModern" :srcset="img.srcset" :type="img.type">
+            <img :src="img.src" :alt="img.alt" :class="cls[1]">
+        </picture>
     </template>
-    </figure>
-
 </template>
 
 <script setup>
@@ -36,6 +37,20 @@
     const isFigure = computed(() => {
         return !!caption;
     });
+
+    const images = 
+    {
+        data: ['jpg', 'jpeg', 'png', 'svg'],
+        modern: ['webp']
+    }
+    const isImageModern = computed(() => {
+        return !!images.modern.find(item => item === img.type);
+    });
+
+    const isImage = computed(() => {
+        return !!images.data.find(item => item === img.type);
+    });
+
     const cls = props.cls;
     //console.log('Figure data:', data);
 </script>
