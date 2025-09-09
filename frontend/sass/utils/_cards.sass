@@ -2,7 +2,15 @@
 @use '../utils/mixins' as mix
 
 .business-card
-    // Standard card styling
+    p
+        font-size: 1em
+        text-align: center
+
+    img 
+        inline-size: 3em
+    .card-content
+        inline-size: 100%
+
     margin: 1em
     padding: 1em
     max-block-size: 16em
@@ -11,9 +19,3 @@
     box-shadow: 4px 4px 20px 4px rgba(0, 0, 0, 0.1)
     @include mix.background-image(9em, "/media/images/cards/portfolio-card.svg")
     
-    p
-        font-size: 1em
-        text-align: center
-
-    .card-content
-        inline-size: 100%

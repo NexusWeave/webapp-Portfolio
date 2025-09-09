@@ -1,13 +1,21 @@
 <template>
     <article>
         <section>
-            <Repo />
+            <p> Blogg poster | Trenings poster </p>
         </section>
         <section>
-            <h2> Kristoffer Gjøsund</h2>
-            <p> Profil informasjon om meg</p>
+            <section>
+                <p> Bilde av meg</p>
+            </section>
+            <article>
+                <h2> Kristoffer Gjøsund</h2>
+                <p> Profil informasjon om meg</p>
+            </article>
+            
         </section>
-
+        <section>
+            <Repo />
+        </section>
         <section>
             <p> Litt dypere om min reise </p>
         </section>
