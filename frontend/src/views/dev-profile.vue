@@ -16,6 +16,5 @@
 </template>
 
 <script setup>
-    import Figure from '@/components/media/Figure.vue';
-    import Repo from '@/components/portfolio/Portfolio.vue';
+
 </script>
