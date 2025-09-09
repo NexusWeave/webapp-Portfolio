@@ -10,10 +10,7 @@
     "preview": "vite preview",
     "format": "prettier --write src/",
     "serve": "cd dist && serve --single",
-    "sass": "sass --watch sass:src/assets",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "sass": "sass --watch sass:src/assets"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
