@@ -28,7 +28,7 @@ frontend/dist
 frontend/src/assets
 
 #   Frontend files
-frontend/package-lock.json
+package-lock.json
 frontend/.env.production
 frontend/.env.development
 frontend/.env.local
