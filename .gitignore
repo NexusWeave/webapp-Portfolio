@@ -2,7 +2,7 @@
 
 # misc folders and files
 *.env
-.pytest_cache/
+
 # Editor directories and files
 .vscode/*
 .venv/
@@ -20,24 +20,33 @@
 #   frontend related files & folders
 
 #   Frontend dicrectories
-
-frontend/node_modules
-frontend/docs/.vitepress/cache
-frontend/build
 frontend/dist
+frontend/build
 frontend/src/assets
+frontend/node_modules
+frontend/tina/__generated__
+frontend/docs/.vitepress/cache
 
 #   Frontend files
-package-lock.json
+frontend/.env.local
 frontend/.env.production
 frontend/.env.development
-frontend/.env.local
+
+
+frontend/package-lock.json
+
 #   Backend related files & folders
-.logs
-coverage
-dist
-build
+
+#   Backend directories
 __pycache__
 tests/assets/
-tests/.pytest_cache/
+.pytest_cache/
 flask_session/
+tests/.pytest_cache/
+
+
+#   Backend Files
+.logs
+dist
+build
+coverage
