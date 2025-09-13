@@ -33,7 +33,7 @@ export const academicStore = defineStore("Academic",
 
                 await fetchData().then(async () =>
                     {
-                    const json = await fetch('/apis/academic-api.json');   
+                    const json = await fetch('/services/academic-api.json');   
                     const jsonData = await json.json();
 
                     jsonData.data.forEach(element => {
