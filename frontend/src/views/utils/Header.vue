@@ -47,15 +47,11 @@
         [
             {
                 href: '/',
-                label: 'Portefølje',
-            },
-            {
-                href: '/about',
-                label: 'About',
+                label: 'Om meg',
             },
             {
                 href: '/dev',
-                label: 'Dev profile',
+                label: 'Utvikler',
             }
         ]
     }
