@@ -20,6 +20,7 @@
 #   frontend related files & folders
 
 #   Frontend dicrectories
+vueClient
 frontend/dist
 frontend/build
 frontend/src/assets
