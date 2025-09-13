@@ -1,36 +1,36 @@
 <template>
-    <article>
+    <section class="flex-column-align-items-center">
         <section>
-            <p> Blogg poster | Trenings poster </p>
+            <h2> Aktuelle innlegg </h2>
         </section>
-        <section>
+        <section class="flex-wrap-row-justify-space-evenly">
             <section>
                 <p> Bilde av meg</p>
             </section>
+
             <article>
                 <h2> Kristoffer Gjøsund</h2>
                 <p> Profil informasjon om meg</p>
             </article>
-            
         </section>
+
+        <section>
+            <h2> Trenings innlegg </h2>
+        </section>
+        
         <section>
             <Repo />
         </section>
+
         <section>
-            <p> Litt dypere om min reise </p>
+            <h2> Litt dypere om min reise </h2>
         </section>
 
         <section>
-            <p> mer historie om meg</p>
+            <h2> mer historie om meg</h2>
         </section>
-    </article>
+    </section>
 
-
-    <article>
-        <section>
-            <p> mer historie om meg</p>
-        </section>
-    </article>
 </template>
 
 <script setup>
