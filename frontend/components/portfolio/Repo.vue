@@ -6,7 +6,7 @@
 <script setup>
 
     //  Importing dependencies
-    import { portfolioStore } from '@/stores/portfolioStore.js';
+    import { portfolioStore } from '$src/stores/portfolioStore.js';
 
     //  Importing components
     import BCard from './BusinessCard.vue';

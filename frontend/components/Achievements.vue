@@ -7,7 +7,7 @@
                 :data="achievement.timelineRange"
                 :cls="[['flex-column-align-items-center', 'timeline-item'],
                     '', ['timeline-input-label', 'timeline-input']]"
-                @toggle-visibility="toggleVisibility"/>
+                $srctoggle-visibility="toggleVisibility"/>
             </section>
 
             <section class="flex-wrap-row-justify-space-evenly">
@@ -33,11 +33,11 @@
 </template>
 
 <script setup>
-    import { achievementStore } from '@/stores/achievementsStore.js';
+    import { achievementStore } from '$src/stores/achievementsStore.js';
 
-    import Year from '@/components/Date/Year.vue';
-    import Card from '@/components/timeline/Card.vue';
-    import Timeline from '@/components/timeline/Timeline.vue';
+    import Year from '$src/components/Date/Year.vue';
+    import Card from '$src/components/timeline/Card.vue';
+    import Timeline from '$src/components/timeline/Timeline.vue';
 
     const achievement = achievementStore();
 

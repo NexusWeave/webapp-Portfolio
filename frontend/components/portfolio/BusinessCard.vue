@@ -32,8 +32,8 @@
 
     
     import Figure from '../media/Figure.vue';
-    import Tags from '@/components/utils/Tags.vue';
-    import Navigation from '@/components/navigation/NavMenu.vue';
+    import Tags from '$src/components/utils/Tags.vue';
+    import Navigation from '$src/components/navigation/NavMenu.vue';
 
     const props = defineProps({
         data: {

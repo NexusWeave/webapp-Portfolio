@@ -20,7 +20,7 @@
 <script setup>
     import { defineProps } from 'vue';
 
-    import Anchor from '@/components/navigation/Anchor.vue';
+    import Anchor from '$src/components/navigation/Anchor.vue';
 
     const props = defineProps({
         data: {

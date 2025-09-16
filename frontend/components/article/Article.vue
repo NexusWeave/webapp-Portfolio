@@ -25,8 +25,8 @@
     import { defineProps, computed } from 'vue';
     import { useRoute } from 'vue-router';
 
-    import Main from '@/components/article/Article-Main.vue';
-    import Header from '@/components/article/Article-Header.vue';
+    import Main from '$src/components/article/Article-Main.vue';
+    import Header from '$src/components/article/Article-Header.vue';
 
     const props = defineProps(
         {

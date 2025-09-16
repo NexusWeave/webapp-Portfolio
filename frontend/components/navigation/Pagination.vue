@@ -10,7 +10,7 @@
 
     import { ref, watch, defineProps, defineEmits, computed } from 'vue';
 
-    import Btn from '@/components/navigation/Button.vue';
+    import Btn from '$src/components/navigation/Button.vue';
 
     const emit = defineEmits(['update']);
     const props = defineProps(

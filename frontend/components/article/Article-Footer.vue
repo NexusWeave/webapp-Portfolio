@@ -25,8 +25,8 @@
 <script setup>
     import { defineProps, reactive } from 'vue';
 
-    import Figure from '@/components/utils/Figure.vue';
-    import MetaData from '@/components/utils/Span.vue';
+    import Figure from '$src/components/utils/Figure.vue';
+    import MetaData from '$src/components/utils/Span.vue';
 
     const props = defineProps({
         data: {

@@ -6,7 +6,7 @@
                 :data="academic.timelineRange"
                 :cls="[['flex-column-align-items-center', 'timeline-item'],
                 'timeline-input-label', 'timeline-input']"
-                @toggle-visibility="toggleVisibility"/>
+                $srctoggle-visibility="toggleVisibility"/>
             </section>
             <section class="flex-wrap-row-justify-space-evenly">
                 <h3>
@@ -26,11 +26,11 @@
     </template>
 </template>
 <script setup>
-    import { academicStore } from '@/stores/academicStore.js';
+    import { academicStore } from '$src/stores/academicStore.js';
 
-    import Year from '@/components/Date/Year.vue';
-    import Card from '@/components/timeline/Card.vue';
-    import Timeline from '@/components/timeline/Timeline.vue';
+    import Year from '$src/components/Date/Year.vue';
+    import Card from '$src/components/timeline/Card.vue';
+    import Timeline from '$src/components/timeline/Timeline.vue';
 
     const academic = academicStore();
 

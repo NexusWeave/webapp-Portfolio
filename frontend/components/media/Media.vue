@@ -18,8 +18,8 @@
 <script setup>
 
     import { computed, defineProps } from 'vue';
-    import Date from '@/components/Date/Date.vue';
-    import Anchor from '@/components/navigation/Anchor.vue';
+    import Date from '$src/components/Date/Date.vue';
+    import Anchor from '$src/components/navigation/Anchor.vue';
 
     const props = defineProps({
         data: {

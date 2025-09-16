@@ -61,8 +61,8 @@
 <script setup>
     import { defineProps } from 'vue';
 
-    import Media from '@/components/media/Media.vue';
-    import Figure from '@/components/media/Figure.vue';
+    import Media from '$src/components/media/Media.vue';
+    import Figure from '$src/components/media/Figure.vue';
 
     const props = defineProps({
         date: {

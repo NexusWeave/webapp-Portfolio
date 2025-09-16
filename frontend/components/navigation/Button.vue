@@ -2,7 +2,7 @@
     <button 
         :class="btn.cls"    
         :type="btn ? btn.type : 'button'"
-        @click="btn.action()"     
+        $srcclick="btn.action()"     
         :disabled="btn.disabled">
         <template v-if="btn.anchor">
             <Anchor :data="btn.anchor" v-if="btn.anchor"/>
@@ -19,7 +19,7 @@
 
     import { defineProps, watch } from 'vue';
 
-    import Anchor from '@/components/navigation/Anchor.vue';
+    import Anchor from '$src/components/navigation/Anchor.vue';
 
     const props = defineProps({
         data: {

@@ -32,13 +32,13 @@
     import { computed, defineProps } from 'vue';
 
     
-    import Tags from '@/components/utils/Tags.vue';
-    import Date from '@/components/Date/Date.vue';
+    import Tags from '$src/components/utils/Tags.vue';
+    import Date from '$src/components/Date/Date.vue';
     
-    import Figure from '@/components/media/Figure.vue';
-    import Btn from '@/components/navigation/Button.vue';
-    import Menu from '@/components/navigation/NavMenu.vue';
-    import Anchor from '@/components/navigation/Anchor.vue';
+    import Figure from '$src/components/media/Figure.vue';
+    import Btn from '$src/components/navigation/Button.vue';
+    import Menu from '$src/components/navigation/NavMenu.vue';
+    import Anchor from '$src/components/navigation/Anchor.vue';
 
     const props = defineProps({
         article: {

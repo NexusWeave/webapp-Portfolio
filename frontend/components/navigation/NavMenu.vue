@@ -4,9 +4,9 @@
             <li v-for="item in data" :key="item.id"
                     :class="cls[2]">
             <template v-if="!!isRouterLink">
-                <RouterLink :to="item.href" :class="[item.cls, 'nav-link']">
+                <NuxtLink :to="item.href" :class="[item.cls, 'nav-link']">
                     {{ item.label }}
-                </RouterLink>
+                </NuxtLink>
             </template>
 
             <template v-else-if="!!isAnchor">
@@ -27,7 +27,6 @@
     import Anchor from './Anchor.vue';
     import Btn from './Button.vue';
 
-    import { RouterLink } from 'vue-router';
     import { ref, watch, defineProps, computed } from 'vue';
 
     const props = defineProps({

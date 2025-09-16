@@ -30,8 +30,8 @@
 
     import { defineProps } from 'vue';
 
-    import Icon from '@/components/utils/Icon.vue';
-    import Figure from '@/components/media/Figure.vue';
+    import Icon from '$src/components/utils/Icon.vue';
+    import Figure from '$src/components/media/Figure.vue';
 
     const props = defineProps({
         data: {

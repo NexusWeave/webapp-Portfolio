@@ -7,7 +7,7 @@
 
         <section v-if="!!pfolio.totalPages > 0" 
             class="flex-wrap-column-align-items-center">
-            <Pagination class='flex-wrap-row-justify-space-evenly tech-bar':data="pfolio.data.Total" @update="pfolio.current = $event" v-if="pfolio.data.Total"/>
+            <Pagination class='flex-wrap-row-justify-space-evenly tech-bar':data="pfolio.data.Total" $srcupdate="pfolio.current = $event" v-if="pfolio.data.Total"/>
         </section>
 
         <section class="repo-container flex-wrap-row-justify-center">
@@ -29,10 +29,10 @@
 
     //  Importing dependencies
     import { reactive, onMounted, computed } from 'vue';
-    import { portfolioStore } from '@/stores/portfolioStore.js';
+    import { portfolioStore } from '$src/stores/portfolioStore.js';
 
     //  Importing components
-    import Pagination from '@/components/navigation/Pagination.vue';
+    import Pagination from '$src/components/navigation/Pagination.vue';
     import Repo from './Repo.vue';
 
 
