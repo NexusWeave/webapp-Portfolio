@@ -11,7 +11,9 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/image',
-    '@nuxt/ui'
+    '@nuxt/ui',
+
+    '@pinia/nuxt'
   ],
   css:
   [
@@ -26,5 +28,9 @@ export default defineNuxtConfig({
         '$src': `${srcDir}`,
         }
       }
-    }
+  },
+  dir:
+  {
+    public:'public'
+  }
 })
