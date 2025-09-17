@@ -1,11 +1,11 @@
 <template>
     <header>
-        <Header />
+        <UtilsHeader />
     </header>
     <main>
         <NuxtPage />
     </main>
     <footer>
-        <Footer />
+        <UtilsFooter />
     </footer>
 </template>

@@ -1,5 +1,5 @@
 <template>
-<template v-if="achievement.isLoaded">
+    <template v-if="achievement.isLoaded">
         <section class="timeline-container component-seagreen">
             <section class="flex-wrap-row-justify-space-evenly timeline-line ">
 
@@ -7,17 +7,18 @@
                 :data="achievement.timelineRange"
                 :cls="[['flex-column-align-items-center', 'timeline-item'],
                     '', ['timeline-input-label', 'timeline-input']]"
-                $srctoggle-visibility="toggleVisibility"/>
+                />
             </section>
 
             <section class="flex-wrap-row-justify-space-evenly">
                     <h3>
-                        <Year v-for="data in achievement.achievements" :key="data.id"
+                        <DateYear v-for="data in achievement.achievements" :key="data.id"
                             :year="data.year" :isVisible="data.isVisible"/>
                     </h3>
             </section>
+
             <section class="flex-column-items-center">
-                    <Card v-for="data in achievement.achievements" :key="data.id"
+                    <TimelineCard v-for="data in achievement.achievements" :key="data.id"
                         :data="data" :cls="[['flex-wrap-column', 'component-w-g-t', 'achievement-content'], 
                         'flex-column-justify-center-align-center',
                         'flex-wrap-row-align-content-start-justify-space-evenly',
@@ -27,6 +28,7 @@
 
         </section>
     </template>
+    
     <template v-else>
         Attempting to retrieve achievements, please wait...
     </template>
@@ -35,11 +37,8 @@
 <script setup>
     import { achievementStore } from '$src/stores/achievementsStore.js';
 
-    import Year from '$src/components/Date/Year.vue';
-    import Card from '$src/components/timeline/Card.vue';
-    import Timeline from '$src/components/timeline/Timeline.vue';
-
     const achievement = achievementStore();
+    await achievement.fetchData()
 
     const toggleVisibility = (id) => {
         const data = achievement.achievements;

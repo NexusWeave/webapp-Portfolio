@@ -21,7 +21,7 @@
         :minlength="!!data.minlength ? data.minlength : ''"
         :autofocus="!!data.autofocus ? data.autofocus : false"
         :multiple="!!data.multiple && data.type == 'file' ? data.multiple : false"
-        $srcinput="emit('update:modelValue', $event.target.value)"
+        @input="emit('update:modelValue', $event.target.value)"
     />
 </template>
 <script setup>

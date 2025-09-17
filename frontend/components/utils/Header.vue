@@ -50,7 +50,7 @@
                 label: 'Portefølje',
             },
             {
-                href: '/about',
+                href: '/personal',
                 label: 'About',
             },
             {

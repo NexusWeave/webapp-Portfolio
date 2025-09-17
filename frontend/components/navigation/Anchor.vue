@@ -21,7 +21,6 @@
         <template v-else>
                 {{ data.label }}
         </template>
-        
     </a>
 
 </template>

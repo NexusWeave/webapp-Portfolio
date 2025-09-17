@@ -1,0 +1,160 @@
+.
+├── app.vue
+├── assets
+│   ├── index.css
+│   └── index.css.map
+├── components
+│   ├── Academic.vue
+│   ├── Achievements.vue
+│   ├── article
+│   │   ├── Article-Footer.vue
+│   │   ├── Article-Header.vue
+│   │   ├── Article-Main.vue
+│   │   └── Article.vue
+│   ├── Date
+│   │   ├── Date.vue
+│   │   └── Year.vue
+│   ├── form
+│   │   ├── Form.vue
+│   │   └── inputs.vue
+│   ├── media
+│   │   ├── Figure.vue
+│   │   └── Media.vue
+│   ├── navigation
+│   │   ├── Anchor.vue
+│   │   ├── Button.vue
+│   │   ├── NavMenu.vue
+│   │   └── Pagination.vue
+│   ├── portfolio
+│   │   ├── BusinessCard.vue
+│   │   ├── Portfolio.vue
+│   │   └── Repo.vue
+│   ├── timeline
+│   │   ├── Card.vue
+│   │   └── Timeline.vue
+│   └── utils
+│       ├── Announcements.vue
+│       ├── Footer.vue
+│       ├── Header.vue
+│       ├── Icon.vue
+│       ├── List.vue
+│       └── Tags.vue
+├── content
+│   ├── blog_posts
+│   │   ├── dev_journey
+│   │   │   ├── Fra-Teori-til-Praksis.md
+│   │   │   ├── Kompetanseheving-i-CMS-utvikling-.md
+│   │   │   └── Teknisk-referanselogCMS-arkitektur-og-11ty-implementasjon.md
+│   │   ├── hello-world.md
+│   │   └── Test-tittel.md
+│   └── posts
+│       └── hello-world.md
+├── eslint.config.mjs
+├── nuxt.config.ts
+├── package.json
+├── pages
+│   ├── aktuelt.vue
+│   ├── dev.vue
+│   ├── index.vue
+│   └── personal.vue
+├── plugins
+├── public
+│   ├── admin
+│   │   └── index.html
+│   ├── favicon.ico
+│   ├── media
+│   │   ├── documents
+│   │   │   └── helsefag-kompetansebevis.pdf
+│   │   ├── images
+│   │   │   ├── cards
+│   │   │   │   └── portfolio-card.svg
+│   │   │   ├── carousel
+│   │   │   │   ├── 20240903_165612.jpg
+│   │   │   │   └── Screenshot_20240702_145919_Hevy.jpg
+│   │   │   └── logo
+│   │   │       └── logic-meets-creative-solutions.png
+│   │   └── tech-lang-icons
+│   │       ├── C-Plus.svg
+│   │       ├── CS.svg
+│   │       ├── C.svg
+│   │       ├── jp-nb.svg
+│   │       └── Python.svg
+│   ├── robots.txt
+│   └── services
+│       ├── academic-api.json
+│       ├── achievements-api.json
+│       └── portfolio-json.json
+├── README.md
+├── sass
+│   ├── colors
+│   │   ├── _colors.sass
+│   │   ├── _misc.sass
+│   │   ├── _palette.sass
+│   │   ├── _social-colors.sass
+│   │   └── _tech-color.sass
+│   ├── flexbox
+│   │   ├── _flexbox-column.sass
+│   │   ├── _flexbox-reversed-row.sass
+│   │   ├── _flexbox-row.sass
+│   │   ├── _flexbox-wrap-row.sass
+│   │   └── row-align-justify-mix
+│   │       └── _flexbox-wrap-row-align-justify.sass
+│   ├── index.sass
+│   ├── mappings
+│   │   ├── _devices-breakpoints.sass
+│   │   ├── _flexbox.sass
+│   │   ├── _icons.sass
+│   │   └── _tech-icons.sass
+│   ├── media-query
+│   │   ├── devices
+│   │   │   ├── _amazon-media-query.sass
+│   │   │   ├── _apple-media-query.sass
+│   │   │   ├── _blackberry-media-query.sass
+│   │   │   ├── _breakpoints.sass
+│   │   │   ├── _display-media-query.sass
+│   │   │   ├── _google-media-query.sass
+│   │   │   ├── _htc-media-query.sass
+│   │   │   ├── _microsoft-media-query.sass
+│   │   │   ├── _motorola-media-query.sass
+│   │   │   ├── _samsung-media-query.sass
+│   │   │   ├── _sharp-media-query.sass
+│   │   │   └── _sony-media-query.sass
+│   │   └── _media-queries.sass
+│   ├── utils
+│   │   ├── _buttons.sass
+│   │   ├── _cards.sass
+│   │   ├── _components.sass
+│   │   ├── _flexbox.sass
+│   │   ├── _grid-container.sass
+│   │   ├── _icons.sass
+│   │   ├── _mixins.sass
+│   │   ├── _navigation.sass
+│   │   ├── _tech-content.sass
+│   │   └── _timeline.sass
+│   └── views
+│       └── _portfolio.sass
+├── stores
+│   ├── academicStore.js
+│   ├── achievementsStore.js
+│   ├── portfolioStore.js
+│   └── utils
+│       ├── bio.js
+│       └── response.js
+├── tina
+│   ├── config.ts
+│   ├── __generated__
+│   │   ├── client.ts
+│   │   ├── config.prebuild.jsx
+│   │   ├── frags.gql
+│   │   ├── _graphql.json
+│   │   ├── _lookup.json
+│   │   ├── queries.gql
+│   │   ├── schema.gql
+│   │   ├── _schema.json
+│   │   ├── static-media.json
+│   │   └── types.ts
+│   └── tina-lock.json
+├── tree-map-documentation.txt
+└── tsconfig.json
+
+40 directories, 118 files
