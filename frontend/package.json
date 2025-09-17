@@ -4,35 +4,30 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "sass": "sass --watch sass:assets",
-    "build": "tinacms build && nuxt build",
-    "dev": "tinacms dev -c \"nuxt dev\"",
     "generate": "nuxt generate",
-    "start": "tinacms build && nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "sass": "sass --watch sass:assets",
+    "dev": "tinacms dev -c \"nuxt dev\"",
+    "build": "tinacms build && nuxt build",
+    "start": "tinacms build && nuxt preview"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.11.2",
-    "axios": "^1.11.0",
-    "nuxt": "^4.1.1",
-    "pinia": "^3.0.3",
-    "tinacms": "^2.8.2",
-    "vue": "^3.5.21"
+    "vue": "^3.4.31"
   },
   "devDependencies": {
-    "@nuxt/content": "^3.7.0",
-    "@nuxt/eslint": "^1.9.0",
-    "@nuxt/image": "^1.11.0",
-    "@nuxt/scripts": "^0.11.13",
-    "@nuxt/test-utils": "^3.19.2",
-    "@nuxt/ui": "^3.3.3",
-    "@tinacms/cli": "^1.10.2",
-    "@types/node": "^24.3.1",
-    "@unhead/vue": "^2.0.14",
-    "@vue/eslint-config-prettier": "^10.2.0",
-    "better-sqlite3": "^12.2.0",
-    "bootstrap-icons": "^1.13.1",
-    "sass": "^1.89.2",
-    "typescript": "^5.9.2"
+    "@nuxt/content": "^3.7.1",
+    "@nuxt/eslint": "^1.2.0",
+    "@nuxt/image": "^1.7.0",
+    "@nuxt/ui": "^2.17.0",
+    "@pinia/nuxt": "^0.5.1",
+    "@types/node": "^20.19.16",
+    "@unhead/vue": "^1.9.15",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "better-sqlite3": "^9.6.0",
+    "bootstrap-icons": "^1.11.3",
+    "nuxt": "^3.12.3",
+    "pinia": "^2.1.7",
+    "sass": "^1.92.1",
+    "typescript": "^5.5.3"
   }
 }
