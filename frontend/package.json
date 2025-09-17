@@ -25,7 +25,7 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@pinia/nuxt": "^0.5.1",
+    "@pinia/nuxt": "^0.5.5",
     "@tinacms/cli": "^1.10.3",
     "@types/node": "^24.5.1",
     "pinia": "^2.1.7",
