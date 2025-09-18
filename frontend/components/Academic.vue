@@ -6,17 +6,17 @@
                 :data="academic.timelineRange"
                 :cls="[['flex-column-align-items-center', 'timeline-item'],
                 'timeline-input-label', 'timeline-input']"
-                $srctoggle-visibility="toggleVisibility"/>
+                @toggleVisibility="toggleVisibility"/>
             </section>
             <section class="flex-wrap-row-justify-space-evenly">
                 <h3>
-                <Year v-for="data in academic.timelines" :key="data.id"
+                <DateYear v-for="data in academic.timelines" :key="data.id"
                         :year="data.year" :isVisible="data.isVisible"/>
                 </h3>
             </section>
 
             <section class="flex-wrap-row-justify-space-evenly">
-                    <Card v-for="data in academic.timelines" :key="data.id"
+                    <TimelineCard v-for="data in academic.timelines" :key="data.id"
                         :data="data"/>
             </section>
         </section>  
@@ -26,11 +26,7 @@
     </template>
 </template>
 <script setup>
-    import { academicStore } from '$src/stores/academicStore.js';
-
-    import Year from '$src/components/Date/Year.vue';
-    import Card from '$src/components/timeline/Card.vue';
-    import Timeline from '$src/components/timeline/Timeline.vue';
+    import { academicStore } from '$src/stores/academicStore';
 
     const academic = academicStore();
 
