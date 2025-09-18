@@ -1,6 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+.card-container p {
+  font-size: 1em;
+  text-align: justify;
+}
+.card-container h3, .card-container h4 {
+  font-family: "Nunito", sans-serif;
+}
+.card-container .tech ul li {
+  margin: 0.5em;
+  display: inline;
+}
+.card-container .tech ul {
+  padding: 0;
+}
+.card-container .tech ul li {
+  cursor: default;
+  padding-inline: 1em;
+  border-radius: 0.5em;
+  border: 1px solid black;
+}
+.card-container {
+  max-inline-size: 24em;
+  border-radius: 0.5em;
+  border: 1px solid black;
+  margin: 1em;
+  padding: 1em;
+  box-shadow: 4px 4px 20px 4px rgba(0, 0, 0, 0.1);
+}
+
 .business-card p {
   font-size: 1em;
   text-align: center;
@@ -12,12 +41,21 @@
   inline-size: 100%;
 }
 .business-card {
+  inline-size: 26em;
+  max-block-size: 16em;
+  border: 1px solid black;
   margin: 1em;
   padding: 1em;
-  max-block-size: 16em;
-  inline-size: 26em;
-  border: 1px solid black;
   box-shadow: 4px 4px 20px 4px rgba(0, 0, 0, 0.1);
+}
+.business-card ul li {
+  margin: 0.5em;
+  display: inline;
+}
+.business-card ul {
+  padding: 0;
+}
+.business-card {
   background-size: 9em;
   background-repeat: no-repeat;
   background-image: url("/media/images/cards/portfolio-card.svg");

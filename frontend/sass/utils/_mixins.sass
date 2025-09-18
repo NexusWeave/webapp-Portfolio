@@ -30,6 +30,19 @@
     @media screen and (min-width: $size)
         @content
 
+@mixin card-shadow-box()
+    margin: 1em
+    padding: 1em
+    box-shadow: 4px 4px 20px 4px rgba(0, 0, 0, 0.1)
+
+@mixin list-inline-reset()
+    ul 
+        li
+            margin: .5em
+            display: inline
+
+        padding: 0
+
 @mixin background-style($bg-color, $color)
     color: $color
     background-color: $bg-color
@@ -109,7 +122,8 @@
                     content: map.get($props, icon)
 
                 color: map.get($props, icon-color)
-
+                //font-family: "Bootstrap-icons"
+                
 @mixin input-styles($background-color)
     input[type="range"]
         &::-webkit-slider-runnable-track,
