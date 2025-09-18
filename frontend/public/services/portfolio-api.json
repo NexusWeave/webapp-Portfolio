@@ -1,0 +1,49 @@
+{
+    "data":[
+        {
+            "id": 0,
+            "content":
+            [
+                {
+                    "name": "Sosial Entreprenørskap",
+                    "date":
+                    {
+                        "to": "2026-01-01",
+                        "from": "2025-04-01"
+                    },
+
+                    "tech": 
+                    [
+                        {
+                            "type":"js",
+                            "label":"Vue.js"
+                            
+                        },
+                        {
+                            "type":"cms",
+                            "label":"Tina-cms"
+                            
+                        }
+
+                    ],
+                    "description":
+                    {
+                        "summary": "Denne delen av min reise, fikk jeg muligheten til å arbeide med et prosjekt for SosEnt, hvor jeg fikk muligheten til å få erfaringer knyttet til:",
+                        "list":
+                        [
+                            "Tidsstyring",
+                            "Kundesamarbeid og kommunikasjon",
+                            "Anbefaling av teknologier og verktøy",
+                            "Planleggingsprosessen og UML dokumentasjon"
+                            
+                        ]
+                    },
+                    "anchor":
+                    {
+                        "href": "https://sosent.no/"
+                    }
+                }
+            ]
+        }
+    ]
+}
