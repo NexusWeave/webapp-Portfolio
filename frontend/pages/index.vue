@@ -8,7 +8,16 @@
         </section>
     </section>
     <section :class="['flex-wrap-row-justify-space-evenly']">
-        <Achievements />
+        
     </section>
-
+    <Portfolio 
+        :data="portfolio.portfolio"
+        toogle="commercal"
+    />
 </template>
+<script setup lang="ts">
+    import { portfolioStore } from '~/stores/portfolioStore'
+        const portfolio = portfolioStore();
+
+    //console.log(portfolio.isLoaded);
+</script>
