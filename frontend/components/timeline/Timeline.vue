@@ -1,7 +1,7 @@
 <template>
     <section :class="cls[0]">
         <h2 :class="cls[1]">{{ data.field.title }}</h2>
-        <Inputs :data="data.field" :cls="cls[2]" v-model="modelValue" />
+        <FormInputs :data="data.field" :cls="cls[2]" v-model="modelValue" />
     </section>
 </template>
 
