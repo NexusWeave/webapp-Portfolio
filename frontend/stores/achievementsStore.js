@@ -34,8 +34,8 @@ export const achievementStore = defineStore("achievements",
                 await fetchData().then(async () =>
                     {
                         const json = await fetch('services/achievements-api.json');
-
                         const jsonData = await json.json();
+
                         jsonData.data.forEach(element => { this.addToStore(element);});
                         this.data.isLoaded = true;
 
