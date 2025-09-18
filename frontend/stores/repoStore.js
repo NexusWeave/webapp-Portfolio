@@ -3,7 +3,7 @@ import { reactive, ref } from 'vue';
 import { defineStore } from 'pinia';
 import { FetchApiResponse } from './utils/response';
 
-export const portfolioStore = defineStore('portfolio', 
+export const repoStore = defineStore('repoStore', 
     {
         state: () => (
             {
