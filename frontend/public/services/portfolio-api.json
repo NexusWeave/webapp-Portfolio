@@ -1,28 +1,29 @@
 {
     "data":[
         {
-            "id": 0,
             "content":
             [
                 {
+                    "id": 0,
                     "name": "Sosial Entreprenørskap",
                     "date":
                     {
-                        "to": "2026-01-01",
-                        "from": "2025-04-01"
+                        "current": null,
+                        "created": "2025-04-01"
                     },
 
                     "tech": 
                     [
                         {
-                            "type":"js",
+                            "id": 0,
+                            "type":["js"],
                             "label":"Vue.js"
                             
                         },
                         {
-                            "type":"cms",
+                            "id": 0,
+                            "type":["cms"],
                             "label":"Tina-cms"
-                            
                         }
 
                     ],

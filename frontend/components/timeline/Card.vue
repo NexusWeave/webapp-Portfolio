@@ -57,7 +57,7 @@
 <script setup>
 
 
-    import Icon from '../utils/Icon.vue';
+    import Icon from '../media/Icon.vue';
     import Anchor from '../navigation/Anchor.vue';
     
 

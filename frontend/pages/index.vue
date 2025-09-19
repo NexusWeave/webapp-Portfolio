@@ -14,10 +14,12 @@
     </section>
     <section>
         <h2> Portefølje </h2>
-    <Portfolio 
-        :data="portfolio.portfolio"
-        toogle="commercal"
-    />
+        <section class="flex-wrap-row-justify-space-evenly">
+            <CardsPortfolioCard v-for="content in portfolio.portfolio" :key="content.id" 
+                :data="content"
+                :cls = "['card-container', 'tech']"
+            />
+        </section>
     </section>
 </template>
 <script setup lang="ts">

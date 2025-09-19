@@ -29,8 +29,6 @@
     import { academicStore } from '$src/stores/academicStore';
 
     const academic = academicStore();
-
-
     const toggleVisibility = (id) => {
         const data = academic.timelines;
         id = parseInt(id);

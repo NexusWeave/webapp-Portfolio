@@ -1,40 +1,35 @@
 @use '../colors/colors' as color
 
 $compiled-tech-language:(
-    'c-tag': (
+    'c': (
         path:"", 
         svg-color: color.$compiled, 
         svg-hover: color.$compiled-light
     ),
-    'go-tag': (
+    'go': (
         path:"", 
         svg-color: color.$compiled, 
         svg-hover: color.$compiled-light
             ),
-    'cpp-tag': (
+    'cpp': (
         path:"", 
         svg-color: color.$compiled, 
         svg-hover: color.$compiled-light
     ),
-    'csharp-tag': (
+    'csharp': (
         path:"", 
         svg-color: color.$compiled, 
         svg-hover: color.$compiled-light
     ),
-    'sass-tag': (
-        path:"", 
-        svg-color: color.$Cyan-Blue-Azure, 
-        svg-hover: color.$Cyan-Blue-Azure-light
-    )
 )
 
 $interpreted-tech-language:(
-    'python-tag': (
+    'py': (
         path:"", 
         svg-color: color.$Cyan-Blue-Azure, 
         svg-hover: color.$Cyan-Blue-Azure-light
     ),
-    'javascript-tag': (
+    'js': (
         path:"", 
         svg-color: color.$Cyan-Blue-Azure,
         svg-hover: color.$Cyan-Blue-Azure-light
@@ -42,22 +37,23 @@ $interpreted-tech-language:(
 )
 
 $database-tech-language:(
-    'mariadb-tag': (
+    'mdb': (
         path:"", 
         svg-color: color.$db, 
         svg-hover: color.$db-light
     ),
-    'MSSQL-tag': (
+    'MSSQL': (
         path:"", 
         svg-color: color.$db, 
         svg-hover: color.$db-light
     ),
-    'sqlite-tag': (
+    'sqlite': (
         path:"", 
         svg-color: color.$db, 
         svg-hover: color.$db-light
     ),
-    'default-tag': (
+    
+    'default': (
         path:"", 
         svg-color: color.$db, 
         svg-hover: color.$db-light
@@ -65,11 +61,26 @@ $database-tech-language:(
 )
 
 $workflow-tools:(
-    'git-tag': (
+    'git': (
         path:"", 
         svg-color: color.$work-flow, 
         svg-hover: color.$work-flow-light
     ),
+    'cms': (
+        path:"", 
+        svg-color: color.$work-flow, 
+        svg-hover: color.$work-flow-light
+    ),
+    '11ty': (
+        path:"", 
+        svg-color: color.$work-flow, 
+        svg-hover: color.$work-flow-light
+    ),
+    'sass': (
+        path:"", 
+        svg-color: color.$compiled, 
+        svg-hover: color.$compiled-light
+    )
 )
 $tech-languages: (
     'workflow': $workflow-tools,

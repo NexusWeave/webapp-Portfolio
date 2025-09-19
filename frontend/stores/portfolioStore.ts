@@ -33,9 +33,20 @@ interface State
 
 }
 
+interface TechItems
+{
+    label: string;
+    type: string[];
+}
+
+
 const path:string = "services/portfolio-api.json";
 
-
+const generateCls = (type: string[]): string[] =>
+{
+    if (!Array.isArray(type)) return [];
+    return type.map(type => `${type.toLowerCase()}`)
+}
 export const portfolioStore = defineStore("portfolio",
     {
         state:(): State => ({
@@ -86,6 +97,31 @@ export const portfolioStore = defineStore("portfolio",
         
         getters: {
             isLoaded: (state) => state.data.isLoaded,
-            portfolio: (state) => state.data.portfolio
+            
+            // Vi endrer navnet til portfolioWithClasses (Anbefalt) for å unngå kollisjon
+            portfolio: (state) => { 
+
+                // 1. Mappe over portfolio (Bruker runde parenteser for implisitt retur av objekt)
+                return state.data.portfolio.map(item => ({ 
+                    
+                    ...item, // KOPIERER ALLE FELT fra item
+                    
+                    // 2. Mappe over content (legger til ny content-array)
+                    content: item.content.map(content => ({
+                        
+                        ...content, // KOPIERER ALLE FELT fra content
+                        
+                        // 3. Mappe over tech
+                        tech: content.tech ? content.tech.map((tech: TechItems)=> ({
+                            
+                            ...tech, // KOPIERER ALLE FELT fra tech (id, type, label, etc.)
+                            
+                            // 4. Legger til det beregnede feltet i det dypeste objektet
+                            cls: generateCls(tech.type) 
+                            
+                        })) : content.tech // Vedlikehold null/undefined hvis tech mangler
+                    }))
+                }));
+            }
         }  
 });

@@ -10,11 +10,11 @@
         >
 
         <template v-if="isMedia() === 'img'">
-            <Figure :data="img" :cls="img.cls" />
+            <MediarFigure :data="img" :cls="img.cls" />
         </template>
 
         <template v-else-if="isMedia() == cls[cls.length - 1]">
-            <Icon :type="data.type[0]" :label="data.label" :cls="[cls[cls.length - 1], data.type[0]]"/>
+            <MediaIcon :type="data.type[0]" :label="data.label" :cls="[cls[cls.length - 1], data.type[0]]"/>
             {{ data.label }}
         </template>
 
@@ -28,9 +28,6 @@
 <script setup>
 
     import { defineProps } from 'vue';
-
-    import Icon from '$src/components/utils/Icon.vue';
-    import Figure from '$src/components/media/Figure.vue';
 
     const props = defineProps({
         data: {
