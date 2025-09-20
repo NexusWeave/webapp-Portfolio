@@ -1,5 +1,5 @@
-import { defineConfig } from "tinacms";
-
+import { defineConfig} from "tinacms";
+//import { geberateHex } from 'utils/';
 // Your hosting provider likely exposes this as an environment variable
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -9,30 +9,26 @@ const branch =
 
 const techOptions = [
   // Frontend
-  "CSS",
-  "Sass",
-  "HTML",
-  "Vue.js",
-  "JavaScript",
-  "TypeScript",
+  "CSS", "HTML", "Vue.js", 
+  "Nuxt.js", "react.js", "TS.js",
 
   // Backend
-  "Python",
-  "Django",
-  "Flask",
+  "Flask.py", "Django.py", "Py.cord.py", "pandas.py", "numpy.py", "matplotlib.py",
+  "C#",
+  "C",
 
   // Databases
-  "MSSQL",
-  "MySQL",
-  "SQLite",
-  "MongoDB",
-  "PostgreSQL",
+  "MSSQL", "MySQL", "SQLite", "MongoDB", "PostgreSQL",
+
+  //  Workflow
+  "CMS", "GIT", "Sass", "Agile"
 ]
 
 const tagsOptions = [
   "news",
   "dev-journey",
 ]
+
 export default defineConfig({
   branch,
 
@@ -55,137 +51,252 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "academic",
-        label: "Academic Timeline",
-        path: "content/academic",
-        fields: [
+        format: 'json',
+        name: 'academic',
+        path: 'content/academic',
+        label: 'Academic component',
+        ui: {global: true},
+        fields:
+        [
           {
-            name: "date",
-            label: "Date",
-            required: true,
-            type: "datetime"
-          },
-          {
-            isTitle: true,
-            name: "title",
-            required: true,
-            label: "Title",
-            type: "string",
-            description: "Title of the Subject"
-          },
-          {
-            label: "Name",
-            type: "string",
-            required: true,
-            name: "institution",
-            description: "Name of the institution"
-          },
-          {
+            label: 'Akademiske Hendelser',
+            name: 'academic_timeline',
+            type: 'object',
             list: true,
-            name: "tech",
-            type: "string",
-            options: techOptions,
-            label: "Technologies"
-          },
-          {
-            name: "body",
-            isBody: true,
-            required: true,
-            label: "Summary",
-            type: "rich-text"
-          },
-          {
-            type: "string",
-            name: "location",
-            label: "Location",
-            description: "Location of institution"
-          },
-          {
-            name: "link",
-            label: "Link",
-            type: "string",
-            required: true,
-            description: "Link to institution"
-          },
+            fields:
+            [
+              {
+                name: "date",
+                label: "Year",
+                required: true,
+                type: "datetime",
+                ui: { dateFormat: 'YYYYY'}
+              },
+              {
+                label: "Name",
+                type: "string",
+                name: "institution",
+                description: "Name of the institution"
+              },
+              {
+                name: "institution_link",
+                label: "Link",
+                type: "string",
+                description: "Link to institution"
+              },
+              {
+                isTitle: true,
+                name: "title",
+                required: true,
+                label: "Title",
+                type: "string",
+                description: "Title of the Subject"
+              },
+              {
+                list: true,
+                name: "tech",
+                type: "string",
+                options: techOptions,
+                label: "Technologies"
+              },
+              {
+                name: "body",
+                isBody: true,
+                required: true,
+                label: "Summary",
+                type: "rich-text"
+              },
+              {
+                type: "string",
+                name: "location",
+                label: "Location",
+                description: "Location of institution"
+              },
+              {
+                name: "loc_link",
+                label: "Link",
+                type: "string",
+                description: "Link to institution location"
+              },
+                            {
+                type: "string",
+                name: "references",
+                label: "References",
+                description: "Title of the reference "
+              },
+              {
+                name: "ref_link",
+                label: "Link",
+                type: "string",
+                description: "Link to reference"
+              },
+            ]
+          }
         ],
       },
       {
-        name: "achievements",
-        label: "Achievements Timeline",
-        path: "content/achievements",
-        fields: [
+        format: 'json',
+        name: 'achievements',
+        path: 'content/achievement',
+        label: 'Achevements Component',
+        ui: {global: true},
+        fields:
+        [
           {
-            name: "date",
-            label: "Date",
-            required: true,
-            type: "datetime",
-          },
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-            description: "Title of the Subject",
-          },
-          {
+            label: 'Presentasjons Hendelser',
+            name: 'achievement_timeline',
+            type: 'object',
             list: true,
-            name: "tech",
-            type: "string",
-            options: techOptions,
-            label: "Technologies"
-          },
+            fields:
+            [
+              {
+                name: "date",
+                label: "Year",
+                required: true,
+                type: "datetime",
+                ui: { dateFormat: 'YYYYY'}
+              },
+              {
+                label: "Name",
+                type: "string",
+                name: "institution",
+                description: "Name of the institution"
+              },
+              {
+                isTitle: true,
+                name: "title",
+                required: true,
+                label: "Title",
+                type: "string",
+                description: "Title of the Subject"
+              },
+              {
+                list: true,
+                name: "tech",
+                type: "string",
+                options: techOptions,
+                label: "Technologies"
+              },
+              {
+                name: "body",
+                isBody: true,
+                required: true,
+                label: "Summary",
+                type: "rich-text"
+              },
+            ]
+          }
+          
+        ],
+      },
+      {
+        format: 'json',
+        name: 'portfolio',
+        path: 'content/portfolio',
+        label: 'Portefolio Component',
+        ui: {global: true},
+        fields:
+        [
           {
-            name: "summary",
-            isBody: true,
-            required: true,
-            label: "Summary",
-            type: "rich-text",
-          },
-          {
+            label: 'Project',
+            name: 'portfolio',
+            type: 'object',
             list: true,
-            required: true,
-            type: "rich-text",
-            name: "listed_summary",
-            label: "Summary of learning",
-            description: "listed sumary of what was experienced (delimeter ',')"
-          },
-
-          {
-            type: "string",
-            name: "link",
-            label: "Link",
-            required: true,
-            description: "Link to institution",
-          },
+            fields:
+            [
+              {
+                name: "created",
+                label: "Project Initialized",
+                required: true,
+                type: "datetime",
+                ui: { dateFormat: 'DD-MM-YY'}
+              },
+              {
+                name: "current",
+                label: "Project current",
+                type: "datetime",
+                ui: { dateFormat: 'DD-MM-YY'}
+              },
+              {
+                label: "Name",
+                type: "string",
+                name: "institution",
+                description: "Name of the institution"
+              },
+              {
+                isTitle: true,
+                name: "project_link",
+                required: true,
+                label: "Link",
+                type: "string",
+                description: "Link to the webpage"
+              },
+              {
+                list: true,
+                name: "tech",
+                type: "string",
+                options: techOptions,
+                label: "Technologies"
+              },
+              {
+                name: "body",
+                isBody: true,
+                required: true,
+                label: "Summary",
+                type: "rich-text"
+              },
+            ]
+          }
+          
         ],
       },
       {
         name: "about",
         label: "About Krigjo25",
         path: "content/about",
-        fields: [
+        fields:
+        [
+          {
+            name: "created",
+            label: "Published",
+            required: true,
+            type: "datetime",
+            ui: { dateFormat: 'DD-MM-YY'}
+          },
+          {
+            name: "current",
+            label: "Updated",
+            type: "datetime",
+            ui: { dateFormat: 'DD-MM-YY'}
+          },
           {
             isTitle: true,
             name: "title",
             required: true,
             type: "string",
-            label: "Title"
+            label: "Title",
+            description: "Page Title"
           },
           {
             isBody: true,
-            label: "Body",
+            label: "Profile information",
             required: true,
             type: "rich-text",
             name: "profile_info",
-            description: "Profile information about krigjo25"
+            description: "A short but, describeful insight"
           },
           {
-            isBody: true,
-            label: "Body",
             required: true,
+            label: "Deeper Dig ",
             type: "rich-text",
             name: "deeper_info",
+            description: "krigjo25 History"
+          },
+          {
+            required: true,
+            label: "History",
+            type: "rich-text",
+            name: "history",
             description: "krigjo25 History"
           },
         ],
@@ -195,6 +306,19 @@ export default defineConfig({
         label: "Dev-profile",
         path: "content/dev",
         fields: [
+          {
+            name: "created",
+            label: "Published",
+            required: true,
+            type: "datetime",
+            ui: { dateFormat: 'DD-MM-YY'}
+          },
+          {
+            name: "current",
+            label: "Updated",
+            type: "datetime",
+            ui: { dateFormat: 'DD-MM-YY'}
+          },
           {
             name: "title",
             isTitle: true,
@@ -216,6 +340,13 @@ export default defineConfig({
             name: "frontend_profile",
             label: "Frontend profile"
           },
+          {
+            isBody: true,
+            required: true,
+            type: "rich-text",
+            name: "learning_journey",
+            label: "My learning journey"
+          },
         ],
       },
       {
@@ -224,6 +355,19 @@ export default defineConfig({
         path: "content/blog_posts",
         fields:
         [
+          {
+            name: "created",
+            label: "Published",
+            required: true,
+            type: "datetime",
+            ui: { dateFormat: 'DD-MM-YY'}
+          },
+          {
+            name: "current",
+            label: "Updated",
+            type: "datetime",
+            ui: { dateFormat: 'DD-MM-YY'}
+          },
           {
             name: "date",
             label: "Date",
