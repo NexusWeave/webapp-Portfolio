@@ -1,7 +1,8 @@
 <template>
     <section v-if="!!data.isVisible"
-    v-for="content in data.content" :key="data.year"
-    :class="[cls[0], {'timeline-active': !!data.isVisible }]">
+        v-for="(content, i) in data.content" :key="i"
+        :class="[cls[0], {'timeline-active': !!data.isVisible }]">
+        
         <h3 v-if="!!content.name">{{ content.name }}</h3>
         <h3 v-else>{{ content.title }}</h3>
         <h4 v-if="!!content.title && !!content.name"> {{ content.title }} </h4>
@@ -54,37 +55,23 @@
     </section>
 </template>
 
-<script setup>
-
-
+<script setup lang="ts">
     import Icon from '../media/Icon.vue';
     import Anchor from '../navigation/Anchor.vue';
     
-
-    const props = defineProps({
-        data:
-        {
-            type: Object,
-        },
-        cls:
-        {
-            type: Array,
-            required: false,
-            default: () => [['flex-wrap-column', 'academic-content', 'component-w-g-b'],
-
-                        'flex-column-justify-center-align-center',
-                        'flex-wrap-row-align-content-start-justify-space-evenly',
-                        ['tech-container', 'flex-wrap-row-justify-space-evenly'],
-                        'tech-item', 'timeline-description',
-                        'timeline-list', 'timeline-item']
-        },
-        btn :
-        {
-            type: Object,
-        },
+    interface Props
+    {
+        cls?: Array<string | string[]>;
+        data: Record<string, any>;
+    }
+    
+    const props = withDefaults(defineProps<Props>(),
+    {
+        cls: () => []
     });
-
-    const cls = !!props.cls ? props.cls : null;
+    
+    const cls = props.cls;
+    const data = computed(() => props.data);
     const emits = defineEmits(['toggleVisibility']);
 
     //console.log("Card data:", content.value);

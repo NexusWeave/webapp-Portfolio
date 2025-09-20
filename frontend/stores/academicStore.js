@@ -18,14 +18,25 @@ export const academicStore = defineStore("Academic",
         {
             addToStore(item)
             {
-                if (item.id == 0) item.isVisible = true;
-                else item.isVisible = false;
-
                 const timeline = this.data.timeline;
                 timeline.push(item);
                 //console.warn("Adding data to store:", item);
             },
-
+            toggleVisibility(id)
+            {
+                const data = this.data.timeline;
+                data.forEach(item => 
+                {
+                    if (item.id == id) {
+                        item.isVisible = true
+                        console.log(item.id, item.isVisible)
+                    } else {item.isVisible = false
+                        console.log(item.id, item.isVisible)
+                    }
+                    
+                }
+                )
+            },
             async fetchData()
             {
                 const data = this.data
@@ -49,13 +60,20 @@ export const academicStore = defineStore("Academic",
         },
         getters: {
             isLoaded: (state) => state.data.isLoaded,
-            timelines: (state) => state.data.timeline,
-            timelineRange : (state) =>
+            timelines: (state) => {
+                return state.data.timeline.map(item =>
+                ({
+                    isVisible: item.id == 0,
+                    ...item
+                })
+            )},
+            range : (state) =>
             {
                 
                 const n = 1;
                 const data = reactive({});
                 const timeline = state.data.timeline;
+
                 data.field = 
                 {
                     value: '0',

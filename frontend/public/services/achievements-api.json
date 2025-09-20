@@ -3,7 +3,32 @@
     [
         {
             "id": 0,
-            "year": 2025,
+            "year": 2010,
+            "content":
+            [
+                {
+                    "title": "å lære HTML og CSS: Et tydelig tegn på initiativ og læringsvilje.",
+                    "tech": ["HTML", "CSS"],
+                    "description":
+                    {
+                        "summary": "Reisen min innen Webutvikling startet allerede i 10.klasse, jeg ble facinert av både min bror og far sin studie. Dette engasjementet ledet til god overfladisk forståelse av webdesing.   På videregående ble jeg utfordret av abstrakt logikk i JavaScript og PHP, og jeg innsåat jeg manglet den konseptuelle modenheten til å omgjøre abstrakt logikk til praktiske systemer.  Jeg valgte bevisst å ta en pause fra koding (2011-2019) ledet meg til å dyrke kritisk tenkning - en ferdig som i 2019 ga meg et nytt og dypere systemperspektiv.",
+                        "list":
+                        [
+                            "Tidlig engasjement - Startet med webutvikling i 10.klasse,",
+                            "Inspirasjon - Fascinert av min bror og far med bakgrunn i IT,",
+                            "Tidlig Begrensning - Engasjementet ledet til god men overfladigsk forståelse,",
+                            "Konseptuelt Hull - På videregående innså jeg at jeg manglet konseptuell modenhet til å omgjøre abstrakt logikk (JavaScript/PHP) til praktiske systemer,",
+                            "Bevisst pause - Tok en pause fra koding (2011-2019",
+                            "Utvikling av Kjerneferdigheter - Gjenopptok læringen i 2019 etter å ha utviklet kritisk tenkning."
+                            
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "year": 2019,
             "content":
             [
                 {

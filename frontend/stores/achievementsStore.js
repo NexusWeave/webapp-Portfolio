@@ -4,6 +4,8 @@ import { reactive } from "vue";
 import { defineStore } from "pinia";
 import { fetchData } from "./utils/response.js";
 
+const path = 'services/achievements-api.json';
+
 export const achievementStore = defineStore("achievements",
     {
         state:() => ({
@@ -19,11 +21,8 @@ export const achievementStore = defineStore("achievements",
             addToStore(item)
             {
                 const achievement = this.data.achievements;
-
-                if (item.id == 0) item.isVisible = true;
-                else item.isVisible = false;
-
                 achievement.push(item);
+
                 //console.warn("Adding data to AchivementStore:", item);
             },
             async fetchData()
@@ -33,7 +32,7 @@ export const achievementStore = defineStore("achievements",
 
                 await fetchData().then(async () =>
                     {
-                        const json = await fetch('services/achievements-api.json');
+                        const json = await fetch(path);
                         const jsonData = await json.json();
 
                         jsonData.data.forEach(element => { this.addToStore(element);});
@@ -45,12 +44,28 @@ export const achievementStore = defineStore("achievements",
                                 this.data.isLoaded = false;
                         });
             },
+            toggleVisibility(id)
+            {
+                const data = this.data.achievements;
+
+                data.forEach(item =>
+                {
+                    if (item.id == id) item.isVisible = !item.isVisible; else item.isVisible = false;
+                }
+                )
+            }
         },
         
         getters: {
             isLoaded: (state) => state.data.isLoaded,
-            achievements: (state) => state.data.achievements,
-            timelineRange : (state) =>
+            timelines: (state) => {
+                return state.data.achievements.map(item =>
+                ({
+                     isVisible: item.id == 0,
+                    ...item
+                })
+            )},
+            range : (state) =>
             {
                 
                 const n = 1;

@@ -8,14 +8,15 @@
         </section>
     </section>
     <section :class="['flex-wrap-row-justify-space-evenly']">
-        <Academic :data="academic"/>
-        <Achievements :data="achievements"/>
+        <Timeline :data="academic.timelines" :range="academic.range"  @toggleVisibility ="toggleAcademic"/>
+        <Timeline :data="achievements.timelines" :range="achievements.range"
+              :cls="['component-seagreen', 'component-w-g-t']" @toggleVisibility ="toggleAchievement"/>
 
     </section>
     <section>
         <h2> Portefølje </h2>
         <section class="flex-wrap-row-justify-space-evenly">
-            <CardsPortfolioCard v-for="content in portfolio.portfolio" :key="content.id" 
+            <PortfolioCard v-for="content in portfolio.portfolio" 
                 :data="content"
                 :cls = "['card-container', 'tech']"
             />
@@ -31,6 +32,19 @@
     const academic = academicStore();
     const portfolio = portfolioStore();
     const achievements = achievementStore();
+
+    //const isLoaded = () => {};
+    const toggleAcademic = (id:number) => 
+        {
+            academic.toggleVisibility(id);
+            //console.warn(`Toggling visibility for Academic ID:${id}`)
+        };
+    
+    const toggleAchievement = (id:number) => 
+        {
+            achievements.toggleVisibility(id);
+            //console.warn(`Toggling visibility for Achievement ID:${id}`)
+        };
 
     //console.log(portfolio.isLoaded);
 </script>

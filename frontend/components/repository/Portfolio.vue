@@ -11,7 +11,9 @@
         </section>
 
         <section class="repo-container flex-wrap-row-justify-center">
-            <Repo v-if="pfolio.isLoaded" :data="pfolio.displayData()"/>
+            <section class="flex-wrap-row" v-for="data in pfolio.displayData()" :key="data.id">
+                <BCard :data="data" />
+            </section>
         </section>
 
     </section>
