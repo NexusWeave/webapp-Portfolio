@@ -13,9 +13,8 @@ const techOptions = [
   "Nuxt.js", "react.js", "TS.js",
 
   // Backend
-  "Flask.py", "Django.py", "Py.cord.py", "pandas.py", "numpy.py", "matplotlib.py",
-  "C#",
-  "C",
+  "Flask.py", "Django.py", "Py-cord.py", "pandas.py", "numpy.py", "matplotlib.py",
+  ".NET", "C",
 
   // Databases
   "MSSQL", "MySQL", "SQLite", "MongoDB", "PostgreSQL",
@@ -220,16 +219,16 @@ export default defineConfig({
               {
                 label: "Name",
                 type: "string",
-                name: "institution",
+                name: "name",
                 description: "Name of the institution"
               },
               {
                 isTitle: true,
-                name: "project_link",
+                name: "href",
                 required: true,
                 label: "Link",
                 type: "string",
-                description: "Link to the webpage"
+                description: "Link to the webpage \"https://example.com\""
               },
               {
                 list: true,
@@ -242,9 +241,16 @@ export default defineConfig({
                 name: "body",
                 isBody: true,
                 required: true,
-                label: "Summary",
+                label: "Description",
                 type: "rich-text"
               },
+              {
+                list:true,
+                name: "list",
+                type: "string",
+                label: "Summary",
+              },
+              
             ]
           }
           
