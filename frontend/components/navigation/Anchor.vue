@@ -10,7 +10,7 @@
         >
 
         <template v-if="isMedia() === 'img'">
-            <MediarFigure :data="img" :cls="img.cls" />
+            <MediaFigure :data="img" :cls="img.cls" />
         </template>
 
         <template v-else-if="isMedia() == cls[cls.length - 1]">

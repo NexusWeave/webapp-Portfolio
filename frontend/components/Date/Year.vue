@@ -1,6 +1,6 @@
 <template>
     <template v-if="isVisible">
-        <time :datetime="year">{{ year }}</time>
+        <time :datetime="year.start">{{ year.start.getFullYear() }}</time>
     </template>
     
 </template>
@@ -8,8 +8,8 @@
     import { computed, defineProps } from 'vue';
 
     const props = defineProps({
-        year: {
-            type: Number,
+        data: {
+            type: Date,
             required: true
         },
         isVisible: {
@@ -18,7 +18,7 @@
         }
     });
 
-    const year = props.year
+    const year = props.data;
 
     const isVisible = computed(() => {
         return props.isVisible !== undefined ? props.isVisible : true;

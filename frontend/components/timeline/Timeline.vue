@@ -3,19 +3,18 @@
         <section :class="[cls[0], cls[1]]">
             <section :class="cls[2], cls[3]">
                 <TimelineFilter
-                :data="range"
-                :cls="[['flex-column-align-items-center', 'timeline-item'],
-                'timeline-input-label', 'timeline-input']"
-                @toggleVisibility="toggleVisibility"/>
+                    :data="props.range"
+                    :cls="[['flex-column-align-items-center', 'timeline-item'],
+                    'timeline-input-label', 'timeline-input']"
+                    @toggleVisibility="toggleVisibility"
+                />
             </section>
-
             <section :class="cls[3]">
                 <h3>
-                    <DateYear v-for="data in timeline" :key="data.id"
-                        :year="data.date" :isVisible="data.isVisible"/>
+                    <DateYear v-for="data in timeline.date" :key="data.id"
+                        :data="data.date" :isVisible="data.isVisible"/>
                 </h3>
             </section>
-
             <section :class="cls[3]">
                 <TimelineCard v-for="data in timeline" :key="data.id"
                         :data="data" :cls="
@@ -31,9 +30,7 @@
                     'timeline-list', 'timeline-item']"/>
             </section>
         </section>
-
     </template>
-
 </template>
 <script setup lang="ts">
 
@@ -81,7 +78,6 @@
         ];
     });
 
-    const range = props.range;
     const timeline = computed(() => props.data);
 
 
@@ -91,5 +87,5 @@
             emits('toggleVisibility', id);
         };
 
-    //console.warn("Academic data on load:", academic.timelines);
+    console.warn("Academic data on load:", timeline.value);
 </script>

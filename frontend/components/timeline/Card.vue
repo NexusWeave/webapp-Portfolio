@@ -1,9 +1,8 @@
 <template>
     <section v-if="!!data.isVisible"
         :class="[cls[0], {'timeline-active': !!data.isVisible }]">
-        
         <h3 v-if="!!data.institution">
-             <Anchor :data="data.institution" />
+             <NavigationAnchor :data="data.institution" />
         </h3>
         <h3 v-else>{{ data.name }}</h3>
         <h4 v-if="!!data.title"> {{ data.title }}</h4>
@@ -11,7 +10,7 @@
         <section v-if="!!data.start || !!data.end"
         :class="cls[1]">
             <section class="flex-wrap-row-justify-center">
-                <Icon :cls="['icon', 'calendar']" :label="'school year'"/>
+                <MediaIcon :cls="['icon', 'calendar']" :label="'school year'"/>
                 <span>{{ data.start}}</span>
                 {{!!data.end ? ' - ' : ''}}
                 <span v-if="!!data.end">{{data.end }}</span>
@@ -42,21 +41,19 @@
         <section :class="cls[2]">
 
             <span v-if="!!data.location">
-                <Anchor :data="data.location" />
+                <NavigationAnchor :data="data.location" />
             </span>
             <span v-if="!!data.diploma">
-                <Anchor :data="data.diploma" />
+                <NavigationAnchor :data="data.diploma" />
             </span>
             <span v-if="!!data.reference">
-                <Anchor :data="data.reference" />
+                <NavigationAnchor :data="data.reference" />
             </span>
         </section>
     </section>
 </template>
 
 <script setup lang="ts">
-    import Icon from '../media/Icon.vue';
-    import Anchor from '../navigation/Anchor.vue';
     
     interface Props
     {

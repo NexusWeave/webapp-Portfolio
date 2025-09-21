@@ -5,35 +5,36 @@ import { defineStore } from "pinia";
 import { fetchExtensionType} from "../utils/utils";
 //import { fetchData } from "../utils/response.js";
 import { academic } from "../content/academic/academic.json"
-interface Anchor
+
+interface Data
 {
-    label: string;
-    type: string[]
+    timeline: Item[]
+    isLoaded: boolean;
 }
 
-interface Content {
-    name:string;
-    anchor: Anchor;
-    [key:string]: any;
+interface State
+{
+    data: Data
 }
 
 interface Item
 {
-    
-    tech: []
-    end: Date,  
     id: Number;
-    start: Date,
     body: string;
     title: string;
     location: string;
-    loc_link: string;
-    isVisible: boolean;
+    loc_link?: string;
+    ref_link?: string;
+    end?: Date | string;
+    references?: string;
     institution: string;
+    isVisible?: boolean;
+    tech?: Array<string> ;
+    start: Date | string;
     institution_link: string;
-    field: Record<string, any>
+    
+    
 }
-
 interface ItemV2
 {
     
@@ -47,24 +48,6 @@ interface ItemV2
     [key:string]: any;
     // content : Content[]
     
-}
-
-interface Data
-{
-    timeline:Item[]
-    isLoaded: boolean;
-}
-
-interface State
-{
-    data: Data
-
-}
-
-interface TechItems
-{
-    label: string;
-    type: string[];
 }
 
 export const academicStore = defineStore("Academic",
@@ -81,21 +64,17 @@ export const academicStore = defineStore("Academic",
         {
             addToStore(item:Item)
             {
+                item.isVisible = item.id == 0;
                 this.data.timeline.push(item);
                 //console.warn("Adding data to store:", item);
             },
-            toggleVisibility(id:Number)
+            toggleVisibility(id:number)
             {
                 const data = this.data.timeline;
+                
                 data.forEach(item => 
                 {
-                    if (item.id == id) {
-                        item.isVisible = true
-                        //console.log(item.id, item.isVisible)
-                    } else {item.isVisible = false
-                        //console.log(item.id, item.isVisible)
-                    }
-                    
+                    if (item.id == id) item.isVisible = true; else item.isVisible = false
                 }
                 )
             },
@@ -106,10 +85,10 @@ export const academicStore = defineStore("Academic",
 
                 await fetchData().then(async () =>
                     {
-                    //const json = await fetch('services/academic-api.json');   
-                    //const jsonData = await json.json();
-
-                    academic.forEach(element => { this.addToStore(element)});
+                    academic.forEach(element =>
+                        { 
+                            this.addToStore({...element, isVisible: false});
+                        });
                     this.data.isLoaded = true;
 
                 }).catch((error) => {
@@ -122,45 +101,40 @@ export const academicStore = defineStore("Academic",
             isLoaded: (state) => state.data.isLoaded,
             timelines: (state) =>
                 {
+
                 return state.data.timeline.map(item =>
                 ({
+
+                    id: item.id,
                     title: item.title,
-                    id: generateHexID(),
                     name: item.institution,
-                    isVisible: item.id == 0,                    
+                    isVisible: item.isVisible,
                     body: {body:item.body, list:[]},
-                    location: { href: item.loc_link, label: item.location},
-                    date: { end: new Date(item.end), start: new Date(item.start)},
-
-                    institution: 
-                    { 
-                        label: item.institution, 
-                        href: item.institution_link
-                    },
-
-                    tech : item.tech.flatMap(element =>
+                    references: { href: item.ref_link, label:item.references },
+                    date: { end: item.end ?? undefined, start: new Date(item.start)},
+                    location: { type: ["globe","external"], href: item.loc_link, label: item.location},
+                    institution: { type: ["globe","external"], label: item.institution, href: item.institution_link},
+                    tech : item.tech?.flatMap(element =>
                         {
                             const ext = fetchExtensionType(element);
                             if (!!ext) {return [{label: element, type: ext }]} else {return []}
                         })
+                    
                 })
             )},
             range : (state) =>
             {
                 const n = 1;
-                const data = reactive({});
+
                 const timeline = state.data.timeline;
 
-                data.field = 
-                {
+                return {
                     value: '0',
                     type: 'range',
                     name: "akademic-timeline",
                     title: 'Akademisk Tidslinje',
                     rangeMax: timeline.length - n,
                 }
-                return data;
-
             },
         },  
 });

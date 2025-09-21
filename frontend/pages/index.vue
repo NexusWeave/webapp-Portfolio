@@ -9,8 +9,8 @@
     </section>
     <section :class="['flex-wrap-row-justify-space-evenly']">
         <Timeline :data="academic.timelines" :range="academic.range"  @toggleVisibility ="toggleAcademic"/>
-        <Timeline :data="achievements.timelines" :range="achievements.range"
-              :cls="['component-seagreen', 'component-w-g-t']" @toggleVisibility ="toggleAchievement"/>
+        <!--Timeline :data="achievements.timelines" :range="achievements.range"
+              :cls="['component-seagreen', 'component-w-g-t']" @toggleVisibility ="toggleAchievement"/-->
 
     </section>
     <section>
@@ -37,7 +37,7 @@
     const toggleAcademic = (id:number) => 
         {
             academic.toggleVisibility(id);
-            //console.warn(`Toggling visibility for Academic ID:${id}`)
+            console.warn(`Toggling visibility for Academic ID:${id} `)
         };
     
     const toggleAchievement = (id:number) => 

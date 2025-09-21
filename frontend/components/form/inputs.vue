@@ -8,7 +8,7 @@
         :min="data.type =='range' ? !!data.rangeMin? data.rangeMin : 0 : ''"
         :step="data.type =='range' ? 1 : 0"
         :max="data.type =='range' ? !!data.rangeMax? data.rangeMax : 100 : ''"
-        :value="data.value ? data.value : ''"
+        :value="!!data.value ? data.value : ''"
         :type="data.type ? data.type : 'text'"
         :size="!!data.size ? data.size : '30'"
         :width="!!data.width ? data.width : ''"

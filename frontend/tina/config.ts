@@ -12,7 +12,7 @@ const tagsOptions = [
   "news",
   "dev-journey",
 ]
-
+const counter = 0;
 
 export default defineConfig({
   branch,
@@ -38,18 +38,25 @@ export default defineConfig({
       {
         format: 'json',
         name: 'academic',
+        ui: {global: true},
         path: 'content/academic',
         label: 'Academic component',
-        ui: {global: true},
         fields:
         [
           {
-            label: 'Akademiske Hendelser',
-            name: 'academic',
-            type: 'object',
             list: true,
+            type: 'object',
+            name: 'academic',
+            label: 'Akademiske Hendelser',
             fields:
             [
+              {
+                name: "id",
+                type: "number",
+                label: "ID ",
+                required: true,
+                //ui: { component: null},
+              },
               {
                 name: "start",
                 label: "Start Year",

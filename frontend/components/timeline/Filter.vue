@@ -1,7 +1,7 @@
 <template>
     <section :class="cls[0]">
-        <h2 :class="cls[1]">{{ data.field.title }}</h2>
-        <FormInputs v-if="data.field.rangeMax > 0" :data="data.field"
+        <h2 :class="cls[1]">{{ data.title }}</h2>
+        <FormInputs v-if="data.rangeMax > 0" :data="data"
             :cls="[cls[2]]" v-model="modelValue" />
     </section>
 </template>
@@ -27,13 +27,14 @@
 
     const modelValue = computed(
         {
-            get: () => data.value.field.value,
+            get: () => data.value.value,
             set: (value) => 
             {
                 emits('toggleVisibility', value);
             }
             
         });
-        //console.warn("Range value changed:", rangeValue);
-    //console.warn("Timeline data:", data.value);
+
+    //console.warn("Range value changed:", rangeValue);
+    //console.warn("Timeline data:", data);
 </script>
