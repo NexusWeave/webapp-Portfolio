@@ -1,27 +1,44 @@
 //  Achievements Timeline Store
-
-import { reactive } from "vue";
 import { defineStore } from "pinia";
-import { fetchData } from "../utils/response.js";
+import { achievement } from "../content/achievement/achievements.json";
 
-const path = 'services/achievements-api.json';
+interface Data
+{
+    isLoaded:boolean;
+    timeline:Array<Record<string,any>>;
+}
+interface State
+{
+    data:Data
+}
+
+interface Item
+{
+    id: number;
+    body: string;
+    start: string;
+    title: string;
+    tech?:string[];
+    summary: string[];
+    isVisible: boolean;
+}
 
 export const achievementStore = defineStore("achievements",
     {
-        state:() => ({
+        state: (): State => ({
             data:
             {
-                achievements: [],
+                timeline: [],
                 isLoaded: false,
                 
             }
         }),
         actions:
         {
-            addToStore(item)
-            {
-                const achievement = this.data.achievements;
-                achievement.push(item);
+            addToStore(item: Item)
+            { 
+                item.isVisible = item.id == 0;
+                this.data.timeline.push(item);
 
                 //console.warn("Adding data to AchivementStore:", item);
             },
@@ -32,10 +49,7 @@ export const achievementStore = defineStore("achievements",
 
                 await fetchData().then(async () =>
                     {
-                        const json = await fetch(path);
-                        const jsonData = await json.json();
-
-                        jsonData.data.forEach(element => { this.addToStore(element);});
+                        achievement.forEach(element => { this.addToStore({...element, isVisible: false});});
                         this.data.isLoaded = true;
 
                     }).catch((error) =>
@@ -44,9 +58,9 @@ export const achievementStore = defineStore("achievements",
                                 this.data.isLoaded = false;
                         });
             },
-            toggleVisibility(id)
+            toggleVisibility(id: Number)
             {
-                const data = this.data.achievements;
+                const data = this.data.timeline;
 
                 data.forEach(item =>
                 {
@@ -59,30 +73,36 @@ export const achievementStore = defineStore("achievements",
         getters: {
             isLoaded: (state) => state.data.isLoaded,
             timelines: (state) => {
-                return state.data.achievements.map(item =>
+
+                return state.data.timeline.map(item =>
                 ({
-                     isVisible: item.id == 0,
-                    ...item
+                    ...item,
+                    id: item.id,
+                    name: item.name,
+                    title: item.title,
+                    isVisible: item.isVisible,
+                    date: {start: item.start},
+                    body: { body: item.body, list: item.list},
+                    tech: item.tech?.flatMap(element =>
+                    {
+                        const ext = fetchExtensionType(element);
+                        if (!!ext) {return [{label: element, type:ext}]} else {return []}
+                    }
+                    )
+
                 })
             )},
             range : (state) =>
             {
-                
                 const n = 1;
-                const data = reactive({});
-                const achievements = state.data.achievements;
 
-                data.field = 
-                {
+                return {
                     value: '0',
                     type: 'range',
                     name: "achievement-timeline",
                     title: 'Presentasjonstidslinje',
-                    rangeMax: achievements.length - n,
+                    rangeMax: state.data.timeline.length - n,
                 }
-                data.timeline = achievements;
-                return data;
-
             },
         },  
 });
