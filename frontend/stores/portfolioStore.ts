@@ -1,8 +1,8 @@
 //  Portfolio Store
 
 import { defineStore } from "pinia";
-import { fetchData } from "./utils/response";
-import { fetchExtensionType} from "./utils/utils";
+import { fetchData } from "../utils/response";
+import { fetchExtensionType} from "../utils/utils";
 import { portfolio } from "~/content/portfolio/portfolio.json";
 
 interface Anchor
@@ -60,9 +60,6 @@ interface TechItems
     type: string[];
 }
 
-const path:string = "../content/portfolio/portfolio.json";
-
-
 export const portfolioStore = defineStore("portfolio",
     {
         state:(): State => ({
@@ -92,9 +89,8 @@ export const portfolioStore = defineStore("portfolio",
                     {
                         //const json:Record<any,any> = await $fetch(path);
                         //const jsonData: {data:Item[] } = await json.json();
-                        const json = portfolio;
 
-                        json.forEach(element => {
+                        portfolio.forEach(element => {
                             this.addToStore(element);
                             
                         });

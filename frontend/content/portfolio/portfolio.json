@@ -1,0 +1,20 @@
+{
+  "portfolio": [
+    {
+      "created": "2025-04-01T00:00:00.000Z",
+      "name": "Sosial Entreprenørskap",
+      "href": "https://sosnet.no",
+      "tech": [
+        "Vue.js",
+        "CMS"
+      ],
+      "body": "Denne delen av min reise, fikk jeg muligheten til å arbeide med et prosjekt for SosEnt, hvor jeg fikk muligheten til å få erfaringer knyttet til:\n",
+      "list": [
+        "Tidsstyring, ",
+        "Kundesamarbeid og kommunikasjon,",
+        "Anbefaling av teknologier og verktøy",
+        "Planleggingsprosessen og UML dokumentasjon"
+      ]
+    }
+  ]
+}
