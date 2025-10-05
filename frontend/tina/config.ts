@@ -37,165 +37,6 @@ export default defineConfig({
     collections: [
       {
         format: 'json',
-        name: 'academic',
-        ui: {global: true},
-        path: 'content/academic',
-        label: 'Academic component',
-        fields:
-        [
-          {
-            list: true,
-            type: 'object',
-            name: 'academic',
-            label: 'Akademiske Hendelser',
-            fields:
-            [
-              {
-                name: "id",
-                type: "number",
-                label: "ID ",
-                required: true,
-                //ui: { component: null},
-              },
-              {
-                name: "start",
-                label: "Start Year",
-                required: true,
-                type: "datetime",
-                ui: { dateFormat: 'YYYYY'}
-              },
-              {
-                name: "end",
-                type: "datetime",
-                label: "End Year",
-                ui: { dateFormat: 'YYYYY'}
-              },
-              {
-                label: "Name",
-                type: "string",
-                name: "institution",
-                description: "Name of the institution"
-              },
-              {
-                name: "institution_link",
-                label: "Link",
-                type: "string",
-                description: "Link to institution"
-              },
-              {
-                isTitle: true,
-                name: "title",
-                required: true,
-                label: "Title",
-                type: "string",
-                description: "Title of the Subject"
-              },
-              {
-                name: "body",
-                isBody: true,
-                required: true,
-                label: "Summary",
-                type: "rich-text"
-              },
-              {
-                type: "string",
-                name: "location",
-                label: "Location",
-                description: "Location of institution"
-              },
-              {
-                name: "loc_link",
-                label: "Link",
-                type: "string",
-                description: "Link to institution location"
-              },
-                            {
-                type: "string",
-                name: "references",
-                label: "References",
-                description: "Title of the reference "
-              },
-              {
-                name: "ref_link",
-                label: "Link",
-                type: "string",
-                description: "Link to reference"
-              },
-              {
-                list: true,
-                name: "tech",
-                type: "string",
-                options: techStack,
-                label: "Technologies",
-              },
-            ]
-          }
-        ],
-      },
-      {
-        format: 'json',
-        name: 'achievements',
-        path: 'content/achievement',
-        label: 'Achevements Component',
-        ui: {global: true},
-        fields:
-        [
-          {
-            list: true,
-            type: 'object',
-            name: 'achievement',
-            label: 'Presentasjons Hendelser',
-
-            fields:
-            [
-              {
-                name: "id",
-                required: true,
-                type: "number",
-                label: "Unique ID",
-              },
-              {
-                name: "start",
-                label: "Year",
-                required: true,
-                type: "datetime",
-                ui: { dateFormat: 'YYYYY'}
-              },
-              {
-                isTitle: true,
-                name: "title",
-                required: true,
-                label: "Title",
-                type: "string",
-                description: "Title of the Subject"
-              },
-              {
-                name: "body",
-                isBody: true,
-                required: true,
-                label: "Description",
-                type: "rich-text"
-              },
-              {
-                list: true,
-                type: "string",
-                name: "summary",
-                label: "summary"
-              },
-              {
-                list: true,
-                name: "tech",
-                type: "string",
-                options: techStack,
-                label: "Technologies",
-              }
-            ]
-          }
-          
-        ],
-      },
-      {
-        format: 'json',
         name: 'portfolio',
         path: 'content/portfolio',
         label: 'Portefolio Component',
@@ -291,32 +132,112 @@ export default defineConfig({
           },
           {
             isBody: true,
-            label: "Profile information",
+            label: "Profile information (Profile info, Deeper insight, Journey, etc.)",
             required: true,
             type: "rich-text",
             name: "profile_info",
             description: "A short but, describeful insight"
           },
+        ],
+      },
+      {
+        name: "achievements",
+        label: "Presentasjon",
+        path: "content/achievements",
+        fields:
+        [
           {
+            name: "tag",
+            type: "string",
+            options: ['Academic', 'Achievement'],
+            label: "Technologies which were used in project / school",
+            ui: { component: 'select' },
+          },
+          {
+            name: "created",
             required: true,
-            label: "Deeper Dig ",
-            type: "rich-text",
-            name: "deeper_info",
-            description: "krigjo25 History"
+            label: "Date",
+            
+            type: "datetime",
+            ui: { dateFormat: 'MM-YY'}
+          },
+          {
+            name: "updated",
+            type: "datetime",
+            label: "Last updated",
+            ui: { dateFormat: 'MM-YY'}
+          },
+          {
+            name: "end",
+            type: "datetime",
+            label: "Project deployed / ended",
+            ui: { dateFormat: 'MM-YY'}
           },
           {
             required: true,
-            label: "History",
-            type: "rich-text",
-            name: "history",
-            description: "krigjo25 History"
+            type: "string",
+            name: "institution",
+            label: "Name of the Organization",
+            description: "e.g. University, Company"
+          },
+          {
+            type: "string",
+            name: "org_link",
+            label: "A link to the organization",
+            description: "E.g. https://example.com"
+          },
+          {
+            isTitle: true,
+            name: "title",
+            required: true,
+            label: "Title of the Subject",
+            type: "string",
+            description: "E.g. Bachelor of Science in Computer Science / organization name"
+          },
+          {
+            name: "body",
+            isBody: true,
+            required: true,
+            label: "Summary",
+            type: "rich-text"
+          },
+          {
+            type: "string",
+            name: "location",
+            label: "Location of school",
+            description: "(city, county, country) of the School"
+          },
+          {
+            name: "loc_link",
+            label: "Location link",
+            type: "string",
+            description: "a google maps link to the location (if possible)"
+          },
+          {
+            type: "string",
+            name: "references",
+            label: "References",
+            description: "A title of a reference (if any) (e.g. \"Doe, J. (2020). Title of the paper.\")"
+          },
+          {
+            name: "ref_link",
+            label: "Reference link",
+            type: "string",
+            description: "A link to the reference (if any) (e.g. https://example.com)"
+          },
+          {
+            list: true,
+            name: "tech",
+            type: "string",
+            options: techStack,
+            label: "Technologies which were used in project / school",
           },
         ],
       },
       {
-        name: "dev",
-        label: "Dev-profile",
-        path: "content/dev",
+        name: "profiles",
+        label: "Profiles",
+        path: "content/profiles",
         fields: [
           {
             name: "created",
@@ -342,29 +263,15 @@ export default defineConfig({
             isBody: true,
             required: true,
             type: "rich-text",
-            name: "backend_profile",
-            label: "Backend profile"
-          },
-          {
-            isBody: true,
-            required: true,
-            type: "rich-text",
-            name: "frontend_profile",
-            label: "Frontend profile"
-          },
-          {
-            isBody: true,
-            required: true,
-            type: "rich-text",
-            name: "learning_journey",
-            label: "My learning journey"
+            name: "profile",
+            label: "Profile information (Backend, Frontend or Journey )"
           },
         ],
       },
       {
         name: "posts",
         label: "Blog Posts",
-        path: "content/blog_posts",
+        path: "content/posts",
         fields:
         [
           {
@@ -381,12 +288,6 @@ export default defineConfig({
             ui: { dateFormat: 'DD-MM-YY'}
           },
           {
-            name: "date",
-            label: "Date",
-            required: true,
-            type: "datetime"
-          },
-          {
             list: true,
             name: "tags",
             label: "Tags",
@@ -401,18 +302,24 @@ export default defineConfig({
             required: true
           },
           {
+            required: true,
+            name: "ingress",
+            label: "Ingress",
+            type: "rich-text"
+          },
+          {
             isBody: true,
+            name: "main",
             required: true,
             type: "rich-text",
-            name: "intro",
-            label: "Introduction"
+            label: "Main text"
           },
           {
             isBody: true,
             required: true,
             type: "rich-text",
-            name: "challanges_model",
-            label: "STAR-model"
+            name: "star",
+            label: "STAR - Modell"
           },
         ],
       }
