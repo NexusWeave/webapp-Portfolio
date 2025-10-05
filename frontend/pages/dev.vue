@@ -1,17 +1,19 @@
 <template>
     <section class="flex-column-justify-center-align-center">
-        <h2> Kristoffer Gjøsund</h2>
-        <article>
-            <h2> Backend-utvikler profil</h2>
+        <article v-for="data in dev" :key="data.id" class="article-dev">
+            <h3>{{ data.title }}</h3>
+            <ContentRenderer :value="data"/>
         </article>
 
-        <article>
-            <h2> frontend utvikler profil </h2>
-        </article>
-        <h2> Utdanning og Portefølje</h2>
-        <section class="flex-wrap-row-justify-space-evenly">
-            <Portfolio />
-        </section>
 
     </section>
 </template>
+<script setup lang="ts">
+
+    const path = 'dev';
+    const {data: dev} = await useAsyncData('dev', () => 
+    {
+        return queryCollection(path).all();
+    });
+    //console.log(dev.value);
+</script>
