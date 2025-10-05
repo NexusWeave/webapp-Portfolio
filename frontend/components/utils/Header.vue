@@ -50,12 +50,12 @@
                 label: 'Portefølje',
             },
             {
-                href: '/personal',
-                label: 'About',
+                href: '/dev',
+                label: 'Kristoffer\'s Dev Profile',
             },
             {
-                href: '/dev',
-                label: 'Dev profile',
+                href: '/personal',
+                label: 'About Kristoffer Gjøsund',
             }
         ]
     }
