@@ -1,8 +1,9 @@
 ---
+end: '2014-06-01T00:00:00.000Z'
 tag: Academic
 created: 2011-08-01T00:00:00.000Z
-end: 2014-06-01T00:00:00.000Z
-institution: Borgund VGS
+updated: 2014-01-01T00:00:00.000Z
+organization: Borgund VGS
 org_link: 'https://borgund.vgs.no'
 title: Helsefagarbeiderfaget
 location: 'Ålesund, Møre og Romsdal, Norge'

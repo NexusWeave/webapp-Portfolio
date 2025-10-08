@@ -67,7 +67,7 @@ export default defineConfig({
                 label: "Name",
                 type: "string",
                 name: "name",
-                description: "Name of the institution"
+                description: "Name of the organization"
               },
               {
                 isTitle: true,
@@ -164,19 +164,13 @@ export default defineConfig({
           {
             name: "updated",
             type: "datetime",
-            label: "Last updated",
-            ui: { dateFormat: 'MM-YY'}
-          },
-          {
-            name: "end",
-            type: "datetime",
-            label: "Project deployed / ended",
+            label: "Project or school status last update",
             ui: { dateFormat: 'MM-YY'}
           },
           {
             required: true,
             type: "string",
-            name: "institution",
+            name: "organization",
             label: "Name of the Organization",
             description: "e.g. University, Company"
           },
@@ -193,13 +187,6 @@ export default defineConfig({
             label: "Title of the Subject",
             type: "string",
             description: "E.g. Bachelor of Science in Computer Science / organization name"
-          },
-          {
-            name: "body",
-            isBody: true,
-            required: true,
-            label: "Summary",
-            type: "rich-text"
           },
           {
             type: "string",
@@ -227,10 +214,17 @@ export default defineConfig({
           },
           {
             list: true,
-            name: "tech",
+            name: "techStack",
             type: "string",
             options: techStack,
             label: "Technologies which were used in project / school",
+          },
+          {
+            name: "body",
+            isBody: true,
+            required: true,
+            label: "Summary",
+            type: "rich-text"
           },
         ],
       },
