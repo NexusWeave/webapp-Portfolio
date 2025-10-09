@@ -10,15 +10,10 @@
 
     //  --- Import & Interfaces logic
     import {computed } from 'vue';
-
-    interface Props
-    {
-        cls?: Array<any>;
-        data:Record<string, any>;
-    }
+    import type { FilterProps } from '@/types/props';
 
     //  --- Props definition
-    const props = withDefaults(defineProps<Props>(),
+    const props = withDefaults(defineProps<FilterProps>(),
     {
         cls: () => []
     });
@@ -37,4 +32,6 @@
             
         });
 
+    //  --- Debugging Logic
+    //console.log("Filter Component : ", data.value);
 </script>
