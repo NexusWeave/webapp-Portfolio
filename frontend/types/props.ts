@@ -1,21 +1,34 @@
 //  Props Definitions
 
 import type { AcademicCollectionItem } from "@nuxt/content";
+import type { DateObject } from "./timeline";
+import type { TimelineItem } from "./timeline";
 
-export interface DateYearProps
-    {
-        isVisible?: boolean;
-        data: {
-            created: Date | string;
-            end?: Date | string;
-            updated?: Date | string | null;
-        };
-    }
 
+//  --- Timeline component ---
 export interface TimelineProps
 {
     title: string;
-        range?: number;
-        cls?: Array<any>;
-        data: AcademicCollectionItem[];
+    range?: number;
+    cls?: Array<any>;
+    data: TimelineItem[];
+}
+
+export interface DateYearProps
+{
+    isVisible: boolean;
+    data: DateObject;
+}
+
+export interface FilterProps
+{
+    cls?: Array<any>;
+    data: Record<string, any>;
+}
+
+export interface TimelineCardProps
+{
+    cls?: Array<any>;
+    isVisible?: boolean;
+    data: TimelineItem;
 }
