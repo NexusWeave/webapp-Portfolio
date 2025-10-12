@@ -5,16 +5,16 @@ import type { AcademicCollectionItem } from '@nuxt/content';
 
 
 //  --- Data Fetching Logic
-export async function fetchCollection(path:any, cacheKey:string): Promise<AcademicCollectionItem[]>
+export async function fetchCollection(path:any, cacheKey:string): Promise<Ref<AcademicCollectionItem[]>>
 {
-    const {data: document_info} = await useAsyncData(cacheKey, () => 
-    {return queryCollection(path).all();});
+    const {data} = await useAsyncData(cacheKey, () => 
+    {return queryCollection(path).all() as Promise<AcademicCollectionItem[]>;});
     
     // --- Debugging
     // console.log("FetchCollection - Path:", path);
-    // console.log("FetchCollection - Data:", document_info.value);
-    
-    if(document_info.value) return document_info.value; else return [];
+    // console.log("FetchCollection - Data:", data.value);
+
+    if(data) return data as Ref<AcademicCollectionItem[]>; else return ref([]);
 }
 
 //  --- Data Processing Logic
@@ -28,14 +28,16 @@ export function sortCollection(data: AcademicCollectionItem[]): AcademicCollecti
         });
 }
 
-export function mapTimeline(data: AcademicCollectionItem[]) : TimelineItem[]
+export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[]
 {
+    if (!data.value) return [];
+
     let AUTOINCREMENT:number = 0;
 
-    const timeline = sortCollection(data);
+    const timeline = sortCollection(data.value);
 
     return timeline.map((doc:AcademicCollectionItem) => {
-        return{
+        return {
             id: AUTOINCREMENT++,
             body: doc.body || undefined, name: doc.tag + "-Timeline",
             title: doc.title || undefined, isVisible: AUTOINCREMENT - 1 == 0,
