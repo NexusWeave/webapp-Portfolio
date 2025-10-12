@@ -18,7 +18,7 @@
 <script setup lang="ts">
 
     //  --- Import & types logic
-    import { fetchCollection, mapTimeline } from '@/utils/preprosessor-utils';
+    import { fetchCollection, mapTimeline } from '#imports';
 
 
     //  --- Component logic
@@ -26,9 +26,9 @@
     const achievementData = await fetchCollection('achievements', 'achievements-info');
 
     const academicTimeline = computed(() => mapTimeline(academicData));
-    const achievementsTimeline = computed( () =>mapTimeline(achievementData));
+    const achievementsTimeline = computed(() => mapTimeline(achievementData));
 
     //  --- Debugging Logic
-    //console.log("Processed timeline:", academicData);
-    //console.log("Achievements data on load:", achievementData);
+    //console.log("Processed timeline:", academicTimeline.value);
+    //console.log("Achievements data on load:", achievementsTimeline.value);
 </script>
