@@ -46,5 +46,5 @@ export const techStackMap:Array<{ name: string, codes: string[] }> =
     { name: 'SQL', codes: databases },
     { name: 'Frontend', codes: frontend },
     { name: 'JavaScript', codes: javascript },
-    { name: 'Workflow/Other', codes: workFlow },
+    { name: 'Workflow', codes: workFlow },
 ]
