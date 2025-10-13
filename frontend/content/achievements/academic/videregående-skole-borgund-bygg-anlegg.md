@@ -13,4 +13,4 @@ references: ''
 ref_link: ''
 ---
 
-Utviklet praktisk forståelse for byggeprosesser og materialer.
+Gjennom VG1 Bygg- og anleggsteknikk utviklet jeg en solid teoretisk og praktisk forståelse for Bygg- og anleggsfaget.
