@@ -147,13 +147,6 @@ export default defineConfig({
         fields:
         [
           {
-            name: "tag",
-            type: "string",
-            options: ['Academic', 'Achievement'],
-            label: "Technologies which were used in project / school",
-            ui: { component: 'select' },
-          },
-          {
             name: "created",
             required: true,
             label: "Date",
@@ -162,7 +155,7 @@ export default defineConfig({
             ui: { dateFormat: 'MM-YY'}
           },
           {
-            name: "updated",
+            name: "end",
             type: "datetime",
             label: "Project or school status last update",
             ui: { dateFormat: 'MM-YY'}
