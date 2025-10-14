@@ -1,6 +1,6 @@
 <template>
     <section v-if="!!data.isVisible"
-        :class="[cls[0], {'timeline-active': !!data.isVisible }]">
+        :class="[{'timeline-active': !!data.isVisible }]">
         <h3 v-if="!!data.organization.anchor">
              <NavigationAnchor :data="data.organization.anchor" />
         </h3>
@@ -12,21 +12,27 @@
             :class="cls[1]">
             <section class="flex-wrap-row-justify-center">
                 <MediaIcon :cls="['icon', 'calendar']" :label="'school year'"/>
-                <time :datetime="data.date.created">{{ data.date.created}}</time>
+                <DateYear v-if="!!data.date.created"
+                    :data="data.date.created"
+                    :isVisible="!!data.isVisible"
+                />
                 {{!!data.date.end ? ' - ' : ' - Pågående'}}
-                <time v-if="!!data.date.end" :datetime="data.date.end">{{ data.date.end }}</time>
+                <DateYear v-if="!!data.date.end"
+                    :data="data.date.end"
+                    :isVisible="!!data.isVisible"
+                />
                 
             </section>
         </section>
 
         <section v-if="!!data.techStack && data.techStack.length > 0">
             <h4>Teknologi : </h4>
-            <span :class="cls[3]">
-                <span v-for="(tech, i) in data.techStack" :key="i"
-                    :class="tech.type">
-                    {{ tech.label }}
-                </span>
-            </span>
+            <p :class="['tech-container', 'flex-wrap-row-justify-space-evenly']">
+                <p v-for="(tech, i) in data.techStack" :key="i" class="tech-item">
+                    <span :class="tech.type.toLowerCase()"></span>
+                    <b>{{ tech.label }}</b>
+                </p>
+            </p>
         </section>
 
         <section :class="cls[5]">
