@@ -47,16 +47,17 @@
         [
             {
                 href: '/',
-                label: 'Portefølje',
+                label: 'Kristoffer Gjøsund',
             },
+
             {
                 href: '/dev',
-                label: 'Kristoffer\'s Dev Profile',
+                label: 'Dev Profile',
             },
             {
-                href: '/personal',
-                label: 'About Kristoffer Gjøsund',
-            }
+                href: '/portfolio',
+                label: 'Portefølje',
+            },
         ]
     }
 </script>
