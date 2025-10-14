@@ -25,9 +25,10 @@
             </section>
         </section>
 
-        <section v-if="!!data.techStack && data.techStack.length > 0">
+        <section v-if="!!data.techStack && data.techStack.length > 0"
+            :class="['tech-container']">
             <h4>Teknologi : </h4>
-            <p :class="['tech-container', 'flex-wrap-row-justify-space-evenly']">
+            <p :class="['flex-wrap-row-justify-space-evenly']">
                 <p v-for="(tech, i) in data.techStack" :key="i" class="tech-item">
                     <span :class="tech.type.toLowerCase()"></span>
                     <b>{{ tech.label }}</b>
