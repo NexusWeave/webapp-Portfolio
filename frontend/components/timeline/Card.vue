@@ -10,7 +10,7 @@
 
         <section v-if="!!data.date"
             :class="cls[1]">
-            <section class="flex-wrap-row-justify-center">
+            <section class="flex-wrap-row-align-items-center-justify-center">
                 <MediaIcon :cls="['icon', 'calendar']" :label="'school year'"/>
                 <DateYear v-if="!!data.date.created"
                     :data="data.date.created"
