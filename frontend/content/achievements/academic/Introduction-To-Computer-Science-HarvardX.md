@@ -1,7 +1,6 @@
 ---
-tag: Academic
 created: 2022-01-01T00:00:00.000Z
-updated: 2022-12-01T00:00:00.000Z
+end: 2022-12-01T00:00:00.000Z
 organization: HarvardX
 org_link: 'https://www.edx.org/school/harvardx'
 title: Introduction To Computer Science

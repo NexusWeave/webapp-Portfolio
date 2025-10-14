@@ -1,8 +1,6 @@
 ---
 end: '2011-06-01T00:00:00.000Z'
-tag: Academic
 created: 2010-08-03T00:00:00.000Z
-updated: 2011-06-06T00:00:00.000Z
 organization: Borgund VGS
 org_link: 'https://borgund.vgs.no'
 title: Bygg & Anlegg

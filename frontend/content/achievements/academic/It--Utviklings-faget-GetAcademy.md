@@ -1,5 +1,4 @@
 ---
-tag: Academic
 created: 2024-08-01T00:00:00.000Z
 organization: GetAcademy
 org_link: 'https://getacademy.no/'
