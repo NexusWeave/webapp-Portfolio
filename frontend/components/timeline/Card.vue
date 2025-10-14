@@ -29,10 +29,10 @@
             :class="['tech-container']">
             <h4>Teknologi : </h4>
             <p :class="['flex-wrap-row-justify-space-evenly']">
-                <p v-for="(tech, i) in data.techStack" :key="i" class="tech-item">
+                <span v-for="(tech, i) in data.techStack" :key="i">
                     <span :class="tech.type.toLowerCase()"></span>
                     <b>{{ tech.label }}</b>
-                </p>
+                </span>
             </p>
         </section>
 
