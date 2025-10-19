@@ -68,4 +68,5 @@ export interface FigureItem
     type?   : string,
     srcset? : string,
     caption? : string,
+    anchor?  : Anchor,
 }
