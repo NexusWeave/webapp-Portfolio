@@ -34,15 +34,24 @@ export interface CarouselProps
     data    : string[],
     buttons? : CarouselButton[],
 }
-interface CarouselButton
+
+ interface CarouselButton
 {
     icon?    : string,
     exist?   : boolean,
     action  : () => void,    
 }
 
-//  --- Misc Props ---
+export interface CarouselItem
+{
+    src     : string,
+    alt     : string,
+        type?   : string,
+        srcset? : string,
+        caption? : string,
+    }
 
+//  --- Misc Props ---
 export interface DateYearProps
 {
     isVisible: boolean;
