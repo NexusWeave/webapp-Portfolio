@@ -14,7 +14,6 @@ export interface TimelineProps
     data: TimelineItem[];
 }
 
-
 export interface FilterProps
 {
     cls?: Array<any>;
@@ -53,9 +52,8 @@ export interface DateYearProps
 export interface Anchor
 {
     cls?    : string,
-    label?  : string,
+    label   : string,
     href    : string,
-    text    : string,
     type    : string[],
     
 }
@@ -65,7 +63,6 @@ export interface FigureItem
     cls?   : string,
     src     : string,
     alt     : string,
-    type?   : string,
     srcset? : string,
     caption? : string,
     anchor?  : Anchor,
