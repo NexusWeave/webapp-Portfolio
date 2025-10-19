@@ -43,18 +43,18 @@ export interface CarouselButton
     action  : () => void,    
 }
 
-export interface CarouselItem
+//  --- Misc Props ---
+export interface DateYearProps
+{
+    isVisible: boolean;
+    data: string;
+}
+
+export interface FigureItem
 {
     src     : string,
     alt     : string,
         type?   : string,
         srcset? : string,
         caption? : string,
-    }
-
-//  --- Misc Props ---
-export interface DateYearProps
-{
-    isVisible: boolean;
-    data: string;
 }
