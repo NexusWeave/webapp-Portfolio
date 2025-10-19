@@ -37,6 +37,7 @@ export interface CarouselProps
 
 export interface CarouselButton
 {
+    cls ?  : string,
     icon?    : string,
     exist?   : boolean,
     action  : () => void,    
