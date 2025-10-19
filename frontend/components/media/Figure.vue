@@ -1,23 +1,21 @@
 <template>
-    <template v-if="!!isFigure">
-        <figure :class="cls[0]">
-            <source v-if="!!isImageModern" :srcset="img.srcset" :type="img.type">
-            <img :src="img.src" :alt="img.alt" :class="cls[1]">
-            <figcaption>{{ caption }}</figcaption>
+        <figure v-if="!!isFigure" :class="cls[0]">
+            <source v-if="!!isImageModern" :srcset="data.srcset" :type="data.type">
+            <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]">
+            <figcaption>{{ caption ? caption : '' }}</figcaption>
         </figure>
-    </template>
-    <template v-else>
-        <picture>
-            <source v-if="!!isImageModern" :srcset="img.srcset" :type="img.type">
-            <img :src="img.src" :alt="img.alt" :class="cls[1]">
+        <picture v-else :class="cls[0]">
+            <source v-if="!!isImageModern" :srcset="data.srcset" :type="data.type">
+            <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]" :type="data.type">
         </picture>
-    </template>
 </template>
 
 <script setup lang="ts">
 
+    //  Importing dependencies & types
+    import { computed } from 'vue';
     import type { FigureProps, FigureItem } from '@/types/props';
-    import { defineProps, computed } from 'vue';
+
 
     const props = withDefaults(defineProps<FigureProps>(), 
     {
@@ -25,24 +23,20 @@
         cls: () => (['figure', 'figure-img']),
     });
 
-    const data = props.data
-    const img = computed(() => data.img ?? {});
-    const caption = computed(() => data.caption);
+    const cls = computed(() => props.cls);
+    const data = computed(() => props.data as FigureItem);
+    const isFigure = computed(() => { return !!data.value && !!data.value.caption; });
+    const caption = computed(() => { return isFigure.value ? data.value.caption : null; });
 
-    const isFigure = computed(() => {
-        return !!caption.value;
-    });
-
-    const images = 
+    const imageFormats = 
     {
         data: ['jpg', 'jpeg', 'png', 'svg'],
         modern: ['webp', 'avif'],
     }
 
-    const isImageModern = computed(() => {
-        return !!images.modern.find(item => item === img.value.type);
-    });
 
-    const cls = props.cls;
-    //console.log('Figure data:', data);
+    const isImageModern = computed(() => {return !!data.value && !!imageFormats.modern.find(item => item === data.value.type); });
+    const isImageStandard = computed(() => {return !!data.value && !!imageFormats.data.find(item => item === data.value.type); });
+
+    console.log('Figure data:', data.value, isImageModern.value, isImageStandard.value);
 </script>
