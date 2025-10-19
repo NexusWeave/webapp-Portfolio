@@ -28,7 +28,7 @@ export interface TimelineCardProps
 //  --- Carousel component ---
 export interface CarouselProps
 {
-    data    : string[],
+    data    : FigureItem[],
     buttons? : CarouselButton[],
 }
 
@@ -50,24 +50,20 @@ export interface DateYearProps
 
 export interface Anchor
 {
-    cls?    : string,
     label   : string,
     href    : string,
     type    : string[],
+    img?    : FigureItem
     
 }
 
 export interface FigureItem
 {
-    caption? : string,
-
-    img :
-    {
-        type    : string,
-        src     : string,
-        alt     : string,
-        srcset? : string,
-    }
+    type    : string;
+    src     : string;
+    alt     : string;
+    srcset? : string;
+    caption? : string;
 }
 
 export interface FigureProps
