@@ -32,3 +32,16 @@ export interface TimelineCardProps
     isVisible?: boolean;
     data: TimelineItem;
 }
+
+//  --- Carousel component ---
+export interface CarouselProps
+{
+    data    : string[],
+    buttons? : CarouselButton[],
+}
+interface CarouselButton
+{
+    icon?    : string,
+    exist?   : boolean,
+    action  : () => void,    
+}
