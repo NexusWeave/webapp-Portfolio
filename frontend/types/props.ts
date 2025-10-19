@@ -1,7 +1,4 @@
-//  Props Definitions
-
-import type { AcademicCollectionItem } from "@nuxt/content";
-import type { DateObject } from "./timeline";
+//  --- Imports ---
 import type { TimelineItem } from "./timeline";
 
 
@@ -27,6 +24,7 @@ export interface TimelineCardProps
     data: TimelineItem;
 }
 
+
 //  --- Carousel component ---
 export interface CarouselProps
 {
@@ -41,6 +39,7 @@ export interface CarouselButton
     exist?   : boolean,
     action  : () => void,    
 }
+
 
 //  --- Misc Props ---
 export interface DateYearProps
