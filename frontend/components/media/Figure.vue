@@ -1,12 +1,12 @@
 <template>
         <figure v-if="!!isFigure" :class="cls[0]">
-            <source v-if="!!isImageModern" :srcset="data.srcset" :type="data.type">
-            <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]">
+            <source v-if="!!isImageModern" :srcset="data.srcset" :type="'image/' + data.type">
+            <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]" :type="'image/' + data.type">
             <figcaption>{{ caption ? caption : '' }}</figcaption>
         </figure>
         <picture v-else :class="cls[0]">
-            <source v-if="!!isImageModern" :srcset="data.srcset" :type="data.type">
-            <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]" :type="data.type">
+            <source v-if="!!isImageModern" :srcset="data.srcset" :type="'image/' + data.type">
+            <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]" :type="'image/' + data.type">
         </picture>
 </template>
 
