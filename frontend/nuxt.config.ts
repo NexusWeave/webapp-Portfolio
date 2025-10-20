@@ -17,7 +17,8 @@ export default defineNuxtConfig({
   ],
   css:
   [
-    `${srcDir}/assets/index.css`
+    `${srcDir}/assets/index.css`,
+    'bootstrap-icons/font/bootstrap-icons.css'
   ],
   vite:
   {
