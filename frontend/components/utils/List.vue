@@ -1,7 +1,7 @@
 <template>
     <h4 v-if="title">{{ title }}</h4>
-    <ul :class="cls">
-        <li v-for="(item, index) in data" :key="index">
+    <ul :class="cls[0]">
+        <li v-for="(item, index) in data" :key="index" :class="cls[1]">
             <NavigationAnchor v-if="item.anchor.href"
                 :data="item.anchor"
             />
