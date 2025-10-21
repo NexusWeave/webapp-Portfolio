@@ -99,3 +99,14 @@ export interface iconProps
     cls?: string[];
     label?: string;
 }
+
+
+interface NavProp
+{
+    totalPage?: number;
+    activePage?: number;
+    toggle: 'router' | 'anchor' | 'pagination';
+
+    data: Array<Record<string, any>> | Record<string, any>;
+    cls?: Array<string | string[] | Array<string | string[]>>;
+}
