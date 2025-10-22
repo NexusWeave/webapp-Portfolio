@@ -9,14 +9,11 @@ export default defineNuxtConfig({
 
   runtimeConfig:{
     public:{
-      apiBase: process.env.API_BASE || 'http://localhost:3000/api/'
+      apiBase: process.env.API_BASE || 'http://127.0.0.1:5000/api/v1/'
     }
   },
   modules: [
-    '@nuxt/content',
-    '@nuxt/eslint',
-    '@nuxt/image',
-    '@nuxt/ui',
+    '@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@nuxt/ui',
     '@pinia/nuxt'
   ],
   css:
