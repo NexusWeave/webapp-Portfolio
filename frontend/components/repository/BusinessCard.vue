@@ -1,8 +1,8 @@
 <template>
     <section :class="cls[0]">
         <section :class="cls[1]">
-            <Figure  v-for="lang in data.lang" :key="lang.id" 
-                :data="lang"
+            <MediaFigure  v-for="language in data.lang" :key="language.id" 
+                :data="language"
                 :cls="['tech-figure', 'tech-img']"
             />
 
@@ -16,46 +16,50 @@
         </section>
 
         <section class="flex-column-items-center">
-            <Navigation :cls="cls[3]"
-            :data="data.anchor" toggle="anchor" />
-            <p>{{ data.description }}</p>
-
+            <NavigationNavMenu
+                :cls="cls[3]"
+                toggle="anchor"
+                :data="data.anchor"
+            />
             
-            <p class="flex-wrap-row-justify-space-evenly">
-                <Tags v-for="lang in data.lang" :key="lang.id" :data="lang" />
-            </p>
+            <p>{{ data.description }}</p>
+            <section class="flex-wrap-row-justify-space-evenly">
+                <h4>Teknologi : </h4>
+                <p v-if="!!data.lang && data.lang.length > 0"
+                    :class="['tech-container', 'flex-wrap-row-justify-space-evenly']">
+                    <span v-for="(tech, i) in data.lang" :key="i">
+                        <span :class="tech.label.toLowerCase()"> </span>
+                        <b>{{ tech.label }}</b>
+                    </span>
+                </p>
+            </section>
         </section>
     </section>
 </template>
-<script setup>
-    import { defineProps } from 'vue';
+<script setup lang="ts">
 
-    
-    import Figure from '../media/Figure.vue';
-    import Tags from '$src/components/utils/Tags.vue';
-    import Navigation from '$src/components/navigation/NavMenu.vue';
+    //  --- Importing dependencies & types
+    import type { RepoProps } from '@/types/props';
 
-    const props = defineProps({
-        data: {
-            type: Object,
-            required: true
-        },
-        cls: {
-            type: Array,
-            default: () => [
-                ['business-card', 'flex-column','flex-wrap-column'],
-                ['flex-wrap-row-justify-space-between', 'card-content'],
-                'date-container',
-                [
-                    'portefolio-bar', 
-                    ['nav-list', 'flex-wrap-row-justify-space-evenly'],
-                    'nav-item', ['anchor-item']
-                ]
+    //  --- Props Definition Logic
+    const props = withDefaults(defineProps<RepoProps>(),
+    {
+        cls: () =>
+        [
+            ['business-card', 'flex-column','flex-wrap-column'],
+            ['flex-wrap-row-justify-space-between', 'card-content'],
+            'date-container',
+            [
+                'portefolio-bar', 
+                ['nav-list', 'flex-wrap-row-justify-space-evenly'],
+                'nav-item', ['anchor-item']
+            ]
         ]
-        }
     });
 
     const cls = props.cls;
     const data = props.data;
 
+    //  --- Debugging Logic
+    console.error("BusinessCard data:", data);
 </script>
