@@ -6,20 +6,23 @@
             :cls = "['component-blue', 'timeline-container',
             'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
+
         <Timeline v-if="achievementsTimeline.length > 0"
             title="Prestasjonstidslinje"
             :data="achievementsTimeline"
             :cls = "['component-seagreen', 'timeline-container',
             'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
+    </section>
 
+    <section class="spacer-large">
+        <RepositoryPortfolio />
     </section>
 </template>
 <script setup lang="ts">
 
     //  --- Import & types logic
     import { fetchCollection, mapTimeline } from '#imports';
-
 
     //  --- Component logic
     const academicData = await fetchCollection('academic', 'academic-info');
