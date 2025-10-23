@@ -18,7 +18,8 @@ export async function fetchRestApi<GithubRepo>(endpoint: string, cacheKey: strin
     if (error.value)
     {
         console.error(`Error fetching data from ${api}:`, error.value);
+        return { data: ref(0), error };
     }
 
-    return data; 
+    return { data, error }; 
 }
