@@ -60,12 +60,14 @@ class GithubAPI(APIConfig):
             repoObject['description'] = response[i]['description']
             repoObject['date'] = datetime.datetime.strptime(response[i]['updated_at'], '%Y-%m-%dT%H:%M:%SZ').strftime('%d-%m-%y')
             repoObject['lang'] = [await self.fetch_languages(repoObject, f"{self.API_URL}/repos/{repoObject['owner']}/{repoObject['name']}/languages")]
-            repoObject['anchor'] =[
+            repoObject['anchor'] =
+            [
                 # { 'id': uuid.uuid4().hex, 'ytube_url': None,},
                 {
                     'name': 'github',
                     'id': uuid.uuid4().hex,
-                    'href': response[i]['html_url'],
+                    'type': ['github','external'],
+                    'href': response[i]['html_url']
                 },
                 ]
             if response[i]['homepage'] or response[i]['homepage'] == "None":
@@ -105,8 +107,14 @@ class GithubAPI(APIConfig):
                 case _:
                     lang = lang
 
+        language['label'] = lang
         language['lang'].append(lang)
+        language['type'] = ['Programming Language']
         language['id'] = uuid.uuid4().hex
+        # language['src'] = Check for the icon in the static folder
+        language['alt'] = f'Illustrating of {lang} language'
+        #   language['srcset'] = Check if the icon exists in the static folder
+        
 
         logger.info(f"Languages fetched successfully. {language}")
 
