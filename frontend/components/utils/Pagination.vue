@@ -2,15 +2,14 @@
     <nav :class="cls[0]">
         <NavigationButton :data="btn[0]"/>
         <span :class="cls[1]"> {{ activePage > 0 ?  activePage + ' / ' + totalPages : '' }}</span>
-        <NavigationBtn :data="btn[1]"/>
+        <NavigationButton :data="btn[1]"/>
     </nav>
 </template>
 
 <script setup>
 
-    import { ref, watch, defineProps, defineEmits, computed } from 'vue';
+    import { ref, watch, computed } from 'vue';
 
-    import Btn from '$src/components/navigation/Button.vue';
 
     const emit = defineEmits(['update']);
     const props = defineProps(
@@ -27,28 +26,17 @@
             type: Number,
             required: false,
         },
-        Cls:
+        cls:
         {
             type: Array,
             required: false
         },
     });
 
-    const data = props.data;
-    const cls = props.Cls ? props.Cls : [];
+    const cls = props.cls ? props.cls : [];
 
     //  Watch for changes in the 'data' prop
     const activePage = ref(props.activePage);
-
-    watch(() => props.activePage, (newValue) => 
-    {
-        activePage.value = newValue;
-    });
-
-    watch(() => activePage, (newValue) => 
-    {
-        emit('update', newValue);
-    }, { immediate: true });
 
     const totalPages = computed(() => props.totalPage);
 
@@ -59,17 +47,38 @@
                 label: 'Forrige',
                 cls: ['button', 'pagnition-btn'],
                 disabled: activePage.value <= 1 ? 'disabled' : false,
-                action: () => { if (activePage.value > 1)  activePage.value--; },
+                action: () => changePage(activePage.value - 1),
 
             },
             {
                 id: 1,
                 label: 'Neste',
                 cls: ['button', 'archive-btn'],
-                disabled: activePage.value >= totalPages.value? 'disabled' : false,
-                action: () => { if (activePage.value < totalPages.value)  activePage.value++; },
+                action: () => changePage(activePage.value + 1),
+                disabled: activePage.value >= totalPages.value? 'disabled' : false
+                
             },
         ]);
+
+    function changePage(page)
+    {
+        const total = totalPages.value;
+
+        if (page >= 1 && page <= total) {
+            activePage.value = page;
+        }
+    }
+
+    watch(() => props.activePage, (newValue) => 
+    {
+        activePage.value = newValue;
+    });
+
+    watch(() => activePage.value, (newValue) => 
+    {
+        emit('update', newValue);
+        console.log("Emitting page change:", newValue);
+    }, );
 
     // console.log('Pagnition component initialized with data:', data);  
 </script>
