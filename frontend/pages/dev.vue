@@ -8,10 +8,6 @@
 
         </section>
 
-        <section>
-            <h2>Blogg posts</h2>
-            <p>This page is currently under development. Please check back later for updates!</p>
-        </section>
     </section>
 </template>
 <script setup lang="ts">
