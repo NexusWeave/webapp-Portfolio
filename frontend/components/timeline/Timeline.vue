@@ -32,6 +32,7 @@
     import type { TimelineProps } from '~/types/props';
     import type { TimelineItem } from '~/types/timeline';
 
+    //  --- Props & reactive logic
     const props = withDefaults(defineProps<TimelineProps>(),
     {
 
@@ -84,8 +85,8 @@
             });
         };
 
-        //  --- Data Definition Logic
-        console.log("Timeline.vue\n Transfered data :", data);
-        console.log("Timeline.vue\n Processed data :", data);
+        //  --- Debugging Logic
+        //console.log("Timeline.vue\n Transfered data :", data);
+        //console.log("Timeline.vue\n Processed data :", data);
         //console.log("Timeline.vue\n Transfered filter :", filter);
 </script>
