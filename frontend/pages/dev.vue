@@ -11,10 +11,14 @@
             />
             <section>
                 <h2> Attest sitater </h2>
-                <section>
-                    <article v-for="(data, i) in reference" :key="i" class="bio">
-                        <h3><a :href="data.link">{{ data.title }}</a></h3>
-                        <p>{{ data.quote }}</p>
+                <section v-for="(data, i) in sortedReference" :key="i">
+                    <article v-if="data.isVisible"class="bio">
+                        <h3>
+                            <NavigationAnchor 
+                                :data="data.anchor"
+                            />
+                        </h3>
+                        <p><i>{{ data.quote }}</i></p>
                     </article>
                 </section>
             </section>
@@ -52,8 +56,12 @@
 <script setup lang="ts">
 
     //  --- Import & types logic
+    import { onMounted } from '#imports';
+    import { startTimer } from '~/utils/utils';
     import { fetchCollection } from '#imports';
+    
     import type { DevCollectionItem, ReferenceCollectionItem } from '@nuxt/content';
+    
 
     //  --- Progress Bar Logic
     const progressList =
@@ -72,14 +80,23 @@
     const totalProgress = computed(() => (progressList.reduce((acc, item) => acc + item.value, 0) + n) / n);
     const sortedProgressList = computed(() => progressList.slice().sort((a, b) => b.value - a.value));
 
+
     //  --- Dev Data Logic
     const devPath = 'dev';
     const referencePath = 'reference';
+
     const dev = await fetchCollection<DevCollectionItem>(devPath, devPath);
     const reference = await fetchCollection<ReferenceCollectionItem>(referencePath, referencePath);
 
+    const sortedReference = reactive(mapReference(reference));
+
+    onMounted(() => {
+        //  Start the reference timer
+        startTimer(sortedReference);
+
+    });
 
     //  --- Debugging Logic ---
-    console.warn('Reference Data:', reference.value);
+    //console.warn('Reference Data:', sortedReference.value);
     //console.log(dev.value);
 </script>
