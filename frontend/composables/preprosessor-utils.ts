@@ -1,7 +1,8 @@
 
 //  --- Import & types logic
 import type { TimelineItem } from '~/types/timeline';
-import type { AcademicCollectionItem, DevCollectionItem,PersonalProfileCollectionItem, ReferenceCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
+import type { ReferenceItem } from '~/types/references';
+import type { AcademicCollectionItem, ReferenceCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 type CMSArticleCollectionItem = AcademicCollectionItem | AchievementsCollectionItem;
 
@@ -92,3 +93,21 @@ export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[]
         }
     );
 };
+export function mapReference(data: Ref<ReferenceCollectionItem[]>): ReferenceItem[]
+{
+    let AUTOINCREMENT:number = 0;
+    const randomID = Math.floor(Math.random() * data.value.length);
+    return data.value.map((doc:ReferenceCollectionItem) => {
+        return {
+            id: AUTOINCREMENT++,
+            quote: doc.quote,
+            anchor: 
+            {
+                href: doc.link,
+                label: doc.title,
+                type: ['external']
+            },
+            isVisible: AUTOINCREMENT - 1 === randomID,
+        } as ReferenceItem;
+    });
+}
