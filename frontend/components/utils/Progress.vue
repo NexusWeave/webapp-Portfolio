@@ -1,8 +1,8 @@
 <template>
-    <section class="progress-container">
+    <section :class="tech">
         <h3>{{ label }}</h3>
         <p>{{ currentRank }}</p>
-        <progress :value="value" class="tech" max="100"></progress>
+        <progress :value="value" :class="tech" max="100"></progress>
     </section>
 </template>
 <script setup lang="ts">
