@@ -3,11 +3,11 @@
         <h2>Technical Repositories</h2>
 
         <section class="repo-container flex-wrap-row-justify-center">
-            <UtilsPagination 
-                :activePage="currentPage" 
-                :totalPage="repoData.page" 
-                @update="currentPage = $event"
-            />
+                <UtilsPagination v-if="repoData.page > 1"
+                    :activePage="currentPage" 
+                    :totalPage="repoData.page" 
+                    @update="currentPage = $event"
+                />
             <section class="flex-wrap-row"  v-if="!!repoData.data && data && data.length > 0">
                 <RepositoryBusinessCard v-for="repo in data"
                     :key="repo.id"
