@@ -4,8 +4,7 @@ organization: SosEnt Norge
 org_link: 'https://sosent.no'
 title: SosEnt Norge
 techStack:
-  - VUE.JS
-  - TYPESCRIPT.JS
+  - VUE.TS
   - CMS
   - GITHUB
   - SASS
