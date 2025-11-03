@@ -2,86 +2,83 @@
 
 $compiled-tech-language:(
     'c': (
-        path:"", 
-        svg-color: color.$compiled, 
-        svg-hover: color.$compiled-light
+        path:"",
+        color: color.$c, 
+        hover: color.$compiled-light
     ),
     'go': (
-        path:"", 
-        svg-color: color.$compiled, 
-        svg-hover: color.$compiled-light
-            ),
-    'cpp': (
-        path:"", 
-        svg-color: color.$compiled, 
-        svg-hover: color.$compiled-light
+        path:"",
+        color: color.$GO-Teal, 
+        hover: color.$compiled-light
     ),
-    'csharp': (
-        path:"", 
-        svg-color: color.$compiled, 
-        svg-hover: color.$compiled-light
+    'cpp': (
+        path:"",
+        color: color.$compiled, 
+        hover: color.$compiled-light
+    ),
+    'cs': (
+        path:"",
+        color: color.$Microsoft-Green, 
+        hover: color.$compiled-light
     ),
 )
 
 $interpreted-tech-language:(
-    'py': (
-        path:"", 
-        svg-color: color.$Cyan-Blue-Azure, 
-        svg-hover: color.$Cyan-Blue-Azure-light
+    'python': (
+        path:"",
+        color: color.$Cyan-Blue-Azure, 
+        hover: color.$compiled-light
     ),
-    'js': (
+    'typescript': (
         path:"", 
-        svg-color: color.$Cyan-Blue-Azure,
-        svg-hover: color.$Cyan-Blue-Azure-light
+        color: color.$TypeScript-blue,
+        hover: color.$compiled-light
     ),
 )
 
 $database-tech-language:(
     'mdb': (
-        path:"", 
-        svg-color: color.$db, 
-        svg-hover: color.$db-light
+        path:"",
+        color: color.$db, 
+        hover: color.$db-light
     ),
     'MSSQL': (
         path:"", 
-        svg-color: color.$db, 
-        svg-hover: color.$db-light
+        color: color.$db, 
+        hover: color.$db-light
     ),
     'sqlite': (
         path:"", 
-        svg-color: color.$db, 
-        svg-hover: color.$db-light
+        color: color.$db, 
+        hover: color.$db-light
     ),
     
     'default': (
         path:"", 
-        svg-color: color.$db, 
-        svg-hover: color.$db-light
+        color: color.$db, 
+        hover: color.$db-light
     )
 )
 
 $workflow-tools:(
-    'git': (
-        path:"", 
-        svg-color: color.$work-flow, 
-        svg-hover: color.$work-flow-light
+    'workflow': (
+        color: color.$workflow, 
+        hover: color.$workflow-light
     ),
     'cms': (
-        path:"", 
-        svg-color: color.$work-flow, 
-        svg-hover: color.$work-flow-light
-    ),
-    '11ty': (
-        path:"", 
-        svg-color: color.$work-flow, 
-        svg-hover: color.$work-flow-light
+        color: color.$workflow, 
+        hover: color.$workflow-light
     ),
     'sass': (
-        path:"", 
-        svg-color: color.$compiled, 
-        svg-hover: color.$compiled-light
+        color: color.$workflow,
+        hover: color.$workflow-light
+    ),
+    'default': (
+        color: color.$workflow,
+        hover: color.$workflow-light
     )
 )
+
 $tech-languages: (
     'workflow': $workflow-tools,
     'compiled': $compiled-tech-language,
