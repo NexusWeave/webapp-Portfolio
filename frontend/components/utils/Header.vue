@@ -54,7 +54,7 @@
         [
             {
                 href: '/',
-                label: 'Kristoffer Gjøsund',
+                label: 'Portfolio',
             },
 
             {
@@ -62,8 +62,8 @@
                 label: 'Dev Profile',
             },
             {
-                href: '/folio',
-                label: 'Portefølje',
+                href: '/personal',
+                label: 'Om Kristoffer',
             },
         ]
     }
