@@ -1,7 +1,7 @@
 const python =
 [
-    "FLASK.py", "DJANGO.py", "PY-CORD.py", "PANDAS.py", "NUMPY.py",
-    "MATPLOTLIB.py",
+    "FLASK.PY", "DJANGO.PY", "PY-CORD.PY", "PANDAS.PY", "NUMPY.PY",
+    "MATPLOTLIB.PY",
 ]
 
 const cs = 
@@ -10,7 +10,7 @@ const cs =
 ]
 const javascript =
 [
-    "VUE.JS", "NUXT.JS", "REACT.JS", "TYPESCRIPT.JS", "JAVASCRIPT"
+    "VUE.TS", "NUXT.TS", "REACT.TS", "TYPESCRIPT", "JAVASCRIPT"
 ]
 
 const workFlow =
@@ -45,6 +45,6 @@ export const techStackMap:Array<{ name: string, codes: string[] }> =
     { name: 'Python', codes: python },
     { name: 'SQL', codes: databases },
     { name: 'Frontend', codes: frontend },
-    { name: 'JavaScript', codes: javascript },
+    { name: 'TypeScript', codes: javascript },
     { name: 'Workflow', codes: workFlow },
 ]
