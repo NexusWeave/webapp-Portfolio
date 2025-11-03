@@ -8,43 +8,52 @@ const cs =
 [
     'CS', 'C', 'C++', 'NET', 'ASPNET', 'ENTITY FRAMEWORK'
 ]
+const TypeScript =
+[
+    "VUE.TS", "NUXT.TS", "REACT.TS", "TYPESCRIPT"
+]
 const javascript =
 [
-    "VUE.TS", "NUXT.TS", "REACT.TS", "TYPESCRIPT", "JAVASCRIPT"
+    "VUE.JS", "JAVASCRIPT"
 ]
-
 const workFlow =
 [
     'CMS', 'GITHUB', 'SASS', 'AGILE', 'GIT'
 ]
 
-const databases =
+const rationalDB =
 [
-    "MSSQL", "MYSQL", "SQLITE",
-    "MONGODB", "POSTGRESQL", 'NOSQL'
+    "MSSQL", "MYSQL", "SQLITE", "POSTGRESQL", "MARIADB"
 ]
 
-const frontend = [
-    'CSS', 'HTML', 'BOOTSTRAP'
+const styling = [
+    'CSS', 'BOOTSTRAP'
+]
+const markup =
+[
+    "MARKDOWN", "LATEX", "HTML"
 ]
 
 export const techStack:string[] = 
 [
-    ...python,
     ...cs,
+    ...python,
+    ...markup,
+    ...styling,
     ...workFlow,
-    ...frontend, 
-    ...databases,
-    ...javascript
-  
+    ...javascript,
+    ...rationalDB,
+    ...TypeScript
 ]
 
 export const techStackMap:Array<{ name: string, codes: string[] }> = 
 [
     { name: 'CS', codes: cs },
+    { name: 'Markup', codes: markup },
     { name: 'Python', codes: python },
-    { name: 'SQL', codes: databases },
-    { name: 'Frontend', codes: frontend },
-    { name: 'TypeScript', codes: javascript },
+    { name: 'Styling', codes: styling },
     { name: 'Workflow', codes: workFlow },
+    { name: 'TypeScript', codes: TypeScript },
+    { name: 'JavaScript', codes: javascript },
+    { name: 'Rational-DB', codes: rationalDB },
 ]
