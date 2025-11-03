@@ -1,5 +1,5 @@
 <template>
-    <section :class="tech">
+    <section>
         <h3>{{ label }}</h3>
         <p>{{ currentRank }}</p>
         <progress :value="value" :class="tech" max="100"></progress>
@@ -9,7 +9,6 @@
 
     //  Importing dependencies & types
     //import type { ProgressProps } from '@/types/props';
-    import { defineProps } from 'vue';
 
     interface ProgressProps {
         value: number;
