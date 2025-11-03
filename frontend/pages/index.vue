@@ -1,47 +1,38 @@
 <template>
-    <section class="flex-wrap-row-justify-space-evenly">
-        <section class="flex-column-justify-center-align-center">
-            <MediaFigure :data="CarouselData[0]"
+    <section :class="['flex-wrap-row-justify-space-evenly']">
+        <Timeline v-if="academicTimeline.length > 0"
+            title="Akademisk Tidslinje"
+            :data="academicTimeline"
+            :cls = "['component-blue', 'timeline-container',
+            'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
-        </section>
-        <section class="flex-column-justify-center-align-center">
-            <article v-for="(data, i) in personal" :key="i" class="bio">
-                <h3 v-if="i === 2">{{ data.title }}</h3>
-                <ContentRenderer v-if="i === 2":value="data" />
-            </article>
-        </section>
-        <section class="flex-column-justify-center-align-center">
 
-            <h2>An Autobiography</h2>
-            <article v-for="(data, i) in personal" :key="i" class="bio">
+        <Timeline v-if="achievementsTimeline.length > 0"
+            title="Prestasjonstidslinje"
+            :data="achievementsTimeline"
+            :cls = "['component-seagreen', 'timeline-container',
+            'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
+        />
+    </section>
 
-                <h3 v-if="i != 2">{{ data.title }}</h3>
-                <ContentRenderer v-if="i != 2" :value="data" />
-            </article>
-        </section>
+    <section class="spacer-large">
+        <RepositoryPortfolio />
     </section>
 </template>
 <script setup lang="ts">
 
-    //  Importing dependencies & types
-    import type { CarouselButton, FigureItem } from '@/types/props';
+    //  --- Import & types logic
+    import { fetchCollection, mapTimeline } from '#imports';
+    import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
-    const path = 'personal_profile';
-    const {data: personal} = await useAsyncData('personal', () => 
-    {
-        return queryCollection(path).all();
-    });
+    //  --- Component logic
+    const academicData = await fetchCollection<AcademicCollectionItem>('academic', 'academic-info');
+    const achievementData = await fetchCollection<AchievementsCollectionItem>('achievements', 'achievements-info');
 
-    //  Carousel Data
-    const CarouselData: FigureItem[] = 
-    [
-        {
-            type    : 'jpg',
-            alt     : 'Portrait of Kristoffer Gjøsund',
-            src     : 'media/images/carousel/20240903_165612.jpg',
-            caption : '- Motivert av å gi, og heve resultater gjennom samarbeid. Hver utfordring, er en felles reise. - Kristoffer Gjøsund',
-        },
+    const academicTimeline = computed(() => mapTimeline(academicData));
+    const achievementsTimeline = computed(() => mapTimeline(achievementData));
 
-    ];
-
+    //  --- Debugging Logic
+    //console.log("Processed timeline:", academicTimeline.value);
+    //console.log("Achievements data on load:", achievementsTimeline.value);
 </script>
