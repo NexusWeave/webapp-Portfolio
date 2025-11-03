@@ -40,7 +40,7 @@ export function next(arr: Array<Record<string, any>>)
 export function startTimer(arr: Array<Record<string, any>>)
     {
         //  Set the interval
-        const n = 5000;
+        const n = 10000;
 
         //  Start the timer
         setInterval(() => next(arr), n);
