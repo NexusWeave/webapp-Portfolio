@@ -1,0 +1,346 @@
+.
+├── archive
+│   └── frontend
+│       ├── stores
+│       │   ├── academicStore.ts
+│       │   ├── achievementsStore.ts
+│       │   ├── portfolioStore.ts
+│       │   └── repoStore.js
+│       └── utils
+│           ├── bio.js
+│           └── response.js
+├── backend
+│   ├── databases
+│   ├── flask
+│   │   ├── app.py
+│   │   ├── flask_session
+│   │   │   └── 2029240f6d1128be89ddc32729463129
+│   │   ├── lib
+│   │   │   ├── apis
+│   │   │   │   ├── github_api.py
+│   │   │   │   ├── heavy_api.py
+│   │   │   │   ├── photo_api.py
+│   │   │   │   └── __pycache__
+│   │   │   │       └── github_api.cpython-313.pyc
+│   │   │   ├── core
+│   │   │   │   ├── APIConfig.py
+│   │   │   │   ├── database.py
+│   │   │   │   └── __pycache__
+│   │   │   │       └── APIConfig.cpython-313.pyc
+│   │   │   ├── endpoint_services
+│   │   │   │   ├── announcements.py
+│   │   │   │   ├── github_data.py
+│   │   │   │   ├── Photos.py
+│   │   │   │   └── __pycache__
+│   │   │   │       ├── announcements.cpython-313.pyc
+│   │   │   │       ├── github_data.cpython-313.pyc
+│   │   │   │       └── Photos.cpython-313.pyc
+│   │   │   ├── settings
+│   │   │   │   ├── env_config.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── __pycache__
+│   │   │   │       ├── env_config.cpython-313.pyc
+│   │   │   │       └── __init__.cpython-313.pyc
+│   │   │   └── utils
+│   │   │       ├── exception_handler.py
+│   │   │       ├── logger_config.py
+│   │   │       ├── mathlibrary.py
+│   │   │       ├── os_utils.py
+│   │   │       ├── __pycache__
+│   │   │       │   ├── exception_handler.cpython-313.pyc
+│   │   │       │   ├── logger_config.cpython-313.pyc
+│   │   │       │   ├── os_utils.cpython-313.pyc
+│   │   │       │   └── utilitytools.cpython-313.pyc
+│   │   │       └── utilitytools.py
+│   │   ├── media
+│   │   │   └── documents
+│   │   │       └── Professional-CV-Resume.pdf
+│   │   ├── __pycache__
+│   │   │   └── app.cpython-313.pyc
+│   │   └── tests
+│   │       ├── algorithms.py
+│   │       ├── test_ApiStatus.py
+│   │       ├── test_performance.py
+│   │       └── test_responses.py
+│   ├── README.md
+│   ├── requirements.txt
+│   └── sqlite
+│       ├── programming-languages.sql
+│       ├── repo.sql
+│       └── sqlite.py
+├── content
+│   └── posts
+│       └── hello-world.md
+├── documentations
+│   ├── documents
+│   │   └── screen-capture-homepage.pdf
+│   ├── model
+│   │   ├── apis.md
+│   │   ├── database.md
+│   │   ├── Directories.md
+│   │   ├── endpoints.md
+│   │   ├── frontend.md
+│   │   ├── Gemini_Generated_Image_i4og6qi4og6qi4og.jpeg
+│   │   ├── system-architecture.md
+│   │   └── utils.md
+│   └── prototype
+│       ├── index.html
+│       ├── sass
+│       │   ├── flexbox
+│       │   │   ├── flexbox-column.css
+│       │   │   ├── flexbox-column.css.map
+│       │   │   ├── flexbox-column.sass
+│       │   │   ├── flexbox-row.css
+│       │   │   ├── flexbox-row.css.map
+│       │   │   └── flexbox-row.sass
+│       │   ├── flexbox.css
+│       │   ├── flexbox.css.map
+│       │   ├── flexbox.sass
+│       │   ├── fonts.css
+│       │   ├── fonts.css.map
+│       │   ├── fonts.sass
+│       │   ├── grid-container.css
+│       │   ├── grid-container.css.map
+│       │   ├── grid-container.sass
+│       │   ├── index.css
+│       │   ├── index.css.map
+│       │   └── index.sass
+│       └── static
+│           ├── css
+│           │   ├── index.css
+│           │   └── index.css.map
+│           ├── js
+│           │   ├── aboutme
+│           │   │   └── view.js
+│           │   ├── controller.js
+│           │   ├── dev
+│           │   │   └── view.js
+│           │   ├── model.js
+│           │   ├── portofolio
+│           │   │   ├── controller.js
+│           │   │   └── view.js
+│           │   ├── utils
+│           │   │   ├── controller.js
+│           │   │   └── view.js
+│           │   └── view.js
+│           └── media
+│               ├── images
+│               │   └── carousel
+│               │       ├── klar00.jpg
+│               │       ├── klar01.jpg
+│               │       ├── klar02.jpg
+│               │       ├── klar03.jpg
+│               │       ├── klar04.jpg
+│               │       └── sosent.zip
+│               └── logo
+│                   └── logic-meets-creative-solutions.png
+├── frontend
+│   ├── app.vue
+│   ├── assets
+│   │   ├── index.css
+│   │   └── index.css.map
+│   ├── components
+│   │   ├── article
+│   │   │   ├── Article.vue
+│   │   │   ├── Footer.vue
+│   │   │   ├── Header.vue
+│   │   │   └── Main.vue
+│   │   ├── Date
+│   │   │   ├── Date.vue
+│   │   │   └── Year.vue
+│   │   ├── form
+│   │   │   ├── Form.vue
+│   │   │   └── inputs.vue
+│   │   ├── media
+│   │   │   ├── Figure.vue
+│   │   │   ├── Icon.vue
+│   │   │   └── Media.vue
+│   │   ├── navigation
+│   │   │   ├── Anchor.vue
+│   │   │   ├── Button.vue
+│   │   │   └── NavMenu.vue
+│   │   ├── portfolio
+│   │   │   └── Card.vue
+│   │   ├── repository
+│   │   │   ├── BusinessCard.vue
+│   │   │   └── Portfolio.vue
+│   │   ├── timeline
+│   │   │   ├── Card.vue
+│   │   │   ├── Filter.vue
+│   │   │   └── Timeline.vue
+│   │   └── utils
+│   │       ├── Announcements.vue
+│   │       ├── Footer.vue
+│   │       ├── Header.vue
+│   │       ├── List.vue
+│   │       ├── Pagination.vue
+│   │       ├── Progress.vue
+│   │       └── Tags.vue
+│   ├── composables
+│   │   ├── backendAPI-utils.ts
+│   │   └── preprosessor-utils.ts
+│   ├── content
+│   │   ├── academic.json
+│   │   ├── achievements
+│   │   │   ├── academic
+│   │   │   │   ├── Helse-og-Oppvekstfag-borgund-vgs.md
+│   │   │   │   ├── Introduction-To-Computer-Science-HarvardX.md
+│   │   │   │   ├── It--Utviklings-faget-GetAcademy.md
+│   │   │   │   └── videregående-skole-borgund-bygg-anlegg.md
+│   │   │   └── achievements
+│   │   │       └── webapp-sosent-cms.md
+│   │   ├── portfolio
+│   │   │   └── portfolio.json
+│   │   ├── posts
+│   │   │   ├── dev
+│   │   │   │   ├── Fra-Teori-til-Praksis.md
+│   │   │   │   ├── Kompetanseheving-i-CMS-utvikling-.md
+│   │   │   │   ├── Lorem-ipsuml-deloro-epsmul.md
+│   │   │   │   ├── Teknisk-referanselogCMS-arkitektur-og-11ty-implementasjon.md
+│   │   │   │   ├── Test-tittel.md
+│   │   │   │   └── webapp-intranett
+│   │   │   │       └── Brekraftig-Stihndtering-etter-kritisk-API-krasj-00.md
+│   │   │   └── hello-world.md
+│   │   ├── profiles
+│   │   │   ├── dev
+│   │   │   │   ├── growth
+│   │   │   │   ├── Kritisk-Tenking-til-Kollektiv-Suksess.md
+│   │   │   │   ├── Oppsummering-av-profil.md
+│   │   │   │   └── Profesjonell-kompetanse.md
+│   │   │   └── personal-profiles
+│   │   │       ├── A-Deeper-Insight.md
+│   │   │       ├── growth
+│   │   │       ├── Growth-Journey.md
+│   │   │       ├── misc
+│   │   │       └── Profile-information.md
+│   │   └── quotes
+│   │       └── references
+│   │           ├── Garden-Outlet-00.md
+│   │           ├── Garden-Outlet-01.md
+│   │           ├── Garden-Outlet-02.md
+│   │           ├── Garden-Outlet-03.md
+│   │           ├── Ingrids-Glassverksted-00.md
+│   │           ├── Ingrids-Glassverksted-01.md
+│   │           └── Ingrids-Glassverksted-02.md
+│   ├── content.config.ts
+│   ├── eslint.config.mjs
+│   ├── Jamstack-arkitektur.txt
+│   ├── logs
+│   │   └── CHANGELOG.md
+│   ├── nuxt.config.ts
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── pages
+│   │   ├── aktuelt.vue
+│   │   ├── dev.vue
+│   │   ├── index.vue
+│   │   ├── personal.vue
+│   │   └── portfolio-ux-visualization (1).svg
+│   ├── public
+│   │   ├── admin
+│   │   │   └── index.html
+│   │   ├── favicon.ico
+│   │   ├── media
+│   │   │   ├── documents
+│   │   │   │   └── helsefag-kompetansebevis.pdf
+│   │   │   ├── images
+│   │   │   │   ├── cards
+│   │   │   │   │   └── portfolio-card.svg
+│   │   │   │   ├── carousel
+│   │   │   │   │   └── 20240903_165612.jpg
+│   │   │   │   └── logo
+│   │   │   │       └── logic-meets-creative-solutions.png
+│   │   │   └── tech-lang-icons
+│   │   │       ├── C-Plus.svg
+│   │   │       ├── CS.svg
+│   │   │       ├── C.svg
+│   │   │       ├── jp-nb.svg
+│   │   │       └── Python.svg
+│   │   └── robots.txt
+│   ├── README.md
+│   ├── sass
+│   │   ├── colors
+│   │   │   ├── _colors.sass
+│   │   │   ├── _misc.sass
+│   │   │   ├── _palette.sass
+│   │   │   ├── _social-colors.sass
+│   │   │   └── _tech-color.sass
+│   │   ├── flexbox
+│   │   │   ├── _flexbox-column.sass
+│   │   │   ├── _flexbox-reversed-row.sass
+│   │   │   ├── _flexbox-row.sass
+│   │   │   ├── _flexbox-wrap-row.sass
+│   │   │   └── row-align-justify-mix
+│   │   │       └── _flexbox-wrap-row-align-justify.sass
+│   │   ├── index.sass
+│   │   ├── mappings
+│   │   │   ├── _devices-breakpoints.sass
+│   │   │   ├── _flexbox.sass
+│   │   │   ├── _icons.sass
+│   │   │   └── _tech-icons.sass
+│   │   ├── media-query
+│   │   │   ├── devices
+│   │   │   │   ├── _amazon-media-query.sass
+│   │   │   │   ├── _apple-media-query.sass
+│   │   │   │   ├── _blackberry-media-query.sass
+│   │   │   │   ├── _breakpoints.sass
+│   │   │   │   ├── _display-media-query.sass
+│   │   │   │   ├── _google-media-query.sass
+│   │   │   │   ├── _htc-media-query.sass
+│   │   │   │   ├── _microsoft-media-query.sass
+│   │   │   │   ├── _motorola-media-query.sass
+│   │   │   │   ├── _samsung-media-query.sass
+│   │   │   │   ├── _sharp-media-query.sass
+│   │   │   │   └── _sony-media-query.sass
+│   │   │   └── _media-queries.sass
+│   │   ├── utils
+│   │   │   ├── _article.sass
+│   │   │   ├── _buttons.sass
+│   │   │   ├── _cards.sass
+│   │   │   ├── _components.sass
+│   │   │   ├── _flexbox.sass
+│   │   │   ├── _grid-container.sass
+│   │   │   ├── _icons.sass
+│   │   │   ├── _mixins.sass
+│   │   │   ├── _navigation.sass
+│   │   │   ├── _tech-content.sass
+│   │   │   └── _timeline.sass
+│   │   └── views
+│   │       ├── _dev.sass
+│   │       └── _portfolio.sass
+│   ├── tina
+│   │   ├── collections
+│   │   │   ├── academic.ts
+│   │   │   ├── blog.ts
+│   │   │   ├── profiles.ts
+│   │   │   └── reference.ts
+│   │   ├── config.ts
+│   │   ├── __generated__
+│   │   │   ├── client.ts
+│   │   │   ├── config.prebuild.jsx
+│   │   │   ├── frags.gql
+│   │   │   ├── _graphql.json
+│   │   │   ├── _lookup.json
+│   │   │   ├── queries.gql
+│   │   │   ├── schema.gql
+│   │   │   ├── _schema.json
+│   │   │   ├── static-media.json
+│   │   │   └── types.ts
+│   │   └── tina-lock.json
+│   ├── tree-map-documentation.txt
+│   ├── tsconfig.json
+│   ├── types
+│   │   ├── props.d.ts
+│   │   ├── references.d.ts
+│   │   └── timeline.d.ts
+│   └── utils
+│       ├── tagStack.ts
+│       ├── techStack.ts
+│       ├── tech-utils.ts
+│       └── utils.ts
+├── Jamstack-arkitektur.txt
+├── LICENSE
+├── README.md
+└── webapp-Portfolio-vupy.code-workspace
+
+98 directories, 246 files
