@@ -26,6 +26,7 @@ frontend/build
 frontend/src/assets
 frontend/node_modules
 frontend/public/admin
+frontend/tina/__generated__/
 
 frontend/docs/.vitepress/cache
 
