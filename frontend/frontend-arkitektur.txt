@@ -1,0 +1,207 @@
+.
+├── app.vue
+├── assets
+│   ├── index.css
+│   └── index.css.map
+├── components
+│   ├── article
+│   │   ├── Article.vue
+│   │   ├── Footer.vue
+│   │   ├── Header.vue
+│   │   └── Main.vue
+│   ├── Date
+│   │   ├── Date.vue
+│   │   └── Year.vue
+│   ├── form
+│   │   ├── Form.vue
+│   │   └── inputs.vue
+│   ├── media
+│   │   ├── Figure.vue
+│   │   ├── Icon.vue
+│   │   └── Media.vue
+│   ├── navigation
+│   │   ├── Anchor.vue
+│   │   ├── Button.vue
+│   │   └── NavMenu.vue
+│   ├── portfolio
+│   │   └── Card.vue
+│   ├── repository
+│   │   ├── BusinessCard.vue
+│   │   └── Portfolio.vue
+│   ├── timeline
+│   │   ├── Card.vue
+│   │   ├── Filter.vue
+│   │   └── Timeline.vue
+│   └── utils
+│       ├── Announcements.vue
+│       ├── Footer.vue
+│       ├── Header.vue
+│       ├── List.vue
+│       ├── Pagination.vue
+│       ├── Progress.vue
+│       └── Tags.vue
+├── composables
+│   ├── backendAPI-utils.ts
+│   └── preprosessor-utils.ts
+├── content
+│   ├── academic.json
+│   ├── achievements
+│   │   ├── academic
+│   │   │   ├── Helse-og-Oppvekstfag-borgund-vgs.md
+│   │   │   ├── Introduction-To-Computer-Science-HarvardX.md
+│   │   │   ├── It--Utviklings-faget-GetAcademy.md
+│   │   │   └── videregående-skole-borgund-bygg-anlegg.md
+│   │   └── achievements
+│   │       └── webapp-sosent-cms.md
+│   ├── portfolio
+│   │   └── portfolio.json
+│   ├── posts
+│   │   ├── dev
+│   │   │   ├── Fra-Teori-til-Praksis.md
+│   │   │   ├── Kompetanseheving-i-CMS-utvikling-.md
+│   │   │   ├── Lorem-ipsuml-deloro-epsmul.md
+│   │   │   ├── Teknisk-referanselogCMS-arkitektur-og-11ty-implementasjon.md
+│   │   │   ├── Test-tittel.md
+│   │   │   └── webapp-intranett
+│   │   │       └── Brekraftig-Stihndtering-etter-kritisk-API-krasj-00.md
+│   │   └── hello-world.md
+│   ├── profiles
+│   │   ├── dev
+│   │   │   ├── growth
+│   │   │   ├── Kritisk-Tenking-til-Kollektiv-Suksess.md
+│   │   │   ├── Oppsummering-av-profil.md
+│   │   │   └── Profesjonell-kompetanse.md
+│   │   └── personal-profiles
+│   │       ├── A-Deeper-Insight.md
+│   │       ├── growth
+│   │       ├── Growth-Journey.md
+│   │       ├── misc
+│   │       └── Profile-information.md
+│   └── quotes
+│       └── references
+│           ├── Garden-Outlet-00.md
+│           ├── Garden-Outlet-01.md
+│           ├── Garden-Outlet-02.md
+│           ├── Garden-Outlet-03.md
+│           ├── Ingrids-Glassverksted-00.md
+│           ├── Ingrids-Glassverksted-01.md
+│           └── Ingrids-Glassverksted-02.md
+├── content.config.ts
+├── eslint.config.mjs
+├── frontend-arkitektur.txt
+├── Jamstack-arkitektur.txt
+├── logs
+│   └── CHANGELOG.md
+├── nuxt.config.ts
+├── package.json
+├── package-lock.json
+├── pages
+│   ├── aktuelt.vue
+│   ├── dev.vue
+│   ├── index.vue
+│   ├── personal.vue
+│   └── portfolio-ux-visualization (1).svg
+├── public
+│   ├── admin
+│   │   └── index.html
+│   ├── favicon.ico
+│   ├── media
+│   │   ├── documents
+│   │   │   └── helsefag-kompetansebevis.pdf
+│   │   ├── images
+│   │   │   ├── cards
+│   │   │   │   └── portfolio-card.svg
+│   │   │   ├── carousel
+│   │   │   │   └── 20240903_165612.jpg
+│   │   │   └── logo
+│   │   │       └── logic-meets-creative-solutions.png
+│   │   └── tech-lang-icons
+│   │       ├── C-Plus.svg
+│   │       ├── CS.svg
+│   │       ├── C.svg
+│   │       ├── jp-nb.svg
+│   │       └── Python.svg
+│   └── robots.txt
+├── README.md
+├── sass
+│   ├── colors
+│   │   ├── _colors.sass
+│   │   ├── _misc.sass
+│   │   ├── _palette.sass
+│   │   ├── _social-colors.sass
+│   │   └── _tech-color.sass
+│   ├── flexbox
+│   │   ├── _flexbox-column.sass
+│   │   ├── _flexbox-reversed-row.sass
+│   │   ├── _flexbox-row.sass
+│   │   ├── _flexbox-wrap-row.sass
+│   │   └── row-align-justify-mix
+│   │       └── _flexbox-wrap-row-align-justify.sass
+│   ├── index.sass
+│   ├── mappings
+│   │   ├── _devices-breakpoints.sass
+│   │   ├── _flexbox.sass
+│   │   ├── _icons.sass
+│   │   └── _tech-icons.sass
+│   ├── media-query
+│   │   ├── devices
+│   │   │   ├── _amazon-media-query.sass
+│   │   │   ├── _apple-media-query.sass
+│   │   │   ├── _blackberry-media-query.sass
+│   │   │   ├── _breakpoints.sass
+│   │   │   ├── _display-media-query.sass
+│   │   │   ├── _google-media-query.sass
+│   │   │   ├── _htc-media-query.sass
+│   │   │   ├── _microsoft-media-query.sass
+│   │   │   ├── _motorola-media-query.sass
+│   │   │   ├── _samsung-media-query.sass
+│   │   │   ├── _sharp-media-query.sass
+│   │   │   └── _sony-media-query.sass
+│   │   └── _media-queries.sass
+│   ├── utils
+│   │   ├── _article.sass
+│   │   ├── _buttons.sass
+│   │   ├── _cards.sass
+│   │   ├── _components.sass
+│   │   ├── _flexbox.sass
+│   │   ├── _grid-container.sass
+│   │   ├── _icons.sass
+│   │   ├── _mixins.sass
+│   │   ├── _navigation.sass
+│   │   ├── _tech-content.sass
+│   │   └── _timeline.sass
+│   └── views
+│       ├── _dev.sass
+│       └── _portfolio.sass
+├── tina
+│   ├── collections
+│   │   ├── academic.ts
+│   │   ├── blog.ts
+│   │   ├── profiles.ts
+│   │   └── reference.ts
+│   ├── config.ts
+│   ├── __generated__
+│   │   ├── client.ts
+│   │   ├── config.prebuild.jsx
+│   │   ├── frags.gql
+│   │   ├── _graphql.json
+│   │   ├── _lookup.json
+│   │   ├── queries.gql
+│   │   ├── schema.gql
+│   │   ├── _schema.json
+│   │   ├── static-media.json
+│   │   └── types.ts
+│   └── tina-lock.json
+├── tree-map-documentation.txt
+├── tsconfig.json
+├── types
+│   ├── props.d.ts
+│   ├── references.d.ts
+│   └── timeline.d.ts
+└── utils
+    ├── tagStack.ts
+    ├── techStack.ts
+    ├── tech-utils.ts
+    └── utils.ts
+
+54 directories, 151 files
