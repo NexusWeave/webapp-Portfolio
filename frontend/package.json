@@ -9,7 +9,7 @@
     "sass": "sass --watch sass:assets",
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
-    "serve": "tinacms build && nuxt preview",
+    "serve": "tinacms build && nuxt build && nuxt preview",
     "deploy": "tinacms build && nuxt build && nuxt export",
     "cl-update": "conventional-changelog -p angular -i  logs/CHANGELOG.md -s"
   },
