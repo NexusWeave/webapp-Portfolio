@@ -10,7 +10,8 @@
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
     "serve": "tinacms build && nuxt preview",
-    "deploy": "tinacms build && nuxt build && nuxt export"
+    "deploy": "tinacms build && nuxt build && nuxt export",
+    "cl-update": "conventional-changelog -p angular -i  logs/CHANGELOG.md -s"
   },
   "dependencies": {
     "@nuxt/content": "^3.7.1",
@@ -19,6 +20,7 @@
     "@nuxt/ui": "^3.3.4",
     "better-sqlite3": "^12.2.0",
     "bootstrap-icons": "^1.13.1",
+    "conventional-changelog-cli": "^5.0.0",
     "eslint": "^9.35.0",
     "nuxt": "^4.1.2",
     "tinacms": "^2.8.3",
