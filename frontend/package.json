@@ -9,7 +9,8 @@
     "sass": "sass --watch sass:assets",
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
-    "start": "tinacms build && nuxt preview"
+    "serve": "tinacms build && nuxt preview",
+    "deploy": "tinacms build && nuxt build && nuxt export"
   },
   "dependencies": {
     "@nuxt/content": "^3.7.1",
@@ -17,18 +18,18 @@
     "@nuxt/image": "^1.11.0",
     "@nuxt/ui": "^3.3.4",
     "better-sqlite3": "^12.2.0",
+    "bootstrap-icons": "^1.13.1",
     "eslint": "^9.35.0",
     "nuxt": "^4.1.2",
     "tinacms": "^2.8.3",
     "typescript": "^5.9.2",
     "vue": "^3.5.21",
-    "vue-router": "^4.5.1",
-    "bootstrap-icons": "^1.13.1"
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@pinia/nuxt": "^0.5.5",
     "@tinacms/cli": "^1.10.3",
-    "@types/node": "^24.5.2",
+    "@types/node": "^24.10.0",
     "bootstrap-icons": "^1.13.1",
     "pinia": "^2.1.7",
     "sass": "^1.92.1"
