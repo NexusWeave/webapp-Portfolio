@@ -73,7 +73,7 @@
 
     const isDisabled = () => {
         if (!data.type) return false;
-        return !!Array.isArray(data.type) ? data.type.includes('disabled') : !!data.type === 'disabled';
+        return !!Array.isArray(data.type) ? data.type.includes('disabled') : data.type === 'disabled';
     };
 
     const isMedia = () => {
