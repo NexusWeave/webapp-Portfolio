@@ -1,6 +1,6 @@
 {
   "name": "webapp-portofolio-vupy",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "build": "tinacms build && nuxt build",
     "serve": "tinacms build && nuxt build && nuxt preview",
     "deploy": "tinacms build && npm run generate && netlify deploy --no-build dir=.output/public",
-    "cl-update": "conventional-changelog -p angular -i  logs/CHANGELOG.md -s"
+    "cl-update": "conventional-changelog -p angular -i  docs/logs/CHANGELOG.md -s"
   },
   "dependencies": {
     "@nuxt/content": "^3.7.1",
@@ -33,7 +33,9 @@
     "@tinacms/cli": "^1.10.3",
     "@types/node": "^24.10.0",
     "bootstrap-icons": "^1.13.1",
+    "patch-package": "^8.0.1",
     "pinia": "^2.1.7",
+    "postinstall-postinstall": "^2.1.0",
     "sass": "^1.92.1"
   }
 }
