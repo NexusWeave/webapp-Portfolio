@@ -1,0 +1,41 @@
+.
+├── backend-arkitektur.txt
+├── flask
+│   ├── app.py
+│   ├── lib
+│   │   ├── apis
+│   │   │   ├── github_api.py
+│   │   │   ├── heavy_api.py
+│   │   │   └── photo_api.py
+│   │   ├── core
+│   │   │   ├── APIConfig.py
+│   │   │   └── database.py
+│   │   ├── endpoint_services
+│   │   │   ├── announcements.py
+│   │   │   ├── github_data.py
+│   │   │   └── Photos.py
+│   │   ├── settings
+│   │   │   ├── env_config.py
+│   │   │   └── __init__.py
+│   │   └── utils
+│   │       ├── exception_handler.py
+│   │       ├── logger_config.py
+│   │       ├── mathlibrary.py
+│   │       ├── os_utils.py
+│   │       └── utilitytools.py
+│   ├── media
+│   │   └── documents
+│   │       └── Professional-CV-Resume.pdf
+│   └── tests
+│       ├── algorithms.py
+│       ├── test_ApiStatus.py
+│       ├── test_performance.py
+│       └── test_responses.py
+├── README.md
+├── requirements.txt
+└── sqlite
+    ├── programming-languages.sql
+    ├── repo.sql
+    └── sqlite.py
+
+12 directories, 27 files
