@@ -92,7 +92,7 @@
     const codeProsessionList =
     [
         { name:'C',  tech:"c", value: 25 },
-        { name:'GO-Lang',  tech:"go", value: 5 },    
+        { name:'GO-Lang',  tech:"go", value: 10 },    
         { name:'SASS', tech:"sass", value: 30 },
         { name:'Python', tech:"python", value: 40 },
         { name:'C#', tech:"cs", value: 25 },
@@ -107,8 +107,9 @@
         { name:'Docker', tech:"workflow", value: 5 },
         { name:'CI/CD', tech:"workflow", value: 15 },
         { name:'Linux', tech:"workflow", value: 45 },
-        { name:'Unit Testing', tech:"workflow", value: 40 },
         { name:'AI & ML', tech:"workflow", value: 50 },
+        { name:'DevOps', tech:"workflow", value: 25 },
+        { name:'Unit Testing', tech:"workflow", value: 40 },
     ];
 
     const n = codeProsessionList.length;
