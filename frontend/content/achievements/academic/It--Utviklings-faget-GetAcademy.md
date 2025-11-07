@@ -17,6 +17,7 @@ techStack:
   - ASPNET
   - ENTITY FRAMEWORK
   - CS
+  - VUE.TS
 ---
 
-Fokuset i denne skolegangen er **intensiv**, **prosjektbasert læring** innen moderne full-stack utvikling. Skolen bidro til å videreutvikle og spesialisere kompetansen innen \*\*objektorientert programmering \*\*(**OOP**) og **databasehåndtering**, med praktisk erfaring i å bygge **skalerbare applikasjoner** ved bruk av skolens tech stack. Skolen vektlegger også prinsipper for **moderne utviklingsmetodikk** og bruk av både **strukturert kode** og **utviklingsprinsipper**.
+Fokuset i denne skolegangen er **intensiv**, **prosjektbasert læring** innen moderne full-stack utvikling. Skolen bidro til å videreutvikle og spesialisere kompetansen innen **objektorientert programmering**(**OOP**) og **databasehåndtering**, med praktisk erfaring i å bygge **skalerbare applikasjoner** ved bruk av skolens tech stack. Skolen vektlegger også prinsipper for **moderne utviklingsmetodikk** og bruk av både **strukturert kode** og **utviklingsprinsipper**.
