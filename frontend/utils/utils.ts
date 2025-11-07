@@ -21,7 +21,7 @@ export function next(arr: Array<Record<string, any>>)
             const length = n - 1;
             const source = arr[i];
 
-            const j = i == length ? 0 : i + 1;
+            const j = i === length ? 0 : i + 1;
             const target = arr[j];
 
             //  Swap the visibility
@@ -43,5 +43,5 @@ export function startTimer(arr: Array<Record<string, any>>)
         const n = 10000;
 
         //  Start the timer
-        setInterval(() => next(arr), n);
+        return setInterval(() => next(arr), n);
     };

@@ -73,7 +73,7 @@
 <script setup lang="ts">
 
     //  --- Import & types logic
-    import { onMounted } from '#imports';
+    import { onMounted, onUnmounted } from '#imports';
     import { startTimer } from '~/utils/utils';
     import { fetchCollection } from '#imports';
     
@@ -117,11 +117,19 @@
     const codeSkills = computed(() => codeProsessionList.slice().sort((a, b) => b.value - a.value));
     const toolSkills = computed(() => toolList.slice().sort((a, b) => b.value - a.value));
 
+    let timerInterval: ReturnType<typeof setInterval> | null = null;
 
     onMounted(() => {
         //  Start the reference timer
-        startTimer(sortedReference);
+        timerInterval = startTimer(sortedReference);
 
+    });
+
+    onUnmounted(() => {
+        //  Clear the timer when component unmounts
+        if (timerInterval) {
+            clearInterval(timerInterval);
+        }
     });
 
     //  --- Debugging Logic ---

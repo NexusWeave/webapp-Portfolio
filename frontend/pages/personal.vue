@@ -7,7 +7,7 @@
         <section class="flex-column-justify-center-align-center">
             <article v-for="(data, i) in personal" :key="i" class="bio">
                 <h3 v-if="i === 2">{{ data.title }}</h3>
-                <ContentRenderer v-if="i === 2":value="data" />
+                <ContentRenderer v-if="i === 2" :value="data" />
             </article>
         </section>
     </section>
