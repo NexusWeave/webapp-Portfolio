@@ -21,7 +21,7 @@ export function next(arr: Array<Record<string, any>>)
             const length = n - 1;
             const source = arr[i];
 
-            const j = i == length ? 0 : i + 1;
+            const j = i === length ? 0 : i + 1;
             const target = arr[j];
 
             //  Swap the visibility
