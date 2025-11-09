@@ -2,7 +2,7 @@
 @use '../colors/colors' as color
 
 .timeline-container
-    
+
     .timeline-item
         input[type="range"]
             &::-webkit-slider-runnable-track,
@@ -52,23 +52,37 @@
 
     .timeline-content
 
-        h2, h3, h4, p
+        h2, h3, h4
             text-align: center
+        
+        p
+            text-align: justify
 
         &:nth-of-type(odd)
             margin-block-end: 1em
 
         //opacity: 0
+        margin: 1em
         padding: 1em
-        //visibility: hidden
         border-radius: .5em
-        max-inline-size: 22em
+        //visibility: hidden
+        max-inline-size: 100%
+        
         box-shadow: 0 2px 4px rgba(64, 64, 64, .5)
-
         @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
 
-        
+        section
+            margin: .5em
 
+        .section
+            
+            margin-inline: 1em
+            max-inline-size: 20em
+            
+            &:nth-of-type(odd)
+                border-right: 1.5px groove rgba(0, 0, 0, .2)
+                
+            
         .timeline-description
             .timeline-list
                 .timeline-item

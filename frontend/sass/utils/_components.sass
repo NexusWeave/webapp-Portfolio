@@ -3,9 +3,11 @@
 
 .component-blue
     @include mix.background-style(color.$deep-midnight-blue, color.$off-white)
-    
-    h2, h3, h4
-        @include mix.font-style('Roboto')
+
+.component-seagreen
+    @include mix.background-style(color.$sea-green, color.$off-white)
+    @include mix.link-styles(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
+
 
 .component-w-g-b
     @include mix.background-style(color.$off-white, color.$deep-midnight-blue)
@@ -14,15 +16,12 @@
     a 
         text-decoration: underline
 
-.component-seagreen
-    @include mix.background-style(color.$sea-green, color.$off-white)
-    @include mix.link-styles(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
-
-    h2, h3, h4
-        @include mix.font-style('Roboto')
-
 .component-w-g-t
     @include mix.background-style(color.$off-white, color.$sea-green)
     @include mix.link-styles(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
 
+.component-blue, .component-seagreen
+    h2, h3, h4
+        margin: 0
+        @include mix.font-style('Roboto')
