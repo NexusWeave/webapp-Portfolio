@@ -15,11 +15,11 @@
                     :isVisible="!!item.isVisible"
                 />
             </section>
-            <section :class="['timeline-content', 'card-container',cls[4]]">
+            <section :class="[, 'timeline-content',cls[4]]">
                 <TimelineCard v-for="item in data" :key="item.id"
                     :data="item"
                     :isVisible="item.isVisible"
-                    :cls="[cls[4], 'timeline-card', 'timeline-active', cls[5], cls[6]]"
+                    :cls="[, cls[4], 'timeline-card', 'timeline-active', cls[5], cls[6]]"
                 />
             </section>
         </section>
@@ -37,7 +37,7 @@
     {
 
         cls: () => ['component-blue', 'timeline-container',
-        'timeline-line', 'flex-wrap-row-justify-space-evenly', ['card-container', 'component-w-g-b']],
+        'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'],
     });
 
     const cls = computed(() => 
