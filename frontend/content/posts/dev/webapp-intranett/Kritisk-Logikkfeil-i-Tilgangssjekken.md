@@ -4,7 +4,7 @@ tags:
   - dev-journey
 title: Kritisk Logikkfeil i Tilgangssjekken
 ingress: >
-  En feil i** mønstermatchingslogikken** til **Role-Based Access Control**
+  En feil i**mønstermatchingslogikken** til **Role-Based Access Control**
   (RBAC)-systemet førte til at **autoriserte brukere feilaktig ble nektet
   tilgang**. Den krevende feilsøkingsprosessen **avdekket at utfordringen lå i
   en subtil, men kritisk inkonsekvens**. Tilgangsstien i konfigurasjonsfilen
@@ -24,7 +24,7 @@ star: >
 
 
   Det ble utført en feilsøkningsprosess som fokuserte på inkonsistensen i
-  tilformateringen mellom inndata og konfigurasjonsfilen. 
+  tilformateringen mellom inndata og konfigurasjonsfilen.
 
 
   * Etter å ha studert både inndataen og konfigurasjonsfilen, ble det
