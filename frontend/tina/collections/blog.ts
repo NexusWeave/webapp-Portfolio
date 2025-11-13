@@ -44,16 +44,21 @@ export const blogCollection: Collection =
         {
             isBody: true,
             name: "main",
-            required: true,
+            required: false,
             type: "rich-text",
             label: "Main text"
         },
         {
-            isBody: true,
-            required: true,
+            required: false,
             type: "rich-text",
             name: "star",
             label: "STAR - Modell"
+        },
+        {
+            required: false,
+            type: "rich-text",
+            name: "KildeHenvisning",
+            label: "Kilde Henvisning"
         },
     ],
 };
