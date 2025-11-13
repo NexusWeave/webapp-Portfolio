@@ -6,8 +6,8 @@ title: Strategisk Dokumentasjon Før Videreutvikling
 ingress: ''
 star: >
   Prosjektet manglet en konsistent og tilstrekkelig dokumentasjonsbase. Dette
-  skapte **langvarig** **onboarding**-**prosess**, og** reduserte forståelsen av
-  systemet betraktelig**. gjorde forståelsen av prosjektet vanskeligere. 
+  skapte **langvarig** **onboarding**-**prosess**, og\*\* reduserte forståelsen
+  av systemet betraktelig\*\*. gjorde forståelsen av prosjektet vanskeligere.
 
 
   For å **redusere onboarding**-**prosessen** og sikre **prosjektets langsiktige
@@ -21,9 +21,24 @@ star: >
 
 
   * README.md :
-    * Struktur beskrivelse
-    * Tilnørmingen for Frontend-dokumentasjon
-      beskrivelse
+
+
+  | Seksjon               | Hovedfokus og funksjon                        |   |
+
+  | --------------------- | --------------------------------------------- | - |
+
+  | Hovedtittel & mål     | Definiere prosjektets verdi                   |   |
+
+  | Oversikt & Onboarding | Sikrer at brukeren har bakgrunnkontekst       |   |
+
+  | Teknisk miljø & Krav  | Utviklermiljøets spessifikasjoner             |   |
+
+  | Installasjon          | Steg for steg guide, for å komme seg igang.   |   |
+
+  | Utviklerverktøy       | Installasjon og bruk av automatisering        |   |
+
+  | Avsluttende Planer    | Henviser til fremtidig ekstern dokumentasjon. |   |
+
 
   <!---->
 
