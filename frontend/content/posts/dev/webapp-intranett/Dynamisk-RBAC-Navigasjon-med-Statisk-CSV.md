@@ -29,17 +29,20 @@ star: >
   **Datahåndtering**
 
 
-  CSV-filen blir lest gjennom å bruke `CSVHelper` som leser filen inn til en
-  variabel. Dette er en prosess som skjer i innholdsliste-endepunktet.
+  CSV-filen blir lest gjennom å bruke
+  [`CSVHelper`](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file)
+  som leser filen inn til en variabel. Dette er en prosess som skjer i
+  **CsvNavigation**-filen.
 
 
-  For hver del av CSV-filen skal programmet sjekke om at brukeren har
-  rettigheter, til den stien
+  For hver seksjon skal programmet sjekke om at brukeren har rettigheter, til
+  den stien
 
 
   Om den bolske verdien er sann, skal den delen av CSV-filen legges inn i en
-  streng og når programmet er ferdig blir strengen sendt tilbake til endepunktet
-  og videre sendt til frontend.
+  streng og når programmet er ferdig blir strengen skrevet tilbake til en ny
+  streng, som er Searializert til samme type som den opprinnlige dokumentet og
+  videre sendt tilbake til endepunktet og videre sendt til frontend.
 
 
   **Integrasjonspunkt**
@@ -49,10 +52,11 @@ star: >
   isolere foretningslogikken.
 
 
+
   **Autorisasjons logikk**
 
 
-  For at jeg skal kunne sjekke CSV-logikken
+  For at jeg skal kunne sjekke CSV-logikken,
 
 
   CSV-filen splites ved hjelp av det definerte separasjonsstegnet.
