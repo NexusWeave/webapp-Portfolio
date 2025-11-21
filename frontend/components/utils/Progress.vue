@@ -25,13 +25,13 @@
     //  Rank Logic
     const rankList = 
     [
-        {name:'Grunnleggende', min:0, max:5},    
-        {name:'Nybegynner', min:6, max:15},
-        {name:'Intern', min:16, max:25},
-        {name:'Junior Utvikler', min:26, max:50},
-        {name:'Senior Utvikler', min:76, max:90},
-        {name:'Mellomnivå Utvikler', min:51, max:75},
-        {name:'Ekspert / Principal', min:91, max:100},
+        {name:'Nybegynner', min:0, max:14.29},    
+        {name:'Grunnleggende', min:14.30, max:28.59},
+        {name:'Intern', min:28.60, max:42.90},
+        {name:'Junior Utvikler', min:42.91, max:57.20},
+        {name:'Mellomnivå Utvikler', min:57.21, max:71.50},
+        {name:'Senior Utvikler', min:71.51, max:99.90},
+        {name:'Ekspert / Principal', min:83.35, max:100},
 
     ]
     
