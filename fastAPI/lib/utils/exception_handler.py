@@ -15,7 +15,6 @@ class ExceptionHandler(Exception):
         if message is None:
             self.message = "An error occurred"
 
-
 class OperationalError(ExceptionHandler):
     """ Raises when duplicated is not allowed """
 
@@ -29,7 +28,6 @@ class OperationalError(ExceptionHandler):
         super().__init__(code, message)
         self.status_code = code
         self.message = message if message else self.error[code]
-
 
 class NotFoundError(ExceptionHandler):
     """ Raises when the requested resource is not found """
