@@ -13,27 +13,44 @@ ingress: >
   serversiden for å forhindre datalekkasje og understreker viktigheten av å
   følge prinsippet om Minst Privilegium
 star: >
-  Det finnes en autorisasjonssårbarhet på nettsiden. Lenker som brukere ikke har
-  tilgang til, er presentert i nettleseren.  Dette er en konsekvens av at det
-  ikke finnes en funksjon for **Dynamisk Autorisert Navigasjon**. Dette bryter
-  prinsippet om **[Minst
-  Privilegium](https://cyberhoot.com/no/cybrary/least-privilege/)** og er en
-  pontesiell lekasje av intern informasjon til feil brukere.
+  En autorisasjonssårbarhet ble identifisert på nettsiden. Lenker som brukere
+  ikke har tilgang til, ble visuelt eksponert i navigasjonen for uautoriserte
+  brukere. Dette utgjorde en pontensiell lekkasje av intern informasjon ved at
+  sensitive URL-stier ble avdekket. Sårbarheten er en konsekvens av at systemet
+  ikke hadde en autorisasjonsfiltrering i backend-prosessen, som resulterte at
+  klient-side logikken, viste navigasjonene. 
 
 
-  Oppgaven er å identifisere årsaken til utlevering av sensitiv URL-stier,
-  vurdere denne analysen mot anerkjente sikkerhetsprinsipper og utarbeide et
-  sikkerhetsarkitetonisk korrektiv som sikrer at filtreringen håndteres på
-  serversiden.
+  * Identifisere årsaken til utlevering av sensitiv URL-stier, 
 
-
-  Gjennom å lage et funksjon som filtrerer ut stiene til den autoriserte
-  brukeren, vil brukeren ikke motta navigasjons sider, som de ikke kan bruke.
+  * Vurdere denne analysen mot anerkjente sikkerhetsprinsipper.
 
 
   Jeg gjennomførte en analyse av autorisasjonsflyten og identifiserte at det
-  ikke ble utført en filtrering av stiene i løpet av autorisasjons prosessen,
-  før det ble returnert ut til frontend.
+  ikke ble utført en filtrering av stiene i løpet av konverteringsprossesen fra
+  csv-filer til det endlige dokumentet som skulle fremvises.
+
+
+  * Analysen bekrefter at systemet brøt Prinsippet om **Minst Privilegium**. 
+
+
+  For å følge dette prinsippet må det implementeres en funksjon som filtrerer ut
+  stiene basert på brukerens autoriserte rolle og tilgangsnivå i systemet. dette
+  må skje i serversidens prosess etter at CSVHelper har lest dokumentet. 
+  Lærdommen av denne situasjonen er Prinsippet om Minst Privilegium
+
+
+  Least Privilege prinsippe krever at en bruker skal bare ha innsyn i det
+  minimale av URL-stier, som er nødvendig. 
+
+
+  Implementeringen av en funksjon som filterer ut stiene basert på brukerens
+  autoriserte rolle og tilgangsnivå, skal skje i prossesen etter at CSVhelper
+  har lest dokumentet.
+
+
+  Lærdommen fra denne sårbarheten er at URL-stiene skal sjekkes opp mot hvilken
+  rolle brukeren har, før ferdig parset CSV dokument sendes til frontend.
 KildeHenvisning: >
   1
   [https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file)
