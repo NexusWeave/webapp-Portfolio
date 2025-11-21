@@ -30,7 +30,7 @@ star: >
 
 
   CSV-filen blir lest gjennom å bruke
-  [`CSVHelper`](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file)
+  [`CsvHelper`](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file)
   som leser filen inn til en variabel. Dette er en prosess som skjer i
   **CsvNavigation**-filen.
 
@@ -50,7 +50,6 @@ star: >
 
   Denne sjekken skal i utgangspunktet sjekkes i en egen tjeneste klasse, for å
   isolere foretningslogikken.
-
 
 
   **Autorisasjons logikk**
