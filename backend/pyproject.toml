@@ -1,0 +1,6 @@
+[tool.commitizen]
+name = "cz_conventional_commits"
+# STARTVERSJONEN: Dette er den gyldige versjonen Commitizen vil bruke
+version = "0.0.1" 
+version_scheme = "pep440"
+version_provider = "commitizen"
