@@ -49,11 +49,11 @@ frontend/.netlify
 
 
 #   Backend directories
-backend/.logs
-backend/.venv
-backend/__pycache__
-backend/tests/assets
-backend/.pytest_cache
-backend/flask_session
-backend/tests/.pytest_cache
+__pycache__
+fastAPI/.logs
+fastAPI/.venv
+fastAPI/tests/assets
+fastAPI/.pytest_cache
+fastAPI/flask_session
+fastAPI/tests/.pytest_cache
 

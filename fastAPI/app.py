@@ -12,9 +12,9 @@ from dotenv import load_dotenv
 from lib.utils.logger_config import AppWatcher
 
 #   Endpoint services
-from lib.endpoint_services.github_data import Github
-from lib.endpoint_services.Photos import PhotoLibrary
-from lib.endpoint_services.announcements import Announcements
+#   from lib.endpoint_services.github_data import Github
+#   from lib.endpoint_services.Photos import PhotoLibrary
+#   from lib.endpoint_services.announcements import Announcements
 from lib.settings.env_config import DevelopmentConfig, ProdConfig
 
 #   Initialize Enviorment variables
@@ -27,7 +27,7 @@ logger.file_handler()
 #   Initialize Flask app and Extensions
 app = FastAPI(title="Portfolio Backend API", version="1.0.0")
 
-match os.getenv('ENV'):
+match str(os.getenv('ENV')).lower():
     case 'production':
         app.add_middleware(CORSMiddleware,ProdConfig.CORS_ORIGINS, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
         logger.info("Loading the Production Environment")                                                                                     #type: ignore
@@ -41,6 +41,9 @@ match os.getenv('ENV'):
         raise ValueError("Invalid environment variable. Set ENV to either 'production' or 'development'.")
 
 #   Registering Enpoint Services
-# @app.get("/api/v2/blogs/heavy/", tags=["GitHub"])
+#   @app.get("/api/v2/blogs/heavy/")
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Portfolio Backend API"}
 # @app.get("/api/v2/announcement", tags=["Announcements"])
 # @app.get("/api/v2/portfolio/github/{username}", tags=["GitHub"])
