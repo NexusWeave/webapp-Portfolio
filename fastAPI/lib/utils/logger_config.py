@@ -1,48 +1,50 @@
 #  Handling the application logging
 
 #   Importing required dependencies
+from __future__ import annotations
 import os, logging as Log
-from typing import Optional, Union
+from typing import Optional
+
 
 class Logger(object):
 
     """
         Logger class to handle application logging
     """
-    def __init__(self, name:str, dir:str = None):
+    def __init__(self, name:str, dir:str | None = None):
 
         """
             *   Initialize the logger
             *   Set the logging level to DEBUG
             *   Set the logging format
             *   Set the logging handler
-            *   param dir: str - default: None
+            *   param dir: str - default: '.log'
             *   param name: str - default: Class name
         """
         
         #   Initialize the handler
-        self.dir = '.' + dir if dir else dir
+        self.dir: str = '.' + dir if dir else '.log'
         self.name = name or self.__class__.__name__
 
         self.log = Log.getLogger(f"{self.name}")
         self.log.setLevel(Log.DEBUG)
         
         #   Initialize the Flags
-        self.FILE_HANDLER = False
-        self.CONSOLE_HANDLER = False
+        self.file_flag: bool = False
+        self.console_flag: bool = False
 
-    def setup_handler(self, handler:Union[Log.FileHandler | Log.StreamHandler]):
+    def setup_handler(self, handler: Log.FileHandler | Log.StreamHandler):  #type: ignore
         
         """
             *   Setup the Log handler
             *   param handler:[Log.FileHandler, Log.StreamHandler]
         """
         #   Initializing the formatter
-        formatter = Log.Formatter('%(asctime)s - %(levelname)s -\t %(name)s -\t %(message)s')
+        formatter = Log.Formatter('%(asctime)s - %(levelname)-8s - %(name)s - %(message)s')
         handler.setFormatter(formatter)
-        self.log.addHandler(handler)
-    
-    def console_handler(self):
+        self.log.addHandler(handler)    #type: ignore
+
+    def console_handler(self) -> None:
 
 
         """
@@ -50,14 +52,14 @@ class Logger(object):
         """
         
         #   Ensure that the Flag is not set to True
-        if not self.console_handler:
+        if not self.console_flag:
             
             #   Set the flag
-            self.CONSOLE_HANDLER = True
+            self.console_flag = True
             
             #   Initializing the handler
             handler = Log.StreamHandler()
-            self.setup_handler(handler)
+            self.setup_handler(handler)   #type: ignore
 
             #   Send message to the console
             self.log.info(f"{self.name} has been initialized.")
@@ -69,7 +71,7 @@ class Logger(object):
         """
 
         #   Ensure that the Flag is not set to True
-        if not self.FILE_HANDLER:
+        if not self.file_flag:
 
             #   Initializing the handler
             if self.dir:
@@ -79,27 +81,26 @@ class Logger(object):
 
             else: handler = Log.FileHandler(self.name)
 
-            self.FILE_HANDLER = True
+            self.file_flag = True
 
-            self.setup_handler(handler)
+            self.setup_handler(handler)    #type: ignore
             
             self.log.info(f"{self.name} has been initialized.")
             
         else:
             self.log.warning(f"{self.name} File handler already initialized")
 
-    
-    def info(self, message):
-        self.log.info(message)
-    
-    def error(self, message):
-        self.log.error(message)
-    
-    def warn(self, message):
-        self.log.warning(message)
-    
-    def debug(self, message):
-        self.log.debug(message)
+    def info(self, message: str):
+        self.log.info(f"[!INFO] : {message}")
+
+    def error(self, message: str):
+        self.log.error(f"[!ERROR] : {message}")
+
+    def warn(self, message: str):
+        self.log.warning(f"[!WARN] : {message}")
+
+    def debug(self, message: str):
+        self.log.debug(f"[!DEBUG] : {message}")
 
 class AppWatcher(Logger):
 
