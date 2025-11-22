@@ -5,15 +5,11 @@ from typing import Dict
 from datetime import datetime
 
 #   Third Party Libraries
-from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 
 #   Custom Libraries
 from lib.utils.utilitytools import UtilityTools
 
-
-#   Load environment variables
-load_dotenv()
 
 class Announcements(BaseModel):
 
