@@ -7,14 +7,13 @@ from dotenv import load_dotenv
 #  Loading the environment variables
 load_dotenv()
 
-from services.base_services.api_config import APIConfig
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
-
+from services.base_services.api_config import AsyncAPIClientConfig
 logger = APIWatcher(dir="logs", name='Github-API')
 logger.file_handler()
 
-class GithubAPI(APIConfig):
+class GithubAPI(AsyncAPIClientConfig):
 
     """ Github API Configuration
         API : https://api.github.com/

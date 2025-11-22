@@ -8,15 +8,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #   Custom libraries
-from base_services.api_config import APIConfig
 from lib.utils.logger_config import APIWatcher
-from lib.utils.mathlibrary import MathInterPreter 
+from lib.utils.mathlibrary import MathInterPreter
+from services.base_services.api_config import AsyncAPIClientConfig
 
 logger = APIWatcher(dir="logs", name='Heavy-API')
 logger.file_handler()
 
 
-class HeavyAPI(APIConfig):
+class HeavyAPI(AsyncAPIClientConfig):
 
     def __init__(self, URL = f"{os.getenv("HeavyBase")}", KEY = os.getenv("HeavyToken"), GET = "GET", POST = "POST", PUT='PUT', PATCH='PATCH', DELETE = 'DELETE'):
         super().__init__(GET, POST, PUT, PATCH, DELETE)
