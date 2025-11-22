@@ -1,4 +1,3 @@
-
 #   Standard libraries
 import __future__
 from typing import Dict
@@ -6,10 +5,6 @@ from datetime import datetime
 
 #   Third Party Libraries
 from pydantic import BaseModel, Field
-
-#   Custom Libraries
-from lib.utils.utilitytools import UtilityTools
-
 
 class Announcements(BaseModel):
 
