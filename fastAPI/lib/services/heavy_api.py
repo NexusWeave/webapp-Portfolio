@@ -1,7 +1,7 @@
 #   Heavy workout app API
-import os, datetime
-
-from typing import Optional
+import __future__
+import datetime
+from typing import Dict, List, Optional
 from dotenv import load_dotenv
 
 #  Loading the environment variables
@@ -18,18 +18,11 @@ logger.file_handler()
 
 class HeavyAPI(AsyncAPIClientConfig):
 
-    def __init__(self, URL = f"{os.getenv("HeavyBase")}", KEY = os.getenv("HeavyToken"), GET = "GET", POST = "POST", PUT='PUT', PATCH='PATCH', DELETE = 'DELETE'):
-        super().__init__(GET, POST, PUT, PATCH, DELETE)
-        self.GET = GET
-        self.PUT = PUT
-        self.POST = POST
-        self.API_KEY = KEY
+    def __init__(self, URL:Optional[str] = None, KEY:Optional[str] = None, version: Optional[str] = None):
         self.API_URL = URL
-        self.PATCH = PATCH
-        self.DELETE = DELETE
-
-        self.APIV = os.getenv("HeaVy")
-        self.head = {"accept": "application/json", "api-key": f"{self.API_KEY}"}
+        self.API_KEY = KEY
+        self.VERSION = version
+        self.HEAD = {"accept": "application/json", "api-key": f"{self.API_KEY}"}
 
     def fetch_data(self, endpoint: str):
         """
@@ -37,42 +30,46 @@ class HeavyAPI(AsyncAPIClientConfig):
             param: endpoint: str - The endpoint to fetch the workouts
         """
         
-        pages = [{"pages": self.calculate_n(endpoint, self.head),}]
+        pages:List[Dict[str, str | object ]] = [{"pages": self.calculate_n(endpoint, self.HEAD)}]
 
         # Fetch one page of workouts
-        response = self.ApiCall(endpoint = f"{self.API_URL}{endpoint}", head = self.head)
+        response: List[Dict[str, object]]
+
+        response = self.ApiCall(endpoint = f"{self.API_URL}{endpoint}", head = self.HEAD)
+
         
         #   Initialize the workout Page
-        workout= {}
-        
+        session_entry: Dict[str, str | object] = {}
+
         #   Fetching the workouts
-        for i in range(len(response["workouts"])):
+        for i in range(len(response["workouts"])):                          #type: ignore
 
             #   Initialize the workout session
-            sessions = response["workouts"][i]
+            record: Dict[str, str | object] = response["workouts"][i]       #type: ignore
 
             #   Initialize the workout
-            workout["exercises"] = []
-            workout['title'] = sessions['title']
-            workout["description"] = sessions['description'],
-            workout["time"] = datetime.datetime.strptime(sessions['end_time'], '%Y-%m-%dT%H:%M:%S%z') - datetime.datetime.strptime(sessions['start_time'], '%Y-%m-%dT%H:%M:%S%z'),
+            session_entry["exercises"] = []
+            session_entry['title'] = record['title']
+            session_entry["description"] = record['description'],
+            session_entry["time"] = datetime.datetime.strptime(record['end_time'], '%Y-%m-%dT%H:%M:%S%z') - datetime.datetime.strptime(record['start_time'], '%Y-%m-%dT%H:%M:%S%z'), #type: ignore
 
             #  Fetching the exercises
-            for j in range(len(sessions['exercises'])):
-                exercise = sessions['exercises'][j]
+            for j in range(len(record['exercises'])):                           #type: ignore
+                exercise = record['exercises'][j]                               #type: ignore
 
-                workout['exercises'] += [{
-                    "title": exercise['title'],
-                    "sets": []
-                }]
+                session_entry['exercises'] += [
+                    {
+                        "title": exercise['title'],                             #type: ignore
+                        "sets": []
+                    }]
 
                 #   Fetching the sets
-                for k in range(len(exercise['sets'])):
+                for k in range(len(exercise['sets'])):                           #type: ignore
 
                     #   Fetching the sets
-                    sets = exercise['sets'][k]
+                    sets: Dict[str, str| object] = exercise['sets'][k]         #type: ignore
 
-                    set_details = workout['exercises'][j]['sets']
+                    set_details = session_entry['exercises'][j]['sets']
 
 
                     #   Appending the sets to the exercises
@@ -83,13 +80,9 @@ class HeavyAPI(AsyncAPIClientConfig):
                     
                     if sets['distance_meters'] != None:
                         set_details[k]['distance'] = sets['distance_meters']
-                        set_details[k]['duration'] = (int(sets['duration_seconds']) / 60 ) / 60
-                        set_details[k]['pace'] = MathInterPreter().SpeedCalculation(float(set_details[k]['distance']),float(set_details[k]['duration']))
+                        set_details[k]['duration'] = (int(sets['duration_seconds']) / 60 ) / 60  #type: ignore
+                        set_details[k]['pace'] = MathInterPreter().SpeedCalculation(float(set_details[k]['distance']),float(set_details[k]['duration']))  #type: ignore
 
-            pages.append(workout)
+            pages.append(session_entry)
             
         return pages
-
-    def calculate_n(self, endpoint: str):
-
-        return self.ApiCall(endpoint = f"{self.API_URL}{self.APIV}{endpoint}", head = self.head)
