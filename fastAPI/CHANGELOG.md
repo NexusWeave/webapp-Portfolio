@@ -1,0 +1,277 @@
+## 1.0.0 (2025-11-22)
+
+### BREAKING CHANGE
+
+- The visual appearance of the card components has changed.
+- The primary local running command is now `serve` and not `start`.
+- The main configuration file now relies on imports for Collection and Tag definitions.
+- All file imports, routing configurations, and internal references relying on the old name (`index`) must be updated to use the new name (`personal`).
+- All file imports, routing configurations, and internal references relying on the old name (`folio`) must be updated to use the new name (`index`).
+- visual appearance of tech-related elements and icons has changed.
+- None. (This is an internal refactoring.)
+- The `Anchor` interface now strictly requires the `label` property to be defined. Any consuming component that previously omitted the label will now cause a type error.
+- The primary navigation path for the portfolio section has changed from `/portfolio` to `/folio`. Any internal or external links pointing to the old path must be updated.
+- This commit removes the `tags` field from the TinaCMS configuration file. And updates name field for `updated` to `end`  in timeline items.
+- The data type expected for all 'date' properties across the application (e.g., in DateYearProps and TimelineItem) has changed from an object structure to a primitive string. All consuming components and data sources must be updated to pass a standard string representation of the date
+- The file path for 'preprocessor-utils.ts' has changed from 'utils/...' to 'composable/...'. All importing files have been updated to reflect this change.
+- None. (This commit introduces the function, establishing 'mapTimeline' as the new canonical source for timeline data mapping logic.)
+- None. (The function logic remains, but the import path for this data processing logic has changed.)'pages/index.vue' to the new 'utils/preprosessor-utils.ts' file.
+- None (Function logic remains, but file paths for imports have changed and must be updated.)
+- The component now relies entirely on the newly updated
+data structure (TimelineItem) from previous commits. If consuming
+components haven't updated their data fetching to the new schema, they
+will break.
+- The 'toggleVisibility' event emitter was removed.
+Visibility state is now managed internally, fundamentally changing the
+component's public API and interaction with its parent.
+- None.
+- The year property is now a reactive (computed) property.
+Consumers relying on the previous static or direct property access may
+need updates.
+- The data type expected by TimelineProps has fundamentally
+changed from AcademicCollectionItem to the generalized TimelineItem. All
+code relying on the old interface must be updated to consume the new type
+structure.
+- The structure of the 'TimelineItem' interface has been updated to match the 'AcademicCollectionItem' schema. All components and code relying on the old interface must be updated to consume the new, simplified data structure.
+- The raw techstack data format has changed from a simple list to an array of objects.
+The legacy 2D array structure is deprecated, any code consuming this data must be updated to handle the new object structure and the enforced uppercase naming convention.
+- The data fetching mechanism and all related components must now use the Markdown-based logic; references to the old JSON files must be updated.
+- The ability to fetch programming language type data by name has been added as new functionality.
+- The internal data structure (front matter, file organization) for these blog posts has changed.
+- None. (Existing links/routes were not changed, only display names and order.)
+- The structure of the content configuration in tina/config.ts has changed, impacting how content is queried and edited.
+- File paths and data format for academic achievements have changed. Please update any references accordingly.
+- None. All consuming files have been updated to import helper functions from the new path.
+- Code consuming or relying on the old configuration keys (`C#`, `institution`, `project_link`, `summary`) must be updated to use the new standardized keys (`.NET`, `name`, `href`, `description`).
+- None. This refactoring is internal to the store and does not change how the store is consumed by components, as all consumer code is expected to be updated for the future data model change anyway.
+- All relative file paths and import statements relying on the old `app/pages/` structure will be broken. Developers must re-test routing and page-specific imports after merging this change.
+
+### Feat
+
+- **FastAPI-app**: ✨ Introducing new API endpoint for today's announcement     -   Implemented the `/api/v2/announcement/today` endpoint, including     necessary imports and error handling to ensure robust functionality     and type safety.
+- **framework**: :building_construction: Migrer API fra Flask til FastAPI
+- **collection**: Added a reference section in blogs ( for blogs which requires references ).
+- **__generated__**: Auto generated files from TinaCMS
+- **package.json**: adding cl-update command for changelog.
+- **Header**: Added a class for h1-element
+- **dev**: expanded skillbar & updated title     -   extended skillbar functionality on the developer page (`dev`) to     include and display tool proficiency in addition to code skills.
+- **references**: Initializing interface for References Items
+- **utils**: Initialize array sequence command and timer utility     -   Added two essential, universal utility functions to `utils.ts`     to handle array iteration and timing events.
+- **dev**: Implement mounted lifecycle hook and reference mapping     -   Introduced core logic and lifecycle management to the developer     component, ensuring time tracking starts correctly and references are     dynamically resolved.
+- **preprosessor-utils**: Add reference mapping and remove unused types     -   Implemented a new utility function to handle component references     and performed necessary cleanup by removing dead code.
+- **tina/config**: Initialize content reference logic     Implemented the necessary logic within the Tina CMS configuration     file to handle and resolve content references between documents.     This enables authors to link content dynamically within the CMS     interface.
+- **dev**: Introduce developer sidebar and optimize key usage     -   Implemented a new, dedicated sidebar for developer information     and improved rendering performance by updating key usage in loops.
+- **props**: added interface for ProgressProps.
+- **Progress**: Inititalized a new Utils component Progress.vue
+- **portfolio-ux-visualization**: added temp image
+- **backendAPI**: Initialize function to fetch repository data     -   Initialized a new backend function responsible for fetching     repository data from GitHub service. This establishes the core data     retrieval logic necessary for displaying dynamic portfolio information.
+- **nuxt.config**: Add support for backend APIs
+- **Index**: Add image with caption and dedicated autobiography section     -   Introduced new content sections to the Index Page, enhancing information delivery and structure.
+- **types/props**: Introducing prop definition for Navigation Menu `NavProp`
+- **Utils/List**: Introduce styling classes for `UL` and `LI` elements     -   Initialized and applied dedicated styling classes to both the     `UL` (unordered list) and `LI` (list item) elements within the List     utility component. This provides the necessary styling hooks for     controlling the visual layout and appearance of list content.
+- **type/props**: Introduce dedicated interfaces for list and icon properties     -   Introduced new dedicated interfaces within the type definitions     to ensure strict type safety and clarity for complex components     properties.
+- **type/props**: Initialize FigureProps-interface     -   Initialized a new interface, `FigureProps`, to define the expected     properties for components that render figure content.
+- **types/props**: Initialize type-safe interface for AnchorItem     -   Initialized a new dedicated interface, `Anchortem`, within the     application's type definitions. This interface strictly defines the     required data structure and properties for individual items consumed     by the Anchor component, ensuring type safety and predictability.
+- **types/props**: Initialize type-safe interface for Carousel component     -   Initialized a new dedicated interface `CarouselItem` within the     application's type definitions. This interface strictly defines the     required data structure and properties for individual items consumed     by the Carousel component, ensuring type safety and predictability.
+- **flexbox-column**: Initialize flex-column-justify-space-evenly class     -   Initialized a new class, `flex-column-justify-space-evenly`,     to standardize the common Flexbox pattern of setting the flex direction     to column and justifying content with `space-evenly`. This improves     layout consistency and reduces redundant CSS declarations.
+- **index**: Add wrapper and class for article section styling
+- **article**: Initialize foundational styles for article content
+- **index**: Import article stylesheets
+- **index**: Add wrapper and class for article section styling
+- **cards**: Initialize new card style dedicated for timelines
+- **tech-content**: Initialize dedicated styles for script languages     -   Introduced new, dedicated CSS/utility classes for different     script languages within the 'tech-content' styling system. This     change standardizes the visual representation of each script     language, enabling targeted and consistent styling across all     components.
+- **mixins**: Added a mixin-style for circle-boarders     -   Introduced a new Sass/Less mixin to standardize the application     of circular border-radius styles. This ensures visual consistency     across all components requiring perfect circle shapes.
+- **utils/preprosessor-utils**: Initialize data mapping function     -   Created and initialized the 'utils/preprosessor-utils.ts' file     to house data processing logic, specifically implementing the primary     data mapping function (`mapTimeline`). This centralizes and cleans     up complex data transformations previously located in presentation     components.
+- **utilities/utilities.ts**: Introducing  a helper function to fetch porgamming type by an array.     -   Created the new `utilities/utilities.ts` file to centralize     reusable helper functionallity. Implemented a function within this     file to efficiently fetch programming language type data based on an     input array.
+- **content.config **: Define content collections for Nuxt SSG interface
+- **utils/utils.js**: Initialize helper functions utility script
+- Initialize "aktuelt" page structure Motivation     -   Set up the basic layout and components for the "aktuelt" section of the application     -   This serves as a starting point for building out the news functionality
+- Initialize developer profile page structure
+- Add icon-types function to retrieve icon mapping by name
+- Add inputs component with dynamic props for form handling
+- Add forward for row-align-justify mixin in flexbox utility
+- Add initial workspace configuration for project setup
+- Enhance timeline component layout and visibility handling
+- Update media-queries mixin for improved breakpoint handling and add flexbox generator mixin
+- Refactor timeline styles for improved layout and transitions
+- Refactor flexbox styles to use mixins for improved consistency and maintainability
+- Refactor flexbox styles to utilize variables for improved maintainability
+- Add mixins for flexbox row alignment and justification
+- Add flexbox mappings for layout management
+- Add flexbox variables file for layout management
+- Add flexbox function for improved layout handling
+- Enhance media-queries mixin to support breakpoints for improved responsiveness
+- Adjust timeline layout and enhance line scaling for improved visibility
+- Rename color variables for consistency and clarity
+- Add miscellaneous color variables for improved styling options
+- Update comments and reformat color variable section for clarity
+- Reorder SASS imports for improved organization and clarity
+- Remove unused import for improved code clarity
+- Add comprehensive device breakpoints mapping for improved responsiveness
+- Add mappings for Bootstrap icons and tech languages for improved icon management
+- Comment out border-radius property and add transitions mixin for enhanced styling
+- Add academic timeline styles for improved layout and visibility
+- Consolidate flex-column alignment styles for improved clarity
+- Reorder color variables for consistency and clarity
+- Remove unused timeline styles and clean up SASS imports
+- Update timeline data structure and enhance internship details
+- Refactor academic components to enhance timeline visibility and structure
+- Add helse fag kompetansebevis PDF document
+- Integrate Pinia for state management and update timeline data fetching logic
+- Update CS50x course details and improve visibility toggle functionality
+- Implement timeline store with state management and data fetching actions
+- Add fetchData function and timeline data structure; remove unused bioTools and breakpoints utilities
+- Implement academic timeline component with dynamic data rendering
+- Add screen capture of homepage for documentation
+- Add article components and utilities
+- Add mappings for Bootstrap icons and device breakpoints
+- Add font and link style mixins to improve styling consistency
+- Add generated image for Gemini model documentation
+- Add visual documentation for project directories, APIs, database, endpoints, frontend, system architecture, and utility tools
+- Implement multiple endpoints for Photos, Announcements, and Github data
+- Add Footer and Header components with dynamic content
+- Implement Bio component with author details and navigation
+- Create Carosel component for image display with navigation
+- Develop Classes and Tech components for education section
+- Add Logo component for branding in the header
+- Introduce button and link components for UI interactions
+- Implement navigation and pagination components for better UX
+- Set up main application structure with HomeView and routing
+- Add utility functions for bio calculations and responsive design
+
+### Fix
+
+- **build**: 🐛 Included Missing File for Commit 17efb3c4438e1c9b8700304d5baea03a8c191ba1     -   Added the file that was inadvertently omitted from the previous     commit, 17efb3c4438e1c9b8700304d5baea03a8c191ba1, to ensure the build     process is complete.
+- **config**: 🐛 Løste typesikkerheten i logger_config.py     -   Rettet en feil knyttet til typesikkerheten i logger-konfigurasjonsfilen.
+- **Anchor.vue**: Fix type comparison bug in isDisabled function
+- **config**: Update path for public directory     -   Resolved an issue in the configuration file where the path     pointing to the public directory was incorrect. This fix ensures     that static assets, images, and other publicly served files are     correctly located and loaded during both development and production     builds.
+- **github_api**: Resolve Python syntax issue preventing script execution     -   Resolved a critical syntax error in the Python script responsible     for interacting with the GitHub API. This resolution ensures the     script runs without failure and allows data fetching to proceed     correctly.
+- **Button**: Resolve click issue and perform cleanup     -   Resolved the critical issue preventing user interaction with the     button controls and performed necessary structural cleanup and standardization.
+- **backendAPI**: Resolve missing return statement issue in fetch function     -   Resolved an issue in the backend API fetching function where the     final return statement was missing. The function now correctly returns     the structured object: `{ data, error }`, ensuring consuming components     can properly access the results or handle any API failures.
+- **nuxt.config**: corrected runtime config for Flask API     -   Updated the publicruntimeConfig to ensure the Flask API URL is     correctly set for both development and production environments.
+- **composables/preprosessor**: resolved type-safety issue with, by migrating strings into arrays
+- **types/prop**: resolved issues with exporting `NavProp`
+- **Navigation/NavMenu**: fixed import for Props type
+- **types/props**: Export CarouselButton interface for proper usage     -   Resolved an issue where the `CarouselButton` interface could not     be used by other  components because it was missing an export     declaration in the `types/props` file. This fix ensures the interface     is correctly exposed and fully type-safe.
+- **AchievementsCollection**: resolved achievementsCollection display issues     -   This commit addresses and resolves display issues in the     AchievementsCollection type.
+- **utils/techstack**: Rename techStackMap key to fix class error     -   Renamed the final object key in the 'techStackMap' from     'Workflow/Other' to the simpler 'Workflow'. This fixes a reported     class application error caused by the inclusion of the forward     slash ('/') character in the original key, which breaks CSS class     selectors or utility lookups.
+- **index**: Update file path for reactive utility functions
+- Update timeline entries with correct URLs, descriptions, and technology stacks
+- Update flexbox generator mixin to improve parameter naming and error handling
+- Refactor icon styles and improve icon mapping integration
+- Adjust timeline item styles for consistent input sizing and remove overflow property
+- Add missing icon mappings for academic and miscellaneous categories
+- Rename $misc to $misc-breakpoints for clarity in device breakpoints mapping
+- Enhance timeline store with reactive data handling and improved item field assignment
+- Refactor input component to enhance range input handling with dynamic min, step, and max attributes
+- Update Timeline component to iterate over timeline data for proper rendering
+- Update Timeline component data binding in Academic.vue for improved visibility handling
+- Update placeholder logic in inputs component for better handling of text and password types
+- Update placeholder handling and refactor data type computation in inputs component
+- Refactor class bindings in Card.vue for improved consistency and readability
+- Update class bindings for timeline sections to improve layout consistency
+- Update source mapping in index.css.map to include new flexbox mixins
+- Correct alignment and justification classes in flexbox mixins
+- Add CSS source map files to .gitignore
+- Update visibility handling in timeline store and improve logging
+- Correct timeline entry IDs for accurate sequencing
+- Adjust timeline component layout for improved readability and visibility of school details
+- Update document title to reflect author name
+- Update section class for improved alignment in Header component
+- Update navigation styles for consistency and clarity
+- Reorder import statements in main.js for consistency
+- Remove unnecessary SEO meta tags from index.html
+- Add missing visited link color in mixins and define icon styles
+- update pinia version to 3.0.3 in package.json and package-lock.json
+- update font import to use mixin for consistent styling and clean up margin declaration
+- remove unused font import and clean up margin declaration
+- update font import to use mixin for consistent styling
+- remove unnecessary whitespace in _profile.sass
+- adjust .gitignore to properly include and exclude local and production files
+
+### Refactor
+
+- **announcements**: 🔨 Migrated Flask Model to Pydantic Model -   Migrated the Announcements model definition and associated logic to comply with the new FastAPI data standards Pydantic.
+- **database**: 🔨 Moved and Renamed database-module     -   Refactred the file system by moving and standardizing the naming     of the Database Configuration module.
+- **APIConfig**: 🔨 Moved and Renamed APIConfig-module     -   Refactred the file system by moving and standardizing the naming     of the API Configuration module.
+- **app.py**: 🔨 Forbedret organisering og robusthet i hovedfil     -   Organiserte imports etter beste praksis og økte robustheten ved     å legge til feilbehandling for app-konfigurasjoner.
+- **env**: 🔨 Omstrukturerte og oppdaterte FastAPI- env-config.     -   Gjennomførte en refaktorering av innstillingsmodulen for å forbedre     organiseringen og funksjonaliteten til FastAPI-konfigurasjonen.
+- **fastAPI**: 🔧 Forandret navnet på Katalogen fra backend -> fastAPI
+- **directory**: :hammer: Flyttet Python-filer til dedikert FastAPI-katalog     -   Fullførte omstruktureringen av filsystemet for å isolere og     organisere Python-kildekoden under det nye FastAPI-rammeverket. (Etterfølger commit 70b384459e7d0119ce1915c64d9f96f07b71079e).
+- **package.json**: Updating "serve" & "deploy" command)
+- **config**: Removing redundant branch environments.
+- **package.json**: updating release version & cl-update command.
+- **package.json**: Added netlify deploy configuration to deploy command
+- **package.json**: Update scripts, add deploy command, and manage dependencies     -   Performed key updates to project scripts and dependencies to     streamline the development and deployment workflow.
+- **tech-utils**:  Updated pathing for techStackMap
+- **config**: Modularize configuration logic and remove redundancy     -   Refactored the main configuration file to separate distinct blocks     of logic into dedicated files. This greatly improves the organization,     readability, and maintenance of the configuration setup.
+- **tech-stack**: Renaming into techStack
+- **dev**: minor visualization improvements for developer page.
+- **utils**: Increased the IntervalTimer to 10s
+- **techstack**: updating techstacks
+- **BusinessCard**: re-implementing tech-tag.
+- **portfolio**: Add check before serving pagination     -   Implemented a check within the `portfolio` component/logic to     verify the existence and validity of data **before** initializing or     rendering the pagination component. This prevents errors and unnecessary     rendering when the data array is empty or null.
+- **techstack**: Updating Techstack
+- **progress**: Update CSS classes for consistency     -   Refactored and updated the CSS class names used within the     `progress` component or utility. This improves styling consistency,     organization, and adherence to established naming conventions.
+- **folio**: Enhance fetchCollection with type safety     -   The `fetchCollection` function now utilizes specific **TypeScript generics**,     ensuring that the returned data structure is rigorously typed and predictable.
+- **dev**: Enhance type safety and centralize data fetching     -   Performed a significant cleanup and structural refactoring within     the `dev` component to leverage TypeScript types and consolidate data     fetching logic.
+- **preprosessor-utils**: Enhance type safety and improve sorting utility     -   Refactored preprocessor utility functions to introduce full     TypeScript generic support and enhance collection manipulation     capabilities.
+- **props**: added tech and renamed `language` to `label`
+- **Pagination**: Initialize core logic, watch statements, and clean up     -   Refactored the Pagination utility component to introduce core     logic, implement reactivity, and adhere to modern project standards.
+- **NavMenu**: Remove redundant pagination logic     -   Removed unnecessary and redundant pagination-related code and     logic from the NavMenu component. This logic was incorrectly placed     in the navigation menu and belongs in components responsible for     displaying paginated lists, improving the component's focus and     simplicity.
+- **Portfolio**: Implement pagination and integrate repository projects     -   Refactored the Portfolio component to introduce core functionality     for navigating project lists and displaying dynamic repository data.
+- **preprosessor-utils**: migrating to Nuxt standards import
+- **Timeline**: migrating to Nuxt standards import
+- **Portfolio**: Migrate to Nuxt standard conventions and TypeScript     -   Refactored the Portfolio component to align with recommended Nuxt     standards (e.g., file structure, conventions) and migrated the script     logic to TypeScript.
+- **BusinessCard**: Migrate component to TypeScript     -   Migrated the BusinessCard component's script logic from JavaScript     to TypeScript, significantly improving type safety and code reliability.
+- **types/props**: Standardize file extension     -   Refactored the type definitions file to adhere to TypeScript     standards and introduced a new interface to handle external data     structures.
+- **types/props**: file extension & Repository interface     -   Refactored the type definitions file to adhere to TypeScript     standards and introduced a new interface to handle external data     structures.
+- **media/Figure**: Migrate to TypeScript     -   Refactored the core logic within the Header component to improve     type safety and performance by migrating from JavaScript to TypeScript.
+- **Navigation/Navmenu**: Migrate to TypeScript and remove redundancy     -   Refactored the NavMenu module to improve type safety and code     cleanliness.
+- **Utils/icon**: Migrate to TypeScript and remove redundancy     -   Refactored the Icon utility module to improve type safety and     code cleanliness.
+- **utils/List**: Migrate to TypeScript, import interfaces, and clean up     -   Performed a significant refactoring of the Utils/List     component to improve type safety, code maintainability, and efficiency.
+- **Media/Figure**: Clean up templates and optimize key elements     -   Performed a cleanup and optimization pass on the Figure media     component to improve efficiency and reduce component complexity.
+- **media/Figure**: Migrate to TypeScript, import interfaces, and clean up     -   Performed a significant refactoring of the Figure media component     to improve type safety, code maintainability, and efficiency.
+- **types/props**: Restructure FigureItem interface for image data     -   Significantly refactored the `FigureItem` interface to improve     its data structure and component flexibility by consolidating     image-related properties and removing obsolete ones.
+- **cleanup**: Remove redundant spacing and require Anchor label     -   Performed a general cleanup pass and improved the data contract     for the Anchor interface.
+- **cleanup**: Remove redundant Anchor interface from types/timeline     -   Removed the duplicate `Anchor` interface definition from the     `types/timeline` file. The Timeline component now imports the     centralized and official `Anchor` interface from the common     `types/props` file, eliminating redundancy and ensuring a single     source of truth for the type definition.
+- **types/props**: Add optional 'anchor' property to FigureItem     -   Updated the `FigureItem` interface to include a new optional     Object property, `Anchor`. This allows consuming components to pass     custom anchor directly to the figure element, significantly     improving the component's flexibility and customizability.
+- **types/props**: Add optional `cls` property to FigureItem     -   Updated the `FigureItem` interface to include a new optional     string property `cls` (class).
+- **types/props**: Rename and relocate CarouselItem to FigureItem     -   Renamed the `CarouselItem` interface to the more concise and     universally applicable `FigureItem`. This refactoring allows the     interface to be correctly used for defining data structures across     various Figure-related components, improving code clarity and     reusability.
+- **types/props**: Add optional `cls` property to CarouselButton     -   Updated the `CarouselButton` interface to include a new optional     string property `cls` (class). This allows consuming components to     pass custom styling classes directly to the button element,     significantly improving the component's flexibility and     customizability.
+- **types/props**: Relocated DateYear props from Timeline Props to Misc Props     - Reloacted the `DateYear` interface definition from the dedicated     `Timeline Props` section to `Misc props` section This reorganization     promotes type reuse and centralizes common interface definitions,     reducing redundancy across component props.
+- **routing**: Rename pages for convention     -   Renamed view components for better routing conventions. This     ensures the file adheres to Nuxt's file-system routing convention,     correctly mapping the file to the intended route path.
+- **card**: Improve anchor conditional check and add data fallback     -   Refactored the Card component's rendering logic to enhance stability and data robustness:
+- **Header**: Streamline navigation, adopt Nuxt component, and rename path     -   Restructured the Header component to optimize navigation handling     and align with framework conventions.
+- **header**: restructuring webpage's routing & Navigation labels     -   Restructured the application's routing and updated navigation labels for     improved navigational clarity and user experience.
+- **card**: replacing `p`-element with \span`-element
+- **Card**: Improve semantics by moving 'tech-container' to <section>     -   Relocated the 'tech-container' class element from its previous     HTML element to the more semantically appropriate <section> element.     This improves component structure and accessibility without altering     the visual output.
+- **Card**: Simplify data contracts for DateYear and component classes     -   Refactored data consumption across the Card and Timeline components     to simplify data types and component contract structure.     This improves data serializability and reduces complexity.
+- **components**: Standardize font-family for theme classes     -   Modified the font-family definition for both 'component-blue' &     'component-seagreen' utility classes. This ensures visual consistency     and adheres to the intended typographic hierarchy across different     themed components.
+- **tech-color**: Separate workflow and database color definitions     -   Refactored the color utility file to separate color definitions     for 'Workflow' tools from 'Database' technologies. This improves the     file's organization and ensures a clear separation of concerns within     the color mapping system.
+- **index**: Update Timeline component's primary theme color
+- **types/props**: Simplify DateObject to string for data contract
+- **preprocessor-utils**: Relocate file based on reactive role     -   Moved the 'preprocessor-utils.ts' file from the generic 'utils'     directory to the new 'composable' directory. This relocation accurately     reflects that the contained functions utilize asynchronous operations     and exhibit reactive behavior, aligning the file's location with its     architectural purpose.
+- **timeline/Card**: Centralize prop types and improve component definition     -   Moved the component's prop type definition out of the file and into 'types/props.ts'. This change centralizes the type contracts for better reusability and simplifies the component code by integrating the types directly via 'defineProps'.
+- **components/Timeline**: Migrate to local state management and implement core filtering logic
+- **timeline/filter**: Centralize prop types and improve component definition
+- **Date/Year**: Streamline logic, improve reactivity, and enforce type safety     -   Refactored the Year component for significant internal improvement,     focusing on performance, robust logic, and strict type definition.
+- **types/props**: Standardize prop interfaces and streamline timeline data     -   Refactored the core prop definitions to simplify data structures     and align them with the new, generalized timeline item types. This     change cleans up the component contract and improves type-safety     consistency.
+- **types/timeline**: Simplify `TimelineItem` interface & initializing specialized types     -   Refactored the core 'TimelineItem' interface by moving from nested     object definitions to a structure based on plain data types. This     crucial change resolves a data mapping issue with `AcademicCollectionItem`.
+- **techstack**: Standardize data structure and naming conventions     -   Refactored the techstack data structure by converting the simple     list into a structured array of objects. This change connects each     technology with relevant properties (category, name) for better     consumption in the UI.
+- **pages/index**: Improve robustness and optimize data fetching.
+- **timeline/Filter**: Robustness, type safety and object structure
+- **content/blog/dev_journey**: Restructure blog for news post compatibility
+- **page/personal**: Replace dummy text with Markdown content
+- **page/dev**: Replace dummy text with Markdown content
+- **utils/Header**: Reorder and rename static navigation links
+- **tina/config**: Merge related content collections for simplicity
+- **.gitignore**:  Includeded .gitkeep.json & .gitkeep.md
+- **content-structure**: Move academic data to 'achievements' and convert to Markdown
+- **content/dev **: Move profiles to common `profiles` directory
+- **content/dev **: Move profiles to common `profiles` directory
+- **config.ts**: Standardize platform naming and field keys
+- **portfolioStore.ts**: Simplify item structure and refactor store logic
+- Remove unused variables and breakpoints from mappings file
+- Clean up script imports and enhance content in various sections
+- replace font extends with mixin usage for consistency
