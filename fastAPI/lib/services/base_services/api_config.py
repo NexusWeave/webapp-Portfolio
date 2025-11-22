@@ -20,7 +20,7 @@ APILog = APIWatcher(dir="logs", name='API-Calls')
 APILog.file_handler()
 
 
-class APIConfig(object):
+class AsyncAPIClientConfig(object):
     GET: str = "GET"
     PUT: str = "PUT"
     POST: str = "POST"

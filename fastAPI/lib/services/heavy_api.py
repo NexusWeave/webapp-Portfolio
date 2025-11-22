@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #   Custom libraries
-from lib.core.APIConfig import APIConfig
+from base_services.api_config import APIConfig
 from lib.utils.logger_config import APIWatcher
 from lib.utils.mathlibrary import MathInterPreter 
 
