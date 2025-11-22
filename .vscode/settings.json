@@ -18,6 +18,10 @@
         "pre-commit-config",
         "config",
         "directory",
-        ".vscode"
+        ".vscode",
+        "announcements",
+        "FastAPI-app",
+        "cleanup",
+        "build"
     ]
 }
