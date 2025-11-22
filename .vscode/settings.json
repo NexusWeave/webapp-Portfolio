@@ -23,6 +23,7 @@
         "FastAPI-app",
         "cleanup",
         "build",
-        "changelog"
+        "changelog",
+        "services"
     ]
 }
