@@ -32,8 +32,19 @@ class OperationalError(ExceptionHandler):
 class NotFoundError(ExceptionHandler):
     """ Raises when the requested resource is not found """
 
-    def __init__(self, code, message:Optional[str]) -> None:
+    def __init__(self, code: int, message:Optional[str]) -> None:
         super().__init__(code, message)
         self.status_code = code
         self.message = message if message else "Resource not found"
         
+class TimeOutError(ExceptionHandler):
+    """ Raises when the request times out """
+
+    def __init__(self, code: int, message:Optional[str]) -> None:
+        super().__init__(code, message)
+        self.status_code = code
+
+        if code == 408:
+            self.message = message if message else "The data from the client took too long to send."
+        elif code == 504:
+            self.message = message if message else "The Server waiting an answer from Server B and timed out."
