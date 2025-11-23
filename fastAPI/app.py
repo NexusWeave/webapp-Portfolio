@@ -3,7 +3,7 @@ import __future__
 import os
 
 from datetime import datetime
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 
 #   Third Party Dependencies
 from fastapi import FastAPI
@@ -15,15 +15,14 @@ from lib.utils.exception_handler import NotFoundError
 from lib.utils.app_utility import AppTools
 from lib.utils.logger_config import AppWatcher
 
-from lib.models.announcements import Announcements
-#   from lib.models.github import Github
-#   from lib.models.announcements import Announcements
-#   from lib.models.announcements import Announcements
+#from lib.models.heavy_model import HeavyModel
+from lib.models.github_model import GithubModel
+from lib.models.announcements import AnnouncementModel
 
+
+from lib.services.github_api import GithubAPI
+#   from lib.endpoint_services.Photos import HeavyService
 from lib.services.announcements import AnnouncementsService
-#   from lib.endpoint_services.github_data import Github
-#   from lib.endpoint_services.Photos import PhotoLibrary
-#   from lib.endpoint_services.announcements import Announcements
 
 
 #   Initialize Enviorment variables
@@ -61,7 +60,7 @@ def read_root():
 #   @app.get("/api/v2/blogs/heavy/", response_model=Heavy, tags=["exercise", "blogs"])
 
 
-@app.get("/api/v2/announcement/today", response_model=Announcements, tags=["Announcements"], summary="Get Today's Announcement", description="Fetches today's announcement based on predefined holidays and special occasions.")
+@app.get("/api/v2/announcement/today", response_model=AnnouncementModel, tags=["Announcements"], summary="Get Today's Announcement", description="Fetches today's announcement based on predefined holidays and special occasions.")
 async def get_todays_announcement() -> Dict[str, int | datetime | str]:
     service: AnnouncementsService = AnnouncementsService()
     today: datetime = datetime.today()
@@ -80,4 +79,22 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
 
     return response
 
-# @app.get("/api/v2/portfolio/github/{username}", tags=["GitHub"])
+@app.get(f"/api/v2/repository", response_model=GithubModel, summary="Get GitHub Repository Information",  tags=["GitHub"])
+async def get_repositories() -> Dict[str, str | int | datetime | List[Dict[str, str | int]]]:
+
+    #github_service: GithubAPI = GithubAPI()
+    endpoint: str = os.getenv("GithubRepos", "/users/your-username")  # Replace 'your-username' with the actual GitHub username
+
+    try:
+        repositories: List[Dict[str, str | int | List[str] | object]] | NotFoundError = await GithubAPI().fetch_data(endpoint)
+
+        if isinstance(repositories, NotFoundError):
+            raise repositories
+
+    except NotFoundError as e:
+        logger.warn(f"GitHub Repositories not found: {e.__class__.__name__} - {e.message}")
+        return {"name": "", "owner": "", "date": datetime.now(), "id": 0, "description": "", "lang": [], "anchor": []}
+    
+    # For demonstration, returning the first repository's details
+    first_repo = repositories[0]
+    return first_repo
