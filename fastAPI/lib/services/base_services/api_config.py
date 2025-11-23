@@ -2,6 +2,7 @@
 #   Standard library imports
 from typing import List, Optional, Dict
 from time import perf_counter
+from urllib.parse import urljoin
 
 #   Third Party Dependencies
 import httpx
@@ -12,16 +13,16 @@ from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import TimeOutError
 
 #   Request interface for API Configurations
-from fastAPI.lib.models.web_config import WebAPIModel
+from lib.models.web_config import WebAPIModel
 
 #   Initialize Logger
-APILog = APIWatcher(dir="logs", name='API-Calls')
-APILog.file_handler()
+logger = APIWatcher(dir="logs", name='API-Calls')
+logger.file_handler()
 
 
 class AsyncAPIClientConfig(WebAPIModel):
 
-    def __init__(self, URL:Optional[str] = None, KEY:Optional[str] = None, version: Optional[str] = None):
+    def __init__(self, URL:str, KEY: str, version: Optional[str] = None):
         self.API_URL = URL
         self.API_KEY = KEY
         self.VERSION = version
@@ -33,15 +34,15 @@ class AsyncAPIClientConfig(WebAPIModel):
         """
         start = perf_counter()
 
-        path: str = f"{self.API_URL}/{endpoint}"
-        APILog.info(f"Attempting to fetch data from {path}")
+        path: str = urljoin(self.API_URL,endpoint)
+        logger.info(f"Attempting to fetch data from {path}")
         
         req: httpx.Response
         try:
             req = httpx.get(f"{path}", timeout=30, headers=head)
             #   Ensure the request is successful
             if req.status_code == 200:
-                APILog.info(f"Succsess : Recieved request code :{req.status_code} Time elapsed: {perf_counter()-start}")
+                logger.info(f"Succsess : Recieved request code :{req.status_code} Time elapsed: {perf_counter()-start}")
                 return req.json()
                 
 
@@ -52,7 +53,7 @@ class AsyncAPIClientConfig(WebAPIModel):
                 else: raise RequestError(f"Unexpected status code: {req.status_code}")
 
         except (HTTPError, ConnectionError, TimeoutError, RequestError) as e: 
-            APILog.error(f"Request was not successful. \n Error: {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}")
+            logger.error(f"Request was not successful. \n Error: {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}")
             raise e
 
     def calculate_n(self, endpoint: str, header: Dict[str, str]):
