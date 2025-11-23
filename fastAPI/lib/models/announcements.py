@@ -6,7 +6,7 @@ from datetime import datetime
 #   Third Party Libraries
 from pydantic import BaseModel, Field
 
-class Announcements(BaseModel):
+class AnnouncementModel(BaseModel):
 
     #   Initialize methods and database
     announcement_id: int = Field(..., description="Unique Announcement ID", example=1)                          #type: ignore
