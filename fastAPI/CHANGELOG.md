@@ -1,3 +1,20 @@
+## 1.1.0 (2025-11-23)
+
+### Feat
+
+- **github**: ✨ Improved Client Logic & added Repository Commands     -   Executed a major refactoring of the GitHub API client to improve     type safety and consistency, while also introducing new commands for     repository mapping and collaboration fetching.
+- **routing**: ✨ Introduced new Route to fetch Github Repositories     -   Implemented a new API route specifically designed to fetch and     return repository data using the GitHub API service.
+- **exception**: ✨ Introducing TimeOutError exception     -   Added a new dedicated exception, `TimeOutError`, to the custom     exception handler module for improved error differentiation and     handling of timeout scenarios.
+- **config**: ✨ Introduced Model for AsyncAPIClientConfig class
+
+### Refactor
+
+- **api_config**: 🔨 Improved Logic, Consistency & URL Construction     -   Executed a refactoring of the api_config module to enhance logic,     standardize logger naming, and improve URL handling.
+- **model**: 🔨 Introducing Model for Repository Data     -   Implemented the necessary data model (`github_model`) to structure     and ensure type safety for repository information, completing the     internal implementation of the new GitHub route.
+- **model**: ♻️ Renaming Announcements -> AnnouncementModel
+- **apiservices**: 🔨 Migrated API client base to HTTX for async support     -   Executed a major refactoring of the base API client structure     api_config.py and related classes to transition from the synchronous     'requests' library to the asynchronous 'httpx' library.
+- **typsafety**: 🔨 Introducing typesafty for github_api & heavy_api
+
 ## 1.0.0 (2025-11-22)
 
 ### BREAKING CHANGE
