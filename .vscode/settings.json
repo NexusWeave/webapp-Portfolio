@@ -24,6 +24,9 @@
         "cleanup",
         "build",
         "changelog",
-        "services"
+        "services",
+        "deps",
+        "routing",
+        "model"
     ]
 }
