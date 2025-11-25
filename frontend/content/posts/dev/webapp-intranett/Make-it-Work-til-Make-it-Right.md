@@ -4,17 +4,17 @@ tags:
   - dev-journey
 title: Make it Work til Make it Right
 ingress: >
-  Denne loggen dokumenterer en vellykket arkitektonisk refaktorering, utløst av
-  teknisk gjeld og uoversiktlig kode som følge av en "Make it work, Make it
-  right, then make it fast"-metodikk. Ved å implementere kjerne-prinsippene SRP
-  (Single Responsibility Principle) og DIP (Dependency Inversion Principle), ble
-  all CSV-formatlogikk flyttet fra forretningslogikken til en dedikert,
+  Denne loggen dokumenterer et  arkitektonisk refaktorering, utløst av teknisk
+  gjeld og uoversiktlig kode som følge av en "Make it work, Make it right, then
+  make it fast"-metodikk. Ved å implementere kjerne-prinsippene SRP (Single
+  Responsibility Principle) og DIP (Dependency Inversion Principle), ble all
+  CSV-formatlogikk flyttet fra forretningslogikken til en dedikert,
   Interface-styrt tjeneste. Dette førte til en umiddelbar reduksjon på 57
   kodelinjer i hovedfilen, sikret løs kobling og etablerte en robust, skalerbar
   arkitektur. Samtidig ble kritiske feil i navigasjonsstier identifisert og
   prioritert for utbedring før testing og fremvisning.
 star: >
-  ### Uoversiktlig Hovedfil og Teknisk Gjeld 
+  ### Uoversiktlig Hovedfil og Teknisk Gjeld
 
 
   Hovedfilen hadde en del **teknisk gjeld** og ble uoversiktlig som en
@@ -32,7 +32,7 @@ star: >
   en metode, og en klasse som to metoder:
 
 
-  * Den første funksjonen har ansvaret for å lese og henter data fra CSV-filen. 
+  * Den første funksjonen har ansvaret for å lese og henter data fra CSV-filen.
 
   * Den andre funksjonen har ansvaret for å serialisere dataen tilbake til
   CSV-formatet som en streng
@@ -68,27 +68,27 @@ star: >
   Ansvarsfordeling, Ferdigstillelse
 
 
-  Kvantifiserbar Gevinst
+  **Kvantifiserbar Gevinst**
 
 
   Hovedfilen ble mer oversiktlig og fikk en reduksjon på 57 linjer med kode.
 
 
-  Klar Ansvarsfordeling
+  **Klar Ansvarsfordeling**
 
 
   Ansvaret for forretningslogikken og tjeneste logikken er nå separert.
 
 
-  Skalering (DIP)
+  **Skalering (DIP)**
 
 
   Prosjektet er nå skalerbart. takket være vår gode venn Interface, CSV
-  utskrivnings-logikken kan byttes ut med andre data kilder (JSON, XML), uten å
-  endre foretningslogikken
+  utskrivnings-logikken kan byttes ut med andre data kilder som (`JSON`, `XML`,
+  osv), uten å endre foretningslogikken
 
 
-  Kvalitetsikrig
+  **Kvalitetsikrig**
 
 
   Det ble oppdaget at enkelte navigsjonsstier ikke oppfører seg som de er
