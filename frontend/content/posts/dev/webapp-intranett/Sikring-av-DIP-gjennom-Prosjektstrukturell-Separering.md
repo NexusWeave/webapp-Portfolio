@@ -14,7 +14,7 @@ ingress: >
   fundamentet for Dependency Inversion Principle (DIP). Hovedlæringen er at høy
   testbarhet og Clean Architecture må sikres på prosjektstrukturelt nivå.
 star: >
-  ### Clean Architecture-prinsippene. 
+  ### Clean Architecture-prinsippene.
 
 
   Eksisterende kode i prosjektet brøt med Clean Architecture-prinsippene.
@@ -53,7 +53,6 @@ star: >
 
   Den strukturelle blokkeringen for tilgang til testkoden ble eliminert.
   Løsningen består av fire seperate prosjekter og er klar for filflytting.
-
 
 
   #### Dependency Inversion Principle
