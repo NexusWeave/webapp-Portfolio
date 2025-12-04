@@ -26,8 +26,9 @@ class AsyncAPIClientConfig(WebAPIModel):
         self.API_URL = URL
         self.API_KEY = KEY
         self.VERSION = version
+        self.client = httpx.AsyncClient()
 
-    def ApiCall(self, endpoint: str, head: Dict[str, str]) ->  List[Dict[str, object]]:
+    async def ApiCall(self, endpoint: str, head: Dict[str, str]) ->  List[Dict[str, object]]:
 
         """
         Makes an API call to the specified endpoint with given headers.
@@ -36,15 +37,14 @@ class AsyncAPIClientConfig(WebAPIModel):
 
         path: str = urljoin(self.API_URL,endpoint)
         logger.info(f"Attempting to fetch data from {path}")
-        
-        req: httpx.Response
-        try:
-            req = httpx.get(f"{path}", timeout=30, headers=head)
-            #   Ensure the request is successful
+
+        try: #   Requesting data from the API
+
+            req: httpx.Response = await self.client.get(url = path, timeout=30, headers=head)
+
             if req.status_code == 200:
                 logger.info(f"Succsess : Recieved request code :{req.status_code} Time elapsed: {perf_counter()-start}")
-                return req.json()
-                
+                return await req.json()
 
             else:   #   Raise exceptions based on status codes
                 if req.status_code in self.notFound: raise HTTPError('Resource not found')
