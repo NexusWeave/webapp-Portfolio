@@ -8,6 +8,7 @@ from typing import Dict, List, Any, Optional
 from dotenv import load_dotenv
 
 #   Internal Dependencies
+from fastAPI.lib.services.utils.services_utils import ServicesUtils
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
 from lib.services.base_services.api_config import AsyncAPIClientConfig
@@ -43,17 +44,15 @@ class GithubAPI(AsyncAPIClientConfig):
         logger.info(f"Fetching repositories from GitHub API at endpoint: {path}")
 
         response: List[Dict[str, str | object]]
-        response = self.ApiCall(path, head=self.HEADER)
+        response = await self.ApiCall(path, head=self.HEADER)
 
-        if not response: raise NotFoundError(404, "No repositories found")
-
-        languages_tasks: List[str] = []
+        languages_tasks: List[Any] = []
         #collaborators_tasks: List[str] = []
 
-        for repo in response:
+        for res in response:
 
-            name = repo['name']
-            owner = repo['owner']['login']
+            name = res['name']
+            owner = res['owner']['login']
             
             languages_tasks.append(self.fetch_languages(owner, name))
             #collaborators_tasks.append(self.fetch_collaborators(owner, name))
@@ -70,12 +69,13 @@ class GithubAPI(AsyncAPIClientConfig):
         #   fetch the response
         for i, data in enumerate(response):
 
-            repoObject = self.map_repo(data, languages[i])
+            utils = ServicesUtils()
+            repoObject = utils.map_repo(data, languages[i])
 
             repo.append(repoObject)
 
-        logger.info(f"Repositories fetched successfully. {repo}\nTime Complexity: {time.perf_counter() - start:.2f}s\n")
         repo.sort(key=lambda x: x['date'], reverse=False)
+        logger.info(f"Repositories fetched successfully. {repo}\nTime Complexity: {time.perf_counter() - start:.2f}s\n")
         return repo
 
     async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, List[str] | str | object]]:
@@ -83,7 +83,7 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
 
         languages: List[Dict[str, List[str] | str | object]] = []
-        response: Dict[str, str | object] = self.ApiCall(path, head=self.HEADER)
+        response: Dict[str, str | object] = await self.ApiCall(path, head=self.HEADER)
 
         for lang, value in response.items():
         
@@ -104,7 +104,7 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/collaborators")
 
         collaborators: List[Dict[str, str | object]] = []
-        response: List[Dict[str, str | object]] = self.ApiCall(path, head=self.HEADER)
+        response: List[Dict[str, str | object]] = await self.ApiCall(path, head=self.HEADER)
 
         for collaborator in response:
             collaborator_info: Dict[str, str | object] = {"name": collaborator.get("login"), "html_url": collaborator.get("html_url")}

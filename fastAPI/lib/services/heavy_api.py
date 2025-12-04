@@ -24,7 +24,7 @@ class HeavyAPI(AsyncAPIClientConfig):
         self.VERSION = version
         self.HEAD = {"accept": "application/json", "api-key": f"{self.API_KEY}"}
 
-    def fetch_data(self, endpoint: str):
+    async def fetch_data(self, endpoint: str):
         """
             Fetching the workouts
             param: endpoint: str - The endpoint to fetch the workouts
@@ -35,7 +35,7 @@ class HeavyAPI(AsyncAPIClientConfig):
         # Fetch one page of workouts
         response: List[Dict[str, object]]
 
-        response = self.ApiCall(endpoint = f"{self.API_URL}{endpoint}", head = self.HEAD)
+        response = await self.ApiCall(endpoint = f"{self.API_URL}{endpoint}", head = self.HEAD)
 
         
         #   Initialize the workout Page
