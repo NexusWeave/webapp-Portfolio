@@ -1,58 +1,52 @@
 #  Performace Testing for the API's
-import pytest, os, time
-from unittest.mock import patch
 
-from ...flask.lib.apis.heavy_api import HeavyAPI
-from ...flask.lib.apis.github_api import GithubAPI
+#   Third Party Imports
+import pytest, os, anyio
+from dotenv import load_dotenv
+#   Local Library Imports
+#from lib.services.heavy_api import HeavyAPI
+from lib.services.github_api import GithubAPI
 
-class TestResponsesAPI:
+load_dotenv()
 
-    def test_FetchReposPerformance(self)-> None:
-        """
-            #   Testing  the Performance of fetch_repos
-            #   The time complexity for this test is O(1*repositories) which equals
-            #   Which equals 486.39s for 1000 * x repos
-        """
-        
-        #   Start the timer
-        start = time.perf_counter()
+GIT_TOKEN = os.getenv("GithubToken", "none")
+TEST_URL = os.getenv("TEST_URL", "http://127.0.0.1:8000")
+GITHUB_ENDPOINT = os.getenv("GithubBase", "https://api.github.com")
 
-        #   Initializing Requests module
-        api = GithubAPI()
+N = 1  # Number of iterations for performance tests
+class TestAPIServicePerformance:
+    
+    @pytest.fixture(scope="class")
+    def github_setup(self):
+        return GithubAPI(KEY=GIT_TOKEN, URL= GITHUB_ENDPOINT)
+    
+    @pytest.fixture(scope="class")
+    async def github_api_setup(self):
+        """Setup for GithubAPI tests."""
+        # Any setup steps if needed
+        api = GithubAPI(KEY=GIT_TOKEN, URL= GITHUB_ENDPOINT)
 
-        #   Fetching the repositories
-        for i in range(1000):
-            
-            #   Actual response from the Api Call
-            response = api.ApiCall(endpoint = f"{api.API_URL}user/repos", head = api.head)
-        
-        print(f"Time taken to fetch 1000 * x repos: {time.perf_counter() - start}")
+        yield api
 
-        
+        await api.client.aclose()
 
-    def test_fetchWorkoutPerformance(self)-> None:
-       
-        """
-        
-            #    Testing  the performance of fetch_workouts
-            #    The time complexity for this test is O(3*workout log) which equals
-            #    Which equals 1128.15s for 1000 * x repos
-        """
-        #   Start the timer
-        start = time.perf_counter()
+    def test_github_api_performance(self, github_setup:GithubAPI, benchmark):
+        """Performance test for GithubAPI fetch_repos method."""
 
-        #   Initializing Requests module
-        HAPI = HeavyAPI()
-        
-        for i in range(1000):
-            response = HAPI.FetchWorkouts(os.getenv("Workouts"))
+        def run_performance_test():
+            async def fetch_data(api:GithubAPI, endpoint:str):
+                return await api.fetch_data(endpoint)
 
-        print(f"Time taken to fetch 100 * x workouts: {time.perf_counter() - start}")
+            data = anyio.run(fetch_data, github_setup, "/user/repos")
 
-    def test_FetchPhotosPerformance(self)-> None:
-        """
-            #   Testing  the performance of fetch_photos
-            #   The time complexity for this test is O(*photos) which equals
-            #   Which equals 
-        """
-        pass
+            assert data is not None
+            assert isinstance(data, list)
+            assert len(data) > 0
+
+            assert 'date' in data[0]
+            assert 'lang' in data[0]
+            assert 'owner' in data[0]
+            assert 'label' in data[0]
+
+
+        benchmark.pedantic(run_performance_test, setup=lambda: None, rounds=N, warmup_rounds=0)
