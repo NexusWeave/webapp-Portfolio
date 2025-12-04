@@ -1,16 +1,16 @@
 #   Standard library imports
+import os, time
 from asyncio import gather
-import os, uuid, datetime, time
 from urllib.parse import urljoin
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any
 
 #   Third Party Dependencies
 from dotenv import load_dotenv
 
 #   Internal Dependencies
-from fastAPI.lib.services.utils.services_utils import ServicesUtils
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
+from lib.services.utils.services_utils import ServicesUtils
 from lib.services.base_services.api_config import AsyncAPIClientConfig
 
 #  Loading the environment variables
@@ -26,10 +26,9 @@ class GithubAPI(AsyncAPIClientConfig):
     """
 
     def __init__(self, URL:str = os.getenv("GithubBase",'none'), KEY:str=os.getenv('GithubToken', 'none')):
-        self.API_URL = URL
-        self.API_KEY = KEY
-
+        super().__init__(URL=URL, KEY=KEY)
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': f"{self.API_KEY}"}
+
 
     async def fetch_data(self, endpoint:str) -> List[Dict[str, Any]] | NotFoundError:
         """
@@ -113,37 +112,3 @@ class GithubAPI(AsyncAPIClientConfig):
         logger.info(f"Collaborators fetched successfully. {collaborators}")
 
         return collaborators
-
-    def map_repo(self, data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str | object]]] = None) -> Dict[str, str | object]:
-        """ Maps the repository data to a structured format. """
-
-        date_obj = datetime.datetime.strptime(data['updated_at'], '%Y-%m-%dT%H:%M:%SZ')
-        
-        repoObject: Dict[str,  str  | object] = {}
-
-        repoObject['lang'] = languages
-        repoObject['label'] = data['name']
-        repoObject['id'] = uuid.uuid4().hex
-        repoObject['date'] = date_obj.isoformat()
-        repoObject['owner'] = data['owner']['login']
-        repoObject['collaborators'] = collaborators if collaborators else []
-        repoObject['description'] = data['description'] if data['description'] else "No description provided."
-
-        repoObject['anchor'] = [
-            # { 'id': uuid.uuid4().hex, 'ytube_url': None,},
-            {
-                'name': 'github',
-                'id': uuid.uuid4().hex,
-                'type': ['github','external'],
-                'href': data['html_url']
-            }]
-        if data['homepage'] or data['homepage'] == "None":
-
-            repoObject['anchor'].append(
-                {
-                    'name': 'webapp',
-                    'id': uuid.uuid4().hex,
-                    'href': data['homepage']
-                })
-
-        return repoObject
