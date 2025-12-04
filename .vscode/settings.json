@@ -14,19 +14,4 @@
         "**/*.unotation": true
     },
     "bigUML.hideUnotation": true,
-    "conventionalCommits.scopes": [
-        "pre-commit-config",
-        "config",
-        "directory",
-        ".vscode",
-        "announcements",
-        "FastAPI-app",
-        "cleanup",
-        "build",
-        "changelog",
-        "services",
-        "deps",
-        "routing",
-        "model"
-    ]
 }
