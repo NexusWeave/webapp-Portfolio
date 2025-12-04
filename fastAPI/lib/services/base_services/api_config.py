@@ -44,7 +44,7 @@ class AsyncAPIClientConfig(WebAPIModel):
 
             if req.status_code == 200:
                 logger.info(f"Succsess : Recieved request code :{req.status_code} Time elapsed: {perf_counter()-start}")
-                return await req.json()
+                return req.json()
 
             else:   #   Raise exceptions based on status codes
                 if req.status_code in self.notFound: raise HTTPError('Resource not found')
@@ -56,5 +56,5 @@ class AsyncAPIClientConfig(WebAPIModel):
             logger.error(f"Request was not successful. \n Error: {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}")
             raise e
 
-    def calculate_n(self, endpoint: str, header: Dict[str, str]):
-        return self.ApiCall(endpoint = f"{self.API_URL}{self.VERSION}{endpoint}", head = header)
+    async def calculate_n(self, endpoint: str, header: Dict[str, str]):
+        return await self.ApiCall(endpoint = f"{endpoint}", head = header)
