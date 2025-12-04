@@ -1,7 +1,7 @@
 #   Heavy workout app API
 import __future__
 import datetime
-from typing import Dict, List, Optional
+from typing import Dict, List
 from dotenv import load_dotenv
 
 #  Loading the environment variables
@@ -10,7 +10,7 @@ load_dotenv()
 #   Custom libraries
 from lib.utils.logger_config import APIWatcher
 from lib.utils.mathlibrary import MathInterPreter
-from services.base_services.api_config import AsyncAPIClientConfig
+from lib.services.base_services.api_config import AsyncAPIClientConfig
 
 logger = APIWatcher(dir="logs", name='Heavy-API')
 logger.file_handler()
@@ -18,29 +18,26 @@ logger.file_handler()
 
 class HeavyAPI(AsyncAPIClientConfig):
 
-    def __init__(self, URL:Optional[str] = None, KEY:Optional[str] = None, version: Optional[str] = None):
-        self.API_URL = URL
-        self.API_KEY = KEY
+    def __init__(self, URL:str, KEY:str, version: str):
+        super().__init__(URL=URL, KEY=KEY)
         self.VERSION = version
         self.HEAD = {"accept": "application/json", "api-key": f"{self.API_KEY}"}
 
-    async def fetch_data(self, endpoint: str):
+    async def fetch_data(self, endpoint: str) -> List[Dict[str, str | object]]:
         """
             Fetching the workouts
             param: endpoint: str - The endpoint to fetch the workouts
         """
-        
-        pages:List[Dict[str, str | object ]] = [{"pages": self.calculate_n(endpoint, self.HEAD)}]
+        path = f"{self.API_URL}{self.VERSION}{endpoint}"
 
-        # Fetch one page of workouts
         response: List[Dict[str, object]]
+        response = await self.ApiCall(endpoint = f"{path}", head = self.HEAD)
 
-        response = await self.ApiCall(endpoint = f"{self.API_URL}{endpoint}", head = self.HEAD)
-
-        
-        #   Initialize the workout Page
-        session_entry: Dict[str, str | object] = {}
-
+        return response
+    
+    def map_sessions(self):
+        """session_entry: Dict[str, str | object] = {}
+        pages:List[Dict[str, str | object ]] = [{"pages": await self.calculate_n(path, self.HEAD)}]
         #   Fetching the workouts
         for i in range(len(response["workouts"])):                          #type: ignore
 
@@ -83,6 +80,5 @@ class HeavyAPI(AsyncAPIClientConfig):
                         set_details[k]['duration'] = (int(sets['duration_seconds']) / 60 ) / 60  #type: ignore
                         set_details[k]['pace'] = MathInterPreter().SpeedCalculation(float(set_details[k]['distance']),float(set_details[k]['duration']))  #type: ignore
 
-            pages.append(session_entry)
-            
-        return pages
+            pages.append(session_entry)"""
+        pass
