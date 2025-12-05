@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title id="head-title">reports.html</title>
+      <link href="assets/style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1 id="title">reports.html</h1>
+    <p>Report generated on 05-Dec-2025 at 09:00:18 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+        v4.1.1</p>
+    <div id="environment-header">
+      <h2>Environment</h2>
+    </div>
+    <table id="environment"></table>
+    <!-- TEMPLATES -->
+      <template id="template_environment_row">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="template_results-table__body--empty">
+      <tbody class="results-table-row">
+        <tr id="not-found-message">
+          <td colspan="4">No results found. Check the filters.</th>
+        </tr>
+    </template>
+    <template id="template_results-table__tbody">
+      <tbody class="results-table-row">
+        <tr class="collapsible">
+        </tr>
+        <tr class="extras-row">
+          <td class="extra" colspan="4">
+            <div class="extraHTML"></div>
+            <div class="media">
+              <div class="media-container">
+                  <div class="media-container__nav--left"><</div>
+                  <div class="media-container__viewport">
+                    <img src="" />
+                    <video controls>
+                      <source src="" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="media-container__nav--right">></div>
+                </div>
+                <div class="media__name"></div>
+                <div class="media__counter"></div>
+            </div>
+            <div class="logwrapper">
+              <div class="logexpander"></div>
+              <div class="log"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+    <!-- END TEMPLATES -->
+    <div class="summary">
+      <div class="summary__data">
+        <h2>Summary</h2>
+        <div class="additional-summary prefix">
+        </div>
+        <p class="run-count">4 tests took 00:00:03.</p>
+        <p class="filter">(Un)check the boxes to filter the results.</p>
+        <div class="summary__reload">
+          <div class="summary__reload__button hidden" onclick="location.reload()">
+            <div>There are still tests running. <br />Reload this page to get the latest results!</div>
+          </div>
+        </div>
+        <div class="summary__spacer"></div>
+        <div class="controls">
+          <div class="filters">
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" disabled/>
+            <span class="failed">0 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" />
+            <span class="passed">4 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
+            <span class="skipped">0 Skipped,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
+            <span class="xfailed">0 Expected failures,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled/>
+            <span class="xpassed">0 Unexpected passes,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled/>
+            <span class="error">0 Errors,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled/>
+            <span class="rerun">0 Reruns</span>
+          </div>
+          <div class="collapse">
+            <button id="show_all_details">Show all details</button>&nbsp;/&nbsp;<button id="hide_all_details">Hide all details</button>
+          </div>
+        </div>
+      </div>
+      <div class="additional-summary summary">
+      </div>
+      <div class="additional-summary postfix">
+      </div>
+    </div>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable" data-column-type="result">Result</th>
+          <th class="sortable" data-column-type="testId">Test</th>
+          <th class="sortable" data-column-type="duration">Duration</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+    </table>
+  </body>
+  <footer>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.13.7&#34;, &#34;Platform&#34;: &#34;Linux-6.17.9-zen1-1-zen-x86_64-with-glibc2.42&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;9.0.1&#34;, &#34;pluggy&#34;: &#34;1.6.0&#34;}, &#34;Plugins&#34;: {&#34;asyncio&#34;: &#34;1.3.0&#34;, &#34;benchmark&#34;: &#34;5.2.3&#34;, &#34;html&#34;: &#34;4.1.1&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;, &#34;anyio&#34;: &#34;4.11.0&#34;}}, &#34;tests&#34;: {&#34;tests/test_integration.py::TestIntegrationAPIs::test_github_Connection&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_integration.py::TestIntegrationAPIs::test_github_Connection&#34;, &#34;duration&#34;: &#34;00:00:01&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_integration.py::TestIntegrationAPIs::test_github_Connection&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:01&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Fetching repositories from GitHub API at endpoint: https://api.github.com/user/repos\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/user/repos\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4726907750000464\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/Emsaso/GetNews/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/bot-AgeistForge-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/bot-PlayZone-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Botlib/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Adieu-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-ArrayPuzzles-c/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Bank-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-BasicPersonSim-cs/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Basics-cs/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Blubs-C/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Camel-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Cash-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-cipher-go/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-CompAlgosSim-c/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-ConnectSimulator-cs/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-CookieJar-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Credit-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-CryptoCurrency-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-DataConversion-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Deepthoughts-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Einsteinequation-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Emailvalidator-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-EmojiConvention-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Extensions-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Faces-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Figlet-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Fuel-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Games-cs/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Games-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Grocery-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.345755041999837\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 30038}, {&amp;#x27;language&amp;#x27;: &amp;#x27;HTML&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3548}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4120581349998247\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 74232}, {&amp;#x27;language&amp;#x27;: &amp;#x27;jp-nb&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 12311}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4286045130002094\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 375}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4325159820000408\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 9089}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4386159969999426\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 392847}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4309759710004073\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1450}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.43439930399927107\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 898}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4256206869995367\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 679}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.44137108199993236\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 24782}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.43957282500014117\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3356}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.42997266899965325\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1580}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4295845670003473\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1511}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.429026769000302\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 823}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.43876042800002324\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 833}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.44881696499942336\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 298}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.44663657000000967\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 2714}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4373136069998509\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3217}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4463476390001233\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3535}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4455718990002424\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 667}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4460506320001514\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 254}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4699595420006517\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 597}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.45816738000030455\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 4904}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4529294800004209\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 137}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.47655722399940714\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 14405}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4905347599997185\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 4712}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.47377709100055654\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 43897}, {&amp;#x27;language&amp;#x27;: &amp;#x27;HTML&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 30498}, {&amp;#x27;language&amp;#x27;: &amp;#x27;CSS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 5317}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.5164002869996693\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 117671}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.5768151559996113\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 18989}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.5971014169999762\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Go&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 917}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.6208202440002424\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1272}]\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Repositories fetched successfully. [{&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 392847}], &amp;#x27;label&amp;#x27;: &amp;#x27;Botlib&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;ceea0795dea440eaba3bc0f479411f20&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:45:41&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;myBotProjects&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;3eef41ace47d4ca989ee3eb76448f210&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Botlib&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 137}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-EmojiConvention-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;101ead1ecd6647219cac82455ba1633a&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:46:36&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Text smiley to Unicode convension tool&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;ef4a2fa54f10495baf68dabb081b4619&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-EmojiConvention-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1511}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Faces-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;e9bfa5f3fbe84043b1a48bbd65d895d0&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:54:52&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;SMS smiley to Unicode convension tool&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;3aca325855d948c6b7e542b55bc980d4&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Faces-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 833}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-CryptoCurrency-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;b78b22775f6e406985a11b0abbe1af38&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:55:33&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Real-time Bitcoin calculation using HTTP requests&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0165fdaffc3b462398d9fa1daeddecf3&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-CryptoCurrency-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 2714}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-CookieJar-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;e254a83c7ed24401a0f31c600cd968c8&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:55:49&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Jar simulator using OOP, with comprehensive pytest test suite.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;777021558a3d44ddb786dc2513d799b4&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-CookieJar-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 4904}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Credit-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;e6b1d9f532314c5c8301dae0d26cbfbd&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:57:04&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Credit card validation via Luhn algorithm.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;70c1cd9c02a2421c83478d34c8fe18ff&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Credit-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 898}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Blubs-C&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;dcb4760793a54244a96356fb5cdd8b08&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:57:23&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Light simulation using binary logic&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0e6086401cd7497395f9f1c5c93d73f5&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Blubs-C&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3535}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-DataConversion-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;2c145f24b75f43259bf9946a312c8da7&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:57:41&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Binary, Hex, ASCII conversion tool.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;d9c12aafc9364bb2a660c2c84e5126f3&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-DataConversion-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3217}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Figlet-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;7ea94148b5e9455f920cf7318f4bb6b3&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:59:21&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Console text art generator using Pyfiglet.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;971e56eabce64688bc971cc7f04c4dbd&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Figlet-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1580}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Extensions-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;8e872f4eb2c5451eabc159b8177201b6&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:01:17&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;3D-Matrix-based document retrieval tool.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;7164790f540a4c9782d15773158b193f&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Extensions-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 667}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Einsteinequation-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;feae61da6db4432c8f4e26c30ece196c&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:01:30&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;No description provided.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;fe4f9ab12eee4f368e00db8aeb9a5988&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Einsteinequation-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1272}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Fuel-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;9a4c0bd383bc41cc9b7d1ba9be08349c&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:04:37&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Fraction to percentage conversion tool.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;6fdc556fa59842f08f8983cf577cdfba&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Fuel-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 254}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Emailvalidator-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;2d2c82c8b9df421da5c4a799639187c0&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:04:50&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Library-based email validator&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;7d49f735c7d24225b1dc7f4a31986b56&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Emailvalidator-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 375}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Adieu-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;a1a946f709914b2d9aaeb8fc39fddaad&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:05:18&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Interactive &amp;quot;So Long, Farewell&amp;quot; lyrics typer&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;ad49cdc085c64089a33978e225b072c7&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Adieu-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 298}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Camel-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0d53637031a54bb59b96181709b72c37&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:05:35&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;CamelCase to snake_case conversion.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;26d7e56a0f364b8494c7d8722c72c803&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Camel-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1450}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Cash-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;2c03105df0a24f95834dce41b75f74f9&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:05:49&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Cash exchanger text-based coin calculation.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;8b361bcbf69e479f9ac0cbd87cf6f21d&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Cash-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 679}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Deepthoughts-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;b3030067dfc84fddbf52df0b04477bf6&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:06:02&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;quot;Deep thought verification tool (Douglas Adams &amp;#x27;42&amp;#x27; inspired).&amp;quot;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;c5ad029519564f26b73bb17ff035a1a2&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Deepthoughts-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 823}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Grocery-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;34936ceca2a04a59892b03d442fd677d&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:06:15&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;CLI grocery list, duplicate item tallying&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;22709a95d8324ae9966b55dd4a68c558&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Grocery-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 597}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Bank-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;8d9311724fcb49fbbc2d1d2878ae4eb7&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:06:54&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;&amp;quot;Hello 100 Dollars&amp;quot; (Seinfeld) sketch simulation.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;36ff5d1d8703403184c7ea3b922d8ca7&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Bank-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 74232}, {&amp;#x27;language&amp;#x27;: &amp;#x27;jp-nb&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 12311}], &amp;#x27;label&amp;#x27;: &amp;#x27;bot-PlayZone-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;8fa5410bbd8c4409afb6ffa86020e978&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:07:07&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;A collection of text based games a real Discord companion.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;263b17e43c1a47a6b9e8c3d3880731e3&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/bot-PlayZone-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 9089}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-ArrayPuzzles-c&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;c4b8b076f0d84a3fbb528d42b77bcd6a&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:08:07&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Algorithmic puzzles. Array-based solutions in C.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;fdbd6a6a094f4473ad06bd8d24966f48&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-ArrayPuzzles-c&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 14405}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-CompAlgosSim-c&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0758d302c5d14de5805106839808e3f3&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:08:45&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Algorithmic foundations. Population Models &amp;amp; Financial Calculations?&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0002d925653b4a048c5dcf6d5d526162&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-CompAlgosSim-c&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 18989}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Games-cs&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;efa132055caf4a78bb60d925d2747d6d&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:12:24&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Algorithmic game logic.\\xa0 Interactive console game mechanics.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;3fc73a0a31c6486aa347ec52e948116f&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Games-cs&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 24782}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Basics-cs&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0947ef83a7984edf8bd46ed0265207bf&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:12:36&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Data types to interactive apps. Fundamentals &amp;amp; user interaction.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;b7e6fc555eb849b68b34801249a18d6a&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Basics-cs&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 4712}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-BasicPersonSim-cs&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;f7a41d81d95b4cf09991e85cebeda88e&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:13:36&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Basic Person Sim, Learn together?&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;1b0347edcd2846d78b71b8e84d9d6fd7&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-BasicPersonSim-cs&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3356}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-ConnectSimulator-cs&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;03e8aea5442545a0ba13daff5473d888&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:14:13&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Social connection simulation&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;1c9645ea26d24dd695b60959bb2fe6f7&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-ConnectSimulator-cs&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 43897}, {&amp;#x27;language&amp;#x27;: &amp;#x27;HTML&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 30498}, {&amp;#x27;language&amp;#x27;: &amp;#x27;CSS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 5317}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Games-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;de1263f3cabd44a19baa48ec6f128143&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-06T07:55:00&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Command-line console game launcher.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;c68c38c6a892465c8de45f17b1e54aa7&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Games-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 117671}], &amp;#x27;label&amp;#x27;: &amp;#x27;bot-AgeistForge-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0eaeda723b174aa9811186c9ddea77eb&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-06-15T15:06:59&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Discord Modcore &amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;a3da4b9a78324b20bcb7fa9539b96384&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/bot-AgeistForge-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 30038}, {&amp;#x27;language&amp;#x27;: &amp;#x27;HTML&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3548}], &amp;#x27;label&amp;#x27;: &amp;#x27;GetNews&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;edde3f2af1be48ad8d783e98bb872cfe&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-06-16T10:04:57&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;Emsaso&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;No description provided.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;f3612c63cca64bd29d309e6eb0a1b674&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/Emsaso/GetNews&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Go&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 917}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-cipher-go&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;03ece3cd637341d38144c9a099414404&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-08-04T16:44:27&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Creative Go-program using defer to decode a hidden message&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;cf1254015f8d4d8a9b541665c6ada5d0&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-cipher-go&amp;#x27;}]}]\nTime Complexity: 1.13s\n\n&#34;}], &#34;tests/test_integration.py::TestIntegrationAPIs::test_heavyapi_connection&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_integration.py::TestIntegrationAPIs::test_heavyapi_connection&#34;, &#34;duration&#34;: &#34;504 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_integration.py::TestIntegrationAPIs::test_heavyapi_connection&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;504 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.hevyapp.com/v1/workouts\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.49347757200030173\n\n&#34;}], &#34;tests/test_performance.py::TestAPIServicePerformance::test_github_api&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_performance.py::TestAPIServicePerformance::test_github_api&#34;, &#34;duration&#34;: &#34;00:00:01&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_performance.py::TestAPIServicePerformance::test_github_api&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:01&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Fetching repositories from GitHub API at endpoint: https://api.github.com/user/repos\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/user/repos\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.6227314959996875\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/Emsaso/GetNews/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/bot-AgeistForge-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/bot-PlayZone-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Botlib/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Adieu-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-ArrayPuzzles-c/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Bank-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-BasicPersonSim-cs/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Basics-cs/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Blubs-C/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Camel-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Cash-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-cipher-go/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-CompAlgosSim-c/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-ConnectSimulator-cs/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-CookieJar-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Credit-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-CryptoCurrency-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-DataConversion-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Deepthoughts-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Einsteinequation-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Emailvalidator-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-EmojiConvention-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Extensions-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Faces-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Figlet-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/Console-Fuel-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Games-cs/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Games-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.github.com/repos/krigjo25/console-Grocery-py/languages\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.3145221889999448\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 30038}, {&amp;#x27;language&amp;#x27;: &amp;#x27;HTML&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3548}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4132346390006205\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 9089}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4180729979998432\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 375}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4222442919999594\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 597}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.42697673100065003\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 117671}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4266297100002703\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 4712}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.42920275299911737\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 392847}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4273223330001201\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Go&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 917}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.42654146699987905\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1580}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.43752497999957995\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 74232}, {&amp;#x27;language&amp;#x27;: &amp;#x27;jp-nb&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 12311}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.43553613199946994\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1450}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.43699123399983364\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 898}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.43474771399996825\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 2714}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4367472829999315\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3356}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.431931101000373\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1511}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4402635709993774\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 679}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4340611589996115\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3217}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.44815927400031796\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 24782}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4432804589996522\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 667}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.44741500800046197\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 14405}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4459955740003352\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3535}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4476740559994141\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 4904}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4394621470000857\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1272}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4491884979997849\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 833}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.44810736299950804\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 137}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4597606730003463\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 823}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4642258129997572\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 43897}, {&amp;#x27;language&amp;#x27;: &amp;#x27;HTML&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 30498}, {&amp;#x27;language&amp;#x27;: &amp;#x27;CSS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 5317}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.46714346099997783\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 18989}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.4908678889996736\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 298}]\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.5252669589999641\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Languages fetched successfully. [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 254}]\nINFO     APIWatcher -- Github-API.log:logger_config.py:94 [!INFO] : Repositories fetched successfully. [{&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 392847}], &amp;#x27;label&amp;#x27;: &amp;#x27;Botlib&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;efb3df2d5a994c68829f689f64bfc829&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:45:41&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;myBotProjects&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0d9b60a65250447294191b8dd399a0ab&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Botlib&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 137}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-EmojiConvention-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;0b7beefa5e914491b21e96fd09922816&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:46:36&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Text smiley to Unicode convension tool&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;291c3a8f5a734abbb876d3c3bcb3bd44&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-EmojiConvention-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1511}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Faces-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;5306bb9ceb7c4d649a47e976ab6032be&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:54:52&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;SMS smiley to Unicode convension tool&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;832428ab96154de8901eb958d8e512ec&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Faces-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 833}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-CryptoCurrency-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;e89d7409e0304e5b8c515a313380916d&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:55:33&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Real-time Bitcoin calculation using HTTP requests&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;461c405ee835465494a57df0786c48b9&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-CryptoCurrency-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 2714}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-CookieJar-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;796f6bf541f443d1b9e70219114f706a&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:55:49&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Jar simulator using OOP, with comprehensive pytest test suite.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;cba0f6123e834c0caeedbc281bb6159b&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-CookieJar-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 4904}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Credit-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;4c8a8154310a4cb397a47f729f6d366c&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:57:04&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Credit card validation via Luhn algorithm.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;6baae42f808148cabb5a411e7548d887&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Credit-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 898}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Blubs-C&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;7c32d63f5421479f8cc071df3323ae59&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:57:23&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Light simulation using binary logic&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;348bcc10561c4a5da24fb449d15c241b&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Blubs-C&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3535}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-DataConversion-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;a17f91a90155462ca5923c0f4e382ce6&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:57:41&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Binary, Hex, ASCII conversion tool.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;8051351d77aa4ab1ba04c01334fbfc03&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-DataConversion-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3217}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Figlet-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;264af7cbcb72486c8bff6378e01ff712&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T08:59:21&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Console text art generator using Pyfiglet.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;76e74be163a84e86a584ca13acc1421a&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Figlet-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1580}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Extensions-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;785b6dcd51ef4ea5a889e5b521d1aa7a&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:01:17&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;3D-Matrix-based document retrieval tool.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;f0ffc34f7b234d02a5268c5c6195e9b9&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Extensions-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 667}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Einsteinequation-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;5a3500a0bc2c4aeb8551fe19afb06b54&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:01:30&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;No description provided.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;74aac7fa5ef94bc8bc95c5765adda2ba&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Einsteinequation-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1272}], &amp;#x27;label&amp;#x27;: &amp;#x27;Console-Fuel-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;d95128dfaf524e458ab1b3e40dc923d5&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:04:37&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Fraction to percentage conversion tool.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;f0a958a772ee4de68ead83c15bd7d93e&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/Console-Fuel-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 254}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Emailvalidator-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;a31e92ee34a94934b5c1f5bf569562db&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:04:50&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Library-based email validator&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;b193451f851e4ea4837aecffa1534ef3&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Emailvalidator-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 375}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Adieu-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;a705dd811652437890d608f69edd1180&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:05:18&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Interactive &amp;quot;So Long, Farewell&amp;quot; lyrics typer&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;41e1f22f9c754f418643f37c789f29aa&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Adieu-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 298}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Camel-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;75ea7880387049a599ad8a29b80177d0&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:05:35&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;CamelCase to snake_case conversion.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;f3a7ba987ce44684943e775c8a1d789d&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Camel-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 1450}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Cash-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;554a976a50af44cd8a54e0f7ea61d773&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:05:49&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Cash exchanger text-based coin calculation.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;028335fca68d40e18939eca56f9b66ca&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Cash-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 679}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Deepthoughts-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;c20c1c9d2a8346929dd6fd6c086350ab&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:06:02&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;quot;Deep thought verification tool (Douglas Adams &amp;#x27;42&amp;#x27; inspired).&amp;quot;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;5312426bc6514ea2bbf8fae41cdc0487&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Deepthoughts-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 823}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Grocery-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;a062784a514144cfa876b422c6fe49d1&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:06:15&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;CLI grocery list, duplicate item tallying&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;93516eeb49524e0ab56153966147864f&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Grocery-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 597}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Bank-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;62d03b7d5f324994af2beffbbec526e8&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:06:54&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;&amp;quot;Hello 100 Dollars&amp;quot; (Seinfeld) sketch simulation.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;60785e15d4c8436886b317dfb35c7476&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Bank-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 74232}, {&amp;#x27;language&amp;#x27;: &amp;#x27;jp-nb&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 12311}], &amp;#x27;label&amp;#x27;: &amp;#x27;bot-PlayZone-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;d4cf2598365e43328e226517187bb153&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:07:07&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;A collection of text based games a real Discord companion.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;2aae7980419c40dab2ce8513cede903d&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/bot-PlayZone-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 9089}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-ArrayPuzzles-c&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;18f54f2aded642599345a286ae49202d&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:08:07&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Algorithmic puzzles. Array-based solutions in C.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;3746e6c690ab45d39a991c36f3301122&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-ArrayPuzzles-c&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;C&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 14405}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-CompAlgosSim-c&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;ed5187d1ad5041f1b056e8da436dfbf9&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:08:45&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Algorithmic foundations. Population Models &amp;amp; Financial Calculations?&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;ded6e2386c4345d1ae59b3db78ffbff6&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-CompAlgosSim-c&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 18989}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Games-cs&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;8138883951834c3bbfa7e6ad90892746&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:12:24&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Algorithmic game logic.\\xa0 Interactive console game mechanics.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;73d92ccc617c44eb8ee6eb79c5d523da&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Games-cs&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 24782}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Basics-cs&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;d84153f9fea8432b8b669c55109355eb&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:12:36&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Data types to interactive apps. Fundamentals &amp;amp; user interaction.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;1242acadf484473e89a0ea7740a9a29d&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Basics-cs&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 4712}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-BasicPersonSim-cs&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;a6f45bd0ec3349b59aefb97203f6907e&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:13:36&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Basic Person Sim, Learn together?&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;00015cb2afcd4052b56b6107d7b57dc4&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-BasicPersonSim-cs&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3356}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-ConnectSimulator-cs&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;345bdac1b8a9474fb74de9ed6ca6f96c&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-03T09:14:13&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Social connection simulation&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;6306dc88dd9f418b9f5b57e339efd315&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-ConnectSimulator-cs&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 43897}, {&amp;#x27;language&amp;#x27;: &amp;#x27;HTML&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 30498}, {&amp;#x27;language&amp;#x27;: &amp;#x27;CSS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 5317}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-Games-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;99f39eb764814efd8d925ccb750ec893&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-04-06T07:55:00&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Command-line console game launcher.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;23ed326eea384bc7b131da338a89fa32&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-Games-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Python&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 117671}], &amp;#x27;label&amp;#x27;: &amp;#x27;bot-AgeistForge-py&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;2c4cf8d58e0e4bbd80e886001037b7c4&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-06-15T15:06:59&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Discord Modcore &amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;eb46e34ff0dc4cae934244014e0cf762&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/bot-AgeistForge-py&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;CS&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 30038}, {&amp;#x27;language&amp;#x27;: &amp;#x27;HTML&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 3548}], &amp;#x27;label&amp;#x27;: &amp;#x27;GetNews&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;db450385f8e941d09a83c4ae17285d3c&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-06-16T10:04:57&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;Emsaso&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;No description provided.&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;a53606a84bed4f6aac48915772fd2ad1&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/Emsaso/GetNews&amp;#x27;}]}, {&amp;#x27;lang&amp;#x27;: [{&amp;#x27;language&amp;#x27;: &amp;#x27;Go&amp;#x27;, &amp;#x27;bytes&amp;#x27;: 917}], &amp;#x27;label&amp;#x27;: &amp;#x27;console-cipher-go&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;2233ccde36ff46d0aba16939e24db860&amp;#x27;, &amp;#x27;date&amp;#x27;: &amp;#x27;2025-08-04T16:44:27&amp;#x27;, &amp;#x27;owner&amp;#x27;: &amp;#x27;krigjo25&amp;#x27;, &amp;#x27;collaborators&amp;#x27;: [], &amp;#x27;description&amp;#x27;: &amp;#x27;Creative Go-program using defer to decode a hidden message&amp;#x27;, &amp;#x27;anchor&amp;#x27;: [{&amp;#x27;name&amp;#x27;: &amp;#x27;github&amp;#x27;, &amp;#x27;id&amp;#x27;: &amp;#x27;d22b435559a34786b24d519520857b71&amp;#x27;, &amp;#x27;type&amp;#x27;: [&amp;#x27;github&amp;#x27;, &amp;#x27;external&amp;#x27;], &amp;#x27;href&amp;#x27;: &amp;#x27;https://github.com/krigjo25/console-cipher-go&amp;#x27;}]}]\nTime Complexity: 1.16s\n\n&#34;}], &#34;tests/test_performance.py::TestAPIServicePerformance::test_heavy_api&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_performance.py::TestAPIServicePerformance::test_heavy_api&#34;, &#34;duration&#34;: &#34;488 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_performance.py::TestAPIServicePerformance::test_heavy_api&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;488 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Attempting to fetch data from https://api.hevyapp.com/v1/workouts\nINFO     APIWatcher -- API-Calls.log:logger_config.py:94 [!INFO] : Succsess : Recieved request code :200 Time elapsed: 0.47350068899959297\n\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;reports.html&#34;}"></div>
+    <script>
+      (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
+
+class DataManager {
+    setManager(data) {
+        const collapsedCategories = [...getCollapsedCategory(data.renderCollapsed)]
+        const collapsedIds = []
+        const tests = Object.values(data.tests).flat().map((test, index) => {
+            const collapsed = collapsedCategories.includes(test.result.toLowerCase())
+            const id = `test_${index}`
+            if (collapsed) {
+                collapsedIds.push(id)
+            }
+            return {
+                ...test,
+                id,
+                collapsed,
+            }
+        })
+        const dataBlob = { ...data, tests }
+        this.data = { ...dataBlob }
+        this.renderData = { ...dataBlob }
+        setCollapsedIds(collapsedIds)
+    }
+
+    get allData() {
+        return { ...this.data }
+    }
+
+    resetRender() {
+        this.renderData = { ...this.data }
+    }
+
+    setRender(data) {
+        this.renderData.tests = [...data]
+    }
+
+    toggleCollapsedItem(id) {
+        this.renderData.tests = this.renderData.tests.map((test) =>
+            test.id === id ? { ...test, collapsed: !test.collapsed } : test,
+        )
+    }
+
+    set allCollapsed(collapsed) {
+        this.renderData = { ...this.renderData, tests: [...this.renderData.tests.map((test) => (
+            { ...test, collapsed }
+        ))] }
+    }
+
+    get testSubset() {
+        return [...this.renderData.tests]
+    }
+
+    get environment() {
+        return this.renderData.environment
+    }
+
+    get initialSort() {
+        return this.data.initialSort
+    }
+}
+
+module.exports = {
+    manager: new DataManager(),
+}
+
+},{"./storage.js":8}],2:[function(require,module,exports){
+const mediaViewer = require('./mediaviewer.js')
+const templateEnvRow = document.getElementById('template_environment_row')
+const templateResult = document.getElementById('template_results-table__tbody')
+
+function htmlToElements(html) {
+    const temp = document.createElement('template')
+    temp.innerHTML = html
+    return temp.content.childNodes
+}
+
+const find = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return elem.querySelector(selector)
+}
+
+const findAll = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return [...elem.querySelectorAll(selector)]
+}
+
+const dom = {
+    getStaticRow: (key, value) => {
+        const envRow = templateEnvRow.content.cloneNode(true)
+        const isObj = typeof value === 'object' && value !== null
+        const values = isObj ? Object.keys(value).map((k) => `${k}: ${value[k]}`) : null
+
+        const valuesElement = htmlToElements(
+            values ? `<ul>${values.map((val) => `<li>${val}</li>`).join('')}<ul>` : `<div>${value}</div>`)[0]
+        const td = findAll('td', envRow)
+        td[0].textContent = key
+        td[1].appendChild(valuesElement)
+
+        return envRow
+    },
+    getResultTBody: ({ testId, id, log, extras, resultsTableRow, tableHtml, result, collapsed }) => {
+        const resultBody = templateResult.content.cloneNode(true)
+        resultBody.querySelector('tbody').classList.add(result.toLowerCase())
+        resultBody.querySelector('tbody').id = testId
+        resultBody.querySelector('.collapsible').dataset.id = id
+
+        resultsTableRow.forEach((html) => {
+            const t = document.createElement('template')
+            t.innerHTML = html
+            resultBody.querySelector('.collapsible').appendChild(t.content)
+        })
+
+        if (log) {
+            // Wrap lines starting with "E" with span.error to color those lines red
+            const wrappedLog = log.replace(/^E.*$/gm, (match) => `<span class="error">${match}</span>`)
+            resultBody.querySelector('.log').innerHTML = wrappedLog
+        } else {
+            resultBody.querySelector('.log').remove()
+        }
+
+        if (collapsed) {
+            resultBody.querySelector('.collapsible > td')?.classList.add('collapsed')
+            resultBody.querySelector('.extras-row').classList.add('hidden')
+        } else {
+            resultBody.querySelector('.collapsible > td')?.classList.remove('collapsed')
+        }
+
+        const media = []
+        extras?.forEach(({ name, format_type, content }) => {
+            if (['image', 'video'].includes(format_type)) {
+                media.push({ path: content, name, format_type })
+            }
+
+            if (format_type === 'html') {
+                resultBody.querySelector('.extraHTML').insertAdjacentHTML('beforeend', `<div>${content}</div>`)
+            }
+        })
+        mediaViewer.setup(resultBody, media)
+
+        // Add custom html from the pytest_html_results_table_html hook
+        tableHtml?.forEach((item) => {
+            resultBody.querySelector('td[class="extra"]').insertAdjacentHTML('beforeend', item)
+        })
+
+        return resultBody
+    },
+}
+
+module.exports = {
+    dom,
+    htmlToElements,
+    find,
+    findAll,
+}
+
+},{"./mediaviewer.js":6}],3:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const storageModule = require('./storage.js')
+
+const getFilteredSubSet = (filter) =>
+    manager.allData.tests.filter(({ result }) => filter.includes(result.toLowerCase()))
+
+const doInitFilter = () => {
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+}
+
+const doFilter = (type, show) => {
+    if (show) {
+        storageModule.showCategory(type)
+    } else {
+        storageModule.hideCategory(type)
+    }
+
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+
+    const sortColumn = storageModule.getSort()
+    doSort(sortColumn, true)
+}
+
+module.exports = {
+    doFilter,
+    doInitFilter,
+}
+
+},{"./datamanager.js":1,"./sort.js":7,"./storage.js":8}],4:[function(require,module,exports){
+const { redraw, bindEvents, renderStatic } = require('./main.js')
+const { doInitFilter } = require('./filter.js')
+const { doInitSort } = require('./sort.js')
+const { manager } = require('./datamanager.js')
+const data = JSON.parse(document.getElementById('data-container').dataset.jsonblob)
+
+function init() {
+    manager.setManager(data)
+    doInitFilter()
+    doInitSort()
+    renderStatic()
+    redraw()
+    bindEvents()
+}
+
+init()
+
+},{"./datamanager.js":1,"./filter.js":3,"./main.js":5,"./sort.js":7}],5:[function(require,module,exports){
+const { dom, find, findAll } = require('./dom.js')
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const { doFilter } = require('./filter.js')
+const {
+    getVisible,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    getSortDirection,
+    possibleFilters,
+} = require('./storage.js')
+
+const removeChildren = (node) => {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
+
+const renderStatic = () => {
+    const renderEnvironmentTable = () => {
+        const environment = manager.environment
+        const rows = Object.keys(environment).map((key) => dom.getStaticRow(key, environment[key]))
+        const table = document.getElementById('environment')
+        removeChildren(table)
+        rows.forEach((row) => table.appendChild(row))
+    }
+    renderEnvironmentTable()
+}
+
+const addItemToggleListener = (elem) => {
+    elem.addEventListener('click', ({ target }) => {
+        const id = target.parentElement.dataset.id
+        manager.toggleCollapsedItem(id)
+
+        const collapsedIds = getCollapsedIds()
+        if (collapsedIds.includes(id)) {
+            const updated = collapsedIds.filter((item) => item !== id)
+            setCollapsedIds(updated)
+        } else {
+            collapsedIds.push(id)
+            setCollapsedIds(collapsedIds)
+        }
+        redraw()
+    })
+}
+
+const renderContent = (tests) => {
+    const sortAttr = getSort(manager.initialSort)
+    const sortAsc = JSON.parse(getSortDirection())
+    const rows = tests.map(dom.getResultTBody)
+    const table = document.getElementById('results-table')
+    const tableHeader = document.getElementById('results-table-head')
+
+    const newTable = document.createElement('table')
+    newTable.id = 'results-table'
+
+    // remove all sorting classes and set the relevant
+    findAll('.sortable', tableHeader).forEach((elem) => elem.classList.remove('asc', 'desc'))
+    tableHeader.querySelector(`.sortable[data-column-type="${sortAttr}"]`)?.classList.add(sortAsc ? 'desc' : 'asc')
+    newTable.appendChild(tableHeader)
+
+    if (!rows.length) {
+        const emptyTable = document.getElementById('template_results-table__body--empty').content.cloneNode(true)
+        newTable.appendChild(emptyTable)
+    } else {
+        rows.forEach((row) => {
+            if (!!row) {
+                findAll('.collapsible td:not(.col-links', row).forEach(addItemToggleListener)
+                find('.logexpander', row).addEventListener('click',
+                    (evt) => evt.target.parentNode.classList.toggle('expanded'),
+                )
+                newTable.appendChild(row)
+            }
+        })
+    }
+
+    table.replaceWith(newTable)
+}
+
+const renderDerived = () => {
+    const currentFilter = getVisible()
+    possibleFilters.forEach((result) => {
+        const input = document.querySelector(`input[data-test-result="${result}"]`)
+        input.checked = currentFilter.includes(result)
+    })
+}
+
+const bindEvents = () => {
+    const filterColumn = (evt) => {
+        const { target: element } = evt
+        const { testResult } = element.dataset
+
+        doFilter(testResult, element.checked)
+        const collapsedIds = getCollapsedIds()
+        const updated = manager.renderData.tests.map((test) => {
+            return {
+                ...test,
+                collapsed: collapsedIds.includes(test.id),
+            }
+        })
+        manager.setRender(updated)
+        redraw()
+    }
+
+    const header = document.getElementById('environment-header')
+    header.addEventListener('click', () => {
+        const table = document.getElementById('environment')
+        table.classList.toggle('hidden')
+        header.classList.toggle('collapsed')
+    })
+
+    findAll('input[name="filter_checkbox"]').forEach((elem) => {
+        elem.addEventListener('click', filterColumn)
+    })
+
+    findAll('.sortable').forEach((elem) => {
+        elem.addEventListener('click', (evt) => {
+            const { target: element } = evt
+            const { columnType } = element.dataset
+            doSort(columnType)
+            redraw()
+        })
+    })
+
+    document.getElementById('show_all_details').addEventListener('click', () => {
+        manager.allCollapsed = false
+        setCollapsedIds([])
+        redraw()
+    })
+    document.getElementById('hide_all_details').addEventListener('click', () => {
+        manager.allCollapsed = true
+        const allIds = manager.renderData.tests.map((test) => test.id)
+        setCollapsedIds(allIds)
+        redraw()
+    })
+}
+
+const redraw = () => {
+    const { testSubset } = manager
+
+    renderContent(testSubset)
+    renderDerived()
+}
+
+module.exports = {
+    redraw,
+    bindEvents,
+    renderStatic,
+}
+
+},{"./datamanager.js":1,"./dom.js":2,"./filter.js":3,"./sort.js":7,"./storage.js":8}],6:[function(require,module,exports){
+class MediaViewer {
+    constructor(assets) {
+        this.assets = assets
+        this.index = 0
+    }
+
+    nextActive() {
+        this.index = this.index === this.assets.length - 1 ? 0 : this.index + 1
+        return [this.activeFile, this.index]
+    }
+
+    prevActive() {
+        this.index = this.index === 0 ? this.assets.length - 1 : this.index -1
+        return [this.activeFile, this.index]
+    }
+
+    get currentIndex() {
+        return this.index
+    }
+
+    get activeFile() {
+        return this.assets[this.index]
+    }
+}
+
+
+const setup = (resultBody, assets) => {
+    if (!assets.length) {
+        resultBody.querySelector('.media').classList.add('hidden')
+        return
+    }
+
+    const mediaViewer = new MediaViewer(assets)
+    const container = resultBody.querySelector('.media-container')
+    const leftArrow = resultBody.querySelector('.media-container__nav--left')
+    const rightArrow = resultBody.querySelector('.media-container__nav--right')
+    const mediaName = resultBody.querySelector('.media__name')
+    const counter = resultBody.querySelector('.media__counter')
+    const imageEl = resultBody.querySelector('img')
+    const sourceEl = resultBody.querySelector('source')
+    const videoEl = resultBody.querySelector('video')
+
+    const setImg = (media, index) => {
+        if (media?.format_type === 'image') {
+            imageEl.src = media.path
+
+            imageEl.classList.remove('hidden')
+            videoEl.classList.add('hidden')
+        } else if (media?.format_type === 'video') {
+            sourceEl.src = media.path
+
+            videoEl.classList.remove('hidden')
+            imageEl.classList.add('hidden')
+        }
+
+        mediaName.innerText = media?.name
+        counter.innerText = `${index + 1} / ${assets.length}`
+    }
+    setImg(mediaViewer.activeFile, mediaViewer.currentIndex)
+
+    const moveLeft = () => {
+        const [media, index] = mediaViewer.prevActive()
+        setImg(media, index)
+    }
+    const doRight = () => {
+        const [media, index] = mediaViewer.nextActive()
+        setImg(media, index)
+    }
+    const openImg = () => {
+        window.open(mediaViewer.activeFile.path, '_blank')
+    }
+    if (assets.length === 1) {
+        container.classList.add('media-container--fullscreen')
+    } else {
+        leftArrow.addEventListener('click', moveLeft)
+        rightArrow.addEventListener('click', doRight)
+    }
+    imageEl.addEventListener('click', openImg)
+}
+
+module.exports = {
+    setup,
+}
+
+},{}],7:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const storageModule = require('./storage.js')
+
+const genericSort = (list, key, ascending, customOrder) => {
+    let sorted
+    if (customOrder) {
+        sorted = list.sort((a, b) => {
+            const aValue = a.result.toLowerCase()
+            const bValue = b.result.toLowerCase()
+
+            const aIndex = customOrder.findIndex((item) => item.toLowerCase() === aValue)
+            const bIndex = customOrder.findIndex((item) => item.toLowerCase() === bValue)
+
+            // Compare the indices to determine the sort order
+            return aIndex - bIndex
+        })
+    } else {
+        sorted = list.sort((a, b) => a[key] === b[key] ? 0 : a[key] > b[key] ? 1 : -1)
+    }
+
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const durationSort = (list, ascending) => {
+    const parseDuration = (duration) => {
+        if (duration.includes(':')) {
+            // If it's in the format "HH:mm:ss"
+            const [hours, minutes, seconds] = duration.split(':').map(Number)
+            return (hours * 3600 + minutes * 60 + seconds) * 1000
+        } else {
+            // If it's in the format "nnn ms"
+            return parseInt(duration)
+        }
+    }
+    const sorted = list.sort((a, b) => parseDuration(a['duration']) - parseDuration(b['duration']))
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const doInitSort = () => {
+    const type = storageModule.getSort(manager.initialSort)
+    const ascending = storageModule.getSortDirection()
+    const list = manager.testSubset
+    const initialOrder = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed', 'Skipped', 'Passed']
+
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    if (type?.toLowerCase() === 'original') {
+        manager.setRender(list)
+    } else {
+        let sortedList
+        switch (type) {
+        case 'duration':
+            sortedList = durationSort(list, ascending)
+            break
+        case 'result':
+            sortedList = genericSort(list, type, ascending, initialOrder)
+            break
+        default:
+            sortedList = genericSort(list, type, ascending)
+            break
+        }
+        manager.setRender(sortedList)
+    }
+}
+
+const doSort = (type, skipDirection) => {
+    const newSortType = storageModule.getSort(manager.initialSort) !== type
+    const currentAsc = storageModule.getSortDirection()
+    let ascending
+    if (skipDirection) {
+        ascending = currentAsc
+    } else {
+        ascending = newSortType ? false : !currentAsc
+    }
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    const list = manager.testSubset
+    const sortedList = type === 'duration' ? durationSort(list, ascending) : genericSort(list, type, ascending)
+    manager.setRender(sortedList)
+}
+
+module.exports = {
+    doInitSort,
+    doSort,
+}
+
+},{"./datamanager.js":1,"./storage.js":8}],8:[function(require,module,exports){
+const possibleFilters = [
+    'passed',
+    'skipped',
+    'failed',
+    'error',
+    'xfailed',
+    'xpassed',
+    'rerun',
+]
+
+const getVisible = () => {
+    const url = new URL(window.location.href)
+    const settings = new URLSearchParams(url.search).get('visible')
+    const lower = (item) => {
+        const lowerItem = item.toLowerCase()
+        if (possibleFilters.includes(lowerItem)) {
+            return lowerItem
+        }
+        return null
+    }
+    return settings === null ?
+        possibleFilters :
+        [...new Set(settings?.split(',').map(lower).filter((item) => item))]
+}
+
+const hideCategory = (categoryToHide) => {
+    const url = new URL(window.location.href)
+    const visibleParams = new URLSearchParams(url.search).get('visible')
+    const currentVisible = visibleParams ? visibleParams.split(',') : [...possibleFilters]
+    const settings = [...new Set(currentVisible)].filter((f) => f !== categoryToHide).join(',')
+
+    url.searchParams.set('visible', settings)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const showCategory = (categoryToShow) => {
+    if (typeof window === 'undefined') {
+        return
+    }
+    const url = new URL(window.location.href)
+    const currentVisible = new URLSearchParams(url.search).get('visible')?.split(',').filter(Boolean) ||
+        [...possibleFilters]
+    const settings = [...new Set([categoryToShow, ...currentVisible])]
+    const noFilter = possibleFilters.length === settings.length || !settings.length
+
+    noFilter ? url.searchParams.delete('visible') : url.searchParams.set('visible', settings.join(','))
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getSort = (initialSort) => {
+    const url = new URL(window.location.href)
+    let sort = new URLSearchParams(url.search).get('sort')
+    if (!sort) {
+        sort = initialSort || 'result'
+    }
+    return sort
+}
+
+const setSort = (type) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('sort', type)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getCollapsedCategory = (renderCollapsed) => {
+    let categories
+    if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        const collapsedItems = new URLSearchParams(url.search).get('collapsed')
+        switch (true) {
+        case !renderCollapsed && collapsedItems === null:
+            categories = ['passed']
+            break
+        case collapsedItems?.length === 0 || /^["']{2}$/.test(collapsedItems):
+            categories = []
+            break
+        case /^all$/.test(collapsedItems) || collapsedItems === null && /^all$/.test(renderCollapsed):
+            categories = [...possibleFilters]
+            break
+        default:
+            categories = collapsedItems?.split(',').map((item) => item.toLowerCase()) || renderCollapsed
+            break
+        }
+    } else {
+        categories = []
+    }
+    return categories
+}
+
+const getSortDirection = () => JSON.parse(sessionStorage.getItem('sortAsc')) || false
+const setSortDirection = (ascending) => sessionStorage.setItem('sortAsc', ascending)
+
+const getCollapsedIds = () => JSON.parse(sessionStorage.getItem('collapsedIds')) || []
+const setCollapsedIds = (list) => sessionStorage.setItem('collapsedIds', JSON.stringify(list))
+
+module.exports = {
+    getVisible,
+    hideCategory,
+    showCategory,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    setSort,
+    getSortDirection,
+    setSortDirection,
+    getCollapsedCategory,
+    possibleFilters,
+}
+
+},{}]},{},[4]);
+    </script>
+  </footer>
+</html>
