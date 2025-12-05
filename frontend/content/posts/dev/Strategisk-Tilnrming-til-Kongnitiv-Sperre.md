@@ -27,7 +27,6 @@ Tiden blir dedikert til abstrakt tenking for å fremme kognitiv inkubasjon og �
 
 Observasjonsfasen bekreftet at den opprinnelige blokkeringen var kognitivt. Ved å dedikere tid til passiv kognitiv inkubasjon og frigjøre hode, ble den tekniske inspirasjonen til koding gjenopprettet innenfor 56-timers periode
 
-
 Strategiske Pauser og Metakognitiv Styring
 
 Dette understreker at strategisk pause og metakognitiv styring er effektive verktøy for å opprettholde produktiviteten i utviklingsarbeid. Prossesen bekrefter at når utviklere opplever indre press, kan metoder som dette, være en avgjørende faktor for å løse blokkeringer og unngå "burnouts"
