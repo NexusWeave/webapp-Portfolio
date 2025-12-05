@@ -33,4 +33,6 @@ clean: # Clean up cache files
 
 	rm -rf .pytest_cache/
 
+	rm -rf fastAPI/.test_database.db
+
 	@echo "--- Clean up Finished ---"
