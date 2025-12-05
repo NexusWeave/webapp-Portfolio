@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 #   Local Libraries
-from lib.services.database_services import Sqlite3
+from .databases import Sqlite3
 
 load_dotenv()
 
