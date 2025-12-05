@@ -2,6 +2,7 @@
 
 #   Third Party Imports
 import pytest, os, anyio
+from pytest_benchmark.fixture import BenchmarkFixture
 from dotenv import load_dotenv
 #   Local Library Imports
 from lib.services.heavy_api import HeavyAPI
@@ -49,7 +50,7 @@ class TestAPIServicePerformance:
 
         await api.client.aclose()
 
-    def test_github_api(self, github_setup:GithubAPI, benchmark):
+    def test_github_api(self, github_setup:GithubAPI, benchmark: BenchmarkFixture):
         """Performance test for GithubAPI fetch_repos method."""
 
         def run_performance_test():
@@ -68,9 +69,9 @@ class TestAPIServicePerformance:
             assert 'label' in data[0]
 
 
-        benchmark.pedantic(run_performance_test, setup=lambda: None, rounds=1, warmup_rounds=0)
+        benchmark.pedantic(run_performance_test, setup=lambda: None, rounds=1, warmup_rounds=0) #   type: ignore
 
-    def test_heavy_api(self, heavy_setup:HeavyAPI, benchmark):
+    def test_heavy_api(self, heavy_setup:HeavyAPI, benchmark: BenchmarkFixture):
         """Placeholder for HeavyAPI performance test."""
 
         def run_performance_test():
@@ -82,4 +83,4 @@ class TestAPIServicePerformance:
             assert data is not None
             assert isinstance(data, dict)
         
-        benchmark.pedantic(run_performance_test, setup=lambda: None, rounds=N, warmup_rounds=0)
+        benchmark.pedantic(run_performance_test, setup=lambda: None, rounds=N, warmup_rounds=0) #   type: ignore
