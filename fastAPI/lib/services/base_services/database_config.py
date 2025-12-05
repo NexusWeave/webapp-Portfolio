@@ -1,15 +1,16 @@
-#   Standard Libraries5987533333
+#   Standard Libraries
 import os
 from typing import List, Type, TypeVar
 
 #   Third-Party Libraries
 from dotenv import load_dotenv
+from sqlalchemy.orm import declarative_base
 from sqlalchemy import ScalarResult, select, delete
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, AsyncEngine, create_async_engine
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, AsyncEngine
 
 #   Local Libraries
-from fastAPI.lib.services.database.sqlite3_services import Sqlite3
 from lib.utils.logger_config import DatabaseWatcher
+
 
 load_dotenv()
 
@@ -19,29 +20,20 @@ logger.file_handler()
 #   Type Aliases
 T = TypeVar('T')
 
-#   Database Configuration
-SQLITE3_URL = os.getenv("SQLITE3_URL", "sqlite+aiosqlite:///./test.db")
-SQLITE3_Engine = create_async_engine( SQLITE3_URL, echo=True, future=True)
-SQLITE3_SessionLocal = async_sessionmaker(
-    class_=AsyncSession,
-    bind=SQLITE3_Engine,
-    expire_on_commit=False,
-)
+BASE = declarative_base()
 
-SQLITE_INSTANCE = Sqlite3(
-    engine=SQLITE3_Engine,
-    session_factory=SQLITE3_SessionLocal
-)
+
 #   Base Database Service
 class AsyncDatabaseService:
 
     def __init__(self, engine: AsyncEngine, session_factory : async_sessionmaker[AsyncSession]):
         self.engine = engine
         self.session_factory = session_factory
-
+    
     @property
-    def engine_connect(self) -> AsyncEngine:
-        return self.engine
+    async def connection(self) -> None:
+        async with self.engine.connect() as conn:
+            await conn.run_sync(BASE.metadata.create_all)
 
     @property
     def SessionLocal(self) -> async_sessionmaker[AsyncSession]:
@@ -64,3 +56,4 @@ class AsyncDatabaseService:
             await session.commit()
         
         logger.warn(f"Record deleted: {instance}")
+
