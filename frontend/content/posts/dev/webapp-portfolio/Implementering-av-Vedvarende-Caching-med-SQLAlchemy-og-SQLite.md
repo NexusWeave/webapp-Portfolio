@@ -84,7 +84,7 @@ star: >
 
   Det tidskrevende O(n)-kallet til Github ble utført i et kontrollert miljø en
   gang for å hente de nødvendige dataene. Disse rådataene ble deretter formatert
-  og lagret i de nydesignede databasetabellene. 
+  og lagret i de nydesignede databasetabellene.
 
 
   [APSchedule](https://pypi.org/project/APScheduler/) ble valgt for å sette opp
