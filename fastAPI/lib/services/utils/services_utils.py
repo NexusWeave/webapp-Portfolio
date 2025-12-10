@@ -15,9 +15,10 @@ class ServicesUtils:
         
         repoObject['lang'] = languages
         repoObject['label'] = data['name']
-        repoObject['id'] = uuid.uuid4().hex
+        repoObject['repo_id'] = data['id']
         repoObject['date'] = date_obj.isoformat()
         repoObject['owner'] = data['owner']['login']
+        repoObject['created_at'] = data['created_at']
         repoObject['collaborators'] = collaborators if collaborators else []
         repoObject['description'] = data['description'] if data['description'] else "No description provided."
 
@@ -29,6 +30,7 @@ class ServicesUtils:
                 'type': ['github','external'],
                 'href': data['html_url']
             }]
+
         if data['homepage']:
 
             repoObject['anchor'].append(

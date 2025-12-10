@@ -1,8 +1,10 @@
 # Testing common APIS.py
+
 # Python Standard Library
 import os
 from typing import List
 from datetime import datetime, UTC
+
 # Third Party Dependencies
 import pytest,httpx
 from dotenv import load_dotenv
@@ -16,8 +18,7 @@ from lib.services.heavy_api import HeavyAPI
 from lib.services.github_api import GithubAPI
 
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanugageRepositoryAssosiationModel, CollaboratorModel
-from app import app # Erstatt 'app' med din FastAPI-instans
-
+from app import app
 load_dotenv()
 
 
@@ -130,14 +131,7 @@ class TestDatabaseIntegration:
                 date=datetime.now(UTC),
                 description="En beskrivelse for integrasjonstesten.",
                 repo_url="https://github.com/dev_user/test-repo",
-                
-                # FIKS: Lagt til påkrevd 'bytes' felt
-                bytes=12345 + 67890,
-
-                # FIKS: Bruker liste av CollaboratorModel-objekter for relasjonen
                 collaborators=[collab_one, collab_two],
-                
-                # FIKS: Bruker det korrekte relasjonsnavnet 'assosiations'
                 assosiations=[python_assosiation, js_assosiation],
             )
         
