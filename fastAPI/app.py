@@ -2,25 +2,18 @@
 import os, __future__
 
 from datetime import datetime
-from typing import AsyncGenerator, Dict, Optional, List, Sequence
+from typing import Dict, Optional, List, Sequence
 import uuid
 
 #   Third Party Dependencies
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from contextlib import asynccontextmanager
-from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi.middleware.cors import CORSMiddleware
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 #   Internal Dependencies
-
-
-from lib.utils.app_utility import AppTools
+from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
-from lib.settings.schedule_config import SchedulerConfig
 
 #from lib.models.heavy_model import HeavyModel
 from lib.models.github_model import GithubModel
@@ -42,58 +35,24 @@ load_dotenv()
 LOG = AppWatcher(dir="logs", name='FastAPI-App')
 LOG.file_handler()
 
+CONFIG = AppConfig()
 try:
-    config = AppTools.environment_initialization(os.getenv('ENV', 'development'))
+    ENVIRONMENT = CONFIG.environment_initialization(os.getenv('ENV', 'development'))
 
 except ValueError as ve:
     LOG.error(f"Error in setting up the environment: {ve}")
     raise ve
 
-LOG.info(f"\'{config.__class__.__name__}\' - \'v{config.API_VERSION}\' loaded \'{config.ENVIRONMENT}\'- Environment successfully.") 
-
-@asynccontextmanager
-async def event_initialization(app: FastAPI):
-    """
-        FastAPI Startup Eventer
-    """
-    LOG.info("FastAPI Application is starting up...")
-    LOG.info(f"Registered Database Models: {BASE.metadata.tables.keys()}")
-    try:
-        async with SQLITE_INSTANCE.engine.begin() as conn:
-            await conn.run_sync(BASE.metadata.create_all)
-        LOG.info("Database tables created successfully.")
-    
-    except Exception as e:
-        LOG.error(f"Error creating database tables: {e}")
-        raise e
-    await SQLITE_INSTANCE.connection
-
-    SCHEDULER = AsyncIOScheduler()
-    SchedulerConfig().configure_jobs(SCHEDULER)
-    SCHEDULER.start()
-    
-    LOG.info("FastAPI Application started successfully.")
-
-    yield
-
-    SCHEDULER.shutdown()
-    LOG.info("FastAPI Application is shutting down...")
-
 #   Initialize FastAPI
-app = FastAPI(title = config.API_NAME,
-              version=config.API_VERSION,
-              lifespan=event_initialization)
+app = FastAPI(title = ENVIRONMENT.API_NAME,
+              version=ENVIRONMENT.API_VERSION,
+              lifespan=CONFIG.app_initialization)
 
-async def middleware_initialization(app: FastAPI) -> None:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=config.CORS_ORIGINS, 
-        allow_credentials=True, 
-        allow_methods=["*"], allow_headers=["*"]
-    )
+CONFIG.middleware_initialization(app, ENVIRONMENT)
+LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'v{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
 
 #   Registering Enpoint Services
-VERSION: str = config.API_VERSION
+VERSION: str = ENVIRONMENT.API_VERSION
 PATH = f"/api/{VERSION}"
 
 @app.get("/")
@@ -176,8 +135,8 @@ async def health_check() -> Dict[str, str | bool]:
     dictionary: Dict[str, str | bool] = {
         "ApiRunning": True,
         "EndpointsAvailable": "4",
-        "ApiName": config.API_NAME,
-        "version" : config.API_VERSION,
+        "ApiName": ENVIRONMENT.API_NAME,
+        "version" : ENVIRONMENT.API_VERSION,
         "status": "OK", "message": "API is healthy and running."
         }
     return dictionary
