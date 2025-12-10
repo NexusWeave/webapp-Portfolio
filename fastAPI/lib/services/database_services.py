@@ -11,20 +11,21 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanugageRepositoryAssosiationModel
 from lib.utils.logger_config import DatabaseWatcher
 
-LOG = DatabaseWatcher(name="Github-Database-Services")
+LOG = DatabaseWatcher(dir="logs", name="Github-Database-Services")
 LOG.file_handler()
 
 class GithubServices():
 
-    def __init__(self, repo: List[Dict[str, Any]], db_session: AsyncSession):
-        self.db_session = db_session
-        self.repo = repo
+    def __init__(self, session: AsyncSession):
+        self.session = session
 
     @staticmethod
     def setup_repo(repository: Dict[str, Any]) -> Dict[str, Any]:
         repo_url: str | None = None
         video_url: str | None = None
         preview_url: str | None = None
+
+        LOG.debug(f"Setting up repository data for repo_id: {repository['repo_id']}")
 
         for url in repository['anchor']:
 
@@ -36,11 +37,11 @@ class GithubServices():
             
         LANGUAGE_ASSOCIATION: List[str] = []
 
+        LOG.debug(f"Appending language associations for repo_id: {repository['repo_id']}")
         for i in repository['lang']:
             LANGUAGE_ASSOCIATION.append(LanugageRepositoryAssosiationModel(language=LanguageModel(language=i['language']), code_bytes=i['bytes']))
 
         dictionary: Dict[str, Any] = {
-            'html_url': repo_url,
             'repo_url': repo_url,
             'demo_url': preview_url,
             'youtube_url': video_url,
@@ -48,16 +49,18 @@ class GithubServices():
             'owner': repository['owner'],
             'label': repository['label'],
             'repo_id': repository['repo_id'],
-            'assosiations': LANGUAGE_ASSOCIATION,
+            'associations': LANGUAGE_ASSOCIATION,
             'created_at': repository['created_at'],
             'description': repository['description'],
-            'updated_at': datetime.now().isoformat()}
+            'updated_at': datetime.now().isoformat(),
+            'last_update': datetime.now().isoformat()}
 
         return dictionary
 
     @staticmethod
     def check_stmt(exist: RepositoryModel, dictionary: Dict[str, Any]) -> bool:
 
+        LOG.info(f"Checking for changes in repository with repo_id: {dictionary['repo_id']}")
         FIELDS_TO_CHECK = [
             'name', 'owner', 'label',
             'demo_url', 'youtube_url',
@@ -69,40 +72,71 @@ class GithubServices():
             
         return False
 
-    def insert_new_record(self, repository: Dict[str, Any]) -> None:
-        repo_obj = RepositoryModel( name = repository['name'], owner = repository['owner'],
-                label = repository['label'], html_url = repository['html_url'],
-                demo_url = repository['demo_url'], repo_url = repository['repo_url'], youtube_url = repository['youtube_url'],
-                updated_at = datetime.now().isoformat(), repo_id = repository['repo_id'],
-                created_at = repository['created_at'], description = repository['description'],
-                assosiations = repository['assosiations'])
+    async def new_repo_record(self, repository: Dict[str, Any]) -> None:
 
-        self.db_session.add(repo_obj)
+        LOG.info(f"Creating new repository record for repo_id: {repository['repo_id']}")
 
-    async def save_repository(self) -> None:
-        for repository in self.repo:
+        repo_obj = RepositoryModel(
+            repo_id = repository['repo_id'], label = repository['label'],
+            description = repository['description'], owner = repository['owner'],
+            demo_url = repository['demo_url'], repo_url = repository['repo_url'],
+            youtube_url = repository['youtube_url'], created_at = repository['created_at'])
 
-            dictionary = GithubServices.setup_repo(repository)
+        self.session.add(repo_obj)
 
-            result = await self.db_session.execute(select(RepositoryModel).where(RepositoryModel.repo_id == repository['repo_id']))
-            exist = result.scalars().first()
+        for assoc_data in repository.get('associations', []):
 
-            HAS_CHANGES: bool = GithubServices.check_stmt(exist, dictionary)
+            CODE_BYTES = assoc_data.code_bytes
+            LANG_NAME: str = assoc_data.language.language
+
+            lang_obj: LanguageModel = await self.session.scalar(select(LanguageModel).where(LanguageModel.language == LANG_NAME))
+
+            if not lang_obj: lang_obj = self.new_language_record(LANG_NAME)
+
+            self.new_association_record(repo_obj, lang_obj, CODE_BYTES)
+
+    def new_language_record(self, language: str) -> LanguageModel:
+
+        LOG.info(f"Initializing new language record for language: {language}")
+        language_obj = LanguageModel(language=language)
+        self.session.add(language_obj)
+        return language_obj
+    
+    def new_association_record(self, repository: RepositoryModel, language: LanguageModel, code_bytes: int) -> LanugageRepositoryAssosiationModel:
+        LOG.info(f"Initializing new association record for repository: {repository.repo_id} and language: {language.language}")
+        association_obj = LanugageRepositoryAssosiationModel( repository=repository, language=language, code_bytes=code_bytes)
+        self.session.add(association_obj)
+        return association_obj
+
+    async def save_repository(self, repository: List[Dict[str, Any]]) -> None:
+        
+        LOG.info(f"Saving GitHub repositories to the database...{repository}\n repositories found.")
+
+        for i in range(len(repository)):
+
+            dictionary = GithubServices.setup_repo(repository[i])
+            LOG.info(f"Setup was successful")
+
+            #result = await self.session.execute(select(RepositoryModel).where(RepositoryModel.repo_id == repository[i]['repo_id']))
+            LOG.debug(f"Executed select statement for repo_id {repository[i]['repo_id']}")
+            exist:bool = False #result.scalars().first()
+
+            HAS_CHANGES: bool = False#GithubServices.check_stmt(exist, dictionary)
             dictionary_for_update = {k: v for k, v in dictionary.items() if k != 'assosiations'}
-            
+
             if exist and HAS_CHANGES:
-                LOG.info(f"Updating repository with repo_id: **{repository['repo_id']}**")
-                stmt = ( update(RepositoryModel).where(RepositoryModel.repo_id == repository['repo_id']).values(**dictionary_for_update) )    
-                await self.db_session.execute(stmt)
+                LOG.info(f"Updating repository with repo_id: **{repository[i]['repo_id']}**")
+                stmt = ( update(RepositoryModel).where(RepositoryModel.repo_id == repository[i]['repo_id']).values(**dictionary_for_update) )    
+                await self.session.execute(stmt)
 
             elif not exist:
-                LOG.info(f"Inserting new repository with repo_id: **{repository['repo_id']}**")
-                self.insert_new_record(dictionary)
+                LOG.info(f"Inserting new repository with repo_id: **{repository[i]['repo_id']}**")
+                await self.new_repo_record(dictionary)
 
-            await self.db_session.commit()
+            await self.session.commit()
 
     async def select_repositories(self) -> Sequence[RepositoryModel]:
-        result = await self.db_session.execute(select(RepositoryModel))
+        result = await self.session.execute(select(RepositoryModel))
         repositories = result.scalars().all()
         return repositories
         

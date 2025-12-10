@@ -39,32 +39,32 @@ from lib.services.fetch_endpoint_data_service import FetchEndpointDataService
 load_dotenv()
 
 # Initialize the logger
-logger = AppWatcher(dir="logs", name='FastAPI-App')
-logger.file_handler()
+LOG = AppWatcher(dir="logs", name='FastAPI-App')
+LOG.file_handler()
 
 try:
     config = AppTools.environment_initialization(os.getenv('ENV', 'development'))
 
 except ValueError as ve:
-    logger.error(f"Error in setting up the environment: {ve}")
+    LOG.error(f"Error in setting up the environment: {ve}")
     raise ve
 
-logger.info(f"\'{config.__class__.__name__}\' - \'v{config.API_VERSION}\' loaded \'{config.ENVIRONMENT}\'- Environment successfully.") 
+LOG.info(f"\'{config.__class__.__name__}\' - \'v{config.API_VERSION}\' loaded \'{config.ENVIRONMENT}\'- Environment successfully.") 
 
 @asynccontextmanager
 async def event_initialization(app: FastAPI):
     """
         FastAPI Startup Eventer
     """
-    logger.info("FastAPI Application is starting up...")
-    logger.info(f"Registered Database Models: {BASE.metadata.tables.keys()}")
+    LOG.info("FastAPI Application is starting up...")
+    LOG.info(f"Registered Database Models: {BASE.metadata.tables.keys()}")
     try:
         async with SQLITE_INSTANCE.engine.begin() as conn:
             await conn.run_sync(BASE.metadata.create_all)
-        logger.info("Database tables created successfully.")
+        LOG.info("Database tables created successfully.")
     
     except Exception as e:
-        logger.error(f"Error creating database tables: {e}")
+        LOG.error(f"Error creating database tables: {e}")
         raise e
     await SQLITE_INSTANCE.connection
 
@@ -72,12 +72,12 @@ async def event_initialization(app: FastAPI):
     SchedulerConfig().configure_jobs(SCHEDULER)
     SCHEDULER.start()
     
-    logger.info("FastAPI Application started successfully.")
+    LOG.info("FastAPI Application started successfully.")
 
     yield
 
     SCHEDULER.shutdown()
-    logger.info("FastAPI Application is shutting down...")
+    LOG.info("FastAPI Application is shutting down...")
 
 #   Initialize FastAPI
 app = FastAPI(title = config.API_NAME,
@@ -114,7 +114,7 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
             raise NotFoundError(404, "No announcements for today")
 
     except NotFoundError as e:
-        logger.warn(f"Announcement not found: {e.__class__.__name__} - {e.message}")
+        LOG.warn(f"Announcement not found: {e.__class__.__name__} - {e.message}")
         return {"announcement_id": 0, "date": today, "message": e.message}
     
     response: Dict[str, int | datetime | str] = {"announcement_id": 1, "date": today, "message": message}
@@ -131,7 +131,7 @@ async def get_repositories() -> List[Dict[str, str | int | datetime | List[Dict[
             raise NotFoundError(404, "No repositories found in the database.")
 
     except NotFoundError as e:
-        logger.error(f"Error fetching repositories: {e.__class__.__name__} - {e.message}")
+        LOG.error(f"Error fetching repositories: {e.__class__.__name__} - {e.message}")
         return {"message": e.message}
 
     repository_list: List[Dict[str, str | int | datetime | List[Dict[str, str | int]]]] = []
@@ -171,7 +171,7 @@ async def health_check() -> Dict[str, str | bool]:
     """
         Health Check Endpoint
     """
-    logger.info("Health check endpoint accessed.")
+    LOG.info("Health check endpoint accessed.")
 
     dictionary: Dict[str, str | bool] = {
         "ApiRunning": True,
@@ -193,5 +193,5 @@ async def test_endpoint() -> Dict[str, str]:
         return {"message": "Test endpoint executed GitHub data fetch successfully."}
 
     except Exception as e:
-        logger.error(f"Test endpoint failed with error: {e}")
+        LOG.error(f"Test endpoint failed with error: {e}")
         return {"message": f"Test endpoint failed with error: {str(e)}"}

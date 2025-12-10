@@ -3,11 +3,11 @@
 from collections.abc import AsyncGenerator
 from sqlalchemy.ext.asyncio import AsyncSession
 #   Local Dependencies
-from lib.utils.logger_config import ServiceWatcher
+from lib.utils.logger_config import AppWatcher
 from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
 
 # Initialize the logger
-LOG = ServiceWatcher(dir="logs", name='FastAPI-App')
+LOG = AppWatcher(dir="logs", name='FastAPI-App')
 LOG.file_handler()
 
 class AppTools:
