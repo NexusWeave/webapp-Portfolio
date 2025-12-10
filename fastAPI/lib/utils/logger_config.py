@@ -116,5 +116,11 @@ class DatabaseWatcher(Logger):
 
     def __init__(self, name:Optional[str] = None, dir:Optional[str] = None):
         super().__init__(dir = dir, name=f"{self.__class__.__name__} -- {name}.log")
-        
-        
+
+class ServiceWatcher(Logger):
+    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None):
+        super().__init__(dir = dir, name=f"{self.__class__.__name__} -- {name}.log")
+
+class ConfigWatcher(Logger):
+    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None):
+        super().__init__(dir = dir, name=f"{self.__class__.__name__} -- {name}.log")
