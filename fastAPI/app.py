@@ -1,14 +1,13 @@
 #   Standard Depnendencies
-import os, __future__
+import os, __future__, uuid
 
 from datetime import datetime
 from typing import Dict, Optional, List, Sequence
-import uuid
 
 #   Third Party Dependencies
-
-from dotenv import load_dotenv
 from fastapi import FastAPI
+from dotenv import load_dotenv
+
 
 #   Internal Dependencies
 from lib.settings.app_config import AppConfig
@@ -21,7 +20,6 @@ from lib.models.announcement_model import AnnouncementModel
 from lib.models.database_models.GithubModel import RepositoryModel
 
 from lib.services.database_services import GithubServices
-from lib.services.base_services.database_config import BASE
 from lib.services.database.resources import SQLITE_INSTANCE
 from lib.services.announcements import AnnouncementsService
 from lib.services.fetch_endpoint_data_service import FetchEndpointDataService
@@ -83,21 +81,22 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
 @app.get(f"{PATH}/repository", response_model=GithubModel, summary="Get GitHub Repository Information",  tags=["GitHub"])
 async def get_repositories() -> List[Dict[str, str | int | datetime | List[Dict[str, str | int]]]] | Dict[str, str]:
     try:
-        SERVICE: GithubServices = GithubServices(repo=[], session=SQLITE_INSTANCE.SessionLocal())
+        SERVICE: GithubServices = GithubServices(session=SQLITE_INSTANCE.SessionLocal())
         repositories: Sequence[RepositoryModel] = await SERVICE.select_repositories()
 
-        if not repositories:
-            raise NotFoundError(404, "No repositories found in the database.")
+        if not repositories: raise NotFoundError(404, "No repositories found in the database.")
 
     except NotFoundError as e:
         LOG.error(f"Error fetching repositories: {e.__class__.__name__} - {e.message}")
         return {"message": e.message}
 
     repository_list: List[Dict[str, str | int | datetime | List[Dict[str, str | int]]]] = []
+    LOG.debug(f"Fetched {len(repositories)} repositories from the database.")
+    
     for repo in repositories:
         
-        lang = []
-        if hasattr(repo, 'assosiations') and repo.assosiations is not None:
+        lang: List[object] = []
+        if repo.assosiations is not None:
             lang.append(i.language.language for i in repo.assosiations)
 
         anchor: List[Dict[str, str | List[str] | object]] = []
@@ -112,7 +111,7 @@ async def get_repositories() -> List[Dict[str, str | int | datetime | List[Dict[
                 'name': 'webapp',
                 'id': uuid.uuid4().hex,
                 'href': repo.demo_url})
-        if repo.ytube_url:
+        if repo.youtube_url:
             anchor.append({
                 'name': 'youtube',
                 'id': uuid.uuid4().hex,
@@ -121,7 +120,7 @@ async def get_repositories() -> List[Dict[str, str | int | datetime | List[Dict[
         repo.lang = lang
         repo.anchor = anchor
 
-        repository_list.append(repo.__dict__)
+        repository_list.append(repo)
 
     return repository_list
 
