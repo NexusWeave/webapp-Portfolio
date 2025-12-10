@@ -73,8 +73,9 @@ class GithubAPI(AsyncAPIClientConfig):
 
             repo.append(repoObject)
 
-        repo.sort(key=lambda x: x['date'], reverse=False)
+        repo.sort(key=lambda x: x['created_at'], reverse=True)
         logger.info(f"Repositories fetched successfully. {repo}\nTime Complexity: {time.perf_counter() - start:.2f}s\n")
+
         return repo
 
     async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, List[str] | str | object]]:
@@ -82,7 +83,7 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
 
         languages: List[Dict[str, List[str] | str | object]] = []
-        response: Dict[str, str | object] = await self.ApiCall(path, head=self.HEADER)
+        response: Dict[str, object] = await self.ApiCall(path, head=self.HEADER)
 
         for lang, value in response.items():
         
