@@ -15,23 +15,24 @@
 		"pomodoro.soundIntervalNotification": 100,
 		"conventionalCommits.scopes":
 		[
-			"Deps",
-			"Style",
-			"Build",
-			"Model",
-			"Config",
-			".vscode",
-			"Cleanup",
-			"Routing",
-			"Database",
-			"Services",
-			"Changelog",
-			"Directory",
-			"FastAPI-app",
-			"Announcements",
-			"Pre-commit-config",
-			"Utils",
-			"Testing"
-		]
+            "Make",
+            "Deps",
+            "Style",
+            "Build",
+            "Model",
+            "Utils",
+            "Config",
+            ".vscode",
+            "Cleanup",
+            "Routing",
+            "Testing",
+            "Database",
+            "Services",
+            "Changelog",
+            "Directory",
+            "FastAPI-app",
+            "Announcements",
+            "Pre-commit-config",
+        ]
 	}
 }
