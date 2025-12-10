@@ -16,23 +16,13 @@ test-reports: # Running tests with coverage and generating HTML report # Not wor
 clean: # Clean up cache files
 	@echo "--- Cleans up Cache files ---"
 	
-	#	Cleans up __pycache__ directories
-	rm -rf fastAPI/__pycache__
-	rm -rf fastAPI/../__pycache__/
-	rm -rf fastAPI/tests/__pycache__
-	rm -rf fastAPI/lib/utils/__pycache__
-	rm -rf fastAPI/lib/models/__pycache__
-	rm -rf fastAPI/lib/services/__pycache__
-	rm -rf fastAPI/lib/settings/__pycache__
+	#	Cleans up __pycache__, pytest cache directories
+	find . -depth -type d \( -name "__pycache__" -o -name ".pytest_cache" -o -name ".benchmarks", -o -name ".logs" \) -exec rm -rf {} \;
 
 	#	Cleans up .coverage files
 	rm -rf fastAPI/.benchmarks
-	#	Cleans up .pytest_cache directories
-	rm -rf fastAPI/.pytest_cache/
-	rm -rf fastAPI/tests/.pytest_cache/
 
-	rm -rf .pytest_cache/
-
+	#	Cleans up test database files
 	rm -rf fastAPI/.test_database.db
 
 	@echo "--- Clean up Finished ---"
