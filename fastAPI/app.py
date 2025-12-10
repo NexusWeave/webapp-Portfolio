@@ -165,3 +165,33 @@ async def get_repositories() -> List[Dict[str, str | int | datetime | List[Dict[
         repository_list.append(repo.__dict__)
 
     return repository_list
+
+@app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.")  
+async def health_check() -> Dict[str, str | bool]:
+    """
+        Health Check Endpoint
+    """
+    logger.info("Health check endpoint accessed.")
+
+    dictionary: Dict[str, str | bool] = {
+        "ApiRunning": True,
+        "EndpointsAvailable": "4",
+        "ApiName": config.API_NAME,
+        "version" : config.API_VERSION,
+        "status": "OK", "message": "API is healthy and running."
+        }
+    return dictionary
+
+@app.get(f"{PATH}/test", tags=["Test"], summary="Test Endpoint", description="Endpoint to test the API setup.")
+async def test_endpoint() -> Dict[str, str]:
+    """
+        Test Endpoint
+    """
+
+    try:
+        await FetchEndpointDataService.github_repo_data_service()
+        return {"message": "Test endpoint executed GitHub data fetch successfully."}
+
+    except Exception as e:
+        logger.error(f"Test endpoint failed with error: {e}")
+        return {"message": f"Test endpoint failed with error: {str(e)}"}
