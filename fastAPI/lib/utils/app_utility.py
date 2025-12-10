@@ -1,24 +1,32 @@
 
 #   Third Party Dependencies
-from dotenv import load_dotenv
-
+from collections.abc import AsyncGenerator
+from sqlalchemy.ext.asyncio import AsyncSession
 #   Local Dependencies
-from lib.utils.logger_config import AppWatcher
+from lib.utils.logger_config import ServiceWatcher
 from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
 
-#   Initialize Enviorment variables
-load_dotenv()
-
 # Initialize the logger
-logger = AppWatcher(dir="logs", name='Flask-App')
-logger.file_handler()
+LOG = ServiceWatcher(dir="logs", name='FastAPI-App')
+LOG.file_handler()
 
 class AppTools:
     
     @staticmethod
-    def setup_environment(env:str) -> Config:
+    def environment_initialization(env:str) -> Config:
         env = env.lower()
 
         if env == 'production': return ProdConfig()
         if env == 'development': return DevelopmentConfig()
         raise ValueError(f"Invalid environment variable. ENV = \"{env}\". Set ENV to either 'production' or 'development'.")
+
+    @staticmethod
+    def middleware_initialization(app: FastAPI, config: Config) -> None:
+        pass
+
+    #@asynccontextmanager
+    async def app_initialization(app: FastAPI):
+        """
+            FastAPI Startup Eventer
+        """
+        pass
