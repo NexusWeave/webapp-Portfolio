@@ -5,6 +5,7 @@ from typing import Dict, Any, List, Sequence
 #   Third Party Libraries
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
 
 #   Internal Libraries
@@ -136,7 +137,7 @@ class GithubServices():
             await self.session.commit()
 
     async def select_repositories(self) -> Sequence[RepositoryModel]:
-        result = await self.session.execute(select(RepositoryModel))
+        result = await self.session.execute(select(RepositoryModel).options(selectinload(RepositoryModel.assosiations)))
         repositories = result.scalars().all()
         return repositories
         
