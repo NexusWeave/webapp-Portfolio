@@ -33,6 +33,11 @@
             "FastAPI-app",
             "Announcements",
             "Pre-commit-config",
+            "Debug",
+            "Log",
+            "Github",
+            "Scheduler",
+            "Workspace"
         ]
 	}
 }
