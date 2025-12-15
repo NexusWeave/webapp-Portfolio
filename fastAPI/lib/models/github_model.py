@@ -1,40 +1,55 @@
-#   Standard libraries
+#   Standard Dependencies
 import __future__
-from typing import Dict, List, Optional
 from datetime import datetime
+from typing import Dict, List, Optional
 
-#   Third Party Libraries
-from pydantic import BaseModel, Field
+
+#   Third Party Dependencies
+from pydantic import BaseModel, Field, ConfigDict, computed_field
+
+#   Type definitions
+
+
+class LanguageModel(BaseModel):
+    id: int = Field(..., description="Language ID", json_schema_extra={"example":1})
+    language: str = Field(..., description="Language Name", json_schema_extra={"example":"Python"})
+
+    model_config = ConfigDict(from_attributes=True)
+
+class LanguageAssociationModel(BaseModel):
+    lang_id: int = Field(..., description="Language ID", json_schema_extra={"example":1})
+    code_bytes: int = Field(..., description="Code Bytes", json_schema_extra={"example":2048})
+    repo_id: str = Field(..., description="Repository ID", json_schema_extra={"example":"123456"})
+
+    #   Relationships
+    language: LanguageModel
+
+    model_config = ConfigDict(from_attributes=True)
 
 class GithubModel(BaseModel):
-
+    
     #   Initialize methods and database
     label: str = Field(..., description="Repository Name", json_schema_extra={"example":"my-repo"})
     owner: str = Field(..., description="Repository Owner", json_schema_extra={"example":"username"})
-    date: datetime = Field(..., description="Creation Date", json_schema_extra={"example":f"{datetime.now()}"})
-    id: str = Field(..., description="Unique Repository ID", json_schema_extra={"example":"18c130fc836e7827deb51195fc5ecac5 "})
-    description: str = Field(..., description="Repository Description", json_schema_extra={"example":"This is my repository."})
-    anchor: List[Dict[str, str | List[str]]] = Field(..., description="Repository Links", json_schema_extra={"example":{"github": "https://github.com/username/my-repo"}})
-    lang: List[Dict[str, str | int]] = Field(..., description="Programming Languages Used", json_schema_extra={"example":[{"language": "Python", "bytes": 12345}, {"language": "JavaScript", "bytes": 67890}]})
-    
-    collaborators: Optional[List[Dict[str, str | object]]] = Field(..., description="Repository Collaborators", json_schema_extra={"example":[{"login": "collaborator1", "id": 123456, "html_url": "https://github.com/collaborator1"}]})
+    created_at: datetime = Field(..., description="Creation Timestamp", json_schema_extra={"example":f"{datetime.now()}"})
+    demo_url: Optional[str] = Field(None, description="Demo URL", json_schema_extra={"example":"https://demo.krigjo25.com"})    
+    repo_id: str = Field(..., description="Unique Repository ID", json_schema_extra={"example":"1234567890"})
+    description: Optional[str] = Field(None, description="Repository Description", json_schema_extra={"example":"This is my repository."})
+    repo_url: str = Field(..., description="Repository URL", json_schema_extra={"example":"https://github.com/username/my-repo"})
+    youtube_url: Optional[str] = Field(None, description="YouTube URL", json_schema_extra={"example":"https://youtube.com/my-repo"})
 
-    class Config:
-        json_schema_extra: Dict[str, Dict[str, object]] = {
-            "example": {
-                "name": "my-repo",
-                "owner": "username",
-                "date": "2023-10-05T14:48:00.000Z",
-                "id": "18c130fc836e7827deb51195fc5ecac5",
-                "description": "This is my repository.",
-                "collaborators": [{"name": "collaborator1", "html_url": "https://github.com/collaborator1"}],
-                "lang": [{"language": "Python", "bytes": 12345}, {"language": "JavaScript", "bytes": 67890}],
-                "anchor": [
-                    {
-                        "name": "github",
-                        "id": "a1b2c3d4e5f6g7h8i9j0",
-                        "type": ["github", "external"],
-                        "href": "https://github.com/username/my-repo",
-                    }]
-            }
-        }
+    lang_assosiations: List[LanguageAssociationModel]
+
+    @computed_field
+    @property
+    def fetch_languages(self) -> List[Dict[str, str | int]]:
+        
+        languages: List[Dict[str, str | int]] = []
+
+        for assec in self.lang_assosiations:
+            
+            if assec.language.id == assec.lang_id and self.repo_id == assec.repo_id:
+                languages.append({"language": assec.language.language, "bytes": assec.code_bytes})
+        return languages
+    
+    model_config = ConfigDict(from_attributes=True)
