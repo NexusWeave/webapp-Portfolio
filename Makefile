@@ -11,6 +11,7 @@ test-reports: # Running tests with coverage and generating HTML report # Not wor
 	mv htmlcov/* tests/reports/
 	
 	pytest --html=tests/reports/pytest_report.html --self-contained-html
+	clear
 	@echo "--- Test and Report Generation Finished ---"
 
 clean: # Clean up cache files
@@ -24,5 +25,5 @@ clean: # Clean up cache files
 
 	#	Cleans up test database files
 	rm -rf fastAPI/.test_database.db
-
+	clear
 	@echo "--- Clean up Finished ---"
