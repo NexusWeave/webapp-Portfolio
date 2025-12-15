@@ -78,51 +78,20 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
 
     return response
 
-@app.get(f"{PATH}/repository", response_model=GithubModel, summary="Get GitHub Repository Information",  tags=["GitHub"])
-async def get_repositories() -> List[Dict[str, str | int | datetime | List[Dict[str, str | int]]]] | Dict[str, str]:
-    try:
-        SERVICE: GithubServices = GithubServices(session=SQLITE_INSTANCE.SessionLocal())
-        repositories: Sequence[RepositoryModel] = await SERVICE.select_repositories()
+@app.get(f"{PATH}/repository", response_model = List[GithubModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
+async def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
 
-        if not repositories: raise NotFoundError(404, "No repositories found in the database.")
+    try:
+        repositories: List[RepositoryModel] = await GithubServices(SQLITE_INSTANCE.SessionLocal()).select_repositories()
+        if not repositories: raise NotFoundError(404, 'Resource not found')
 
     except NotFoundError as e:
-        LOG.error(f"Error fetching repositories: {e.__class__.__name__} - {e.message}")
-        return {"message": e.message}
+        LOG.error(f"Exception occurred while fetching repositories: {e.status_code} - {e.message}")
 
-    repository_list: List[Dict[str, str | int | datetime | List[Dict[str, str | int]]]] = []
-    LOG.debug(f"Fetched {len(repositories)} repositories from the database.")
+        return {'message': 'No repositories found'}
     
-    for repo in repositories:
-        
-        lang: List[object] = []
-        if repo.assosiations is not None:
-            lang.append(i.language.language for i in repo.assosiations)
-
-        anchor: List[Dict[str, str | List[str] | object]] = []
-        if repo.repo_url:
-            anchor.append({
-                'name': 'github',
-                'id': uuid.uuid4().hex,
-                'type': ['github','external'],
-                'href': repo.repo_url})
-        if repo.demo_url:
-            anchor.append({
-                'name': 'webapp',
-                'id': uuid.uuid4().hex,
-                'href': repo.demo_url})
-        if repo.youtube_url:
-            anchor.append({
-                'name': 'youtube',
-                'id': uuid.uuid4().hex,
-                'type': ['youtube','external'],
-                'href': repo.youtube_url})
-        repo.lang = lang
-        repo.anchor = anchor
-
-        repository_list.append(repo)
-
-    return repository_list
+    LOG.info(f"Fetched {len(repositories)} repositories from the database.")
+    return repositories
 
 @app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.")  
 async def health_check() -> Dict[str, str | bool]:
@@ -152,4 +121,4 @@ async def test_endpoint() -> Dict[str, str]:
 
     except Exception as e:
         LOG.error(f"Test endpoint failed with error: {e}")
-        return {"message": f"Test endpoint failed with error: {str(e)}"}
+        return {"message": f"An Error occured while processing the REST API call."}
