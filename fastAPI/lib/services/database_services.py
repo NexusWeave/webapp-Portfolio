@@ -1,6 +1,6 @@
 #   Standard Library
 from datetime import datetime
-from typing import Dict, Any, List, Sequence
+from typing import Dict, Any, List, Sequence, Optional
 
 #   Third Party Libraries
 from sqlalchemy import select, update
@@ -22,9 +22,9 @@ class GithubServices():
 
     @staticmethod
     def setup_repo(repository: Dict[str, Any]) -> Dict[str, Any]:
-        repo_url: str | None = None
-        video_url: str | None = None
-        preview_url: str | None = None
+        repo_url: Optional[str] = None
+        video_url: Optional[str] = None
+        preview_url: Optional[str] = None
 
         LOG.debug(f"Setting up repository data for repo_id: {repository['repo_id']}")
 
@@ -93,10 +93,10 @@ class GithubServices():
         LOG.info(f"New repository record created for repo_id: {repository['repo_id']}")
 
         for assoc_data in repository.get('lang_associations', []):
+
             CODE_BYTES = assoc_data.code_bytes
             LANG_NAME: str = assoc_data.lang_id
-            lang_obj: LanguageModel = await self.session.scalar(select(LanguageModel).where(LanguageModel.lang == LANG_NAME))
-            LOG.debug(lang_obj)
+            lang_obj: Optional[LanguageModel] = await self.session.scalar(select(LanguageModel).where(LanguageModel.lang == LANG_NAME))
             if not lang_obj: lang_obj = self.new_language_record(LANG_NAME)
 
             self.new_association_record(repo_obj, lang_obj, CODE_BYTES)
