@@ -4,7 +4,7 @@ import os
 #   Third-Party Libraries
 from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
-from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, CollaboratorModel, LanugageRepositoryAssosiationModel #type: ignore
+from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel #type: ignore
 
 #   Local Libraries
 from .databases import Sqlite3
