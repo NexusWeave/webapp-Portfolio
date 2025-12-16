@@ -37,7 +37,9 @@
             "Log",
             "Github",
             "Scheduler",
-            "Workspace"
+            "Workspace",
+            "Endpoint",
+            "Bridge"
         ]
 	}
 }
