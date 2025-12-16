@@ -1,16 +1,16 @@
 #   Standard Library
 from datetime import datetime
-from typing import Dict, Any, List, Sequence, Optional
+from typing import Dict, Any, List, Sequence, Optional, Tuple
 
 #   Third Party Libraries
-from sqlalchemy import select, update
+from sqlalchemy import select, Result
 from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
-
 
 #   Internal Libraries
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel
 from lib.utils.logger_config import DatabaseWatcher
+
 
 LOG = DatabaseWatcher(dir="logs", name="Github-Database-Services")
 LOG.file_handler()
@@ -26,8 +26,6 @@ class GithubServices():
         video_url: Optional[str] = None
         preview_url: Optional[str] = None
 
-        LOG.debug(f"Setting up repository data for repo_id: {repository['repo_id']}")
-
         for url in repository['anchor']:
 
             match url['name']:
@@ -37,128 +35,145 @@ class GithubServices():
                 case _: continue
             
         LANGUAGE_ASSOCIATION: List[str] = []
-
-        LOG.debug(f"Appending language associations for repo_id: {repository['repo_id']}")
         for i in repository['lang']:
-            LOG.debug(f"{i['language']} - {i['bytes']}")
-            
 
-            LANGUAGE: LanguageModel = LanguageModel(lang = str(i['language']))
+            LANGUAGE: LanguageModel = LanguageModel(language = str(i['language']))
             LANGUAGE_ASSOCIATION.append(LanguageAssosiationModel(language = LANGUAGE, code_bytes = i['bytes']))
-            LOG.debug(f"Appending language for repo_id: {repository['repo_id']}")
-        LOG.debug(f"Appending language associations for repo_id: {repository['repo_id']}")
 
         dictionary: Dict[str, Any] = {
             'repo_url': repo_url,
+            'ytube_url': video_url,
             'demo_url': preview_url,
-            'youtube_url': video_url,
-            'name': repository['label'],
+            'lang': repository['lang'],
             'owner': repository['owner'],
             'label': repository['label'],
             'repo_id': repository['repo_id'],
-            'associations': LANGUAGE_ASSOCIATION,
             'created_at': repository['created_at'],
             'description': repository['description'],
             'updated_at': datetime.now().isoformat(),
+            'lang_associations': LANGUAGE_ASSOCIATION,
             'last_update': datetime.now().isoformat()}
 
+        LOG.info(f"Setup was successful for repo_id: {repository['repo_id']}")
         return dictionary
 
     @staticmethod
-    def check_stmt(exist: bool, dictionary: Dict[str, Any]) -> bool:
+    def check_stmt(exist:RepositoryModel, dictionary: Dict[str, Any]) -> bool:
 
-        LOG.info(f"Checking for changes in repository with repo_id: {dictionary['repo_id']}")
         FIELDS_TO_CHECK = [
-            'name', 'owner', 'label',
-            'demo_url', 'youtube_url',
-            'description', 'updated_at'
+            'owner', 'label',
+            'repo_url', 'description'
             ]
 
         for field in FIELDS_TO_CHECK:
-            if getattr(exist, field) != dictionary[field]: return True
-            
+            API_VALUE, DB_VALUE = dictionary.get(field), getattr(exist, field, None)
+
+            if DB_VALUE != API_VALUE: 
+                LOG.info(f"Changes detected for repo_id: {dictionary['repo_id']}, field: {field}")
+                return True
+
+        LOG.info(f"No Changes for repo_id: {dictionary['repo_id']}")
         return False
 
-    async def new_repo_record(self, repository: Dict[str, Any]) -> None:
+    def new_association_record(self, repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -> None:
 
-        LOG.info(f"Creating new repository record for repo_id: {repository['repo_id']}")
+        association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
+        self.session.add(association_obj)
+        LOG.info(f"Initializing new association record for repository: {repo.repo_id} and language: {lang.language}")
+
+    async def new_repo_record(self, repository: Dict[str, Any]) -> None:
 
         repo_obj = RepositoryModel(
             repo_id = repository['repo_id'], label = repository['label'],
             description = repository['description'], owner = repository['owner'],
             demo_url = repository['demo_url'], repo_url = repository['repo_url'],
-            youtube_url = repository['youtube_url'], created_at = repository['created_at'])
+            youtube_url = repository['ytube_url'], created_at = repository['created_at'])
 
         self.session.add(repo_obj)
-        LOG.info(f"New repository record created for repo_id: {repository['repo_id']}")
 
-        for assoc_data in repository.get('lang_associations', []):
+        LANGUAGE_ASSOCIATIONS: List[str] = repository['lang']
 
-            CODE_BYTES = assoc_data.code_bytes
-            LANG_NAME: str = assoc_data.lang_id
-            lang_obj: Optional[LanguageModel] = await self.session.scalar(select(LanguageModel).where(LanguageModel.lang == LANG_NAME))
-            if not lang_obj: lang_obj = self.new_language_record(LANG_NAME)
+        for i in LANGUAGE_ASSOCIATIONS:
+            CODE_BYTES : int = i['bytes']       #type:ignore
+            LANG_NAME : str = i['language']     #type:ignore
+            LANG_OBJ: LanguageModel = await self.new_language_record(LANG_NAME)
 
-            self.new_association_record(repo_obj, lang_obj, CODE_BYTES)
-        
-            LOG.info(repo_obj, lang_obj, CODE_BYTES)
+            self.new_association_record(repo_obj, LANG_OBJ, CODE_BYTES)
 
-    def new_language_record(self, language: str) -> LanguageModel:
+        LOG.info(f"Successfully created new repository record for repo_id: {repository['repo_id']}")
 
-        language_obj = LanguageModel(lang=language)
-        self.session.add(language_obj)
-        LOG.info(f"Initializing new language record for language: {language}")
-        return language_obj
-    
-    def new_association_record(self, repository: RepositoryModel, language: LanguageModel, code_bytes: int) -> LanguageAssosiationModel:
-        
-        association_obj = LanguageAssosiationModel( repo_id =repository.repo_id, lang_id=language.id, code_bytes=code_bytes)
-        self.session.add(association_obj)
-        LOG.info(f"Initializing new association record for repository: {repository.repo_id} and language: {language.lang}")
+    async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
 
-        return association_obj
+        lang_obj: Result[Tuple[LanguageModel]] = await self.session.scalar(select(LanguageModel).where(LanguageModel.language == LANG_NAME))
+
+        if not lang_obj:
+            lang_obj = LanguageModel(language = LANG_NAME)
+
+            self.session.add(lang_obj)
+
+            LOG.info(f"Initializing new language record for language: {LANG_NAME}")
+
+        return lang_obj
 
     async def save_repository(self, repository: List[Dict[str, Any]]) -> None:
+
+        repo_ids = [repo['repo_id'] for repo in repository]
+
+        QUERY = select(RepositoryModel).where(RepositoryModel.repo_id.in_(repo_ids))
+        DB_RESULTS = await self.session.execute(QUERY)
         
-        LOG.info(f"Saving GitHub repositories to the database...{repository}\n repositories found.")
+        EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in DB_RESULTS.scalars().all()}
 
         for i in range(len(repository)):
 
             dictionary = GithubServices.setup_repo(repository[i])
-            LOG.info(f"Setup was successful")
 
-            duplication = await self.session.execute(select(RepositoryModel).where(RepositoryModel.repo_id == repository[i]['repo_id']))
+            repo_id: str = str(repository[i]['repo_id']).strip()
+            DUPLICATION = EXISTING_REPOS.get(repo_id)
 
-            exist:bool = False
-            has_changes: bool = False
+            if DUPLICATION:
 
-            if duplication.scalars().first():
-                exist = True
-                LOG.info(f"Checking for duplication in repository with repo_id: {repository[i]['repo_id']} - {exist}")
+                if GithubServices.check_stmt(DUPLICATION, dictionary):
 
-            #if GithubServices.check_stmt(exist, dictionary):
-                #has_changes = True
-                #LOG.info(f"Checking for changes in repository with repo_id: {repository[i]['repo_id']} - {has_changes}")
+                    EXCCLUDE_FIELDS = ['repo_id', 'created_at']
+                    updated_data = {k: v for k, v in dictionary.items() if k != 'lang_assosiations' and k not in EXCCLUDE_FIELDS}
 
-            dictionary_for_update = {k: v for k, v in dictionary.items() if k != 'assosiations'}
-            LOG.info(f"Dictionary for update: {dictionary_for_update}")
+                    for key, value in updated_data.items():
+                        if hasattr(DUPLICATION, key):
+                            setattr(DUPLICATION, key, value)
 
-            if exist and has_changes:
-                LOG.info(f"Updating repository with repo_id: **{repository[i]['repo_id']}**")
-                stmt = ( update(RepositoryModel).where(RepositoryModel.repo_id == repository[i]['repo_id']).values(**dictionary_for_update) )    
-                await self.session.execute(stmt)
+                    self.session.add(DUPLICATION)
+                    LOG.info(f"Successfully updated repository with repo_id: **{repository[i]['repo_id']}**")
 
-            elif not exist:
-                LOG.info(f"Inserting new repository with repo_id: **{repository[i]['repo_id']}**")
-                await self.new_repo_record(dictionary)
-
+                else:
+                    LOG.warn(f"No changes detected for repository with repo_id: **{repository[i]['repo_id']}**")
+                    continue
+            else:
+                repository[i].update(
+                    {
+                        'demo_url': dictionary['demo_url'],
+                        'repo_url': dictionary['repo_url'],
+                        'ytube_url': dictionary['ytube_url'],
+                        'last_update': datetime.now().isoformat()
+                    })
+                
+                await self.new_repo_record(repository[i])
+                LOG.info(f"Successfully inserted new repository with repo_id: **{repository[i]['repo_id']}**")
+        try:
             await self.session.commit()
 
+        except Exception as e:
+            LOG.error(f"An {e.__class__} occured during commiting the session: {e}. Rolling back to previous state.")
+            await self.session.rollback()
+
     async def select_repositories(self) -> Sequence[RepositoryModel]:
-        repo = await self.session.execute(select(RepositoryModel).options(selectinload(RepositoryModel.lang_assosiations)))
-        repositories = repo.scalars().all()
-        LOG.info(f"Fetched {len(repositories)} repositories from the database.")
-        return repositories
+        QUERY = select(RepositoryModel).options(
+            selectinload(RepositoryModel.lang_assosiations)
+            .selectinload(LanguageAssosiationModel.language))
+
+        repo = await self.session.execute(QUERY)
+
+        return repo.scalars().all()
         
 
 class HeavyServices:
