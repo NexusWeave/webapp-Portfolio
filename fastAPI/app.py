@@ -1,13 +1,11 @@
 #   Standard Depnendencies
-import os, __future__, uuid
-
+import os, __future__
 from datetime import datetime
-from typing import Dict, Optional, List, Sequence
+from typing import Dict, Optional, List
 
 #   Third Party Dependencies
 from fastapi import FastAPI
 from dotenv import load_dotenv
-
 
 #   Internal Dependencies
 from lib.settings.app_config import AppConfig
@@ -24,8 +22,6 @@ from lib.services.database.resources import SQLITE_INSTANCE
 from lib.services.announcements import AnnouncementsService
 from lib.services.fetch_endpoint_data_service import FetchEndpointDataService
 
-
-
 #   Initialize Enviorment variables
 load_dotenv()
 
@@ -33,7 +29,8 @@ load_dotenv()
 LOG = AppWatcher(dir="logs", name='FastAPI-App')
 LOG.file_handler()
 
-CONFIG = AppConfig()
+CONFIG: AppConfig = AppConfig()
+
 try:
     ENVIRONMENT = CONFIG.environment_initialization(os.getenv('ENV', 'development'))
 
@@ -51,8 +48,8 @@ LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'v{ENVIRONMENT.API_VERSION}\'
 
 #   Registering Enpoint Services
 VERSION: str = ENVIRONMENT.API_VERSION
-PATH = f"/api/{VERSION}"
 
+PATH = f"/api/{VERSION}"
 @app.get("/")
 def read_root():
     return {"message": "NOT FOUND"}
