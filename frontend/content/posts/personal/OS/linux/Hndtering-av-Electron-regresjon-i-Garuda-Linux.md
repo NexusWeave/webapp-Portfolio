@@ -7,7 +7,7 @@ ingress: >
   Utfordringen ble diagnostisert som en inkompatibilitet mellom
   Electron-rammeverket og KDE Plasmas globale menysystem. Gjennom en pragmatisk
   tilnærming ble en målrettet rollback prioritert fremfor kompleks feilsøking av
-  `window.titleBar`-konfigurasjoner. Dette sikret umiddelbar gjenoppretting av
+  `window.titleBar`-konfigurasjon. Dette sikret umiddelbar gjenoppretting av
   arbeidsflyten uten behov for en full system-rollback eller risiko for tap av
   data.
 star: >
