@@ -1,5 +1,7 @@
 ---
 created: 2025-12-15T00:00:00.000Z
+tags:
+  - dev-journey
 title: Sikring av Unikhet og Datakontrakt
 ingress: >
   En feilsøkingsprosess ble igangsatt for å adressere tre relaterte feil i ORM-
@@ -23,7 +25,7 @@ star: >
   Applikasjonen klarte å laste ned repositorier fra Github, men feilet i å lagre
   de unike kode språkene til en dedikert Kode Språk-tabell. Denne tabellen er
   esensiell for å sikre effektiv lagring av språk-data. Feilen indikerte at
-  presistensen av selve språk-objektiene sviktet. 
+  presistensen av selve språk-objektiene sviktet.
 
 
   #### Krasj ved Henting av Data
