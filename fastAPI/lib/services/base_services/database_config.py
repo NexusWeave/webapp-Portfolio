@@ -1,5 +1,4 @@
 #   Standard Libraries
-import os
 from typing import List, Type, TypeVar
 
 #   Third-Party Libraries
@@ -8,7 +7,7 @@ from sqlalchemy.orm import declarative_base
 from sqlalchemy import ScalarResult, select, delete
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, AsyncEngine
 
-#   Local Libraries
+#   Internal Libraries
 from lib.utils.logger_config import DatabaseWatcher
 
 
