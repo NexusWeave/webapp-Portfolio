@@ -4,12 +4,12 @@ tags:
   - dev-journey
 title: Erfaringer med assembly-konflikter og mappehierarki
 ingress: >
-  Denne artikkelen dokumenterer feilsøking og løsning av kompileringsfeil i et
-  .NET-miljø. Ved å analysere feilkodene CS0579 og CS0246, belyses sammenhengen
-  mellom prosjektets mappestruktur og MSBuilds evne til å håndtere
-  assembly-generering. Gjennom en systematisk tilnærming etter PARADE-prinsippet
-  demonstreres det hvordan en arkitektonisk reorganisering eliminerer teknisk
-  gjeld og sikrer en stabil build-pipeline.
+  Feilsøking og løsning av kompileringsfeil i et .NET-miljø. Ved å analysere
+  feilkodene CS0579 og CS0246, belyses sammenhengen mellom prosjektets
+  mappestruktur og MSBuilds evne til å håndtere assembly-generering. Gjennom en
+  systematisk tilnærming etter PARADE-prinsippet demonstreres det hvordan en
+  arkitektonisk reorganisering eliminerer teknisk gjeld og sikrer en stabil
+  build-pipeline.
 star: >
   ### Diagnosering og arkitekturoptimalisering i .NET
 
@@ -23,7 +23,7 @@ star: >
   #### Eliminering av C# Feilkodene
 
 
-  For å Eliminere feilkodene  
+  For å Eliminere feilkodene
 
 
   * Diagnoseres .NET assembly-genereringen.
@@ -50,7 +50,7 @@ star: >
   MSBuild.
 
 
-  #### Effekten av Reorganisering av Prosjektarkitekturen 
+  #### Effekten av Reorganisering av Prosjektarkitekturen
 
 
   Reorganiseringen av prosjektarkitekturen medførte at kompilatoren nå
