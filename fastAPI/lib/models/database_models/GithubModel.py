@@ -2,54 +2,48 @@
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String, Integer, ForeignKey
 
-
 #   Internal Dependencies
 from lib.services.base_services.database_config import BASE
+
 
 class RepositoryModel(BASE):
 
     __tablename__: str = "repositories"
 
-    id = Column(Integer, primary_key=True, index=True, nullable=False, autoincrement=True)
-    repo_id = Column(String, unique=True, index=True, nullable=False)
+    id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
+    repo_id = Column(String, unique = True, index = True, nullable = False)
 
-    label = Column(String,  index=True, nullable=False)
-    description = Column(String, nullable=True)
-    owner = Column(String, nullable=False)
+    label = Column(String,  index = True, nullable = False)
+    description = Column(String, nullable = True)
+    owner = Column(String, nullable = False)
 
-    #   Unique URLs
-    demo_url = Column(String, unique=True, index=True, nullable=True)
-    repo_url = Column(String, unique=True, index=True, nullable=False)
-    youtube_url = Column(String, unique=True, index=True, nullable=True)
+    demo_url = Column(String, unique = True, index = True, nullable = True)
+    repo_url = Column(String, unique = True, index = True, nullable = False)
+    youtube_url = Column(String, unique = True, index = True, nullable = True)
 
-    #   Timestamps
-    updated_at = Column(String, nullable=True)
-    last_update = Column(String, nullable=True)
-    created_at = Column(String, nullable=False)
+    updated_at = Column(String, nullable = True)
+    last_update = Column(String, nullable = True)
+    created_at = Column(String, nullable = False)
 
-    #   Relationships
-    #collab_assosiations = relationship("CollaboratorModel", back_populates="repository", cascade="all, delete-orphan")
-    lang_assosiations = relationship("LanguageAssosiationModel", back_populates="repository", cascade="all, delete-orphan")
+    lang_assosiations = relationship("LanguageAssosiationModel", back_populates = "repository", cascade = "all, delete-orphan")
 
 class LanguageAssosiationModel(BASE):
 
     __tablename__: str = "language_repository_association"
 
-    id = Column(Integer, primary_key=True, index=True, nullable=False, autoincrement=True)
-    lang_id = Column(Integer, ForeignKey('languages.id'), nullable=False)
-    repo_id = Column(Integer, ForeignKey('repositories.repo_id'), nullable=False)
-    code_bytes = Column(Integer, nullable=False)
+    id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
+    lang_id = Column(Integer, ForeignKey('languages.id'), nullable = False)
+    repo_id = Column(Integer, ForeignKey('repositories.repo_id'), nullable = False)
+    code_bytes = Column(Integer, nullable = False)
 
-    #   Relationships
-    language = relationship("LanguageModel", back_populates="lang_assosiations")
-    repository = relationship("RepositoryModel", back_populates="lang_assosiations")
+    language = relationship("LanguageModel", back_populates = "assosiations")
+    repository = relationship("RepositoryModel", back_populates = "lang_assosiations")
     
 class LanguageModel(BASE):
 
     __tablename__: str = "languages"
 
-    id = Column(Integer, primary_key=True, index=True, nullable=False, autoincrement=True)
-    lang = Column(String, unique=True, index=True, nullable=False)
+    id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
+    lang = Column(String, unique = True, index = True, nullable = False)
 
-    #   Relationships
-    lang_assosiations = relationship("LanguageAssosiationModel", back_populates="language")
+    assosiations = relationship("LanguageAssosiationModel", back_populates="language", cascade="all, delete-orphan")
