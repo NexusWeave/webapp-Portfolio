@@ -146,3 +146,38 @@ star: >
 KildeHenvisning: ''
 ---
 
+### Teknisk beskrivelse av modellen
+
+#### RepositoryModel
+
+##### Modell arkitektur
+
+Modellen fungerer som en prosjekt logg, der meta-dataen til prosjektet blir lagret
+
+#### Modellens Hoved Ansvar
+
+Ansvaret for modellen er å aggregere og persistere all nødvendig metadata fra Github som kreves for å generere et informativt og visuelt grensesnitt
+
+#### Modellens Funksjonelle Ansvar
+
+* Datakilde for UI
+  * Lagrer informasjon som mulligjør en liten presentasjon av meta-dataene i hvert enkelt prosjekt.
+* Demostrasjonsgrunnlag
+  * Ved å koble modellen til LanguageAssosiationModel, utvides presentasjonen med teknisk dybde.
+
+#### LanguageModel
+
+##### Modell arkitektur
+
+Modellen fungerer som systemet register for programmeringsspråk. I stedet for å lagre språknavn som enkle tekststrenger direkte på hvert repository, er denne modellen designet for å sikre data-normalisering og golbal konsistens.
+
+prosjektet blir lagret
+
+#### Modellens Hoved Ansvar
+
+* Sentralisering av Metadata
+  * Lagrer unike programmeringsspråk som er identifisert i Github-økosystemet.
+* Effektiv Ressursbruk
+  * Ved å referere til en felles språk-entitet i stedet for å lage redudante strenger, reduseres databasens lagringsbehov og indekseringstid.
+* Analystisk Grunnlag
+  * Modellen muliggjør aggregering av data på tvers av hele prosjektporteføljen, slik at man enkelt kan generere statistikk over teknologibruk.
