@@ -14,4 +14,5 @@
         "**/*.unotation": true
     },
     "bigUML.hideUnotation": true,
+    "python.defaultInterpreterPath": "./fastAPI/.venv/bin/python"
 }
