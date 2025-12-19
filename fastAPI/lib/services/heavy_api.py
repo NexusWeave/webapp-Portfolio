@@ -1,16 +1,14 @@
-#   Heavy workout app API
+#   Dependencies
 import __future__
-import datetime
 from typing import Dict, List
 from dotenv import load_dotenv
 
+#   Internal Dependencies
+from lib.utils.logger_config import APIWatcher
+from lib.settings.api_config import AsyncAPIClientConfig
+
 #  Loading the environment variables
 load_dotenv()
-
-#   Custom libraries
-from lib.utils.logger_config import APIWatcher
-from lib.utils.mathlibrary import MathInterPreter
-from lib.services.base_services.api_config import AsyncAPIClientConfig
 
 logger = APIWatcher(dir="logs", name='Heavy-API')
 logger.file_handler()

@@ -1,8 +1,8 @@
 
-#   Standard library imports
-from typing import List, Optional, Dict
+#   Dependencies
 from time import perf_counter
 from urllib.parse import urljoin
+from typing import List, Optional, Dict
 
 #   Third Party Dependencies
 import httpx

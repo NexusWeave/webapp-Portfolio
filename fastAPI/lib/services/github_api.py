@@ -1,4 +1,4 @@
-#   Standard library imports
+#   Standard Dependencies
 import os, time
 from asyncio import gather
 from urllib.parse import urljoin
@@ -10,8 +10,9 @@ from dotenv import load_dotenv
 #   Internal Dependencies
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
+from lib.settings.api_config import AsyncAPIClientConfig
 from lib.services.utils.services_utils import ServicesUtils
-from lib.services.base_services.api_config import AsyncAPIClientConfig
+
 
 #  Loading the environment variables
 load_dotenv()
