@@ -28,7 +28,7 @@ Komplett oversikt over teknologier, arkitektur og infrastruktur for webapp-Portf
 | **UI Framework** | **Vue.js 3** | v3.x | Progressiv JavaScript framework med Composition API |
 | **Type Safety** | **TypeScript** | v5.x | Type-safe JavaScript superset for hele frontend |
 | **Backend API** | **FastAPI** | v0.x (Python) | High-performance async API framework (under utvikling) |
-| **Database** | **SQLite** | v3.x | Lightweight relational database for lokal data |
+| **Database** | **Turso** | v1.x | Cloud-basert, distribuert database bygget på libSQL (fork av SQLite) |
 | **Content Management** | **TinaCMS** | v2.x | Git-based headless CMS med visuell redigering |
 | **Styling** | **Sass/SCSS** | v1.x | CSS preprocessor med omfattende design system |
 
@@ -405,6 +405,7 @@ Som definert i [`frontend/utils/techStack.ts`](../../frontend/utils/techStack.ts
 ### Databases
 
 - **Relational**: SQLite, MySQL, MSSQL, PostgreSQL
+- **Edge**: Turso
 - **NoSQL**: MongoDB, Redis, Firebase
 
 ### DevOps & Tools

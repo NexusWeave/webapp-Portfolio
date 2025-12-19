@@ -22,7 +22,7 @@ Dette prosjektet følger **JAMstack-arkitekturen** (JavaScript, APIs, Markup) me
 - **Frontend:** Nuxt 3 / Vue 3 (SSG - Static Site Generation)
 - **Backend:** FastAPI / Flask (REST API)
 - **Content:** TinaCMS (Headless CMS)
-- **Database:** SQLite (Lokal database)
+- **Database:** Turso (Cloud-based SQLite)
 
 ### Nøkkelegenskaper
 
