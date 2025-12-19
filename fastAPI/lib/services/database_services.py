@@ -4,8 +4,8 @@ from typing import Dict, Any, List, Sequence, Optional, Tuple
 
 #   Third Party Libraries
 from sqlalchemy import select, Result
-from sqlalchemy.orm import selectinload
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import Session, selectinload
+
 
 #   Internal Libraries
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel
@@ -17,7 +17,7 @@ LOG.file_handler()
 
 class GithubServices():
 
-    def __init__(self, session: AsyncSession):
+    def __init__(self, session: Session):
         self.session = session
 
     @staticmethod
@@ -166,14 +166,13 @@ class GithubServices():
             LOG.error(f"An {e.__class__} occured during commiting the session: {e}. Rolling back to previous state.")
             await self.session.rollback()
 
-    async def select_repositories(self) -> Sequence[RepositoryModel]:
+    def select_repositories(self) -> Sequence[RepositoryModel]:
         QUERY = select(RepositoryModel).options(
             selectinload(RepositoryModel.lang_assosiations)
             .selectinload(LanguageAssosiationModel.language))
 
-        repo = await self.session.execute(QUERY)
+        return self.session.execute(QUERY).scalars().all()
 
-        return repo.scalars().all()
         
 
 class HeavyServices:

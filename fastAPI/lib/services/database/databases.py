@@ -1,14 +1,16 @@
-#   Third-Party Libraries
-from sqlalchemy.ext.asyncio import AsyncEngine, async_sessionmaker, AsyncSession
-#   Local Libraries
+#   Third-Party Dependencies
+from sqlalchemy import Engine
+from sqlalchemy.orm import sessionmaker, Session
+
+#   Internal Dependencies
 from lib.utils.logger_config import DatabaseWatcher
-from lib.services.base_services.database_config import AsyncDatabaseService
+from lib.services.base_services.database_config import DatabaseServices
 
 LOG = DatabaseWatcher(dir="logs", name="DatabaseService")
 LOG.file_handler()
 
-class Sqlite3(AsyncDatabaseService):
+class Sqlite3(DatabaseServices):
 
-    def __init__(self, engine: AsyncEngine, session_factory: async_sessionmaker[AsyncSession]):
+    def __init__(self, engine: Engine, session_factory: sessionmaker[Session]):
         super().__init__(engine, session_factory)
         LOG.info("Sqlite3 Service Initialized")

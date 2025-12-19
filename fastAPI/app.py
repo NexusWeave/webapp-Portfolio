@@ -76,19 +76,20 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
     return response
 
 @app.get(f"{PATH}/repository", response_model = List[GithubModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
-async def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
+def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
 
-    try:
-        repositories: List[RepositoryModel] = await GithubServices(SQLITE_INSTANCE.SessionLocal()).select_repositories()
-        if not repositories: raise NotFoundError(404, 'Resource not found')
+    with SQLITE_INSTANCE.SessionLocal() as session:
+        try:
+            repositories: List[RepositoryModel] = GithubServices(session = session).select_repositories()
+            if not repositories: raise NotFoundError(404, 'Resource not found')
 
-    except NotFoundError as e:
-        LOG.error(f"Exception occurred while fetching repositories: {e.status_code} - {e.message}")
+        except NotFoundError as e:
+            LOG.error(f"Exception occurred while fetching repositories: {e.status_code} - {e.message}")
 
-        return {'message': 'No repositories found'}
+            return {'message': 'No repositories found'}
     
-    LOG.info(f"Fetched {len(repositories)} repositories from the database.")
-    return repositories
+        LOG.info(f"Fetched {len(repositories)} repositories from the database.")
+        return repositories
 
 @app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.")  
 async def health_check() -> Dict[str, str | bool]:

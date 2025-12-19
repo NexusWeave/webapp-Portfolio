@@ -1,26 +1,26 @@
-#   Standard Libraries
+#   Dependencies
 import os
+from typing import Optional
 
-#   Third-Party Libraries
+#   Third-Party Dependencies
 from dotenv import load_dotenv
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, Session
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel #type: ignore
 
-#   Local Libraries
+#   Internal Dependencies
 from .databases import Sqlite3
 
 load_dotenv()
-SEPERATOR: str = ":///"
-DIALECT: str = os.getenv("SQLITE3_DIALECT", "sqlite")
-DRIVER: str = os.getenv("SQLITE3_DRIVER", "aiosqlite")
 
-PATH : str = os.getenv("SQLITE3_PATH", "./databases/sqliteDatabase.db")
+TURSO_DB: Optional[str] = os.getenv('PROD_DATABASE', None)
+PATH : str = f"sqlite+{TURSO_DB}?secure=true"
+TURSO_TOKEN : Optional[str] = os.getenv('TURSO_WRITE_TOKEN', "local.db")
 
 #   Database Configuration
-SQLITE3_URL = os.getenv("SQLITE3_URL", f"{DIALECT}+{DRIVER}{SEPERATOR}{PATH}")
-SQLITE3_Engine = create_async_engine( SQLITE3_URL, echo=True, future=True)
-SQLITE3_SESSIONLOCAL = async_sessionmaker(
-    class_=AsyncSession,
+SQLITE3_Engine = create_engine( PATH, connect_args={"auth_token": TURSO_TOKEN})
+SQLITE3_SESSIONLOCAL = sessionmaker(
+    class_=Session,
     bind=SQLITE3_Engine,
     expire_on_commit=False,
 )

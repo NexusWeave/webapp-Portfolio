@@ -1,13 +1,15 @@
-#   Standard Libraries
+#   Dependencies
 from typing import List, Type, TypeVar
 
-#   Third-Party Libraries
+#   Third-Party Dependencies
+from sqlalchemy import Engine
+
 from dotenv import load_dotenv
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import ScalarResult, select, delete
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, AsyncEngine
 
-#   Internal Libraries
+#   Internal Dependencies
 from lib.utils.logger_config import DatabaseWatcher
 
 
@@ -23,20 +25,19 @@ BASE = declarative_base()
 
 
 #   Base Database Service
-class AsyncDatabaseService:
+class DatabaseServices:
 
-    def __init__(self, engine: AsyncEngine, session_factory : async_sessionmaker[AsyncSession]):
+    def __init__(self, engine: Engine, session_factory : sessionmaker[Session]):
         self.engine = engine
         self.session_factory = session_factory
-    
-    @property
+
     async def connection(self) -> None:
-        async with self.engine.connect() as conn:
+        with self.engine.connect() as conn:
             LOG.info("Creating all tables in the database...")
             LOG.info(f"Registered Models: {BASE.metadata.tables.keys()}")
 
             try:
-                await conn.run_sync(BASE.metadata.create_all)
+                BASE.metadata.create_all(bind= conn)
 
             except Exception as e:
                 LOG.error(f"Error creating tables: {e}")
@@ -44,24 +45,24 @@ class AsyncDatabaseService:
             LOG.info("All tables created successfully.")
 
     @property
-    def SessionLocal(self) -> async_sessionmaker[AsyncSession]:
+    def SessionLocal(self) -> sessionmaker[Session]:
         return self.session_factory
     
     @property
-    def fetch_engine(self) -> AsyncEngine:
+    def fetch_engine(self) -> Engine:
         return self.engine
 
     async def fetch_records(self, model: Type[T]) -> List[T]:
-        async with self.SessionLocal() as session:
-            result: ScalarResult[T] = await session.scalars(select(model))
+        with self.SessionLocal() as session:
+            result: ScalarResult[T] = session.scalars(select(model))
             LOG.info(f"Fetched records for model: {model.__name__}")
             return list(result.all())
 
     async def delete_records(self, instance: Type[T]) -> None:
-        async with self.SessionLocal() as session:
-            instance =  await session.merge(instance)
-            await session.execute(delete(instance))
-            await session.commit()
+        with self.SessionLocal() as session:
+            instance = session.merge(instance)
+            session.execute(delete(instance))
+            session.commit()
         
         LOG.warn(f"Record deleted: {instance}")
 
