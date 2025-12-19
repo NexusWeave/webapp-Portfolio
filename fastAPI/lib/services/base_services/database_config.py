@@ -25,7 +25,7 @@ BASE = declarative_base()
 
 
 #   Base Database Service
-class DatabaseServices:
+class DatabaseConfig:
 
     def __init__(self, engine: Engine, session_factory : sessionmaker[Session]):
         self.engine = engine
@@ -51,18 +51,4 @@ class DatabaseServices:
     @property
     def fetch_engine(self) -> Engine:
         return self.engine
-
-    async def fetch_records(self, model: Type[T]) -> List[T]:
-        with self.SessionLocal() as session:
-            result: ScalarResult[T] = session.scalars(select(model))
-            LOG.info(f"Fetched records for model: {model.__name__}")
-            return list(result.all())
-
-    async def delete_records(self, instance: Type[T]) -> None:
-        with self.SessionLocal() as session:
-            instance = session.merge(instance)
-            session.execute(delete(instance))
-            session.commit()
-        
-        LOG.warn(f"Record deleted: {instance}")
 
