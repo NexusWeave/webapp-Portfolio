@@ -5,7 +5,7 @@ from sqlalchemy import NullPool
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
 #   Internal Libraries
-from lib.services.base_services.database_config import BASE 
+from lib.settings.database_config import BASE 
 from lib.models.database_models.GithubModel import RepositoryModel
 TEST_DATABASE_URL = "sqlite+aiosqlite:///./test_database.db"
 

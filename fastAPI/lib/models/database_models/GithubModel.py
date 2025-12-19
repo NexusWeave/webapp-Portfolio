@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String, Integer, ForeignKey
 
 #   Internal Dependencies
-from lib.services.base_services.database_config import BASE
+from lib.settings.database_config import BASE
 
 
 class RepositoryModel(BASE):

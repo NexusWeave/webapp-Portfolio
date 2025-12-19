@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, Session
 
 #   Internal Dependencies
 from lib.utils.logger_config import DatabaseWatcher
-from lib.services.base_services.database_config import DatabaseConfig
+from lib.settings.database_config import DatabaseConfig
 
 LOG = DatabaseWatcher(dir="logs", name="DatabaseService")
 LOG.file_handler()
