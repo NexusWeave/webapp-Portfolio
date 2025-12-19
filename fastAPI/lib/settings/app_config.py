@@ -3,16 +3,16 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
+#   from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-#   Local Dependencies
-from lib.settings.schedule_config import SchedulerConfig
+#   Internal Dependencies
+# from lib.settings.schedule_config import SchedulerConfig
 from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
 
-from lib.services.base_services.database_config import BASE
 from lib.services.database.resources import SQLITE_INSTANCE
 
 from lib.utils.logger_config import AppWatcher
+
 # Initialize the logger
 LOG = AppWatcher(dir="logs", name='FastAPI-App')
 LOG.file_handler()
@@ -43,24 +43,22 @@ class AppConfig:
             FastAPI Startup Eventer
         """
         LOG.info("FastAPI Application is starting up...")
+        
         try:
-            async with SQLITE_INSTANCE.engine.begin() as conn:
-                await conn.run_sync(BASE.metadata.create_all)
+            SQLITE_INSTANCE.connection
             LOG.info("Database tables created successfully.")
         
         except Exception as e:
             LOG.error(f"Error creating database tables: {e}")
             raise e
 
-        await SQLITE_INSTANCE.connection
-
-        SCHEDULER = AsyncIOScheduler()
-        SchedulerConfig().configure_jobs(SCHEDULER)
-        SCHEDULER.start()
+        #SCHEDULER = AsyncIOScheduler()
+        #SchedulerConfig().configure_jobs(SCHEDULER)
+        #SCHEDULER.start()
 
         LOG.info("FastAPI Application started successfully.")
 
         yield
 
-        SCHEDULER.shutdown()
-        LOG.info("Scheduler is shutting down...")
+        #SCHEDULER.shutdown()
+        #LOG.info("Scheduler is shutting down...")
