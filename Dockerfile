@@ -1,18 +1,21 @@
-# 1. Bruk en offisiell Python-versjon som base
 FROM python:3.13-slim
 
-# 2. Sett arbeidskatalogen i containeren
-WORKDIR /app
+# Dette lager en mappe inne i "skyen" som heter /code (du kan kalle den hva du vil)
+WORKDIR /code
 
-# 3. Kopier requirements-filen først (for raskere bygging)
-COPY fastAPI/requirements.txt .
+# 1. Kopier requirements fra din lokale fastapi-mappe til containeren
+COPY fastapi/requirements.txt .
 
-# 4. Installer alle nødvendige biblioteker
+# 2. Installer pakkene
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Kopier resten av koden din inn i containeren
+# 3. Kopier alt innholdet fra din lokale Rot-mappe inn i /code i containeren
 COPY . .
 
-# 6. Start appen med Uvicorn
-# Vi tvinger den til å bruke 0.0.0.0 og port 8080
-CMD ["uvicorn", "fastAPI.app:app", "--host", "0.0.0.0", "--port", "8080"]
+# 4. Sett PYTHONPATH så Python finner 'fastapi'-mappen som en pakke
+ENV PYTHONPATH=/code
+
+# 5. Start appen. 
+# 'fastapi.app' betyr: se i mappen fastapi, finn filen app.py
+# ':app' betyr: finn variabelen 'app = FastAPI()' inne i den filen
+CMD ["uvicorn", "fastapi.app:app", "--host", "0.0.0.0", "--port", "8080"]
