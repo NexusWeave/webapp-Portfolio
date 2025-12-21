@@ -91,25 +91,25 @@
     //  --- Progress Bar Logic
     const codeProsessionList =
     [
-        { name:'C',  tech:"c", value: 25 },
-        { name:'GO-Lang',  tech:"go", value: 10 },    
-        { name:'SASS', tech:"sass", value: 30 },
-        { name:'Python', tech:"python", value: 40 },
-        { name:'C#', tech:"cs", value: 25 },
-        { name:'SQL / Databaser', tech:"sqlite", value: 50 },
-        { name:'TypeScript', tech:"typescript", value: 26 },
+        { name:'C',  tech:"c", value: 42.91 },
+        { name:'GO-Lang',  tech:"go", value: 5.00 },    
+        { name:'SASS', tech:"sass", value: 42.91 },
+        { name:'Python', tech:"python", value: 42.91 },
+        { name:'C#', tech:"cs", value: 25.00 },
+        { name:'SQL / Databaser', tech:"sqlite", value: 50.00 },
+        { name:'TypeScript', tech:"typescript", value: 26.00 },
     ];
 
     const toolList =
     [
-        { name:'GIT',  tech:"workflow", value: 50 },
-        { name:'Agile',  tech:"workflow", value: 25 },    
-        { name:'Docker', tech:"workflow", value: 5 },
-        { name:'CI/CD', tech:"workflow", value: 15 },
-        { name:'Linux', tech:"workflow", value: 45 },
-        { name:'AI & ML', tech:"workflow", value: 50 },
-        { name:'DevOps', tech:"workflow", value: 25 },
-        { name:'Unit Testing', tech:"workflow", value: 40 },
+        { name:'GIT',  tech:"workflow", value: 50.00 },
+        { name:'Agile',  tech:"workflow", value: 25.00 },    
+        { name:'Docker', tech:"workflow", value: 5.00 },
+        { name:'CI/CD', tech:"workflow", value: 15.00 },
+        { name:'Linux', tech:"workflow", value: 25.00 },
+        { name:'AI & ML', tech:"workflow", value: 50.00 },
+        { name:'DevOps', tech:"workflow", value: 25.00 },
+        { name:'Unit Testing', tech:"workflow", value: 40.00 },
     ];
 
     const n = codeProsessionList.length;

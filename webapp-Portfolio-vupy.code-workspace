@@ -12,6 +12,37 @@
 				"savePath": "/VueClient/src/assets"
 			}
 		],
-		"pomodoro.soundIntervalNotification": 100
+		"pomodoro.soundIntervalNotification": 100,
+		"conventionalCommits.scopes":
+		[
+            "Make",
+            "Deps",
+            "Style",
+            "Build",
+            "Model",
+            "Utils",
+            "Config",
+            ".vscode",
+            "Cleanup",
+            "Routing",
+            "Testing",
+            "Database",
+            "Services",
+            "Changelog",
+            "Directory",
+            "FastAPI-app",
+            "Announcements",
+            "Pre-commit-config",
+            "Debug",
+            "Log",
+            "Github",
+            "Scheduler",
+            "Workspace",
+            "Endpoint",
+            "Bridge",
+            "Types",
+            "Documentation",
+            "DatabaseService"
+        ]
 	}
 }

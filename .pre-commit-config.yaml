@@ -1,0 +1,9 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    # Velg en stabil versjon
+    rev: v2.3.0 
+    hooks:
+      - id: conventional-pre-commit
+        # Sørg for at den kjører når commit-meldingen skrives (commit-msg hook)
+        stages: [commit-msg]
