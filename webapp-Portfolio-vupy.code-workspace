@@ -42,7 +42,8 @@
             "Bridge",
             "Types",
             "Documentation",
-            "DatabaseService"
+            "DatabaseService",
+            "Package.json"
         ]
 	}
 }
