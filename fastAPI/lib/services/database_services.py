@@ -37,7 +37,7 @@ class GithubServices():
         LANGUAGE_ASSOCIATION: List[str] = []
         for i in repository['lang']:
 
-            LANGUAGE: LanguageModel = LanguageModel(language = str(i['language']))
+            LANGUAGE: LanguageModel = LanguageModel(lang = str(i['language']))
             LANGUAGE_ASSOCIATION.append(LanguageAssosiationModel(language = LANGUAGE, code_bytes = i['bytes']))
 
         dictionary: Dict[str, Any] = {
@@ -104,10 +104,11 @@ class GithubServices():
 
     async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
 
-        lang_obj: Result[Tuple[LanguageModel]] = await self.session.scalar(select(LanguageModel).where(LanguageModel.language == LANG_NAME))
+
+        lang_obj: Result[Tuple[LanguageModel]] = self.session.scalar(select(LanguageModel).where(LanguageModel.lang == LANG_NAME))
 
         if not lang_obj:
-            lang_obj = LanguageModel(language = LANG_NAME)
+            lang_obj = LanguageModel(lang = LANG_NAME)
 
             self.session.add(lang_obj)
 
@@ -120,7 +121,7 @@ class GithubServices():
         repo_ids = [repo['repo_id'] for repo in repository]
 
         QUERY = select(RepositoryModel).where(RepositoryModel.repo_id.in_(repo_ids))
-        DB_RESULTS = await self.session.execute(QUERY)
+        DB_RESULTS = self.session.execute(QUERY)
         
         EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in DB_RESULTS.scalars().all()}
 
@@ -160,11 +161,11 @@ class GithubServices():
                 await self.new_repo_record(repository[i])
                 LOG.info(f"Successfully inserted new repository with repo_id: **{repository[i]['repo_id']}**")
         try:
-            await self.session.commit()
+            self.session.commit()
 
         except Exception as e:
             LOG.error(f"An {e.__class__} occured during commiting the session: {e}. Rolling back to previous state.")
-            await self.session.rollback()
+            self.session.rollback()
 
     def select_repositories(self) -> Sequence[RepositoryModel]:
         QUERY = select(RepositoryModel).options(
