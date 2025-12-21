@@ -4,7 +4,7 @@ FROM python:3.13-slim
 WORKDIR /code
 
 # 1. Kopier requirements fra din lokale fastapi-mappe til containeren
-COPY FastAPI/requirements.txt .
+COPY fastAPI/requirements.txt .
 
 # 2. Installer pakkene
 RUN pip install --no-cache-dir -r requirements.txt
@@ -18,4 +18,4 @@ ENV PYTHONPATH=/code
 # 5. Start appen. 
 # 'fastapi.app' betyr: se i mappen fastapi, finn filen app.py
 # ':app' betyr: finn variabelen 'app = FastAPI()' inne i den filen
-CMD ["uvicorn", "FastAPI.app:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "fastAPI.app:app", "--host", "0.0.0.0", "--port", "8080"]
