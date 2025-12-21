@@ -4,7 +4,7 @@ FROM python:3.13-slim
 WORKDIR /code
 
 # 1. Kopier requirements fra din lokale fastapi-mappe til containeren
-COPY fastapi/requirements.txt .
+COPY FastAPI/requirements.txt .
 
 # 2. Installer pakkene
 RUN pip install --no-cache-dir -r requirements.txt
