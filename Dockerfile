@@ -1,7 +1,7 @@
 FROM python:3.13-slim
 
 # Dette lager en mappe inne i "skyen" som heter /code (du kan kalle den hva du vil)
-WORKDIR /code
+WORKDIR /app
 
 # 1. Kopier requirements fra din lokale fastapi-mappe til containeren
 COPY fastAPI/requirements.txt .
@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # 4. Sett PYTHONPATH så Python finner 'fastapi'-mappen som en pakke
-ENV PYTHONPATH=/code
+ENV PYTHONPATH=/app:/app/fastAPI
 
 # 5. Start appen. 
 # 'fastapi.app' betyr: se i mappen fastapi, finn filen app.py
