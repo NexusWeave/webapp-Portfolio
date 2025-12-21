@@ -18,4 +18,4 @@ ENV PYTHONPATH=/code
 # 5. Start appen. 
 # 'fastapi.app' betyr: se i mappen fastapi, finn filen app.py
 # ':app' betyr: finn variabelen 'app = FastAPI()' inne i den filen
-CMD ["uvicorn", "fastAPI.app:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["python", "fastAPI.app:app", "--host", "0.0.0.0", "--port", "8080"]
