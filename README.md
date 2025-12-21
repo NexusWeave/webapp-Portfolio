@@ -1,52 +1,192 @@
-# krigjo25 | Home
-The project was inteded to create as a personal home page, show my what i have done so far
-and not as a CS50x assignment, but it killed two birds with one stone.
-[Future Projects](https://github.com/users/krigjo25/projects/17)
+# krigjo25 | Portfolio Webapp
 
+> **Moderne JAMstack Portfolio** med Nuxt 3, FastAPI og TinaCMS
 
-## Tree map
-In [directory-tree.md](./model/directoryTree.md) shows an overview of the directory architecture.
+Personlig portfolio-applikasjon bygget med moderne web-teknologier for optimal ytelse og brukervennlighet.
 
-## Installation and run
+**Live:** [krigjo25.no](https://krigjo25.no)  
+**API:** [home.krigjo25.no](https://home.krigjo25.no)  
+**Future Projects:** [GitHub Projects](https://github.com/users/krigjo25/projects/17)
+
+---
+
+## 📚 Dokumentasjon
+
+### Arkitekturoversikt
+
+- **[🏗️ Hovedarkitektur](ARCHITECTURE.md)** - Komplett JAMstack-arkitektur
+- **[🎨 Frontend](frontend/FRONTEND-ARCHITECTURE.md)** - Nuxt 3 / Vue 3 dokumentasjon
+- **[⚙️ Backend](fastAPI/BACKEND-ARCHITECTURE.md)** - FastAPI / Flask dokumentasjon
+- **[📖 Dokumentasjon](documentations/DOCUMENTATION-ARCHITECTURE.md)** - Dokumentasjonsstruktur
+
+### Teknisk Dokumentasjon
+
+- **[Tech Stack](documentations/documents/techstack.md)** - Teknologioversikt
+- **[System Architecture](documentations/model/system-architecture.md)** - Systemdesign
+- **[API Reference](documentations/model/apis.md)** - API-dokumentasjon
+- **[Database Schema](documentations/model/database.md)** - Database-design
+- **[Directories](documentations/model/Directories.md)** - Mappestruktur
+
+---
+
+## 🚀 Quick Start
+
+### Frontend (Nuxt 3)
+
+1. Naviger til frontend-mappen:
+```bash
+cd frontend
+```
+
+2. Installer dependencies:
+```bash
+npm install
+```
+
+3. Start utviklingsserver:
+```bash
+npm run dev
+```
+
+Frontend kjører nå på `http://localhost:3000`
+
+### Backend (FastAPI)
+
+1. Naviger til backend-mappen:
+```bash
+cd fastAPI
+```
+
+2. Installer dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Konfigurer miljøvariabler (`.env`):
+```env
+GITHUB_TOKEN=your_github_token_here
+```
+
+4. Start backend:
+```bash
+uvicorn app:app --reload
+```
+
+Backend kjører nå på `http://localhost:8000`
+
+---
+
+## 📦 Installation
 
 1. Clone the repository:
 ```sh
-#   Using HTTPS
-git clone https://github.com/krigjo25/webapp-home-flask.git
+# Using HTTPS
+git clone https://github.com/NexusWeave/webapp-Portfolio-vupy.git
 
-#   Using SSH
-ssh git@github.com:krigjo25/webapp-home-flask.git
+# Using SSH
+git clone git@github.com:NexusWeave/webapp-Portfolio-vupy.git
 
-#   Using Github CLI
-gh repo clone krigjo25/webapp-home-flask
+# Using Github CLI
+gh repo clone NexusWeave/webapp-Portfolio-vupy
 ```
 
-2. Navigate to the project directory
+2. Naviger til prosjektmappen:
 ```sh
-cd webapp-home-flask
+cd webapp-Portfolio-vupy
 ```
 
-3. Install the projects dependencies using pip:
-```sh
-pip install -r requirements.txt
-```
-4. Run the project
-```sh
-flask run --debug  # Running flask in developer and debug mode
-```
-*** Configuration ***
-To configure access to Github create a '.env' file in the project's root directory and add your github token
+3. Følg instruksjonene i [Quick Start](#-quick-start) for å starte frontend og backend.
 
+---
+
+## 🏗️ Prosjektstruktur
+
+```
+webapp-Portfolio-vupy/
+├── frontend/           # Nuxt 3 applikasjon
+├── fastAPI/           # FastAPI backend
+├── documentations/    # Dokumentasjon
+├── ARCHITECTURE.md    # Hovedarkitektur
+└── README.md          # Denne filen
+```
+
+Se [ARCHITECTURE.md](ARCHITECTURE.md) for fullstendig struktur.
+
+---
+
+## 🛠️ Teknologier
+
+### Frontend
+- **Nuxt 3** - Vue.js meta-framework
+- **TypeScript** - Type-sikkerhet
+- **SASS** - Styling
+- **TinaCMS** - Headless CMS
+
+### Backend
+- **FastAPI** - Python web framework
+- **Turso** - Database
+- **SQLAlchemy** - ORM
+- **Pydantic** - Data validation
+
+### DevOps
+- **Netlify** - Frontend hosting
+- **PythonAnywhere** - Backend hosting
+- **Git** - Versjonskontroll
+
+---
+
+## 📝 Konfigurasjon
+
+### Frontend Environment Variables
+### Frontend Environment Variables
+
+Opprett `.env` i `frontend/`:
 ```env
-#   Github Access Token
-GITHUB_TOKEN = "Bearer <Your Github Token>"
+VITE_CV=https://...
+VITE_Github=https://github.com/...
+VITE_LinkedIn=https://linkedin.com/in/...
+VITE_Mail=mailto:...
 ```
 
-## Development Server
+### Backend Environment Variables
 
-Start the development server on `http://localhost:3000`:
+Opprett `.env` i `fastAPI/`:
+```env
+# Turso Database
+TURSO_DATABASE_URL="libsql://your-database.turso.io"
+TURSO_AUTH_TOKEN="your-auth-token"
+
+```
+
+---
+
+## 🌐 Deployment
+
+### Frontend (Netlify)
 
 ```bash
+cd frontend
+npm run deploy  # Bygger og deployer til Netlify
+```
+
+### Backend (PythonAnywhere)
+
+Backend er hostet på PythonAnywhere med:
+- WSGI configuration
+- Virtual environment
+- SQLite database
+
+---
+
+## 💻 Development
+
+### Development Server
+
+Start frontend development server:
+
+```bash
+cd frontend
+
 # npm
 npm run dev
 
@@ -55,16 +195,25 @@ pnpm dev
 
 # yarn
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Server kjører på `http://localhost:3000`
 
-Build the application for production:
+---
+
+## 🏭 Production Build
+
+### Frontend
+
+Build frontend for production:
+
+### Frontend
+
+Build frontend for production:
 
 ```bash
+cd frontend
+
 # npm
 npm run build
 
@@ -73,89 +222,161 @@ pnpm build
 
 # yarn
 yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Generate static files:
 
 ```bash
-# npm
-npm run start
-
-# pnpm
-pnpm start
-
-# yarn
-yarn start
-
-# bun
-bun run start
+npm run generate
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Preview production build locally:
 
+```bash
+npm run start
+```
 
-##   Credits
-**Libraries:**
+Se [Nuxt deployment documentation](https://nuxt.com/docs/getting-started/deployment) for mer informasjon.
 
-* Flask and Flask-Session:
+---
+
+## 🧪 Testing
+
+### Backend Tests
+
+```bash
+cd fastAPI
+pytest tests/ -v
+```
+
+Test-suiten inkluderer:
+- API status tests
+- Performance tests
+- Response validation
+- Database tests
+
+---
+## 📜 Credits
+
+### Frameworks & Libraries
+
+**Frontend:**
+* **Nuxt.js / Vue.js**
+    * Developed by: Nuxt Team / Vue Team
+    * URL: [https://nuxt.com](https://nuxt.com) / [https://vuejs.org](https://vuejs.org)
+    * Purpose: Frontend framework
+
+* **TinaCMS**
+    * Developed by: TinaCMS Team
+    * URL: [https://tina.io](https://tina.io)
+    * Purpose: Headless CMS
+
+**Backend:**
+* **FastAPI**
+    * Developed by: Sebastián Ramírez
+    * URL: [https://fastapi.tiangolo.com](https://fastapi.tiangolo.com)
+    * Purpose: Web framework
+
+* **Flask**
     * Developed by: The Pallets Project
-    * URL: [https://pypi.org/project/](https://pypi.org/project/)
-    * Purpose: Web framework and session management
+    * URL: [https://flask.palletsprojects.com](https://flask.palletsprojects.com)
+    * Purpose: Web framework (legacy)
 
-* python-dotenv:
+**Utilities:**
+* **python-dotenv**
     * Developed by: Saurabh Kumar
-    * URL: [https://pypi.org/user/theskumar/](https://pypi.org/user/theskumar/)
-    * Purpose: Library for loading environment variables
+    * URL: [https://pypi.org/project/python-dotenv/](https://pypi.org/project/python-dotenv/)
+    * Purpose: Environment variable management
 
-**Built-in Python Modules:**
-
-* sqlite: Database management
-* os: Operating system interactions
+**Built-in Modules:**
+* sqlite3 - Database management
+* os - Operating system interactions
 
 **Testing:**
+* pytest - Python testing framework
+* pytest-asyncio - Async testing support
 
-* pytest: Python testing framework
+---
 
-###   License
-The project's licensing information can be found in the separate [LICENSE](./license) file.
+## 📄 License
 
+The project's licensing information can be found in the [LICENSE](LICENSE) file.
 
-##  Summary
-During the project i some challanges were faced to solve.
+---
 
-###   Model Implementation
-During the implementation of the data model, i had to learn how to create a model, 
-- I wanted to describe a class and describe its relationship between its subclasses and its functionallity
-- 
-###   GitHub API Integration
-during the implementation of the API Itegration, it was observed that every GET request returned the complete data. 
-In order to optimize this process, a scheduling mechanism was implemented to limit data fetching to once per day or when changes in the repository are detected.
+## 🎯 Project Goals & Challenges
 
-the ideal possibility is to create a database
+### Opprinnelig Formål
 
-###   Testing
-The testing phase provided valuable learning experiences in utilizing Python's built-in `pytest` framework for unit testing.
+Prosjektet ble opprinnelig opprettet som en personlig hjemmeside for å vise mine prosjekter og ferdigheter. 
+Det ble ikke designet som et CS50x-assignment, men det løste begge formål effektivt.
 
-Key skills acquired during testing include exception handling, API testing using `requests` and `pytest`, and basic database testing.
+### Tekniske Utfordringer
 
-####   GitHub API Testing
+#### JAMstack Arkitektur
+- Implementering av moderne JAMstack-arkitektur med separasjon mellom frontend og backend
+- Konfigurasjon av TinaCMS for sømløs innholdsadministrasjon
+- Optimalisering av statisk site generation for ytelse
+
+#### GitHub API Integration
+Under implementeringen av GitHub API-integrasjonen ble det observert at hver GET-forespørsel returnerte komplette data.
+For å optimalisere dette ble en scheduling-mekanisme implementert for å begrense datahenting til én gang per dag eller når endringer i repository oppdages.
+
+**Løsning:** Database-caching med SQLite for å redusere API-kall.
+
+#### Model Implementation
+Under implementeringen av datamodellen måtte jeg lære hvordan man:
+- Beskriver klasser og deres relasjoner til subklasser
+- Definerer funksjonalitet og arv i objektorientert programmering
+- Bruker Pydantic for datavalidering i FastAPI
+
+#### Testing Challenges
+
+**GitHub API Testing:**
 * **Automated API Function Testing:**
-    * Challenge: Securely storing expected test results without exposing sensitive account information.
-    * Solution: Utilizing the API request itself to retrieve and validate sensitive information, ensuring its presence in successful test cases.
-  
+    * Utfordring: Sikker lagring av forventede testresultater uten å eksponere sensitiv kontoinformasjon
+    * Løsning: Bruke API-requesten selv for å hente og validere sensitiv informasjon
+
 * **API Connection Testing:**
-    * Challenge: Testing API connectivity without revealing sensitive information associated with the test account.
+    * Utfordring: Teste API-tilkobling uten å avsløre sensitiv informasjon
+    * Løsning: Mock-testing med pytest fixtures
 
-####   SQLite3 Database Management System Testing
-* **Database Connection Testing:**
-    * Objective: Validate the ability to establish database connections as required.
-* **Exception Testing:**
-    * Objective: Verify that appropriate exceptions are raised to inform users of operation failures.
+**SQLite3 Database Testing:**
+* Database-tilkoblingstesting
+* Exception-testing for feilhåndtering
+* Validering av datamodeller
 
+---
 
-have a glorious rest of your day,
+## 🚀 Future Development
+
+Se [GitHub Projects](https://github.com/users/krigjo25/projects/17) for planlagte funksjoner og forbedringer.
+
+**Planlagte funksjoner:**
+- [ ] Docker containerization
+- [ ] CI/CD pipeline
+- [ ] Enhanced AI/ML features
+- [ ] Comprehensive test coverage
+- [ ] Performance monitoring
+- [ ] Advanced analytics
+
+---
+
+## 👤 Author
+
+**Kristoffer Joar Gabrielsen (krigjo25)**
+
+- GitHub: [@krigjo25](https://github.com/krigjo25)
+- Website: [krigjo25.no](https://krigjo25.no)
+
+---
+
+## 🙏 Acknowledgments
+
+Takk til alle open source-bidragsytere som gjør slike prosjekter mulige!
+
+---
+
+Have a glorious rest of your day! ✨
+
 [@krigjo25](https://github.com/krigjo25)
-
