@@ -2,14 +2,12 @@
 
 
 # Environment Variables
-frontend/.env*
-backend/.env*
 *.env*
 !.env.example
 
 # Editor directories and files
 .vscode/*
-
+.venv/*
 !.vscode/extensions.json
 .idea
 *.suo
@@ -49,11 +47,10 @@ frontend/.netlify
 
 
 #   Backend directories
-backend/.logs
-backend/.venv
-backend/__pycache__
-backend/tests/assets
-backend/.pytest_cache
-backend/flask_session
-backend/tests/.pytest_cache
+__pycache__
+fastAPI/.logs
+fastAPI/tests/assets
+fastAPI/.pytest_cache
+fastAPI/flask_session
+fastAPI/tests/.pytest_cache
 
