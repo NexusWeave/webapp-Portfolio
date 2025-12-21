@@ -20,7 +20,7 @@ from lib.services.database.resources import SQLITE_INSTANCE
 load_dotenv()
 
 # Initialize the logger
-LOG = AppWatcher(dir="logs", name='Data-Fetch-Service')
+LOG = AppWatcher(dir="logs", name='Github-Service')
 LOG.file_handler()
 
 class FetchEndpointDataService:
@@ -37,7 +37,7 @@ class FetchEndpointDataService:
             if not GITHUB_TOKEN or ENDPOINT is None or URL is None:
                 raise NotFoundError(404, "GitHub Token or Endpoint not found in environment variables.")
 
-            async with SQLITE_INSTANCE.SessionLocal() as session:
+            with SQLITE_INSTANCE.SessionLocal() as session:
                 repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL=URL, KEY=GITHUB_TOKEN).fetch_data(ENDPOINT)
 
                 if isinstance(repositories, NotFoundError): raise NotFoundError(404, "No repositories found from GitHub API.")
