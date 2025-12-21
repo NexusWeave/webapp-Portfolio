@@ -43,7 +43,8 @@
             "Types",
             "Documentation",
             "DatabaseService",
-            "Package.json"
+            "Package.json",
+            "DockerFile"
         ]
 	}
 }

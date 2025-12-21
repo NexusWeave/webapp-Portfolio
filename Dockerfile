@@ -7,7 +7,7 @@ WORKDIR /app
 COPY fastAPI/requirements.txt .
 
 # 2. Installer pakkene
-RUN pip install --no-cache-dir -r fastAPI/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 3. Kopier alt innholdet fra din lokale Rot-mappe inn i /code i containeren
 COPY . .
