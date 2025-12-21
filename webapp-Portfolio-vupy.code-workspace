@@ -39,7 +39,10 @@
             "Scheduler",
             "Workspace",
             "Endpoint",
-            "Bridge"
+            "Bridge",
+            "Types",
+            "Documentation",
+            "DatabaseService"
         ]
 	}
 }
