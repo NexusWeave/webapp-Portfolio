@@ -44,7 +44,11 @@
             "Documentation",
             "DatabaseService",
             "Package.json",
-            "DockerFile"
+            "Dockerfile",
+            "API-Services",
+            "Date-Component",
+            "UI",
+            "Deperached"
         ]
 	}
 }
