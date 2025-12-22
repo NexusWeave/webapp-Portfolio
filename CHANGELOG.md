@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.1.1...v1.2.0) (2025-12-22)
+
+
+### Bug Fixes
+
+* **Model:** 🐛 Removing Redundant links from the UI, by adding a if check ([23e10ce](https://github.com/NexusWeave/webapp-Portfolio/commit/23e10ce932a0a6b25e3fb9a32ce326e85a171a61))
+
+
+### Features
+
+* **UI:** ✨ Introducing Repositories for UI ([e21cb32](https://github.com/NexusWeave/webapp-Portfolio/commit/e21cb320f278004cbe339235775e6c699227f0a8))
+
 ## [1.1.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.1.0...v1.1.1) (2025-12-22)
 
 
