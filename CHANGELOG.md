@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.0.0...v1.1.0) (2025-12-22)
+
+
+### Features
+
+* **Config:** ✨ Integrate Environment Strings into ConfigurationClasses ([fca301c](https://github.com/NexusWeave/webapp-Portfolio/commit/fca301c64e26cd22cd56d4b1efea6697bb8ece5b))
+
 # 1.0.0 (2025-12-21)
 
 
