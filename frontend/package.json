@@ -8,8 +8,8 @@
     "postinstall": "nuxt prepare",
     "sass": "sass --watch sass:assets",
     "dev": "tinacms dev -c \"nuxt dev\"",
-    "build": "tinacms build && nuxt build",
     "serve": "npm run build && nuxt preview",
+    "build": "tinacms build && nuxt build && sass sass:assets",
     "deploy": "npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
   },
   "dependencies": {
