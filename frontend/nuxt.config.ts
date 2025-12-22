@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 
   runtimeConfig:{
     public:{
-      apiBase: process.env.API_BASE || 'http://127.0.0.1:5000/api/v1/'
+      fastAPI: process.env.FASTAPI || 'http://127.0.0.1:8000/api/v1/'
     }
   },
   modules: [
