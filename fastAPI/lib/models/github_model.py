@@ -74,20 +74,24 @@ class GithubModel(BaseModel):
                 'id': uuid.uuid4().hex,
                 'href': self.repo_url,
                 'type': ['github','external']
-            },
+            }]
+        
+        if self.youtube_url:
+            ANCHOR.append(
             {
                 'name': 'ytube',
                 'id': uuid.uuid4().hex,
                 'href': self.youtube_url,
-                'type': ['youtube','external']
-            },
+                'type': ['ytube','external']
+            })
+        if self.demo_url:
+            ANCHOR.append(
             {
-                'name': 'demo',
+                'name': 'globe',
                 'id': uuid.uuid4().hex,
                 'href': self.demo_url,
-                'type': ['demo','external']
-            }
-        ]
+                'type': ['globe','external']
+            })
 
         return ANCHOR
 
