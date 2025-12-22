@@ -1,5 +1,5 @@
 #   Dependencies
-from typing import List, Type, TypeVar
+from typing import TypeVar
 
 #   Third-Party Dependencies
 from sqlalchemy import Engine
@@ -7,7 +7,6 @@ from sqlalchemy import Engine
 from dotenv import load_dotenv
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
-from sqlalchemy import ScalarResult, select, delete
 
 #   Internal Dependencies
 from lib.utils.logger_config import DatabaseWatcher

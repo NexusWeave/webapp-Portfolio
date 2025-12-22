@@ -35,6 +35,7 @@ class FetchEndpointDataService:
 
         try:
             if not GITHUB_TOKEN or ENDPOINT is None or URL is None:
+                LOG.warn("GitHub Token or Endpoint not found in environment variables.")
                 raise NotFoundError(404, "GitHub Token or Endpoint not found in environment variables.")
 
             with SQLITE_INSTANCE.SessionLocal() as session:
