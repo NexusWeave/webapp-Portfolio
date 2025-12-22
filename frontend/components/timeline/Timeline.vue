@@ -10,7 +10,7 @@
                 />
             </section>
             <section :class="cls[3]">
-                <DateYear v-for="item in data" :key="item.id"
+                <DatesYear v-for="item in data" :key="item.id"
                     :data="item.date.created"
                     :isVisible="!!item.isVisible"
                 />
