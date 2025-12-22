@@ -1,17 +1,15 @@
 <template>
     <section :class="cls[0]">
         <section :class="cls[1]">
-            <MediaFigure  v-for="language in data.lang" :key="language.id" 
-                :data="language"
+            <MediaFigure :data="data.icon[0]"
                 :cls="['tech-figure', 'tech-img']"
             />
 
-            <h3  v-if="Array.isArray(data.name)">{{ data.name[1] }}</h3>
-            <h3  v-else>{{ data.name }}</h3>
+            <h3  v-if="Array.isArray(data.name) && data.name.length > 1">{{ data.name[1] }}</h3>
+            <h3  v-else>{{ data.label }}</h3>
             <span :class="[cls[2]]">
-                <time v-bind:datetime="data.date">
-                    <b>{{ data.date }}</b>
-                </time>
+                <b><time :datetime="data.date.created">{{ data.date.created }}</time>
+                </b>
             </span>
         </section>
 
@@ -24,11 +22,11 @@
             
             <p>{{ data.description }}</p>
 
-            <section v-if="!!data.lang && data.lang.length > 0"
+            <section v-if="!!data.languages && data.languages.length > 0"
                 :class="['tech-container']">
                 <h4>Teknologi : </h4>
                 <p :class="['flex-wrap-row-justify-space-evenly']">
-                    <span v-for="(tech, i) in data.lang" :key="i">
+                    <span v-for="(tech, i) in data.languages" :key="i">
                         <span :class="tech.label.toLowerCase()"></span>
                         <b>{{ tech.label }}</b>
                     </span>
@@ -62,5 +60,5 @@
     const data = computed(() => props.data);
 
     //  --- Debugging Logic
-    console.error("BusinessCard data:", data);
+    //console.error("BusinessCard data:", data.value);
 </script>
