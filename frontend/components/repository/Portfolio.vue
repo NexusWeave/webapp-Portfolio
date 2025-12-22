@@ -1,18 +1,14 @@
 <template>
     <section class="flex-wrap-column repo-container">
         <h2>Technical Repositories</h2>
-
         <section class="repo-container flex-wrap-row-justify-center">
                 <UtilsPagination v-if="repoData.page > 1"
                     :activePage="currentPage" 
                     :totalPage="repoData.page" 
                     @update="currentPage = $event"
                 />
-            <section class="flex-wrap-row"  v-if="!!repoData.data && data && data.length > 0">
-                <RepositoryBusinessCard v-for="repo in data"
-                    :key="repo.id"
-                    :data="repo"
-                />
+            <section class="flex-wrap-row"  v-if="!!repoData && data && data.length > 0">
+                <RepositoryBusinessCard v-for="repo in data" :key="repo.repo_id" :data="repo" />
             </section>
             <section class="flex-wrap-column" v-if="!!repoError && !!error">
                 <p>Github repository er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="error"/> for mer informasjon.</p>
@@ -26,11 +22,11 @@
 
     //  Importing dependencies & types
     import { computed } from 'vue';
-    import { fetchRestApi as fetchRestApi } from '#imports';
+    import { fetchRepositories } from '#imports';
 
-
+    
     //  --- API Fetching Logic
-    const { data: repoData, error: repoError } = await fetchRestApi('github', 'repo-data')
+    const { data: repoData, error: repoError } = await fetchRepositories('github')
 
     const error: Array<Record<string, string>> | boolean = computed(() =>
     {
@@ -54,15 +50,16 @@
 
 
     //  --- Filtering Logic
-    const n = 6;
+    const n = 9;
     const currentPage = ref<number>(1);
-
     const data =  computed(() =>
     {
-        const data = repoData.value.data;
         const start = (currentPage.value - 1) * n;
         const end = start + n;
 
-        return !!data ? data.slice(start, end) : null;
+        return !!repoData.value ? repoData.value.slice(start, end) : null;
     });
+
+    //console.error(data.value)
+    
 </script>
