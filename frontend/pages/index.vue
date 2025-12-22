@@ -14,6 +14,9 @@
             'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
     </section>
+    <section>
+        <RepositoryPortfolio />
+    </section>
 </template>
 <script setup lang="ts">
 

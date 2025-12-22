@@ -2,13 +2,13 @@
     <section class="flex-wrap-column repo-container">
         <h2>Technical Repositories</h2>
         <section class="repo-container flex-wrap-row-justify-center">
-                <UtilsPagination v-if="repoData.page > 1"
+                <UtilsPagination v-if="totalPages > 1"
                     :activePage="currentPage" 
-                    :totalPage="repoData.page" 
+                    :totalPage="totalPages" 
                     @update="currentPage = $event"
                 />
-            <section class="flex-wrap-row"  v-if="!!repoData && data && data.length > 0">
-                <RepositoryBusinessCard v-for="repo in data" :key="repo.repo_id" :data="repo" />
+            <section class="flex-wrap-row"  v-if="!!paginationData && paginationData.length > 0">
+                <RepositoryBusinessCard v-for="repo in paginationData" :key="repo.repo_id" :data="repo" />
             </section>
             <section class="flex-wrap-column" v-if="!!repoError && !!error">
                 <p>Github repository er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="error"/> for mer informasjon.</p>
@@ -24,27 +24,26 @@
     import { computed } from 'vue';
     import { fetchRepositories } from '#imports';
 
-    
+
     //  --- API Fetching Logic
-    const { data: repoData, error: repoError } = await fetchRepositories('github')
+    const { data: repoData, error: repoError } = await fetchRepositories('github');
 
-    const error: Array<Record<string, string>> | boolean = computed(() =>
+    const error = computed(() =>
     {
 
-    if (repoError.value)
-    {
-        
-        const error = 
-            {
-            href: "https://github.com/krigjo25?tab=repositories",
-            type: ["external"],
-            label: "Github Repositories",
-        };
+        if (repoError.value)
+        {
+            
+            const error = 
+                {
+                    type: ["external"],
+                    label: "Github Repositories",
+                    href: "https://github.com/krigjo25?tab=repositories",
+                };
 
-        
-        return error;
-    }
-    console.error("Error fetching repository data:", repoError.value);
+            console.error("An Error occured during the extraction of Repo data:", repoError.value);    
+            return error;
+        }
     return false;
     });
 
@@ -52,14 +51,19 @@
     //  --- Filtering Logic
     const n = 9;
     const currentPage = ref<number>(1);
-    const data =  computed(() =>
+    const totalPages = computed(() => Math.ceil(repoData.value.length / n));
+
+    const paginationData =  computed(() =>
     {
+        const data = computed(() => repoData.value);
+
         const start = (currentPage.value - 1) * n;
         const end = start + n;
 
-        return !!repoData.value ? repoData.value.slice(start, end) : null;
-    });
 
-    //console.error(data.value)
+        return !!data.value ? data.value.slice(start, end) : null;
+    });
+    //console.error(paginationData.value)
+    console.error(repoData.value)
     
 </script>
