@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.1.0...v1.1.1) (2025-12-22)
+
+
+### Bug Fixes
+
+* **Date-Component:** 🐛 Resolve Naming Collision ([3b8d7c6](https://github.com/NexusWeave/webapp-Portfolio/commit/3b8d7c66ac3d0dca7593e8313761ce494c29944a))
+
 # [1.1.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.0.0...v1.1.0) (2025-12-22)
 
 
