@@ -4,17 +4,17 @@
 
 export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<Ref<GithubRepo[]>>
 {
-    const {public: backend} = useRuntimeConfig();
+    const {public: env} = useRuntimeConfig();
 
     const version = "api/v1"
     const endpoint = 'repository';
-    const path = `${backend.gcloud_api}${version}/${endpoint}`;
+    const path = `${env.gcloud_api}${version}/${endpoint}`;
 
     const {data, error} = await useFetch<GithubRepo[]>(path, 
         {
             key: cacheKey,
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             }
     });
 

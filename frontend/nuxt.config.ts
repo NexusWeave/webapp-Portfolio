@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 
   runtimeConfig:{
     public:{
-      gcloud_api: process.env.GOOGLE_CLOUD || 'http://127.0.0.1:8000',
+      gcloud_api: process.env.GCLOUD || 'http://127.0.0.1:8000',
     }
   },
   modules: [
