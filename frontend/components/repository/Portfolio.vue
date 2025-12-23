@@ -7,7 +7,7 @@
                     :totalPage="totalPages" 
                     @update="currentPage = $event"
                 />
-            <section class="flex-wrap-row"  v-if="!!paginationData && paginationData.length > 0">
+            <section class="flex-wrap-row-justify-space-evenly"  v-if="!!paginationData && paginationData.length > 0">
                 <RepositoryBusinessCard v-for="repo in paginationData" :key="repo.repo_id" :data="repo" />
             </section>
             <section class="flex-wrap-column" v-if="!!repoError && !repoData">
