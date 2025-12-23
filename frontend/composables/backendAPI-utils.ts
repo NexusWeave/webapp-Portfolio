@@ -23,6 +23,6 @@ export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<R
         console.error(`Error fetching data from ${path}:`, error.value);
         return {data: ref(null), error };
     }
-    console.log(path, data.value)
+    //console.log(path, data.value)
     return { data, error }; 
 }
