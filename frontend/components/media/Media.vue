@@ -7,7 +7,7 @@
                     :cls="[media.type]" />
             </h4>
             <p>
-                <Date :data="media.date" :Cls="['meta-date', 'calendar']" />
+                <DatesDate :data="media.date" :Cls="['meta-date', 'calendar']" />
                 <span>
                     {{ media.description }}
                 </span>
@@ -17,8 +17,8 @@
 </template>
 <script setup>
 
-    import { computed, defineProps } from 'vue';
-    import Date from '$src/components/Date/Date.vue';
+    import { computed} from 'vue';
+
     import Anchor from '$src/components/navigation/Anchor.vue';
 
     const props = defineProps({

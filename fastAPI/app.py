@@ -1,5 +1,5 @@
 #   Standard Depnendencies
-import os, __future__
+import os, __future__, uvicorn
 from datetime import datetime
 from typing import Dict, Optional, List
 
@@ -120,3 +120,7 @@ async def test_endpoint() -> Dict[str, str]:
     except Exception as e:
         LOG.error(f"Test endpoint failed with error: {e}")
         return {"message": f"An Error occured while processing the REST API call."}
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)

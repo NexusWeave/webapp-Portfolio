@@ -104,7 +104,6 @@ class GithubServices():
 
     async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
 
-
         lang_obj: Result[Tuple[LanguageModel]] = self.session.scalar(select(LanguageModel).where(LanguageModel.lang == LANG_NAME))
 
         if not lang_obj:

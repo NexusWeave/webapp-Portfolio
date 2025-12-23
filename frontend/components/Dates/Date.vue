@@ -17,6 +17,10 @@
 </template>
 <script setup lang="ts">
 
+    //  Importing dependencies & types
+    import { computed } from 'vue';
+
+    //  --- Props Definition Logic
     interface Props
     {
         cls?: Array<string>;
@@ -31,7 +35,7 @@
     });
 
     const cls = props.cls;
-    const data = props.data;
+    const data = computed(() => props.data);
 
     const norwegianTime = new Intl.DateTimeFormat('nb-NO',
     {
@@ -42,12 +46,12 @@
 
     const dateObject =
     {
-        type: !!data.type ? data.type : 'date',
+        type: 'date',
         delimiter: !!data.delimiter ? data.delimiter : 'dot',
         created: data.created ? norwegianTime.format(new Date(data.created)) : undefined,
         text : props.isArticle  ? (!!data.current ? 'Oppdatert' : 'Publisert') : undefined,
         current: !!data.current ? norwegianTime.format(new Date(data.current)) : undefined,
         
     }
-    console.log("Date Component loaded with data: ", data);
+    console.log("Date Component loaded with data: ", dateObject);
 </script>
