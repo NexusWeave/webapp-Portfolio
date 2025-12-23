@@ -8,9 +8,9 @@ export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<R
 
     const version = "api/v1"
     const endpoint = 'repository';
-    const api = `${backend.gcloud_api}${version}/${endpoint}`;
+    const path = `${backend.gcloud_api}${version}/${endpoint}`;
 
-    const {data, error} = await useFetch<GithubRepo[]>(api, 
+    const {data, error} = await useFetch<GithubRepo[]>(path, 
         {
             key: cacheKey,
             headers: {
@@ -20,9 +20,9 @@ export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<R
 
     if (error.value)
     {
-        console.error(`Error fetching data from ${api}:`, error.value);
+        console.error(`Error fetching data from ${path}:`, error.value);
         return {data: ref(null), error };
     }
-    console.log(api, data.value)
+    console.log(path, data.value)
     return { data, error }; 
 }
