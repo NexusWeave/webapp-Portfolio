@@ -10,7 +10,7 @@
             <section class="flex-wrap-row"  v-if="!!paginationData && paginationData.length > 0">
                 <RepositoryBusinessCard v-for="repo in paginationData" :key="repo.repo_id" :data="repo" />
             </section>
-            <section class="flex-wrap-column" v-if="!!repoError && !!error">
+            <section class="flex-wrap-column" v-if="!!repoError && !repoData">
                 <p>Github repository er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="error"/> for mer informasjon.</p>
                 <p>for å se min generelle GitHub-aktivitet og historikk. Jeg jobber med å oppdatere og strukturere mine nyeste kodeeksempler.</p>
             </section>
@@ -51,7 +51,14 @@
     //  --- Filtering Logic
     const n = 9;
     const currentPage = ref<number>(1);
-    const totalPages = computed(() => Math.ceil(repoData.value.length / n));
+    const totalPages = computed(() => {
+        const data = repoData.value
+        if (data)
+        {
+            return Math.ceil(data.length / n);
+        }
+        return 0;
+    });
 
     const paginationData =  computed(() =>
     {
@@ -64,6 +71,6 @@
         return !!data.value ? data.value.slice(start, end) : null;
     });
     //console.error(paginationData.value)
-    console.error(repoData.value)
+    //console.error(repoData.value)
     
 </script>
