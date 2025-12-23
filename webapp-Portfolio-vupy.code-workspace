@@ -48,7 +48,8 @@
             "API-Services",
             "Date-Component",
             "UI",
-            "Deperached"
+            "Deperached",
+            "Composables"
         ]
 	}
 }
