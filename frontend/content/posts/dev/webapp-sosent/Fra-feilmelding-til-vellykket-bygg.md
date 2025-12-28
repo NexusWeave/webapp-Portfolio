@@ -33,7 +33,7 @@ star: >
 
 
   Feilmeldingene er spesifikke, den forteller at Klienten (TinaCMS SDK) ikke
-  finner verdier for `clientId` og `token`. 
+  finner verdier for `clientId` og `token`.
 
 
   * Lokale miljø variabler er ikke definert eller lastet inn korrekt i
