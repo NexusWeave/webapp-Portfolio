@@ -38,9 +38,10 @@ class RepositoryModel(BaseModel):
     is_private: bool = Field(..., description = "Private Repository", json_schema_extra = {"example":False}, exclude= True)
     created_at: datetime = Field(..., description = "Creation Timestamp", json_schema_extra = {"example":f"{datetime.now()}"})
     id: int = Field(..., alias = "repo_id", description = "Unique Repository ID", json_schema_extra = {"example":"1234567890"})
-    demo_url: Optional[str] = Field(None, description = "Demo URL", json_schema_extra = {"example":"https://demo.krigjo25.com"})    
-    repo_url: str = Field(..., description = "Repository URL", json_schema_extra = {"example":"https://github.com/username/my-repo"})
-    youtube_url: Optional[str] = Field(None, description = "YouTube URL", json_schema_extra = {"example":"https://youtube.com/my-repo"})
+    demo_url: Optional[str] = Field(None, description = "Demo URL", json_schema_extra = {"example":"https://demo.krigjo25.com"}, exclude= True)    
+    repo_url: str = Field(..., description = "Repository URL", json_schema_extra = {"example":"https://github.com/username/my-repo"}, exclude = True)
+    youtube_url: Optional[str] = Field(None, description = "YouTube URL", json_schema_extra = {"example":"https://youtube.com/my-repo"}, exclude= True)
+    updated_at: Optional[datetime] = Field(None, description = "Last Update Timestamp", json_schema_extra = {"example":f"{datetime.now()}"},exclude= True)
     description: Optional[str] = Field(None, description = "Repository Description", json_schema_extra = {"example":"This is my repository."})
 
     lang_assosiations: List[LanguageAssociationModel] = Field(..., exclude= True)
@@ -131,5 +132,4 @@ class RepositoryModel(BaseModel):
         }
         return date
 
-
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes = True)
