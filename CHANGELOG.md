@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.3.0...v1.4.0) (2025-12-29)
+
+
+### Features
+
+* **Migration:** ✨ Migrated to TS ([fd96985](https://github.com/NexusWeave/webapp-Portfolio/commit/fd969854ea9b97304b3f357d52f7e5e8bff8145a))
+
 # [1.3.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.2.0...v1.3.0) (2025-12-29)
 
 
