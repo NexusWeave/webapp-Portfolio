@@ -10,13 +10,18 @@ class ServicesUtils:
     def map_repo(self, data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str | object]]] = None) -> Dict[str, str | object]:
         """ Maps the repository data to a structured format. """
 
+        is_private: int = 0
+        if data['private']:
+            is_private = 1
+
         repoObject: Dict[str,  str  | object] = {}
         date_obj = datetime.datetime.strptime(data['updated_at'], '%Y-%m-%dT%H:%M:%SZ') 
         
         repoObject['lang'] = languages
         repoObject['label'] = data['name']
         repoObject['repo_id'] = data['id']
-        repoObject['date'] = date_obj.isoformat()
+        repoObject['is_private'] = is_private
+        repoObject['updated_at'] = date_obj.isoformat()
         repoObject['owner'] = data['owner']['login']
         repoObject['created_at'] = data['created_at']
         repoObject['collaborators'] = collaborators if collaborators else []

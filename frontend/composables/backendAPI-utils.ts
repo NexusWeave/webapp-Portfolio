@@ -4,17 +4,17 @@
 
 export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<Ref<GithubRepo[]>>
 {
-    const {public: backend} = useRuntimeConfig();
+    const {public: env} = useRuntimeConfig();
 
     const version = "api/v1"
     const endpoint = 'repository';
-    const path = `${backend.gcloud_api}${version}/${endpoint}`;
+    const path = `${env.gcloud_api}${version}/${endpoint}`;
 
     const {data, error} = await useFetch<GithubRepo[]>(path, 
         {
             key: cacheKey,
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             }
     });
 
@@ -23,6 +23,6 @@ export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<R
         console.error(`Error fetching data from ${path}:`, error.value);
         return {data: ref(null), error };
     }
-    console.log(path, data.value)
+    //console.log(path, data.value)
     return { data, error }; 
 }
