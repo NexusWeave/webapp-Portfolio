@@ -16,6 +16,7 @@ class RepositoryModel(BASE):
     label = Column(String,  index = True, nullable = False)
     description = Column(String, nullable = True)
     owner = Column(String, nullable = False)
+    is_private = Column(Integer, default = 0, nullable = False)
 
     demo_url = Column(String, unique = True, index = True, nullable = True)
     repo_url = Column(String, unique = True, index = True, nullable = False)

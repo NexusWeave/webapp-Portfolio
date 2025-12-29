@@ -35,6 +35,7 @@ class RepositoryModel(BaseModel):
     #   Initialize methods and database
     label: str = Field(..., description = "Repository Name", json_schema_extra = {"example":"my-repo"})
     owner: str = Field(..., description = "Repository Owner", json_schema_extra = {"example":"username"})
+    is_private: bool = Field(..., description = "Private Repository", json_schema_extra = {"example":False}, exclude= True)
     created_at: datetime = Field(..., description = "Creation Timestamp", json_schema_extra = {"example":f"{datetime.now()}"})
     id: int = Field(..., alias = "repo_id", description = "Unique Repository ID", json_schema_extra = {"example":"1234567890"})
     demo_url: Optional[str] = Field(None, description = "Demo URL", json_schema_extra = {"example":"https://demo.krigjo25.com"})    
@@ -68,13 +69,17 @@ class RepositoryModel(BaseModel):
     @computed_field
     def anchor(self) -> List[Dict[str, str | object]]:
 
-        ANCHOR: List[Dict[str, str | object]] = [
-            {
-                'name': 'github',
-                'id': uuid.uuid4().hex,
-                'href': self.repo_url,
-                'type': ['github','external']
-            }]
+        ANCHOR: List[Dict[str, str | object]] = []
+
+        if self.is_private == 0:
+            ANCHOR.append(
+                {
+                    'name': 'github',
+                    'id': uuid.uuid4().hex,
+                    'href': self.repo_url,
+                    'type': ['github','external']
+                }
+            )
 
         if self.youtube_url:
             ANCHOR.append(

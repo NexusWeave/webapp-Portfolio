@@ -48,11 +48,14 @@ class GithubServices():
             'owner': repository['owner'],
             'label': repository['label'],
             'repo_id': repository['repo_id'],
+            'updated_at': repository['updated_at'],
+            'is_private': repository['is_private'],
             'created_at': repository['created_at'],
             'description': repository['description'],
-            'updated_at': datetime.now().isoformat(),
             'lang_associations': LANGUAGE_ASSOCIATION,
-            'last_update': datetime.now().isoformat()}
+            'last_update': datetime.now().isoformat()
+            
+            }
 
         LOG.info(f"Setup was successful for repo_id: {repository['repo_id']}")
         return dictionary
@@ -62,14 +65,19 @@ class GithubServices():
 
         FIELDS_TO_CHECK = [
             'owner', 'label',
-            'repo_url', 'description'
+            'repo_url', 'description',
+            'is_private', 'demo_url',
+            'updated_at', 'repo_url'
+
             ]
 
         for field in FIELDS_TO_CHECK:
             API_VALUE, DB_VALUE = dictionary.get(field), getattr(exist, field, None)
 
+            LOG.warn(f"{field}: {API_VALUE}, {DB_VALUE}")
             if DB_VALUE != API_VALUE: 
                 LOG.info(f"Changes detected for repo_id: {dictionary['repo_id']}, field: {field}")
+    
                 return True
 
         LOG.info(f"No Changes for repo_id: {dictionary['repo_id']}")
@@ -132,7 +140,7 @@ class GithubServices():
             DUPLICATION = EXISTING_REPOS.get(repo_id)
 
             if DUPLICATION:
-
+                
                 if GithubServices.check_stmt(DUPLICATION, dictionary):
 
                     EXCCLUDE_FIELDS = ['repo_id', 'created_at']
