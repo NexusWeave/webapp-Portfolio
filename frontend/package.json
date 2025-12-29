@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
     "sass": "sass --watch sass:assets",
-    "dev": "tinacms dev -c \"nuxt dev\"",
+    "dev": "sass sass:assets && tinacms dev -c \"nuxt dev\"",
     "serve": "npm run build && nuxt preview",
     "build": "tinacms build && nuxt build && sass sass:assets",
     "deploy": "npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
