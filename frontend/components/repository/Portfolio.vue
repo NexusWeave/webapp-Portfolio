@@ -49,7 +49,7 @@
 
 
     //  --- Filtering Logic
-    const n = 9;
+    const n = 8;
     const currentPage = ref<number>(1);
     const totalPages = computed(() => {
         const data = repoData.value
