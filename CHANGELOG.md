@@ -1,3 +1,23 @@
+# [1.4.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.3.0...v1.4.0) (2025-12-29)
+
+
+### Features
+
+* **Migration:** ✨ Migrated to TS ([fd96985](https://github.com/NexusWeave/webapp-Portfolio/commit/fd969854ea9b97304b3f357d52f7e5e8bff8145a))
+
+# [1.3.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.2.0...v1.3.0) (2025-12-29)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Resolved a issue Preventig Github repos from Loading Locally ([6ce978a](https://github.com/NexusWeave/webapp-Portfolio/commit/6ce978ab1e04a4c2ec524ec79e98b051802302cc))
+* **FastAPI-app:** 🐛 Resolves a Response Error by Removing Redundant GithubModel Import ([f3844d4](https://github.com/NexusWeave/webapp-Portfolio/commit/f3844d4d31cb9400bf3a224289bce92fd99cddaa))
+
+
+### Features
+
+* **API-Services:** ✨ Introducing private/public Visibility for Repositories ([ffc94b1](https://github.com/NexusWeave/webapp-Portfolio/commit/ffc94b10677f9099185f8b878797057b2da9525b))
+
 # [1.2.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.1.1...v1.2.0) (2025-12-22)
 
 
