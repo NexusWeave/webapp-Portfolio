@@ -30,7 +30,7 @@ class LanguageAssociationModel(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
-class GithubModel(BaseModel):
+class RepositoryModel(BaseModel):
     
     #   Initialize methods and database
     label: str = Field(..., description = "Repository Name", json_schema_extra = {"example":"my-repo"})
@@ -75,7 +75,7 @@ class GithubModel(BaseModel):
                 'href': self.repo_url,
                 'type': ['github','external']
             }]
-        
+
         if self.youtube_url:
             ANCHOR.append(
             {

@@ -13,7 +13,7 @@ from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
 
 #from lib.models.heavy_model import HeavyModel
-from lib.models.github_model import GithubModel
+from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
 from lib.models.database_models.GithubModel import RepositoryModel
 
@@ -75,7 +75,7 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
 
     return response
 
-@app.get(f"{PATH}/repository", response_model = List[GithubModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
+@app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
 def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
 
     with SQLITE_INSTANCE.SessionLocal() as session:
