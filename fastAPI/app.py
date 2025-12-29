@@ -15,7 +15,6 @@ from lib.utils.exception_handler import NotFoundError
 #from lib.models.heavy_model import HeavyModel
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
-from lib.models.database_models.GithubModel import RepositoryModel
 
 from lib.services.database_services import GithubServices
 from lib.services.database.resources import SQLITE_INSTANCE
@@ -107,7 +106,7 @@ async def health_check() -> Dict[str, str | bool]:
         }
     return dictionary
 
-@app.get(f"{PATH}/fetchRepositories", tags=["Test"], summary="Test Endpoint", description="Endpoint to test the API setup.")
+@app.get(f"{PATH}/fetchRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
 async def test_endpoint() -> Dict[str, str]:
     """
         Test Endpoint
