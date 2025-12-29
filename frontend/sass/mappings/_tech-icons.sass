@@ -3,7 +3,7 @@
 $compiled-tech-language:(
     'c': (
         path:"",
-        color: color.$c, 
+        color: color.$c-silver,
         hover: color.$compiled-light
     ),
     'go': (
@@ -11,9 +11,9 @@ $compiled-tech-language:(
         color: color.$GO-Teal, 
         hover: color.$compiled-light
     ),
-    'cpp': (
+    'cp': (
         path:"",
-        color: color.$compiled, 
+        color: color.$cplus-blue, 
         hover: color.$compiled-light
     ),
     'cs': (
@@ -21,23 +21,56 @@ $compiled-tech-language:(
         color: color.$Microsoft-Green, 
         hover: color.$compiled-light
     ),
+    'fortran': (
+        path:"",
+        color: color.$fortran-purple, 
+        hover: color.$compiled-light
+    ),
 )
+
+$scripting-tech-language:(
+    'lua':(
+        path:"",
+        color: color.$lua, 
+        hover: color.$scripting-light
+        ),
+    'powershell':(
+        path:"",
+        color: color.$pshell, 
+        hover: color.$scripting-light
+        ),
+    'shell':(
+        path:"",
+        color: color.$shell, 
+        hover: color.$scripting-light
+        ),
+        )
 
 $interpreted-tech-language:(
     'python': (
         path:"",
         color: color.$Cyan-Blue-Azure, 
-        hover: color.$compiled-light
+        hover: color.$interpreted-light
+    ),
+    'cython': (
+        path:"",
+        color: color.$Cyan-Blue-Azure, 
+        hover: color.$interpreted-light
     ),
     'javascript': (
         path:"",
-        color: #F7DF1E,
-        hover: color.$compiled-light
+        color: color.$javascript-yellow,
+        hover: color.$interpreted-light
     ),
     'typescript': (
         path:"", 
         color: color.$TypeScript-blue,
-        hover: color.$compiled-light
+        hover: color.$interpreted-light
+    ),
+    'php': (
+        path:"",
+        color: color.$Microsoft-purple, 
+        hover: color.$interpreted-light
     ),
 )
 
@@ -67,31 +100,59 @@ $workflow-tools:(
         color: color.$workflow,
         hover: color.$workflow-light
     ),
+    'meson': (
+        color: color.$jinja-red,
+        hover: color.$workflow-light
+    ),
+    'jinja': (
+        color: color.$jinja-red,
+        hover: color.$workflow-light
+    ),
+    'roff': (
+        color: color.$roff-grey,
+        hover: color.$workflow-light
+    ),
+    'smarty': (
+        color: color.$smarty-orange,
+        hover: color.$workflow-light
+    ),
+    'jp-nb': (
+        color: color.$jupyter-peach,
+        hover: color.$workflow-light
+    ),
     'default': (
         color: color.$workflow,
         hover: color.$workflow-light
     )
 )
 
-$markup:(
-    'markup': (
+$frontend:(
+    'html': (
         path:"",
-        color: color.$c, 
-        hover: color.$compiled-light
-    )
+        color: color.$webapp, 
+        hover: color.$webapp-light
+    ),
+    'css': (
+        path:"",
+        color: color.$webapp, 
+        hover: color.$webapp-light
+    ),
 )
+
 $style:(
     'styling': (
         path:"",
-        color: color.$c, 
+        color: color.$c-silver, 
         hover: color.$compiled-light
     )
 )
+
 $tech-languages: (
+    'style': $style,
+    'markup': $frontend,
     'workflow': $workflow-tools,
     'compiled': $compiled-tech-language,
     'database': $database-tech-language,
-    'interpreted': $interpreted-tech-language,
-    'markup': $markup,
-    'style': $style,
+    'scripting': $scripting-tech-language,
+    'interpreted': $interpreted-tech-language
 )
