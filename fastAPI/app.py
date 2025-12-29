@@ -107,7 +107,7 @@ async def health_check() -> Dict[str, str | bool]:
         }
     return dictionary
 
-@app.get(f"{PATH}/test", tags=["Test"], summary="Test Endpoint", description="Endpoint to test the API setup.")
+@app.get(f"{PATH}/fetchRepositories", tags=["Test"], summary="Test Endpoint", description="Endpoint to test the API setup.")
 async def test_endpoint() -> Dict[str, str]:
     """
         Test Endpoint
