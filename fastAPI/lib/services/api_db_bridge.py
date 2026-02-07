@@ -13,7 +13,7 @@ from lib.utils.exception_handler import NotFoundError
 
 
 from lib.services.github_api import GithubAPI
-from lib.services.db_handler import GithubServices
+from lib.services.db_handler import GithubDatabaseHandler
 from lib.services.database.resources import SQLITE_INSTANCE
 
 #   Initialize Enviorment variables
@@ -40,7 +40,7 @@ class ApiDatabaseBridge:
 
                 if isinstance(repositories, NotFoundError): raise NotFoundError(404, "No repositories found from GitHub API.")
 
-                github_services: GithubServices = GithubServices(session = session)
+                github_services: GithubDatabaseHandler = GithubDatabaseHandler(session = session)
 
                 await github_services.save_repository(repository = repositories)
 

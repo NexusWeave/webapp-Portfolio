@@ -16,7 +16,7 @@ from lib.utils.exception_handler import NotFoundError
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
 
-from lib.services.db_handler import GithubServices
+from lib.services.db_handler import GithubDatabaseHandler
 from lib.services.api_db_bridge import ApiDatabaseBridge
 from lib.services.database.resources import SQLITE_INSTANCE
 from lib.services.announcements import AnnouncementsService
@@ -80,7 +80,7 @@ def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
 
     with SQLITE_INSTANCE.SessionLocal() as session:
         try:
-            repositories: List[RepositoryModel] = GithubServices(session = session).select_repositories()
+            repositories: List[RepositoryModel] = GithubDatabaseHandler(session = session).select_repositories()
             if not repositories: raise NotFoundError(404, 'Resource not found')
 
         except NotFoundError as e:

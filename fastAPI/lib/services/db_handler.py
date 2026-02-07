@@ -12,10 +12,10 @@ from lib.models.database_models.GithubModel import RepositoryModel, LanguageMode
 from lib.utils.logger_config import DatabaseWatcher
 
 
-LOG = DatabaseWatcher(dir="logs", name="Github-Database-Services")
+LOG = DatabaseWatcher(dir="logs", name="Github-Database-Handler")
 LOG.file_handler()
 
-class GithubServices():
+class GithubDatabaseHandler():
 
     def __init__(self, session: Session):
         self.session = session
@@ -134,14 +134,14 @@ class GithubServices():
 
         for i in range(len(repository)):
 
-            dictionary = GithubServices.transform_data(repository[i])
+            dictionary = GithubDatabaseHandler.transform_data(repository[i])
 
             repo_id: str = str(repository[i]['repo_id']).strip()
             DUPLICATION = EXISTING_REPOS.get(repo_id)
 
             if DUPLICATION:
                 
-                if GithubServices.check_stmt(DUPLICATION, dictionary):
+                if GithubDatabaseHandler.check_stmt(DUPLICATION, dictionary):
 
                     EXCCLUDE_FIELDS = ['repo_id', 'created_at']
                     updated_data = {k: v for k, v in dictionary.items() if k != 'lang_assosiations' and k not in EXCCLUDE_FIELDS}
