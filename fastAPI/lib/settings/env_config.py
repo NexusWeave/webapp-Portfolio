@@ -15,9 +15,9 @@ load_dotenv()
 class Config(BaseSettings):
     ENVIRONMENT: str
     DEBUG: bool = False
-    SECRET_KEY: Optional[str]
     API_VERSION: str = "v1"
     CORS_ORIGINS: List[str]
+    SECRET_KEY: Optional[str]
     DATABASE_URL: Optional[str]
     DATABASE_TOKEN: Optional[str]
     API_NAME: str = "Portfolio Backend API"
@@ -27,11 +27,12 @@ class Config(BaseSettings):
     GithubBase: str
     GithubRepos: str
     
+    
     HEAVYV: str
-    HEAVYWORKOUTS:str
-    HEAVYCOUNT: str
     HEAVYAPI: str
+    HEAVYCOUNT: str
     HEAVYTOKEN: str
+    HEAVYWORKOUTS:str
 
     ENV: str
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
