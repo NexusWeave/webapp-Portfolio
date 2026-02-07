@@ -27,8 +27,6 @@ class ApiDatabaseBridge:
 
     @staticmethod
     async def repositories_sync(url: str, endpoint: str):
-        LOG.warn("Initializing GitHub Repository Data Fetch Service...")
-
         GITHUB_TOKEN: str | None = os.getenv("GithubToken", None)
 
         try:
