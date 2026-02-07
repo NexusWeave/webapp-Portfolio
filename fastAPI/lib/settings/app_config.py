@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # from lib.settings.schedule_config import SchedulerConfig
 from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
 
-from lib.services.database.resources import SQLITE_INSTANCE
+from lib.services.database.db_engine import SQLITE_INSTANCE
 
 from lib.utils.logger_config import AppWatcher
 

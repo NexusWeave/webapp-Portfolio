@@ -18,7 +18,7 @@ from lib.models.announcement_model import AnnouncementModel
 
 from lib.services.db_handler import GithubDatabaseHandler
 from lib.services.api_db_bridge import ApiDatabaseBridge
-from lib.services.database.resources import SQLITE_INSTANCE
+from lib.services.database.db_engine import SQLITE_INSTANCE
 from lib.services.announcements import AnnouncementsService
 
 
