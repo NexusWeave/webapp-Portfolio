@@ -16,10 +16,11 @@ from lib.utils.exception_handler import NotFoundError
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
 
+from lib.services.api_db_bridge import ApiDatabaseBridge
 from lib.services.database_services import GithubServices
 from lib.services.database.resources import SQLITE_INSTANCE
 from lib.services.announcements import AnnouncementsService
-from lib.services.fetch_endpoint_data_service import FetchEndpointDataService
+
 
 #   Initialize Enviorment variables
 load_dotenv()
@@ -129,7 +130,7 @@ async def fetch_repositories_endpoint() -> Dict[str, str]:
             await FetchEndpointDataService.github_repo_data_service(ORG_ENDPOINT)'''
         PERSONAL_ENDPOINT: str = f"{personal_endpoint}{REPOS}"
 
-        await FetchEndpointDataService.github_repo_data_service(PERSONAL_ENDPOINT)
+        await ApiDatabaseBridge.repositories_sync(PERSONAL_ENDPOINT)
         return {"message": " Fetched All Repositories Successfully."}
 
     except Exception as e:

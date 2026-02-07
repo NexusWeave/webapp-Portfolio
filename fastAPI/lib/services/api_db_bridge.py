@@ -23,23 +23,22 @@ load_dotenv()
 LOG = AppWatcher(dir="logs", name='Github-Service')
 LOG.file_handler()
 
-class FetchEndpointDataService:
+class ApiDatabaseBridge:
 
     @staticmethod
-    async def github_repo_data_service():
+    async def repositories_sync(url: str, endpoint: str):
         LOG.warn("Initializing GitHub Repository Data Fetch Service...")
 
-        URL: str | None = os.getenv("GithubBase", None)
-        ENDPOINT:str | None = os.getenv("GithubRepos", None)
         GITHUB_TOKEN: str | None = os.getenv("GithubToken", None)
 
         try:
-            if not GITHUB_TOKEN or ENDPOINT is None or URL is None:
+            if not GITHUB_TOKEN:
                 LOG.warn("GitHub Token or Endpoint not found in environment variables.")
                 raise NotFoundError(404, "GitHub Token or Endpoint not found in environment variables.")
 
             with SQLITE_INSTANCE.SessionLocal() as session:
-                repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL=URL, KEY=GITHUB_TOKEN).fetch_data(ENDPOINT)
+
+                repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL=url, KEY=GITHUB_TOKEN).fetch_data(endpoint)
 
                 if isinstance(repositories, NotFoundError): raise NotFoundError(404, "No repositories found from GitHub API.")
 
