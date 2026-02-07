@@ -27,8 +27,8 @@ Komplett oversikt over teknologier, arkitektur og infrastruktur for webapp-Portf
 | **Frontend Framework** | **Nuxt 3** | v3.x | Vue.js meta-framework for SSR/SSG. Konfigurert som SPA (`ssr: false`) |
 | **UI Framework** | **Vue.js 3** | v3.x | Progressiv JavaScript framework med Composition API |
 | **Type Safety** | **TypeScript** | v5.x | Type-safe JavaScript superset for hele frontend |
-| **Backend API** | **FastAPI** | v0.x (Python) | High-performance async API framework (under utvikling) |
-| **Database** | **Turso** | v1.x | Cloud-basert, distribuert database bygget på libSQL (fork av SQLite) |
+| **Backend API** | **FastAPI** | v0.x (Python) | High-performance async API framework (under utvikling) |	
+| **Database** | **Neon Postgres** | Migrering pågår | Serverless PostgreSQL-database for skalerbar lagring og relasjonsdata. |
 | **Content Management** | **TinaCMS** | v2.x | Git-based headless CMS med visuell redigering |
 | **Styling** | **Sass/SCSS** | v1.x | CSS preprocessor med omfattende design system |
 

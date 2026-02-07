@@ -3,7 +3,7 @@
         <form action="https://validator.w3.org/check" class="text-center" enctype="multipart/form-data" method="post" target="_blank">
                     <input name="doctype" type="hidden" value="HTML5">
                     <input name="fragment" type="hidden">
-                    <input alt="Validate" src="/static/I_heart_validator.png" type="image"> <!-- https://validator.w3.org/ -->
+                    <input alt="Validate" src="/public/images/I_heart_validator.png" type="image"> <!-- https://validator.w3.org/ -->
                 </form>
 
     </section>
@@ -13,12 +13,13 @@
 
 </template>
 
-<script setup>
+<script lang ="ts" setup>
 
 //  Importing dependencies
 import { onMounted } from 'vue';
-const date = new Date().getFullYear();
+
 const env = process.env.NODE_ENV;
+const date = new Date().getFullYear();
 
 onMounted(() => {
     // Adapted from https://stackoverflow.com/a/10162353

@@ -62,6 +62,7 @@ export interface FigureItem
     type    : string;
     src     : string;
     alt     : string;
+    id?     : string;
     srcset? : string;
     caption? : string;
 }
@@ -116,17 +117,18 @@ export interface NavProp
 
 export interface GithubRepo
 {
-    id: string;
     
-    name: string;
-    date: string;
+    label: string;
     owner: string;
     label: string;
-    lang: string[];
-    //homepage?: string;
+    name : string[];
+    repo_id: string;
+    icon: FigureItem[];
+    created_at: string;
     description: string;
+    date: Record<string, string>;
     anchor: Record<string, string>;
-
+    languages: Array<{label: string, bytes: number}>;
 }
 
 export interface RepoProps

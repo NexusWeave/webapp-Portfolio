@@ -17,8 +17,8 @@ from lib.services.utils.services_utils import ServicesUtils
 #  Loading the environment variables
 load_dotenv()
 
-logger = APIWatcher(dir="logs", name='Github-API')
-logger.file_handler()
+LOG = APIWatcher(dir="logs", name='Github-API')
+LOG.file_handler()
 
 class GithubAPI(AsyncAPIClientConfig):
 
@@ -41,7 +41,7 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, endpoint)
         #   Initialize an API call
 
-        logger.info(f"Fetching repositories from GitHub API at endpoint: {path}")
+        LOG.info(f"Fetching repositories from GitHub API at endpoint: {path}")
 
         response: List[Dict[str, str | object]]
         response = await self.ApiCall(path, head=self.HEADER)
@@ -52,7 +52,7 @@ class GithubAPI(AsyncAPIClientConfig):
         for res in response:
 
             name = res['name']
-            owner = res['owner']['login']
+            owner = res['owner']['login'] #type:ignore
             
             languages_tasks.append(self.fetch_languages(owner, name))
             #collaborators_tasks.append(self.fetch_collaborators(owner, name))
@@ -74,8 +74,10 @@ class GithubAPI(AsyncAPIClientConfig):
 
             repo.append(repoObject)
 
-        repo.sort(key=lambda x: x['created_at'], reverse=True)
-        logger.info(f"Repositories fetched successfully. {repo}\nTime Complexity: {time.perf_counter() - start:.2f}s\n")
+        repo.sort(key = lambda x: x['created_at'], reverse = True)
+
+        LOG.info(f"Repositories fetched successfully. {repo}\nTime Complexity: {time.perf_counter() - start:.2f}s\n")
+        LOG.info(f"Total of {len(repo)} repositories fetched.")
 
         return repo
 
@@ -84,7 +86,7 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
 
         languages: List[Dict[str, List[str] | str | object]] = []
-        response: Dict[str, object] = await self.ApiCall(path, head=self.HEADER)
+        response: Dict[str, object] = await self.ApiCall(path, head = self.HEADER)
 
         for lang, value in response.items():
         
@@ -96,7 +98,7 @@ class GithubAPI(AsyncAPIClientConfig):
 
             languages.append({"language": lang, "bytes": value})        
 
-        logger.info(f"Languages fetched successfully. {languages}")
+        LOG.info(f"Languages fetched successfully. {languages}")
 
         return languages
 
@@ -111,6 +113,6 @@ class GithubAPI(AsyncAPIClientConfig):
             collaborator_info: Dict[str, str | object] = {"name": collaborator.get("login"), "html_url": collaborator.get("html_url")}
             collaborators.append(collaborator_info)
 
-        logger.info(f"Collaborators fetched successfully. {collaborators}")
+        LOG.info(f"Collaborators fetched successfully. {collaborators}")
 
         return collaborators

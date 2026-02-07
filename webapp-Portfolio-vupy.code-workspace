@@ -42,7 +42,14 @@
             "Bridge",
             "Types",
             "Documentation",
-            "DatabaseService"
+            "DatabaseService",
+            "Package.json",
+            "Dockerfile",
+            "API-Services",
+            "Date-Component",
+            "UI",
+            "Deperached",
+            "Composables"
         ]
 	}
 }

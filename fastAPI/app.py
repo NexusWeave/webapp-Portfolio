@@ -1,5 +1,5 @@
 #   Standard Depnendencies
-import os, __future__
+import os, __future__, uvicorn
 from datetime import datetime
 from typing import Dict, Optional, List
 
@@ -13,9 +13,8 @@ from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
 
 #from lib.models.heavy_model import HeavyModel
-from lib.models.github_model import GithubModel
+from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
-from lib.models.database_models.GithubModel import RepositoryModel
 
 from lib.services.database_services import GithubServices
 from lib.services.database.resources import SQLITE_INSTANCE
@@ -75,7 +74,7 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
 
     return response
 
-@app.get(f"{PATH}/repository", response_model = List[GithubModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
+@app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
 def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
 
     with SQLITE_INSTANCE.SessionLocal() as session:
@@ -107,7 +106,7 @@ async def health_check() -> Dict[str, str | bool]:
         }
     return dictionary
 
-@app.get(f"{PATH}/test", tags=["Test"], summary="Test Endpoint", description="Endpoint to test the API setup.")
+@app.get(f"{PATH}/fetchRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
 async def test_endpoint() -> Dict[str, str]:
     """
         Test Endpoint
@@ -120,3 +119,7 @@ async def test_endpoint() -> Dict[str, str]:
     except Exception as e:
         LOG.error(f"Test endpoint failed with error: {e}")
         return {"message": f"An Error occured while processing the REST API call."}
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)

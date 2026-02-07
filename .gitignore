@@ -7,7 +7,7 @@
 
 # Editor directories and files
 .vscode/*
-.venv/*
+
 !.vscode/extensions.json
 .idea
 *.suo
@@ -49,6 +49,7 @@ frontend/.netlify
 #   Backend directories
 __pycache__
 fastAPI/.logs
+fastAPI/.venv/*
 fastAPI/tests/assets
 fastAPI/.pytest_cache
 fastAPI/flask_session

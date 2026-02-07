@@ -15,12 +15,12 @@
                     :class="cls[1]">
                     <section class="flex-wrap-row-align-items-center-justify-center">
                         <MediaIcon :cls="['icon', 'calendar']" :label="'school year'"/>
-                        <DateYear v-if="!!data.date.created"
+                        <DatesYear v-if="!!data.date.created"
                             :data="data.date.created"
                             :isVisible="!!data.isVisible"
                         />
                         {{!!data.date.end ? ' - ' : ' - Pågående'}}
-                        <DateYear v-if="!!data.date.end"
+                        <DatesYear v-if="!!data.date.end"
                             :data="data.date.end"
                             :isVisible="!!data.isVisible"
                         />

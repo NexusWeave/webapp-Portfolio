@@ -52,13 +52,6 @@ class AppConfig:
             LOG.error(f"Error creating database tables: {e}")
             raise e
 
-        #SCHEDULER = AsyncIOScheduler()
-        #SchedulerConfig().configure_jobs(SCHEDULER)
-        #SCHEDULER.start()
-
         LOG.info("FastAPI Application started successfully.")
 
         yield
-
-        #SCHEDULER.shutdown()
-        #LOG.info("Scheduler is shutting down...")

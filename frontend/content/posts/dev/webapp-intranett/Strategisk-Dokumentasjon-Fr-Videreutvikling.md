@@ -8,9 +8,9 @@ ingress: >
   resulterte i en langvarig og kostbar onboarding-prosess for nye utviklere. For
   å løse dette, ble det igangsatt et strategisk arbeid med å etablere en
   komplett dokumentasjonspakke, inkludert en strukturert README.md og automatisk
-  genererte katalog-trær. Denne tilnærmingen demonstrerer at dokumentasjonsbasen
-  er en kritisk arkitekturkomponent som må prioriteres for å sikre rask
-  operasjonell beredskap og optimalisere teamets kollektive effektivitet.
+  genererte katalog-trær. Denne tilnærmingen viser at dokumentasjonsbasen er en
+  kritisk arkitekturkomponent som må prioriteres for å sikre rask operasjonell
+  beredskap og optimalisere teamets kollektive effektivitet.
 star: >
   Prosjektet manglet en konsistent og tilstrekkelig dokumentasjonsbase. Dette
   skapte **langvarig** **onboarding**-**prosess**, og\*\* reduserte forståelsen
@@ -70,5 +70,6 @@ star: >
   at man bør prioritere dokumentasjonsbasen for onboarding av nye medlemmer før
   videreutviklingen gies videre. Det er en strategisk investering i teamets
   kollektive effektivitet.
+KildeHenvisning: ''
 ---
 
