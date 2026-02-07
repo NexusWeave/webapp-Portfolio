@@ -16,7 +16,7 @@ class Sqlite3Provider(DatabaseConfig):
         LOG.info("Sqlite3 Service Initialized")
 
 
-class PostgressProvider(DatabaseConfig):
+class PostgresProvider(DatabaseConfig):
 
     def __init__(self, engine: Engine, session_factory: sessionmaker[Session]):
         super().__init__(engine, session_factory)
