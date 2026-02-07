@@ -8,12 +8,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
 #   Internal Dependencies
-from databases import Sqlite3Provider, PostgresProvider
+from .databases import Sqlite3Provider, PostgresProvider
 
 load_dotenv()
 
 def initialize_sqlite_engine() -> Sqlite3Provider:
-    SQLITE3_DB: Optional[str] = os.getenv('SQLITE3_TOKEN', None)
+    SQLITE3_DB: Optional[str] = os.getenv('SQLITE3_DB', None)
     SQLITE3_TOKEN : Optional[str] = os.getenv('SQLITE3_TOKEN', "local.db")
 
     #   Database Configuration

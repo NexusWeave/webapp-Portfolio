@@ -4,20 +4,19 @@ from typing import Dict, Any, List, Sequence, Optional, Tuple
 
 #   Third Party Libraries
 from sqlalchemy import select, Result
-from sqlalchemy.orm import Session, selectinload
-
+from sqlalchemy.orm import selectinload
+from sqlalchemy.ext.asyncio import AsyncSession
 
 #   Internal Libraries
 from lib.utils.logger_config import DatabaseWatcher
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel
 
 
-
 LOG = DatabaseWatcher(dir="logs", name="Github-Database-Handler")
 LOG.file_handler()
 
 class GithubDatabaseHandler():
-    def __init__(self, session: Session): self.session = session
+    def __init__(self, session: AsyncSession): self.session = session
 
     @staticmethod
     def format_payload(repository: Dict[str, Any]) -> Dict[str, Any]:
@@ -113,8 +112,7 @@ class GithubDatabaseHandler():
                 LOG.info(f"Repository was successfully updated to the database.")
 
     async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
-
-        lang_obj: Result[Tuple[LanguageModel]] = self.session.scalar(select(LanguageModel).where(LanguageModel.lang == LANG_NAME))
+        lang_obj: Result[Tuple[LanguageModel]] = await self.session.scalar(select(LanguageModel).where(LanguageModel.lang == LANG_NAME))
 
         if not lang_obj:
             lang_obj = LanguageModel(lang = LANG_NAME)
@@ -128,10 +126,8 @@ class GithubDatabaseHandler():
     async def upsert_repositories(self, repository: List[Dict[str, Any]]) -> None:
 
         repo_ids = [repo['repo_id'] for repo in repository]
-
         QUERY = select(RepositoryModel).where(RepositoryModel.repo_id.in_(repo_ids))
-        DB_RESULTS = self.session.execute(QUERY)
-
+        DB_RESULTS = await self.session.execute(QUERY)
         EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in DB_RESULTS.scalars().all()}
 
         for i in range(len(repository)):
@@ -154,12 +150,15 @@ class GithubDatabaseHandler():
                 await self._create_repositories(repository[i])
                 LOG.info(f"Successfully inserted new repository with repo_id: **{repository[i]['repo_id']}**")
         try:
-            self.session.commit()
+            await self.session.commit()
 
         except Exception as e:
             LOG.error(f"An {e.__class__} occured during commiting the session: {e}. Rolling back to previous state.")
-            self.session.rollback()
+            await self.session.rollback()
 
-    def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
-        QUERY = select(RepositoryModel).options(selectinload(RepositoryModel.lang_assosiations).selectinload(LanguageAssosiationModel.language))
-        return self.session.execute(QUERY).scalars().all()
+    async def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
+
+        QUERY = (select(RepositoryModel).options(selectinload(RepositoryModel.lang_assosiations).selectinload(LanguageAssosiationModel.language)))
+
+        result = await self.session.execute(QUERY)
+        return result.scalars().all()

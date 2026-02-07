@@ -114,13 +114,14 @@ async def fetch_repositories_endpoint() -> Dict[str, str]:
     """
 
     REPOS:str | None = os.getenv("REPOS", None)
+    GITHUB_REST = os.getenv("GITHUB_REST", None)
     org_endpoint:str | None = os.getenv("ORG_GITHUB_REST_API", None)
     personal_endpoint:str | None = os.getenv("PERSONAL_GITHUB_REST_API", None)
     ORANIZATION_GITHUB_REPOS: List[str | None] = [os.getenv("NEXUSWAVE_ORGANIZATION", None), os.getenv("GETACADEMY_ORGANIZATION", None)]
         
 
     try:
-        if not org_endpoint or not personal_endpoint or not REPOS or not org_endpoint:
+        if not org_endpoint or not personal_endpoint or not REPOS or not org_endpoint or not GITHUB_REST:
             LOG.warn("GitHub Token or Endpoint not found in environment variables.")
             raise NotFoundError(404, "GitHub Token or Endpoint not found in environment variables.")
 
@@ -130,7 +131,7 @@ async def fetch_repositories_endpoint() -> Dict[str, str]:
             await FetchEndpointDataService.github_repo_data_service(ORG_ENDPOINT)'''
         PERSONAL_ENDPOINT: str = f"{personal_endpoint}{REPOS}"
 
-        await ApiDatabaseBridge.repositories_sync(PERSONAL_ENDPOINT)
+        await ApiDatabaseBridge.repositories_sync(GITHUB_REST,PERSONAL_ENDPOINT)
         return {"message": " Fetched All Repositories Successfully."}
 
     except Exception as e:

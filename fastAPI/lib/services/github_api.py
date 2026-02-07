@@ -97,7 +97,7 @@ class GithubAPI(AsyncAPIClientConfig):
 
             languages.append({"language": lang, "bytes": value})        
 
-        LOG.info(f"Languages fetched successfully. {languages}")
+        LOG.info(f"Languages fetched successfully.")
 
         return languages
 
