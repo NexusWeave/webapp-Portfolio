@@ -80,7 +80,7 @@ def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
 
     with SQLITE_INSTANCE.SessionLocal() as session:
         try:
-            repositories: List[RepositoryModel] = GithubDatabaseHandler(session = session).select_repositories()
+            repositories: List[RepositoryModel] = GithubDatabaseHandler(session = session).fetch_all_repositories()
             if not repositories: raise NotFoundError(404, 'Resource not found')
 
         except NotFoundError as e:

@@ -42,7 +42,7 @@ class ApiDatabaseBridge:
 
                 github_services: GithubDatabaseHandler = GithubDatabaseHandler(session = session)
 
-                await github_services.save_repository(repository = repositories)
+                await github_services.upsert_repositories(repository = repositories)
 
         except NotFoundError as e:
             LOG.error(f"Error fetching GitHub data: {e.__class__.__name__} - {e.message}")

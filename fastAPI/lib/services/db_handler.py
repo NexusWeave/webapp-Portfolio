@@ -21,7 +21,7 @@ class GithubDatabaseHandler():
         self.session = session
 
     @staticmethod
-    def transform_data(repository: Dict[str, Any]) -> Dict[str, Any]:
+    def format_payload(repository: Dict[str, Any]) -> Dict[str, Any]:
         repo_url: Optional[str] = None
         video_url: Optional[str] = None
         preview_url: Optional[str] = None
@@ -61,7 +61,7 @@ class GithubDatabaseHandler():
         return dictionary
 
     @staticmethod
-    def check_stmt(exist:RepositoryModel, dictionary: Dict[str, Any]) -> bool:
+    def has_data_changes(exist:RepositoryModel, dictionary: Dict[str, Any]) -> bool:
 
         FIELDS_TO_CHECK = [
             'owner', 'label',
@@ -89,7 +89,7 @@ class GithubDatabaseHandler():
         self.session.add(association_obj)
         LOG.info(f"Initializing new association record for repository: {repo.repo_id} and language: {lang.language}")
 
-    async def new_repo_record(self, repository: Dict[str, Any]) -> None:
+    async def _create_repositories(self, repository: Dict[str, Any]) -> None:
 
         repo_obj = RepositoryModel(
             repo_id = repository['repo_id'], label = repository['label'],
@@ -123,7 +123,7 @@ class GithubDatabaseHandler():
 
         return lang_obj
 
-    async def save_repository(self, repository: List[Dict[str, Any]]) -> None:
+    async def upsert_repositories(self, repository: List[Dict[str, Any]]) -> None:
 
         repo_ids = [repo['repo_id'] for repo in repository]
 
@@ -134,14 +134,14 @@ class GithubDatabaseHandler():
 
         for i in range(len(repository)):
 
-            dictionary = GithubDatabaseHandler.transform_data(repository[i])
+            dictionary = GithubDatabaseHandler.format_payload(repository[i])
 
             repo_id: str = str(repository[i]['repo_id']).strip()
             DUPLICATION = EXISTING_REPOS.get(repo_id)
 
             if DUPLICATION:
                 
-                if GithubDatabaseHandler.check_stmt(DUPLICATION, dictionary):
+                if GithubDatabaseHandler.has_data_changes(DUPLICATION, dictionary):
 
                     EXCCLUDE_FIELDS = ['repo_id', 'created_at']
                     updated_data = {k: v for k, v in dictionary.items() if k != 'lang_assosiations' and k not in EXCCLUDE_FIELDS}
@@ -165,7 +165,7 @@ class GithubDatabaseHandler():
                         'last_update': datetime.now().isoformat()
                     })
                 
-                await self.new_repo_record(repository[i])
+                await self._create_repositories(repository[i])
                 LOG.info(f"Successfully inserted new repository with repo_id: **{repository[i]['repo_id']}**")
         try:
             self.session.commit()
@@ -174,12 +174,9 @@ class GithubDatabaseHandler():
             LOG.error(f"An {e.__class__} occured during commiting the session: {e}. Rolling back to previous state.")
             self.session.rollback()
 
-    def select_repositories(self) -> Sequence[RepositoryModel]:
+    def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
         QUERY = select(RepositoryModel).options(
             selectinload(RepositoryModel.lang_assosiations)
             .selectinload(LanguageAssosiationModel.language))
 
         return self.session.execute(QUERY).scalars().all()
-
-class HeavyServices:
-    pass
