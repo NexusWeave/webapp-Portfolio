@@ -107,14 +107,30 @@ async def health_check() -> Dict[str, str | bool]:
     return dictionary
 
 @app.get(f"{PATH}/fetchRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
-async def test_endpoint() -> Dict[str, str]:
+async def fetch_repositories_endpoint() -> Dict[str, str]:
     """
         Test Endpoint
     """
 
+    REPOS:str | None = os.getenv("REPOS", None)
+    org_endpoint:str | None = os.getenv("ORG_GITHUB_REST_API", None)
+    personal_endpoint:str | None = os.getenv("PERSONAL_GITHUB_REST_API", None)
+    ORANIZATION_GITHUB_REPOS: List[str | None] = [os.getenv("NEXUSWAVE_ORGANIZATION", None), os.getenv("GETACADEMY_ORGANIZATION", None)]
+        
+
     try:
-        await FetchEndpointDataService.github_repo_data_service()
-        return {"message": "Test endpoint executed GitHub data fetch successfully."}
+        if not org_endpoint or not personal_endpoint or not REPOS or not org_endpoint:
+            LOG.warn("GitHub Token or Endpoint not found in environment variables.")
+            raise NotFoundError(404, "GitHub Token or Endpoint not found in environment variables.")
+
+        '''for i in range(len(ORANIZATION_GITHUB_REPOS)):
+            if ORANIZATION_GITHUB_REPOS[i] is None: continue
+            ORG_ENDPOINT: str = f"{ORANIZATION_GITHUB_REPOS[i]}{REPOS}"
+            await FetchEndpointDataService.github_repo_data_service(ORG_ENDPOINT)'''
+        PERSONAL_ENDPOINT: str = f"{personal_endpoint}{REPOS}"
+
+        await FetchEndpointDataService.github_repo_data_service(PERSONAL_ENDPOINT)
+        return {"message": " Fetched All Repositories Successfully."}
 
     except Exception as e:
         LOG.error(f"Test endpoint failed with error: {e}")
