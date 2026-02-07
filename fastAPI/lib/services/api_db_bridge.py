@@ -14,7 +14,8 @@ from lib.utils.exception_handler import NotFoundError
 
 from lib.services.github_api import GithubAPI
 from lib.services.db_handler import GithubDatabaseHandler
-from lib.services.database.db_engine import SQLITE_INSTANCE
+
+from lib.database.db_engine import SQLITE_INSTANCE
 
 #   Initialize Enviorment variables
 load_dotenv()

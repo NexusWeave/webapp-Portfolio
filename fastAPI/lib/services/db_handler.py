@@ -8,8 +8,9 @@ from sqlalchemy.orm import Session, selectinload
 
 
 #   Internal Libraries
-from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel
 from lib.utils.logger_config import DatabaseWatcher
+from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel
+
 
 
 LOG = DatabaseWatcher(dir="logs", name="Github-Database-Handler")

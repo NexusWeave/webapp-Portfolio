@@ -16,11 +16,11 @@ from lib.utils.exception_handler import NotFoundError
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
 
-from lib.services.db_handler import GithubDatabaseHandler
 from lib.services.api_db_bridge import ApiDatabaseBridge
-from lib.services.database.db_engine import SQLITE_INSTANCE
+from lib.services.db_handler import GithubDatabaseHandler
 from lib.services.announcements import AnnouncementsService
 
+from lib.database.db_engine import SQLITE_INSTANCE
 
 #   Initialize Enviorment variables
 load_dotenv()
