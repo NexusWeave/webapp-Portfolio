@@ -13,7 +13,7 @@ from lib.utils.exception_handler import NotFoundError
 
 
 from lib.services.github_api import GithubAPI
-from lib.services.database_services import GithubServices
+from lib.services.db_handler import GithubServices
 from lib.services.database.resources import SQLITE_INSTANCE
 
 #   Initialize Enviorment variables

@@ -16,8 +16,8 @@ from lib.utils.exception_handler import NotFoundError
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
 
+from lib.services.db_handler import GithubServices
 from lib.services.api_db_bridge import ApiDatabaseBridge
-from lib.services.database_services import GithubServices
 from lib.services.database.resources import SQLITE_INSTANCE
 from lib.services.announcements import AnnouncementsService
 

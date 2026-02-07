@@ -21,7 +21,7 @@ class GithubServices():
         self.session = session
 
     @staticmethod
-    def setup_repo(repository: Dict[str, Any]) -> Dict[str, Any]:
+    def transform_data(repository: Dict[str, Any]) -> Dict[str, Any]:
         repo_url: Optional[str] = None
         video_url: Optional[str] = None
         preview_url: Optional[str] = None
@@ -134,7 +134,7 @@ class GithubServices():
 
         for i in range(len(repository)):
 
-            dictionary = GithubServices.setup_repo(repository[i])
+            dictionary = GithubServices.transform_data(repository[i])
 
             repo_id: str = str(repository[i]['repo_id']).strip()
             DUPLICATION = EXISTING_REPOS.get(repo_id)
@@ -180,8 +180,6 @@ class GithubServices():
             .selectinload(LanguageAssosiationModel.language))
 
         return self.session.execute(QUERY).scalars().all()
-
-        
 
 class HeavyServices:
     pass
