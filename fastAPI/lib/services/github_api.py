@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
 from lib.settings.api_config import AsyncAPIClientConfig
-from lib.services.utils.services_utils import ServicesUtils
+from lib.services.utils.github_maps import ServicesUtils
 
 
 #  Loading the environment variables
