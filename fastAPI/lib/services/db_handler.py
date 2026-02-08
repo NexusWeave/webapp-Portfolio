@@ -2,15 +2,14 @@
 from datetime import datetime
 from typing import Dict, Any, List, Sequence, Optional, Tuple
 
-#   Third Party Libraries
-from sqlalchemy import select, Result
-from sqlalchemy.orm import selectinload
-from sqlalchemy.ext.asyncio import AsyncSession
-
 #   Internal Libraries
 from lib.utils.logger_config import DatabaseWatcher
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel
 
+#   Third Party Libraries
+from sqlalchemy import select, Result
+from sqlalchemy.orm import selectinload
+from sqlalchemy.ext.asyncio import AsyncSession
 
 LOG = DatabaseWatcher(dir="logs", name="Github-Database-Handler")
 LOG.file_handler()
@@ -128,11 +127,11 @@ class GithubDatabaseHandler():
         repo_ids = [repo['repo_id'] for repo in repository]
         QUERY = select(RepositoryModel).where(RepositoryModel.repo_id.in_(repo_ids))
         DB_RESULTS = await self.session.execute(QUERY)
-        EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in DB_RESULTS.scalars().all()}
 
+        EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in DB_RESULTS.scalars().all()}
         for i in range(len(repository)):
             dictionary = GithubDatabaseHandler.format_payload(repository[i])
-
+            
             repo_id: str = str(repository[i]['repo_id']).strip()
             DUPLICATION = EXISTING_REPOS.get(repo_id)
 

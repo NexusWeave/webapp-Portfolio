@@ -1,11 +1,11 @@
 #   Standard Depnendencies
 import os, __future__, uvicorn
 from datetime import datetime
-from typing import Dict, Optional, List
+from typing import Dict, Optional, List, Sequence
 
 #   Third Party Dependencies
-from fastapi import FastAPI
 from dotenv import load_dotenv
+from fastapi import FastAPI, Request
 
 #   Internal Dependencies
 from lib.settings.app_config import AppConfig
@@ -20,7 +20,7 @@ from lib.services.api_db_bridge import ApiDatabaseBridge
 from lib.services.db_handler import GithubDatabaseHandler
 from lib.services.announcements import AnnouncementsService
 
-from lib.database.db_engine import SQLITE_INSTANCE
+from lib.settings.database_config import ASynchronousDatabaseConfig
 
 #   Initialize Enviorment variables
 load_dotenv()
@@ -40,8 +40,8 @@ except ValueError as ve:
 
 #   Initialize FastAPI
 app = FastAPI(title = ENVIRONMENT.API_NAME,
-              version=ENVIRONMENT.API_VERSION,
-              lifespan=CONFIG.app_initialization)
+              version = ENVIRONMENT.API_VERSION,
+              lifespan = CONFIG.app_initialization)
 
 CONFIG.middleware_initialization(app, ENVIRONMENT)
 LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'v{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
@@ -76,20 +76,13 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
     return response
 
 @app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
-def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
+async def get_repositories(request: Request) -> Sequence[RepositoryModel] | Dict[str, str]:
+    DB_CONTEXT: ASynchronousDatabaseConfig = request.app.state.db
 
-    with SQLITE_INSTANCE.SessionLocal() as session:
-        try:
-            repositories: List[RepositoryModel] = GithubDatabaseHandler(session = session).fetch_all_repositories()
-            if not repositories: raise NotFoundError(404, 'Resource not found')
+    async with DB_CONTEXT.SessionLocal() as session:
+        HANDLER = GithubDatabaseHandler(session = session)
+        return await HANDLER.fetch_all_repositories()
 
-        except NotFoundError as e:
-            LOG.error(f"Exception occurred while fetching repositories: {e.status_code} - {e.message}")
-
-            return {'message': 'No repositories found'}
-    
-        LOG.info(f"Fetched {len(repositories)} repositories from the database.")
-        return repositories
 
 @app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.")  
 async def health_check() -> Dict[str, str | bool]:
@@ -107,8 +100,8 @@ async def health_check() -> Dict[str, str | bool]:
         }
     return dictionary
 
-@app.get(f"{PATH}/fetchRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
-async def fetch_repositories_endpoint() -> Dict[str, str]:
+@app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
+async def handle_repositories(request: Request) -> Dict[str, str]:
     """
         Test Endpoint
     """
@@ -117,7 +110,7 @@ async def fetch_repositories_endpoint() -> Dict[str, str]:
     GITHUB_REST = os.getenv("GITHUB_REST", None)
     org_endpoint:str | None = os.getenv("ORG_GITHUB_REST_API", None)
     personal_endpoint:str | None = os.getenv("PERSONAL_GITHUB_REST_API", None)
-    ORANIZATION_GITHUB_REPOS: List[str | None] = [os.getenv("NEXUSWAVE_ORGANIZATION", None), os.getenv("GETACADEMY_ORGANIZATION", None)]
+    #ORANIZATION_GITHUB_REPOS: List[str | None] = [os.getenv("NEXUSWAVE_ORGANIZATION", None), os.getenv("GETACADEMY_ORGANIZATION", None)]
         
 
     try:
@@ -131,12 +124,13 @@ async def fetch_repositories_endpoint() -> Dict[str, str]:
             await FetchEndpointDataService.github_repo_data_service(ORG_ENDPOINT)'''
         PERSONAL_ENDPOINT: str = f"{personal_endpoint}{REPOS}"
 
-        await ApiDatabaseBridge.repositories_sync(GITHUB_REST,PERSONAL_ENDPOINT)
+        await ApiDatabaseBridge.repositories_sync(GITHUB_REST,PERSONAL_ENDPOINT, request)
         return {"message": " Fetched All Repositories Successfully."}
 
     except Exception as e:
-        LOG.error(f"Test endpoint failed with error: {e}")
-        return {"message": f"An Error occured while processing the REST API call."}
+        LOG.error(f"fetch_repositories_endpoint : failed with error\n {e}")
+        if ENVIRONMENT.ENVIRONMENT == 'development': return {"code": "500","message": f"{e}"}
+        else : return {"code": "400","message": f"Endpoint was not found"}
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))

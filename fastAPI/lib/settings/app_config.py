@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 #   Internal Dependencies
 from lib.utils.logger_config import AppWatcher
-from lib.database.db_engine import SQLITE_INSTANCE
+from lib.database.db_engine import initialize_postgress_engine
 from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
 
 
@@ -35,16 +35,18 @@ class AppConfig:
             FastAPI Startup Eventer
         """
 
-        LOG.info("FastAPI Application is starting up...")
-
-        try:
-            SQLITE_INSTANCE.connection
-            LOG.info("Database tables created successfully.")
+        try: app.state.db = await initialize_postgress_engine()
 
         except Exception as e:
-            LOG.error(f"Error creating database tables: {e}")
+            LOG.error(f"An Error occured during database initalization: {e}")
             raise e
 
         LOG.info("FastAPI Application started successfully.")
 
         yield
+
+        if hasattr(app.state, 'db'):
+            await app.state.db.engine.dispose()
+            LOG.info("Database connections closed.")
+
+        LOG.info("FastAPI Application has been shutdown")
