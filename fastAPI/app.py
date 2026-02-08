@@ -104,7 +104,7 @@ async def handle_repositories(request: Request) -> Dict[str, str]:
     try:
         for i in range(len(ENVIRONMENT.ORGANIZATIONS)):
             ORG_ENDPOINT: str = f"{ENVIRONMENT.ORG_GITHUB_REST_API}{ENVIRONMENT.ORGANIZATIONS[i]}{ENVIRONMENT.GITHUB_PER_PAGE}"
-            #await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST, ORG_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
+            # await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST, ORG_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
 
         PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PER_PAGE}"
         await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST,PERSONAL_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
