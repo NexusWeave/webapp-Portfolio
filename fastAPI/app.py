@@ -39,20 +39,18 @@ except ValueError as ve:
     raise ve
 
 #   Initialize FastAPI
-app = FastAPI(title = ENVIRONMENT.API_NAME,
-              version = ENVIRONMENT.API_VERSION,
-              lifespan = CONFIG.app_initialization)
+app = FastAPI(title = ENVIRONMENT.API_NAME, version = ENVIRONMENT.API_VERSION, lifespan = CONFIG.app_initialization)
 
 CONFIG.middleware_initialization(app, ENVIRONMENT)
 LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'v{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
 
 #   Registering Enpoint Services
 VERSION: str = ENVIRONMENT.API_VERSION
-
 PATH = f"/api/{VERSION}"
+
 @app.get("/")
 def read_root():
-    return {"message": "NOT FOUND"}
+    return {"message": "END POINT NOT FOUND !"}
 
 #   @app.get("/api/v2/blogs/heavy/", response_model=Heavy, tags=["exercise", "blogs"])
 
@@ -102,29 +100,16 @@ async def health_check() -> Dict[str, str | bool]:
 
 @app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
 async def handle_repositories(request: Request) -> Dict[str, str]:
-    """
-        Test Endpoint
-    """
-
-    REPOS:str | None = os.getenv("REPOS", None)
-    GITHUB_REST = os.getenv("GITHUB_REST", None)
-    org_endpoint:str | None = os.getenv("ORG_GITHUB_REST_API", None)
-    personal_endpoint:str | None = os.getenv("PERSONAL_GITHUB_REST_API", None)
-    #ORANIZATION_GITHUB_REPOS: List[str | None] = [os.getenv("NEXUSWAVE_ORGANIZATION", None), os.getenv("GETACADEMY_ORGANIZATION", None)]
-        
 
     try:
-        if not org_endpoint or not personal_endpoint or not REPOS or not org_endpoint or not GITHUB_REST:
-            LOG.warn("GitHub Token or Endpoint not found in environment variables.")
-            raise NotFoundError(404, "GitHub Token or Endpoint not found in environment variables.")
+        for i in range(len(ENVIRONMENT.ORGANIZATIONS)):
+            ORG_ENDPOINT: str = f"{ENVIRONMENT.ORG_GITHUB_REST_API}{ENVIRONMENT.ORGANIZATIONS[i]}{ENVIRONMENT.GITHUB_PER_PAGE}"
+            print(ENVIRONMENT.GITHUB_REST, ORG_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN)
+            #await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST, ORG_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
 
-        '''for i in range(len(ORANIZATION_GITHUB_REPOS)):
-            if ORANIZATION_GITHUB_REPOS[i] is None: continue
-            ORG_ENDPOINT: str = f"{ORANIZATION_GITHUB_REPOS[i]}{REPOS}"
-            await FetchEndpointDataService.github_repo_data_service(ORG_ENDPOINT)'''
-        PERSONAL_ENDPOINT: str = f"{personal_endpoint}{REPOS}"
+        PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PER_PAGE}"
+        await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST,PERSONAL_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
 
-        await ApiDatabaseBridge.repositories_sync(GITHUB_REST,PERSONAL_ENDPOINT, request)
         return {"message": " Fetched All Repositories Successfully."}
 
     except Exception as e:
