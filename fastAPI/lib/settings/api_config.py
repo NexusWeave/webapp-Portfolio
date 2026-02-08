@@ -53,7 +53,7 @@ class AsyncAPIClientConfig(WebAPIModel):
                 else: raise RequestError(f"Unexpected status code: {req.status_code}")
 
         except (HTTPError, ConnectionError, TimeoutError, RequestError) as e: 
-            logger.error(f"Request was not successful. \n Error: {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}")
+            logger.error(f"Request was not successful.\n Error: {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}")
             raise e
 
     async def calculate_n(self, endpoint: str, header: Dict[str, str]):

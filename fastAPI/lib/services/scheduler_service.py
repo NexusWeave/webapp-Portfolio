@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 #   Local Dependencies
 from lib.utils.logger_config import AppWatcher
-from lib.services.fetch_endpoint_data_service import FetchEndpointDataService
+from lib.services.api_db_bridge import ApiDatabaseBridge
 
 #   Initialize Enviorment variables
 load_dotenv()
@@ -24,4 +24,4 @@ class SchedulerService:
     async def schedule_github():
         LOG.warn("Scheduling GitHub data fetch task...")
 
-        await FetchEndpointDataService.github_repo_data_service()
+        await ApiDatabaseBridge.repositories_sync()

@@ -1,6 +1,6 @@
 #   Third-Party Dependencies
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, Boolean, BigInteger
 
 #   Internal Dependencies
 from lib.settings.database_config import BASE
@@ -11,20 +11,20 @@ class RepositoryModel(BASE):
     __tablename__: str = "repositories"
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
-    repo_id = Column(String, unique = True, index = True, nullable = False)
+    repo_id = Column(BigInteger, unique = True, index = True, nullable = False)
 
     label = Column(String,  index = True, nullable = False)
     description = Column(String, nullable = True)
     owner = Column(String, nullable = False)
-    is_private = Column(Integer, default = 0, nullable = False)
+    is_private = Column(Boolean, default = 0, nullable = False)
 
     demo_url = Column(String, unique = True, index = True, nullable = True)
     repo_url = Column(String, unique = True, index = True, nullable = False)
     youtube_url = Column(String, unique = True, index = True, nullable = True)
 
-    updated_at = Column(String, nullable = True)
-    last_update = Column(String, nullable = True)
-    created_at = Column(String, nullable = False)
+    updated_at = Column(DateTime(timezone = True), nullable = True)
+    last_update = Column(DateTime(timezone = True), nullable = True)
+    created_at = Column(DateTime(timezone = True), nullable = False)
 
     lang_assosiations = relationship("LanguageAssosiationModel", back_populates = "repository", cascade = "all, delete-orphan")
 
@@ -45,6 +45,6 @@ class LanguageModel(BASE):
     __tablename__: str = "languages"
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
-    lang = Column(String, unique = True, index = True, nullable = False)
+    language = Column(String, unique = True, index = True, nullable = False)
 
     assosiations = relationship("LanguageAssosiationModel", back_populates="language", cascade="all, delete-orphan")

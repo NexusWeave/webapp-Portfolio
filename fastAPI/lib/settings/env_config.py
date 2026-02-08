@@ -15,29 +15,38 @@ load_dotenv()
 class Config(BaseSettings):
     ENVIRONMENT: str
     DEBUG: bool = False
-    SECRET_KEY: Optional[str]
     API_VERSION: str = "v1"
     CORS_ORIGINS: List[str]
+    SECRET_KEY: Optional[str]
     DATABASE_URL: Optional[str]
     DATABASE_TOKEN: Optional[str]
     API_NAME: str = "Portfolio Backend API"
 
     #   Enviorment strings
-    GithubToken:str
-    GithubBase: str
-    GithubRepos: str
-    
-    HEAVYV: str
-    HEAVYWORKOUTS:str
-    HEAVYCOUNT: str
-    HEAVYAPI: str
-    HEAVYTOKEN: str
+    ENV: str = ""
 
-    ENV: str
+    # Github REST API
+    GITHUB_REST: str = "".strip()
+    GITHUB_TOKEN: str = ""
+    GITHUB_PER_PAGE: str = ""
+    ORGANIZATIONS: List[str] = []
+    ORG_GITHUB_REST_API: str = ""
+    PERSONAL_GITHUB_REST_API: str = ""
+
+    # Heavy Workout API
+    HEAVYV: str = ""
+    HEAVYAPI: str = ""
+    HEAVYCOUNT: str = ""
+    HEAVYTOKEN: str = ""
+    HEAVYWORKOUTS: str = ""
+
+    #   Database
+    POSTGRESS_DB : str = ""
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
 class ProdConfig(Config):
-    ENVIRONMENT: str =  os.getenv('ENV', 'production')
+
+    ENVIRONMENT: str =  'production'
     SECRET_KEY: Optional[str] = os.getenv('SECRET_KEY', None)
     DATABASE_URL: Optional[str] = os.getenv('PROD_DATABASE', None)
     DATABASE_TOKEN: Optional[str] = os.getenv('TURSO_WRITE_TOKEN', None)
@@ -46,7 +55,7 @@ class ProdConfig(Config):
 
 class DevelopmentConfig(Config):
     DEBUG: bool = True
-    ENVIRONMENT: str =  os.getenv('ENV', 'development')
+    ENVIRONMENT: str = 'development'
     SECRET_KEY: Optional[str] = os.getenv('SECRET_KEY', None)
     DATABASE_URL: Optional[str] = os.getenv('DEV_DATABASE', None)
     DATABASE_TOKEN: Optional[str] = os.getenv('DEV_DATABASE_TOKEN', None)
