@@ -34,25 +34,15 @@ class GithubDatabaseHandler():
         LANGUAGE_ASSOCIATION: List[str] = []
 
         for i in repository['lang']:
-            LANGUAGE: LanguageModel = LanguageModel(lang = str(i['language']))
+            LANGUAGE: LanguageModel = LanguageModel(language = str(i['language']))
             LANGUAGE_ASSOCIATION.append(LanguageAssosiationModel(language = LANGUAGE, code_bytes = i['bytes']))
 
         dictionary: Dict[str, Any] = {
-            'repo_url': repo_url,
-            'ytube_url': video_url,
-            'demo_url': preview_url,
-            'lang': repository['lang'],
-            'owner': repository['owner'],
-            'label': repository['label'],
-            'repo_id': repository['repo_id'],
-            'updated_at': repository['updated_at'],
-            'is_private': repository['is_private'],
-            'created_at': repository['created_at'],
-            'description': repository['description'],
-            'lang_associations': LANGUAGE_ASSOCIATION,
-            'last_update': datetime.now().isoformat()
-            
-            }
+            'repo_url': repo_url, 'ytube_url': video_url, 'demo_url': preview_url,
+            'lang': repository['lang'], 'owner': repository['owner'], 'label': repository['label'],
+            'repo_id': repository['repo_id'], 'updated_at': repository['updated_at'], 'is_private': repository['is_private'], 
+            'created_at': repository['created_at'], 'description': repository['description'],
+            'lang_associations': LANGUAGE_ASSOCIATION,'last_update': datetime.now()}
 
         LOG.info(f"Payload was successful formated for repo_id: {repository['repo_id']}")
         return dictionary
@@ -78,10 +68,9 @@ class GithubDatabaseHandler():
 
         association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
         self.session.add(association_obj)
-        LOG.info(f"Initializing new association record for repository: {repo.repo_id} and language: {lang.language}")
+        LOG.info(f"Initializing new association record for repository: {repo.repo_id}")
 
     async def _create_repositories(self, repository: Dict[str, Any]) -> None:
-
         repo_obj = RepositoryModel(
             repo_id = repository['repo_id'], label = repository['label'],
             description = repository['description'], owner = repository['owner'],
@@ -111,10 +100,10 @@ class GithubDatabaseHandler():
                 LOG.info(f"Repository was successfully updated to the database.")
 
     async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
-        lang_obj: Result[Tuple[LanguageModel]] = await self.session.scalar(select(LanguageModel).where(LanguageModel.lang == LANG_NAME))
+        lang_obj: Result[Tuple[LanguageModel]] = await self.session.scalar(select(LanguageModel).where(LanguageModel.language == LANG_NAME))
 
         if not lang_obj:
-            lang_obj = LanguageModel(lang = LANG_NAME)
+            lang_obj = LanguageModel(language = LANG_NAME)
 
             self.session.add(lang_obj)
 

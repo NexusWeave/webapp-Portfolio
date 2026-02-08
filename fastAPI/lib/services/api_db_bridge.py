@@ -1,7 +1,5 @@
 #   Standard Depnendencies
 import __future__
-import os
-
 from typing import Any, Dict, List
 
 #   Third Party Dependencies
@@ -20,23 +18,18 @@ from lib.settings.database_config import ASynchronousDatabaseConfig
 load_dotenv()
 
 # Initialize the logger
-LOG = AppWatcher(dir="logs", name='Github-Service')
+LOG = AppWatcher(dir="logs", name='API-Database-Bridge')
 LOG.file_handler()
 
 class ApiDatabaseBridge:
 
     @staticmethod
-    async def repositories_sync(url: str, endpoint: str, request:Request):
+    async def repositories_sync(URL: str, ENDPOINT: str, TOKEN: str, request:Request):
         DB_CONTEXT: ASynchronousDatabaseConfig = request.app.state.db
-        GITHUB_TOKEN: str | None = os.getenv("GithubToken", None)
 
         try:
-            if not GITHUB_TOKEN:
-                LOG.warn("GitHub Token or Endpoint not found in environment variables.")
-                raise NotFoundError(404, "GitHub Token or Endpoint not found in environment variables.")
-
             async with DB_CONTEXT.SessionLocal() as session:
-                repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL=url, KEY=GITHUB_TOKEN).fetch_data(endpoint)
+                repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL = URL, KEY = TOKEN).fetch_data(ENDPOINT)
                 if isinstance(repositories, NotFoundError): raise NotFoundError(404, "No repositories found from GitHub API.")
 
                 GITHUB_HANDLER: GithubDatabaseHandler = GithubDatabaseHandler(session = session)

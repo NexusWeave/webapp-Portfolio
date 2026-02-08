@@ -37,13 +37,12 @@ async def initialize_postgress_engine() -> PostgresProvider:
     driver = DB_CONTEXT[0]
     PATH = sanitize_url(driver, URL)
 
-    print(PATH)
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
 
     ASYNC_ENGINE = create_async_engine( PATH, echo = False,  pool_pre_ping = True, connect_args = {
-        "ssl": ctx, "prepared_statement_cache_size":0})
+        "ssl": ctx, "prepared_statement_cache_size":0, "statement_cache_size": 0})
 
     SESSION = async_sessionmaker(class_ = AsyncSession, bind = ASYNC_ENGINE, expire_on_commit = False)
     return PostgresProvider(engine=ASYNC_ENGINE, session_factory=SESSION)
