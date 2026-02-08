@@ -1,9 +1,12 @@
+from lib.settings.database_config import BASE
+
 #   Third Party Dependencies
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
 #   Internal Dependencies
+
 from lib.utils.logger_config import AppWatcher
 from lib.database.db_engine import initialize_postgress_engine
 from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
@@ -34,8 +37,13 @@ class AppConfig:
         """
             FastAPI Startup Eventer
         """
+        try: 
+            app.state.db = await initialize_postgress_engine()
 
-        try: app.state.db = await initialize_postgress_engine()
+            async with app.state.db.engine.begin() as conn: 
+                await conn.run_sync(BASE.metadata.create_all)
+
+            LOG.info("Database tables verified/created successfully.")
 
         except Exception as e:
             LOG.error(f"An Error occured during database initalization: {e}")
