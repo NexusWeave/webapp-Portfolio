@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.4.0...v1.5.0) (2026-02-08)
+
+
+### Bug Fixes
+
+* **Model:** 🐛 Resolved internal error 500. Which was caused by alias="lang". ([3020f2d](https://github.com/NexusWeave/webapp-Portfolio/commit/3020f2d0f19d6a27d17c05d8c51a9ec28625a2c1))
+
+
+### Features
+
+* **Database:** ✨ Introducing database State. ([98416e1](https://github.com/NexusWeave/webapp-Portfolio/commit/98416e11c5f8b3b6d1cb5bbd86f5f4c3c8b81079))
+
 # [1.4.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.3.0...v1.4.0) (2025-12-29)
 
 
