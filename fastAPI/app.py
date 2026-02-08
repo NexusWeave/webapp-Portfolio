@@ -74,13 +74,12 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
     return response
 
 @app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
-async def get_repositories(request: Request) -> Sequence[RepositoryModel] | Dict[str, str]:
+async def fetch_repositories(request: Request) -> Sequence[RepositoryModel] | Dict[str, str]:
     DB_CONTEXT: ASynchronousDatabaseConfig = request.app.state.db
 
     async with DB_CONTEXT.SessionLocal() as session:
         HANDLER = GithubDatabaseHandler(session = session)
         return await HANDLER.fetch_all_repositories()
-
 
 @app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.")  
 async def health_check() -> Dict[str, str | bool]:
