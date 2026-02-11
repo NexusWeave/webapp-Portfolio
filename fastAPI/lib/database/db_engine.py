@@ -16,9 +16,9 @@ from .db_providers import Sqlite3Provider, PostgresProvider
 #   Initialize Enviorment variables
 load_dotenv()
 
-def initialize_sqlite_engine() -> Sqlite3Provider:
-    SQLITE3_DB: Optional[str] = os.getenv('SQLITE3_DB', None)
-    SQLITE3_TOKEN : Optional[str] = os.getenv('SQLITE3_TOKEN', "local.db")
+def initialize_turso_engine() -> Sqlite3Provider:
+    SQLITE3_DB: Optional[str] = os.getenv('TURSO_DB', None)
+    SQLITE3_TOKEN : Optional[str] = os.getenv('TURSO_TOKEN', "local.db")
 
     #   Database Configuration
     PATH : str = f"sqlite+{SQLITE3_DB}?secure=true"
@@ -28,15 +28,11 @@ def initialize_sqlite_engine() -> Sqlite3Provider:
     return Sqlite3Provider( engine = SYNC_ENGINE, session_factory = SESSION)
 
 async def initialize_postgress_engine() -> PostgresProvider:
-
-    
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
     PATH = connection_pool("postgresql+asyncpg", "PG")
-
-    ASYNC_ENGINE = create_async_engine( PATH, echo = False,  pool_pre_ping = True, connect_args = {
-        "ssl": ctx, "prepared_statement_cache_size":0, "statement_cache_size": 0})
+    ASYNC_ENGINE = create_async_engine( PATH, echo = False,  pool_pre_ping = True, connect_args = { "ssl": ctx, "prepared_statement_cache_size":0, "statement_cache_size": 0})
 
     SESSION = async_sessionmaker(class_ = AsyncSession, bind = ASYNC_ENGINE, expire_on_commit = False)
     return PostgresProvider(engine=ASYNC_ENGINE, session_factory=SESSION)
