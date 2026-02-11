@@ -44,12 +44,12 @@
             "Documentation",
             "DatabaseService",
             "Package.json",
-            "Dockerfile",
             "API-Services",
             "Date-Component",
             "UI",
             "Deperached",
-            "Composables"
+            "Composables",
+            "Docker"
         ]
 	}
 }

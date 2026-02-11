@@ -6,9 +6,9 @@ export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<R
 {
     const {public: env} = useRuntimeConfig();
 
-    const version = "api/v1"
-    const endpoint = 'repository';
-    const path = `${env.gcloud_api}${version}/${endpoint}`;
+    const version = "/api/v1"
+    const endpoint = '/repository';
+    const path = `${env.GCLOUD}${version}${endpoint}`;
 
     const {data, error} = await useFetch<GithubRepo[]>(path, 
         {

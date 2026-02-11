@@ -32,7 +32,7 @@ LOG.file_handler()
 CONFIG: AppConfig = AppConfig()
 
 try:
-    ENVIRONMENT = CONFIG.environment_initialization(os.getenv('ENV', 'development'))
+    ENVIRONMENT = CONFIG.environment_initialization()
 
 except ValueError as ve:
     LOG.error(f"Error in setting up the environment: {ve}")
@@ -42,7 +42,7 @@ except ValueError as ve:
 app = FastAPI(title = ENVIRONMENT.API_NAME, version = ENVIRONMENT.API_VERSION, lifespan = CONFIG.app_initialization)
 
 CONFIG.middleware_initialization(app, ENVIRONMENT)
-LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'v{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
+LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
 
 #   Registering Enpoint Services
 VERSION: str = ENVIRONMENT.API_VERSION

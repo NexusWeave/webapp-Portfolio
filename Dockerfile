@@ -1,21 +1,15 @@
-FROM python:3.13-slim
+FROM python:3.11-slim
 
-# Dette lager en mappe inne i "skyen" som heter /code (du kan kalle den hva du vil)
 WORKDIR /app
 
-# 1. Kopier requirements fra din lokale fastapi-mappe til containeren
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 COPY fastAPI/requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# 2. Installer pakkene
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 3. Kopier alt innholdet fra din lokale Rot-mappe inn i /code i containeren
 COPY . .
-
-# 4. Sett PYTHONPATH så Python finner 'fastapi'-mappen som en pakke
 ENV PYTHONPATH=/app:/app/fastAPI
-
-# 5. Start appen. 
-# 'fastapi.app' betyr: se i mappen fastapi, finn filen app.py
-# ':app' betyr: finn variabelen 'app = FastAPI()' inne i den filen
 CMD ["python", "-m", "uvicorn", "fastAPI.app:app", "--host", "0.0.0.0", "--port", "8080"]
