@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
 from lib.settings.api_config import AsyncAPIClientConfig
-from lib.services.utils.services_utils import ServicesUtils
+from lib.services.utils.github_maps import ServicesUtils
 
 
 #  Loading the environment variables
@@ -26,7 +26,7 @@ class GithubAPI(AsyncAPIClientConfig):
         API : https://api.github.com/
     """
 
-    def __init__(self, URL:str = os.getenv("GithubBase",'none'), KEY:str=os.getenv('GithubToken', 'none')):
+    def __init__(self, URL:str, KEY:str):
         super().__init__(URL=URL, KEY=KEY)
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': f"{self.API_KEY}"}
 
@@ -76,8 +76,7 @@ class GithubAPI(AsyncAPIClientConfig):
 
         repo.sort(key = lambda x: x['created_at'], reverse = True)
 
-        LOG.info(f"Repositories fetched successfully. {repo}\nTime Complexity: {time.perf_counter() - start:.2f}s\n")
-        LOG.info(f"Total of {len(repo)} repositories fetched.")
+        LOG.info(f"Repositories fetched successfully\nTime Complexity: {time.perf_counter() - start:.2f}s\nTotal of {len(repo)} repositories fetched.")
 
         return repo
 
@@ -98,7 +97,7 @@ class GithubAPI(AsyncAPIClientConfig):
 
             languages.append({"language": lang, "bytes": value})        
 
-        LOG.info(f"Languages fetched successfully. {languages}")
+        LOG.info(f"Languages fetched successfully.")
 
         return languages
 

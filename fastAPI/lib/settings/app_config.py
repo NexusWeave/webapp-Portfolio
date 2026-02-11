@@ -1,57 +1,59 @@
+from lib.settings.database_config import BASE
+
 #   Third Party Dependencies
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
-#   from apscheduler.schedulers.asyncio import AsyncIOScheduler
-
 #   Internal Dependencies
-# from lib.settings.schedule_config import SchedulerConfig
-from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
-
-from lib.services.database.resources import SQLITE_INSTANCE
 
 from lib.utils.logger_config import AppWatcher
+from lib.database.db_engine import initialize_postgress_engine
+from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
+
 
 # Initialize the logger
 LOG = AppWatcher(dir="logs", name='FastAPI-App')
 LOG.file_handler()
 
 class AppConfig:
-    
-    @staticmethod
-    def environment_initialization(env:str) -> Config:
-        env = env.lower()
 
-        match env:
+    @staticmethod
+    def environment_initialization() -> Config:
+
+        match Config().ENVIRONMENT:
             case 'production': return ProdConfig()
             case 'development': return DevelopmentConfig()
-            case _:
-                raise ValueError(f"Invalid environment variable. ENV = \"{env}\". Set ENV to either 'production' or 'development'.")
+            case _: raise ValueError(f"Invalid environment variable.")
 
     @staticmethod
     def middleware_initialization(app: FastAPI, config: Config) -> None:
         LOG.info("Initializing Middleware...")
-        app.add_middleware(
-        CORSMiddleware, allow_credentials=True,
-        allow_origins=config.CORS_ORIGINS,
-        allow_methods=["*"], allow_headers=["*"])
+        app.add_middleware( CORSMiddleware, allow_credentials = True, allow_origins=config.CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"])
 
     @asynccontextmanager
     async def app_initialization(self,app: FastAPI):
         """
             FastAPI Startup Eventer
         """
-        LOG.info("FastAPI Application is starting up...")
-        
-        try:
-            SQLITE_INSTANCE.connection
-            LOG.info("Database tables created successfully.")
-        
+        try: 
+            app.state.db = await initialize_postgress_engine()
+
+            async with app.state.db.engine.begin() as conn: 
+                await conn.run_sync(BASE.metadata.create_all)
+
+            LOG.info("Database tables verified/created successfully.")
+
         except Exception as e:
-            LOG.error(f"Error creating database tables: {e}")
+            LOG.error(f"An Error occured during database initalization: {e}")
             raise e
 
         LOG.info("FastAPI Application started successfully.")
 
         yield
+
+        if hasattr(app.state, 'db'):
+            await app.state.db.engine.dispose()
+            LOG.info("Database connections closed.")
+
+        LOG.info("FastAPI Application has been shutdown")

@@ -1,16 +1,14 @@
 #   Github Ignores these files (https://help.github.com/articles/ignoring-files/) for more about ignoring files.
 
-
 # Environment Variables
 *.env*
 !.env.example
 
-# Editor directories and files
-.vscode/*
 
-!.vscode/extensions.json
+# Editor directories and files
 .idea
 *.suo
+*.logs
 *.ntvs*
 *.njsproj
 *.sln
@@ -18,6 +16,8 @@
 *.local
 *.production
 *.tsbuildinfo
+.vscode/settings.json
+
 
 #   frontend related files & folders
 frontend/assets
@@ -32,13 +32,14 @@ frontend/.nuxt
 frontend/.nitro
 frontend/.cache
 frontend/.output
-frontend/package-lock.json
+
 
 #   TinaCMS outputs
 frontend/.gitkeep.md
 frontend/public/admin
 frontend/.gitkeep.json
 frontend/tina/__generated__/
+
 
 # Local Netlify folder
 frontend/.netlify
@@ -47,11 +48,23 @@ frontend/.netlify
 
 
 #   Backend directories
-__pycache__
 fastAPI/.logs
 fastAPI/.venv/*
+
+
+#   Cache files
 fastAPI/tests/assets
 fastAPI/.pytest_cache
-fastAPI/flask_session
+
+fastAPI/__pycache__
+fastAPI/lib/utils/__pycache__
+fastAPI/lib/models/__pycache__
+
+fastAPI/lib/settings/__pycache__
+fastAPI/lib/services/__pycache__
+fastAPI/lib/database/__pycache__
+fastAPI/lib/services/utils/__pycache__
+fastAPI/lib/models/database_models/__pycache__
+
 fastAPI/tests/.pytest_cache
 

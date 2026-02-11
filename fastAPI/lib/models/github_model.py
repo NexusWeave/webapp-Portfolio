@@ -15,7 +15,7 @@ class LanguageImage(BaseModel):
 
 class LanguageModel(BaseModel):
     id: int = Field(..., description = "Language ID", json_schema_extra = {"example":1})
-    language: str = Field(..., alias = "lang", description = "Language Name", json_schema_extra = {"example":"Python"})
+    language: str = Field(..., description = "Language Name", json_schema_extra = {"example":"Python"})
 
     model_config = ConfigDict(from_attributes = True)
 

@@ -1,11 +1,11 @@
 #   Standard Depnendencies
 import os, __future__, uvicorn
 from datetime import datetime
-from typing import Dict, Optional, List
+from typing import Dict, Optional, List, Sequence
 
 #   Third Party Dependencies
-from fastapi import FastAPI
 from dotenv import load_dotenv
+from fastapi import FastAPI, Request
 
 #   Internal Dependencies
 from lib.settings.app_config import AppConfig
@@ -16,10 +16,11 @@ from lib.utils.exception_handler import NotFoundError
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
 
-from lib.services.database_services import GithubServices
-from lib.services.database.resources import SQLITE_INSTANCE
+from lib.services.api_db_bridge import ApiDatabaseBridge
+from lib.services.db_handler import GithubDatabaseHandler
 from lib.services.announcements import AnnouncementsService
-from lib.services.fetch_endpoint_data_service import FetchEndpointDataService
+
+from lib.settings.database_config import ASynchronousDatabaseConfig
 
 #   Initialize Enviorment variables
 load_dotenv()
@@ -31,27 +32,25 @@ LOG.file_handler()
 CONFIG: AppConfig = AppConfig()
 
 try:
-    ENVIRONMENT = CONFIG.environment_initialization(os.getenv('ENV', 'development'))
+    ENVIRONMENT = CONFIG.environment_initialization()
 
 except ValueError as ve:
     LOG.error(f"Error in setting up the environment: {ve}")
     raise ve
 
 #   Initialize FastAPI
-app = FastAPI(title = ENVIRONMENT.API_NAME,
-              version=ENVIRONMENT.API_VERSION,
-              lifespan=CONFIG.app_initialization)
+app = FastAPI(title = ENVIRONMENT.API_NAME, version = ENVIRONMENT.API_VERSION, lifespan = CONFIG.app_initialization)
 
 CONFIG.middleware_initialization(app, ENVIRONMENT)
-LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'v{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
+LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
 
 #   Registering Enpoint Services
 VERSION: str = ENVIRONMENT.API_VERSION
-
 PATH = f"/api/{VERSION}"
+
 @app.get("/")
 def read_root():
-    return {"message": "NOT FOUND"}
+    return {"message": "END POINT NOT FOUND !"}
 
 #   @app.get("/api/v2/blogs/heavy/", response_model=Heavy, tags=["exercise", "blogs"])
 
@@ -75,20 +74,12 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
     return response
 
 @app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
-def get_repositories() -> List[RepositoryModel] | Dict[str, str]:
+async def fetch_repositories(request: Request) -> Sequence[RepositoryModel] | Dict[str, str]:
+    DB_CONTEXT: ASynchronousDatabaseConfig = request.app.state.db
 
-    with SQLITE_INSTANCE.SessionLocal() as session:
-        try:
-            repositories: List[RepositoryModel] = GithubServices(session = session).select_repositories()
-            if not repositories: raise NotFoundError(404, 'Resource not found')
-
-        except NotFoundError as e:
-            LOG.error(f"Exception occurred while fetching repositories: {e.status_code} - {e.message}")
-
-            return {'message': 'No repositories found'}
-    
-        LOG.info(f"Fetched {len(repositories)} repositories from the database.")
-        return repositories
+    async with DB_CONTEXT.SessionLocal() as session:
+        HANDLER = GithubDatabaseHandler(session = session)
+        return await HANDLER.fetch_all_repositories()
 
 @app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.")  
 async def health_check() -> Dict[str, str | bool]:
@@ -106,19 +97,23 @@ async def health_check() -> Dict[str, str | bool]:
         }
     return dictionary
 
-@app.get(f"{PATH}/fetchRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
-async def test_endpoint() -> Dict[str, str]:
-    """
-        Test Endpoint
-    """
+@app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
+async def handle_repositories(request: Request) -> Dict[str, str]:
 
     try:
-        await FetchEndpointDataService.github_repo_data_service()
-        return {"message": "Test endpoint executed GitHub data fetch successfully."}
+        for i in range(len(ENVIRONMENT.ORGANIZATIONS)):
+            ORG_ENDPOINT: str = f"{ENVIRONMENT.ORG_GITHUB_REST_API}{ENVIRONMENT.ORGANIZATIONS[i]}{ENVIRONMENT.GITHUB_PER_PAGE}"
+            # await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST, ORG_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
+
+        PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PER_PAGE}"
+        await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST,PERSONAL_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
+
+        return {"message": " Fetched All Repositories Successfully."}
 
     except Exception as e:
-        LOG.error(f"Test endpoint failed with error: {e}")
-        return {"message": f"An Error occured while processing the REST API call."}
+        LOG.error(f"fetch_repositories_endpoint : failed with error\n {e}")
+        if ENVIRONMENT.ENVIRONMENT == 'development': return {"code": "500","message": f"{e}"}
+        else : return {"code": "400","message": f"Endpoint was not found"}
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
