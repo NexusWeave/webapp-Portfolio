@@ -28,8 +28,8 @@ def initialize_sqlite_engine() -> Sqlite3Provider:
     return Sqlite3Provider( engine = SYNC_ENGINE, session_factory = SESSION)
 
 async def initialize_postgress_engine() -> PostgresProvider:
-    POSTGRES_DB: Optional[str] = os.getenv('POSTGRESS_DB', None)
-    if not POSTGRES_DB: raise ValueError("POSTGRESS_DB env variable is missing")
+    POSTGRES_DB: Optional[str] = os.getenv('NEON_DB', None)
+    if not POSTGRES_DB: raise ValueError("NEON_DB env variable is missing")
 
     DB_CONTEXT = POSTGRES_DB.split('://')
 
