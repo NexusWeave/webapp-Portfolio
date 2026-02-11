@@ -26,7 +26,8 @@
             "Sass",
             "AUTO",
             "Deps",
-            "Move"
+            "Move",
+            "Typo"
         ],
     },
 }
