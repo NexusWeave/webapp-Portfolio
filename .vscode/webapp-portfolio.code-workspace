@@ -13,11 +13,13 @@
         },
         "bigUML.hideUnotation": true,
         "conventionalCommits.scopes": [
-            "relocation",
-            "cleanup",
-            "config",
+            "Relocation",
+            "Cleanup",
+            "Config",
             "GitIgnore",
-            "Workspace"
+            "Workspace",
+            "Database",
+            "Env"
         ],
     },
 }
