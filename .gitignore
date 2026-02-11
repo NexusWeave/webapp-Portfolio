@@ -48,12 +48,23 @@ frontend/.netlify
 
 
 #   Backend directories
-
 fastAPI/.logs
 fastAPI/.venv/*
-fastAPI/__pycache__
+
+
+#   Cache files
 fastAPI/tests/assets
 fastAPI/.pytest_cache
-fastAPI/flask_session
+
+fastAPI/__pycache__
+fastAPI/lib/utils/__pycache__
+fastAPI/lib/models/__pycache__
+
+fastAPI/lib/settings/__pycache__
+fastAPI/lib/services/__pycache__
+fastAPI/lib/database/__pycache__
+fastAPI/lib/services/utils/__pycache__
+fastAPI/lib/models/database_models/__pycache__
+
 fastAPI/tests/.pytest_cache
 
