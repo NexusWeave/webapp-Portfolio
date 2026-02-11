@@ -19,7 +19,10 @@
             "GitIgnore",
             "Workspace",
             "Database",
-            "Env"
+            "Env",
+            "Docker",
+            "Sass",
+            "AUTO"
         ],
     },
 }
