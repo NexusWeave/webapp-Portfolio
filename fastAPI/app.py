@@ -32,7 +32,7 @@ LOG.file_handler()
 CONFIG: AppConfig = AppConfig()
 
 try:
-    ENVIRONMENT = CONFIG.environment_initialization(os.getenv('ENV', 'development'))
+    ENVIRONMENT = CONFIG.environment_initialization()
 
 except ValueError as ve:
     LOG.error(f"Error in setting up the environment: {ve}")

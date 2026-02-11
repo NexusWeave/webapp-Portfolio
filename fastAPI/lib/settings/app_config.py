@@ -19,13 +19,12 @@ LOG.file_handler()
 class AppConfig:
 
     @staticmethod
-    def environment_initialization(env:str) -> Config:
-        env = env.lower()
+    def environment_initialization() -> Config:
 
-        match env:
+        match Config().ENVIRONMENT:
             case 'production': return ProdConfig()
             case 'development': return DevelopmentConfig()
-            case _: raise ValueError(f"Invalid environment variable. ENV = \"{env}\". Set ENV to either 'production' or 'development'.")
+            case _: raise ValueError(f"Invalid environment variable.")
 
     @staticmethod
     def middleware_initialization(app: FastAPI, config: Config) -> None:
