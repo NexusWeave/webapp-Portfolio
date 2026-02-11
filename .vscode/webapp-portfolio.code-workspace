@@ -8,10 +8,12 @@
         
         "files.exclude": {
             "**/.git": true, "**/.data": true, "**/.nuxt": true,
-            "**/node_modules": true, "**/backend__pycache__": true,
+            "**/node_modules": true, "**fastAPI/__pycache__": true,
            "**/.venv": true,
+
+          "**fastAPI/lib/utils/__pycache__": true, "**fastAPI/lib/models/__pycache__": true, "**fastAPI/lib/settings/__pycache__": true, "**fastAPI/lib/services/__pycache__": true, "**fastAPI/lib/database/__pycache__" : true, "**fastAPI/lib/services/utils/__pycache__": true, "**fastAPI/lib/models/database_models/__pycache__": true,
+
         },
-        "bigUML.hideUnotation": true,
         "conventionalCommits.scopes": [
             "Relocation",
             "Cleanup",
@@ -22,7 +24,9 @@
             "Env",
             "Docker",
             "Sass",
-            "AUTO"
+            "AUTO",
+            "Deps",
+            "Move"
         ],
     },
 }
