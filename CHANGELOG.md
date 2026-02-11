@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.5.0...v1.6.0) (2026-02-11)
+
+
+### Bug Fixes
+
+* **Typo:** ✏️ Resolved some Typos ([f2bb5f4](https://github.com/NexusWeave/webapp-Portfolio/commit/f2bb5f47caac760cb90b7c1e8fb35879d53542bb))
+
+
+### Features
+
+* **Docker:** ✨ Introduce docker-compose for automated stack orchestration. ([5459d03](https://github.com/NexusWeave/webapp-Portfolio/commit/5459d03639ad16d91cefb9484718b4021816174b))
+* **Docker:** ✨ Introducing `pip install --upgrade pip` & `pip install --no-cache-dir -r requirements.txt` & Downgrading python version to Stable Release. ([8e707e5](https://github.com/NexusWeave/webapp-Portfolio/commit/8e707e53ec48ad856a04e71734743496a41747d3))
+
 # [1.5.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.4.0...v1.5.0) (2026-02-08)
 
 
