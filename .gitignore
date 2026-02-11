@@ -1,14 +1,14 @@
 #   Github Ignores these files (https://help.github.com/articles/ignoring-files/) for more about ignoring files.
 
-
 # Environment Variables
 *.env*
 !.env.example
 
-# Editor directories and files
 
+# Editor directories and files
 .idea
 *.suo
+*.logs
 *.ntvs*
 *.njsproj
 *.sln
@@ -32,13 +32,14 @@ frontend/.nuxt
 frontend/.nitro
 frontend/.cache
 frontend/.output
-frontend/package-lock.json
+
 
 #   TinaCMS outputs
 frontend/.gitkeep.md
 frontend/public/admin
 frontend/.gitkeep.json
 frontend/tina/__generated__/
+
 
 # Local Netlify folder
 frontend/.netlify
@@ -47,9 +48,10 @@ frontend/.netlify
 
 
 #   Backend directories
-__pycache__
+
 fastAPI/.logs
 fastAPI/.venv/*
+fastAPI/__pycache__
 fastAPI/tests/assets
 fastAPI/.pytest_cache
 fastAPI/flask_session
