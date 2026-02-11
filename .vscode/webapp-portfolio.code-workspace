@@ -1,0 +1,26 @@
+{
+    "folders": [{"path":"../"}],
+    "settings": {
+        
+        "python.testing.pytestArgs": [ "pytest"],
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        
+        "files.exclude": {
+            "**/.git": true, "**/.data": true, "**/.nuxt": true,
+            "**/node_modules": true, "**/backend__pycache__": true,
+           "**/.venv": true,
+        },
+        "bigUML.hideUnotation": true,
+        "conventionalCommits.scopes": [
+            "Updating .gitignore.",
+            "GitIgnore"
+        ],
+    },
+    "python.defaultInterpreterPath": "./fastAPI/.venv/bin/python",
+    "conventionalCommits.scopes": [
+        "relocation",
+        "cleanup",
+        "config"
+    ]
+}
