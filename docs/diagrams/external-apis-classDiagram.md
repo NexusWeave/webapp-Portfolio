@@ -9,14 +9,9 @@ title: API Classes
     %% Relationship
     GithubAPI --|>  APIConfig
     HeavyAPI  --|>  APIConfig
-    PhotosAPI --|>  APIConfig
-    
-    
-    note for GithubAPI "Responsible to fetchdata
-    and language details"
-    
-    note for PhotosAPI "Responsible to fetch photo data"
+
     note for HeavyAPI "Responsible to fetch exercise data"
+    note for GithubAPI "Responsible to fetchdata and language details"
     note for APIConfig "Responsible to send requests, Calculate n pages"
 
     namespace Project API{
@@ -34,13 +29,7 @@ title: API Classes
             calculate_n(self, endpoint:str)
             ApiCall(self, endpoint:sts, head:dict)
             }
-            
 
-        class PhotosAPI{
-            _init__(self, URL, POST, PUT, PATCH, DELETE):
-                super().__init__(GET, POST, PUT, PATCH, DELETE)
-            fetch_data(self, endpoint:str)
-        }
         class HeavyAPI{
             _init__(self, URL, POST, PUT, PATCH, DELETE):
                 super().__init__(GET, POST, PUT, PATCH, DELETE)
