@@ -34,5 +34,3 @@ title: Utility Tools
         def debug(self, message)
     }
 ```
-## [OSUtils relationship with PhotoAPI](endpoints.md)
-## [UtilsTools relationship with Announcement](endpoints.md)
