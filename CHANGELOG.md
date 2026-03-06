@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.0...v1.6.1) (2026-03-06)
+
+
+### Bug Fixes
+
+* **LOG:** 🐛 Solved Initialization Gap between self.name & name. ([2f8793e](https://github.com/NexusWeave/webapp-Portfolio/commit/2f8793eb11977789211e179d07d1e5f1a29e3cae))
+
 # [1.6.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.5.0...v1.6.0) (2026-02-11)
 
 
