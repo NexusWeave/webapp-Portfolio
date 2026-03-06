@@ -1,115 +1,112 @@
-#   Importing required dependencies
+#   Python Libraries
 from __future__ import annotations
-import os, logging as Log
+import os, logging as log
 from typing import Optional
 
 
 class Logger(object):
     """
-        Logger class to handle application logging
+        Standard Logger to handle application logging using logging module.
     """
 
-    def __init__(self, name:str, dir:str | None = None):
+    def __init__(self, name:str, dir:str, level: int):
         """
             *   Initialize the logger
-            *   Set the logging level to DEBUG
+            *   Set the logging level based on the provided level
             *   Set the logging format
             *   Set the logging handler
             *   param dir: str - default: '.log'
             *   param name: str - default: Class name
+            *   param level: int - default: logging.DEBUG
         """
-
-        #   Initialize the handler
-        self.dir: str = '.' + dir if dir else '.log'
+        
+        self.log = log.getLogger(f"{self.name}")
+        self.dir: str = '.' + dir
         self.name = name or self.__class__.__name__
+        dictionary = { 0: log.DEBUG, 1: log.INFO, 2: log.WARNING, 3: log.ERROR, 4: log.CRITICAL }
 
-        self.log = Log.getLogger(f"{self.name}")
-        self.log.setLevel(Log.DEBUG)
+        try:
+            if  level > 4 or level < 0: raise ValueError("Level must be an integer between 0 and 4.")
+            self.log.setLevel(dictionary.get(level, log.DEBUG))
+        except ValueError as e: self.log.error(f"ValueError in Logger initialization: {e}")
 
         #   Initialize the Flags
-        self.file_flag: bool = False
-        self.console_flag: bool = False
+        self.is_file: bool = False
+        self.is_console: bool = False
 
-    def setup_handler(self, handler: Log.FileHandler | Log.StreamHandler):  #type: ignore
+    def setup_handler(self, handler: log.FileHandler | log.StreamHandler):                                              #type: ignore - FileHandler and StreamHandler are valid types, but pylance doesn't recognize them.
         """
             *   Setup the Log handler
-            *   param handler:[Log.FileHandler, Log.StreamHandler]
+            *   param handler:[log.FileHandler, log.StreamHandler]
         """
 
         #   Initializing the formatter
-        formatter = Log.Formatter('%(asctime)s - %(levelname)-8s - %(name)s - %(message)s')
+        formatter = log.Formatter('%(asctime)s - %(levelname)-8s - %(name)s - %(message)s')
         handler.setFormatter(formatter)
-        self.log.addHandler(handler)    #type: ignore
+        self.log.addHandler(handler)                                                                                    #type: ignore - addHandler is a valid method, but pylance doesn't recognize it.
 
     def console_handler(self) -> None:
         """
             *   Add a console handler to the logger
         """
+        if self.is_console:
+            self.log.warning(f"{self.name} - Console handler already initialized")
+            return
 
-        #   Ensure that the Flag is not set to True
-        if not self.console_flag:
-
-            #   Set the flag
-            self.console_flag = True
-
-            #   Initializing the handler
-            handler = Log.StreamHandler()
-            self.setup_handler(handler)   #type: ignore
-
-            #   Send message to the console
-            self.log.info(f"{self.name} has been initialized.")
+        handler = log.StreamHandler()
+        self.is_console = True
+        self.setup_handler(handler)                                                                                     #type: ignore - StreamHandler is a valid type, but pylance doesn't recognize it.
+        self.log.info(f"{self.name} has been initialized.")
 
     def file_handler(self):
-
         """
             *   Add a file handler to the logger
         """
 
-        #   Ensure that the Flag is not set to True
-        if not self.file_flag:
+        if self.is_file:
+            self.log.warning(f"{self.name} - File handler already initialized")
+            return
 
             #   Initializing the handler
-            if self.dir:
-                if not os.path.exists(self.dir): os.makedirs(self.dir)
-                handler = Log.FileHandler(self.dir + "/" + self.name)
 
-            else: handler = Log.FileHandler(self.name)
+        if self.dir:
+            os.makedirs(self.dir,exist_ok=True)
+            file_path = os.path.join(self.dir, self.name)
 
-            self.file_flag = True
-            self.setup_handler(handler)    #type: ignore
-            self.log.info(f"{self.name} has been initialized.")
+        else: file_path = self.name
 
-        else:
-            self.log.warning(f"{self.name} File handler already initialized")
+        handler = log.FileHandler(file_path)
+        self.is_file = True
 
-    def info(self, message: str):
-        self.log.info(f"[!INFO] : {message}")
+        self.setup_handler(handler)                                                                                     #type: ignore - FileHandler is a valid type, but pylance doesn't recognize it.
+        self.log.info(f"{self.name} has been initialized.")
 
-    def error(self, message: str):
-        self.log.error(f"[!ERROR] : {message}")
+    def info(self, message: str): self.log.info(f"[!INFO] : {message}")
 
-    def warn(self, message: str):
-        self.log.warning(f"[!WARN] : {message}")
+    def error(self, message: str): self.log.error(f"[!ERROR] : {message}")
 
-    def debug(self, message: str):
-        self.log.debug(f"[!DEBUG] : {message}")
+    def warn(self, message: str): self.log.warning(f"[!WARN] : {message}")
+
+    def debug(self, message: str): self.log.debug(f"[!DEBUG] : {message}")
+
+    def critical(self, message: str): self.log.critical(f"[!CRITICAL] : {message}")
 
 class AppWatcher(Logger):
-    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None):
-        super().__init__(dir = dir, name=f"{self.__class__.__name__} -- {name}.log")
+    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None, level: int = 0):
+        super().__init__(dir = dir or '.logs', name=f"{self.__class__.__name__} -- {name}.log", level=level)
 
 class APIWatcher(Logger):
-    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None):
-        super().__init__(dir = dir, name=f"{self.__class__.__name__} -- {name}.log")
+    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None, level: int = 0):
+        super().__init__(dir = dir or '.logs', name=f"{self.__class__.__name__} -- {name}.log", level=level)
 
 class DatabaseWatcher(Logger):
-    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None):
-        super().__init__(dir = dir, name=f"{self.__class__.__name__} -- {name}.log")
+    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None, level: int = 0):
+        super().__init__(dir = dir or '.logs', name=f"{self.__class__.__name__} -- {name}.log", level=level)
 
 class ServiceWatcher(Logger):
-    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None):
-        super().__init__(dir = dir, name=f"{self.__class__.__name__} -- {name}.log")
+    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None, level: int = 0):
+        super().__init__(dir = dir or '.logs', name=f"{self.__class__.__name__} -- {name}.log", level=level)
 
 class ConfigWatcher(Logger):
-    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None):
-        super().__init__(dir = dir, name=f"{self.__class__.__name__} -- {name}.log")
+    def __init__(self, name:Optional[str] = None, dir:Optional[str] = None, level: int = 0):
+        super().__init__(dir = dir or '.logs', name=f"{self.__class__.__name__} -- {name}.log", level=level)
