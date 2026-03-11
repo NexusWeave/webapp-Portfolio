@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.1...v1.6.2) (2026-03-11)
+
+
+### Bug Fixes
+
+* **LOG:** 🐛 Resolved some Type Issues, by removing level argument & os. ([21ff6f9](https://github.com/NexusWeave/webapp-Portfolio/commit/21ff6f937495943c42a8e43421fb4092168f732d))
+
 ## [1.6.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.0...v1.6.1) (2026-03-06)
 
 
