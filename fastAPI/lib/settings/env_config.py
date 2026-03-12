@@ -1,11 +1,10 @@
-#  App congiguration settings
-
 # Standard Libraries
 import __future__, os
 
 # Third Party Libraries
 from typing import List, Optional
 from dotenv import load_dotenv
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -14,34 +13,35 @@ load_dotenv()
 
 class Config(BaseSettings):
     DEBUG: bool = False
+    ENVIRONMENT: str = ""
     API_VERSION: str = "v1"
-    CORS_ORIGINS: List[str]
-    #SECRET_KEY: Optional[str]
-    #DATABASE_URL: Optional[str]
-    #DATABASE_TOKEN: Optional[str]
-    ENVIRONMENT: str = "development"
+    CORS_ORIGINS: List[str] = []
     API_NAME: str = "Portfolio Backend API"
 
-    #   Enviorment strings
-
     # Github REST API
-    GITHUB_REST: str = "".strip()
     GITHUB_TOKEN: str = ""
     GITHUB_PER_PAGE: str = ""
+    GITHUB_REST: str = "".strip()
     ORGANIZATIONS: List[str] = []
     ORG_GITHUB_REST_API: str = ""
     PERSONAL_GITHUB_REST_API: str = ""
 
     # Heavy Workout API
-    HEAVYV: str = ""
-    HEAVYAPI: str = ""
-    HEAVYCOUNT: str = ""
-    HEAVYTOKEN: str = ""
-    HEAVYWORKOUTS: str = ""
+    HEAVY_V: str = ""
+    HEAVY_API: str = ""
+    HEAVY_COUNT: str = ""
+    HEAVY_TOKEN: str = ""
+    HEAVY_WORKOUTS: str = ""
 
     #   Database
-    POSTGRESS_DB : str = ""
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+    PG_USER: str = ""
+    PG_HOST: str = ""
+    PG_PASSWORD: str = ""
+    PG_SSL_MODE: str = ""
+    PG_DATABASE : str = ""
+    PG_CHANNEL_BINDING: str = ""
+    model_config = SettingsConfigDict(env_file="/.env", env_file_encoding="utf-8", extra="ignore")
+
 
 class ProdConfig(Config):
     SECRET_KEY: Optional[str] = os.getenv('SECRET_KEY', None)
@@ -53,5 +53,3 @@ class DevelopmentConfig(Config):
     SECRET_KEY: Optional[str] = os.getenv('SECRET_KEY', None)
     DATABASE_URL: Optional[str] = os.getenv('DEV_DATABASE', None)
     DATABASE_TOKEN: Optional[str] = os.getenv('DEV_DATABASE_TOKEN', None)
-
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
