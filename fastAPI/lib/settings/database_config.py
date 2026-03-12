@@ -25,13 +25,9 @@ class SynchronousDatabaseConfig:
 
     async def connection(self) -> None:
         with self.engine.connect() as conn:
-            LOG.info("Creating all tables in the database...")
-            LOG.info(f"Registered Models: {BASE.metadata.tables.keys()}")
 
             try: BASE.metadata.create_all(bind= conn)
             except Exception as e:LOG.error(f"Error creating tables: {e}")
-
-            LOG.info("All tables created successfully.")
 
     @property
     def fetch_engine(self) -> Engine: return self.engine
@@ -46,13 +42,8 @@ class ASynchronousDatabaseConfig:
 
     async def connection(self) -> None:
         async with self.engine.connect() as conn:
-            LOG.info("Creating all tables in the database...")
-            LOG.info(f"Registered Models: {BASE.metadata.tables.keys()}")
-
             try: BASE.metadata.create_all(bind= conn)
             except Exception as e: LOG.error(f"Error creating tables: {e}")
-
-            LOG.info("All tables created successfully.")
 
     @property
     def fetch_engine(self) -> AsyncEngine: return self.engine
