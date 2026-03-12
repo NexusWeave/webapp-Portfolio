@@ -8,11 +8,9 @@
         
         "files.exclude": {
             "**/.git": true, "**/.data": true, "**/.nuxt": true,
-            "**/node_modules": true, "**fastAPI/__pycache__": true,
-           "**/.venv": true,
-
+            "**/node_modules": true, "**fastAPI/__pycache__": true, "***.benchmarks": true, "**.github": true,
           "**fastAPI/lib/utils/__pycache__": true, "**fastAPI/lib/models/__pycache__": true, "**fastAPI/lib/settings/__pycache__": true, "**fastAPI/lib/services/__pycache__": true, "**fastAPI/lib/database/__pycache__" : true, "**fastAPI/lib/services/utils/__pycache__": true, "**fastAPI/lib/models/database_models/__pycache__": true,
-
+          "**frontend/.nuxt": true, "**frontend/node_modules": true
         },
         "conventionalCommits.scopes": [
             "Relocation",
@@ -27,7 +25,8 @@
             "AUTO",
             "Deps",
             "Move",
-            "Typo"
+            "Typo",
+            "Document"
         ],
     },
 }

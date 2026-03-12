@@ -1,6 +1,6 @@
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "1.1.0" 
+version = "1.1.0-1" 
 version_scheme = "pep440"
 version_provider = "commitizen"
 
@@ -16,12 +16,10 @@ markers = [ "integration: marker for integration services"]
 asyncio_mode = "auto"
 
 [tool.coverage.run]
-# Legger til fastAPI mappen som kilde for kodedekning.
-# 'omit' brukes ofte for å utelate virtuelle miljøer eller testfiler
 source = ["."] 
 omit = [".venv/*"]
 
 
 [tool.coverage.report]
-# Valgfritt: Tvinger den til å inkludere mapper, selv om de ikke er 100% dekket
+
 show_missing = true
