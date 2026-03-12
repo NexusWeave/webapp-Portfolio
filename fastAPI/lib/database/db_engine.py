@@ -5,7 +5,7 @@ from typing import Optional
 #   Third-Party Dependencies
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
-from sqlalchemy.engine import make_url, URL
+from sqlalchemy.engine import URL
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 
@@ -38,10 +38,10 @@ async def initialize_postgress_engine() -> PostgresProvider:
     return PostgresProvider(engine=ASYNC_ENGINE, session_factory=SESSION)
 
 def connection_pool(DRIVER:str, PREFIX:str):
-    USER = os.getenv(f'{PREFIX}USER', None)
-    HOST = os.getenv(f'{PREFIX}HOST', None)
-    SSLMODE = os.getenv(f'{PREFIX}SSLMODE', None)
-    PASSWORD = os.getenv(f'{PREFIX}PASSWORD', None)
-    DATABASE: Optional[str] = os.getenv('PGDATABASE', None)
+    USER = os.getenv(f'{PREFIX}_USER', None)
+    HOST = os.getenv(f'{PREFIX}_HOST', None)
+    SSLMODE = os.getenv(f'{PREFIX}_SSL_MODE', None)
+    PASSWORD = os.getenv(f'{PREFIX}_PASSWORD', None)
+    DATABASE: Optional[str] = os.getenv(f'{PREFIX}_DATABASE', None)
     if not DATABASE or not USER or not HOST or not SSLMODE or not PASSWORD: raise ValueError(f"Mising Environment Variable {DATABASE, USER, HOST, SSLMODE, PASSWORD}")
     return URL.create( drivername=DRIVER, username=USER, password=PASSWORD, host=HOST, database=DATABASE)
