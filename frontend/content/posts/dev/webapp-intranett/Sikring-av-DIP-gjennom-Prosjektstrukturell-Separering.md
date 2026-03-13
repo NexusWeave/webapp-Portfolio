@@ -1,5 +1,5 @@
 ---
-created: 2025-11-27T00:00:00.000Z
+date: 2025-11-27T00:00:00.000Z
 tags:
   - dev-journey
 title: Sikring av DIP gjennom Prosjektstrukturell Separering

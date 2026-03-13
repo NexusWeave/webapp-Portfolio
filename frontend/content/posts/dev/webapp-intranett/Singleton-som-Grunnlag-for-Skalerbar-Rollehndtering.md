@@ -1,5 +1,5 @@
 ---
-created: 2025-11-07T00:00:00.000Z
+date: 2025-11-07T00:00:00.000Z
 title: Singleton som Grunnlag for Skalerbar Rollehåndtering
 ingress: >
   Oppgaven med å implementere **Role-Based Access Control** (**RBAC**) krevde en

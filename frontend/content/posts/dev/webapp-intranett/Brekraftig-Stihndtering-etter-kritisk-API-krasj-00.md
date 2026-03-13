@@ -1,5 +1,5 @@
 ---
-created: 2025-11-03T00:00:00.000Z
+date: 2025-11-03T00:00:00.000Z
 tags:
   - dev-journey
 title: Bærekraftig Stihåndtering etter kritisk API-krasj

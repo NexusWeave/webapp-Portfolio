@@ -1,5 +1,5 @@
 ---
-created: 2025-12-11T00:00:00.000Z
+date: 2025-12-11T00:00:00.000Z
 title: >-
   Løsning av APScheduler- og Database Utfordring med FastAPI lifespan og
   Standardiserte Prinsipper

@@ -1,5 +1,5 @@
 ---
-created: 2025-12-04T00:00:00.000Z
+date: 2025-12-04T00:00:00.000Z
 title: Sikring av Non-blokkerende I/O
 ingress: >
   En sårbarhet ble identifisert der den underliggende logikken i Base Class

@@ -1,5 +1,5 @@
 ---
-created: 2025-12-16T00:00:00.000Z
+date: 2025-12-16T00:00:00.000Z
 tags:
   - dev-journey
 title: Erfaringer med assembly-konflikter og mappehierarki

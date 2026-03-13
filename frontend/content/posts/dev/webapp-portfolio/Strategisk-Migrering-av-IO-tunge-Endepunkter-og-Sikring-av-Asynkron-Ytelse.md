@@ -1,5 +1,5 @@
 ---
-created: 2025-11-23T00:00:00.000Z
+date: 2025-11-23T00:00:00.000Z
 tags:
   - dev-journey
 title: Strategisk Migrering av I/O-tunge Endepunkter og Sikring av Asynkron Ytelse

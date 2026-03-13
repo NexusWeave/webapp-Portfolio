@@ -1,5 +1,5 @@
 ---
-created: 2025-11-21T00:00:00.000Z
+date: 2025-11-21T00:00:00.000Z
 tags:
   - dev-journey
 title: Implementasjon av Topass-Algoritme for Hierarkisk Autorisasjon

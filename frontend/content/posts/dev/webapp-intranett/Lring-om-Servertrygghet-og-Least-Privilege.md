@@ -1,5 +1,5 @@
 ---
-created: 2025-11-20T00:00:00.000Z
+date: 2025-11-20T00:00:00.000Z
 tags:
   - dev-journey
 title: Læring om Servertrygghet og Least Privilege

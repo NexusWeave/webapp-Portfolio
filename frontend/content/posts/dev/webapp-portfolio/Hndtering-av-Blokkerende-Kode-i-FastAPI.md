@@ -1,5 +1,5 @@
 ---
-created: 2025-11-22T00:00:00.000Z
+date: 2025-11-22T00:00:00.000Z
 title: Håndtering av Blokkerende Kode i FastAPI
 ingress: >
   Denne loggen dokumenterer en strategisk migrering for å løse en hybrid

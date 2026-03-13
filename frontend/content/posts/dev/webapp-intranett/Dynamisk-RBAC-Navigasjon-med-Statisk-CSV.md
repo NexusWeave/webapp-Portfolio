@@ -1,5 +1,5 @@
 ---
-created: 2025-11-18T00:00:00.000Z
+date: 2025-11-18T00:00:00.000Z
 title: Dynamisk RBAC-Navigasjon med Statisk CSV
 ingress: >
   Oppgaven var å konvertere en statisk CSV-basert innholdsliste til en dynamisk,

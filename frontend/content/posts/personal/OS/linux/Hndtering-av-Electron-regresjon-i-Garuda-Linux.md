@@ -1,5 +1,5 @@
 ---
-created: 2025-12-16T00:00:00.000Z
+date: 2025-12-16T00:00:00.000Z
 title: Håndtering av Electron-regresjon i Garuda-Linux
 ingress: >
   Etter en oppdatering av `visual-studio-code-bin` (v.1.107) i Garuda Dr460nized

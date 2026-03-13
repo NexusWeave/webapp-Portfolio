@@ -1,5 +1,5 @@
 ---
-created: 2025-12-28T00:00:00.000Z
+date: 2025-12-28T00:00:00.000Z
 tags:
   - dev-journey
   - news

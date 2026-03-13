@@ -1,5 +1,5 @@
 ---
-created: 2025-11-25T00:00:00.000Z
+date: 2025-11-25T00:00:00.000Z
 tags:
   - dev-journey
 title: Hvorfor Enkel O(n)-Sjekk kan Være den Riktige Løsningen

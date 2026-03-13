@@ -1,5 +1,5 @@
 ---
-created: 2025-12-24T00:00:00.000Z
+date: 2025-12-24T00:00:00.000Z
 tags:
   - dev-journey
 title: Fra feilmelding til vellykket bygg

@@ -1,5 +1,5 @@
 ---
-created: 2025-09-30T00:00:00.000Z
+date: 2025-09-30T00:00:00.000Z
 title: Nøkkel Informasjon om Kristoffer Gjøsund
 ---
 

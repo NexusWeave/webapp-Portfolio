@@ -1,5 +1,5 @@
 ---
-created: 2025-11-22T00:00:00.000Z
+date: 2025-11-22T00:00:00.000Z
 tags:
   - dev-journey
 title: Arkitektonisk Migrering fra Flask til FastAPI for Asynkron Ytelse
