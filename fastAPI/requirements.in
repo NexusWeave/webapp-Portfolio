@@ -1,7 +1,9 @@
 httpx
 uvicorn
 fastAPI
+asyncpg
 pydantic
+sqlAlchemy
 pydantic-core
 pydantic-settings
 
