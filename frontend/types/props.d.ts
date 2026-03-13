@@ -143,3 +143,10 @@ export interface ProgressProps {
     label: string;
     cls?: string[];
 }
+
+export interface PaginationProps
+{
+    activePage?: number;
+    totalPage?: number;
+    cls?: string[];
+}
