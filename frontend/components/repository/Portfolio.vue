@@ -48,7 +48,7 @@
     });
 
 
-    //  --- Filtering Logic
+    //  --- Pagnitation Logic
     const n = 8;
     const currentPage = ref<number>(1);
     const totalPages = computed(() => {

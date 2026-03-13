@@ -8,7 +8,7 @@ export const profileCollection: Collection =
     fields: 
     [
         {
-            name: "created",
+            name: "date",
             label: "Published",
             required: true,
             type: "datetime",

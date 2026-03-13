@@ -33,13 +33,24 @@ const referencesCollection = z.object({
     quote: z.string()
 });
 
+const blogCollection = z.object({
+    date:z.string(),
+    title: z.string(),
+    ingress: z.string(),
+    star: z.string().optional(),
+    parade: z.string().optional(),
+    sources: z.string().optional(),
+    tags: z.array(z.string()).optional()
+})
+
+
 // defineContentConfig & collections definition
 export default defineContentConfig({
   collections: 
   {
     'academic': defineCollection(
         {
-            type: 'page',
+            type: 'data',
             schema: achievementsCollection,
             source: 'achievements/academic/*.md', 
         }),
@@ -71,6 +82,22 @@ export default defineContentConfig({
             schema: profileCollection,
             source: 'profiles/personal-profiles/*.md', 
         }),
+
+    'dev_posts': defineCollection(
+        {
+            type: 'page',
+            schema: blogCollection,
+            source: 'posts/dev/**/*.md',
+        }
+    ),
+
+    'personal_posts': defineCollection(
+        {
+            type: 'page',
+            schema: blogCollection,
+            source: 'posts/personal/**/*.md',
+        }
+    ),
 
     // 'content' Standard Collection definition
 

@@ -7,6 +7,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   dir: { public:'public' },
+  alias: {
+    '~': './',
+    '@': './'
+  },
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
   modules: [ '@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@pinia/nuxt' ],
