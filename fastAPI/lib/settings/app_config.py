@@ -21,10 +21,14 @@ class AppConfig:
     @staticmethod
     def environment_initialization() -> Config:
 
-        match Config().ENVIRONMENT:
-            case 'production': return ProdConfig()
-            case 'development': return DevelopmentConfig()
-            case _: raise ValueError(f"Invalid environment variable.")
+        try:
+            match Config().ENVIRONMENT:
+                case 'production': return ProdConfig()
+                case 'development': return DevelopmentConfig()
+                case _: raise ValueError(f"Invalid environment variable.")
+        except ValueError as e:
+            LOG.critical(f"An error occurred during environment initialization: {e}")
+            raise e
 
     @staticmethod
     def middleware_initialization(app: FastAPI, config: Config) -> None:
@@ -45,7 +49,7 @@ class AppConfig:
             LOG.info("Database tables verified/created successfully.")
 
         except Exception as e:
-            LOG.error(f"An Error occured during database initalization: {e}")
+            LOG.critical(f"An Error occured during database initalization: {e}")
             raise e
 
         LOG.info("FastAPI Application started successfully.")
