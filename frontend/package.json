@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
-    "dev": "tinacms dev -c \"nuxt dev\"",
+    "dev": "tinacms dev -c \"nuxt dev --host 0.0.0.0\"",
     "serve": "npm run build && nuxt preview",
     "build": "tinacms build && nuxt build",
     "deploy": "npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
