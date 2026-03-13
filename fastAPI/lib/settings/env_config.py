@@ -12,33 +12,34 @@ load_dotenv()
 
 class Config(BaseSettings):
     DEBUG: bool = False
-    ENVIRONMENT: str = "development"
+    
     API_VERSION: str = "v1"
-    CORS_ORIGINS: List[str]
+    CORS_ORIGINS: List[str] = []
+    ENVIRONMENT: str = "development"
     API_NAME: str = "Portfolio Backend API"
 
     # Github REST API
-    GITHUB_TOKEN: str
-    GITHUB_PER_PAGE: str
-    GITHUB_REST: str
-    ORGANIZATIONS: List[str]
-    ORG_GITHUB_REST_API: str
-    PERSONAL_GITHUB_REST_API: str
+    GITHUB_TOKEN: str = ""
+    GITHUB_PER_PAGE: str = ""
+    GITHUB_REST: str = ""
+    ORGANIZATIONS: List[str] = []
+    ORG_GITHUB_REST_API: str = ""
+    PERSONAL_GITHUB_REST_API: str = ""
 
     # Heavy Workout API
-    HEAVY_V: str
-    HEAVY_API: str
-    HEAVY_COUNT: str
-    HEAVY_TOKEN: str
-    HEAVY_WORKOUTS: str
+    HEAVY_V: str = ""
+    HEAVY_API: str = ""
+    HEAVY_COUNT: str = ""
+    HEAVY_TOKEN: str = ""
+    HEAVY_WORKOUTS: str = ""
 
     #   Database
-    PG_USER: str
-    PG_HOST: str
-    PG_PASSWORD: str
-    PG_SSL_MODE: str
-    PG_DATABASE : str
-    PG_CHANNEL_BINDING: str
+    PG_USER: str = ""
+    PG_HOST: str = ""
+    PG_PASSWORD: str = ""
+    PG_SSL_MODE: str = ""
+    PG_DATABASE : str = ""
+    PG_CHANNEL_BINDING: str = ""
     model_config = SettingsConfigDict(env_file="/.env", env_file_encoding="utf-8", extra="ignore")
 
 
