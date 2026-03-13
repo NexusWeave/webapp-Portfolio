@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.2...v1.6.3) (2026-03-13)
+
+
+### Bug Fixes
+
+* **Cleanup:** 🐛 Removing default texts to avoid unexpexted behavior from Environments ([c63a2ec](https://github.com/NexusWeave/webapp-Portfolio/commit/c63a2ec929c3b329fe0166743b9cb6e84d7dcd37))
+
 ## [1.6.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.1...v1.6.2) (2026-03-11)
 
 
