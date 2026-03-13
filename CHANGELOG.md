@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.3...v1.6.4) (2026-03-13)
+
+
+### Bug Fixes
+
+* **Types:** 🏷️ Updated the initialization, as the pylance is complaining. ([123f06d](https://github.com/NexusWeave/webapp-Portfolio/commit/123f06d47e2cdd2c480420b6a5d76c5b807c5519))
+
 ## [1.6.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.2...v1.6.3) (2026-03-13)
 
 
