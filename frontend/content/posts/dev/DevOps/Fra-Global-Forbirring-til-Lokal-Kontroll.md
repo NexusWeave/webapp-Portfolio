@@ -14,7 +14,7 @@ ingress: >
   konfigurasjon belyses viktigheten av å bygge manuell infrastruktur for å oppnå
   en forutsigbar, sikker og reproduserbar programvarekjøring.
 star: ''
-KildeHenvisning: ''
+sources: ''
 ---
 
 ### Overstyring av systemets standardvalg for et isolert Python-miljø

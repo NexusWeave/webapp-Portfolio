@@ -110,6 +110,6 @@ star: >
   Det ble tydligere at miljøet endrer karakter fra utviklingsstadiet til
   produksjon. Håndtering av disse forskjellene krever nøyaktighet i oppsettet av
   miljøvariabler og en forståelse for hvordan sky-infrastruktur ruter trafikken.
-KildeHenvisning: ''
+sources: ''
 ---
 

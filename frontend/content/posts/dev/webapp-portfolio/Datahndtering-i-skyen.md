@@ -86,6 +86,6 @@ star: >
   under selve produksjonssettingen og opplastning av nye repositorier, for å
   garantere at delen av tilkoblingen forblir synkron og stabil i det nye
   miljøet.
-KildeHenvisning: ''
+sources: ''
 ---
 

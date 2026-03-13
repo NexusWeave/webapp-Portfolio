@@ -35,6 +35,6 @@ star: >
   kognitiv metning og implementere bevisste hvileperioder som tillater hjernen å
   fokusere på administrative oppgaver. Dette er ikke et tap av arbeidstid, men
   en strategisk investering i langvarig og effektiv problemløsningsevne.
-KildeHenvisning: ''
+sources: ''
 ---
 

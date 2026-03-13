@@ -94,7 +94,7 @@ star: >
   * Bruken av miljøvariabler som PYTHONPATH har vist seg å være et godt verktøy
   for å håndtere filstrukturer uten å måtte skrive om applikasjonslogikken.
   Dette gir  fleksibilitet med interne biblioteker.
-KildeHenvisning: ''
+sources: ''
 ---
 
 ```dockerfile

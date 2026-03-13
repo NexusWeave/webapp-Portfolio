@@ -129,6 +129,6 @@ star: >
 
   Jeg har lært å forstå hvordan SQLAlchomy ORMen fungerer, og lært å sette opp
   en unviersell SQLAlchomy ORM, som kan brukes på flere database drivere.
-KildeHenvisning: ''
+sources: ''
 ---
 

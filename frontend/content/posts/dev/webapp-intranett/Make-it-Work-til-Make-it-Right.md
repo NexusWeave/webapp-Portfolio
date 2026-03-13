@@ -93,6 +93,6 @@ star: >
 
   Det ble oppdaget at enkelte navigsjonsstier ikke oppfører seg som de er
   tiltenkt. Dette skal adresseres og løses før testing og fremvisning.
-KildeHenvisning: ''
+sources: ''
 ---
 

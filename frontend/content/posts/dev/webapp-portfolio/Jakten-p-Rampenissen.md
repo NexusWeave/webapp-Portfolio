@@ -120,6 +120,6 @@ star: >
   Dette demostrerer løsningen på et backend-utfordring ofte krever en
   tilsvarende justering i API-kontakten for å opprette en ryddig datastrøm til
   frontend.
-KildeHenvisning: ''
+sources: ''
 ---
 

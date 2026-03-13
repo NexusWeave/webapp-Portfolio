@@ -99,6 +99,6 @@ star: >
   null-verdir har det blitt skapt et mer robust komponent som tåler manglende
   data uten å avbryte applikasjonens kjøring. Det bidrar til en mer forutsigbar
   brukeropplevelse og en høyere teknisk standard i komponentbiblioteket.
-KildeHenvisning: ''
+sources: ''
 ---
 

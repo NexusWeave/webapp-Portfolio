@@ -75,6 +75,6 @@ star: >
   autorisasjonsdata. Dette  er grunnlag for implementasjon av Least
   privilege-prinispp når man arbeider med komplekse, rasjonelle datastrukturer
   som filtreres på serversiden.
-KildeHenvisning: ''
+sources: ''
 ---
 

@@ -111,6 +111,6 @@ star: >
 
   Å forstå multiplikatoreffekten i sky-tjenester er en god ferdighet, når man
   flytter prosjekter fra utviklings miljø til produksjons miljø
-KildeHenvisning: ''
+sources: ''
 ---
 

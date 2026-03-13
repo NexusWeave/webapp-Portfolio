@@ -66,6 +66,6 @@ star: >
   mappestrukturer som kan føre til redundant fil-referanser. Erfaringen
   understreker viktigheten av standardisert prosjektoppsett for å unngå teknisk
   gjeld i build-prosessen.
-KildeHenvisning: ''
+sources: ''
 ---
 

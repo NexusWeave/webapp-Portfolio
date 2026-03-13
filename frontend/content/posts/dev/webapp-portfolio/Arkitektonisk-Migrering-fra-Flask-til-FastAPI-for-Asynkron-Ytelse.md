@@ -104,6 +104,6 @@ star: >
   Videre var utsettelsen av Pydantic et viktig faglig valg som tillot meg å
   isolere testen av ASGI-gevinstene fra de strukturelle endringene Pydantic
   krever. Dette sikret en ryddig og verifiserbar migreringsprosess.
-KildeHenvisning: ''
+sources: ''
 ---
 

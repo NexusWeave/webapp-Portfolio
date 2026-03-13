@@ -66,6 +66,6 @@ star: >
   enkelt synkront kall i en base klasse være en risiko for en stopp som
   kompromitterer den generelle systemskalerbarheten. Dette poengterer
   viktigheten av å velsekundære biblioteker som støtter \`non-blokkerende I/O\`
-KildeHenvisning: ''
+sources: ''
 ---
 

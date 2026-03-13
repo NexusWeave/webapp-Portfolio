@@ -101,6 +101,6 @@ star: >
 
   * Utføre nødvendige kodebytte (fra requests til httpx) og den syntaktiske
   endringen (async/await) for å fullt ut utnytte ASGI.
-KildeHenvisning: ''
+sources: ''
 ---
 

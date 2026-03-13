@@ -145,6 +145,6 @@ star: >
   mikrotjenestearkitektur. Ved å flytte konfigurasjonsdetaljer ut av
   hovedapplikasjonsfilen, reduserer teknisk gjeld og fremtidig utvikling
   forenkles betraktelig.
-KildeHenvisning: ''
+sources: ''
 ---
 

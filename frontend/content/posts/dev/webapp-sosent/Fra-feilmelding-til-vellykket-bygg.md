@@ -84,6 +84,6 @@ star: >
   Bruken av dotenv-cli er en robust måte å sikre at riktige variabler blir
   injisert i riktig miljø. Dette sikrer at sensitiv informasjon forblir i .env,
   men likevel er tilgjengelig for nødvendige byggeverktøy
-KildeHenvisning: ''
+sources: ''
 ---
 

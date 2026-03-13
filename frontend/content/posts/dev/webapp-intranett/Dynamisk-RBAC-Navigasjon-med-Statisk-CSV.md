@@ -70,6 +70,6 @@ star: >
 
   Stier som returnerer en boolsk verdi legges inn i en ny datastruktur for
   presentasjon
-KildeHenvisning: ''
+sources: ''
 ---
 

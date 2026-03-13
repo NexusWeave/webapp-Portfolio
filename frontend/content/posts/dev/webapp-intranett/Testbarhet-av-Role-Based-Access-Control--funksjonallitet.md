@@ -59,6 +59,6 @@ star: >
 
   Denne tilnærmingen bekrefter CC-Prinsippene ( som SRP & DIP ) er direkte
   koblet mot robusthet og vedlikeholdbarhet
-KildeHenvisning: ''
+sources: ''
 ---
 

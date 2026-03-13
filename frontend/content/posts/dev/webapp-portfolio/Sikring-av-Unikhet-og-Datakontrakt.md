@@ -143,7 +143,7 @@ star: >
   refleksjon av den underliggende ORM-strukturen. Ufullstendige
   Pyndantic-modeller eller modeller med fremmede klassemedlemmer vil kresje
   valideringen når data hentes.
-KildeHenvisning: ''
+sources: ''
 ---
 
 ### Teknisk beskrivelse av modellen

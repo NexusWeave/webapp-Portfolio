@@ -107,6 +107,6 @@ star: >
   plassert i feil container. Løsningen på dette er å bruke lifespan context
   mananger for å pålitelig håndtere asynkrone ressurser som ( database-initering
   og tilkoblingspooler) i FastAPI.
-KildeHenvisning: ''
+sources: ''
 ---
 

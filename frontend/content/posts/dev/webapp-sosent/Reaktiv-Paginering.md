@@ -86,6 +86,6 @@ star: >
   løsniger der tilstanden og datalogikken alltid er synkronisert. Ved å innføre
   en strengere type-sikkerhet og sentralisert funksjonalitet, har det blitt
   skapt en kodebase som er enklere å diagnosere og er lettere å vedlikeholde.
-KildeHenvisning: ''
+sources: ''
 ---
 

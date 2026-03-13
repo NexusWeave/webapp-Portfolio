@@ -12,7 +12,7 @@ ingress: >
   blokkeringens vedvarenhet og identifisere en handlingsplan for å gjenoppta
   testingen.
 star: ''
-KildeHenvisning: ''
+sources: ''
 ---
 
 Det oppleves en blokkering i utviklingsarbeidet. Denne kognitive hindringen, forhindrer effektiv fremdrift på Testene.

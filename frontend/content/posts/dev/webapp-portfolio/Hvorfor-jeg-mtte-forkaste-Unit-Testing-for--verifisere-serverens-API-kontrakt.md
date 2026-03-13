@@ -55,6 +55,6 @@ star: >
   Gjennom å teste Apiene lærte jeg at det finnes flere typer tester, enn å
   validere intern logikk, men også å validere samspillet mellom
   systemkomponenter (Integrasjonstesting).
-KildeHenvisning: ''
+sources: ''
 ---
 

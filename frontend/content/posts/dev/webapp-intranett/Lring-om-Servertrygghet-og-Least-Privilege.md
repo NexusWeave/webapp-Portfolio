@@ -50,6 +50,6 @@ star: >
   Fra denne sårbarheten lærte jeg  at at URL-stiene **skal** sjekkes opp mot
   hvilken rolle brukeren har, for å håndheve **Prinsippet om Minst
   Privilegium**.
-KildeHenvisning: ''
+sources: ''
 ---
 

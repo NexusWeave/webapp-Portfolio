@@ -106,7 +106,7 @@ star: >
   oppdateringsmekanisme som forebygger duplikater i assosiasjonstabellen. Dette
   reduserer behovet for kompleks feilhåndtering senere i logikken og sikrer en
   renere databasetilstand over tid. 
-KildeHenvisning: ''
+sources: ''
 ---
 
 ### Teknisk beskrivelse av modellen

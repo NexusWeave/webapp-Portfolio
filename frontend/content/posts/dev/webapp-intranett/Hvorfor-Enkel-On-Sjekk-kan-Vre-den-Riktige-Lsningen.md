@@ -92,6 +92,6 @@ star: >
   Dette er en konsekvens av at listen er relativ kort, og ytelsen blir ikke
   kritisk når det parses lite data. Det annerkjennes imidlertid at
   optimaliseringen til O(1) er nødvendig i større data-sammenhenger.
-KildeHenvisning: ''
+sources: ''
 ---
 

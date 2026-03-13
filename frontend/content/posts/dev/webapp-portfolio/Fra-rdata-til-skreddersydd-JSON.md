@@ -115,6 +115,6 @@ star: >
 
   * Frontend Presenterer dataen for brukeren, uten håndtere komplekse
   databaselogikk og rådata.
-KildeHenvisning: ''
+sources: ''
 ---
 

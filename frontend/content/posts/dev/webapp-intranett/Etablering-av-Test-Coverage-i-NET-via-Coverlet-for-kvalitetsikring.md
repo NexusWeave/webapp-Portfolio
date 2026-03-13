@@ -84,6 +84,6 @@ star: >
   Resultatet viser viktigheten av at testverktøyet er korrekt integrert i
   prosjektfilene for å sikre at byggeprosessen korrekt intstrumenterer og måler
   kodebasen.
-KildeHenvisning: ''
+sources: ''
 ---
 

@@ -70,6 +70,6 @@ star: >
   at man bør prioritere dokumentasjonsbasen for onboarding av nye medlemmer før
   videreutviklingen gies videre. Det er en strategisk investering i teamets
   kollektive effektivitet.
-KildeHenvisning: ''
+sources: ''
 ---
 

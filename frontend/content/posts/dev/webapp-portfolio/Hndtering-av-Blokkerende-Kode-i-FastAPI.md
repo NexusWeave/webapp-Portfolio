@@ -65,6 +65,6 @@ star: >
   * Integrasjon - Forståelse for at synkron, blokkerende I/O-kode kan integreres
   i et ASGI-rammeverk, forutsatt at den kjøres i en trådpulje for å sikre at
   event-loopen forblir fri.
-KildeHenvisning: ''
+sources: ''
 ---
 

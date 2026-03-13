@@ -87,6 +87,6 @@ star: >
   Neste steget er å publisere  backend delen av applikasjonen til en tjeneste
   som Google Cloud Run, for deligere oppgaven om å kjøre koden til fagkyndige
   bedrifter i server-infrastrukturer
-KildeHenvisning: ''
+sources: ''
 ---
 

@@ -98,6 +98,6 @@ star: >
 
   Denne erfaringen bekrefter at downgrade er et viktig verktøy for å håndtere
   “bleeding-edge”-regresjoner i linux-baserte systemer.
-KildeHenvisning: ''
+sources: ''
 ---
 

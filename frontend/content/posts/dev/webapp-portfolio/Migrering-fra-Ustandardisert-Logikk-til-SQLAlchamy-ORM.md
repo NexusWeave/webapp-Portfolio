@@ -76,6 +76,6 @@ star: >
   forståelse av hvordan et moderne OOP ORM-bibliotek fungerer i Python. Jeg
   lærte om konfigurasjonen av Engine og Session. Hvordan bruk av modeller sikrer
   at databaselogikken er robust.
-KildeHenvisning: ''
+sources: ''
 ---
 

@@ -61,6 +61,6 @@ star: >
   Hovedinnsikten er at DIP må sikres på prosjektstrukturnivå ved å separere
   Domene fra Infrastruktur. Dette er en forutsetning for høy testbarhet og
   opprettholdelse av Clean Architecture
-KildeHenvisning: ''
+sources: ''
 ---
 
