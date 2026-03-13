@@ -1,8 +1,11 @@
 httpx
-pytest
 uvicorn
 fastAPI
 pydantic
+pydantic-core
+pydantic-settings
+
+pytest
 pytest-cov
 pytest-html
 python-dotenv
