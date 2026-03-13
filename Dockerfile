@@ -14,4 +14,4 @@ COPY . .
 ENV PORT=8080
 ENV PYTHONPATH=/app:/app/fastAPI
 
-CMD ["sh", "-c", "python -m uvicorn fastAPI.app:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["python", "-m", "uvicorn", "fastAPI.app:app", "--host", "0.0.0.0", "--port", "8080"]
