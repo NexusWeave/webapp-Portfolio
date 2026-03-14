@@ -13,15 +13,13 @@
     </section>
 </template>
 <script setup lang="ts">
-
     //  Importing dependencies & types
-    import type { CarouselButton, FigureItem } from '@/types/props';
+    import { fetchCollection } from '#imports';
+    import type {FigureItem } from '@/types/props';
 
-    const path = 'personal_profile';
-    const {data: personal} = await useAsyncData('personal', () => 
-    {
-        return queryCollection(path).all();
-    });
+    const profilePath = 'personalProfile';
+    const profileCache = 'personalProfileCache';
+    const personal = await fetchCollection(profilePath, profileCache);
 
     //  Carousel Data
     const CarouselData: FigureItem[] = 

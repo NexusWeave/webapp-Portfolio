@@ -13,7 +13,6 @@
                 <h2> Attest sitater </h2>
                 <section v-for="(data, i) in sortedReference" :key="i">
                     <article v-if="data.isVisible" class="dev-quote">
-                        
                         <p><q>{{ data.quote }}</q>
                         - </p>
                         <h3>
@@ -80,11 +79,13 @@
     import type { DevCollectionItem, ReferenceCollectionItem } from '@nuxt/content';
 
     //  --- Dev Data Logic
-    const devPath = 'dev';
-    const referencePath = 'reference';
+    const devPath = 'devProfile';
+    const devCache = 'devProfileCache';
+    const dev = await fetchCollection<DevCollectionItem>(devPath, devCache);
 
-    const dev = await fetchCollection<DevCollectionItem>(devPath, devPath);
-    const reference = await fetchCollection<ReferenceCollectionItem>(referencePath, referencePath);
+    const referencePath = 'reference';
+    const referenceCache = 'referenceCache';
+    const reference = await fetchCollection<ReferenceCollectionItem>(referencePath, referenceCache);
 
     const sortedReference = reactive(mapReference(reference));
 
@@ -119,18 +120,9 @@
 
     let timerInterval: ReturnType<typeof setInterval> | null = null;
 
-    onMounted(() => {
-        //  Start the reference timer
-        timerInterval = startTimer(sortedReference);
+    onMounted(() => { timerInterval = startTimer(sortedReference); });
 
-    });
-
-    onUnmounted(() => {
-        //  Clear the timer when component unmounts
-        if (timerInterval) {
-            clearInterval(timerInterval);
-        }
-    });
+    onUnmounted(() => { if (timerInterval) { clearInterval(timerInterval); }});
 
     //  --- Debugging Logic ---
     //console.warn('Reference Data:', sortedReference.value);

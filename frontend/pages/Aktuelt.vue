@@ -1,5 +1,5 @@
 <template>
-    <article>
+    <article class="article-wrapper flex-column">
         <h2> Mine Faglige Logger </h2>
         <section class="blog-section flex-wrap-row">
             <UtilsPagination v-if="totalDevPages > 1"
@@ -8,10 +8,7 @@
                     @update="currentDevPage = $event"
                 />
             <section v-for="(post, index) in mappedDev" :key="index" class="blog-content">
-                <h2>{{ post.title }}</h2>
-                <p><strong>Publisert:</strong> {{ post.date }}</p>
-                <MDC :value="post.ingress" />
-                <NavigationAnchor :data='post.anchor'/>
+                <ArticleHead :article="post" />
             </section>
         </section>
 
@@ -23,29 +20,28 @@
                     @update="currentPersonalPage = $event"
                 />
             <section v-for="(post, index) in mappedPersonal" :key="index" class="blog-content">
-                <h2>{{ post.title }}</h2>
-                <p><strong>Publisert:</strong> {{ post.date }}</p>
-                <MDC :value="post.ingress" />
-                <NavigationAnchor :data='post.anchor'/>
+                <ArticleHead :article="post" />
             </section>
         </section>
     </article>
 </template>
+
 <script setup lang="ts">
+
     import { ref, computed } from 'vue';                        // @ts-ignore
     import { fetchCollection } from '#imports';                 // @ts-ignore
     import { blogPagination } from '@/composables/pagination';  // @ts-ignore
 
-    import type { BlogCollectionItem } from '@nuxt/content';
+    import type { DevPostsCollectionItem } from '@nuxt/content';
 
     //  --- Dev Data Logic
-    const devPath = 'dev_posts';
+    const devPath = 'devPosts';
     const devCache = 'devCache';
-    const rawDev = await fetchCollection<BlogCollectionItem>(devPath, devCache)
+    const rawDev = await fetchCollection<DevPostsCollectionItem>(devPath, devCache)
 
-    const personalPath = 'personal_posts';
+    const personalPath = 'personalPosts';
     const personalCache = 'personalCache';
-    const rawPersonal = await fetchCollection<BlogCollectionItem>(personalPath, personalCache);
+    const rawPersonal = await fetchCollection<DevPostsCollectionItem>(personalPath, personalCache);
 
      //  --- Pagination Logic
     const n = 8;
@@ -55,11 +51,14 @@
     const totalDevPages = computed(() => { if (rawDev.value) return Math.ceil(rawDev.value.length / n); return 0; });
     const totalPersonalPages = computed(() => { if (rawPersonal.value) return Math.ceil(rawPersonal.value.length / n); return 0; });
 
-    const mappedDev = blogPagination(rawDev.value, currentDevPage.value);
-    const mappedPersonal = blogPagination(rawPersonal.value, currentPersonalPage.value);
+    const mappedDev =  computed(() => blogPagination(rawDev.value, currentDevPage.value));
+    const mappedPersonal = computed(() => blogPagination(rawPersonal.value, currentPersonalPage.value));
 
     // Debugging logs
-    console.log(rawDev.value);
-    console.log(rawPersonal.value);
+    //console.log(rawDev.value);
+    //console.log(rawPersonal.value);
+    //console.log(currentDevPage.value);
+    //console.log(mappedDev.value);
+    //console.log(mappedPersonal.value);
     
 </script>
