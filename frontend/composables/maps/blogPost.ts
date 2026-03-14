@@ -4,9 +4,13 @@ import type { DateItem } from '~/types/props';
 
 export const mapBlogData = (data: DevPostsCollectionItem[]) => {
         if (!data) return [];
-
+        data = data.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateB.getTime() - dateA.getTime();
+        });
+        
         return data.map((item) => {
-
             const date:DateItem = {date: item.date};
             const id = item.id.split('/').pop()?.replace('.md', '').toLocaleLowerCase();
             return {
