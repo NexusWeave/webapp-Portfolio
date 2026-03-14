@@ -1,20 +1,14 @@
 <template>
-    <article :class="cls[cls.length - 1]">
+    <article class = 'article-wrapper flex-column'>
        <header>
-           <Header
+           <ArticleHead
                 :article="article"
                 :isNewsPage="isNewsPage"
-                :isArticlePage="isArticlePage"
-                :Cls="[ cls[0], cls[1], cls[2], cls[3]]"/>
+                :isArticlePage="isArticlePage"/>
        </header>
-        <main  v-if="article.section && isArticlePage">
-            <Main
-                :date="article.date"
-                :data="article.section"
-                :Cls="[ cls[4], cls[5], cls[6], cls[7], cls[8], cls[9],
-                cls[10], cls[11], cls[12], cls[13], cls[14]]" />
-
-        </main>
+       <main>
+        <ArticleBody :data="article" />
+       </main>
         <footer v-if="article.conclusion && isArticlePage">
         </footer>        
     </article>
@@ -22,11 +16,8 @@
 
 <script setup>
 
-    import { defineProps, computed } from 'vue';
+    import { computed } from 'vue';
     import { useRoute } from 'vue-router';
-
-    import Main from '$src/components/article/Article-Main.vue';
-    import Header from '$src/components/article/Article-Header.vue';
 
     const props = defineProps(
         {
