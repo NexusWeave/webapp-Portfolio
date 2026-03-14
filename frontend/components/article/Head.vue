@@ -60,6 +60,6 @@
     //console.log("Article Header Component - Anchor :", anchor.value);
     //console.log("Article Header Component - isNewsPage :", isNewsPage.value);
     //console.log("Article Header Component - isArticlePage :", isArticlePage.value);
-    console.log("Article Header Component - Article :", article);
+    //console.log("Article Header Component - Article :", article);
     //console.log("Article Header Component - Article Anchor :", article.anchor);
 </script>
