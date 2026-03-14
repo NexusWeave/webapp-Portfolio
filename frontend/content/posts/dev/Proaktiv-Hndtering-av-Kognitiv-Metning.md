@@ -2,7 +2,7 @@
 date: 2025-11-05T00:00:00.000Z
 tags:
   - dev-journey
-title: Proaktiv Håndtering av Kognitiv Metning.
+title: Investering i langsiktig problemløsningsevne
 ingress: >
   Etter en lang periode med intensivt utviklingsarbeid oppstod det kognitiv
   metning og motstand mot kodebasert problemløsning. For å motvirke redusert
@@ -11,6 +11,7 @@ ingress: >
   strategisk investering i langvarig effektivitet, og loggen dokumenterer
   viktigheten av proaktivt å forvalte kreativ kapasitet for å opprettholde høy
   problemløsningsevne.
+parade: ''
 star: >
   Etter en periode med intensiv koding over et helt år, opplevde jeg en økende
   kode-relatert motstand og et metningspunkt i min kreative og problemløsende
@@ -38,3 +39,13 @@ star: >
 sources: ''
 ---
 
+**Dagensagenda**
+
+* Tok en bevisst pause fra koding for å unngå mental utmattelse og sikre kvalitet i fremtidig arbeid.
+* Prioriterte selvpleie for å opprettholde ytelse over tid.
+* Håndterte forfallende oppgaver som krever mindre hjernekapasitet.
+* ar bevisst på når hodet ble slitent og energien var tom, for å kunne jobbe bedre over tid.
+
+**Energi & Motivasjon** - 3/10
+
+Dagen har vært så fin den kunne bli, men opplevde lav energi.
