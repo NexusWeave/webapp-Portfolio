@@ -2,6 +2,8 @@
 //  --- Import & types logic
 import type { TimelineItem } from '~/types/timeline';
 import type { ReferenceItem } from '~/types/references';
+import type { DateItem } from '~/types/props';
+
 import type { AcademicCollectionItem, ReferenceCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 type CMSArticleCollectionItem = AcademicCollectionItem | AchievementsCollectionItem;
@@ -33,6 +35,22 @@ export function sortbyDate<T extends CMSArticleCollectionItem>(data: T[], sort: 
                 default: return B - A; // Default to descending
             }
         });
+}
+
+export function setDateFormat(data:DateItem) : DateItem
+{
+    const time = new Intl.DateTimeFormat('nb-NO', { hour: '2-digit', minute: '2-digit' });
+    const date = new Intl.DateTimeFormat('nb-NO', { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
+
+    const dateData =
+    {
+        delimiter : 'dot',
+        date: data.date ? date.format(new Date(data.date)) : null,
+        time: data.date ? time.format(new Date(data.date)) : null,
+        text : data.updated ? `Oppdatert` : `Publisert`,
+        updated: data.updated ? date.format(new Date(data.updated)) : null,
+    };
+    return dateData;
 }
 
 export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[]

@@ -150,3 +150,12 @@ export interface PaginationProps
     totalPage?: number;
     cls?: string[];
 }
+
+export interface DateItem
+{
+    time?: string | null;
+    date?: string | null;
+    text?: string;
+    delimiter?: string;
+    updated?: Date | string | null;
+}
