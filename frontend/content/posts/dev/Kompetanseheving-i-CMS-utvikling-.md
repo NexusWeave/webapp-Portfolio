@@ -3,7 +3,7 @@ challanges_model: ''
 date: 2025-09-10T22:00:00.000Z
 tags:
   - dev-journey
-title: Raskere nettsideutvikling med stabilt redaktørpanel
+title: Raskere Nettsideutvikling med Stabilt Redaktørpanel
 ingress: >
   Denne loggen dokumenterer hvordan vi ved å velge et ferdig redaktørpanel (Tina
   CMS) har spart betydelig utviklingstid sammenlignet med å bygge en egen
@@ -56,7 +56,7 @@ star: >
 sources: ''
 ---
 
-Dagens agenda 
+**Dagens agenda**
 
 * Besluttet å bruke et ferdig redaktørpanel for å spare tid og penger.
 * Leste offisiell dokumentasjon for å unngå feilkoding.
@@ -65,6 +65,6 @@ Dagens agenda
 * Sjekket at alt var stabilt og sikkert før ferdigstillelse.
 * Installert og klargjort redaktørpanelet for kunden.
 
-**Energi & Motivasjon** - 10/10
+**Energi & Motivasjon** - **10**/**10**
 
 Dagen har vært så fin den kunne bli. Hodet ble litt sliten løpet av dagen.

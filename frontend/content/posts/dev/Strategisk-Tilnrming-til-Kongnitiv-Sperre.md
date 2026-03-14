@@ -2,29 +2,68 @@
 date: 2025-12-02T00:00:00.000Z
 tags:
   - dev-journey
-title: Fra energimangel til handlingsplan
+title: Investering i Meditasjon & Arbeidsflyt
 ingress: >
-  Denne loggen analyserer nåværende utfordringer  i testfasen, og kartlegger
-  faktorer som hindrer arbeidsflyten. Ved å dokumentere **hvor** og **hvorfor**
-  fremdriften stopper opp, legges grunnlaget for  mer forutsigbare
-  testprosesser.
+  For å sikre at jeg leverer arbeid av kvalitet og unngår dyre feil, har jeg i
+  dag investert i nødvendig restitusjon og nye verktøy for stressmestring. Ved å
+  ta grep før batteriene ble helt flate, har jeg beskyttet meg selv, min bedrift
+  og kunder mot uforutsette stopp og sikret at jeg kan jobbe raskere og mer
+  presist i tiden som kommer. Dette er en investering i stabil fremdrift som
+  sparer både bedriften og kunden for fremtidige kostnader.
 parade: ''
-star: ''
+star: >
+  #### 48-timers venting og Overvåkning
+
+
+  Etter to år med høyt press og full dedikasjon til faget, merker jeg at
+  energien min er veldig lav. Ideene har stoppet opp, både kvaliteten og
+  fremdriften i arbeidet er merkbart redusert, som en konsekvens av at hode
+  trenger hvile.
+
+
+  Oppgaven min var å forstå hvorfor arbeidsflyten ble redusert, og løse dette
+  med å finne en måte for å få tilbake energien og kreativiteten på, slik jeg
+  kunne bli produktiv igjen
+
+
+  * Jeg tok en bevisst beslutning om å koble helt av i 56 timer.
+
+  * Jeg fjernet det indre presset og lot tankene vandre fritt uten om å tvinge
+  de frem.
+
+  * Konkrete tiltakt jeg har valgt for å forebygge dette har jeg besluttet å
+  sette av 10 min 2-3 ganger om dagen for å 
+
+
+  > slippe energien fri og koble ut.
+
+
+
+  Pausen resulterte i en omstart. Energien kom automatisk tilbake og jeg er klar
+  for å ta på meg nye oppgaver. Jeg har nå et konkret verktøy 10-min meditasjon
+  som gjør at jeg kan levere stabilt over tid uten å gå tom. 
+
+
+  Ved at jeg bruker meditasjon som et verktøy, sikrer jeg at jeg leverer stabilt
+  og med kvalitet selv i perioder hvor tempoet er høyt. Jeg forebygger også
+  risikoen for langvarig utbrenthet, som sparer bedriften og kunden for
+  uforutsette forsinkelser og kostnader. En uthvilt utvikler løser ikke bare
+  utfordringene raskere, men utvikleren reduserrer feil marginen for å ta
+  ukorrekte besluttninger.
+
+
+  Min motivasjon og Energi - ⅒
+
+  Dagen har vært så fin den kan bli, men jeg ser at min energi er borte.
 sources: ''
 ---
 
-#### 48-timers venting og Overvåkning
+Dagens agenda
 
-Under arbeidet med testene har jeg gjort meg  bevisst på at jeg er tom for energi, som fører til at ideflyten tidvis stopper opp. Denne hindringen påvirker fremdriften direkte og jeg ønsker å sette av 48-timer på å utforske hvordan disse stoppunktene begrenser arbeidsflyten min i praksis.
-
-Formålet er  å forstå hva som blokkerer fremdriften, for så utarbeide noen konkrete handlingsplaner for å gjennoppta testingen.
-
-#### Passiv Tenking
-
-Jeg brukte tiden på å koble helt av for å lufte hode. Etter to år  med dedikasjon i både faget og andre personlige faktorer, var jeg rett og slett tom for energi. Ved å ta denne pausen og fjerne det indre presset, kom energien automatisk tilbake. Det tok totalt 56-timer før jeg var klar for å jobbe produktivt igjen.
-
-Handlingsplanen for videre
-
-Jeg brukte tiden godt på å la hode hvile og bearbeide sinnstilstanden min. Det ble tydelig at jeg var mentalt utslitt etter to år med mye press. Ved å prioritere roo og la tankene for vandre fritt, fikk jeg jeg etter 56-timer energi nok til å fortsette arbeidet.
-
-For å unngå at jeg bruker opp energien min igjen, har jeg innført et konkret tiltak. Sette av 10 min for å slippe energien frri 2-3 ganger om dagen.
+* Jeg innså at etter to år med hardt arbeid var energien tom og kreativiteten stoppet opp.
+* Jeg Investerte tid på å forstå hvorfor ting gikk saktere, slik at jeg kunne løse utfordringen i stedet for å bare presse på.
+* Jeg tok en bevisst pause på 56 timer for å tømme hodet og fjerne alt indre press.
+* Ved å la tankene vandre fritt, fikk jeg energien tilbake og ble klar for nye arbeidsoppgaver.
+* Jeg har bestemt meg for å bruke 10 minutter med meditasjon 2–3 ganger daglig for å holde energien jevn.
+* Jeg har lagt en plan som reduserer sjansen for feil og sikrer at jeg leverer gode resultater, selv når det er mye å gjøre.
+* Ved å ta grep nå, har jeg spart bedriften og kunden for uforutsette stopp og fremtidige kostnader.

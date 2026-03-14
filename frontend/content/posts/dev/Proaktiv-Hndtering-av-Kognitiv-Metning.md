@@ -2,7 +2,7 @@
 date: 2025-11-05T00:00:00.000Z
 tags:
   - dev-journey
-title: Investering i langsiktig problemløsningsevne
+title: Investering i Langsiktig Problemløsningsevne
 ingress: >
   Etter en lang periode med intensivt utviklingsarbeid oppstod det kognitiv
   metning og motstand mot kodebasert problemløsning. For å motvirke redusert

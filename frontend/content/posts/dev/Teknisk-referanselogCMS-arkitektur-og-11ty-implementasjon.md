@@ -3,7 +3,7 @@ challanges_model: ''
 date: 2025-09-09T22:00:00.000Z
 tags:
   - dev-journey
-title: Investering i undersøkelser og mindre stress
+title: 'Investering i Undersøkelser, Reduserer Stress'
 ingress: >
   I dag har jeg investert tid til å bli kjent med verktøyene for å bygge enkle
   redaktørpanelt som er enkle for kunden å bruke. Ved å tette kunnskapshullene
