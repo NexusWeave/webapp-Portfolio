@@ -27,7 +27,9 @@
             "Log",
             "README",
             "UI",
-            "Makefile"
+            "Makefile",
+            "Composeable",
+            "Map"
         ],
     },
 }
