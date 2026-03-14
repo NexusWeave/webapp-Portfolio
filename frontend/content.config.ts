@@ -62,7 +62,7 @@ export default defineContentConfig({
             source: 'achievements/achievements/*.md', 
         }),
 
-    'dev': defineCollection(
+    'devProfile': defineCollection(
         {
             type: 'page',
             schema: profileCollection,
@@ -76,14 +76,14 @@ export default defineContentConfig({
             source: 'quotes/references/*.md', 
         }),
 
-    'personal_profile': defineCollection(
+    'personalProfile': defineCollection(
                 {
             type: 'page',
             schema: profileCollection,
             source: 'profiles/personal-profiles/*.md', 
         }),
 
-    'dev_posts': defineCollection(
+    'devPosts': defineCollection(
         {
             type: 'page',
             schema: blogCollection,
@@ -91,7 +91,7 @@ export default defineContentConfig({
         }
     ),
 
-    'personal_posts': defineCollection(
+    'personalPosts': defineCollection(
         {
             type: 'page',
             schema: blogCollection,
