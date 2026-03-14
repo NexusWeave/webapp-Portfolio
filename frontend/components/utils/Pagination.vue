@@ -10,13 +10,8 @@
     // --- Importing dependencies & type definitions ---
     import { ref, watch, computed } from 'vue';
 
-    //import type { PaginationProps } from '~/types/props';
-    interface PaginationProps
-{
-    activePage?: number;
-    totalPage?: number;
-    cls?: string[];
-}
+    import type { PaginationProps } from '~/types/props';
+
     //  Props Logic
     const props = withDefaults(defineProps<PaginationProps>(), { activePage: () => 1, totalPage: () => 1 });
     const cls = computed(() => props.cls ?? []);
@@ -42,7 +37,7 @@
     }
 
     watch(() => activePage.value, (newValue) => { emit('update', newValue); });
-    watch(() => props.activePage, (newValue) => { activePage.value = newValue; });
+    watch(() => props.activePage, (newValue) => {activePage.value = newValue; });
 
     // Debug logic
     // console.log('Pagination component initialized with data:', data);  
