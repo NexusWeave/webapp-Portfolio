@@ -12,12 +12,12 @@ export const mapBlogData = (data: DevPostsCollectionItem[]) => {
             return {
                 id: id,
                 date: setDateFormat(date),
-                star: item.star,
-                body: item.body,
+                star: item.star ?? '',
+                body: item.body ?? '',
                 title: item.title,
-                parade: item.parade,
-                ingress: item.ingress,
-                sources: item.sources,
+                parade: item.parade ?? '',
+                ingress: item.ingress ?? '',
+                sources: item.sources ?? '',
                 anchor: 
                 [{
                     href: `aktuelt/artikkel/${id}`, 
