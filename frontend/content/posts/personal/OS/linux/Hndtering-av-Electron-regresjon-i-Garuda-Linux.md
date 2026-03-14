@@ -1,15 +1,15 @@
 ---
 date: 2025-12-16T00:00:00.000Z
-title: Håndtering av Electron-regresjon i Garuda-Linux
+title: Håndtering av Electron-tilbakerulling i Garuda-Linux
 ingress: >
-  Etter en oppdatering av `visual-studio-code-bin` (v.1.107) i Garuda Dr460nized
-  Gaming, oppstod et brudd i brukergrensesnittet der hovedmenyen ble deaktivert.
-  Utfordringen ble diagnostisert som en inkompatibilitet mellom
-  Electron-rammeverket og KDE Plasmas globale menysystem. Gjennom en pragmatisk
-  tilnærming ble en målrettet rollback prioritert fremfor kompleks feilsøking av
-  `window.titleBar`-konfigurasjon. Dette sikret umiddelbar gjenoppretting av
-  arbeidsflyten uten behov for en full system-rollback eller risiko for tap av
-  data.
+  En oppdatering av VS Code  (`visual-studio-code-bin` (`v.1.107`)) i
+  operativsystemet **Garuda** **Dr460nized** **Gaming** gjorde at menyene
+  forsvant fra den globale KDE-menyen. Dette skjedde som en konsekvens av en
+  teknisk kræsj mellom programmet og systemet. For å få alt til å fungere igjen
+  raskt, besluttet jeg med å installere den forrige versjonen av programmet, som
+  var fungerende  i stedet for å bruke tid mye tid på komplisert feilsøking.
+  Dermed ble arbeidsdagen reddet uten risiko for å miste data.
+parade: ''
 star: >
   ### Korrupt Brukergrensesnitt i VS Code
 
@@ -23,59 +23,37 @@ star: >
   skrivebordsmiljøet.
 
 
-  ### Diagnosering og Eliminering av Systemfeil
-
-
-  #### Identifisere årsaken til det korrupte grensesnittet
-
-
   Da denne feilen ble tatt opp idag, ønsket jeg å bringe systemet tilbake til en
   fungerende versjon, siden dette er et arbeidsverktøy for både profesjonell
   koding og hobby koding.
 
+  Jeg skal bekrefte hvor feilen ligger, om det er VS Code-konfigurasjon eller
+  operativsystemet og rulle tilbake til en tidligere versjon for å eliminere
+  feilkilden uten at jeg mister data.
 
-  * Bekrefte hvor feilen ligger, om det er VS Code-konfigurasjon eller
-  operativsystemet.
-
-  * Utføre en sikker "rollback" av pakken til en tidligere versjon for å
-  eliminere feilkilden uten tap av data.
-
-
-  Uten om å vertifisere feilen direkte i  Konsole, skjønte jeg raskt at dette
-  var en applikasjons feil som oppsto i VSCode siden det var den eneste
-  applikasjonen denne feilen kom med.
+  Uten om å vertifisere feilen direkte i  terminalen, skjønte jeg raskt at dette
+  var en feil som hadde oppstått iVSCode siden det var den eneste applikasjonen
+  denne feilen kom med.
 
 
   ### Målrettet Nedgradering ved bruk av kommandoen downgrade
 
 
-  #### Isolering og Diagnose
+  * **Isolering og Diagnose** - Det ble identifisert at feilen lå på pakkenivå
+  og ikke den generelle systemkonfigurasjonen. Feilen hadde kommet en
+  KDE-oppdatering, selv om dette var isolert til applikasjonen. Behovet for å
+  endre pakke versjonen til en tidligere utgave ble prioritert for å
+  gjenopprette arbeidsflyten.
 
+  * **Utførelse & Teknikk** - Før jeg rullet tilbake til en tidligere versjon
+  forsøkte jeg å tvinge VS Code håndtere hovedmenyen, i programmeet. Jeg
+  konkluderte raskt med at det var nødvendig å rulle tilbake, for å være
+  effektiv da instaliseringen av `window.titleBar`, ikke gikk som forventet.
 
-  Det ble identifisert at feilen lå på pakkenivå og ikke den generelle
-  systemkonfigurasjonen. Feilen hadde kommet med oppdateringen, var det isolert
-  til applikasjonen. Behovet for å endre pakke versjonen til en tidligere utgave
-  ble prioritert for å gjenopprette arbeidsflyten.
-
-
-  #### Utførelse & Teknikk
-
-
-  Før rollback ble det forsøkt en lettere teknikk, som å tvinge VS Code håndtere
-  hovedmenyen, internt. Det ble raskt konkludert med at en rollback ville være
-  mindre tidkrevende og pålitelig da instaliseringen av window\.titleBar, enn
-  manuelt lese dokumentasjonen og gjøre en grundigere research.
-
-
-  #### Rollback
-
-
-  Verktøyet downgrade ble benyttet for manuelt å rulle pakken tilbake. Siden
-  dette er et Arch-basert system, ble følgende system kommando brukt sudo
-  downgrade visual-studio-code-bin.
-
-
-  Den tidligere stabile versjonen (v.1.106) som ikke hadde den spesifikke
+  * **Rollback** - Jeg benyttet verktøyet `downgrade` for manuelt å rulle pakken
+  tilbake til tidligere versjon. Siden dette er et Arch-basert system, ble
+  følgende system kommando brukt `sudo downgrade visual-studio-code-bin` til
+  dentidligere stabile versjonen (`v.1.106`) som ikke hadde den spesifikke
   Electron-utfordringen knyttet til de globale menyer i KDE Plasma.
 
 
@@ -85,19 +63,11 @@ star: >
   VS Code fungerer nå feilfritt. Ved å velge en målrettet nedgradering framfor
   en full systemgjenopprettning, ble feilen eliminert isolert fra systemet.
 
-
-  #### Pragmatisme
-
-
   I et aktivt utviklingsmiljø er en rask rollback ofte bedre enn en dyp
   feilsøking hvis målet er å minimere nedetid.
 
-
-  #### Verktøy kunnskap
-
-
-  Denne erfaringen bekrefter at downgrade er et viktig verktøy for å håndtere
-  “bleeding-edge”-regresjoner i linux-baserte systemer.
+  Denne erfaringen bekrefter at  `downgrade` er et verktøy som kan brukes til å
+  rulle tilbake til tidligere versjoner i linux-baserte systemer.
 sources: ''
 ---
 
