@@ -5,11 +5,11 @@
     />
 
     <section :class="[cls[0], {'article-section': !!isNewsPage}]">
-        <section :class="['ingress-metadata']">
+        <section :class="['ingress-content']">
             <h1> {{ article.title }}</h1>
             <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
                 <span v-if="!!article.date" :class="cls[3]">
-                    Publisert: <time datetime="{{article.date.date}}">{{ article.date.date }}</time></span>
+                    Publisert: <b><time datetime="{{article.date.date}}">{{ article.date.date }}</time></b></span>
                 <span v-if="!!article.tags" :class="cls[3]" >
                     <UtilsTags v-for="tag in article.tags" :key="tag.id"
                         :data="tag"
