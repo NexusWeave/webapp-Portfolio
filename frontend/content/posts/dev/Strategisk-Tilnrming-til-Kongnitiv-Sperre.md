@@ -32,16 +32,15 @@ star: >
   de frem.
 
   * Konkrete tiltakt jeg har valgt for å forebygge dette har jeg besluttet å
-  sette av 10 min 2-3 ganger om dagen for å 
+  sette av 10 min 2-3 ganger om dagen for å
 
 
   > slippe energien fri og koble ut.
 
 
-
   Pausen resulterte i en omstart. Energien kom automatisk tilbake og jeg er klar
   for å ta på meg nye oppgaver. Jeg har nå et konkret verktøy 10-min meditasjon
-  som gjør at jeg kan levere stabilt over tid uten å gå tom. 
+  som gjør at jeg kan levere stabilt over tid uten å gå tom.
 
 
   Ved at jeg bruker meditasjon som et verktøy, sikrer jeg at jeg leverer stabilt
@@ -58,7 +57,7 @@ star: >
 sources: ''
 ---
 
-Dagens agenda
+**Dagens agenda**
 
 * Jeg innså at etter to år med hardt arbeid var energien tom og kreativiteten stoppet opp.
 * Jeg Investerte tid på å forstå hvorfor ting gikk saktere, slik at jeg kunne løse utfordringen i stedet for å bare presse på.
@@ -67,3 +66,6 @@ Dagens agenda
 * Jeg har bestemt meg for å bruke 10 minutter med meditasjon 2–3 ganger daglig for å holde energien jevn.
 * Jeg har lagt en plan som reduserer sjansen for feil og sikrer at jeg leverer gode resultater, selv når det er mye å gjøre.
 * Ved å ta grep nå, har jeg spart bedriften og kunden for uforutsette stopp og fremtidige kostnader.
+
+**Energi & Motivasjon - 3**/**10**
+Dagen har vært så fin den kunne bli.

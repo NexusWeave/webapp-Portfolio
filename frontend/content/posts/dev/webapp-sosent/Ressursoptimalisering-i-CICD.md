@@ -2,115 +2,76 @@
 date: 2025-12-23T00:00:00.000Z
 tags:
   - dev-journey
-title: Ressursoptimalisering i CI/CD
+title: Fra manuell rutine til selvgående budsjettvinner CI/CD prossees
 ingress: >
-  Effektivisering av CI/CD-pipelines krever mer enn bare teknisk innsikt; det
-  krever strategisk ressursstyring. Ved implementering av Semantic Release og
-  automatiserte deploy-rutiner i en GitHub-organisasjon, ble det gjennomført en
-  kartlegging av tilgjengelige build-minutter for private repositorier. Ved å
-  analysere multiplikatoreffekten mellom ulike operativsystemer og optimalisere
-  trigger-logikken, ble det etablert en bærekraftig automatiseringsmodell som
-  balanserer profesjonell release-håndtering med økonomiske rammer.
+  Ved å la prossesen fra ferdig kode til publisering, gå av seg selv, har jeg
+  skapt en løsning som sparer både tid og penger. Jeg har valgt et rimlig
+  alternativ som forlenger bygge minutter i Github. Resultatet er et selvgående
+  system som reduserer både kostnader og utviklertid for å utføre manuelle
+  rutine oppgaver.
+parade: ''
 star: >
   ### Github Actions-Kvoter
 
 
-  #### Kartlegging av Automatiserings Kvote i Github
+  Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og
+  bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører
+  rutiner, ved en produksjons klar programvare.I Github har man en fast månedlig
+  kvote på 2000 gratis bygge minutter for både offentlige og private prosjekter.
 
 
-  I forbindelse med implementering av Semantic Release og automatiserte
-  deploy-rutiner, oppstod det et behov for å forstå de tekniske og ønkomiske
-  rammene i GitHub-organisasjonen. For private repositorier er ressursbruken
-  begrenset av en måndelig kvote. For å sikre uavbrutt drift og profesjonell
-  automatisering ble det undersøkt hvor mange “
-  [build-minutter](https://docs.github.com/en/get-started/learning-about-github/githubs-plans#github-free-for-user-accounts)”
-  organisasjoner har til dispensasjon
+  #### Oversikt over Githubs Multiplikator.
 
 
-  #### Begrensninger for Private Repositorier og Ubegrenset for offentlige
-  Repositorier
+  | **Operativsystem** | **Multiplikator** | **Forbruk per minutt** |
+
+  | ------------------ | ----------------- | ---------------------- |
+
+  | Linux              | 1x                | 1 minutt               |
+
+  | Windows            | 2x                | 2 minutt               |
+
+  | macOS              | 10x\*             | 10 minutt              |
 
 
-  Mes offentlige (Open Source) prosjekter ofte har ubegrenset bruk av GitHub
-  Actions, operer private prosjekter under en delt kvote. Utfordringen ble å
-  vurdere om de planlagte automasjoner ville overskride disse rammene.
+  Min oppgave var å løse utfordringen på hvordan vi kunne bruke de
+  byggeminuttene i Github maksimalt, for å ha en rimlig løsning, både for meg
+  selv og kunden, uten om å betale mer enn nødvendig.
 
 
-  * Hver “merge” trigges det en prosess som analyserer git-commits, oppdaterer
-  versjonnummer og generer release notes.
+  * Under undersøkingenen av dokumentasjonen om [Github Action
+  billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions),
+  oppdaget jeg at mac-maskiner i skyen har en multiplier på 10, som vil si at
+  1min med bygging koster 10min av bygge kvoten. 
 
-  * For hver godkjent endring starter en bygg- og push- prosess mot
-  publiseringsverktøyet netlify.
+  * Som tabellen over viser at Linux kun har en kostnad på 1x per minutt,
+  besluttet jeg i å kjøre alle prosessene på Linux. Dette er klart det rimligste
+  alternativet som gir mest verdi for pengene.
 
-
-  #### Operativsystemets betydning
-
-
-  Det ble oppdaget at Github har en multiplikasjonsfaktor, der at bruk av
-  forksjellige operativsystemer som (macOS/ Windows og Linux) i arbeidsflyten
-  påvirker hvordan minuttene forbrukes. Formelen som brukes er Byggetid x
-  Multiplikator = Forbrukteminutter
-
-
-  | Operativsystem | Multiplikator | Forbruk per minutt |
-
-  | -------------- | ------------- | ------------------ |
-
-  | Linux          | 1x            | 1 minutt           |
-
-  | Windows        | 2x            | 2 minutt           |
-
-  | macOS          | 10x\*         | 10 minutt          |
+  * Istedet for at maskinen starter opp hver gang det skjer en liten endring,
+  satte jeg opp systemet til å kun kjøre når koden blir sammenslått til
+  hovedprosjektet. Dette sparer store mengder med tid, da det er ofte behov for
+  mange endringen løpet av et prosjekt.
 
 
-  I standard Github-oppsett er multiplikatoren for macOS ofte så høyt som 10x
-  for enkelte planer. Dette gjør valget av “runner til en økonomisk beslutning”
-
-
-  #### Strategiske valg for Ressursbruk
-
-
-  ##### Valg av Runtime
-
-
-  Det ble valgt å kjøre samtlige workflows på Linux-basert miljø som
-  ubuntu-latest. Siden multiplikatoren er 1x, får organisasjonen maksimalt
-  utbytte av kvoten sammenlignet med Windows eller macOS. Dette samsvarer også
-  med det daglige utvikler miljøet som er Garuda Linux, som sikrer en konsistens
-  mellom lokal testing og sky-bygging.
-
-
-  ##### Trigger-logikk
-
-
-  For å unngå unødvendig bruk av build-minutter, ble arbeidsflyten for Semantic
-  Release konfiguert til å trigges ved “merges” til main - branchen. Dette
-  sikrer at organisasjonen kun forbruker ressurser når det foreligger en
-  vertifisert endring som skal ut i produksjon.
-
-
-  ##### Kostnadseffektiv Automatiseringsmodell
-
-
-  Dokumentasjonen avklarte at GitHub-organisasjoner har en kvote på [2000
-  build-minutes](https://docs.github.com/en/get-started/learning-about-github/githubs-plans#github-free-for-user-accounts)
-  per måned for private repositorier.
-
-
-  Det har blitt oppnådd både en kostnadseffektiv og en optimalisert
-  Release-flyt, med de valgte optimaliseringene.
-
-
-  ##### Evaulering
-
-
-  Dette har vist at CI/CD ikke bare handler om teknisk oppsett, men også om
-  Resource Management. Som utvikler er det mitt ansvar å designe løsninger som
-  ikke bare følger de tekniske standardene, men også løsninger som er
-  kostnadseffektive for organisasjonen. 
-
-  Å forstå multiplikatoreffekten i sky-tjenester er en god ferdighet, når man
-  flytter prosjekter fra utviklings miljø til produksjons miljø
+  I stedet for å gjøre alt dette manuelle arbeidet hver gang en ny versjon, lgis
+  ut, har vi laget en prosess som kjører av seg selv på en rask og rimlig måte
+  og jeg sikrerat kvoten på 2 000 bygge minutter varer så lenge som mulig. Dette
+  reduserer unødvendig bruk av ressurser og at jeg oppretter meg full kontroll
+  på utgiftene knyttet til sky-tjenesten. Dette det vi kaller for et CI/CD
+  system som er strategi for å redusere utviklingstid og holder seg til
+  budskjetter.
 sources: ''
 ---
 
+**Dagens agenda**
+
+* Gjennomgang av GitHubs kvote på 2000 bygge-minutter og hvordan vi unngår å gå tom.
+* Avsløring av "10x-fellen" – hvorfor vi velger Linux fremfor Mac for å få 10 ganger mer arbeid for pengene.
+* Hvordan vi sparer tid ved å la maskinene hvile helt til koden er klar for produksjon.
+* Erstatte manuelt rutinearbeid med en selvgående prosess (CI/CD) for versjonering og nettsidebygging.
+* Oppsummering av hvordan vi kutter utviklingstid og holder oss strengt til budsjettet.
+
+Motivasjon og energi - 10 / 10
+
+Dagen har vært så fin, som det har vært mulig

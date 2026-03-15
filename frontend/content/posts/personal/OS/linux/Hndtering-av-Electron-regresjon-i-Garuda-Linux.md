@@ -36,9 +36,6 @@ star: >
   denne feilen kom med.
 
 
-  ### Målrettet Nedgradering ved bruk av kommandoen downgrade
-
-
   * **Isolering og Diagnose** - Det ble identifisert at feilen lå på pakkenivå
   og ikke den generelle systemkonfigurasjonen. Feilen hadde kommet en
   KDE-oppdatering, selv om dette var isolert til applikasjonen. Behovet for å
@@ -57,9 +54,6 @@ star: >
   Electron-utfordringen knyttet til de globale menyer i KDE Plasma.
 
 
-  ### Status for  VS Code
-
-
   VS Code fungerer nå feilfritt. Ved å velge en målrettet nedgradering framfor
   en full systemgjenopprettning, ble feilen eliminert isolert fra systemet.
 
@@ -71,3 +65,12 @@ star: >
 sources: ''
 ---
 
+**Dagens Agenda**
+
+* Identifiserte en feil i hovedverktøyet for programmet (CodeVS) som hindret alt videre arbeid. For å raskt avklare om utfordringen lå i mitt system eller i programvaren, for å ta en besluttning på hvilket tiltak jeg kan gjøre, og benytte tiden riktig.
+* Vurderte tidsbruk mellom reparasjon og tilbakestilling. Valgte å rulle tilbake til en tidligere fungerende versjon. Da valgte jeg den raskeste veien tilbake til normal produksjon og unngå unødvendig nedetid.
+* Tilbakestilte programvaren til en stabil utgave uten tap av data. For å sikre at arbeidet kunne fortsette umiddelbart.
+* Verifiserte at alt utstyr nå fungerer som normalt før arbeidet ble gjenopptatt. For å garantere at dagens leveranser ikke blir forsinket av avbrudd.
+
+**Energi & Motivasjon - 10**/**10**
+Dagen har vært så fin den kunne bli.

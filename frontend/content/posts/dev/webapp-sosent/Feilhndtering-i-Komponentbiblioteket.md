@@ -2,103 +2,59 @@
 date: 2025-12-29T00:00:00.000Z
 tags:
   - dev-journey
-title: Feilhåndtering i Komponentbiblioteket
+title: Optimalisering for en Tyggere Nettside og Økt Pålitelighet
 ingress: >
-  Under kvalitetskontroll ble det avdekket at ukorrekt bruk av
-  `:download`-attributtet førte til en utforsigbar funksjonalitet for alle
-  lenker. Ved å sentralisere logikken for sidebytte og innføre strengere sjekker
-  for bilde-objekter som kan være `null`, har den uforutsigbare oppføselen blitt
-  eliminert og økt komponentense tekniske integeritet.
+  Ved å rydde opp i usynlige logikkfeil har jeg gjort nettsiden mer robust og
+  brukervennlig. Jeg har fjernet ismåfeil som forstyrret kundene, og sørget for
+  at systemet nå tåler manglende data uten å krasje. Dette betyr i praksis en
+  mer profesjonell digital bilde av kunden, færre kundeklager og betydelige
+  besparelser i fremtidige vedlikeholdskostnader fordi jeg nå slipper unødvendig
+  raske fiks.
+parade: ''
 star: >
-  ### Boolean-attributter og Null-safety
+  ## Utilsiktet nedlastning og komponent-krasj
 
 
-  #### Utilsiktet nedlastning og komponent-krasj
+  Det ble oppdaget to ukorrektheter i prosjektets komponent-bibliotek som skapte
+  en uventet brukeropplevelse. Feilene førte til at nettsiden oppførte seg
+  ustabil og i verste fall kunne krasje for brukeren.
 
 
-  Det ble oppdaget to ukorrektheter i prosjektets komponent-bibliotek
+  Oppgaven min var å kartlegge de logiske ukorrekthetene og sørge for at
+  komponentene ble pålitelige . Målet var å sikre systemet forsto forskjellen på
+  en vanlig leke og en nedlastning, samt sørge for at nettsiden ikke krasjer
+  selv om bildeinformasjonen, midlertidig manglet.
 
 
-  ##### Anker-komponentet
+  * Jeg endret logikken hvordan systemet kommuniserer med nettleseren. Ved å
+  bytte ut "sant/usant"-verdier til en logikk som fjerner kommunikasjonen helt
+  når den ikke trengs, stoppet jeg de uønskede effekten av nedlastningsvarslene.
+
+  * Jeg la til logikk for en sjekk som spør systemet om bilde er tilgjenglig i
+  konteksten, hvis svaret er usant, så hopper systemet elegant over bilde-delen
+  i stedet for å krasje hele siden.
+
+  * Jeg ryddet opp i logikken for hvordan data blir levert til komponentene for
+  å redusere feil marginen og sikrer at dataen som brukes er pålitelig og
+  forutsigbar.
 
 
-  Attributet `:download` ble aktivert for smatlige lenker, uavhengig om lenken
-  pekte til en fil som skulle lastes ned eller ikke.  Det ble også oppdaget en
-  ukorrekthet i bilde data-logikken som førte til en ukorrekt melding der
-  systemet forventet at bilde-logikken skulle alltid være et objekt, i tilfeller
-  der det ikke ble lagt inn data. ble dette levert som `null`
-
-
-  #### Logiske Brister i Komponenten
-
-
-  Det ble identifisert utfordringer med HTML-spesifikasjonen for
-  Boolean-attributer, Manglende Null-sjekk for Bilde Objektet.
-
-
-  ##### HTML-spesifikasjonen for Boolean-attributer
-
-
-  I HTML fungerer :download attributtet om det er tilstede vil nettleseren tolke
-  det som at nedlastning er aktivert. Ved å sende en Boolean verdi direkte, ble
-  attributtet injisert i DOM-en på en måte som utløste nedlastningsdialogen for
-  alle anker-tagger.
-
-
-  ```javascript
-
-  // Dette vil fortelle DOM-et at lenken er nedlastbar, som en konsekvens av at
-
-  // erNedlastning er alltid noe
-
-  :download="erNedlastning ? true : false"
-
-  ```
-
-
-  ##### Manglende Null-sjekk for objekter
-
-
-  variabel objektet for bilder forårsaket en krasj som en konsekvens av at
-  komponentet forsøkte å aksessere eganskaper på et objekt som ikke eksisterte.
-  Det var en ukorrekthet mellom forventet data og faktiske data, dette bryter
-  med prinsippene for type-sikkerhet
-
-
-  #### Korrigering av logikk og datahåndtering
-
-
-  ##### Anker-elementet
-
-
-  Logikken for anker-elementet ble endret slik at :download-attributet kun
-  renres dersom erNedlastning er sann 
-
-
-  ```javascript
-
-  // Korrekt måte å håndtere :download attributtet
-
-  :download="erNedlastning ? '' : null"
-
-  ```
-
-
-  ##### Bilde objektet
-
-
-  Det ble implementert en sjekk om det er noe i variabelen før at bilde
-  komponenten skal rendres.
-
-
-  #### Evaulering og Refleksjon
-
-
-  Dette viser viktigheten av å forstå hvordan JavaScript håndterer logikk og
-  hvordan HTML tolker attributter i DOM-et. Ved å innføre en sjekk for
-  null-verdir har det blitt skapt et mer robust komponent som tåler manglende
-  data uten å avbryte applikasjonens kjøring. Det bidrar til en mer forutsigbar
-  brukeropplevelse og en høyere teknisk standard i komponentbiblioteket.
+  Jeg har skapt et mer pålitelig komponentbibliotek som tåller uforutsette
+  datafeil uten at det påvirker kunden. Ved å fjerne uønskede nedlastninger og
+  hindre krasj, har jeg økt kvaliteten på produktet. Dette reduserer antall
+  feilmeldinger fra kunder og sparer tidkrevente raske fiks i fremtiden.
+  Systemet fremstår nå som mer forutsigbart, profesjonelt og pålitelig.
 sources: ''
 ---
 
+**Dagens agenda**
+
+* Stoppe uønskede nedlastningsvarsler som forstyrrer kundene.
+* Innføring av "smart-sjekker" som sørger for at nettsiden forblir oppe, selv når data mangler.
+* Gjennom gang av hvordan nettsiden er mer påliteleig under panseret.
+* Øke datakvaliteten, for å spare kostbar feilsøking og raske fiks i fremtiden.
+* Oppsummere hvordan en forutsigbar nettside øker tilliten hos sluttbrukeren.
+
+**Motivasjon & Energi** - **10**/**10**
+
+Dagen har vært så fin den kunne bli.
