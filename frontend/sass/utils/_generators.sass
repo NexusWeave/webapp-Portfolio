@@ -7,7 +7,6 @@
 @use '../mappings/flexbox' as flexbox-mapping
 
 @mixin tag-generator()
-
     @each $category, $maps in tag-map.$tags
         @each $tag, $props in $maps
             $icon: null//map.get($props, icon)
@@ -46,7 +45,6 @@
         @error '"#{$name}" not found in flexbox mapping.'
 
 @mixin tech-generator($boolean : false, $element: null)
-
     @each $category, $maps in tech-map.$tech-languages
         @each $tech, $props in $maps
 
