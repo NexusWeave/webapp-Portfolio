@@ -3,42 +3,32 @@
        <header>
            <ArticleHead
                 :article="article"
-                :isNewsPage="isNewsPage"
-                :isArticlePage="isArticlePage"/>
+                :isNewsPage="isPage"
+                :isArticlePage="isPage"/>
        </header>
-       <main>
+       <main v-if="isPage">
         <ArticleBody :data="article" />
        </main>
-        <footer v-if="article.conclusion && isArticlePage">
+        <footer v-if="article.conclusion && isPage">
         </footer>        
     </article>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 
     import { computed } from 'vue';
     import { useRoute } from 'vue-router';
 
-    const props = defineProps(
-        {
-        data: {
-            type: Object || Array,
-            required: true
-        },
-        Cls: {
-            type: Array,
-            required: false
-        },
-    });
+    interface ArticlePageProps { data: any; }
 
-    const article = props.data;
-    const cls = props.Cls ?? null;
+    const props = defineProps<ArticlePageProps>();
+    const article = computed(() => props.data);
 
     const route = useRoute();
-    const isPage = computed(() => {return route.name});
+    const isPage = computed(() => {return route.name?.toString().startsWith('aktuelt-artikkel')});
 
-    const isNewsPage =  isPage.value === 'news' ? true : false;
-    const isArticlePage = isPage.value === 'article' ? true : false;
-
+    //  --- Debugging logic
+    //console.log("Articles Component - Article Data :", route.name);
+    //console.log("Articles Component - isPage :", isPage.value);
     //console.log("Articles Component :", isPage.value, article, isNewsPage, isArticlePage), article.conclusion;
 </script>
