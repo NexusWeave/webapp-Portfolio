@@ -1,5 +1,4 @@
 import type { Collection } from "tinacms";
-import { tagsOptions } from "../../utils/tagStack";
 
 export const blogCollection: Collection =
     {
@@ -14,13 +13,6 @@ export const blogCollection: Collection =
             required: true,
             type: "datetime",
             ui: { dateFormat: 'DD-MM-YY'}
-        },
-        {
-            list: true,
-            name: "tags",
-            label: "Tags",
-            type: "string",
-            options: tagsOptions
         },
         {
             name: "title",
