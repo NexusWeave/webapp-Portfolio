@@ -1,5 +1,5 @@
 <template>
-<ArticlePage :data="article" />
+<ArticlePage :data="article" :isPage="true" />
 </template>
 
 <script lang="ts" setup>
@@ -12,11 +12,9 @@
     import type { DevPostsCollectionItem } from '@nuxt/content';
     
 
-     //  --- Article Logic
-    
+     //  --- Route & slug logic
     const route = useRoute();
     const slug = route.params.slug;
-    console.error("Slug from route: ", slug);
 
         //  --- Dev Data Logic
     const devPath = 'devPosts';
@@ -29,15 +27,20 @@
     
     const article = computed(() => 
     {
-        const dev = mapBlogData(rawDev.value)?.filter(article => String(article.id) === String(slug));
-        const personal = mapBlogData(rawPersonal.value)?.filter(article => String(article.id) === String(slug));
-        
-        if (dev && dev.length > 0) return dev[0];
-        if (personal && personal.length > 0) return personal[0];
+        const currentSlug = String(slug);
+
+        const findBlog = (collection: DevPostsCollectionItem[] | undefined) => {
+            if (!collection) return null;
+            const mapped = mapBlogData(collection);
+            return mapped?.find(blog => String(blog.path) === currentSlug) || null;
+        };
+
+        return findBlog(rawDev.value) ?? findBlog(rawPersonal.value);
+
     });
 
     //  --- Debug Logic
     //console.log("Articles in page: ", article.value);
     //console.log("Article Page loaded with article: ", article.value?.ingress);
-    console.error("Slug from route: ", slug);
+    //console.error("Slug from route: ", slug);
 </script>
