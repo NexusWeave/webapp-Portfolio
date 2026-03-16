@@ -1,7 +1,7 @@
 const python =
 [
     "FLASK.PY", "DJANGO.PY", "PY-CORD.PY", "PANDAS.PY", "NUMPY.PY",
-    "MATPLOTLIB.PY",
+    "MATPLOTLIB.PY", "REFLEX.py", "FASTAPI.PY"
 ]
 
 const cs = 
