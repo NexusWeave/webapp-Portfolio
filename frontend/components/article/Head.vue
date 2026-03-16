@@ -4,18 +4,16 @@
         :cls="['orange-btn']"
     />
 
-    <section :class="[cls[0], {'article-section': !!isNewsPage}]">
-        <section :class="['ingress-content']">
+    <section :class="[cls[0], {'article-section': !!isArticlePage}]">
+        <section :class="[{'blog-header': !isArticlePage}, {'ingress-header': isArticlePage}]">
             <h1> {{ article.title }}</h1>
             <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
                 <span v-if="!!article.date" :class="cls[3]">
-                    Publisert: <b><time datetime="{{article.date.date}}">{{ article.date.date }}</time></b></span>
-                <span v-if="!!article.tags" :class="cls[3]" >
-                    <UtilsTags v-for="tag in article.tags" :key="tag.id"
+                    Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
+                    <UtilsTags v-for="(tag) in article.tags"
                         :data="tag"
-                        :cls="[tag.cls]"
                     />
-                </span>
+
             </p>
             <MDC :value="article.ingress" class="ingress-content" />
             <NavigationNavMenu v-if="!isArticlePage && !!article.anchor" toggle="router"
@@ -36,25 +34,12 @@
     import type { ButtonItem } from '@/types/navigation';
 
     //  --- Props logic
-    const props = withDefaults(defineProps<HeaderProps>(), {
-        cls: () => ['flex-column-align-items-center'],
-        isArticlePage: () => false
-    });
+    const props = withDefaults(defineProps<HeaderProps>(), { cls: () => ['flex-column-align-items-center'], isArticlePage: () => false });
     
     const cls = props.cls;
-    const article = props.article;
-    const isNewsPage = computed(() => !props.isArticlePage);
+    const article = computed(() => props.article);
     const isArticlePage = computed(() => props.isArticlePage);
-    
-
-    const anchor = computed<ButtonItem>(() => 
-        {
-            if (isArticlePage.value)
-            {
-                return { label: 'Gå tilbake', type: 'button', action: () => { window.history.back() }}
-            };
-            return {}
-        });
+    const anchor = computed<ButtonItem>(() => { if (isArticlePage.value) return { label: 'Gå tilbake', type: 'button', action: () => { window.history.back() }}; return {} });
 
     //  --- Debugging logic
     //console.log("Article Header Component - Anchor :", anchor.value);
