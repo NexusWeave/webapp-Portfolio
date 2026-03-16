@@ -2,9 +2,6 @@
 @use 'sass:list' as list
 
 @use '../colors/colors' as color
-@use '../mappings/tech-icons' as tech-map
-@use '../mappings/icons' as icon-map
-@use '../mappings/flexbox' as flexbox-mapping
 @use '../mappings/devices-breakpoints' as Devices
 
 
@@ -106,53 +103,6 @@
 
     transition: $property $duration $timing-function $delay $behavior
 
-@mixin flexbox-generator($name)
-
-    $props: map.get(flexbox-mapping.$flexbox, $name)
-
-    @if $props
-        @each $property, $value in $props
-            #{$property}: $value
-    @else
-        @error '"#{$name}" not found in flexbox mapping.'
-
-@mixin icon-generator()
-    @each $category, $maps in icon-map.$icons
-        @each $icon, $props in $maps
-            .#{$icon}
-                &:before
-                    content: map.get($props, icon)
-
-                color: map.get($props, icon-color)
-
-@mixin tech-generator($boolean : false, $element: null)
-
-    @each $category, $maps in tech-map.$tech-languages
-        @each $tech, $props in $maps
-
-            $icon: map.get($props, icon)
-            $color-map: map.get($props, color)
-            $hover-color: map.get($props, hover)
-            
-
-            @if $boolean == true
-                .#{$tech}
-                    &:before
-                        content: $icon
-                    color: $color-map
-
-            @else if $boolean == false and $element == 'progress'
-                progress.#{$tech}
-
-                    &::-webkit-progress-value
-                        @include background-style($bg-color: $color-map, $color:$color-map)
-
-            @else
-                .#{$tech}
-                    @include background-style($bg-color: $color-map, $color:$color-map)
-                    //background-color: $color-map
-                @warn 'Default class generated for .#{$tech} with color only. To include icon, set $boolean to true. To target progress element, set $element to "progress".'
-
 @mixin input-styles($background-color)
     input[type="range"]
         &::-webkit-slider-runnable-track,
@@ -172,7 +122,6 @@
             background: $background-color
 
         inline-size: 100%
-
 
 @mixin circle-border()
     block-size: 1em
