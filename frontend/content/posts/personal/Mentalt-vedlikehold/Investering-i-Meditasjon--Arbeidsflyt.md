@@ -1,7 +1,5 @@
 ---
 date: 2025-12-02T00:00:00.000Z
-tags:
-  - dev-journey
 title: Investering i Meditasjon & Arbeidsflyt
 ingress: >
   For å sikre at jeg leverer arbeid av kvalitet og unngår dyre feil, har jeg i
@@ -49,11 +47,6 @@ star: >
   uforutsette forsinkelser og kostnader. En uthvilt utvikler løser ikke bare
   utfordringene raskere, men utvikleren reduserrer feil marginen for å ta
   ukorrekte besluttninger.
-
-
-  Min motivasjon og Energi - ⅒
-
-  Dagen har vært så fin den kan bli, men jeg ser at min energi er borte.
 sources: ''
 ---
 
@@ -67,5 +60,5 @@ sources: ''
 * Jeg har lagt en plan som reduserer sjansen for feil og sikrer at jeg leverer gode resultater, selv når det er mye å gjøre.
 * Ved å ta grep nå, har jeg spart bedriften og kunden for uforutsette stopp og fremtidige kostnader.
 
-**Energi & Motivasjon - 3**/**10**
-Dagen har vært så fin den kunne bli.
+**Energi & Motivasjon - 1** / **10**
+Dagen har vært så fin den kan bli, men jeg ser at energien min er borte.
