@@ -31,8 +31,9 @@ body
     h1, h2, h3, h4, h5, h6
         text-align: center
         margin: 0.5em auto
-    @include mix.font-style('Nunito')
+
     @include mix.text-wrap-safe()
+    @include mix.font-style('Nunito')
     @include mix.background-style(color.$off-white, color.$dark-grey)
 
 header, main

@@ -129,3 +129,12 @@
     border-radius: 50%
     display: inline-block
     margin-inline-end: .5em
+
+@mixin text-wrap-safe()
+
+    p, h1, h2, h3, h4, h5, h6, figcaption, a, li
+        hyphens: auto
+        min-inline-size: 0
+        word-wrap: anywhere
+        white-space: pre-wrap
+        overflow-wrap: anywhere
