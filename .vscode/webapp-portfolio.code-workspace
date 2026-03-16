@@ -29,7 +29,8 @@
             "UI",
             "Makefile",
             "Composeable",
-            "Map"
+            "Map",
+            "CMS"
         ],
     },
 }
