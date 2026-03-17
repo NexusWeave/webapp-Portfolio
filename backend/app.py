@@ -52,7 +52,9 @@ PATH = f"/api/{VERSION}"
 def read_root():
     return {"message": "END POINT NOT FOUND !"}
 
-#   @app.get("/api/v2/blogs/heavy/", response_model=Heavy, tags=["exercise", "blogs"])
+@app.get(f"{PATH}/blogs/heavy/", tags=["exercise", "blogs"])
+async def get_heavy_data() ->None:
+    pass
 
 @app.get(f"{PATH}/announcement/today", response_model=AnnouncementModel, tags=["Announcements"], summary="Get Today's Announcement", description="Fetches today's announcement based on predefined holidays and special occasions.")
 async def get_todays_announcement() -> Dict[str, int | datetime | str]:
@@ -93,8 +95,11 @@ async def health_check() -> Dict[str, str | bool]:
         "EndpointsAvailable": "4",
         "ApiName": ENVIRONMENT.API_NAME,
         "version" : ENVIRONMENT.API_VERSION,
-        "status": "OK", "message": "API is healthy and running."
+        "status": "OK", "message": "API is healthy and running.",
         }
+
+    dictionary["github_api"] = "Responsive" if await check_github_api() else "Unresponsive"
+    
     return dictionary
 
 @app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
@@ -114,6 +119,32 @@ async def handle_repositories(request: Request) -> Dict[str, str]:
         LOG.error(f"fetch_repositories_endpoint : failed with error\n {e}")
         if ENVIRONMENT.ENVIRONMENT == 'development': return {"code": "500","message": f"{e}"}
         else : return {"code": "400","message": f"Endpoint was not found"}
+
+async def check_github_api() -> bool:
+    """ Checks the availability of the GitHub API. """
+    from lib.services.github_api import GithubAPI
+
+    URL = ENVIRONMENT.GITHUB_REST
+    TOKEN = ENVIRONMENT.GITHUB_TOKEN
+
+    try:
+        if not URL or not TOKEN:
+            raise ValueError("GITHUB_REST and GITHUB_TOKEN must be set in the environment variables.")
+    
+    except ValueError as e:
+        LOG.error(f"Error initializing GithubAPI: {e.__class__.__name__} - {str(e)}")
+        return False
+    
+    github = GithubAPI(URL=URL, KEY=TOKEN)
+    PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PER_PAGE}"
+
+    try:
+        await github.fetch_data(endpoint=PERSONAL_ENDPOINT)
+        return True
+    
+    except Exception as e:
+        LOG.error(f"GitHub API check failed: {e.__class__.__name__} - {str(e)}, {URL}{PERSONAL_ENDPOINT}")
+        return False
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
