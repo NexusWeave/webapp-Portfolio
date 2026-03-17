@@ -36,24 +36,20 @@ class AsyncAPIClientConfig(WebAPIModel):
         start = perf_counter()
 
         path: str = urljoin(self.API_URL,endpoint)
-        logger.info(f"Attempting to fetch data from {path}")
 
-        try: #   Requesting data from the API
-
+        try:
             req: httpx.Response = await self.client.get(url = path, timeout=30, headers=head)
 
-            if req.status_code == 200:
-                logger.info(f"Succsess : Recieved request code :{req.status_code} Time elapsed: {perf_counter()-start}")
-                return req.json()
+            match req.status_code:
+                case 200: return req.json()
+                case 404: raise HTTPError('Resource not found')
+                case 408 | 504: raise TimeOutError(req.status_code, None)
+                case 401 | 403: raise ConnectionError('Unauthorized Access')
+                case _: raise RequestError(f"Unexpected status code: {req.status_code}")
 
-            else:   #   Raise exceptions based on status codes
-                if req.status_code in self.notFound: raise HTTPError('Resource not found')
-                elif req.status_code in self.timeout: raise TimeOutError(req.status_code, None)
-                elif req.status_code in self.unauthorized: raise ConnectionError('Unauthorized Access')
-                else: raise RequestError(f"Unexpected status code: {req.status_code}")
 
         except (HTTPError, ConnectionError, TimeoutError, RequestError) as e: 
-            logger.error(f"Request was not successful.\n Error: {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}")
+            logger.warn(f"Request was not successful.\n {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}\n")
             raise e
 
     async def calculate_n(self, endpoint: str, header: Dict[str, str]):
