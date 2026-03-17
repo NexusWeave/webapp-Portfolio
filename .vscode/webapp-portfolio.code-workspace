@@ -30,7 +30,10 @@
             "Makefile",
             "Composeable",
             "Map",
-            "CMS"
+            "CMS",
+            "HealthCheck",
+            "Model",
+            "Github"
         ],
     },
 }
