@@ -26,6 +26,11 @@ class RepositoryModel(BASE):
     last_update = Column(DateTime(timezone = True), nullable = True)
     created_at = Column(DateTime(timezone = True), nullable = False)
 
+    is_backend = Column(Boolean, default = 0, nullable = False)
+    is_frontend = Column(Boolean, default = 0, nullable = False)
+    is_fullstack = Column(Boolean, default = 0, nullable = False)
+    is_collaborator = Column(Boolean, default = 0, nullable = False)
+
     lang_assosiations = relationship("LanguageAssosiationModel", back_populates = "repository", cascade = "all, delete-orphan")
 
 class LanguageAssosiationModel(BASE):
