@@ -2,7 +2,7 @@
 tags:
   - dev-journey
 date: 2025-11-03T00:00:00.000Z
-title: Bærekraftig Stihåndtering etter kritisk API-krasj
+title: Gjenoppretting av intranett og sikring av universell systemtilgang
 ingress: |
   Jeg reddet bedriftens intranett etter at en automatisk AI-flytting skapte full stans i arbeidet. På kun fire timer identifiserte jeg feilene, innførte matematiske uttrykk som sikrer at systemet nå fungerer for alle datasystemer, og fjernet risikoen for fremtidige krasj. Ved å rydde opp i den ustabile koden har jeg spart bedriften for store forsinkelser og sørget for at alle får gjort jobben sin uten kostbare avbrudd.
 parade: ''
