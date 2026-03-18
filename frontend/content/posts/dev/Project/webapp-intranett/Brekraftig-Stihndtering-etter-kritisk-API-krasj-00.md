@@ -28,6 +28,6 @@ sources: ''
 * Innledet matematiske uttrykk: Erstattet den ustabile koden med en universell løsning som automatisk finner riktig sti til filer, uavhengig av hvilken datasystem utvikleren bruker.
 * Ryddet opp i logikken for dokumenthåndtering for å sikre at systemet nå er pålitelig og feilfritt. Ved å fjerne svakhetene har jeg hindret fremtidige krasj og sørget for at utviklingsteamet kan jobbe videre uten kostbare forsinkelser.
 
-Motivasjon og Energi - 10 / 10
+**Motivasjon og Energi - 10 / 10**
 
 Dagen var så fin den kunne bli !
