@@ -1,5 +1,5 @@
 <template>
-    <section class="flex-wrap-row-justify-space-evenly">
+    <section class="flex-wrap-row-justify-space-around">
         <section class="dev-bar">
             <MediaFigure
                 :data="{
@@ -53,32 +53,39 @@
         </section>
 
         <section class="flex-column-justify-space-evenly">
+            <article class="article-wrapper flex-column">
+                <h2> Logger fra mine prosjekter </h2>
+                <section class="blog-section flex-wrap-row-align-items-center-justify-space-between">
+                    <NavigationButton v-if="currentPage > 1" :data="PageButtons[0]"/>
+                    <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
+                        <ArticleHead :article="post" />
+                    </section>
+                    <NavigationButton v-if="currentPage < totalPages" :data="PageButtons[1]"/>
+                </section>
+            </article>
             <article v-for="(data, i) in dev" :key="i" class="bio">
                 <h3 v-if="i === 1">{{ data.title }}</h3>
-                <ContentRenderer v-if="i === 1" :value="data" />
-            </article>
-
-            <article v-for="(data, i) in dev" :key="i" class="bio">
-                <h3 v-if="i !== 1">{{ data.title }}</h3>
-                <ContentRenderer v-if="i !== 1" :value="data"/>
+                <span>Sist oppdatert : <time :datetime="new Date(data.meta.date).toISOString()">{{ new Date(data.meta.date).toDateString() }}</time></span>
+                <ContentRenderer :value="data" class="bio-content"/>
+                <MDC :value="data.meta.strength" class="bio-content"></MDC>
+                <MDC :value="data.meta.agile" class="bio-content"></MDC>
             </article>
         </section>
-
-    
     </section>
-    
 </template>
 
 <script setup lang="ts">
 
     //  --- Import & types logic
-    import { onMounted, onUnmounted } from '#imports';
+    import { ref, computed } from 'vue';                        // @ts-ignore
     import { startTimer } from '~/utils/utils';
-    import { fetchCollection } from '#imports';
-    
-    import type { DevCollectionItem, ReferenceCollectionItem } from '@nuxt/content';
+    import { onMounted, onUnmounted, fetchCollection } from '#imports';
+    import { blogPagination } from '@/composables/pagination';  // @ts-ignore
 
-    //  --- Dev Data Logic
+    import type { DevCollectionItem, DevPostsCollectionItem,ReferenceCollectionItem } from '@nuxt/content';
+
+
+    //  --- Conent logic
     const devPath = 'devProfile';
     const devCache = 'devProfileCache';
     const dev = await fetchCollection<DevCollectionItem>(devPath, devCache);
@@ -86,8 +93,21 @@
     const referencePath = 'reference';
     const referenceCache = 'referenceCache';
     const reference = await fetchCollection<ReferenceCollectionItem>(referencePath, referenceCache);
-
     const sortedReference = reactive(mapReference(reference));
+
+    const devPostPath = 'devPosts';
+    const devPostCache = 'devPostCache';
+    const rawPosts = await fetchCollection<DevPostsCollectionItem>(devPostPath, devPostCache)
+    const mappedPosts =  computed(() => {currentPage.value; return blogPagination(rawPosts.value, currentPage.value)});
+    
+    //  --- Pagination Logic
+    const currentPage = ref<number>(1);
+    const totalPages = computed(() => { if (rawPosts.value) { const n = 3; return Math.ceil(rawPosts.value.length / n); } return 0; });
+    const PageButtons = computed(() =>
+    [
+        { id: 0, label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- },
+        { id: 1, label: 'Neste', cls: ['button', 'pagination-btn'], action: () => currentPage.value ++ }
+    ]);
 
     //  --- Progress Bar Logic
     const codeProsessionList =
@@ -120,11 +140,11 @@
 
     let timerInterval: ReturnType<typeof setInterval> | null = null;
 
+    // --- Lifecycle Logic
     onMounted(() => { timerInterval = startTimer(sortedReference); });
-
     onUnmounted(() => { if (timerInterval) { clearInterval(timerInterval); }});
 
     //  --- Debugging Logic ---
     //console.warn('Reference Data:', sortedReference.value);
-    //console.log(dev.value);
+    console.log(dev.value);
 </script>

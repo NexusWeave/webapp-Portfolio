@@ -43,7 +43,7 @@
             
             
         },
-        menu: [ { href: '/', label: 'Portfolio' }, { href: '/aktuelt', label: 'Aktuelt' }, { href: '/dev', label: 'Dev Profile' }, { href: '/personal', label: 'Om Kristoffer' } ]
+        menu: [ { href: '/', label: 'Portfolio' }, { href: '/dev', label: 'Dev Profile' }, { href: '/personal', label: 'Om Kristoffer' } ]
     }
 
     const SocialMedia = [ { type: ['linkedin','external'], href: 'https://www.linkedin.com/in/krigjo25' }, { type: ['github','external'],  href: 'https://www.github.com/krigjo25' }, { type: ['mail','external'], href: 'mailto:krigjo25@outlook.com' }, { type: ['ytube','external'], href: 'https://www.youtube.com/@krigjo25' }, { type: ['facebook','external'], href: 'https://www.facebook.com/krigjo25' }, { type: ['instagram','external'], href: 'https://www.instagram.com/krigjo25' } ];
