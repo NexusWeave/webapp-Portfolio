@@ -20,6 +20,7 @@
 </template>
 <script setup lang="ts">
 
+    import { computed } from 'vue';
     //  --- Import & types logic
     import { fetchCollection, mapTimeline } from '#imports';
     import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
