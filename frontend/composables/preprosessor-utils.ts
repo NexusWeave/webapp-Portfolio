@@ -1,9 +1,8 @@
 
 //  --- Import & types logic
+import type { DateItem } from '~/types/props';
 import type { TimelineItem } from '~/types/timeline';
 import type { ReferenceItem } from '~/types/references';
-import type { DateItem } from '~/types/props';
-
 import type { AcademicCollectionItem, ReferenceCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 type CMSArticleCollectionItem = AcademicCollectionItem | AchievementsCollectionItem;

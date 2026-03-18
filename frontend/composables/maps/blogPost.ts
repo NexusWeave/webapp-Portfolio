@@ -31,7 +31,7 @@ export const mapBlogData = (data: DevPostsCollectionItem[]) => {
                 parade: item.parade ?? '',
                 ingress: item.ingress ?? '',
                 sources: item.sources ?? '',
-                anchor: [{ href: `aktuelt/artikkel/${path}`, label: 'Les mer' }]
+                anchor: [{ href: `artikkel/${path}`, label: 'Les mer' }]
             }
         });
     }
