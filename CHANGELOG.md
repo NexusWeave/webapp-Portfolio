@@ -1,3 +1,27 @@
+# [1.7.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.4...v1.7.0) (2026-03-18)
+
+
+### Bug Fixes
+
+* 🐛 ADD missing import for automatic calculations. ([51aa7f1](https://github.com/NexusWeave/webapp-Portfolio/commit/51aa7f19e096c768a2cbac4771d30fcec9e673df))
+* **Composeable:** 🐛 Resolve Type Errors by Unifying Collection References. ([08f5966](https://github.com/NexusWeave/webapp-Portfolio/commit/08f5966827ef065109fc2911ca65c99d1c82a1e4))
+* **Config:** 🚑️ Resolved a Crictial issue  that caused the application to leak memory, by removing alias. in nuxt.config. ([4bce7f3](https://github.com/NexusWeave/webapp-Portfolio/commit/4bce7f364566eacd05d50a1d2487414e144ca639))
+* **Docker:** 🐛 Resolve Startup issues & Improve system stability. ([7eb58b8](https://github.com/NexusWeave/webapp-Portfolio/commit/7eb58b817b3aac45a3693501ca8f711ba62d14da))
+* **UI:** 🚚 Rename 'Index' resource into lowercase 'index'. ([0176fd4](https://github.com/NexusWeave/webapp-Portfolio/commit/0176fd41084ad1c9985fdd2297cdd81673dc91b7))
+
+
+### Features
+
+* ✨ Implement project stack identification & logging. ([306b055](https://github.com/NexusWeave/webapp-Portfolio/commit/306b055e81d278fb2325d4c349b7d4d092441d64))
+* **Composeable-Utils:** ✨ ADD `setDateFormat` function, which standardizes date format across the application. ([f05e9ac](https://github.com/NexusWeave/webapp-Portfolio/commit/f05e9ac2c3744bcb14a857c5bc43e920b912c74f))
+* **Github:** ✨ Improvesystem reliability & add structure support. ([ffbb8d4](https://github.com/NexusWeave/webapp-Portfolio/commit/ffbb8d4a0b2b05199aacbc5f43c0a829bcff7b8c))
+* **HealthCheck:** ✨ Improve system monitoring by adding Github connectivity checks. ([fa048c6](https://github.com/NexusWeave/webapp-Portfolio/commit/fa048c6db69e171ccd1efbbb7473c087e7539a4e))
+* **Map:** Implement `mapBlogData` Function for Dev & Personal posts. ([2a8fbc6](https://github.com/NexusWeave/webapp-Portfolio/commit/2a8fbc66c0732fc0caf17ccfed7404d34cce5d1a))
+* **Model:** 🗃️ Implement Flags to the model. ([2899e5d](https://github.com/NexusWeave/webapp-Portfolio/commit/2899e5d108b423dafdc9f7645e716196633040cd))
+* **UI:** ✨ ADD project filtering & update page navigation. ([3a4b119](https://github.com/NexusWeave/webapp-Portfolio/commit/3a4b119130bb34e06298a3784e4f34737748f76c))
+* **UI:** ✨ ADD slug page for Articles. ([8398460](https://github.com/NexusWeave/webapp-Portfolio/commit/83984600e8adc8a5a212dc02902f0ec3bef687b1))
+* **UI:** 💄 ADD ID autoincrement & tag handling to `blogPost.ts`. ([7a040b2](https://github.com/NexusWeave/webapp-Portfolio/commit/7a040b29789714f6bc0c6138bdfdebfa3204af42))
+
 ## [1.6.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.3...v1.6.4) (2026-03-13)
 
 
