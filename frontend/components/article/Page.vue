@@ -25,7 +25,7 @@
     const article = computed(() => props.data);
 
     const route = useRoute();
-    const isPage = computed(() => {return route.name?.toString().startsWith('aktuelt-artikkel')});
+    const isPage = computed(() => {return route.name?.toString().startsWith('artikkel')});
 
     //  --- Debugging logic
     //console.log("Articles Component - Article Data :", route.name);
