@@ -1,17 +1,12 @@
 {
     "folders": [{"path":"../"}],
     "settings": {
-        "python.defaultInterpreterPath": "./fastAPI/.venv/bin/python",
+        "python.defaultInterpreterPath": "./backend/.venv/bin/python",
         "python.testing.pytestArgs": [ "pytest"],
         "python.testing.pytestEnabled": true,
         "python.testing.unittestEnabled": false,
         
-        "files.exclude": {
-            "**/.git": true, "**/.data": true, "**/.nuxt": true,
-            "**/node_modules": true, "**fastAPI/__pycache__": true, "***.benchmarks": true, "**.github": true,
-          "**fastAPI/lib/utils/__pycache__": true, "**fastAPI/lib/models/__pycache__": true, "**fastAPI/lib/settings/__pycache__": true, "**fastAPI/lib/services/__pycache__": true, "**fastAPI/lib/database/__pycache__" : true, "**fastAPI/lib/services/utils/__pycache__": true, "**fastAPI/lib/models/database_models/__pycache__": true,
-          "**frontend/.nuxt": true, "**frontend/node_modules": true
-        },
+ 
         "conventionalCommits.scopes": [
             "Relocation",
             "Cleanup",
@@ -26,7 +21,20 @@
             "Deps",
             "Move",
             "Typo",
-            "Document"
+            "Document",
+            "Valdiation",
+            "Types",
+            "Log",
+            "README",
+            "UI",
+            "Makefile",
+            "Composeable",
+            "Map",
+            "CMS",
+            "HealthCheck",
+            "Model",
+            "Github",
+            "Package.json"
         ],
     },
 }

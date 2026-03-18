@@ -1,12 +1,11 @@
 <template>
     <button 
         :class="btn.cls"    
-        :type="btn ? btn.type : 'button'"
+        :type="btn.type"
         @click="btn.action()"     
         :disabled="btn.disabled">
-        <template v-if="btn.anchor">
-            <NavigationAnchor :data="btn.anchor" v-if="btn.anchor"/>
-        </template>
+
+        <NavigationAnchor v-if="btn.anchor" :data="btn.anchor"/>
 
         <template v-else>
             {{ btn.label }}
@@ -15,23 +14,32 @@
     </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
-    import { watch } from 'vue';
+    //  --- Importing dependencies & types
+    import { watch, computed } from 'vue';
 
-    const props = defineProps({
-        data: {
-            type: Object,
-            required: true
-        },
-    });
+    interface ButtonProps { data:ButtonItem; }
 
+    interface ButtonItem
+    {
+        id: number;
+        label: string;
+        cls: string[];
+        type?: "button" | "submit" | "reset";
+        disabled?: boolean;
+        action: () => void;
+        anchor?: { type: string[]; label: string; href: string; } | null; 
+    }
+
+    //  --- props definition logic
+    const props = withDefaults(defineProps<ButtonProps>(), { data: () => ({ anchor: null, type: 'button', disabled: false, action: () => {} } as ButtonItem) });
     const btn = computed(() => props.data);
 
-    watch(() => props.data, (newValue) => {
-        Object.assign(btn.value, newValue);
-    }, { immediate: true });
+    //  --- Watcher
+    watch(() => props.data, (newValue) => { Object.assign(btn.value, newValue); }, { immediate: true });
 
+    //  --- Debug logic
     //console.log("Button component loaded with data: ", btn);
 
 </script>

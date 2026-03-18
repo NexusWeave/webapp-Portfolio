@@ -8,7 +8,7 @@ clean: # Clean up cache files
 	@echo "--- Cleans up Cache files ---"
 	
 	#	Cleans up __pycache__, pytest cache directories
-	find . -depth -type d \( -name ".data" -o -name ".pytest_cache" -o -name ".benchmarks", -o -name ".logs" \) -exec rm -rf {} \;
+	find . -depth -type d \( -name ".data" -o -name "" -o -name "node_modules/.cache", -o -name "package-lock.json", -o -name ".nuxt" \) -exec rm -rf {} \;
 
 	#	Cleans up .coverage files
 	rm -rf fastAPI/.benchmarks

@@ -1,5 +1,4 @@
 import type { Collection } from "tinacms";
-import { tagsOptions } from "../../utils/tagStack";
 
 export const blogCollection: Collection =
     {
@@ -9,24 +8,11 @@ export const blogCollection: Collection =
     fields:
     [
         {
-            name: "created",
+            name: "date",
             label: "Published",
             required: true,
             type: "datetime",
             ui: { dateFormat: 'DD-MM-YY'}
-        },
-        {
-            name: "current",
-            label: "Updated",
-            type: "datetime",
-            ui: { dateFormat: 'DD-MM-YY'}
-        },
-        {
-            list: true,
-            name: "tags",
-            label: "Tags",
-            type: "string",
-            options: tagsOptions
         },
         {
             name: "title",
@@ -43,10 +29,16 @@ export const blogCollection: Collection =
         },
         {
             isBody: true,
-            name: "main",
+            name: "body",
             required: false,
             type: "rich-text",
             label: "Main text"
+        },
+        {
+            name: "parade",
+            required: false,
+            type: "rich-text",
+            label: "PARADE-Model"
         },
         {
             required: false,
@@ -57,7 +49,7 @@ export const blogCollection: Collection =
         {
             required: false,
             type: "rich-text",
-            name: "KildeHenvisning",
+            name: "sources",
             label: "Kilde Henvisning"
         },
     ],
