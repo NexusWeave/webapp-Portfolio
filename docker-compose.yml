@@ -1,21 +1,27 @@
-version: '1.0'
-
 services:
-  fastapi:
-    build: .
-    container_name: fastAPi-container
-    ports:
-      - "8080:8080"
-
+  frontend:
+    build: ./frontend
+    container_name: frontend-container
     env_file:
       - .env
+    ports:
+      - "3002:3000"
+    restart: always
+
+  backend:
+    build: ./backend
+    container_name: backend-container
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
     volumes:
       - .:/app
 
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
-      - PYTHONPATH=/app:/app/fastAPI
+      - PYTHONPATH=/app:/app/backend
 
     restart: always
     

@@ -1,44 +1,27 @@
 ---
-created: 2025-12-19T00:00:00.000Z
+date: 2025-12-19T00:00:00.000Z
 tags:
   - dev-journey
-title: Fra Global Forbirring til Lokal Kontroll
+title: Automatisert Infrastruktur for Isolerte miljøer (CI/CD) Prosesser
 ingress: >
-  I et utviklingsløp er kontroll over kjøretidsmiljøet fundamentalt, men
-  Linux-systemets standardprioriteringer kan ofte skape utfordringer for
-  isolerte prosjekter. Denne artikkelen utforsker en situasjon der manglende
-  systemstier førte til at utviklingsverktøy ignorerte virtuelle miljøer til
-  fordel for globale installasjoner. Ved å manuelt etablere en lokal
-  sti-infrastruktur via `~/.local/bin`, demonstreres det hvordan man tar
-  kontroll over systemets søkehierarki. Gjennom praktisk feilsøking og
-  konfigurasjon belyses viktigheten av å bygge manuell infrastruktur for å oppnå
-  en forutsigbar, sikker og reproduserbar programvarekjøring.
+  Hvordan sikrer man at datamaskinen alltid finner frem til de riktige
+  verktøyene uten mennesklig hjelp? Ved å etablere en fast struktur for digitale
+  “matbokser” (venv), har jeg laget et selvgående system som automatisk kobler
+  seg til riktig miljø. Løsningen sikrer en pålitelig og reproduserbar
+  aarbeidsflyt, der systemet selv finner de nødvendige oppskriftene for en
+  sikker og rask programvarekjøring.
+parade: ''
 star: ''
-KildeHenvisning: ''
+sources: ''
 ---
 
-### Overstyring av systemets standardvalg for et isolert Python-miljø
+### Optimalisering av et digitalt miljø
 
-#### Oppsett av Python-miljø
+Under oppstarten av arbeidsmiljøet for et prosjekt oppstod det en situasjon der Linux-operativ systemet ikke klarte å finne riktig matboks (venv). Dette hindret systemet å lese de nødvendige konfigurasjonsfilene, noe som førte til at utviklingsverktøyet ikke var pålitelig, som det skulle være.  Jeg hadde et behov for at maskinen skulle vite nøyaktig hvor den skulle lete for å finne prosjektets matbokser, uten at jeg manuelt måtte gripe inn.
 
-Under oppsettet av et existerende utviklingsprosjekt oppsto det en konflikt mellom systemet og utviklingsverktøyet, systemet nektet å bruke dette miljøet og i steden falte tilbake til den globale installasjonen, som en konsekvens at de lokale stiene ikke var tilgjengelig for systemet. Når utviklings verktøyet forsøkte å sjekke etter lokale miljøer, fant de ingen referanser til `.local/bin` eller `.venv`.
+Målet mitt var å bygge en digital matboks og automatisere rutinen ved å koble opp mot den spesifikke digitale matboksen. 
 
-Uten denne stien i systemets konfigurasjon, har ikke systemet instruksjoner om å lete internt i prosjektet før den sjekker de globale mappene, som resulterte til at systemet hoppet over det isolerte miljøet og falt direkte til den globale installasjonen.
+* Ved å bruk av kommandoen mkdir -p \~/.local/bin, laget jeg  en fysisk destinasjon for lokale verktøy og snarveier. Dette gjorde det mulig for systemet å “se” og koble seg opp mot korrekt matboks. Jeg vertifiserte deretter koblingen med kommando which python som forteller brukeren hvilken python som er aktivt i øyblikket, med dette sikret jeg at alt pekte på den riktige  versjonen slik at jeg kunne installere riktige oppskrifter for hjelpe filer.
+* Ved å automatisere rutinen å koble seg opp mot matboksen, vertifiserte jeg at systemet kunne finne prosjektets python programvare.
 
-#### Opprettelse av lokal sti-infrastruktur
-
-For å løse utfordringen, der systemet ikke kunne finne lokale referanser, ble det manuelt opprettet systemets mappestruktur. Ved å kjøre kommandoen under.
-
-```bash
-mkdir -p ~./local/bin
-```
-
-ble den nødvendige infrastrukturen for lokale binærfiler etablert. Dette sikret at systemet hadde en fysisk destinasjon for lokale installasjoner og verktøy, som igjen tillot utviklingsverktøyet å koble seg korrekt til det virtuelle miljøet for prosjektet.
-
-Etter etableringen av mappen viste which python, den korrekte stien til det virtuelle python miljøet.
-
-#### Systemkontroll og Sti-prioritering
-
-Denne prosessen har gitt en dypere forståelse for hvordan Linux håndterer miljøer. Det er tydelig at Linux systemet har behov for en konkret mappe for å legge variabler, stier og aliaser som skal sjekkes før standardene velges.
-
-Det har gitt en forståelse av at man kan ikke stole på at systemet finner  de lokale miljøene automatisk, og at infrastrukturen må noen ganger bygges manuelt. Å ha kontrollen over stien er det første steget mot en reproduserbar og sikker programvarekjøring.
+Dette tiltaket sørger for at matboksen er stabil og et selvgående system som nå prioriterer riktig matboks helt automatisk. Dette skaper en reproduserbar og sikker programvarekjøring. Ved å automatisere denne rutinen å koble seg opp mot verktøyet automatisk, reduseres de tidsbruken på å koble seg opp mot den digitale matboksen, uten å kunne å koble seg opp mot matboksen.

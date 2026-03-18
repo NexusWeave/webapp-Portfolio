@@ -8,15 +8,9 @@ export const profileCollection: Collection =
     fields: 
     [
         {
-            name: "created",
-            label: "Published",
+            name: "date",
+            label: "Date",
             required: true,
-            type: "datetime",
-            ui: { dateFormat: 'DD-MM-YY'}
-        },
-        {
-            name: "current",
-            label: "Updated",
             type: "datetime",
             ui: { dateFormat: 'DD-MM-YY'}
         },
@@ -32,7 +26,19 @@ export const profileCollection: Collection =
             required: true,
             type: "rich-text",
             name: "profile",
-            label: "Profile information (Backend, Frontend or Journey )"
+            label: "Profile information"
+        },
+        {
+            required: true,
+            type: "rich-text",
+            name: "strength",
+            label: "Mine styrker"
+        },
+        {
+            required: true,
+            type: "rich-text",
+            name: "agile",
+            label: "Smidige erfaringer"
         },
     ],
 };

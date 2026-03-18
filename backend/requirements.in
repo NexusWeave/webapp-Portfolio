@@ -1,0 +1,17 @@
+httpx
+uvicorn
+fastAPI
+asyncpg
+pydantic
+sqlAlchemy
+pydantic-core
+pydantic-settings
+
+pytest
+pytest-cov
+pytest-html
+python-dotenv
+pytest-asyncio
+pytest-metadata
+pytest-benchmark
+simplified-logging

@@ -1,20 +1,14 @@
 @use './mixins' as mix
-@use '../colors/colors' as color
 
-@include mix.tech-generator()
 
 .tech-container
     p
-        @include mix.tech-generator()
-               
         span
             span
                 @include mix.circle-border()
             margin-inline: .3em
 
-
         margin:.5em
-        
 
     .tech-figure
         margin: 0

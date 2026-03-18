@@ -1,3 +1,80 @@
+# [1.7.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.4...v1.7.0) (2026-03-18)
+
+
+### Bug Fixes
+
+* 🐛 ADD missing import for automatic calculations. ([51aa7f1](https://github.com/NexusWeave/webapp-Portfolio/commit/51aa7f19e096c768a2cbac4771d30fcec9e673df))
+* **Composeable:** 🐛 Resolve Type Errors by Unifying Collection References. ([08f5966](https://github.com/NexusWeave/webapp-Portfolio/commit/08f5966827ef065109fc2911ca65c99d1c82a1e4))
+* **Config:** 🚑️ Resolved a Crictial issue  that caused the application to leak memory, by removing alias. in nuxt.config. ([4bce7f3](https://github.com/NexusWeave/webapp-Portfolio/commit/4bce7f364566eacd05d50a1d2487414e144ca639))
+* **Docker:** 🐛 Resolve Startup issues & Improve system stability. ([7eb58b8](https://github.com/NexusWeave/webapp-Portfolio/commit/7eb58b817b3aac45a3693501ca8f711ba62d14da))
+* **UI:** 🚚 Rename 'Index' resource into lowercase 'index'. ([0176fd4](https://github.com/NexusWeave/webapp-Portfolio/commit/0176fd41084ad1c9985fdd2297cdd81673dc91b7))
+
+
+### Features
+
+* ✨ Implement project stack identification & logging. ([306b055](https://github.com/NexusWeave/webapp-Portfolio/commit/306b055e81d278fb2325d4c349b7d4d092441d64))
+* **Composeable-Utils:** ✨ ADD `setDateFormat` function, which standardizes date format across the application. ([f05e9ac](https://github.com/NexusWeave/webapp-Portfolio/commit/f05e9ac2c3744bcb14a857c5bc43e920b912c74f))
+* **Github:** ✨ Improvesystem reliability & add structure support. ([ffbb8d4](https://github.com/NexusWeave/webapp-Portfolio/commit/ffbb8d4a0b2b05199aacbc5f43c0a829bcff7b8c))
+* **HealthCheck:** ✨ Improve system monitoring by adding Github connectivity checks. ([fa048c6](https://github.com/NexusWeave/webapp-Portfolio/commit/fa048c6db69e171ccd1efbbb7473c087e7539a4e))
+* **Map:** Implement `mapBlogData` Function for Dev & Personal posts. ([2a8fbc6](https://github.com/NexusWeave/webapp-Portfolio/commit/2a8fbc66c0732fc0caf17ccfed7404d34cce5d1a))
+* **Model:** 🗃️ Implement Flags to the model. ([2899e5d](https://github.com/NexusWeave/webapp-Portfolio/commit/2899e5d108b423dafdc9f7645e716196633040cd))
+* **UI:** ✨ ADD project filtering & update page navigation. ([3a4b119](https://github.com/NexusWeave/webapp-Portfolio/commit/3a4b119130bb34e06298a3784e4f34737748f76c))
+* **UI:** ✨ ADD slug page for Articles. ([8398460](https://github.com/NexusWeave/webapp-Portfolio/commit/83984600e8adc8a5a212dc02902f0ec3bef687b1))
+* **UI:** 💄 ADD ID autoincrement & tag handling to `blogPost.ts`. ([7a040b2](https://github.com/NexusWeave/webapp-Portfolio/commit/7a040b29789714f6bc0c6138bdfdebfa3204af42))
+
+## [1.6.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.3...v1.6.4) (2026-03-13)
+
+
+### Bug Fixes
+
+* **Types:** 🏷️ Updated the initialization, as the pylance is complaining. ([123f06d](https://github.com/NexusWeave/webapp-Portfolio/commit/123f06d47e2cdd2c480420b6a5d76c5b807c5519))
+
+## [1.6.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.2...v1.6.3) (2026-03-13)
+
+
+### Bug Fixes
+
+* **Cleanup:** 🐛 Removing default texts to avoid unexpexted behavior from Environments ([c63a2ec](https://github.com/NexusWeave/webapp-Portfolio/commit/c63a2ec929c3b329fe0166743b9cb6e84d7dcd37))
+
+## [1.6.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.1...v1.6.2) (2026-03-11)
+
+
+### Bug Fixes
+
+* **LOG:** 🐛 Resolved some Type Issues, by removing level argument & os. ([21ff6f9](https://github.com/NexusWeave/webapp-Portfolio/commit/21ff6f937495943c42a8e43421fb4092168f732d))
+
+## [1.6.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.0...v1.6.1) (2026-03-06)
+
+
+### Bug Fixes
+
+* **LOG:** 🐛 Solved Initialization Gap between self.name & name. ([2f8793e](https://github.com/NexusWeave/webapp-Portfolio/commit/2f8793eb11977789211e179d07d1e5f1a29e3cae))
+
+# [1.6.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.5.0...v1.6.0) (2026-02-11)
+
+
+### Bug Fixes
+
+* **Typo:** ✏️ Resolved some Typos ([f2bb5f4](https://github.com/NexusWeave/webapp-Portfolio/commit/f2bb5f47caac760cb90b7c1e8fb35879d53542bb))
+
+
+### Features
+
+* **Docker:** ✨ Introduce docker-compose for automated stack orchestration. ([5459d03](https://github.com/NexusWeave/webapp-Portfolio/commit/5459d03639ad16d91cefb9484718b4021816174b))
+* **Docker:** ✨ Introducing `pip install --upgrade pip` & `pip install --no-cache-dir -r requirements.txt` & Downgrading python version to Stable Release. ([8e707e5](https://github.com/NexusWeave/webapp-Portfolio/commit/8e707e53ec48ad856a04e71734743496a41747d3))
+
+# [1.5.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.4.0...v1.5.0) (2026-02-08)
+
+
+### Bug Fixes
+
+* **Model:** 🐛 Resolved internal error 500. Which was caused by alias="lang". ([3020f2d](https://github.com/NexusWeave/webapp-Portfolio/commit/3020f2d0f19d6a27d17c05d8c51a9ec28625a2c1))
+
+
+### Features
+
+* **Database:** ✨ Introducing database State. ([98416e1](https://github.com/NexusWeave/webapp-Portfolio/commit/98416e11c5f8b3b6d1cb5bbd86f5f4c3c8b81079))
+
 # [1.4.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.3.0...v1.4.0) (2025-12-29)
 
 
