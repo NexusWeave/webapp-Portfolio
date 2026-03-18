@@ -2,10 +2,9 @@ import { mapBlogData } from './maps/blogPost';
 
 import type { DevPostsCollectionItem } from '@nuxt/content';
 
-export const blogPagination =  (rawData:DevPostsCollectionItem[], currentPage:number) =>
+export const blogPagination =  (rawData:DevPostsCollectionItem[], currentPage:number, n:number = 2) =>
     {
         if (!rawData) return [];
-        const n = 3;
         const data = mapBlogData(rawData);
 
         const start = (currentPage - 1) * n;
