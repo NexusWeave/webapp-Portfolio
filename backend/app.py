@@ -106,19 +106,14 @@ async def health_check() -> Dict[str, str | bool]:
 async def handle_repositories(request: Request) -> Dict[str, str]:
 
     try:
-        for i in range(len(ENVIRONMENT.ORGANIZATIONS)):
-            ORG_ENDPOINT: str = f"{ENVIRONMENT.ORG_GITHUB_REST_API}{ENVIRONMENT.ORGANIZATIONS[i]}{ENVIRONMENT.GITHUB_PER_PAGE}"
-            # await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST, ORG_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
-
-        PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PER_PAGE}"
-        await ApiDatabaseBridge.repositories_sync(ENVIRONMENT.GITHUB_REST,PERSONAL_ENDPOINT, ENVIRONMENT.GITHUB_TOKEN, request)
-
-        return {"message": " Fetched All Repositories Successfully."}
+        await ApiDatabaseBridge.repositories_sync(request, ENVIRONMENT.GITHUB_REST, ENVIRONMENT.GITHUB_PARAMS, ENVIRONMENT.PERSONAL_GITHUB_REST_API, ENVIRONMENT.GITHUB_TOKEN)
 
     except Exception as e:
-        LOG.error(f"fetch_repositories_endpoint : failed with error\n {e}")
+        LOG.critical(f"handle_repositories_endpoint : failed with error\n {e.__class__.__name__} - {e}")
         if ENVIRONMENT.ENVIRONMENT == 'development': return {"code": "500","message": f"{e}"}
         else : return {"code": "400","message": f"Endpoint was not found"}
+
+    return {"message": "All Repositories has been successfully synced with database."}
 
 async def check_github_api() -> bool:
     """ Checks the availability of the GitHub API. """
