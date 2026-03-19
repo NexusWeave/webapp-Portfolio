@@ -17,7 +17,7 @@ star: |
 
   Systemet har nå en fungerende og sikker tilgangskontroll som sjekkes automatisk hver gang under oppstart av systemet, som gir bedriften kontroll på hvem som ser hva fra første oppstart. Ved å bruke en oversiktlig fil som JSON ble løsningen ferdigstilt og satt i drift raskt, som sparer tid i utviklings fasen. Vi har sikret at hver rolle ser kun det som er nødvendig på nettsiden, dette minimerer risikoen for datalekkasjer og jeg har identifisert at filen må oppdateres manuelt ved stor vekst, dette er en perfekt og rimlig løsning for prosjektets nåværende fase, som en konsekvens av at  det gir bedriften tryggheten til å videre utvikle.
 sources: |
-  1. **Google Gemini (AI-modell)**: Breftende for bestepraksis og læringsverktøy
+  1. **Google Gemini (AI-modell)**: Breftende for bransjestandard og læringsverktøy
   2. [Unntak for synkron I/O i Singleton-initialisering](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-8.0).
   3. [Prinsipp for Single Responsibility (SRP).](https://en.wikipedia.org/wiki/Single-responsibility_principle)
 ---
