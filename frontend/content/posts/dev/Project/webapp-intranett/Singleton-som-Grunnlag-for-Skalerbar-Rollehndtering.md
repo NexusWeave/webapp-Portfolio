@@ -1,6 +1,6 @@
 ---
 date: 2025-11-07T00:00:00.000Z
-title: Singleton som Grunnlag for Skalerbar Rollehåndtering
+title: Sikring av data og brukertilganger
 ingress: |
   For å sikre bedriftens data har jeg lagt til en ny løsning for rettighetsstyring som skiller tydelig mellom ansatte og studenter. Ved å samle alle regler i en oversikt, har vi eliminert risikoen for at feil personer får tilgang til skjermet informasjon. Løsningen er bygget for å være både rask og rimlig, som sparer tid i den daglige driften og gir oss tryggheten for fremtidig vekst.
 parade: ''
