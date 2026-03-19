@@ -43,11 +43,14 @@ class RepositoryModel(BaseModel):
     updated_at: Optional[datetime] = Field(None, description = "Last Update Timestamp", json_schema_extra = {"example":f"{datetime.now()}"},exclude= True)
     description: Optional[str] = Field(None, description = "Repository Description", json_schema_extra = {"example":"This is my repository."})
 
+    
     is_private: bool = Field(..., description = "Private Repository", json_schema_extra = {"example":False}, exclude= True)
+    is_secret : bool = Field(..., description = "Is Secret Repository", json_schema_extra = {"example":False}, exclude= True)
     is_backend: bool = Field(..., description = "Is Backend Repository", json_schema_extra = {"example":False}, exclude= True)
     is_frontend: bool = Field(..., description = "Is Frontend Repository", json_schema_extra = {"example":False}, exclude= True)
     is_fullstack: bool = Field(..., description = "Is Fullstack Repository", json_schema_extra = {"example":True}, exclude= True)
     is_collaborator: bool = Field(..., description = "Is Collaborator Repository", json_schema_extra = {"example":False}, exclude= True)
+    
 
     lang_assosiations: List[LanguageAssociationModel] = Field(..., exclude= True)
 
@@ -139,7 +142,6 @@ class RepositoryModel(BaseModel):
 
     @computed_field
     def flags(self) -> Dict[str, bool]:
-
         if self.is_backend: return {"backend": self.is_backend}
         if self.is_frontend: return {"frontend": self.is_frontend}
         if self.is_fullstack: return {"fullstack": self.is_fullstack}

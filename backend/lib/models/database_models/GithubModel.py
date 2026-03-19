@@ -23,9 +23,10 @@ class RepositoryModel(BASE):
     youtube_url = Column(String, unique = True, index = True, nullable = True)
 
     updated_at = Column(DateTime(timezone = True), nullable = True)
-    last_update = Column(DateTime(timezone = True), nullable = True)
+    last_check = Column(DateTime(timezone = True), nullable = True)
     created_at = Column(DateTime(timezone = True), nullable = False)
 
+    is_secret = Column(Boolean, default = 0, nullable = False)
     is_backend = Column(Boolean, default = 0, nullable = False)
     is_frontend = Column(Boolean, default = 0, nullable = False)
     is_fullstack = Column(Boolean, default = 0, nullable = False)
