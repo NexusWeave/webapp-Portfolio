@@ -1,6 +1,6 @@
 <template>
     <a
-        :class="cls[0]"
+        :class="cls"
         :href="data.href"
         :aria-disabled="!!isDisabled()"
         :download="isDownload() ? '' : null"
@@ -14,7 +14,7 @@
         </span>
 
         <span v-else-if="isIcon()" class="icon">
-            <MediaIcon :label="data.label" :cls="data.type[0]"/>
+            <MediaIcon :cls="data.type[0]"/>
             {{ data.label }}
         </span>
 
@@ -53,7 +53,7 @@
 
     const data = computed(() => props.data);
     const img = computed(() => data.value.img ?? null);
-    const cls = computed(() => Array.isArray(props.cls) ? props.cls : [props.cls]);
+    const cls = computed(() => Array.isArray(props.cls) ? props.cls : undefined);
     
     const isExternal = () => {
         const dataProps = data.value;
@@ -90,7 +90,7 @@
         const dataProps = data.value;
         if (!dataProps.type) return false;
 
-        const iconTypes = ['mail', 'telephone', 'school', 'globe', 'map-pin', 'diploma', 'github', 'ytube', 'linkedin', 'facebook', 'instagram'];
+        const iconTypes = ['docs', 'pdf', 'mail', 'telephone', 'school', 'globe', 'map-pin', 'diploma', 'github', 'ytube', 'linkedin', 'facebook', 'instagram'];
         return iconTypes.some(type => dataProps.type && dataProps.type.includes(type));
     };
 
