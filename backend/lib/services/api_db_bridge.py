@@ -7,8 +7,8 @@ from fastapi import Request
 from dotenv import load_dotenv
 
 #   Internal Dependencies
-from lib.services.github_api import GithubAPI
 from lib.utils.logger_config import AppWatcher
+from lib.services.github.github_api import GithubAPI
 from lib.utils.exception_handler import NotFoundError
 from lib.services.db_handler import GithubDatabaseHandler
 from lib.settings.database_config import ASynchronousDatabaseConfig

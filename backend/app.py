@@ -1,24 +1,23 @@
-#   Standard Depnendencies
+#   Standard Libraries
 import os, __future__, uvicorn
 from datetime import datetime
 from typing import Dict, Optional, List, Sequence
 
-#   Third Party Dependencies
+#   Third-Party Libraries
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 
-#   Internal Dependencies
+#   Internal Libraries
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
 
-#from lib.models.heavy_model import HeavyModel
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
 
 from lib.services.api_db_bridge import ApiDatabaseBridge
 from lib.services.db_handler import GithubDatabaseHandler
-from lib.services.announcements import AnnouncementsService
+from lib.services.announcements.announcements import AnnouncementsService
 
 from lib.settings.database_config import ASynchronousDatabaseConfig
 
@@ -117,7 +116,7 @@ async def handle_repositories(request: Request) -> Dict[str, str]:
 
 async def check_github_api() -> bool:
     """ Checks the availability of the GitHub API. """
-    from lib.services.github_api import GithubAPI
+    from lib.services.github.github_api import GithubAPI
 
     URL = ENVIRONMENT.GITHUB_REST
     TOKEN = ENVIRONMENT.GITHUB_TOKEN
