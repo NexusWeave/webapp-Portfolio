@@ -26,29 +26,20 @@
                 </section>
             </section>
             <section class="dev-skill flex-column-justify-center-align-center">
-                <h2> Mine Kode Ferdigheter</h2>
+                <h2> Min Kode Aktivitet</h2>
 
                 <section class="flex-wrap-row-justify-space-evenly">
                     <UtilsProgress 
-                        :value="totalCodeSkills"
+                        :value="totalCodeActivity"
                         label="Fullstack Utvikler"
                     />
-                    <UtilsProgress v-for="(data, i) in codeSkills" :key="i" 
+                    <UtilsProgress v-for="(data, i) in codeActivity" :key="i" 
                         :value="data.value"
                         :label="data.name"
                         :tech="data.tech"
                     />
                 </section>
 
-                <h2> Verktøy Ferdigheter</h2>
-
-                <section class="flex-wrap-row-justify-space-evenly">
-                        <UtilsProgress v-for="(data, i) in toolSkills" :key="i" 
-                            :value="data.value"
-                            :label="data.name"
-                            :tech="data.tech"
-                        />
-                </section>
             </section>
         </section>
 
@@ -121,22 +112,10 @@
         { name:'TypeScript', tech:"typescript", value: 26.00 },
     ];
 
-    const toolList =
-    [
-        { name:'GIT',  tech:"workflow", value: 50.00 },
-        { name:'Agile',  tech:"workflow", value: 25.00 },    
-        { name:'Docker', tech:"workflow", value: 5.00 },
-        { name:'CI/CD', tech:"workflow", value: 15.00 },
-        { name:'Linux', tech:"workflow", value: 25.00 },
-        { name:'AI & ML', tech:"workflow", value: 50.00 },
-        { name:'DevOps', tech:"workflow", value: 25.00 },
-        { name:'Unit Testing', tech:"workflow", value: 40.00 },
-    ];
-
     const n = codeProsessionList.length;
-    const totalCodeSkills = computed(() => (codeProsessionList.reduce((acc, item) => acc + item.value, 0) + n) / n);
-    const codeSkills = computed(() => codeProsessionList.slice().sort((a, b) => b.value - a.value));
-    const toolSkills = computed(() => toolList.slice().sort((a, b) => b.value - a.value));
+    const codeActivity = computed(() => codeProsessionList.slice().sort((a, b) => b.value - a.value));
+    const totalCodeActivity = computed(() => (codeProsessionList.reduce((acc, item) => acc + item.value, 0) + n) / n);
+    
 
     let timerInterval: ReturnType<typeof setInterval> | null = null;
 
