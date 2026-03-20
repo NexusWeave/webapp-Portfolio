@@ -103,9 +103,9 @@ class GithubAPI(AsyncAPIClientConfig):
         for lang, value in json.items():
         
             match(str(lang).lower()):
-                case "c#": lang = "CS"
-                case "c++": lang = "CP"
-                case "jupyter notebook":lang = "jp-nb"
+                case "c#": lang = "cs"
+                case "c++": lang = "cp"
+                case "jupyter notebook":lang = "jupyter"
                 case _:lang = lang
 
             languages.append({"language": lang, "bytes": value})        
