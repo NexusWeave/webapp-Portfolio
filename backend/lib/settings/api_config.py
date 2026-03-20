@@ -36,9 +36,10 @@ class AsyncAPIClientConfig(WebAPIModel):
         start = perf_counter()
 
         path: str = urljoin(self.API_URL,endpoint)
-        timeout = httpx.Timeout(120.0, connect=120.0)
+        num =  120.0
+        TIMEOUT = httpx.Timeout(num, connect=num)
         try:
-            req: httpx.Response = await self.client.get(url = path, timeout=timeout, headers=head, params=params)
+            req: httpx.Response = await self.client.get(url = path, timeout=TIMEOUT, headers=head, params=params)
             match req.status_code:
                 case 200: return req
                 case 404: raise HTTPError('Resource not found')
