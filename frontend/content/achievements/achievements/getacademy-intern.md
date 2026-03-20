@@ -6,11 +6,10 @@ title: Utvikler
 location: 'Larvik, Vestfold, Norge | Remote'
 loc_link: 'https://maps.app.goo.gl/Ry3kFAGXNM6PATS26'
 techStack:
-  - GITHUB
-  - NET
-  - ASPNET
-  - AGILE
-  - VUE.TS
+  - VUE
+  - CS
+  - SASS
+  - TYPESCRIPT
 ---
 
 Jeg har i denne jobben jobbet med å utvikle **undervisningsmateriell**, **jobbet med potensielle kunder** og **arbeidsplassens intranett**. Jeg har anvendt min kunnskap om **Agile metodikk** og **moderne samarbeidsformer**, der **Git** og **Discord** har vært et sentraltverktøyet for samarbeid.
