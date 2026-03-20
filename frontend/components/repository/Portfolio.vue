@@ -1,24 +1,29 @@
 <template>
-    <section class="flex-wrap-column repo-container"  v-if="!!paginationData && paginationData.length > 0">
-        <h2>Technical Repositories</h2>
-        <p>Filtrer prosjekter etter type:</p>
-        <section class="flex-wrap-row-justify-center" v-if="!!paginationData && paginationData.length > 0">
-            <NavigationButton :data="btn[0]"/>
-            <NavigationButton :data="btn[1]"/>
-            <NavigationButton :data="btn[2]"/>
-            <NavigationButton :data="btn[3]"/>
-        </section>
-        <section class="flex-wrap-row-align-items-center-justify-space-around ">
-            <NavigationButton v-if="currentPage > num" :data="btn[4]"/>
-            <section class="flex-wrap-row project-wrapper">
-                <RepositoryBusinessCard v-for="repo in paginationData" :key="repo.repo_id" :data="repo" />
+    <section class="flex-wrap-column repo-container">
+        <h2>Tekniske Prosjekter</h2>
+        
+        <section v-if="!!paginationData && paginationData.length > 0">
+            <p>Filtrer prosjekter etter type:</p>
+        
+            <section class="flex-wrap-row-justify-center">
+                <NavigationButton :data="btn[0]"/>
+                <NavigationButton :data="btn[1]"/>
+                <NavigationButton :data="btn[2]"/>
+                <NavigationButton :data="btn[3]"/>
             </section>
-            <NavigationButton v-if="currentPage < totalPages" :data="btn[5]"/>
+            <section class="flex-wrap-row-align-items-center-justify-space-around ">
+                <NavigationButton v-if="currentPage > num" :data="btn[4]"/>
+                <section class="flex-wrap-row project-wrapper">
+                    <RepositoryBusinessCard v-for="repo in paginationData" :key="repo.repo_id" :data="repo" />
+                </section>
+                <NavigationButton v-if="currentPage < totalPages" :data="btn[5]"/>
+            </section>
         </section>
-    </section>
-    <section class="flex-wrap-column repo-container" v-if="!!repoError && !repoData">
-        <p>Github repository er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="error"/> for mer informasjon.</p>
+
+        <section class="flex-wrap-column" v-if="!!repoError && !repoData">
+        <p>Github prosjekter er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="error"/> for mer informasjon.</p>
         <p>for å se min generelle GitHub-aktivitet og historikk. Jeg jobber med å oppdatere og strukturere mine nyeste kodeeksempler.</p>
+    </section>
     </section>
 </template>
 
