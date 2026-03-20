@@ -1,14 +1,17 @@
 #   Standard Dependencies
 import time
-from asyncio import gather
+from asyncio import Semaphore, gather
 from urllib.parse import urljoin
-from typing import Dict, List, Any, Literal
+from typing import Dict, List, Any, Optional
+
+#   Third Party Dependencies
+import httpx
 
 #   Internal Dependencies
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
 from lib.settings.api_config import AsyncAPIClientConfig
-from lib.services.utils.github_maps import ServicesUtils
+from lib.services.utils.github_maps import GithubUtils
 
 
 LOG = APIWatcher(dir="logs", name='Github-API')
@@ -24,8 +27,7 @@ class GithubAPI(AsyncAPIClientConfig):
         super().__init__(URL=URL, KEY=KEY)
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': f"{self.API_KEY}"}
 
-
-    async def fetch_data(self, endpoint:str) -> List[Dict[str, Any]] | NotFoundError:
+    async def fetch_data(self, endpoint:str, params: Optional[Dict[str, str | int]] = None) -> List[Dict[str, Any]] | NotFoundError:
         """
             Fetching the repositories
             API : https://api.github.com/users/repos
@@ -34,41 +36,58 @@ class GithubAPI(AsyncAPIClientConfig):
 
         path = urljoin(self.API_URL, endpoint)
 
-        response: List[Dict[str, str | object]]
-        response = await self.ApiCall(path, head=self.HEADER)
+        response: httpx.Response
+        try: response = await self.ApiCall(path, head=self.HEADER, params=params)
+
+        except Exception as e:
+            LOG.error(f"Error fetching data from endpoint: {endpoint} - {e.__class__.__name__} - {str(e)}")
+            raise e
 
         languages_tasks: List[Any] = []
-        #collaborators_tasks: List[str] = []
+        excluded_repositories: List[str] = ['me50', 'code50', 'cs50']
 
-        for res in response:
+        sem = Semaphore(1)
+        validated_data = [data for data in response.json() if data['size'] != 0  and not any(word in str(data['owner']['login']).lower() for word in excluded_repositories)]
+        for res in validated_data:
             name = res['name']
             owner = res['owner']['login']                           #type: ignore Pylance - The 'owner' key is expected to be present in the response, and it should contain a 'login' key. If the API response structure changes, this could lead to a KeyError. It's important to ensure that the API response is consistent with the expected structure.
-            
-            languages_tasks.append(self.fetch_languages(owner, name))
-            #collaborators_tasks.append(self.fetch_collaborators(owner, name))
+            async with sem:
+                languages_tasks.append(self.fetch_languages(owner, name))
 
-        results = await gather(*languages_tasks)
-        #collaborators_results = await gather(*collaborators_tasks)
-
-        languages = results
-
-        #   Initialize a list
-        repo = []
+        languages = await gather(*languages_tasks)
         repo: List[Dict[str, str | object | List[str] | object]] = []
+        
+        while True:
+            repoObject: Dict[str, str | object | List[str] | object] = {}
+            validated_data = [d for d in response.json() if d['size'] != 0 and not any(word in str(d['owner']['login']).lower() for word in excluded_repositories)]
+            for data, lang in zip(validated_data, languages):
+                utils = GithubUtils()
 
-        repoObject: Dict[str, str | object | List[str] | object] = {}
+                try:
+                    async with sem: 
+                        repoObject = await utils.map_repository(data, lang)
 
-        for i, data in enumerate(response):
-            utils = ServicesUtils()
+                except Exception as e: 
+                    LOG.error(f"Error mapping repository: {e.__class__.__name__} - {str(e)}") 
+                    raise e
 
-            try:
-                repoObject = await utils.map_repo(data, languages[i])
+                repo.append(repoObject)
 
-            except Exception as e:
-                LOG.error(f"Error mapping repository: {e.__class__.__name__} - {str(e)}")
+            if  not 'next' in response.links: break
 
-            repo.append(repoObject)
-        repo.sort(key = lambda x: x['created_at'], reverse = True)
+            next_page = response.links['next']['url']
+            response = await self.ApiCall(next_page, head=self.HEADER, params=params)
+
+            languages = []
+            languages_tasks = []
+
+            validated_lang = [data for data in response.json() if data['size'] != 0 and not any(word in str(data['owner']['login']).lower() for word in excluded_repositories)]
+            for res in validated_lang:
+                name = res['name']
+                owner = res['owner']['login']                           #type: ignore Pylance - The 'owner' key is expected to be present in the response, and it should contain a 'login' key. If the API response structure changes, this could lead to a KeyError. It's important to ensure that the API response is consistent with the expected structure.
+                languages_tasks.append(self.fetch_languages(owner, name))
+
+            languages = await gather(*languages_tasks)
 
         LOG.info(f"Repositories fetched successfully\nTime Complexity: {time.perf_counter() - start:.2f}s\nTotal of {len(repo)} repositories fetched.")
 
@@ -77,11 +96,10 @@ class GithubAPI(AsyncAPIClientConfig):
     async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, List[str] | str | object]]:
 
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
-
         languages: List[Dict[str, List[str] | str | object]] = []
-        response: Dict[str, object] = await self.ApiCall(path, head = self.HEADER)
-
-        for lang, value in response.items():
+        response: httpx.Response = await self.ApiCall(path, head = self.HEADER)
+        json: Dict[str, str] = response.json()
+        for lang, value in json.items():
         
             match(str(lang).lower()):
                 case "c#": lang = "CS"
@@ -93,28 +111,17 @@ class GithubAPI(AsyncAPIClientConfig):
 
         return languages
 
-    async def fetch_collaborators(self, owner: str, name: str) -> Dict[str, str | object]:
-        
-        path = urljoin(self.API_URL, f"repos/{owner}/{name}/collaborators")
-
-        collaborators: List[Dict[str, str | object]] = []
-        response: List[Dict[str, str | object]] = await self.ApiCall(path, head=self.HEADER)
-
-        for collaborator in response:
-            collaborator_info: Dict[str, str | object] = {"name": collaborator.get("login"), "html_url": collaborator.get("html_url")}
-            collaborators.append(collaborator_info)
-
-        LOG.info(f"Collaborators fetched successfully. {collaborators}")
-
-        return collaborators
-
     async def analyze_repository(self,trees_url: str) -> Any:
         """ Analyzes the repository data to determine its characteristics. """
-        response: Dict[str, str | object] | Literal[''] = {}
+        sem = Semaphore(1)
+        response: httpx.Response
         try:
-            response = await self.ApiCall(trees_url, head=self.HEADER)
+            async with sem:
+                response: httpx.Response = await self.ApiCall(trees_url, head=self.HEADER)
 
         except Exception as e:
-            LOG.error(f"Error analyzing repository: {e.__class__.__name__} - {str(e)}\n - {self.HEADER}\n - {path}")
-        return response
+            LOG.error(f"Error analyzing repository: {e.__class__.__name__} - {str(e)}\n - {self.HEADER}\n")
+            raise e
+
+        return response.json()
     
