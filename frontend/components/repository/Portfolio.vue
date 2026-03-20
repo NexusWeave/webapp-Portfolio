@@ -2,7 +2,7 @@
     <section class="flex-wrap-column repo-container">
         <h2>Tekniske Prosjekter</h2>
         
-        <section v-if="!!paginationData && paginationData.length > 0">
+        <section v-if="!!paginationData && paginationData.length > 0" class="flex-wrap-column">
             <p>Filtrer prosjekter etter type:</p>
         
             <section class="flex-wrap-row-justify-center">
@@ -10,13 +10,18 @@
                 <NavigationButton :data="btn[1]"/>
                 <NavigationButton :data="btn[2]"/>
                 <NavigationButton :data="btn[3]"/>
+                <NavigationButton :data="btn[4]"/>
+            </section>
+            <section class="flex-wrap-row-justify-space-evenly">
+            <NavigationButton v-if="currentPage > num" :data="btn[5]"/>
+                <span>Side {{ currentPage }} / {{ totalPages }}</span>
+            <NavigationButton v-if="currentPage < totalPages" :data="btn[6]"/>
             </section>
             <section class="flex-wrap-row-align-items-center-justify-space-around ">
-                <NavigationButton v-if="currentPage > num" :data="btn[4]"/>
+
                 <section class="flex-wrap-row project-wrapper">
                     <RepositoryBusinessCard v-for="repo in paginationData" :key="repo.repo_id" :data="repo" />
                 </section>
-                <NavigationButton v-if="currentPage < totalPages" :data="btn[5]"/>
             </section>
         </section>
 
@@ -71,9 +76,10 @@
             { id: 0, label: 'Frontend', cls: ['button', 'filter-btn'], action: () => type.value = 'frontend' },
             { id: 1, label: 'Backend', cls: ['button', 'filter-btn'], action: () => type.value = 'backend' },
             { id: 2, label: 'Fullstack', cls: ['button', 'filter-btn'], action: () => type.value = 'fullstack' },
-            { id: 3, label: 'Misc', cls: ['button', 'filter-btn'], action: () => type.value = 'misc' },
-            { id: 4, label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => changePage(currentPage.value - num) },
-            { id: 5, label: 'Neste', cls: ['button', 'pagination-btn'], action: () => changePage(currentPage.value + num) },
+            { id: 3, label: 'Diverse', cls: ['button', 'filter-btn'], action: () => type.value = 'misc' },
+            { id: 4, label: 'Samarbeidsprosjekt', cls: ['button', 'filter-btn'], action: () => type.value = 'collaborator' },
+            { id: 5, label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => changePage(currentPage.value - num) },
+            { id: 6, label: 'Neste', cls: ['button', 'pagination-btn'], action: () => changePage(currentPage.value + num) },
         ]);
 
     const error = computed(() =>
