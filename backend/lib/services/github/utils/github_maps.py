@@ -52,7 +52,7 @@ class GithubUtils:
     async def track_project_stack(branch:str, tree_path:str, n:int = 1) -> Dict[str, bool]:
         """ Analyzes the repository data to determine its characteristics. """
 
-        from lib.services.Github.github_api import GithubAPI
+        from lib.services.github.github_api import GithubAPI
 
         URL = os.getenv("GITHUB_REST")
         TOKEN = os.getenv("GITHUB_TOKEN")
