@@ -27,14 +27,14 @@
                         
                     </section>
                 </section>
-                
                 <section v-if="!!data.techStack && data.techStack.length > 0"
                     :class="['tech-container']">
                     <h4>Teknologi : </h4>
                     <p :class="['flex-wrap-row-justify-space-evenly']">
                         <span v-for="(tech, i) in data.techStack" :key="i">
-                            <span :class="tech.type.toLowerCase()"></span>
-                            <b>{{ tech.label }}</b>
+                            <MediaFigure v-if="tech" :data="tech"
+                                :cls="['tech-figure', 'tech-img']"
+                            />
                         </span>
                     </p>
                 </section>
@@ -58,11 +58,10 @@
             </section>
         </section>
 
-
     </section>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup >
     
     //  --- Import & Props -setup logic
     import { computed } from 'vue';
