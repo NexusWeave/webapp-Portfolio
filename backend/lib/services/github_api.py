@@ -46,11 +46,13 @@ class GithubAPI(AsyncAPIClientConfig):
         languages_tasks: List[Any] = []
         excluded_repositories: List[str] = ['me50', 'code50', 'cs50']
 
-        sem = Semaphore(1)
+        queue = 10
+        sem = Semaphore(queue)
+
         validated_data = [data for data in response.json() if data['size'] != 0  and not any(word in str(data['owner']['login']).lower() for word in excluded_repositories)]
         for res in validated_data:
             name = res['name']
-            owner = res['owner']['login']                           #type: ignore Pylance - The 'owner' key is expected to be present in the response, and it should contain a 'login' key. If the API response structure changes, this could lead to a KeyError. It's important to ensure that the API response is consistent with the expected structure.
+            owner = res['owner']['login']
             async with sem:
                 languages_tasks.append(self.fetch_languages(owner, name))
 
@@ -84,7 +86,7 @@ class GithubAPI(AsyncAPIClientConfig):
             validated_lang = [data for data in response.json() if data['size'] != 0 and not any(word in str(data['owner']['login']).lower() for word in excluded_repositories)]
             for res in validated_lang:
                 name = res['name']
-                owner = res['owner']['login']                           #type: ignore Pylance - The 'owner' key is expected to be present in the response, and it should contain a 'login' key. If the API response structure changes, this could lead to a KeyError. It's important to ensure that the API response is consistent with the expected structure.
+                owner = res['owner']['login']
                 languages_tasks.append(self.fetch_languages(owner, name))
 
             languages = await gather(*languages_tasks)
@@ -113,7 +115,8 @@ class GithubAPI(AsyncAPIClientConfig):
 
     async def analyze_repository(self,trees_url: str) -> Any:
         """ Analyzes the repository data to determine its characteristics. """
-        sem = Semaphore(1)
+        queue: int = 10
+        sem = Semaphore(queue)
         response: httpx.Response
         try:
             async with sem:
