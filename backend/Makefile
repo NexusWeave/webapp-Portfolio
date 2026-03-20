@@ -7,14 +7,13 @@ test-reports: # Running tests with coverage and generating HTML report # Not wor
 clean: # Clean up cache files
 	@echo "--- Cleans up Cache files ---"
 	
-	#	Cleans up __pycache__, pytest cache directories
-	find . -depth -type d \( -name "__pycache__" -o -name ".pytest_cache" -o -name ".benchmarks", -o -name ".logs" \) -exec rm -rf {} \;
+	#	Cleans up __pycache__, pytest cache directories, benchmarks, and logs
+	@find . -depth -type d \( -name "__pycache__" -o -name ".pytest_cache" -o -name ".benchmarks" -o -name ".logs" -o -name ".coverage" -o -name ".test_database.db" \) | sed 's|^\./||' | while read -r line; do \
+		grep -qxF "$$line/" ../.gitignore || echo "$$line/" >> .gitignore; \
+		rm -rf "$$line"; \
+	done
+	@echo "Fullført: Mapper slettet og lagt til i .gitignore."
 
-	#	Cleans up .coverage files
-	rm -rf fastAPI/.benchmarks
-
-	#	Cleans up test database files
-	rm -rf fastAPI/.test_database.db
 	clear
 	@echo "--- Clean up Finished ---"
 
