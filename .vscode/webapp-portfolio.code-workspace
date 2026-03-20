@@ -35,7 +35,10 @@
             "Model",
             "Github",
             "Package.json",
-            "Sync"
+            "Sync",
+            "LANG",
+            "Activity",
+            "Services"
         ],
     },
 }
