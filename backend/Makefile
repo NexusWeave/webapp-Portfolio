@@ -8,11 +8,13 @@ clean: # Clean up cache files
 	@echo "--- Cleans up Cache files ---"
 	
 	#	Cleans up __pycache__, pytest cache directories, benchmarks, and logs
-	@find . -depth -type d \( -name "__pycache__" -o -name ".pytest_cache" -o -name ".benchmarks" -o -name ".logs" -o -name ".coverage" -o -name ".test_database.db" \) | sed 's|^\./||' | while read -r line; do \
-		grep -qxF "$$line/" ../.gitignore || echo "$$line/" >> .gitignore; \
-		rm -rf "$$line"; \
+	@@for dir in "__pycache__" ".pytest_cache" ".benchmarks" ".logs"; do \
+		grep -qxF "$$dir/" ../.gitignore || echo "$$dir/" >> ../.gitignore; \
 	done
-	@echo "Fullført: Mapper slettet og lagt til i .gitignore."
+
+	@find .. -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+	@find .. -name ".pytest_cache" -type d -exec rm -rf {} + 2>/dev/null || true
+	@find ../.logs -type f -exec rm -f {} + 2>/dev/null || true
 
 	clear
 	@echo "--- Clean up Finished ---"
