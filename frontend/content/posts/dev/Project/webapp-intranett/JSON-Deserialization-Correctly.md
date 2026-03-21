@@ -7,7 +7,7 @@ ingress: |
   Ved å løse en feil i systemets tilgangskontroll (RBAC), har vi sørget for at både kollegaer og studenter slipper avbrudd når de skal logge inn. Tidligere stoppet hele systemet opp fordi det ikke forsto sine egne sikkerhetsregler, noe som skapte unødvendige avbrudd i arbeidsdagen. Ved å rydde opp i denne kommunikasjonssvikten har vi fjernet risikoen for at ansatte blir låst ute, og dermed spart bedriften for tapt arbeidstid. Resultatet er en tryggere hverdag hvor sensitiv informasjon er godt beskyttet, og et system som alltid er klart til bruk når folk trenger det.
 parade: ''
 star: |
-  Systemet har en Rollebasert tilgangs kontroll (**RBAC**) som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten (JSON-data) ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i korttidsminnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
+  Systemet har en Rollebasert tilgangs kontroll (**RBAC**) som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten (JSON-data) ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
 
   Oppgaven min var å feilsøke for å finne ut grunnen til at instruksjonslisten og mottakeren i systemet ikke lenger kommuniserte på samme språk.
   Som en konsekvens av at de to systemene er avhengig av hverandre for at sikkerhets laget skal fungere, var målet mitt å korrigere feilene slik at systemet kunne vertifisere tilganger og sikre en normal oppstart.
@@ -26,4 +26,13 @@ sources: ''
 
 **Dagens Aktiviteter**
 
+* Analyserte hvorfor systemet stoppet opp og hvorfor JSON-data med instruksjonslisten ikke ble lest inn i minnet.
+* Gjennomførte en feilsøkings prosess for å finne ut hvorfor sikkerhetslaget hindret verifisering av tilganger.
+* Oppdaget at klassen `AccessService` ikke var klargjort (instansiert) før dataene ble forsøkt overført.
+* Endret koden slik at en ny instans av `AccessService` opprettes før innlastingen av regler starter.
+* Bekreftet at verdier fra instruksjonslisten nå flyter uavbrutt til de interne egenskapene i koden.
+* Sikret at sikkerhetskontrollen fungerer som den skal, slik at ansatte og studenter igjen kan logge inn uten utfordringer.
+* Etablert en stabil metode for fremtidig håndtering av klasser og data som sikrer vedvarende systemstabilitet.
+
 Motivasjon & Energi - 10/10
+Dagen har vært så fin den kunne bli
