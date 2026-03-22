@@ -1,3 +1,32 @@
+# [1.9.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.8.0...v1.9.0) (2026-03-22)
+
+
+### Features
+
+* **Github-Actions:** ✨ Introduce YAML configuration for automated deployment. ([0efd428](https://github.com/NexusWeave/webapp-Portfolio/commit/0efd428b458a4940f5c882e6f6dbe4716bc62400))
+* **home:** moved the project logs section to the main landing page ([6d4dd10](https://github.com/NexusWeave/webapp-Portfolio/commit/6d4dd106f884b1d88979e6c2205226cc7a3758d8))
+
+# [1.8.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.7.0...v1.8.0) (2026-03-22)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Corrected casing for TimeOutError in `api_config`. ([0e8ee48](https://github.com/NexusWeave/webapp-Portfolio/commit/0e8ee488e7b233fe699fbb748ecafeb93f31b95a))
+* **Github:** 🐛 Resolved potential connection errors by ensuring data is fully loaded. ([f80c27f](https://github.com/NexusWeave/webapp-Portfolio/commit/f80c27f9a5451a5eeb6b945cfdb170d7f7dff62e)), closes [hi#traffic](https://github.com/hi/issues/traffic)
+* **UI:** 🐛 Resolved Improved high-resolution image loading & modern format support. ([0bbe992](https://github.com/NexusWeave/webapp-Portfolio/commit/0bbe992f241faef7bd9ae26269ff7efb46209724)), closes [hi#resolution](https://github.com/hi/issues/resolution) [hi#quality](https://github.com/hi/issues/quality)
+
+
+### Features
+
+* **Database:** ✨ ADD privacy controls & refine data tracking. ([b40a2ef](https://github.com/NexusWeave/webapp-Portfolio/commit/b40a2ef7f344c6239cae8ead183b89ffecd3eb17))
+* **Sync:** ✨ Optimize data fetching with error handling & smart filtering. ([3ae5857](https://github.com/NexusWeave/webapp-Portfolio/commit/3ae585701baae1c9043be99e6849d6cf4a9c227f))
+* **UI:** ✨ Introduce collaborator filtering & optimized mobile navigation. ([b6875e8](https://github.com/NexusWeave/webapp-Portfolio/commit/b6875e8bfed4b1219891e26192e05c165b1e9bc5))
+
+
+### Performance Improvements
+
+* **Sync:** ⚡️ Optimize limits to improve sync speed. ([1f09fe2](https://github.com/NexusWeave/webapp-Portfolio/commit/1f09fe26c708b2e1dbc0d54b62ad7cccd15163f3))
+
 # [1.7.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.6.4...v1.7.0) (2026-03-18)
 
 

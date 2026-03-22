@@ -42,18 +42,7 @@
 
             </section>
         </section>
-
         <section class="flex-column-justify-space-evenly">
-            <article class="article-wrapper flex-column">
-                <h2> Logger fra mine prosjekter </h2>
-                <section class="blog-section flex-wrap-row-align-items-center-justify-space-between">
-                    <NavigationButton v-if="currentPage > 1" :data="PageButtons[0]"/>
-                    <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
-                        <ArticleHead :article="post" />
-                    </section>
-                    <NavigationButton v-if="currentPage < totalPages" :data="PageButtons[1]"/>
-                </section>
-            </article>
             <article v-for="(data, i) in dev" :key="i" class="bio">
                 <h3 v-if="i === 1">{{ data.title }}</h3>
                 <span>Sist oppdatert : <time :datetime="new Date(data.meta.date).toISOString()">{{ new Date(data.meta.date).toDateString() }}</time></span>
@@ -68,12 +57,11 @@
 <script setup lang="ts">
 
     //  --- Import & types logic
-    import { ref, computed } from 'vue';                        // @ts-ignore
+    import { computed } from 'vue';                        // @ts-ignore
     import { startTimer } from '~/utils/utils';
     import { onMounted, onUnmounted, fetchCollection } from '#imports';
-    import { blogPagination } from '@/composables/pagination';  // @ts-ignore
 
-    import type { DevCollectionItem, DevPostsCollectionItem,ReferenceCollectionItem } from '@nuxt/content';
+    import type { DevCollectionItem, ReferenceCollectionItem } from '@nuxt/content';
 
 
     //  --- Conent logic
@@ -85,20 +73,6 @@
     const referenceCache = 'referenceCache';
     const reference = await fetchCollection<ReferenceCollectionItem>(referencePath, referenceCache);
     const sortedReference = reactive(mapReference(reference));
-
-    const devPostPath = 'devPosts';
-    const devPostCache = 'devPostCache';
-    const rawPosts = await fetchCollection<DevPostsCollectionItem>(devPostPath, devPostCache)
-    const mappedPosts =  computed(() => {currentPage.value; return blogPagination(rawPosts.value, currentPage.value)});
-    
-    //  --- Pagination Logic
-    const currentPage = ref<number>(1);
-    const totalPages = computed(() => { if (rawPosts.value) { const n = 3; return Math.ceil(rawPosts.value.length / n); } return 0; });
-    const PageButtons = computed(() =>
-    [
-        { id: 0, label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- },
-        { id: 1, label: 'Neste', cls: ['button', 'pagination-btn'], action: () => currentPage.value ++ }
-    ]);
 
     //  --- Progress Bar Logic
     const codeProsessionList =

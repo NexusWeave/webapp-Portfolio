@@ -2,7 +2,7 @@
 import time
 from asyncio import Semaphore, gather
 from urllib.parse import urljoin
-from typing import Dict, List, Any, Optional
+from typing import Coroutine, Dict, List, Any, Optional, TypeVar
 
 #   Third-Party Libraries
 import httpx
@@ -16,6 +16,8 @@ from lib.services.github.utils.github_maps import GithubUtils
 LOG = APIWatcher(dir="logs", name='Github-API')
 LOG.file_handler()
 
+
+T = TypeVar("T")
 class GithubAPI(AsyncAPIClientConfig):
 
     """ Github API Configuration
@@ -45,34 +47,32 @@ class GithubAPI(AsyncAPIClientConfig):
         languages_tasks: List[Any] = []
         excluded_repositories: List[str] = ['me50', 'code50', 'cs50', 'martininn', 'Husseinabdulameer11']
 
-        queue = 10
-        sem = Semaphore(queue)
-
         validated_data = [data for data in response.json() if data['size'] != 0  and not any(word in str(data['owner']['login']).lower() for word in excluded_repositories)]
+
         for res in validated_data:
             name = res['name']
             owner = res['owner']['login']
-            async with sem:
-                languages_tasks.append( await self.fetch_languages(owner, name))
+            lang = self.wait_in_line(self.fetch_languages(owner, name))
+            languages_tasks.append(lang)
 
         languages = await gather(*languages_tasks)
         repo: List[Dict[str, str | object | List[str] | object]] = []
-        
+
         while True:
-            repoObject: Dict[str, str | object | List[str] | object] = {}
             validated_data = [d for d in response.json() if d['size'] != 0 and not any(word in str(d['owner']['login']).lower() for word in excluded_repositories)]
+
             for data, lang in zip(validated_data, languages):
                 utils = GithubUtils()
+                mapped_repo: Dict[str, str | object | List[str] | object] = {}
 
                 try:
-                    async with sem: 
-                        repoObject = await utils.map_repository(data, lang)
+                    mapped_repo = await utils.map_repository(data, lang)
 
                 except Exception as e: 
-                    LOG.error(f"Error mapping repository: {e.__class__.__name__} - {str(e)}") 
+                    LOG.error(f"Raised {e.__class__.__name__} - {str(e)}") 
                     raise e
 
-                repo.append(repoObject)
+                repo.append(mapped_repo)
 
             if  not 'next' in response.links: break
 
@@ -86,16 +86,16 @@ class GithubAPI(AsyncAPIClientConfig):
             for res in validated_lang:
                 name = res['name']
                 owner = res['owner']['login']
-                languages_tasks.append(self.fetch_languages(owner, name))
+                lang = self.wait_in_line(self.fetch_languages(owner, name))
+                languages_tasks.append(lang)
 
             languages = await gather(*languages_tasks)
 
-        LOG.info(f"Repositories fetched successfully\nTime Complexity: {time.perf_counter() - start:.2f}s\nTotal of {len(repo)} repositories fetched.")
-
+        LOG.info(f"Successfully fetched and processed data from endpoint: {endpoint}. Time elapsed: {time.perf_counter() - start} seconds.")
         return repo
 
     async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, List[str] | str | object]]:
-
+        LOG.debug(f"Fetching languages for repository: {name} by {owner}")
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
         languages: List[Dict[str, List[str] | str | object]] = []
         response: httpx.Response = await self.ApiCall(path, head = self.HEADER)
@@ -114,16 +114,24 @@ class GithubAPI(AsyncAPIClientConfig):
 
     async def analyze_repository(self,trees_url: str) -> Any:
         """ Analyzes the repository data to determine its characteristics. """
-        queue: int = 10
-        sem = Semaphore(queue)
         response: httpx.Response
+
         try:
-            async with sem:
-                response: httpx.Response = await self.ApiCall(trees_url, head=self.HEADER)
+            response = await self.wait_in_line(self.ApiCall(trees_url, head=self.HEADER))
 
         except Exception as e:
             LOG.error(f"Error analyzing repository: {e.__class__.__name__} - {str(e)}\n - {self.HEADER}\n")
             raise e
 
         return response.json()
+    
+    async def wait_in_line(self, coro: Coroutine[Any, Any, T], queue: int = 25) -> T:
+        sem = Semaphore(queue)
+        try:
+            async with sem:
+                return await coro
+
+        except Exception as e:
+            LOG.error(f"Error in wait_in_line: {e.__class__.__name__} - {str(e)}")
+            raise e
     
