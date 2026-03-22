@@ -53,7 +53,7 @@ class GithubAPI(AsyncAPIClientConfig):
             name = res['name']
             owner = res['owner']['login']
             async with sem:
-                languages_tasks.append(self.fetch_languages(owner, name))
+                languages_tasks.append( await self.fetch_languages(owner, name))
 
         languages = await gather(*languages_tasks)
         repo: List[Dict[str, str | object | List[str] | object]] = []
