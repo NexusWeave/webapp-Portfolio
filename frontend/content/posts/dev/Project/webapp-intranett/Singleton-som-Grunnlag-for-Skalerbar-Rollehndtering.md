@@ -9,7 +9,7 @@ star: |
 
   Målet var å samle alle tilgangsregler i en felles oversiktlig fil som **JSON**, slik at sikkerheten er enkel å styre  og  systemet er bygget for å vokse. Dette ville sikre at de fordelte rollene kun får se den informasjonen som er nødvendig for deres spesifikke rolle og ingenting annet. Oppgaven min ble å innføre denne løsningen for rettighetsstyring (**RBAC**), slik bedriften har kontroll på hvem som ser hva.
 
-  For å løse dette på en rask og fremtidsrettet måte, valgte jeg en metode som sørger for at systemet alltid har en rask tilgang til reglene uten å belaste serveren unødvendig, dette kalles for **Singleton-tjeneste**. 
+  For å løse dette på en rask og fremtidsrettet måte, valgte jeg en metode som sørger for at systemet alltid har en rask tilgang til reglene uten å belaste serveren unødvendig, dette kalles for **Singleton-tjeneste**.
 
   * Jeg inkluderte sikkerhets sjekken i oppstarten, for å sjekke hvem som har tilgang en gang. Dette betyr at  systemet trenger å sjekke hvem som har tilgang en gang, noe som sparer tid og ressurser hver gang en bruker logger seg inn.
   * Jeg vertifiserte løsningen mot bransje standarden (via Google Gemini) for å sikre at vi følger de nyeste sikkerhetsstandardene for moderne IT-systemer.
@@ -22,7 +22,7 @@ sources: |
   3. [Prinsipp for Single Responsibility (SRP).](https://en.wikipedia.org/wiki/Single-responsibility_principle)
 ---
 
-Dagens Aktiviteter:
+**Dagens Aktiviteter**:
 
 * Utviklet en løsning som skiller mellom ansatte og studenter for å sikre at brukere kun har tilgang til informasjon relevant for deres rolle.
 * Opprettet en JSON-basert oversikt over alle tilgangsregler for å forenkle styringen og fremtidig vekst.
@@ -31,6 +31,6 @@ Dagens Aktiviteter:
 * Gjennomført teknisk kontroll av løsningen mot gjeldende bransjestandarder (ved bruk av Google Gemini) for å sikre moderne sikkerhetskrav.
 * Identifisert nåværende fordeler ved JSON-løsningen (rask utrulling og lav kostnad) samt dokumentert behovet for manuell oppfølging ved stor organisatorisk vekst.
 
-Motivasjon & Energi 10 / 10
+**Motivasjon & Energi** **10** / **10**
 
 Dagen har vært så fin den kunne bli.
