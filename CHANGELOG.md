@@ -1,3 +1,11 @@
+# [1.9.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.8.0...v1.9.0) (2026-03-22)
+
+
+### Features
+
+* **Github-Actions:** ✨ Introduce YAML configuration for automated deployment. ([0efd428](https://github.com/NexusWeave/webapp-Portfolio/commit/0efd428b458a4940f5c882e6f6dbe4716bc62400))
+* **home:** moved the project logs section to the main landing page ([6d4dd10](https://github.com/NexusWeave/webapp-Portfolio/commit/6d4dd106f884b1d88979e6c2205226cc7a3758d8))
+
 # [1.8.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.7.0...v1.8.0) (2026-03-22)
 
 
