@@ -7,8 +7,8 @@ from fastapi import Request
 from dotenv import load_dotenv
 
 #   Internal Dependencies
-from lib.services.github_api import GithubAPI
 from lib.utils.logger_config import AppWatcher
+from lib.services.github.github_api import GithubAPI
 from lib.utils.exception_handler import NotFoundError
 from lib.services.db_handler import GithubDatabaseHandler
 from lib.settings.database_config import ASynchronousDatabaseConfig
@@ -24,12 +24,12 @@ LOG.file_handler()
 class ApiDatabaseBridge:
 
     @staticmethod
-    async def repositories_sync(URL: str, ENDPOINT: str, TOKEN: str, request:Request):
+    async def repositories_sync(request:Request, URL: str, params: Dict[str, str | int], ENDPOINT: str, TOKEN: str):
         DB_CONTEXT: ASynchronousDatabaseConfig = request.app.state.db
 
         try:
             async with DB_CONTEXT.SessionLocal() as session:
-                repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL = URL, KEY = TOKEN).fetch_data(ENDPOINT)
+                repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL = URL, KEY = TOKEN).fetch_data(ENDPOINT, params=params)
                 if isinstance(repositories, NotFoundError): raise NotFoundError(404, "No repositories found from GitHub API.")
 
                 GITHUB_HANDLER: GithubDatabaseHandler = GithubDatabaseHandler(session = session)

@@ -2,74 +2,70 @@
 date: 2025-11-18T00:00:00.000Z
 title: Dynamisk RBAC-Navigasjon med Statisk CSV
 ingress: >
-  Oppgaven var å konvertere en statisk CSV-basert innholdsliste til en dynamisk,
-  autorisert navigasjonsstruktur ved å integrere den med systemets Role-Based
-  Access Control (RBAC)-logikk. Dette krevde en strategisk løsning for
-  datahåndtering og autorisasjon: Innholdslisten måtte leses asynkront og
-  deretter kartlegges og omdefineres streng for streng for å valideres mot
-  brukerens tilgangsrettigheter i en dedikert tjenesteklasse. Målet er å
-  dynamisk filtrere navigasjonsmenyen, slik at brukere kun ser lenker til
-  innhold de faktisk har tilgang til.
+  Vi har innført en intelligent navigasjonsløsning som automatisk tilpasser
+  menyer etter den enkeltes rettigheter. Ved å filtrere bort utilgjengelig
+  innhold før det når skjermen, har vi fjernet unødvendig støy og styrket
+  sikkerheten for både ansatte og studenter. Den nye strukturen sikrer en
+  profesjonell brukeropplevelse og reduserer fremtidige kostnader, da vi nå kan
+  oppdatere innhold og tilgangsnivåer manuelt uten behov for omfattende
+  omprogrammering.
+parade: ''
 star: >
-  Systemet bruker en CSV-fil som kilde for innholdslisten og den globale
-  navigasjonen. Utfordringen var å integrere denne statiske listen med det
-  eksisterende Role-Based Access Control (RBAC)-systemet for å sikre at brukere
-  kun ser lenker/innhold de har tilgang til.
+  Systemet vårt benytter en sentral oversikt (en CSV-fil ved bruk av
+  [`CsvHelper`](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file))
+  for å styre innholdslister og hovedmenyer. Utfordringen var at denne listen
+  var statisk; alle brukere så de samme lenkene og menyvalgene, uavhengig av
+  hvilke rettigheter de faktisk hadde i systemet. Dette skapte en uoversiktlig
+  brukeropplevelse og potensielle sikkerhetsspørsmål, da brukere kunne se
+  navigasjonsstier de ikke hadde tillatelse til å besøke.
 
 
-  Designe og implementere et system som sjekker om en autorisert bruker har
-  rettigheter til å se innholdet i navigasjonslenkene, og dermed dynamisk
-  filtrere og presentere kun tilgjengelige lenker.
+  Målet var å designe og skape en intelligent løsning som automatisk kobler
+  menyoversikten sammen med brukernes rettighetsnivå (**RBAC**). Oppgaven var å
+  skape en dynamisk navigasjon som filtrerer bort utilgjengelig innhold, slik at
+  hver enkelt bruker kun presenteres for de lenkene og funksjonene de faktisk
+  har tilgang til å bruke.
 
 
-  Løsningen krever en strategisk integreasjon av CSV-databehandling og RBAC
-  -logikk i en funksjonell enhet.
+  For å løse dette har jeg utviklet en ny tjeneste som fungerer som et filter
+  mellom datakilden og brukerflaten:
 
 
-  **Datahåndtering**
+  * Jeg satte opp en løsning i som leser den sentrale oversikten og tolker
+  innholdet systematisk.
+
+  * Selve kontrollen av rettigheter er lagt til en egen, skjermet modul. Dette
+  sikrer at sikkerhetsreglene er adskilt fra resten av systemet for enklere
+  vedlikehold.
+
+  * Systemet bryter ned hver enkelt sti i navigasjonen og verifiserer den mot
+  brukerens unike rettighetsprofil.
+
+  * Kun de godkjente delene av oversikten blir satt sammen på nytt og sendt
+  videre til brukerens skjerm.
+
+  *
 
 
-  CSV-filen blir lest gjennom å bruke
-  [`CsvHelper`](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file)
-  som leser filen inn til en variabel. Dette er en prosess som skjer i
-  **CsvNavigation**-filen.
-
-
-  For hver seksjon skal programmet sjekke om at brukeren har rettigheter, til
-  den stien
-
-
-  Om den bolske verdien er sann, skal den delen av CSV-filen legges inn i en
-  streng og når programmet er ferdig blir strengen skrevet tilbake til en ny
-  streng, som er Searializert til samme type som den opprinnlige dokumentet og
-  videre sendt tilbake til endepunktet og videre sendt til frontend.
-
-
-  **Integrasjonspunkt**
-
-
-  Denne sjekken skal i utgangspunktet sjekkes i en egen tjeneste klasse, for å
-  isolere foretningslogikken.
-
-
-  **Autorisasjons logikk**
-
-
-  For at jeg skal kunne sjekke CSV-logikken,
-
-
-  CSV-filen splites ved hjelp av det definerte separasjonsstegnet.
-
-
-  Kartlegges strengen og om defineres til tilgangs logikken, slik at det sjekkes
-  at det er en del av den tillate stien.
-
-
-  Hver enkelt splittede streng sjekkes opp mot brukerens rettigheter.
-
-
-  Stier som returnerer en boolsk verdi legges inn i en ny datastruktur for
-  presentasjon
+  Vi har nå fått en skreddersydd og sikker brukeropplevelse der systemet
+  automatisk tilpasser seg både ansattes og studentens ansvarsområde. Ved å
+  fjerne utilgjengelige lenker før de i det hele tatt når brukerens skjerm, har
+  vi fjernet unødvendig støy og styrket bedriftens sikkerhet. Samtidig har vi
+  lagt til rette for en mer kostnadseffektiv drift den nye løsningen er bygget
+  slik at vi i fremtiden kan endre tilgangsnivåer eller legge til nytt innhold
+  uten behov for tidkrevende omprogrammeringer. Resultatet er et profesjonelt
+  verktøy som øker både ansattes og studentens effektivitet.
 sources: ''
 ---
 
+**Dagens Aktiviteter**
+
+* Konstruert en ny tjeneste som automatisk fjerner utilgjengelige lenker fra systemets menyer, slik at ansatte og studenter kun ser det de har tillatelse til.
+* Implementert en logikk som går gjennom hver enkelt sti i navigasjonen og bekrefter at den samsvarer med godkjente tilgangsnivåer.
+* Etablert en oversiktlig og sentralisert metode (JSON) for manuell tildeling av brukertilganger, noe som gir full kontroll og enkel administrasjon av rettigheter.
+* Skilt ut selve "dørvakt-funksjonen" i en egen modul for å sikre at fremtidige oppdateringer av regelverket kan gjøres raskt og trygt uten å påvirke resten av systemet.
+* Verifisert at systemet nå bygger opp en ryddig og skreddersydd oversikt for hver enkelt bruker, noe som reduserer digital støy og øker effektiviteten i hverdagen.
+
+Energi og motivasjon - 10 / 10
+
+Dagen er så fin den kan bli.

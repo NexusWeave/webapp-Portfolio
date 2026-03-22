@@ -1,12 +1,13 @@
 #  Performace Testing for the API's
 
-#   Third Party Imports
+#   Third-Party Libraries
 import pytest, os, anyio
 from pytest_benchmark.fixture import BenchmarkFixture
 from dotenv import load_dotenv
-#   Local Library Imports
-from lib.services.heavy_api import HeavyAPI
-from lib.services.github_api import GithubAPI
+
+#   Internal Libraries
+from lib.services.heavy.heavy_api import HeavyAPI
+from lib.services.github.github_api import GithubAPI
 
 load_dotenv()
 

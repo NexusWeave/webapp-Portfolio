@@ -1,21 +1,15 @@
 const python =
 [
-    "FLASK.PY", "DJANGO.PY", "PY-CORD.PY", "PANDAS.PY", "NUMPY.PY",
+    "PYTHON","FLASK.PY", "DJANGO.PY", "PY-CORD.PY", "PANDAS.PY", "NUMPY.PY",
     "MATPLOTLIB.PY", "REFLEX.py", "FASTAPI.PY"
 ]
 
 const cs = 
 [
-    'CS', 'C', 'C++', 'NET', 'ASPNET', 'ENTITY FRAMEWORK'
+    'CS', 'C', 'C++', //'NET', 'ASPNET', 'ENTITY FRAMEWORK'
 ]
-const TypeScript =
-[
-    "VUE.TS", "NUXT.TS", "REACT.TS", "TYPESCRIPT"
-]
-const javascript =
-[
-    "VUE.JS", "JAVASCRIPT"
-]
+
+const javascript = [ "VUE", "NUXT", "TYPESCRIPT", "REACT", "JAVASCRIPT" ]
 const workFlow =
 [
     'CMS', 'GITHUB', 'SASS', 'AGILE', 'GIT'
@@ -42,8 +36,7 @@ export const techStack:string[] =
     ...styling,
     ...workFlow,
     ...javascript,
-    ...rationalDB,
-    ...TypeScript
+    ...rationalDB
 ]
 
 export const techStackMap:Array<{ name: string, codes: string[] }> = 
@@ -51,9 +44,8 @@ export const techStackMap:Array<{ name: string, codes: string[] }> =
     { name: 'CS', codes: cs },
     { name: 'Markup', codes: markup },
     { name: 'Python', codes: python },
+    { name: 'SQL', codes: rationalDB },
     { name: 'Styling', codes: styling },
-    { name: 'Workflow', codes: workFlow },
-    { name: 'TypeScript', codes: TypeScript },
+    //{ name: 'Workflow', codes: workFlow },
     { name: 'JavaScript', codes: javascript },
-    { name: 'Rational-DB', codes: rationalDB },
 ]

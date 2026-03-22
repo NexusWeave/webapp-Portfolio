@@ -28,7 +28,7 @@ class GithubDatabaseHandler():
             match url['name']:
                 case 'github': repo_url = url['href']
                 case 'webapp': preview_url = url['href']
-                case 'ytube_url': video_url = url['href']
+                case 'youtube_url': video_url = url['href']
                 case _: continue
             
         LANGUAGE_ASSOCIATION: List[str] = []
@@ -37,11 +37,12 @@ class GithubDatabaseHandler():
             LANGUAGE: LanguageModel = LanguageModel(language = str(i['language']))
             LANGUAGE_ASSOCIATION.append(LanguageAssosiationModel(language = LANGUAGE, code_bytes = i['bytes']))
 
+        repository.pop('anchor', None)
+        repository.pop('collaborators', None)
         dictionary: Dict[str, Any] = {**repository,
-            'ytube_url': video_url, 'demo_url': preview_url, 'repo_url': repo_url,
-            'lang_associations': LANGUAGE_ASSOCIATION,'last_update': datetime.now()}
+            'youtube_url': video_url, 'demo_url': preview_url, 'repo_url': repo_url,
+            'lang_associations': LANGUAGE_ASSOCIATION,'last_check': datetime.now()}
 
-        LOG.debug(f"Payload was successful formated for repo_id: {repository['repo_id']}")
         return dictionary
 
     @staticmethod
@@ -49,28 +50,32 @@ class GithubDatabaseHandler():
 
         FIELDS_TO_CHECK = [
             'owner', 'label','repo_url', 'description',
-            'is_private', 'demo_url', 'updated_at', 'repo_url', 'is_backend', 'is_frontend', 'is_fullstack', 'is_collaborator']
+            'is_private', 'demo_url', 'repo_url', 'is_backend',
+            'is_frontend', 'is_fullstack', 'is_collaborator']
 
         for field in FIELDS_TO_CHECK:
+            if field == 'description' and dictionary.get(field) == 'No description provided.' : continue
             API_VALUE, DB_VALUE = dictionary.get(field), getattr(exist, field, None)
 
             if DB_VALUE != API_VALUE: 
-                LOG.debug(f"Changes detected for repo_id: {dictionary['repo_id']}, field: {field}")
+                #LOG.debug(f"Changes detected for label: {dictionary['label']}, field: {field}")
                 return True
-
-        LOG.debug(f"No Changes for repo_id: {dictionary['repo_id']}")
+        #LOG.debug(f"No Changes for label: {dictionary['label']} - Skipping update.")
         return False
 
     def new_association_record(self, repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -> None:
 
         association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
         self.session.add(association_obj)
-        LOG.debug(f"Initializing new association record for repository: {repo.repo_id}")
+        #LOG.debug(f"Initializing new association record for repository: {repo.repo_id}")
 
     async def _create_repositories(self, repository: Dict[str, Any]) -> None:
-        repo_obj = RepositoryModel( **repository)
+        temp_repo = repository.copy()
+        temp_repo.pop('lang', None)
+        #LOG.debug(f"Creating new repository record for label: {repository['label']} with data: {temp_repo}")
+        repo_model = RepositoryModel( **temp_repo)
 
-        self.session.add(repo_obj)
+        self.session.add(repo_model)
 
         LANGUAGE_ASSOCIATIONS: List[str] = repository['lang']
 
@@ -78,9 +83,9 @@ class GithubDatabaseHandler():
             CODE_BYTES : int = i['bytes']       #type:ignore
             LANG_NAME : str = i['language']     #type:ignore
             LANG_OBJ: LanguageModel = await self.new_language_record(LANG_NAME)
-            self.new_association_record(repo_obj, LANG_OBJ, CODE_BYTES)
+            self.new_association_record(repo_model, LANG_OBJ, CODE_BYTES)
 
-        LOG.debug(f"Successfully created new repository record for repo_id: {repository['repo_id']}")
+        #LOG.debug(f"Successfully created new repository record for label: {repository['label']}")
 
     def _apply_repositories_updates(self, dictionary: Dict[str, Any], DUPLICATION: RepositoryModel) -> None:
         EXCCLUDE_FIELDS = ['repo_id', 'created_at']
@@ -120,19 +125,19 @@ class GithubDatabaseHandler():
 
             if DUPLICATION:
                 if GithubDatabaseHandler.has_data_changes(DUPLICATION, dictionary): self._apply_repositories_updates(dictionary, DUPLICATION)
-                else: LOG.warn(f"No changes detected ! Skipping update for repo_id: {repository[i]['repo_id']}")
+                else: LOG.warn(f"No changes detected ! Skipping update for label: {repository[i]['label']}")
 
             else:
                 repository[i].update(
                     {
                         'demo_url': dictionary['demo_url'], 'repo_url': dictionary['repo_url'],
-                        'ytube_url': dictionary['ytube_url'], 'last_update': datetime.now().isoformat(),
+                        'youtube_url': dictionary['youtube_url'], 'last_check': datetime.now(),
                         'is_backend': dictionary['is_backend'], 'is_frontend': dictionary['is_frontend'],
                         'is_fullstack': dictionary['is_fullstack'], 'is_collaborator': dictionary['is_collaborator']
                     })
 
                 await self._create_repositories(repository[i])
-                LOG.debug(f"Successfully inserted new repository with repo_id: **{repository[i]['repo_id']}**")
+                #LOG.debug(f"Successfully inserted new repository with label: **{repository[i]['label']}**")
         try:
             await self.session.commit()
 
@@ -142,7 +147,7 @@ class GithubDatabaseHandler():
 
     async def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
 
-        QUERY = (select(RepositoryModel).options(selectinload(RepositoryModel.lang_assosiations).selectinload(LanguageAssosiationModel.language)))
+        QUERY = (select(RepositoryModel).options(selectinload(RepositoryModel.lang_assosiations).selectinload(LanguageAssosiationModel.language)).where(RepositoryModel.is_secret == False).order_by(RepositoryModel.updated_at.desc()))
 
         result = await self.session.execute(QUERY)
         return result.scalars().all()

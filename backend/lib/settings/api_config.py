@@ -2,7 +2,7 @@
 #   Dependencies
 from time import perf_counter
 from urllib.parse import urljoin
-from typing import List, Optional, Dict
+from typing import  Optional, Dict
 
 #   Third Party Dependencies
 import httpx
@@ -16,8 +16,8 @@ from lib.utils.exception_handler import TimeOutError
 from lib.models.web_config import WebAPIModel
 
 #   Initialize Logger
-logger = APIWatcher(dir="logs", name='API-Calls')
-logger.file_handler()
+LOG = APIWatcher(dir="logs", name='API-Calls')
+LOG.file_handler()
 
 
 class AsyncAPIClientConfig(WebAPIModel):
@@ -28,7 +28,7 @@ class AsyncAPIClientConfig(WebAPIModel):
         self.VERSION = version
         self.client = httpx.AsyncClient()
 
-    async def ApiCall(self, endpoint: str, head: Dict[str, str]) ->  List[Dict[str, object]]:
+    async def ApiCall(self, endpoint: str, head: Dict[str, str], params: Optional[Dict[str, str | int]] = None) ->  httpx.Response:
 
         """
         Makes an API call to the specified endpoint with given headers.
@@ -36,20 +36,19 @@ class AsyncAPIClientConfig(WebAPIModel):
         start = perf_counter()
 
         path: str = urljoin(self.API_URL,endpoint)
-
+        num =  120.0
+        TIMEOUT = httpx.Timeout(num, connect=num)
         try:
-            req: httpx.Response = await self.client.get(url = path, timeout=30, headers=head)
-
+            req: httpx.Response = await self.client.get(url = path, timeout=TIMEOUT, headers=head, params=params)
             match req.status_code:
-                case 200: return req.json()
+                case 200: return req
                 case 404: raise HTTPError('Resource not found')
                 case 408 | 504: raise TimeOutError(req.status_code, None)
                 case 401 | 403: raise ConnectionError('Unauthorized Access')
                 case _: raise RequestError(f"Unexpected status code: {req.status_code}")
 
-
-        except (HTTPError, ConnectionError, TimeoutError, RequestError) as e: 
-            logger.warn(f"Request was not successful.\n {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}\n")
+        except (HTTPError, ConnectionError, TimeOutError, RequestError) as e: 
+            LOG.warn(f"Request was not successful.\n {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}\n")
             raise e
 
     async def calculate_n(self, endpoint: str, header: Dict[str, str]):

@@ -1,64 +1,67 @@
 ---
-date: 2025-11-14T00:00:00.000Z
 tags:
   - dev-journey
-title: Testbarhet av Role Based Access Control -funksjonallitet
+date: 2025-11-14T00:00:00.000Z
+title: Redusert risiko og lavere vedlikeholdskostnader
 ingress: >
-  Den opprinnelige implementasjonen av **R**ole-**B**ased **A**ccess **C**ontrol
-  skapte en kritisk utfordring for vedlikehold, da brudd på **S**ingle
-  **R**esponsibility **P**rinciple førte til at **enhetstester** ble avhengig av
-  ekstern **infrastruktur I/O**. For å oppnå ekte enhetstesting ble
-  **forretningslogikken** separert fra **infrastrukturen**. Denne
-  omstruktureringen, i tråd med **D**ependency **I**nversion **P**rinciple,
-  sikrer at **RBAC**-**logikken** nå er isolert, robust og kan testes uavhengig
-  av filsystemet.
+  Vi har styrket systemets grunnmur for å fjerne risikoen for kostbare feil i
+  daglig drift. Ved å skille virksomhetens regler fra den tekniske motoren, har
+  vi skapt en løsning som er langt enklere å kontrollere. Dette gir oss en
+  stabil sikkerhet som fungerer nøyaktig som planlagt, samtidig som vi reduserer
+  tidsbruk til fremtidig vedlikehold. Resultatet er en tryggere investering som
+  raskere kan tilpasses nye behov i organisasjonen uten økt sårbarhet.
+parade: ''
 star: >
-  Opprinnlige implementasjonen av **R**ole **B**ased **A**ccsess **C**ontrol
-  -**funksjonaliteten** brøt med **S**ingle **R**esponsibility **P**rinciple
-  (**SRP**). Tjenesten hadde to ansvarsområder som
+  Systemets funksjon for tilgangsstyring var organisert på en måte som blandet
+  foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare
+  ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken
+  isolert , som øker risiko for feil ved fremtidige endringer og gjorde det
+  vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer
+  som planlagt.
 
 
-  * \*\*foretningslogikk \*\*(tilgangsjekk)
-
-  * **infrastruktur I**/\*\*O \*\*(filinnlesning).
-
-
-  Dette gjorde det vanskelig å skrive rene og isolerte **Enhetstester** for
-  **RBAC-logikken**.  Testene krevde eksisterende fil, noe som bryter med
-  **C**lean **C**ode **P**rinsippene.
+  Målet var å separere ansvarsområdene i systemet for å sikre at reglene kan
+  kontrolleres uavhengig av tekniske lagringsløsninger. Oppgaven var å øke
+  systemets pålitelighet og bygge et rammeverk for effektiv og automatisert
+  kvalitetssikring.
 
 
-  Målet er å oppnå ren, isolert og robust testing av RBAC-logikken. For å oppnå
-  dette målet ansvaret for infrastrukturen og foretningslogikken separeres.
+  Jeg har ryddet i systemets oppbygging.
 
 
-  Refaktoreringen ble gjennomført ved å introdusere et nytt abstraksjonslag for
-  datahenting, i tråd med Dependency Inversion Principle.
+  * Skilt ut logikken for tilgangskontroll slik at denne kan kontrolleres uten å
+  påvirke resten av infrastrukturen.
+
+  * Sørget for at systemet kan simulere ulike sikkerhetsscenarioer uten å være
+  avhengig av eksterne filer.
+
+  * Utviklet testrutiner som umiddelbart gir svar på om logikken fungerer
+  korrekt.
 
 
-  1. Abstrahering av I/O logikk
-     1. Det ble opprettet en ny fil med ansvaret for å sjekke filstien og laste inn data bassert på denne stien. Dette isolerte all filsysteminteraksjon.
-  2. Abstrahering av Formateringen
-     1. En dedikert fil ble opprettet for å hpndtere JSON-deserialisering og formatering, dermed sikret at rådata ble konvertert til den nødvendige datastrukturen.
-  3. Refaktorering av RBAC-tjenesten
-     1. Selve tilgangsfilen ble refaktorert til å kun motta de ferdige formaterte dataene i sin konstruktør (gjennom D.I.). Tjenesten er nå frikoblet fra all I/O- og formateringslogikk.
-
-  Målet er oppnådd. RBAC-logikken er isolert i en egen tjeneste som er frikoblet
-  fra I/O-avhengigheter, og oppfyller SRP.
+  Vi har nå en pålitelig og forutsigbar arkitektur som gir både økt trygghet  og
+  integeritet for at tilgangsstyringen fungerer nøyaktig som planlagt – også når
+  vi gjør endringer i fremtiden. Ved å fjerne de tekniske koblingene har vi
+  redusert tiden det tar å kontrollere og vedlikeholde systemet.
 
 
-  Enhetstester kan nå skrives rent og raskt ved å injisere mock-data direkte i
-  konstruktøren, uten behov for en eksisterende fil.
-
-
-  Prinsipp for testing
-
-  Det er viktig at infrastrukturen og foretningslogikken separeres for å oppnå
-  ekte enhetstestinger
-
-
-  Denne tilnærmingen bekrefter CC-Prinsippene ( som SRP & DIP ) er direkte
-  koblet mot robusthet og vedlikeholdbarhet
+  Denne fremgangsmåten sikrer at vi følger anerkjente standarder for
+  systemarkitektur, noe som er direkte koblet til økt motstandsdyktighet mot
+  feil. Ved å prioritere rene ansvarsforhold har vi lagt til rette for en mer
+  kostnadseffektiv videreutvikling og en betydelig høyere grad av
+  vedlikeholdbarhet over tid.
 sources: ''
 ---
 
+**Dagens aktiviteter**
+
+* Identifisert og kartlagt svakheter i nåværende tilgangsstyring, med fokus på å skille virksomhetens regler fra tekniske avhengigheter.
+* Gjennomført en omfattende opprydding i systemets oppbygging for å sikre klare ansvarsforhold mellom sikkerhetslogikk og infrastruktur.
+* Skilt ut logikken for tilgangskontroll slik at denne kan kontrolleres og oppdateres uavhengig av resten av systemet.
+* Tilrettelagt for simulering av ulike sikkerhetsscenarioer uten behov for eksterne filer, noe som gjør kontrollarbeidet betydelig raskere.
+* Implementert nye rutiner som gir umiddelbare svar på om sikkerhetslogikken fungerer korrekt, noe som styrker systemets integritet.
+* Bekreftet at den nye arkitekturen følger anerkjente standarder for økt motstandsdyktighet mot feil og enklere fremtidig vedlikehold.
+
+**Energi og motivasjon** **10** - **10**
+
+Dagen har vært så fin den kunne bli
