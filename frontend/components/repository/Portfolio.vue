@@ -12,7 +12,7 @@
                 <NavigationButton :data="btn[3]"/>
                 <NavigationButton :data="btn[4]"/>
             </section>
-            <section class="flex-wrap-row-justify-space-evenly">
+            <section class="flex-wrap-row-justify-space-evenly" v-if="totalPages > num">
             <NavigationButton v-if="currentPage > num" :data="btn[5]"/>
                 <span>Side {{ currentPage }} / {{ totalPages }}</span>
             <NavigationButton v-if="currentPage < totalPages" :data="btn[6]"/>
