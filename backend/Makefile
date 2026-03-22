@@ -8,7 +8,7 @@ clean: # Clean up cache files
 	@echo "--- Cleans up Cache files ---"
 	
 	#	Cleans up __pycache__, pytest cache directories, benchmarks, and logs
-	@@for dir in "__pycache__" ".pytest_cache" ".benchmarks" ".logs"; do \
+	@for dir in "__pycache__" ".pytest_cache" ".benchmarks" ".logs"; do \
 		grep -qxF "$$dir/" ../.gitignore || echo "$$dir/" >> ../.gitignore; \
 	done
 
