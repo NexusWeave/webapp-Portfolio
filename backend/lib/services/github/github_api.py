@@ -43,7 +43,7 @@ class GithubAPI(AsyncAPIClientConfig):
             raise e
 
         languages_tasks: List[Any] = []
-        excluded_repositories: List[str] = ['me50', 'code50', 'cs50']
+        excluded_repositories: List[str] = ['me50', 'code50', 'cs50', 'martininn', 'Husseinabdulameer11']
 
         queue = 10
         sem = Semaphore(queue)
