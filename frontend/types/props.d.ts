@@ -99,11 +99,7 @@ export interface listProps
     cls?: Array<string | string[]>;
 }
 
-export interface iconProps
-{
-    cls?: string[];
-    label?: string;
-}
+export interface iconProps { cls?: string[]; }
 
 export interface NavProp
 {

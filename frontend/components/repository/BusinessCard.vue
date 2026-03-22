@@ -11,13 +11,13 @@
             <h3  v-if="Array.isArray(data.name) && data.name.length > 1">
                 {{ data.name[1] }}
                 <span v-if="data.flags.collaborator" :class="['icon']">
-                    <MediaIcon :data="data" :cls="['collaborator']"/>
+                    <MediaIcon :cls="['collaborator']"/>
                 </span>
             </h3> 
             <h3  v-else>
                 {{ data.label }}
                 <span v-if="data.flags.collaborator" :class="['icon']">
-                    <MediaIcon :data="data" :cls="['collaborator']"/>
+                    <MediaIcon :cls="['collaborator']"/>
                 </span>
             </h3>
             <span :class="[cls[2]]">
