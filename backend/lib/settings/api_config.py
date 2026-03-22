@@ -47,7 +47,7 @@ class AsyncAPIClientConfig(WebAPIModel):
                 case 401 | 403: raise ConnectionError('Unauthorized Access')
                 case _: raise RequestError(f"Unexpected status code: {req.status_code}")
 
-        except (HTTPError, ConnectionError, TimeoutError, RequestError) as e: 
+        except (HTTPError, ConnectionError, TimeOutError, RequestError) as e: 
             LOG.warn(f"Request was not successful.\n {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}\n")
             raise e
 
