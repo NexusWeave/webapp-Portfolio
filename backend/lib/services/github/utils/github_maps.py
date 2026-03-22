@@ -79,7 +79,7 @@ class GithubUtils:
         
         backend_extensions:List[str] = [
             '.py', '.cs', '.c', '.h','.cpp', '.hpp', '.go', '.rs',
-            '.sql', '.php', '.java', '.csproj', '.sln', '.sql'
+            '.sql', '.php', '.java', '.csproj', '.sln', '.sql', '.jupyter', '.ipynb'
             ]
 
         dictionary: Dict[str, bool] = {}
