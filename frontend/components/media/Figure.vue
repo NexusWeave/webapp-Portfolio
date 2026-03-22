@@ -1,7 +1,7 @@
 <template>
         <picture>
             <figure :class="cls[0]">
-                <source v-if="!!isImageModern" :srcset="data.srcset" :alt="data.alt" :type="'image/' + data.type">
+                <source v-if="!!isImageModern" :srcset="data.srcset" :type="'image/' + data.type">
                 <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]" :type="'image/' + data.type">
                 <figcaption v-if="!!isFigure">{{ caption ? caption : '' }}</figcaption>
             </figure>
@@ -29,7 +29,7 @@
     const imageFormats = { img: ['jpg', 'jpeg', 'png', 'svg'], modern: ['webp', 'avif'] };
 
     const isImageStandard = computed(() => {return !!data.value.src && !!imageFormats.img.find(item => data.value.src.endsWith(item)); });
-    const isImageModern = computed(() => {return !!data.value.src && !!imageFormats.modern.find(item => data.value.src.endsWith(item)); });
+    const isImageModern = computed(() => {return !!data.value.srcset && !!imageFormats.modern.find(item => data.value.srcset?.endsWith(item)); });
 
     //  --- Debug logic
     //console.log('Figure data:', data.value, isImageModern.value, isImageStandard.value);
