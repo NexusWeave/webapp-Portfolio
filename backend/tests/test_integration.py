@@ -1,21 +1,18 @@
-# Testing common APIS.py
-
 # Python Standard Library
 import os
 from typing import List
 from datetime import datetime, UTC
 
-# Third Party Dependencies
+# Third-Party Libraries
 import pytest,httpx
 from dotenv import load_dotenv
 from httpx import ASGITransport
 from sqlalchemy.future import select
 
 
-#   Internal Dependencies
-
-from lib.services.heavy_api import HeavyAPI
-from lib.services.github_api import GithubAPI
+#   Internal Libraries
+from lib.services.heavy.heavy_api import HeavyAPI
+from lib.services.github.github_api import GithubAPI
 
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanugageRepositoryAssosiationModel, CollaboratorModel
 from app import app

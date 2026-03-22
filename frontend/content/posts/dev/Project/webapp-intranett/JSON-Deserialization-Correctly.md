@@ -1,55 +1,38 @@
 ---
-date: 2025-11-10T00:00:00.000Z
 tags:
   - dev-journey
-title: Sikring av Cachet Konfigurasjon gjennom Eksplisitt Objektinstansiering
-ingress: >
-  Ved applikasjonsstart feilet initialiseringen av Singleton-tjenesten for RBAC
-  kritisk, da JSON-konfigurasjonen nektet å deserialisere til den tiltenkte
-  C#-strukturen. Feilsøking avdekket at årsaken lå i et fundamentalt prinsipp
-  for C# og deserialisering: Komplekse objekttyper krevde eksplisitt
-  instansiering for å gi deserialisereren en gyldig målstruktur. Denne hendelsen
-  understreker den kritiske viktigheten av å forstå objektlevetid og
-  instansieringskrav ved håndtering av statisk, cachet konfigurasjonsdata.
-star: >
-  Ved initializeringen av **Singelton-tjenesten for RBAC**, nektet JSON-dataene 
-  å deserialisere seg korrekt inn i egenskapen. Dette forhindrer tjenesten fra å
-  fullføre cachingen av tilgangsreglene, noe som stopper applikasjonens
-  funksjonalitet.
+date: 2025-11-10T00:00:00.000Z
+title: Løsning av kommunikasjonsfeil og korrekt klargjøring av tilgangskontroll
+ingress: |
+  Ved å løse en feil i systemets tilgangskontroll (RBAC), har vi sørget for at både kollegaer og studenter slipper avbrudd når de skal logge inn. Tidligere stoppet hele systemet opp fordi det ikke forsto sine egne sikkerhetsregler, noe som skapte unødvendige avbrudd i arbeidsdagen. Ved å rydde opp i denne kommunikasjonssvikten har vi fjernet risikoen for at ansatte blir låst ute, og dermed spart bedriften for tapt arbeidstid. Resultatet er en tryggere hverdag hvor sensitiv informasjon er godt beskyttet, og et system som alltid er klart til bruk når folk trenger det.
+parade: ''
+star: |
+  Systemet har en Rollebasert tilgangs kontroll (**RBAC**) som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten (JSON-data) ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
 
+  Oppgaven min var å feilsøke for å finne ut grunnen til at instruksjonslisten og mottakeren i systemet ikke lenger kommuniserte på samme språk.
+  Som en konsekvens av at de to systemene er avhengig av hverandre for at sikkerhets laget skal fungere, var målet mitt å korrigere feilene slik at systemet kunne vertifisere tilganger og sikre en normal oppstart.
 
-  Oppgaven min er å diagnosere og korrigere årsaken til at JSON-dataen ikke
-  matchet den tiltenkte C#-datastrukturen.
+  Jeg gjennomførte en systematisk feilsøkingsprosess i sikkerhetstjenesten for å identifisere hvorfor de tilgangsreglene ikke ble akseptert av systemet.
+  Ved dykke ned i koden oppdaget jeg at kilden til utfordringen var en manglende klargjøring av klassen `AccessService` som skulle ta imot dataene.
 
+  * Jeg sikret for at systemet nå oppretter en ny og klar instans av `AccessService` klassen før selve innlastingen av reglene begynner.
+  * Ved å sikre at klassen var klargjort i tide, kunne systemet korrekt overføre verdiene fra instruksjonslisten til de interne egenskapene i koden uten avbrudd.
 
+  Instruksjonslisten blir lest riktig, sikkerhetskontrollen skjermer informasjon for brukere uten tilgang, og alle tilgangsregler er trygt lagret i systemets minne. Dette har fjernet avbruddene ved oppstart og sørget for at alle ansatte kan logge inn og gjøre jobben sin uten avbrudd i systemet. Ved å fikse dette har vi fjernet risikoen for at andre blir låst ute fra systemet, noe som forenkler hverdagen til kollegaer og studenter.
 
-  Det ble utført en feilsøkingsprosess fokusert på å identifisere hvorfor den
-  dedikerte egenskapen i AccessService ikke aksepterte de deserialiserte
-  dataene.
-
-
-  * Etter feilsøking ble det funnet at kilden til deserialiseringsfeilen var
-  manglende instansiering av klassen som skulle holde dataene.
-  Deserialiseringsprosessen krevde en ny instans av en klasse for å kunne
-  tildele de innkommende JSON-verdiene til de interne egenskapene.
-
-  * Feilen ble korrigert ved å sikre at det ble opprettet en ny instans av
-  klassen før deserialiseringen forsøkte å mappe dataene til feltet.
-
-
-
-  **Lærings Utbytte og Resultat**
-
-
-  Feilen er rettet. konfigurasjonsfilen deserialiserer nå korrekt, klassen
-  initialiseres som forventet, og tilgangskartet er cachet.
-
-
-  Jeg erfarte at når man arbeider med JSON-deserialisering til komplekse
-  C#-typer (som klasser eller samlinger), krever tildeling av verdier fra
-  serialisereren at det eksisterer en gyldig instans av den gitte klassen i
-  minnet. Det er ikke tilstrekkelig med kun en deklarering; det kreves en aktiv
-  instansiering for å gi deserialisereren en målbevisst struktur å tildele data
-  til.
+  Gjennom dette arbeidet har jeg erfart at det ikke holder å bare fortelle systemet at en klasse finnes; man må faktisk gjøre den klar og åpne den før man kan fylle den med informasjon. Denne innsikten har gitt oss en velfungerende sikkerhetskontroll som er selve muren i bedriftens trygghet. Det betyr at vi nå har en oppskrift for fremtiden som garanterer at informasjon alltid er beskyttet og at systemet forblir stabilt.
+sources: ''
 ---
 
+**Dagens Aktiviteter**
+
+* Analyserte hvorfor systemet stoppet opp og hvorfor JSON-data med instruksjonslisten ikke ble lest inn i minnet.
+* Gjennomførte en feilsøkings prosess for å finne ut hvorfor sikkerhetslaget hindret verifisering av tilganger.
+* Oppdaget at klassen `AccessService` ikke var klargjort (instansiert) før dataene ble forsøkt overført.
+* Endret koden slik at en ny instans av `AccessService` opprettes før innlastingen av regler starter.
+* Bekreftet at verdier fra instruksjonslisten nå flyter uavbrutt til de interne egenskapene i koden.
+* Sikret at sikkerhetskontrollen fungerer som den skal, slik at ansatte og studenter igjen kan logge inn uten utfordringer.
+* Etablert en stabil metode for fremtidig håndtering av klasser og data som sikrer vedvarende systemstabilitet.
+
+Motivasjon & Energi - 10/10
+Dagen har vært så fin den kunne bli

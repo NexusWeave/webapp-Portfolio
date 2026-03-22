@@ -37,17 +37,19 @@ class RepositoryModel(BaseModel):
     owner: str = Field(..., description = "Repository Owner", json_schema_extra = {"example":"username"})
     created_at: datetime = Field(..., description = "Creation Timestamp", json_schema_extra = {"example":f"{datetime.now()}"})
     id: int = Field(..., alias = "repo_id", description = "Unique Repository ID", json_schema_extra = {"example":"1234567890"})
+    description: Optional[str] = Field(None, description = "Repository Description", json_schema_extra = {"example":"This is my repository."})
     demo_url: Optional[str] = Field(None, description = "Demo URL", json_schema_extra = {"example":"https://demo.krigjo25.com"}, exclude= True)    
     repo_url: str = Field(..., description = "Repository URL", json_schema_extra = {"example":"https://github.com/username/my-repo"}, exclude = True)
     youtube_url: Optional[str] = Field(None, description = "YouTube URL", json_schema_extra = {"example":"https://youtube.com/my-repo"}, exclude= True)
     updated_at: Optional[datetime] = Field(None, description = "Last Update Timestamp", json_schema_extra = {"example":f"{datetime.now()}"},exclude= True)
-    description: Optional[str] = Field(None, description = "Repository Description", json_schema_extra = {"example":"This is my repository."})
 
     is_private: bool = Field(..., description = "Private Repository", json_schema_extra = {"example":False}, exclude= True)
+    is_secret : bool = Field(..., description = "Is Secret Repository", json_schema_extra = {"example":False}, exclude= True)
     is_backend: bool = Field(..., description = "Is Backend Repository", json_schema_extra = {"example":False}, exclude= True)
     is_frontend: bool = Field(..., description = "Is Frontend Repository", json_schema_extra = {"example":False}, exclude= True)
     is_fullstack: bool = Field(..., description = "Is Fullstack Repository", json_schema_extra = {"example":True}, exclude= True)
     is_collaborator: bool = Field(..., description = "Is Collaborator Repository", json_schema_extra = {"example":False}, exclude= True)
+    
 
     lang_assosiations: List[LanguageAssociationModel] = Field(..., exclude= True)
 
@@ -63,13 +65,12 @@ class RepositoryModel(BaseModel):
                     {
                         "bytes": assec.code_bytes,
                         "label": assec.language.language, 
-                        "image": {
+                        "img": {
                             "type":'svg',
                             "alt": f'Logo for {assec.language.language}',
-                            "src": f'/public/media/tech-language/{assec.language.language}.svg'
+                            "src": f'/media/tech-lang-icons/{assec.language.language}.svg'
                         }
                         })
-        
         return languages
     
     @computed_field
@@ -107,24 +108,6 @@ class RepositoryModel(BaseModel):
         return ANCHOR
 
     @computed_field
-    def icon(self) -> List[Dict[str, str]]:
-        
-        languages: List[Dict[str, str]] = []
-
-        for assec in self.lang_assosiations:
-            
-            if assec.language.id == assec.lang_id and self.id == assec.repo_id:
-                languages.append(
-                    {
-                        "type": "svg",
-                        "id"  : f"{self.id}",
-                        "alt" : f'Logo for {assec.language.language}',
-                        "src" : f'/media/tech-lang-icons/{assec.language.language}.svg'
-                    })
-        
-        return languages
-
-    @computed_field
     def name(self) -> List[str]:
         sep = '-'
         label: List[str] = str(self.label).split(sep)
@@ -139,11 +122,13 @@ class RepositoryModel(BaseModel):
 
     @computed_field
     def flags(self) -> Dict[str, bool]:
+        list_of_dict: List[Dict[str, bool]] = []
+        if self.is_backend: list_of_dict.append({"backend": self.is_backend})
+        if self.is_frontend: list_of_dict.append({"frontend": self.is_frontend})
+        if self.is_fullstack: list_of_dict.append({"fullstack": self.is_fullstack})
+        if self.is_collaborator: list_of_dict.append({"collaborator": self.is_collaborator})
 
-        if self.is_backend: return {"backend": self.is_backend}
-        if self.is_frontend: return {"frontend": self.is_frontend}
-        if self.is_fullstack: return {"fullstack": self.is_fullstack}
-        if self.is_collaborator: return {"collaborator": self.is_collaborator}
-        return {'misc': True}
+        if not list_of_dict: list_of_dict.append({'misc': True})
+        return {k: v for d in list_of_dict for k, v in d.items()}
 
     model_config = ConfigDict(from_attributes = True)

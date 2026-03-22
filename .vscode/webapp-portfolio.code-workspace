@@ -34,7 +34,11 @@
             "HealthCheck",
             "Model",
             "Github",
-            "Package.json"
+            "Package.json",
+            "Sync",
+            "LANG",
+            "Activity",
+            "Services"
         ],
     },
 }

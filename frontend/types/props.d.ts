@@ -50,19 +50,19 @@ export interface DateYearProps
 
 export interface Anchor
 {
-    label   : string;
-    href    : string;
-    type    : string[];
-    img?    : FigureItem;
+    label: string;
+    href : string;
+    type : string[];
+    img? : FigureItem;
     
 }
 
 export interface FigureItem
 {
-    type    : string;
-    src     : string;
-    alt     : string;
-    id?     : string;
+    src : string;
+    alt : string;
+    id? : string;
+    type : string;
     srcset? : string;
     caption? : string;
 }
@@ -70,7 +70,7 @@ export interface FigureItem
 export interface FigureProps
 {
     cls?   : string[];
-    data    : FigureItem;
+    data    : Record<FigureItem>;
 }
 
 export interface listData
@@ -99,11 +99,7 @@ export interface listProps
     cls?: Array<string | string[]>;
 }
 
-export interface iconProps
-{
-    cls?: string[];
-    label?: string;
-}
+export interface iconProps { cls?: string[]; }
 
 export interface NavProp
 {
@@ -124,11 +120,11 @@ export interface GithubRepo
     name : string[];
     repo_id: string;
     icon: FigureItem[];
-    created_at: string;
+    created: string;
     description: string;
     date: Record<string, string>;
     anchor: Record<string, string>;
-    languages: Array<{label: string, bytes: number}>;
+    languages: Array<{img: FigureItem[]; label: string, bytes: number}>;
 }
 
 export interface RepoProps

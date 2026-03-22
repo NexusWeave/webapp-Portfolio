@@ -67,3 +67,7 @@ backend/lib/database/__pycache__
 backend/lib/services/utils/__pycache__
 backend/migration/versions/__pycache__
 backend/lib/models/database_models/__pycache__
+__pycache__/
+.pytest_cache/
+.benchmarks/
+.logs/

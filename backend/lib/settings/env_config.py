@@ -1,6 +1,6 @@
 # Standard Libraries
 import __future__, os
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 # Third Party Libraries
 from dotenv import load_dotenv
@@ -19,12 +19,11 @@ class Config(BaseSettings):
     API_NAME: str = "Portfolio Backend API"
 
     # Github REST API
-    GITHUB_TOKEN: str = ""
-    GITHUB_PER_PAGE: str = ""
+    GITHUB_TREE: str = ""
     GITHUB_REST: str = ""
-    ORGANIZATIONS: List[str] = []
-    ORG_GITHUB_REST_API: str = ""
+    GITHUB_TOKEN: str = ""
     PERSONAL_GITHUB_REST_API: str = ""
+    GITHUB_PARAMS: Dict[str, str | int] = {}
 
     # Heavy Workout API
     HEAVY_V: str = ""
