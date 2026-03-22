@@ -33,7 +33,7 @@ jobs:
           
           # TinaCMS
           TINA_BRANCH: ${{ secrets.TINA_BRANCH }}
-          TINA_TOKEN: "9e88ca4413e8a633b696b61afb3f3fd8b7c4b560" #${{ secrets.TINA_CLIENT_ID }}
+          TINA_TOKEN:  ${{ secrets.TINA_TOKEN }}
           NEXT_PUBLIC_TINA_CLIENT_ID: "db61a396-6aa4-4652-a2fe-945aa8c080b8" #${{ secrets.TINA_CLIENT_ID }}
           
           # App
