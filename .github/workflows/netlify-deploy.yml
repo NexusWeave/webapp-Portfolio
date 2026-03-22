@@ -17,10 +17,10 @@ jobs:
         with:
           node-version: 22
           cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: frontend/package.json
 
       - name: Install dependencies
-        run: cd frontend && npm ci
+        run: cd frontend && npm install
 
       - name: Build and Deploy
         run: |
@@ -34,7 +34,7 @@ jobs:
           # TinaCMS
           TINA_BRANCH: ${{ secrets.TINA_BRANCH }}
           TINA_TOKEN:  ${{ secrets.TINA_TOKEN }}
-          NEXT_PUBLIC_TINA_CLIENT_ID: "db61a396-6aa4-4652-a2fe-945aa8c080b8" #${{ secrets.TINA_CLIENT_ID }}
+          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           
           # App
           NODE_ENV: production
