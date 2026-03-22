@@ -54,25 +54,25 @@ class GithubDatabaseHandler():
             'is_frontend', 'is_fullstack', 'is_collaborator']
 
         for field in FIELDS_TO_CHECK:
+            if field == 'description' and dictionary.get(field) == 'No description provided.' : continue
             API_VALUE, DB_VALUE = dictionary.get(field), getattr(exist, field, None)
 
             if DB_VALUE != API_VALUE: 
-                LOG.debug(f"Changes detected for repo_id: {dictionary['repo_id']}, field: {field}")
+                #LOG.debug(f"Changes detected for label: {dictionary['label']}, field: {field}")
                 return True
-
-        LOG.debug(f"No Changes for repo_id: {dictionary['repo_id']}")
+        #LOG.debug(f"No Changes for label: {dictionary['label']} - Skipping update.")
         return False
 
     def new_association_record(self, repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -> None:
 
         association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
         self.session.add(association_obj)
-        LOG.debug(f"Initializing new association record for repository: {repo.repo_id}")
+        #LOG.debug(f"Initializing new association record for repository: {repo.repo_id}")
 
     async def _create_repositories(self, repository: Dict[str, Any]) -> None:
         temp_repo = repository.copy()
         temp_repo.pop('lang', None)
-        LOG.critical(f"Creating new repository record for repo_id: {repository['repo_id']} with data: {temp_repo}")
+        LOG.critical(f"Creating new repository record for label: {repository['label']} with data: {temp_repo}")
         repo_model = RepositoryModel( **temp_repo)
 
         self.session.add(repo_model)
@@ -85,7 +85,7 @@ class GithubDatabaseHandler():
             LANG_OBJ: LanguageModel = await self.new_language_record(LANG_NAME)
             self.new_association_record(repo_model, LANG_OBJ, CODE_BYTES)
 
-        LOG.debug(f"Successfully created new repository record for repo_id: {repository['repo_id']}")
+        #LOG.debug(f"Successfully created new repository record for label: {repository['label']}")
 
     def _apply_repositories_updates(self, dictionary: Dict[str, Any], DUPLICATION: RepositoryModel) -> None:
         EXCCLUDE_FIELDS = ['repo_id', 'created_at']
@@ -125,7 +125,7 @@ class GithubDatabaseHandler():
 
             if DUPLICATION:
                 if GithubDatabaseHandler.has_data_changes(DUPLICATION, dictionary): self._apply_repositories_updates(dictionary, DUPLICATION)
-                else: LOG.warn(f"No changes detected ! Skipping update for repo_id: {repository[i]['repo_id']}")
+                else: LOG.warn(f"No changes detected ! Skipping update for label: {repository[i]['label']}")
 
             else:
                 repository[i].update(
@@ -137,7 +137,7 @@ class GithubDatabaseHandler():
                     })
 
                 await self._create_repositories(repository[i])
-                LOG.debug(f"Successfully inserted new repository with repo_id: **{repository[i]['label']}**")
+                #LOG.debug(f"Successfully inserted new repository with label: **{repository[i]['label']}**")
         try:
             await self.session.commit()
 
