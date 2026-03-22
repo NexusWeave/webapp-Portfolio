@@ -36,8 +36,8 @@ class AsyncAPIClientConfig(WebAPIModel):
         start = perf_counter()
 
         path: str = urljoin(self.API_URL,endpoint)
-        num =  120.0
-        TIMEOUT = httpx.Timeout(num, connect=num)
+
+        TIMEOUT = self.timeout_config()
         try:
             req: httpx.Response = await self.client.get(url = path, timeout=TIMEOUT, headers=head, params=params)
             match req.status_code:
@@ -50,6 +50,11 @@ class AsyncAPIClientConfig(WebAPIModel):
         except (HTTPError, ConnectionError, TimeOutError, RequestError) as e: 
             LOG.warn(f"Request was not successful.\n {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}\n")
             raise e
+
+    @staticmethod
+    def timeout_config (standard: float = 180.0) -> httpx.Timeout:
+        """ Configures the timeout settings for API calls. """
+        return httpx.Timeout(standard)
 
     async def calculate_n(self, endpoint: str, header: Dict[str, str]):
         return await self.ApiCall(endpoint = f"{endpoint}", head = header)
