@@ -72,7 +72,7 @@ class GithubDatabaseHandler():
     async def _create_repositories(self, repository: Dict[str, Any]) -> None:
         temp_repo = repository.copy()
         temp_repo.pop('lang', None)
-        LOG.critical(f"Creating new repository record for label: {repository['label']} with data: {temp_repo}")
+        #LOG.debug(f"Creating new repository record for label: {repository['label']} with data: {temp_repo}")
         repo_model = RepositoryModel( **temp_repo)
 
         self.session.add(repo_model)
