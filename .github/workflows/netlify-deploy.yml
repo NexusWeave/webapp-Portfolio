@@ -28,16 +28,16 @@ jobs:
           npm run deploy
         env:
           # Netlify
-          
-          NETLIFY_SITE_ID:  ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID:  ${{ secrets.NETLIFY_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           
           # TinaCMS
-          
           TINA_READ: ${{ secrets.TINA_READ }}
           TINA_BRANCH: ${{ secrets.TINA_BRANCH }}
           TINA_SEARCH: ${{ secrets.TINA_SEARCH }}
-          TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_CLIENT_ID }}
+          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           
           # App
           NODE_ENV: production
+          GOOGLE_CLOUD: ${{ secrets.GOOGLE_CLOUD }}
