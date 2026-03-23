@@ -130,7 +130,7 @@ async def check_github_api() -> bool:
         return False
     
     github = GithubAPI(URL=URL, KEY=TOKEN)
-    PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PER_PAGE}"
+    PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PARAMS}"
 
     try:
         await github.fetch_data(endpoint=PERSONAL_ENDPOINT)
