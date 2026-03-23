@@ -1,3 +1,17 @@
+## [1.9.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.9.1...v1.9.2) (2026-03-23)
+
+
+### Bug Fixes
+
+* **Repo-analysis:** 🐛 Resolved infinite loop in internal GitHub API calls. ([6482c25](https://github.com/NexusWeave/webapp-Portfolio/commit/6482c25afc23681dcdaae5d051d317380d576134))
+
+## [1.9.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.9.0...v1.9.1) (2026-03-23)
+
+
+### Bug Fixes
+
+* **Env:** 🐛 Resolved missing environment variable error. ([ad56907](https://github.com/NexusWeave/webapp-Portfolio/commit/ad5690711fe90ef552c0810851e51665a201d49e))
+
 # [1.9.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.8.0...v1.9.0) (2026-03-22)
 
 
