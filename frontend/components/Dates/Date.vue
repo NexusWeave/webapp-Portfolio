@@ -53,5 +53,5 @@
         current: !!data.current ? norwegianTime.format(new Date(data.current)) : undefined,
         
     }
-    console.log("Date Component loaded with data: ", dateObject);
+    //console.log("Date Component loaded with data: ", dateObject);
 </script>

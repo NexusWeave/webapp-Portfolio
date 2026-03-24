@@ -55,7 +55,6 @@
         if (!repoData.value) return
         const n = 9;
         let data = computed(() => repoData.value);
-        console.log("Current type filter:", data);
         if (type.value) data = computed(() =>  { return repoData.value?.filter(repo => repo.flags[type.value] === true); });
         
         const start = (currentPage.value - num) * n;
