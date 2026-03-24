@@ -27,16 +27,13 @@
             </section>
             <section class="dev-skill flex-column-justify-center-align-center">
                 <h2> Min Kode Aktivitet</h2>
-
+                <p> Messured in KB</p>
                 <section class="flex-wrap-row-justify-space-evenly">
-                    <UtilsProgress 
-                        :value="totalCodeActivity"
-                        label="Fullstack Utvikler"
-                    />
-                    <UtilsProgress v-for="(data, i) in codeActivity" :key="i" 
-                        :value="data.value"
-                        :label="data.name"
-                        :tech="data.tech"
+
+                    <UtilsProgress v-for="(data, i) in formattedLanguages" :key="i" 
+                        :value="data.bytes"
+                        :label="data.label"
+                        :cls="[data.label.toLowerCase()]"
                     />
                 </section>
 
@@ -57,9 +54,10 @@
 <script setup lang="ts">
 
     //  --- Import & types logic
-    import { computed } from 'vue';                        // @ts-ignore
     import { startTimer } from '~/utils/utils';
+    import { useLanguageStore } from '@/stores/languageBytesStore';
     import { onMounted, onUnmounted, fetchCollection } from '#imports';
+    
 
     import type { DevCollectionItem, ReferenceCollectionItem } from '@nuxt/content';
 
@@ -75,21 +73,7 @@
     const sortedReference = reactive(mapReference(reference));
 
     //  --- Progress Bar Logic
-    const codeProsessionList =
-    [
-        { name:'C',  tech:"c", value: 42.91 },
-        { name:'GO-Lang',  tech:"go", value: 5.00 },    
-        { name:'SASS', tech:"sass", value: 42.91 },
-        { name:'Python', tech:"python", value: 42.91 },
-        { name:'C#', tech:"cs", value: 25.00 },
-        { name:'SQL / Databaser', tech:"sqlite", value: 50.00 },
-        { name:'TypeScript', tech:"typescript", value: 26.00 },
-    ];
-
-    const n = codeProsessionList.length;
-    const codeActivity = computed(() => codeProsessionList.slice().sort((a, b) => b.value - a.value));
-    const totalCodeActivity = computed(() => (codeProsessionList.reduce((acc, item) => acc + item.value, 0) + n) / n);
-    
+    const { formattedLanguages } = storeToRefs(useLanguageStore());
 
     let timerInterval: ReturnType<typeof setInterval> | null = null;
 
