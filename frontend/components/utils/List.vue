@@ -24,5 +24,5 @@
 
     const data = computed(() => props.data);
     const title = computed(() => props.title);
-    console.warn('List Component loaded with data: ', data.value);
+    //console.warn('List Component loaded with data: ', data.value);
 </script>

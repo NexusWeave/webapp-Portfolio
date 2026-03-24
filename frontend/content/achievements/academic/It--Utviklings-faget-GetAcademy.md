@@ -7,14 +7,11 @@ title: It- Utviklings faget
 location: 'Larvik, Vestfold, Norge | Remote'
 loc_link: 'https://maps.app.goo.gl/Ry3kFAGXNM6PATS26'
 techStack:
-  - NET
   - CSS
   - HTML
   - MSSQL
   - JAVASCRIPT
   - VUE
-  - AGILE
-  - GIT
   - CS
 ---
 

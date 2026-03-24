@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.9.2...v1.10.0) (2026-03-24)
+
+
+### Features
+
+* **Store:** ✨ Introduce Pinia for language stats ([26b33a2](https://github.com/NexusWeave/webapp-Portfolio/commit/26b33a27d674e14a16a41b0190889a5c8352abce))
+
 ## [1.9.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.9.1...v1.9.2) (2026-03-23)
 
 
