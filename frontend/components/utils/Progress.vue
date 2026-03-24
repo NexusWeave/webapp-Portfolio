@@ -1,8 +1,7 @@
 <template>
     <section>
         <h3>{{ label }}</h3>
-        <p>{{ currentRank }}</p>
-        <progress :value="value" :class="tech" max="100"></progress>
+        <progress :value="value" :class="cls" max="1024"></progress>
     </section>
 </template>
 <script setup lang="ts">
@@ -20,7 +19,9 @@
     const props = defineProps<ProgressProps>();
 
     const data = computed(() => props.value);
-    const tech = computed(() => props.tech) || '';
+    const label = computed(() => props.label);
+    const cls = computed(() => props.cls) || '';
+    
 
     //  Rank Logic
     const rankList = 
@@ -32,7 +33,6 @@
         {name:'Mellomnivå Utvikler', min:57.21, max:71.50},
         {name:'Senior Utvikler', min:71.51, max:99.90},
         {name:'Ekspert / Principal', min:83.35, max:100},
-
     ]
     
 
@@ -41,7 +41,9 @@
     const currentRank = rankList.find(rankItem => rankItem.min <= rank && rankItem.max >= rank)?.name || 'Ukjent';
 
     //  Debugging Logic
-    //console.log('Progress data:', data, rank, currentRank);
-
+    //console.log('Tech:', label.value);
+    //console.log('Progress data:', data.value);
+    //console.log('Current rank:', currentRank);
+    
 
 </script>
