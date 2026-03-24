@@ -35,9 +35,10 @@
 <script setup lang="ts">
 
     //  Importing dependencies & types
+    import { storeToRefs } from 'pinia';
     import { ref, watch, computed } from 'vue';
     import { fetchRepositories} from '#imports';
-
+    import { useLanguageStore } from '@/stores/languageBytesStore';
 
     const num: number = 1;
 
@@ -54,7 +55,6 @@
         if (!repoData.value) return
         const n = 9;
         let data = computed(() => repoData.value);
-        
         if (type.value) data = computed(() =>  { return repoData.value?.filter(repo => repo.flags[type.value] === true); });
         
         const start = (currentPage.value - num) * n;
@@ -66,6 +66,18 @@
         return  data.value.slice(start, end) ?? null;
     });
 
+        //  --- Store Logic
+    const { increment } = useLanguageStore();
+
+    for (let i = 0; i < repoData.value.length; i++) {
+        const repo = repoData.value[i];
+        if (!repo.languages) continue;
+        for (let j = 0; j < repo.languages.length; j++) {
+            const lang = repo.languages[j];
+            if (!lang || !lang.label || !lang.bytes) continue;
+            increment(lang.label, lang.bytes);
+        }
+    }
     watch(() => repoData.value, (newValue) => { repoData.value = newValue; });
     watch(() => totalPages.value, (newValue) => { totalPages.value = newValue; });
     watch(() => currentPage.value, (newValue) => { currentPage.value = newValue; });
@@ -93,9 +105,9 @@
         return false;
     });
 
+
+
     function changePage(page: number) { const total = totalPages.value; if (page >= 1 && page <= total) currentPage.value = page; }
-
-
     // Debug logic
     //console.error(paginationData.value)
     //console.error(repoData.value)

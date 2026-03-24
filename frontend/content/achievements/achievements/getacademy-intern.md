@@ -8,7 +8,6 @@ loc_link: 'https://maps.app.goo.gl/Ry3kFAGXNM6PATS26'
 techStack:
   - VUE
   - CS
-  - SASS
   - TYPESCRIPT
 ---
 

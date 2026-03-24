@@ -36,7 +36,7 @@
 
             <section v-if="!!data.languages && data.languages.length > 1"
                 :class="['tech-container']">
-                <h4>Teknologi : </h4>
+                <h4>Andre teknologi(er) : </h4>
                 <p :class="['flex-wrap-row-justify-space-evenly']">
                     <span v-for="(tech, i) in data.languages" :key="i">
                         <MediaFigure v-if="i > 0" :data="tech.img"

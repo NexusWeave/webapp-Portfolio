@@ -7,7 +7,7 @@
                 <span> {{ currentPage }} / {{ totalPages }}</span>
             <NavigationButton v-if="currentPage < totalPages" :data="PageButtons[1]"/>
         </section>
-        <section class="blog-section flex-wrap-row-align-items-center-justify-space-between">
+        <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
                 <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
                 <ArticleHead :article="post" />
             </section>

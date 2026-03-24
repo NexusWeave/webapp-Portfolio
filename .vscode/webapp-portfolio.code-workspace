@@ -40,7 +40,9 @@
             "Activity",
             "Services",
             "Repo-analysis",
-            "Github-Actions"
+            "Github-Actions",
+            "Upgrade",
+            "Store"
         ],
     },
 }

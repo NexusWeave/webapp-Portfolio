@@ -9,8 +9,6 @@ loc_link: ''
 references: Sertifisert sertifikat
 ref_link: 'https://courses.edx.org/certificates/cc7f7cb258a24538af14c876023cf932'
 techStack:
-  - SASS
-  - GITHUB
   - C
   - FLASK.py
   - SQLITE
