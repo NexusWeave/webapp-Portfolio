@@ -1,0 +1,59 @@
+@use '../colors/colors' as color
+$fullstack-tags: (
+    'sosial-innovasjon': (
+        color: color.$dark-grey,
+        background: color.$fullstack-vibrant-orange
+    ),
+    'portfolio': (
+        
+        color: color.$dark-grey,
+        background: color.$fullstack-vibrant-orange
+    ),
+    'webapp-intranett': (
+        color: color.$dark-grey,
+        background: color.$fullstack-vibrant-orange
+    ),
+)
+$frontend-tags: ()
+$backend-tags: ()
+$workflow-tags: (
+    'DevOps': (
+        color: color.$off-white,
+        background: color.$workflow
+    ),
+    'RD': (
+        color: color.$dark-grey,
+        background: color.$rd-lime-green
+    ),
+    'misc': (
+        color: color.$off-white,
+        background: color.$misc-purple
+    ),
+    'Mentalt-vedlikehold': (
+        color: color.$dark-grey,
+        background: color.$human-emerald-glow
+    ),
+)
+
+$os-tags: (
+    'linux': (
+        color: color.$off-white,
+        background:rgb(255, 0, 127)
+    ),
+    'windows': (
+        color: color.$off-white,
+        background: rgb(0, 120, 212)
+    ),
+    'macos': (
+        color: color.$dark-grey,
+        background: rgb(245, 245, 247)
+    ),
+)
+
+$tags: (
+    'os': $os-tags,
+    'backend': $backend-tags,
+    'workflow': $workflow-tags,
+    'frontend': $frontend-tags,
+    'fullstack': $fullstack-tags
+)

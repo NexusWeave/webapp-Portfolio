@@ -1,75 +1,45 @@
-# Nuxt Minimal Starter
+# Frontend — Portfolio Web Application
+The frontend delivers a fast, accessible, and content-driven portfolio experience. It is built to present professional work, achievements, and blog posts with minimal friction for both visitors and content editors. The CMS integration means non-technical stakeholders can manage content independently, reducing maintenance overhead and time-to-publish.
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Tech Stack
+| Technology | Role | Value |
+| ---        | ---  | ---   |
+| [Nuxt 4](https://nuxt.com) | Full-stack Vue framework (SSR / SSG, routing, composables) | Server-side rendering and static generation improve search visibility and load times. Nuxt's file-based routing and component model accelerate feature delivery. |
+| [TinaCMS](https://tina.io) | Git-backed headless CMS with visual editing | TinaCMS provides a Git-backed visual editor, enabling content updates without developer involvement. |
+| [TypeScript](https://www.typescriptlang.org) | Static typing across all components, composables, and utilities | TypeScript across the entire frontend reduces runtime errors and lowers long-term maintenance cost. |
+| [SASS](https://sass-lang.com) | Structured, maintainable styling | Variables, mixins, and modular partials eliminate duplicated CSS, making visual changes faster and less error-prone across the entire app. |
 
-## Setup
+## Documentation
+| Resource | Path |
+|---|---|
+| Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
+| Context diagram | [docs/context-diagram.md](docs/context-diagram.md) |
+| Changelog | [docs/logs/CHANGELOG.md](docs/logs/CHANGELOG.md) |
 
-Make sure to install dependencies:
+## Getting Started
+
+Install dependencies:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
-
-## Development Server
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+Build for production:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Serve the production build locally:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+npm run serve
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+See the [Nuxt deployment documentation](https://nuxt.com/docs/getting-started/deployment) for hosting options.

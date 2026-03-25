@@ -39,5 +39,6 @@
 
 
     //  --- Debug logic
-    //console.log("NavigationMenu loaded with data: ", data, isAnchor, isRouterLink);
+    //console.log("NavigationMenu loaded with data: ", data.value);
+    //console.log("NavigationMenu toggle mode: ", props.toggle);
 </script>

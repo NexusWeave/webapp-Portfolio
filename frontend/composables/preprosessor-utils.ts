@@ -2,7 +2,9 @@
 //  --- Import & types logic
 import type { TimelineItem } from '~/types/timeline';
 import type { ReferenceItem } from '~/types/references';
+import type { DateItem, FigureItem } from '~/types/props';
 import type { AcademicCollectionItem, ReferenceCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
+
 
 type CMSArticleCollectionItem = AcademicCollectionItem | AchievementsCollectionItem;
 
@@ -35,64 +37,65 @@ export function sortbyDate<T extends CMSArticleCollectionItem>(data: T[], sort: 
         });
 }
 
-export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[]
+export function setDateFormat(data:DateItem) : DateItem
 {
+    const time = new Intl.DateTimeFormat('nb-NO', { hour: '2-digit', minute: '2-digit' });
+    const date = new Intl.DateTimeFormat('nb-NO', { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
+
+    const dateData =
+    {
+        delimiter : 'dot',
+        date: data.date ? date.format(new Date(data.date)) : null,
+        time: data.date ? time.format(new Date(data.date)) : null,
+        text : data.updated ? `Oppdatert` : `Publisert`,
+        updated: data.updated ? date.format(new Date(data.updated)) : null,
+    };
+    return dateData;
+}
+
+export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[] {
     if (!data.value) return [];
 
-    let AUTOINCREMENT:number = 0;
-
+    let AUTOINCREMENT: number = 0;
     const timeline = sortbyDate<AcademicCollectionItem>(data.value);
 
-    return timeline.map((doc:AcademicCollectionItem) => {
-        return {
-            id: AUTOINCREMENT++,
-            body: doc.body || undefined, name: doc.tag + "-Timeline",
-            title: doc.title || undefined, isVisible: AUTOINCREMENT - 1 == 0,
-            techStack: fetchTechType(doc.techStack), description: doc.description || undefined,
+    return timeline.map((doc: AcademicCollectionItem): TimelineItem => {
+        const techStack = fetchTechType(doc.techStack);
+        let tech: FigureItem[] | undefined = undefined;
 
-            date:
-            {
-                created: doc.created,
-                updated: doc.updated,
-                end: doc.end,
-            },
+        if (techStack && techStack.length > 0) {
+            tech = techStack.map((item) => {
+                const itemType = item.type.toLowerCase();
+                const label = item.label;
 
-            organization: 
-            {
-                name: doc.organization,
-                anchor: 
-                {
-                    label: doc.organization,
-                    href: doc.org_link,
-                    type: doc.org_link ? ['external'] : []
-                }
-            },
+                return {
 
-            location:
-            {
-                name: doc.location,
-                anchor:
-                {
-                    label: doc.location,
-                    href: doc.loc_link || undefined,
-                    type: doc.loc_link ? ['external'] : []
-                }
-            },
-
-            reference:
-                {
-                    name: doc.references,
-                    anchor:
-                    {
-                        label: doc.references,
-                        href: doc.ref_link || undefined,
-                        type: doc.ref_link ? ['external'] : []
-                    }
-            },
-            } as TimelineItem;
+                    type: 'svg',
+                    frameWork: label,
+                    techType: itemType,
+                    alt: 'Image for ' + label,
+                    src: `/media/tech-lang-icons/${label.toLowerCase()}.svg`,
+                    srcset: `/media/tech-lang-icons/${label.toLowerCase()}.svg`
+                } as FigureItem;
+            });
         }
-    );
-};
+
+        return {
+            techStack: tech as FigureItem[],
+            id: AUTOINCREMENT++,
+            body: doc.body || undefined, 
+            name: doc.tag + "-Timeline",
+            title: doc.title || undefined, 
+            isVisible: (AUTOINCREMENT - 1) === 0,
+            date: { created: doc.created, end: doc.end },
+            description: doc.meta.description || undefined,
+            location: { name: doc.location, anchor: { label: doc.location, href: doc.loc_link || undefined } },
+            organization: { name: doc.organization, anchor: { label: doc.organization, href: doc.org_link } },
+            reference: { name: doc.references, anchor: { label: doc.references, href: doc.ref_link || undefined } },
+        } as unknown as TimelineItem;
+    });
+}
+
 export function mapReference(data: Ref<ReferenceCollectionItem[]>): ReferenceItem[]
 {
     let AUTOINCREMENT:number = 0;

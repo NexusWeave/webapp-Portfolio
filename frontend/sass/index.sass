@@ -3,13 +3,16 @@
 @use './utils/mixins' as mix
 
 @forward './views/dev'
+@forward './views/portfolio'
+
 @forward './utils/cards'
 @forward './utils/icons'
 @forward './utils/article'
+
 @forward './utils/buttons'
 @forward './utils/flexbox'
 @forward './utils/timeline'
-@forward './views/portfolio'
+@forward './utils/generators'
 @forward './utils/navigation'
 @forward './utils/components'
 @forward './utils/tech-content'
@@ -25,12 +28,13 @@
     writing-mode: horizontal-tb
 
 body
-    @include mix.font-style('Nunito')
-    @include mix.background-style(color.$off-white, color.$dark-grey)
-
     h1, h2, h3, h4, h5, h6
         text-align: center
         margin: 0.5em auto
+
+    @include mix.text-wrap-safe()
+    @include mix.font-style('Nunito')
+    @include mix.background-style(color.$off-white, color.$dark-grey)
 
 header, main
     margin-inline: auto
@@ -41,8 +45,7 @@ footer
     margin: 1vw auto
 
 figure
-    max-inline-size: 28em
-    margin: 1em auto
+
     figcaption
         margin-top: 0.5em
         text-align: center
@@ -53,16 +56,5 @@ figure
         inline-size: 100%
         border-radius: .5em
 
-
-nav.some-bar
-    ul.some-ul
-        margin: auto
-        max-inline-size: 30em
-        list-style-type: none
-
-    li.some-li
-        margin: 0.5em 0
-        display: inline
-        list-style: none
-    
-    max-inline-size: 100%
+    margin: auto
+    max-inline-size: 28em

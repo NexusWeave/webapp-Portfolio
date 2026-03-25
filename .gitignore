@@ -20,9 +20,6 @@
 
 
 #   frontend related files & folders
-frontend/assets
-frontend/build
-frontend/src/assets
 frontend/node_modules
 
 # Nuxt dev/build outputs
@@ -48,23 +45,29 @@ frontend/.netlify
 
 
 #   Backend directories
-fastAPI/.logs
-fastAPI/.venv/*
+backend/.logs
+backend/.venv/*
 
 
-#   Cache files
-fastAPI/tests/assets
-fastAPI/.pytest_cache
-
-fastAPI/__pycache__
-fastAPI/lib/utils/__pycache__
-fastAPI/lib/models/__pycache__
-
-fastAPI/lib/settings/__pycache__
-fastAPI/lib/services/__pycache__
-fastAPI/lib/database/__pycache__
-fastAPI/lib/services/utils/__pycache__
-fastAPI/lib/models/database_models/__pycache__
-
-fastAPI/tests/.pytest_cache
-
+#   test files
+backend/*.ini
+backend/tests/assets
+backend/.pytest_cache
+backend/tests/.pytest_cache
+backend/tests/reports/htmlcov
+backend/tests/reports/report.html
+backend/__pycache__
+backend/migration/*.mako
+backend/migration/__pycache__
+backend/lib/utils/__pycache__
+backend/lib/models/__pycache__
+backend/lib/settings/__pycache__
+backend/lib/services/__pycache__
+backend/lib/database/__pycache__
+backend/lib/services/utils/__pycache__
+backend/migration/versions/__pycache__
+backend/lib/models/database_models/__pycache__
+__pycache__/
+.pytest_cache/
+.benchmarks/
+.logs/

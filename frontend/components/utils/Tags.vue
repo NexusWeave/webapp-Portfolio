@@ -1,43 +1,34 @@
 <template>
-
-    <span>
-        <i :class="cls"></i>
-        <template v-if="isAnchor">
-            <Anchor :data="data.anchor" :cls="cls" /> 
-        </template>
-    <template v-if="cls.includes('icon')">
-        
-        <i :class="cls"></i> 
-        {{ data.label }}
-        
-    </template>
-    <template v-else>
-        {{ data.label }}
-    </template>
+    <span v-for="(tag, i) in data" :key="i" :class="cls">
+        <NavigationAnchor v-if="isAnchor" :data="data.anchor" :cls="cls" />         
+        <i v-if="!!tag.icon" class="icon"></i> 
+        {{ tag }}
     </span>
 </template>
 
-<script setup>
-    import { defineProps } from 'vue';
+<script setup lang="ts">
 
-    import Anchor from '$src/components/navigation/Anchor.vue';
+    import { computed } from 'vue';
 
-    const props = defineProps({
-        data: {
-            type: Object,
-            required: true
-        },
-        cls: {
-            type: Array,
-            required: false
-        },
+    interface TagProps { data: string[]; cls?: string[]; }
 
+    //  Define props
+    const props = withDefaults(defineProps<TagProps>(), { cls: () => [] });
+    const cls = computed(() => props.cls);
+
+    const data = computed(() => { 
+        const tagData = props.data;
+        if (Array.isArray(tagData)) return tagData.map(tag => { cls.value.push(tag); return tag; });
+
+        return props.data
     });
 
-    const data = props.data;
-    //const isAnchor = computed(() => {return !!data && !!data.anchor;});
+    
 
-    const cls = props.cls ?? [];
+    //  --- Computed logic
+    const isAnchor = computed(() => !!data.value.anchor);
 
-    console.log("Tag Component loaded with data: ", data);
+    //  --- Debugging logic
+    //console.log("Tag data:", data.value);
+    
 </script>
