@@ -80,10 +80,13 @@
 
     const isImage = () => {
         const dataProps = data.value;
-        if (!dataProps.type) return false;
-
+        const imgProps = img.value;
+        console.log("Checking if data is image with type: ", dataProps);
+        if (!dataProps.type && !imgProps) return false;
         const imageTypes = ['jpg', 'jpeg', 'png', 'svg', "webp"];
-        return imageTypes.some(type => dataProps.type && dataProps.type.includes(type));
+        if (imageTypes.some(type => dataProps.type && dataProps.type.includes(type))) return true;
+        if (imgProps && imgProps.type) return imageTypes.some(type => imgProps.type && imgProps.type.includes(type));
+        return false;
     };
 
     const isIcon = () => {
@@ -95,5 +98,6 @@
     };
 
     //  --- Debug logic
-    //console.log("Link component loaded with data: ", data, img);
+    console.log("Anchor component loaded with data: ", img.value, isImage());
+    console.log("Link component loaded with data: ", data.value);
 </script>

@@ -4,7 +4,7 @@ The frontend delivers a fast, accessible, and content-driven portfolio experienc
 ## Tech Stack
 | Technology | Role | Value |
 | ---        | ---  | ---   |
-| [Nuxt 3](https://nuxt.com) | Full-stack Vue framework (SSR / SSG, routing, composables) | Server-side rendering and static generation improve search visibility and load times. Nuxt's file-based routing and component model accelerate feature delivery. |
+| [Nuxt 4](https://nuxt.com) | Full-stack Vue framework (SSR / SSG, routing, composables) | Server-side rendering and static generation improve search visibility and load times. Nuxt's file-based routing and component model accelerate feature delivery. |
 | [TinaCMS](https://tina.io) | Git-backed headless CMS with visual editing | TinaCMS provides a Git-backed visual editor, enabling content updates without developer involvement. |
 | [TypeScript](https://www.typescriptlang.org) | Static typing across all components, composables, and utilities | TypeScript across the entire frontend reduces runtime errors and lowers long-term maintenance cost. |
 | [SASS](https://sass-lang.com) | Structured, maintainable styling | Variables, mixins, and modular partials eliminate duplicated CSS, making visual changes faster and less error-prone across the entire app. |
@@ -36,10 +36,10 @@ Build for production:
 npm run build
 ```
 
-Preview the production build locally:
+Serve the production build locally:
 
 ```bash
-npm run preview
+npm run serve
 ```
 
 See the [Nuxt deployment documentation](https://nuxt.com/docs/getting-started/deployment) for hosting options.

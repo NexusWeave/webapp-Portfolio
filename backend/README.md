@@ -1,60 +1,65 @@
-# Flask API
-The project is equipped with technologies such as
--   Flask serves as API for the project.
+# Backend API
+This service is a FastAPI backend for the portfolio platform. It provides repository, announcement, and health-check endpoints, and manages database synchronization logic.
 
-#### [Visual representation](./model/system-architecture.md) of the Web Architecture
+## Current Stack
+- FastAPI + Uvicorn
+- Pydantic + pydantic-settings
+- SQLAlchemy (async) + asyncpg
+- pytest + coverage + pytest-html
 
-#### [Visual representation](./model/endpoints.md) of the Endpoints
+## Project Structure
+- `app.py`: FastAPI app bootstrap and route registration
+- `lib/models/`: response and domain models
+- `lib/services/`: API integrations and data synchronization services
+- `lib/database/`: database engine and provider setup
+- `lib/settings/`: environment, app, and database configuration
+- `migration/`: Alembic migration scripts
+- `tests/`: integration, response, and performance test suites
 
-#### [Visual representation](./model/apis.md) of the API Classes
+## Run Locally
+From `backend/`:
 
-#### [Visual representation](./model/utils.md) of the Utils Classes
-
-#### Database
-[Visual representation](./model/database.md) of the Database Classes
-As a consequence of the project not requires a server to handle database functionallity, SQLite was choosen to keep the records.
-
-## Testing Framework And Datasets
-
-####    Test Execution
-[Visual representation](./model/testmodel.md) of the test cases
-To run the tests, use the following commands from the project's root directory
-
-```sh
-pytest -v
-
-#   This command will output a report of the tests.
-pytest --html=reports.html
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python app.py
 ```
 
-#####    API Testing
-[Visual representation](./model/apis.md) of the apis classes
-[Visual representation](./model/testmodel.md) of the test
-API tests are conducted using:
+Default local port: `8080`.
 
-- The [GITHUB REST API](https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28)
-- The [Heavy REST API](https://api.hevyapp.com/docs/)
-- Tests are based on the 
+## API Endpoints
+The API is versioned and mounted at `/api/{version}`.
 
-**Connection test (`test_connection`)**
-This test validates the connection to the specified APIs.
-Given the structure of the Github REST API, successful
-connection tests involve comparing identical expected and
-actual outputs. The actual response dictionary is therefore
-used to define the expected JSON, ensuring that no sensitive
-user data is unitetentionally included in the test.
+- `GET /api/{version}/healthcheck`
+- `GET /api/{version}/repository`
+- `GET /api/{version}/announcement/today`
+- `GET /api/{version}/handleRepositories`
 
-**Repository Availability Test (`mock_request`)**
-The test ensures the availability of repositories.
-It achives this by mocking the relevant URL from
-the GitHub REST API: [Get A Repos](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository)
+## Testing
+From `backend/`:
 
-#####    Databases
-[Visual representation](./model/database.md) of the database
-Database tests are designed according to the principles
-outlined in this unit testing documentation: [test/sqlite.html](https://python-basics-tutorial.readthedocs.io/en/24.1.0/test/sqlite.html)
+```bash
+pytest -v
+```
 
-* **Insertion Test (`test_insertion`)**: This test verifies the correct insertion of data into the database.
-* **Update Test (`test_update`)**: This test validates the accurate updating of data within the database.
+Generate HTML test report:
 
-A test report is generated to provide a clear visualization of the test results.
+```bash
+pytest --html=tests/reports/pytest_report.html --self-contained-html
+```
+
+Coverage report:
+
+```bash
+coverage run -m pytest
+coverage html
+```
+
+## Documentation
+- Backend architecture: [docs/architecture.md](./docs/architecture.md)
+- Service class diagram: [lib/services/docs/services-classDiagram.md](./lib/services/docs/services-classDiagram.md)
+- GitHub service sequence diagram: [lib/services/github/docs/github-sequenceDiagram.md](./lib/services/github/docs/github-sequenceDiagram.md)
+- GitHub service ER diagram: [lib/services/github/docs/github-erDiagram.md](./lib/services/github/docs/github-erDiagram.md)
+- Announcements class diagram: [lib/services/announcements/docs/announcements-classErdiagram.md](./lib/services/announcements/docs/announcements-classErdiagram.md)
+- Announcements sequence diagram: [lib/services/announcements/docs/announcements-sequenceDiagram.md](./lib/services/announcements/docs/announcements-sequenceDiagram.md)

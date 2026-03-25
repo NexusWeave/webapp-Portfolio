@@ -25,6 +25,6 @@ sources: ''
 * Oppgradert alle prosjektets avhengigheter og biblioteker til nyeste versjoner.
 * Fjernet unødvendig logging og optimalisert byggrutinene for å forbedre ytelse og stabilitet.
 
-Motivasjon og energi 10 / 10
+**Motivasjon og energi** **10** / **10**
 
 Dagen har vært så fin den kan være.

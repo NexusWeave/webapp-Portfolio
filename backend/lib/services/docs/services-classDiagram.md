@@ -28,6 +28,10 @@ title: API Classes
             __init__(self, URL=None, KEY=None, GET = "GET", POST = "POST", PUT='PUT', PATCH='PATCH', DELETE = 'DELETE')
             calculate_n(self, endpoint:str)
             ApiCall(self, endpoint:sts, head:dict)
+            wait_in_queue(self, coro: Coroutine[Any, Any, T]) -> T
+
+            @staticmethod
+            timeout_config(standard:float = 12.0)
             }
 
         class HeavyAPI{
@@ -41,7 +45,8 @@ title: API Classes
                 super().__init__(GET, POST, PUT, PATCH, DELETE)
             fetch_data(self, endpoint:str)
             fetch_languages(self, repo:object, endpoint:str)
-
+            analyze_repository(self, trees_url:str) -> List[Dict[str, str | object | List[str]]]
         }
+
     }
 ```

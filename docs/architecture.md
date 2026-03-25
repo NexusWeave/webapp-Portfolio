@@ -1,27 +1,16 @@
 # Repository Directory Tree
+The tree below reflects the current repository structure and excludes directories listed in `.gitignore`.
 
 ```text
 webapp-Portfolio/
-├── .github/
-├── .vscode/
-    └── webapp-portfolio.code-workspace
 ├── CHANGELOG.md
-├── Dockerfile
 ├── LICENSE
-├── Makefile
 ├── README.md
 ├── docker-compose.yml
 ├── package.json
 ├── docs/
 │   ├── architecture.md
-│   └── screen-capture-homepage.pdf
-│   ├── diagrams/
-│   │   ├── Directories.md
-│   │   ├── Gemini_Generated_Image_i4og6qi4og6qi4og.jpeg
-│   │   ├── apis.md
-│   │   ├── database.md
-│   │   ├── endpoints.md
-│   │   └── utils.md
+│   ├── screen-capture-homepage.pdf
 │   └── prototype/
 │       ├── index.html
 │       ├── sass/
@@ -39,39 +28,50 @@ webapp-Portfolio/
 │       │   ├── index.css.map
 │       │   └── index.sass
 │       └── static/
-├── fastAPI/
-│   ├── .coverage
-│   ├── BACKEND-ARCHITECTURE.md
+├── backend/
 │   ├── CHANGELOG.md
+│   ├── Dockerfile
+│   ├── Makefile
 │   ├── README.md
+│   ├── alembic.ini
 │   ├── app.py
 │   ├── pyproject.toml
+│   ├── requirements.in
 │   ├── requirements.txt
+│   ├── docs/
+│   │   └── architecture.md
 │   ├── lib/
 │   │   ├── database/
 │   │   │   ├── db_engine.py
 │   │   │   └── db_providers.py
 │   │   ├── models/
 │   │   │   ├── announcement_model.py
-│   │   │   ├── database_models/
 │   │   │   ├── github_model.py
 │   │   │   ├── heavy_model.py
-│   │   │   └── web_config.py
+│   │   │   ├── web_config.py
+│   │   │   └── database_models/
 │   │   ├── services/
-│   │   │   ├── announcements.py
+│   │   │   ├── announcements/
+│   │   │   ├── docs/
+│   │   │   ├── github/
+│   │   │   ├── heavy/
 │   │   │   ├── api_db_bridge.py
 │   │   │   ├── db_handler.py
-│   │   │   ├── github_api.py
-│   │   │   ├── heavy_api.py
-│   │   │   ├── scheduler_service.py
-│   │   │   └── utils/
+│   │   │   └── scheduler_service.py
 │   │   ├── settings/
 │   │   │   ├── api_config.py
 │   │   │   ├── app_config.py
 │   │   │   ├── database_config.py
-│   │   │   ├── env_config.py
-│   │   │   └── schedule_config.py
+│   │   │   └── env_config.py
 │   │   └── utils/
+│   │       ├── exception_handler.py
+│   │       ├── logger_config.py
+│   │       ├── mathlibrary.py
+│   │       └── os_utils.py
+│   ├── migration/
+│   │   ├── README
+│   │   ├── env.py
+│   │   └── versions/
 │   └── tests/
 │       ├── Makefile
 │       ├── algorithms.py
@@ -81,19 +81,20 @@ webapp-Portfolio/
 │       ├── test_performance.py
 │       └── test_responses.py
 └── frontend/
-	├── FRONTEND-ARCHITECTURE.md
+	├── Dockerfile
+	├── Makefile
 	├── README.md
 	├── app.vue
 	├── content.config.ts
 	├── eslint.config.mjs
 	├── nuxt.config.ts
 	├── package.json
-	├── tree-map-documentation.txt
 	├── tsconfig.json
 	├── components/
 	│   ├── Dates/
 	│   ├── article/
 	│   ├── form/
+	│   ├── layout/
 	│   ├── media/
 	│   ├── navigation/
 	│   ├── portfolio/
@@ -101,7 +102,9 @@ webapp-Portfolio/
 	│   ├── timeline/
 	│   └── utils/
 	├── composables/
+	│   ├── maps/
 	│   ├── backendAPI-utils.ts
+	│   ├── pagination.ts
 	│   └── preprosessor-utils.ts
 	├── content/
 	│   ├── achievements/
@@ -109,34 +112,39 @@ webapp-Portfolio/
 	│   ├── profiles/
 	│   └── quotes/
 	├── docs/
+	│   ├── ARCHITECTURE.md
+	│   ├── context-diagram.md
+	│   └── logs/
 	├── pages/
-	│   ├── aktuelt.vue
-	│   ├── dev.vue
+	│   ├── Dev.vue
+	│   ├── Personal.vue
 	│   ├── index.vue
-	│   └── personal.vue
+	│   └── artikkel/
 	├── public/
 	│   ├── _redirects
-	│   ├── favicon.ico
-	│   ├── media/
-	│   └── robots.txt
+	│   ├── robot.txt
+	│   └── media/
 	├── sass/
 	│   ├── colors/
 	│   ├── flexbox/
-	│   ├── index.sass
 	│   ├── mappings/
 	│   ├── media-query/
 	│   ├── utils/
-	│   └── views/
+	│   ├── views/
+	│   └── index.sass
+	├── stores/
+	│   └── languageBytesStore.ts
 	├── tina/
 	│   ├── collections/
 	│   ├── config.ts
 	│   └── tina-lock.json
 	├── types/
+	│   ├── article.d.ts
+	│   ├── navigation.d.ts
 	│   ├── props.d.ts
 	│   ├── references.d.ts
 	│   └── timeline.d.ts
 	└── utils/
-		├── tagStack.ts
 		├── tech-utils.ts
 		├── techStack.ts
 		└── utils.ts
