@@ -20,10 +20,14 @@ star: |
 sources: ''
 ---
 
-Dagens Aktiviteter:
+**Dagens Aktiviteter**
 
 * Plassert oversiktskart og diagrammer direkte der arbeidet utføres, slik at informasjonen alltid er relevant og lett tilgjengelig ved endringer.
 * Flyttet spredte oppgaver til ett felles punkt for å sikre mer stabil og forutsigbar kommunikasjon med eksterne tjenester.
 * Samlet kritiske funksjoner (som køhåndtering) i en felles overordnet enhet, slik at hele systemet nå følger de samme reglene automatisk.
 * Identifisert og slettet gammel, ubrukt kode og utdatert informasjon for å fjerne rot og forebygge fremtidige misforståelser.
 * Forenklet den indre oppbygningen for å redusere tidsbruk på feilsøking og legge til rette for raskere utrulling av nye funksjoner.
+
+Motivasjon & energi 10 / 10
+
+Dagen er så fin den kunne bli ! :)
