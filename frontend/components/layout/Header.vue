@@ -23,7 +23,6 @@
 
     
 </template>
-
 <script lang="ts" setup>
 
     const data =
@@ -49,4 +48,7 @@
     const btn = { id: 0, label: 'Se min CV', cls: ['btn', 'pdf-btn'], href: '/media/documents/CV-Kristoffer-Gjøsund.pdf', type: ['pdf'] };
 
     const SocialMedia = [ { type: ['linkedin'], href: 'https://www.linkedin.com/in/krigjo25' }, { type: ['github'],  href: 'https://www.github.com/krigjo25' }, { type: ['mail','external'], href: 'mailto:krigjo25@outlook.com' }, { type: ['ytube','external'], href: 'https://www.youtube.com/@krigjo25' }, { type: ['facebook'], href: 'https://www.facebook.com/krigjo25' }, { type: ['instagram'], href: 'https://www.instagram.com/krigjo25' } ];
+
+
+    //useHead({ script: [ { src: 'https://www.googletagmanager.com/gtag/js?id=G-4XX727FZCG', async: true }, { innerHTML: ` window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-4XX727FZCG'); `, type: 'text/javascript' } ] });
 </script>

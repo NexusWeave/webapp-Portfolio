@@ -1,9 +1,8 @@
 #   Standard Libraries
-import asyncio
 import time
-from asyncio import Semaphore, gather
+from asyncio import gather
 from urllib.parse import urljoin
-from typing import Coroutine, Dict, List, Any, Optional, TypeVar
+from typing import Coroutine, Dict, List, Any, Optional
 
 #   Third-Party Libraries
 import httpx
@@ -12,13 +11,12 @@ import httpx
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
 from lib.settings.api_config import AsyncAPIClientConfig
-from lib.services.github.utils.github_maps import GithubUtils
+from backend.lib.services.github.utils.github_maps import GithubUtils
 
+#   Initialize Logger
 LOG = APIWatcher(dir="logs", name='Github-API')
 LOG.file_handler()
 
-
-T = TypeVar("T")
 class GithubAPI(AsyncAPIClientConfig):
 
     """ Github API Configuration
@@ -28,8 +26,6 @@ class GithubAPI(AsyncAPIClientConfig):
     def __init__(self, URL:str, KEY:str):
         super().__init__(URL=URL, KEY=KEY)
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': f"{self.API_KEY}"}
-        self.QUEUE: int = 5
-        self.SEM = Semaphore(self.QUEUE)
 
     async def fetch_data(self, endpoint:str, params: Optional[Dict[str, str | int]] = None) -> List[Dict[str, Any]] | NotFoundError:
         """
@@ -118,25 +114,15 @@ class GithubAPI(AsyncAPIClientConfig):
             languages.append({"language": lang, "bytes": value})
         return languages
 
-    async def analyze_repository(self,trees_url: str) -> Any:
+    async def analyze_repository(self,trees_url: str) -> List[Dict[str, str | object | List[str]]]:
         """ Analyzes the repository data to determine its characteristics. """
         response: httpx.Response
-        LOG.debug(f"Analyzing repository with trees_url: {trees_url}")
         try:
             response = await self.wait_in_queue(self.ApiCall(trees_url, head=self.HEADER))
 
         except Exception as e:
             LOG.error(f"Error analyzing repository: {e.__class__.__name__} - {str(e)}\n")
             raise e
-
-        return response.json()
-    
-    async def wait_in_queue(self, coro: Coroutine[Any, Any, T]) -> T:
-        LOG.debug(f"Waiting in queue for coroutine: {coro}")
-        try:
-            async with self.SEM:
-                return await coro
-
-        except Exception as e:
-            LOG.error(f"Error in wait_in_queue: {e.__class__.__name__} - {str(e)}")
-            raise e
+        
+        analysis: List[Dict[str, str | object | List[str]]] = response.json()
+        return analysis

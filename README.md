@@ -1,45 +1,42 @@
 # Portfolio Webapp
+Portfolio is a full-stack biography and project showcase application with a Nuxt frontend and a FastAPI backend.
 
-Portfolio is a web-based biography and project showcase application.
+## Current Stack
+| Layer | Technology | Notes |
+| :--- | :--- | :--- |
+| Frontend | Nuxt 4 + Vue 3 + TypeScript | SSR/SSG-ready UI, composables, file-based routes |
+| Content | TinaCMS + Nuxt Content | Git-backed content editing workflow |
+| State | Pinia | Centralized frontend state (language stats and UI data) |
+| Styling | Sass | Modular style architecture |
+| Backend | FastAPI + Uvicorn | Async Python API for repository, health, and announcements |
+| Data | SQLAlchemy + asyncpg | PostgreSQL-oriented backend data layer |
 
-## Architectural Decisions
+## Repository Layout
+- `frontend/`: Nuxt application, content, Tina config, and UI components
+- `backend/`: FastAPI app, services, models, database configuration, and tests
+- `docs/`: Top-level architecture docs and prototype assets
+- `docker-compose.yml`: Local multi-service orchestration
 
-### Architecture Question
+## Run With Docker
+From the repository root:
 
-**Why use this tech stack for a portfolio platform instead of a single monolithic app?**
+```bash
+docker compose up --build
+```
 
-Because the project needs fast page delivery, easy content editing, and a flexible API for dynamic data (for example GitHub and analytics data), while keeping deployment and maintenance simple.
+Default ports:
 
-### Tech Stack
+- Frontend: `http://localhost:3002`
+- Backend: `http://localhost:8080`
 
-| Layer | Technology | Version/Status | Why this choice |
-| :--- | :--- | :--- | :--- |
-| **Frontend Framework** | **Nuxt 3** | v3.x | Server-side rendering + static generation for speed, strong DX, and Vue ecosystem compatibility. |
-| **Backend API** | **FastAPI** | v0.x (Python) | High performance async API, typed contracts with Pydantic, and fast iteration for integrations. |
-| **Database** | **Neon Postgres** | Migration in progress | Serverless PostgreSQL for relational integrity, scalability, and lower infrastructure overhead. |
-| **Content Management** | **TinaCMS** | v2.x | Git-based headless CMS so content updates stay versioned and developer-friendly. |
-| **Styling** | **Sass/SCSS** | v1.x | Structured styling architecture with reusable design tokens and maintainable style modules. |
+The compose setup reads variables from `.env` at repository root.
 
-### Architectural Justification
+## Documentation
+- Top-level architecture: [docs/architecture.md](./docs/architecture.md)
+- Frontend architecture: [frontend/docs/ARCHITECTURE.md](./frontend/docs/ARCHITECTURE.md)
+- Frontend context diagram: [frontend/docs/context-diagram.md](./frontend/docs/context-diagram.md)
+- Backend architecture: [backend/docs/architecture.md](./backend/docs/architecture.md)
+- Prototype entry point: [docs/prototype/index.html](./docs/prototype/index.html)
 
-- **Performance:** Nuxt enables prerendered/static delivery for low latency and better Core Web Vitals.
-- **Separation of concerns:** Frontend handles presentation while FastAPI owns integrations and business logic.
-- **Maintainability:** Typed models and clear module boundaries reduce regression risk over time.
-- **Scalability:** Neon Postgres and API-first backend design support growth without rewriting core parts.
-- **Content workflow:** TinaCMS allows non-code content updates while keeping Git as the source of truth.
-
-### Repository Structure
-
-- [Repository Architecture](./docs/architecture.md)
-
-## Application Diagrams
-
-- [Database ER Diagram](./docs/diagrams/database-erDiagram.md)
-- [Utilities Class Diagram](./docs/diagrams/utils-classDiagram.md)
-- [External APIs Class Diagram](./docs/diagrams/apis/external-apis-classDiagram.md)
-- [Endpoints Class Diagram](./docs/diagrams/endpoints/endpoints-classDiagram.md)
-- [Endpoint Sequence Diagram](./docs/diagrams/endpoints/endpoint-sequenceDiagram.md)
-
-## Prototype
-
-- [Prototype Entry](./docs/prototype/index.html)
+## Release Notes
+Project release history is tracked in [CHANGELOG.md](./CHANGELOG.md).
