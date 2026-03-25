@@ -1,3 +1,18 @@
+# [1.11.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.10.0...v1.11.0) (2026-03-25)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Resolving potential unexpetect behavior with gtag & site, ([877d152](https://github.com/NexusWeave/webapp-Portfolio/commit/877d1529cc0bf3d23ef93ab3f268a0f35ecf9958))
+* **Package.json:** ➕ Correcting dependency installation. ([ea28f1e](https://github.com/NexusWeave/webapp-Portfolio/commit/ea28f1ee49bd3926dea9f12e46920416e180094d))
+* **SEO:** 🐛 Resolving the issue where the search engines can not find robot.txt ([86aa604](https://github.com/NexusWeave/webapp-Portfolio/commit/86aa604de896493651120e474202d303d959b63f))
+* **UI:** 🐛 Resolving issue where Image disappeared from page. ([fa4be91](https://github.com/NexusWeave/webapp-Portfolio/commit/fa4be91bb302df404e69be4d9d3ed5853d97203e))
+
+
+### Features
+
+* **Google-Analystics:** ✨ Introduce Google Analystics, for user behavior tracking. ([6653bfd](https://github.com/NexusWeave/webapp-Portfolio/commit/6653bfd65fddf83935638b25965f28bd34573849))
+
 # [1.10.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.9.2...v1.10.0) (2026-03-24)
 
 
