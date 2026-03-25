@@ -30,4 +30,4 @@ sources: ''
 
 Motivasjon & energi 10 / 10
 
-Dagen er så fin den kunne bli ! :)
+Dagen er så fin den kunne bli.
