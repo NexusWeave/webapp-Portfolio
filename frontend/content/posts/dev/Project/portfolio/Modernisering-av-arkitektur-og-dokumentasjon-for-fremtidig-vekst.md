@@ -2,7 +2,7 @@
 date: 2026-03-25T13:06:02.385Z
 title: Modernisering av arkitektur og dokumentasjon for fremtidig vekst
 ingress: |
-  For å sikre fremtidig vekst og stabil drift har jeg gjennomført en profesjonalisering av applikasjonens grunnmur. Ved å tette gapet mellom dokumentasjon og virkelighet har jeg redusert tidsbruken på vedlikehold og fjernet usynlige hindringer i utviklingsløpet. Dette betyr at jeg nå kan levere nye funksjoner raskere. Jeg har nå et stabil drift som er klar for å vokse.
+  For å sikre fremtidig vekst og stabil drift har jeg gjennomført en profesjonalisering av applikasjonens grunnmur. Ved å tette gapet mellom dokumentasjon og virkelighet har jeg redusert tidsbruken på vedlikehold og fjernet usynlige hindringer i utviklingsløpet. Dette betyr at jeg nå kan levere nye funksjoner raskere. Jeg har nå en stabil drift som er klar for å vokse.
 parade: ''
 star: |
   Applikasjonen hadde over tid utviklet seg slik at de interne dokumentasjonene ikke lenger stemte overens med hvordan systemet faktisk fungerte. Dette skapte unødvendig tidsbruk ved vedlikehold. Samtidig har den indre oppbygningen blitt unødvendig komplisert, noe som gjorde det vanskeligere og mer risikabelt å legge til nye funksjoner eller rette feil effektivt.
