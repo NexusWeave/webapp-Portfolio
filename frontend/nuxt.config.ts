@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
     '@nuxtjs/sitemap',
+    'nuxt-gtag'
   ],
   runtimeConfig:{
     public:{
@@ -28,5 +29,8 @@ export default defineNuxtConfig({
     exclude: [ '/admin/**' ],
     defaults: { priority: 0.7, changefreq: 'daily', lastmod: new Date() },
   },
+  gtag: {
+    id: 'G-4XX727FZCG'
+  }
   }
 })
