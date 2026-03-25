@@ -17,4 +17,4 @@ Allow: /*.webp$
 # Allow general Googlebot to crawl image directories and specific image types (optional, if you want images in web search too)
 
 User-agent: *
-Disallow: /images/  # Disallow crawling the entire /images/ directory
+Disallow: /admin/   # Disallow crawling the entire admin directory

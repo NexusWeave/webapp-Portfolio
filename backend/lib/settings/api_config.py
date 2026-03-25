@@ -34,10 +34,9 @@ class AsyncAPIClientConfig(WebAPIModel):
         Makes an API call to the specified endpoint with given headers.
         """
         start = perf_counter()
-
+        TIMEOUT = self.timeout_config()
         path: str = urljoin(self.API_URL,endpoint)
 
-        TIMEOUT = self.timeout_config()
         try:
             req: httpx.Response = await self.client.get(url = path, timeout=TIMEOUT, headers=head, params=params)
             match req.status_code:
@@ -52,7 +51,7 @@ class AsyncAPIClientConfig(WebAPIModel):
             raise e
 
     @staticmethod
-    def timeout_config (standard: float = 180.0) -> httpx.Timeout:
+    def timeout_config (standard: float = 120.0) -> httpx.Timeout:
         """ Configures the timeout settings for API calls. """
         return httpx.Timeout(standard)
 

@@ -9,10 +9,24 @@ export default defineNuxtConfig({
   dir: { public:'public' },
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
-  modules: [ '@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@pinia/nuxt' ],
+  modules: [
+    '@nuxt/content',
+    '@nuxt/eslint',
+    '@nuxt/image',
+    '@nuxt/ui',
+    '@pinia/nuxt',
+    '@nuxtjs/sitemap',
+  ],
   runtimeConfig:{
     public:{
       GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080',
-    }
+    },
+    site: {
+    url: 'https://krigjo25.no',
+    name: 'Kristoffer Gjøsund - Portfolio',
+    gzip: true,
+    exclude: [ '/admin/**' ],
+    defaults: { priority: 0.7, changefreq: 'daily', lastmod: new Date() },
+  },
   }
 })
