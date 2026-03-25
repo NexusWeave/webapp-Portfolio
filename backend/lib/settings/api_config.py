@@ -1,24 +1,25 @@
 
-#   Dependencies
+#   Standard Libraries
+from asyncio import Semaphore
 from time import perf_counter
 from urllib.parse import urljoin
-from typing import  Optional, Dict
+from typing import  Coroutine, Optional, Dict, Any, TypeVar
 
-#   Third Party Dependencies
+#   Third-Party Libraries
 import httpx
 from httpx import HTTPError, RequestError
 
-#   Internal Dependencies
+#   Internal Libraries
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import TimeOutError
 
-#   Request interface for API Configurations
 from lib.models.web_config import WebAPIModel
 
 #   Initialize Logger
 LOG = APIWatcher(dir="logs", name='API-Calls')
 LOG.file_handler()
 
+T = TypeVar("T")
 
 class AsyncAPIClientConfig(WebAPIModel):
 
@@ -26,6 +27,8 @@ class AsyncAPIClientConfig(WebAPIModel):
         self.API_URL = URL
         self.API_KEY = KEY
         self.VERSION = version
+        self.QUEUE: int = 5
+        self.SEM = Semaphore(self.QUEUE)
         self.client = httpx.AsyncClient()
 
     async def ApiCall(self, endpoint: str, head: Dict[str, str], params: Optional[Dict[str, str | int]] = None) ->  httpx.Response:
@@ -55,5 +58,12 @@ class AsyncAPIClientConfig(WebAPIModel):
         """ Configures the timeout settings for API calls. """
         return httpx.Timeout(standard)
 
-    async def calculate_n(self, endpoint: str, header: Dict[str, str]):
-        return await self.ApiCall(endpoint = f"{endpoint}", head = header)
+    async def calculate_n(self, endpoint: str, header: Dict[str, str]): return await self.ApiCall(endpoint = f"{endpoint}", head = header)
+
+    async def wait_in_queue(self, coro: Coroutine[Any, Any, T]) -> T:
+        try:
+            async with self.SEM: return await coro
+
+        except Exception as e:
+            LOG.error(f"Error in wait_in_queue: {e.__class__.__name__} - {str(e)}")
+            raise e
