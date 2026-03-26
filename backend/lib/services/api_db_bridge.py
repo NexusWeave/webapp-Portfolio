@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from lib.utils.logger_config import AppWatcher
 from lib.services.github.github_api import GithubAPI
 from lib.utils.exception_handler import NotFoundError
-from lib.services.db_handler import GithubDatabaseHandler
+from lib.services.github.repository_handler import GithubDatabaseHandler
 from lib.settings.database_config import ASynchronousDatabaseConfig
 
 

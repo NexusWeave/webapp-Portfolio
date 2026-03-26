@@ -16,7 +16,7 @@ from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
 
 from lib.services.api_db_bridge import ApiDatabaseBridge
-from lib.services.db_handler import GithubDatabaseHandler
+from lib.services.github.repository_handler import GithubDatabaseHandler
 from lib.services.announcements.announcements import AnnouncementsService
 
 from lib.settings.database_config import ASynchronousDatabaseConfig
