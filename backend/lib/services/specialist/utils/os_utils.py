@@ -1,9 +1,7 @@
-#   Misc os utils
-
-#   Import the necessary libraries
-import os, time
-from pathlib import Path
-from typing import Optional
+#   Importing Standard Libraries
+from anyio import Path
+import aiofiles.os as aos, time, os
+from typing import  List
 
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
@@ -16,30 +14,31 @@ class OsUtils(object):
     def __init__(self):
         pass
 
-    def find_file(self, root:str, marker:Optional[str] ):
+    async def find_file(self, file:str ) -> List[str]:
         """
         Get the root directory of the script.
         :return: The root directory of the script.
         """
         start = time.perf_counter()
+        list_dir: List[str] = []
 
         try:
-            root = self.find_project_root(root)
-            if os.path.isfile(marker): return Path(marker)
-            if not root: raise NotFoundError(404, "'{marker}' Not found in Root")
 
-        except NotFoundError as e:
-            logger.error(f"Error code: {e.status_code}\nError message: {e.message} \nTime Complexity: {start-time.perf_counter()}\n")
+            root : Path = await self.find_project_root()
+            if not root: raise NotFoundError(404, "Root directory not found", root)
 
-            return e
+            file_path : Path = Path(file)
+            if await file_path.is_file(): return [str(file_path)]
 
-        list_dir = [os.path.join(root,marker) for root, dir, f in os.walk(root) if marker in f]
 
-        logger.info(f"Found '{marker}' in {root} results {list_dir} \nTime Complexity: {start-time.perf_counter()}\n")
+            list_dir = [ str(file_path) async for file_path in root.rglob(file) ]
+
+        except NotFoundError as e: logger.error(f"Error code: {e.status_code}\nError message: {e.message} \nTime Complexity: {start-time.perf_counter()}\n")
 
         return list_dir
 
-    def combine_path(self, path: str, marker: str) -> str:
+    @staticmethod
+    async def combine_path(path: Path, marker: str) -> Path:
         """
         Combine the path with the marker.
         :param path: The path to the directory.
@@ -47,65 +46,65 @@ class OsUtils(object):
         :return: The combined path.
         """
 
-        part = path.split(os.sep)
+        part = str(path).split(os.sep)
 
         start_dir = part.index(marker)
-        rel_path = os.sep.join(part[start_dir:])
+        rel_path: Path = Path(os.sep.join(part[start_dir:]))
 
-        logger.info(f"Relative path: {rel_path} \n")
         return rel_path
 
-    def find_directory(self, root:str, marker:Optional[str] ):
+    async def find_directory(self, dir:str ) -> Path:
         """
         Get the root directory of the script.
         :return: The root directory of the script.
         """
         start = time.perf_counter()
-
+        list_dir: List[Path] = []
         try:
-            root = self.find_project_root(root)
+            root = await self.find_project_root()
+            if not root: raise NotFoundError(404, f"Root directory not found {root}")
 
-            if os.path.isdir(marker): return Path(marker)
-            if not root: raise NotFoundError(404, "Root directory not found", root)
+            if await aos.path.isdir(dir): return Path(dir)
+            
+            list_dir = [ dir_path async for dir_path in root.rglob(dir) ]
+            if not list_dir: raise NotFoundError(404, f"Directory {dir} not found in {root}")
 
         except NotFoundError as e:
-            logger.error(f"Error code: {e.status_code}\nError message: {e.message} Error Arg: {e.arg} \nTime Complexity: {start-time.perf_counter()}\n")
-            return
+            logger.error(f"Error code: {e.status_code}\nError message: {e.message}\nTime Complexity: {start-time.perf_counter()}\n")
+            raise e
 
-        finally:
-
-            list_dir = [os.path.join(root, marker) for root, dir, f in os.walk(root) if marker in dir]
-
-            logger.info(f"Found '{marker}' in {root} results {list_dir} \nTime Complexity: {start-time.perf_counter()}\n")
-
-            return list_dir[0] if list_dir else None
+        return list_dir[0]
 
     @staticmethod
-    def find_project_root(marker: str) -> Path:
+    async def find_project_root() -> Path:
         """
         Find the root directory of the project.
         :return: The root directory of the project.
         """
 
-        path = Path(os.getcwd()).resolve()
+        path: Path = await Path.cwd()
         
-        while path.name != path.parent.name:
-            
-            #   Ensure that the marker is located in the directory
-            if (path / marker).exists():
-                logger.info(f"{marker} found in {path}\n")
+        while True:
+            if path == path.parent: return path
 
-                return path
-                
-            #   updating the path
             path = path.parent
 
-    @staticmethod
-    def create_directory(self, path:str, dir:str | tuple[str]):
+    async def create_directory(self, dir_path:str, dir:str ):
         """
         Create a directory if it does not exist.
         :param path: The path to the directory.
         :return: None
         """
-        if not os.path.exists(path):  os.makedirs(dir) 
-        else: logger.info(f"Directory {path} already exists.")
+
+        sub_path: Path = Path(dir)
+        current_cwd: Path = await Path.cwd()
+
+        base_path: Path = await OsUtils.combine_path(current_cwd, dir)
+        path: Path = base_path / sub_path
+
+        try:
+            if not await aos.path.exists(path):
+                await aos.makedirs(path)
+        except Exception as e:
+            logger.error(f"Error creating directory: {e}")
+            raise e
