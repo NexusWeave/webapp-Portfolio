@@ -2,7 +2,7 @@
 tags:
   - dev-journey
 date: 2025-11-20T00:00:00.000Z
-title: Læring om Servertrygghet og Least Privilege
+title: Sikring av sensitive URL-stier og forbedring av systemets tilgangskontroll
 ingress: |
   For å beskytte bedriftens interne informasjon har jeg laget en ny sikkerhetsløsning som sikrer at brukere kun ser data de har rettmessig tilgang til. Dette tiltaket fjerner unødvendig støy for sluttbrukeren, tetter potensielle sikkerhetshull og sørger for at våre systemer opererer i tråd med anerkjente sikkerhetsstandarder.
 parade: ''
