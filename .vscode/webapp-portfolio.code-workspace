@@ -47,7 +47,9 @@
             "Google-Analystics",
             "Diagram",
             "API",
-            "Tests"
+            "Tests",
+            "Engine",
+            "Utils"
         ],
     },
 }
