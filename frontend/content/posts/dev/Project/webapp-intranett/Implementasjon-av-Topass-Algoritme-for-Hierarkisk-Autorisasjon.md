@@ -29,10 +29,10 @@ sources: |
 * Utviklet en modul som omdanner flate lister til en logisk trestruktur i systemets minne. Dette gir full kontroll over informasjonsrelasjoner og fjerner teknisk risiko knyttet til uoversiktlige datasett.
 * Programmert logikk for automatisk rettighetsarv, slik at tilgang gitt på hovednivå automatisk flyter ned til alle underliggende dokumenter. Dette sikrer en effektiv og feilfri brukeropplevelse.
 * Etablert en spesifikk kontrollmekanisme som verifiserer at ingen legitime dokumenter blir "foreldreløse" eller utilgjengelige, noe som garanterer at ansatte alltid har tilgang til nødvendig beslutningsgrunnlag.
-*  Skilt ut sikkerhetslogikken fra de tekniske dataoperasjonene. Dette forenkler fremtidig vedlikehold og gjør det betydelig lettere å dokumentere etterlevelse (compliance) overfor revisorer.
+* Skilt ut sikkerhetslogikken fra de tekniske dataoperasjonene. Dette forenkler fremtidig vedlikehold og gjør det betydelig lettere å dokumentere etterlevelse (compliance) overfor revisorer.
 * Ferdigstilt filtreringslogikk som sikrer at brukere kun har innsyn i data de er autorisert for. Dette tetter tidligere sikkerhetshull i navigasjonsdata og reduserer virksomhetens operasjonelle risiko for datalekkasjer.
 * Etablert en robust teknisk grunnmur for håndtering av komplekse datasett, noe som gjør løsningen mer pålitelig og rimeligere å drifte over tid.
 
-**Motivasjon & Eenergi** **10** / **10**
+**Motivasjon & Energi** **10** / **10**
 
 Dagen er så fin den kan bli.
