@@ -34,5 +34,5 @@ sources: ''
 * Sikret at sikkerhetskontrollen fungerer som den skal, slik at ansatte og studenter igjen kan logge inn uten utfordringer.
 * Etablert en stabil metode for fremtidig håndtering av klasser og data som sikrer vedvarende systemstabilitet.
 
-Motivasjon & Energi - 10/10
+**Motivasjon & Energi** - **10** / **10**
 Dagen har vært så fin den kunne bli
