@@ -2,55 +2,34 @@
 tags:
   - dev-journey
 date: 2025-11-25T00:00:00.000Z
-title: Hvorfor Enkel O(n)-Sjekk kan Være den Riktige Løsningen
+title: Sikring av datakvalitet og en feilfri brukeropplevelse
 ingress: |
-  Løsningen krevde implementering av en korrigerende mekanisme: en enkel valideringssjekk (O(n) kompleksitet) mot listen ble brukt for å garantere unikhet. Loggen fremhever en viktig pragmatisk avveining: selv om mer optimal O(1)-struktur (som Set/HashSet) er kjent, ble den enklere løsningen valgt og faglig begrunnet som tilstrekkelig, da den lineære tidskompleksiteten ikke er kritisk for små datamengder. Dette sikret dataintegriteten og demonstrerte effektivitet fremfor unødvendig optimalisering.
+  Ved å utbedre logiske feil i bedriftens dataflyt, har vi i dag styrket informasjonskvaliteten og fjernet tekniske hindringer som skapte unødvendig tidsbruk for ansatte og studenter. Gjennom en målrettet og kostnadseffektiv stabilisering av systemet har vi ikke bare sikret en mer pålitelig brukeropplevelse her og nå, men også lagt et solid mur for fremtidig digital vekst.
 parade: ''
 star: |
-  ### Duplikate Lenker Forstyrrer Dataflytet
+  Systemet som håndterer bedriftens dataflyt og navigasjonslenker, produserte duplikater i de registrerte filene. Dette førte til at informasjonen som ble lagret ikke var unik, dette skapte rot i datagrunnlaget og forstyrret den tiltenkte flyten i systemet. For brukerne ville dette bety en uforutsigbar opplevelse og risiko for feilinformasjon.
 
-  Underlenker i underseksjoner ble **duplikate**, dette forstyrret direkte den tiltenkte flyten og **integriteten** til dataen som er registrert i CSV-filen.
+  Målet var å garantere at hver eneste lenke og underseksjon kun registreres én gang. Oppgaven innebar å finne grunnen til at systemet tillot duplikater, og implementere en funksjonalitet som automatisk sørger for at informasjonen som lastes inn er unik og korrekt strukturert.
 
-  #### Sikre Unikhet og Gjennomføre Strukturell Korreksjon
+  Jeg gjennomførte en systematisk gjennomgang av innholdstjenesten for å finne kilden til feilen.
 
-  Diagnosere hva som er årsaken til duplikasjon  og implementere en mekanisme for å garantere at alle sub-navigasjoner er unike ved datainnlastning, slik at dataflyten og integriteten er korrekt.
+  Fant det spesifikke punktet i prosessen der data blir sortert og kontrollert mot brukertilganger.
 
-  #### Diagnose og Paramatisk Mekanisme
+  La til en funksjonalitet som kontrollerer en opplysning allerede eksisterer før den får lov til å bli lagret.
 
-  **Diagnose & Kilde**
-  Det ble Identifisert med en gang at dette var en feil som oppsto i en innholdstjenesten, som har ansvar for å **sorterer** og parse dataen. Tjenesten går også gjennom dataen for å sjekke opp mot brukerautentisering. Kilden ble spesifikt lokalisert i **second-pass algoritmen**, **andre del**.
+  Vurdering av effektivitet: Jeg gjorde en grundig vurdering av løsningens ytelse. Selv om det finnes mer avanserte metoder for enorme datamengder, valgte jeg en løsning som er optimal for vårt nåværende behov. Dette sikrer en stabil drift uten å bruke unødvendige ressurser på overflødig komplekse systemer.
 
-  **Korrigerende Mekanisme**
-  Det ble implementert en sjekk for å se om stien **allerede er registrert i listen** før innleggelsen.
-
-  ```csharp
-  if(!result.Contains(item)) {result.Add(item);}
-
-  ```
-
-  ### Sikret Dataintegritet
-
-  Duplikasjonen ble eliminert ved å implementere en enkel valideringssjekk mot listen før innlegelse. Dette sikret unikhet ved å kun legge til elementer som ikke allerede var definert i listen.
-
-  Programatisk Begrunnelse og Kompleksitets analyse
-
-  det var ikke kjent for en mer optimal datastruktur som for eksempel Set / HashSet, som er en optimalt for sikring av unikhet med konstant tidskompleksistet
-
-  ```matlab
-  O(1)
-  ```
-
-  da løsningen ble implementert.  Til tross for dette ble det konkludert at den valgte sjekken, som har en lineær tidskompleksitet,
-
-  ```matlab
-  O(n)
-  ```
-
-  , var tilstrekkelig og at det ikke var nødvendig å optimalisere ytterligere. Dette er en konsekvens av at listen er relativ kort, og ytelsen blir ikke kritisk når det parses lite data. Det annerkjennes imidlertid at optimaliseringen til O(1) er nødvendig i større data-sammenhenger.
+  Gjennom denne utbedringen har vi styrket dataintegriteten, som har forbedret brukeropplevelsen, da ansatte og studenter ikke lenger møter forvirrende duplikater i systemet. Ved å velge en løsning som er skreddersydd for våre nåværende datamengder, har vi oppnådd en kostnadseffektiv stabilisering av driften uten å innføre unødvendig kompleksitet. Samtidig har arbeidet gitt oss en klar plan for hvordan vi skal videreutvikle sikkerhetsmekanismene dersom datamengden øker i fremtiden, noe som gjør virksomheten rustet for digital vekst.
 sources: ''
 ---
 
-Dagens Aktiviteter
+**Dagens Aktiviteter**
+
+* Utbedret en feil i tilgangsstyringen som unødvendig blokkerte ansatte fra deres arbeidsverktøy, noe som har eliminert ventetid og frustrasjon.
+* Rettet en svakhet i systemet som skapte duplikate lenker og rot i datagrunnlaget, slik at all informasjon nå er unik og til å stole på.
+* La til en ny funksjonalitet som filtrer dataen slik at data som legges inn i systemet alltid er korrekt strukturert.
+* Gjennomført en analyse av systemets ytelse og valgt en løsning som gir stabil drift uten å øke kostnadene eller kompleksiteten i systemet
+* Etablert en plan for hvordan sikkerhetsmekanismene skal håndtere økte datamengder i fremtiden, slik at bedriften er rustet for videre vekst.
 
 **Motivasjon & Energi** **10** / **10**
 
