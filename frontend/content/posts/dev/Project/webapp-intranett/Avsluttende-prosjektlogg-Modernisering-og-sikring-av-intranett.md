@@ -1,5 +1,5 @@
 ---
-date: 2026-12-31T11:25:24.822Z
+date: 2025-12-31T11:25:24.822Z
 title: 'Avsluttende prosjektlogg: Modernisering og sikring av intranett'
 ingress: |
   Gjennom en omfattende modernisering har jeg flyttet vårt intranett fra å bruke snarveier til strategisk kontroll. Ved å erstatte utdatert logikk med en modulær "plug-and-play"-arkitektur, har vi eliminert operativsystem-feil, styrket personvernet gjennom intelligent tilgangsstyring og redusert fremtidige vedlikeholdskostnader betydelig.
