@@ -20,7 +20,7 @@ star: |
 sources: ''
 ---
 
-Dagens Aktiviteter
+**Dagens Aktiviteter**
 
 * Identifisert og fjernet systemfeil som hindret programvaren i å starte korrekt, noe som sikrer uavbrutt fremdrift i prosjektet.
 * Reorganisert systemets interne mappestruktur for å fjerne forvirring i automatiserte prosesser, som resulterer i en raskere og mer pålitelig vei fra koding til ferdig produkt.
