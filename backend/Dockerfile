@@ -16,5 +16,6 @@ COPY . .
 
 ENV PORT=8080
 ENV PYTHONPATH=/app:/app/fastAPI
+ENV SQLITE_DB_PATH=/app/data/db/chatbot.db
 
 CMD ["litestream", "replicate", "-exec", "python -m uvicorn app:app --host 0.0.0.0 --port 8080"]
