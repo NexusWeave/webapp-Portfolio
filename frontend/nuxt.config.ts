@@ -19,12 +19,10 @@ export default defineNuxtConfig({
     'nuxt-gtag'
   ],
   //gtag: { id: process.env.GA_MEASUREMENT_ID || 'G-4XX727FZCG' },
-  site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio', gzip: true, exclude: [ '/admin/**' ], defaults: { priority: 0.7, changefreq: 'daily', autoLastmod: true, strictNuxtContentAds: true, includeAppSources: true },
+  site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio', gzip: true, exclude: [ '/admin/**' ], autoLastmod: true, strictNuxtContentAds: true, includeAppSources: true, defaults: { priority: 0.7, changefreq: 'daily' }},
   runtimeConfig:{
     public:{
       GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080',
     },
-    
-  
   }
 })
