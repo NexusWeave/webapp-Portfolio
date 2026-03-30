@@ -29,33 +29,37 @@ class AsyncAPIClientConfig(WebAPIModel):
         self.VERSION = version
         self.QUEUE: int = 5
         self.SEM = Semaphore(self.QUEUE)
-        self.client = httpx.AsyncClient()
+        self.client = httpx.AsyncClient(timeout=self.timeout_config())
 
-    async def ApiCall(self, endpoint: str, head: Dict[str, str], params: Optional[Dict[str, str | int]] = None) ->  httpx.Response:
+    async def ApiCall(self, endpoint: Optional[str], head: Dict[str, str], params: Optional[Dict[str, str | int]] = None) ->  httpx.Response:
 
         """
         Makes an API call to the specified endpoint with given headers.
         """
         start = perf_counter()
-        TIMEOUT = self.timeout_config()
-        path: str = urljoin(self.API_URL,endpoint)
+        path:str = self.API_URL
 
-        try:
-            req: httpx.Response = await self.client.get(url = path, timeout=TIMEOUT, headers=head, params=params)
-            match req.status_code:
-                case 200: return req
-                case 404: raise HTTPError('Resource not found')
-                case 408 | 504: raise TimeOutError(req.status_code, None)
-                case 401 | 403: raise ConnectionError('Unauthorized Access')
-                case _: raise RequestError(f"Unexpected status code: {req.status_code}")
+        if endpoint:
+            path = urljoin(self.API_URL,endpoint)
 
-        except (HTTPError, ConnectionError, TimeOutError, RequestError) as e: 
-            LOG.warn(f"Request was not successful.\n {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}\n")
-            raise e
+        async with self.client as cli:
+            try:
+
+                req: httpx.Response = await cli.get(url = path, headers=head, params=params)
+
+                match req.status_code:
+                    case 200: return req
+                    case 404: raise HTTPError('Resource not found')
+                    case 408 | 504: raise TimeOutError(req.status_code, None)
+                    case 401 | 403: raise ConnectionError('Unauthorized Access')
+                    case _: raise RequestError(f"Unexpected status code: {req.status_code}")
+
+            except (HTTPError, ConnectionError, TimeOutError, RequestError) as e: 
+                LOG.warn(f"Request was not successful.\n {e.__class__.__name__} Error Message: {e}. Time elapsed: {perf_counter()-start}\n")
+                raise e
 
     @staticmethod
     def timeout_config (standard: float = 120.0) -> httpx.Timeout:
-        """ Configures the timeout settings for API calls. """
         return httpx.Timeout(standard)
 
     async def calculate_n(self, endpoint: str, header: Dict[str, str]): return await self.ApiCall(endpoint = f"{endpoint}", head = header)
