@@ -29,11 +29,19 @@ export default defineNuxtConfig({
   sitemap: { 
     autoLastmod: true,
     includeAppSources:true,
-    exclude: [ '/admin/**' ], 
-    include: [ '/content/posts**'],
+    exclude: [ '/admin/**' ],
     strictNuxtContentPaths: true,
     defaults: { priority: 0.9, changefreq: 'daily'},
+    urls: async () => {
+      const { $content } = require('@nuxt/content')
+      const files = await $content({ deep: true }).only(['_path', 'slug', 'stem']).fetch()
+      
+      return files.map(file => {
+        const finalSlug = file.slug || file.stem
+        return `/artikkel/${finalSlug}`
+      })}
   },
+
   runtimeConfig:{
     public:{
       GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080',
