@@ -3,10 +3,11 @@
 from asyncio import Semaphore
 from time import perf_counter
 from urllib.parse import urljoin
-from typing import  Coroutine, Optional, Dict, Any, TypeVar
+from typing import  Coroutine, Optional, Dict, Any, TypeVar, List
 
 #   Third-Party Libraries
 import httpx
+from bs4 import BeautifulSoup
 from httpx import HTTPError, RequestError
 
 #   Internal Libraries
@@ -71,3 +72,36 @@ class AsyncAPIClientConfig(WebAPIModel):
         except Exception as e:
             LOG.error(f"Error in wait_in_queue: {e.__class__.__name__} - {str(e)}")
             raise e
+
+class Scanner(AsyncAPIClientConfig):
+    def __init__(self, URL: str, KEY: Optional[str], version: str | None = None):
+
+        self.URL = URL
+        if not KEY:
+            self.KEY = ''
+
+        super().__init__(URL=self.URL, KEY=self.KEY)
+        
+
+    async def fetch_web_rules(self):
+        site_map: str = f"{self.URL}/sitemap.xml"
+        header = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "application/xml, text/xml, */*"
+        }
+        site_urls: List[str] = []
+
+        try :
+            res: httpx.Response = await self.ApiCall(endpoint = site_map, head = header)
+
+        except Exception as e: 
+            LOG.critical(f'Crawling not successfull - {e}')
+            return
+
+        parse_xml = BeautifulSoup(res.text, 'xml')
+
+        for loc in parse_xml.find_all('loc'):
+            site_urls.append(loc.get_text())
+
+        LOG.debug(site_map)
+        return site_urls
