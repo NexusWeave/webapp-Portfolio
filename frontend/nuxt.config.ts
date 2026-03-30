@@ -19,6 +19,12 @@ export default defineNuxtConfig({
     'nuxt-gtag'
   ],
   //gtag: { id: process.env.GA_MEASUREMENT_ID || 'G-4XX727FZCG' },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/sitemap.xml']
+    }
+  },
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio', gzip: true, exclude: [ '/admin/**' ], autoLastmod: true, strictNuxtContentAds: true, includeAppSources: true, defaults: { priority: 0.7, changefreq: 'daily' }},
   runtimeConfig:{
     public:{
