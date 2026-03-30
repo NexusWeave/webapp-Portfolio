@@ -20,27 +20,30 @@ export default defineNuxtConfig({
   ],
   //gtag: { id: process.env.GA_MEASUREMENT_ID || 'G-4XX727FZCG' },
   nitro: {
+    // Vi bruker Nitros egen hook. Denne "vasker" sitemapen rett før den serveres.
+    hooks: {
+      'sitemap:index': (sitemap) => {
+        // sitemap.routes er listen over alle lenker Nuxt har funnet
+        sitemap.routes.forEach(route => {
+          // Hvis lenken inneholder /post/ (som er dine dype mapper)
+          if (route.path.includes('/post/')) {
+            // Vi splitter stien og tar bare det siste elementet (filnavnet)
+            const parts = route.path.split('/')
+            const slug = parts[parts.length - 1]
+            
+            // Vi endrer stien til slik du vil ha den: /artikkel/filnavn
+            route.path = `/artikkel/${slug}`
+          }
+        })
+      }
+    },
     prerender: {
-      crawlLinks: true,
+      crawlLinks: true, // Viktig: Dette gjør at den finner de 20 loggene fra forsiden
       routes: ['/sitemap.xml']
     }
   },
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
-  sitemap: { 
-    autoLastmod: true,
-    includeAppSources:true,
-    exclude: [ '/admin/**' ],
-    strictNuxtContentPaths: true,
-    defaults: { priority: 0.9, changefreq: 'daily'},
-    urls: async () => {
-      const { $content } = require('@nuxt/content')
-      const files = await $content({ deep: true }).only(['_path', 'slug', 'stem']).fetch()
-      
-      return files.map(file => {
-        const finalSlug = file.slug || file.stem
-        return `/artikkel/${finalSlug}`
-      })}
-  },
+  
 
   runtimeConfig:{
     public:{
