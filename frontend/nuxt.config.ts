@@ -25,7 +25,8 @@ export default defineNuxtConfig({
       routes: ['/sitemap.xml']
     }
   },
-  site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio', gzip: true, exclude: [ '/admin/**' ], autoLastmod: true, strictNuxtContentAds: true, includeAppSources: true, defaults: { priority: 0.7, changefreq: 'daily' }},
+  site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio', strictNuxtContentAds: true, },
+  sitemap: { exclude: [ '/admin/**' ], autoLastmod: true,  includeAppSources:true, defaults: { priority: 0.7, changefreq: 'daily'}
   runtimeConfig:{
     public:{
       GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080',
