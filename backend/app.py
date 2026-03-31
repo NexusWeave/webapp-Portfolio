@@ -99,7 +99,6 @@ async def health_check() -> Dict[str, str | bool]:
 
     dictionary["github_api"] = "Responsive" if await check_github_api() else "Unresponsive"
     dictionary['Crawler'] = "Responsive" if await check_specializt_api() else "Unresponsive"
-    #LOG.info(f" Health Check results{dictionary}")
     
     return dictionary
 
@@ -144,9 +143,9 @@ async def check_github_api() -> bool:
     return True
 
 async def check_specializt_api() -> bool:
-    from lib.settings.api_config import Crawler
+    from lib.settings.api_config import Scanner
 
-    cb = Crawler(URL = 'https://krigjo25.no', KEY = '')
+    cb = Scanner(URL = 'https://krigjo25.no', KEY = '')
     response = None
     try:
         response = await cb.fetch_web_rules()
@@ -155,7 +154,7 @@ async def check_specializt_api() -> bool:
     except Exception as e:
         LOG.error(f"Specialist API check failed: {e.__class__.__name__} - {str(e)}")
         return False
-    LOG.debug(f"{response}")
+
     return True
 
 if __name__ == "__main__":
