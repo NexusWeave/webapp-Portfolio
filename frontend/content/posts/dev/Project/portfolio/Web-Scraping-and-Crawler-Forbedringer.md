@@ -12,8 +12,7 @@ star: |
   * Jeg har oppgradert logikken i innsamlingsverktøyet mitt slik at det nå automatisk kjenner igjen og filtrerer bort uinteressant innhold.
   * Jeg har lagt til nye metoder for å vaske nettsidene for unødvendige elementer før dataene lagres.
   * Jeg har gjort det mulig for verktøyet å utføre mange innsamlinger samtidig i stedet for å måtte vente på én og én, noe som øker farten voldsomt.
-
-  Til slutt så fikset jeg feilen med at sidene ikke fantes ved å auto genenere filene før kompilering og bygging av nettsiden.
+  * Til slutt så fikset jeg feilen med at sidene ikke fantes ved å auto genenere filene før kompilering og bygging av nettsiden.
 
   Jeg får nå levert ferdig vaskede data på mye kortere tid. Dette øker kvaliteten på informasjonen jeg leverer uten at jeg trenger å bruke tid på manuelt etterarbeid.
 sources: ''
