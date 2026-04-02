@@ -1,9 +1,8 @@
 #   Importing repositories
 import pytest, os
 
-from ...flask.lib.apis.heavy_api import HeavyAPI
 from unittest.mock import patch
-from ...flask.lib.apis.github_api import GithubAPI
+from ....backend.lib.services.github.github_api import GithubAPI
 
 class TestResponsesAPI:
 
@@ -91,28 +90,3 @@ class TestResponsesAPI:
         #   Testing the fetch_repos response
         assert response == mock_response, "Response does not match the expected response"
         return
-
-    def test_fetchWorkout(self)-> None:
-       
-        """
-        
-            #    Testing  fetch_workout
-            #    Heavy api : https://api.heavy.com/docs/
-            #   This function testing the API call to fetch photos
-        """
-
-        #   Initializing Requests module
-        HAPI = HeavyAPI()
-
-        #   Actual response from the Api Call
-        
-        response = HAPI.FetchWorkouts(os.getenv("Workouts"))
-        pages = HAPI.FetchN(os.getenv("Workouts"))
-        print(response)
-def test_fetchPhotos()-> None:
-    """
-        #   Testing  fetch_photos
-        #   Google Photos api : https://api.google.com/docs/
-        #   This function testing the API call to fetch photos
-    """
-    pass

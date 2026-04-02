@@ -1,0 +1,6 @@
+dbs:
+  - path: ../lib/database/app.db
+    #replicas:
+    #- type: gcs
+    #  bucket: webapp-portfolio-sqlite-backups
+    #  path: specialist-db

@@ -46,7 +46,11 @@
             "SEO",
             "Google-Analystics",
             "Diagram",
-            "API"
+            "API",
+            "Tests",
+            "Engine",
+            "Utils",
+            "WebScan"
         ],
     },
 }
