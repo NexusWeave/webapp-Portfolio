@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-gtag'
   ],
-  routeRules: { '/artikkel/**': { swr: true } },
+  routeRules: { '/artikkel/**': { isr: true } },
   //gtag: { id: process.env.GA_MEASUREMENT_ID || 'G-4XX727FZCG' }
   nitro: { prerender: { crawlLinks: true, routes: ['/sitemap.xml'] }},
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
