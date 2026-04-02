@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-const srcDir = dirname(fileURLToPath(import.meta.url)); // Du har denne allerede
+const srcDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
   ssr:true,
@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-gtag'
   ],
-  routeRules: { '/artikkel/**': { static: true } },
+  routeRules: { '/artikkel/**': { isr: true } },
   //gtag: { id: process.env.GA_MEASUREMENT_ID || 'G-4XX727FZCG' }
   nitro: { prerender: { crawlLinks: true, routes: ['/api/log-urls','/sitemap.xml', '/'] }},
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
