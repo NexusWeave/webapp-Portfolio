@@ -98,6 +98,6 @@
     };
 
     //  --- Debug logic
-    console.log("Anchor component loaded with data: ", img.value, isImage());
-    console.log("Link component loaded with data: ", data.value);
+    //console.log("Anchor component loaded with data: ", img.value, isImage());
+    //console.log("Link component loaded with data: ", data.value);
 </script>

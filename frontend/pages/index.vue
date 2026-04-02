@@ -71,4 +71,5 @@
     //  --- Debugging Logic
     //console.log("Processed timeline:", academicTimeline.value);
     //console.log("Achievements data on load:", achievementsTimeline.value);
+    //console.log("Mapped posts - ", mappedPosts.value)
 </script>
