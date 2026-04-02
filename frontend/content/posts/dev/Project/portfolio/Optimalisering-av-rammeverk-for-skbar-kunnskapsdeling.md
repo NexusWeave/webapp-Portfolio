@@ -38,9 +38,10 @@ sources: |
 
 **Dagens Aktivitet**
 
-* Kartlegge hvilke regler i rammeverket som blokkerer ekstern datainnsamling (scannere).
-* Konfigurere rammeverket slik at spesifikke loggsider tillater forespørsler fra andre datasystemer.
-* Validere at systemet fungerer som et digitalt bevis på kompetanse, slik at min kunnskap blir søkbar og tidsbesparende for eksterne parter.
+* Bygget om systemets sentrale endepunkt for helsesjekk. Systemet leverer nå detaljerte statusrapporter per tjeneste fremfor kun generelle feilmeldinger.
+* Lagt til funksjonalitet som lister opp samtlige tilgjengelige koblinger og viser nøyaktig sanntidstilstand for hver enkelt.
+* Identifisert og utbedret svakheter i feilhåndteringen for å skille mellom feil i egen kildekode og problemer hos eksterne tjenesteleverandører.
+* Redusert responstiden ved feilretting, som resulterer i en mer robust og stabil løsning for sluttbrukerne.
 
 **Motivasjon & Energi** **9** / **10**
 
