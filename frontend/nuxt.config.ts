@@ -4,9 +4,9 @@ import { fileURLToPath } from 'url';
 const srcDir = dirname(fileURLToPath(import.meta.url)); // Du har denne allerede
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
   dir: { public:'public' },
+  devtools: { enabled: true },
+  compatibilityDate: '2025-07-15',
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
   modules: [
@@ -18,24 +18,10 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-gtag'
   ],
-  //gtag: { id: process.env.GA_MEASUREMENT_ID || 'G-4XX727FZCG' },
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/sitemap.xml']
-    }
-  },
+  routeRules: { '/artikkel/**': { swr: true } },
+  //gtag: { id: process.env.GA_MEASUREMENT_ID || 'G-4XX727FZCG' }
+  nitro: { prerender: { crawlLinks: true, routes: ['/sitemap.xml'] }},
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
-  sitemap: { 
-    autoLastmod: true,
-    includeAppSources:true,
-    exclude: [ '/admin/**' ],
-    sources: ['/api/log-urls'],
-    defaults: { priority: 0.9, changefreq: 'daily'},
-  },
-  runtimeConfig:{
-    public:{
-      GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080',
-    },
-  }
+  runtimeConfig:{ public:{ GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080' } }
+  sitemap: { autoLastmod: true, includeAppSources:true, exclude: [ '/admin/**' ], sources: ['/api/log-urls'], defaults: { priority: 0.9, changefreq: 'daily'} },
 })
