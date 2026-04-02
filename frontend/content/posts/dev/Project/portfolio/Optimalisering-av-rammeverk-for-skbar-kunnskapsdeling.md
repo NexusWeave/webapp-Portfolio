@@ -1,11 +1,11 @@
 ---
 date: 2026-04-02T07:33:30.027Z
-title: Optimalisering av rammeverk for søkbar kunnskapsdeling
+title: Health Check system oppgraderinger
 ingress: |
   Ved å innføre en dedikert modul for helsesjekk og detaljerte statusrapporter for hver enkelt tjeneste, er det nå slutt på usikkerheten om feil skyldes egen kode eller interne kilder. Systemet gir umiddelbar oversikt over alle tilkoblinger, noe som sikrer raskere feilretting og en mer stabil løsning.
 parade: ''
 star: |
-  ### Health Check System Improvements
+  ###
 
   Jeg hadde ingen god måte å vite om feil skyldtes min egen kode eller om det var problemer hos de eksterne tjenestene jeg henter data fra. Dette gjorde det vanskelig å vite hvor jeg skulle starte feilsøkingen når noe stoppet opp.
 
