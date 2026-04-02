@@ -1,30 +1,6 @@
 <template>
     <section class="flex-wrap-row-justify-space-around">
         <section class="dev-bar">
-            <MediaFigure
-                :data="{
-                    type: 'jpg',
-                    src: 'media/images/carousel/20240903_165612.jpg',
-                    alt: 'Portrett av Kristoffer Gjøsund',
-                }"
-                :cls="['dev-avatar']"
-            />
-            <section class="dev-references">
-                <h2> Attest sitater </h2>
-                <section v-for="(data, i) in sortedReference" :key="i">
-                    <article v-if="data.isVisible" class="dev-quote">
-                        <p><q>{{ data.quote }}</q>
-                        - </p>
-                        <h3>
-                            <cite>
-                            <NavigationAnchor 
-                                :data="data.anchor"
-                            />
-                        </cite>
-                    </h3>
-                    </article>
-                </section>
-            </section>
             <section class="dev-skill flex-column-justify-center-align-center">
                 <h2> Min Kode Aktivitet</h2>
                 <span> </span>
@@ -56,12 +32,11 @@
 <script setup lang="ts">
 
     //  --- Import & types logic
-    import { startTimer } from '~/utils/utils';
     import { useLanguageStore } from '@/stores/languageBytesStore';
-    import { onMounted, onUnmounted, fetchCollection } from '#imports';
+    import { fetchCollection } from '#imports';
     
 
-    import type { DevCollectionItem, ReferenceCollectionItem } from '@nuxt/content';
+    import type { DevCollectionItem } from '@nuxt/content';
 
 
     //  --- Conent logic
@@ -69,19 +44,9 @@
     const devCache = 'devProfileCache';
     const dev = await fetchCollection<DevCollectionItem>(devPath, devCache);
 
-    const referencePath = 'reference';
-    const referenceCache = 'referenceCache';
-    const reference = await fetchCollection<ReferenceCollectionItem>(referencePath, referenceCache);
-    const sortedReference = reactive(mapReference(reference));
-
     //  --- Progress Bar Logic
     const { formattedLanguages } = storeToRefs(useLanguageStore());
 
-    let timerInterval: ReturnType<typeof setInterval> | null = null;
-
-    // --- Lifecycle Logic
-    onMounted(() => { timerInterval = startTimer(sortedReference); });
-    onUnmounted(() => { if (timerInterval) { clearInterval(timerInterval); }});
 
     //  --- Debugging Logic ---
     //console.warn('Reference Data:', sortedReference.value);

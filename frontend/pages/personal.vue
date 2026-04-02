@@ -11,7 +11,6 @@
             </section>
         </article>
         <section class="flex-wrap-row-justify-space-evenly">
-            <section class="flex-column-justify-center-align-center"> <MediaFigure :data="CarouselData[0]" /></section>
             <section class="flex-column-justify-center-align-center">
                 <article v-for="(data, i) in biography" :key="i" class="bio">
                     <h3 v-if="i === 2">{{ data.title }}</h3>
