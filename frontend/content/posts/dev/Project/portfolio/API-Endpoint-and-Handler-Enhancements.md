@@ -1,5 +1,5 @@
 ---
-date: 2026-04-06T13:28:42.798Z
+date: 2026-04-03T13:28:42.798Z
 title: API Endepunkt &Handler forbedringer
 ingress: |
   Det var tidligere vanskelig å holde styr på alle de ulike delene av løsningen. Ved å gi hver del et eget, forståelig navn og rydde bort rot, er det nå mye enklere å se nøyaktig hva som er i drift og hvordan alt virker. Dette gjør det både tryggere og lettere å bygge ut prosjektet videre, som en konsekvens av at jeg har nå oversikt over hvordan de ulike delene snakker sammen.
