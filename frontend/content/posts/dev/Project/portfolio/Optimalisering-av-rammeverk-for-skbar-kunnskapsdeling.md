@@ -14,24 +14,7 @@ star: |
   * Jeg har lagt til en funksjon som lister opp alle tilgjengelige koblinger og viser nøyaktig hvilken tilstand hver enkelt av dem er i.
 
   Jeg har redusert tiden det tar å fikse feil betraktelig. Nå er det lettere å finne ut hvor utfordringen ligger med en gang det skjer, noe som gjør at løsningen min er mye mer stabil for de som bruker den.
-sources: |
-  **\*\*Kildehenvisninger:\*\***
-
-  **\[^1]: \[Helsesjekk-logikk]\(diffhunk://#diff-a29ff322ddbacd468fea10dfb6857e1026da13b23b9ae94e4c4d0e7d2c794dadR58-R86)**
-
-  **\[^2]: \[Oppdatering av app.py]\(diffhunk://#diff-a29ff322ddbacd468fea10dfb6857e1026da13b23b9ae94e4c4d0e7d2c794dadR26-R27)**
-
-  **\[^3]: \[Navngivning av ruter del 1]\(diffhunk://#diff-a29ff322ddbacd468fea10dfb6857e1026da13b23b9ae94e4c4d0e7d2c794dadL77-R119)**
-
-  **\[^4]: \[Navngivning av ruter del 2]\(diffhunk://#diff-a29ff322ddbacd468fea10dfb6857e1026da13b23b9ae94e4c4d0e7d2c794dadL118-R143)**
-
-  **\[^5]: \[Forbedret informasjonshenting]\(diffhunk://#diff-57321a2e5888376cee6138322a12905ba7914ad72e980e0ec2d956541f3ead14R79-R161)**
-
-  **\[^6]: \[Versjonering GitHub API]\(diffhunk://#diff-64dd72ede1cf3c4de88954e75ad5e36f5c23996dc07b0815df59e2b4a269bfeaR25)**
-
-  **\[^7]: \[Versjonering Database Handler]\(diffhunk://#diff-3daf7b2329166f033ef0def6136075bbd560929dff8b033530f31656b45acb7bR18-R19)**
-
-  **\[^8]: \[Versjonering Klient Konfigurasjon]\(diffhunk://#diff-57321a2**
+sources: ''
 ---
 
 **Dagens Aktivitet**
