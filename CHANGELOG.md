@@ -1,3 +1,17 @@
+# [1.12.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.11.0...v1.12.0) (2026-04-02)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Resolved an build issue, by adding a '}' at the end of sitemap config. ([202f0a6](https://github.com/NexusWeave/webapp-Portfolio/commit/202f0a6b2b0c53940fed5b619e27d8a533882634))
+* Fix deploy command output directory in package.json ([3108b00](https://github.com/NexusWeave/webapp-Portfolio/commit/3108b002f3969580668ec35642ec25be092135ea))
+* Fix formatting in nuxt.config.ts ([d823713](https://github.com/NexusWeave/webapp-Portfolio/commit/d82371394514d811cb17680972e0fdc6856165de))
+
+
+### Features
+
+* **API:** ✨ Introduce a sitemap API, to find every paths for articles in the SEO. ([5e3533e](https://github.com/NexusWeave/webapp-Portfolio/commit/5e3533e8de45c62cd8a113b63823f79e1f221c8d))
+
 # [1.11.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.10.0...v1.11.0) (2026-03-25)
 
 
