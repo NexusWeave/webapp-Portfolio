@@ -7,7 +7,7 @@
             <NavigationNavMenu :data="data.menu" toggle="router"/>
             <NavigationAnchor :data="btn"/>
         </section>
-        <section class="flex-wrap-row-justify-center profile">
+        <section class="flex-wrap-row-align-items-center profile">
             <section class="profile-bar">
                 <section v-for="(data, i) in sortedReference" :key="i">
                         <article v-if="data.isVisible">
