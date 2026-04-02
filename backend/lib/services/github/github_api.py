@@ -22,6 +22,7 @@ class GithubAPI(AsyncAPIClientConfig):
     """ Github API Configuration
         API : https://api.github.com/
     """
+    __VERSION__ = 'v1.2.0'
 
     def __init__(self, URL:str, KEY:str):
         super().__init__(URL=URL, KEY=KEY)

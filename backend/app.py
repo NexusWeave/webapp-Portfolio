@@ -1,16 +1,18 @@
 #   Standard Libraries
 import os, __future__, uvicorn
 from datetime import datetime
-from typing import Dict, Optional, List, Sequence
+from typing import Dict, Optional, List, Sequence, Any, Union
 
 #   Third-Party Libraries
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
+from fastapi.routing import APIRoute
 
 #   Internal Libraries
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
+from lib.utils.health_check import check_specializt_api, check_github_api
 
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
@@ -20,6 +22,8 @@ from lib.services.github.repository_handler import GithubDatabaseHandler
 from lib.services.announcements.announcements import AnnouncementsService
 
 from lib.settings.database_config import ASynchronousDatabaseConfig
+
+NESTED_DICTS = Union[str, Dict[str, Any], bool, int]
 
 #   Initialize Enviorment variables
 load_dotenv()
@@ -74,7 +78,7 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
 
     return response
 
-@app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
+@app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"], name='Fetch Repositories' )
 async def fetch_repositories(request: Request) -> Sequence[RepositoryModel] | Dict[str, str]:
     DB_CONTEXT: ASynchronousDatabaseConfig = request.app.state.db
 
@@ -82,27 +86,36 @@ async def fetch_repositories(request: Request) -> Sequence[RepositoryModel] | Di
         HANDLER = GithubDatabaseHandler(session = session)
         return await HANDLER.fetch_all_repositories()
 
-@app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.")  
-async def health_check() -> Dict[str, str | bool]:
+@app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.", name="Health Check")  
+async def health_check() -> NESTED_DICTS:
     """
         Health Check Endpoint
     """
     LOG.info("Health check endpoint accessed.")
 
-    dictionary: Dict[str, str | bool] = {
+    dictionary: NESTED_DICTS = {
         "ApiRunning": True,
-        "EndpointsAvailable": "4",
+        "EndpointsAvailable": f"{len(app.routes)}",
         "ApiName": ENVIRONMENT.API_NAME,
         "version" : ENVIRONMENT.API_VERSION,
-        "status": "OK", "message": "API is healthy and running.",
+        'GET' : [],
+        'POST': []
         }
 
-    dictionary["github_api"] = "Responsive" if await check_github_api() else "Unresponsive"
-    dictionary['Crawler'] = "Responsive" if await check_specializt_api() else "Unresponsive"
+    health_check_chart = {
+        'AI-specialist' : await check_specializt_api(),
+        'Synchronize Repositories' : await check_github_api()
+    }
+
+    for route in app.routes:
+        if isinstance(route, APIRoute) and hasattr(route, 'methods') and not route.name == 'Health Check':
+            model_name = str(route.response_model) if route.response_model else "None"
+            if 'GET' in route.methods:
+                dictionary["GET"].append({ f"{route.name}": { 'path': route.path, 'model': model_name, 'methods': list(route.methods), 'status': health_check_chart.get(route.name) if health_check_chart.get(route.name) else "Not Connected" } })
     
     return dictionary
 
-@app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
+@app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database", name= 'Synchronize Repositories')
 async def handle_repositories(request: Request) -> Dict[str, str]:
 
     try:
@@ -115,47 +128,18 @@ async def handle_repositories(request: Request) -> Dict[str, str]:
 
     return {"message": "All Repositories has been successfully synced with database."}
 
-async def check_github_api() -> bool:
-    """ Checks the availability of the GitHub API. """
-    from lib.services.github.github_api import GithubAPI
-
-    URL = ENVIRONMENT.GITHUB_REST
-    TOKEN = ENVIRONMENT.GITHUB_TOKEN
+@app.get(f"{PATH}/specialist", tags=["AI", "specialist"], summary="Upserts the Database", description="Upserts the Database", name='AI-specialist')
+async def specialist(request: Request) -> Dict[str, str]:
 
     try:
-        if not URL or not TOKEN:
-            raise ValueError("GITHUB_REST and GITHUB_TOKEN must be set in the environment variables.")
-    
-    except ValueError as e:
-        LOG.error(f"Error initializing GithubAPI: {e.__class__.__name__} - {str(e)}")
-        return False
-    
-    github = GithubAPI(URL=URL, KEY=TOKEN)
-    PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PARAMS}"
-
-    try:
-        await github.fetch_data(endpoint=PERSONAL_ENDPOINT)
-    
-    except Exception as e:
-        LOG.error(f"GitHub API check failed: {e.__class__.__name__} - {str(e)}, {URL}{PERSONAL_ENDPOINT}")
-        return False
-
-    return True
-
-async def check_specializt_api() -> bool:
-    from lib.settings.api_config import Scanner
-
-    cb = Scanner(URL = 'https://krigjo25.no', KEY = '')
-    response = None
-    try:
-        response = await cb.fetch_web_rules()
-        if not response: raise Exception('Response is none')
+        await ApiDatabaseBridge.repositories_sync(request, ENVIRONMENT.GITHUB_REST, ENVIRONMENT.GITHUB_PARAMS, ENVIRONMENT.PERSONAL_GITHUB_REST_API, ENVIRONMENT.GITHUB_TOKEN)
 
     except Exception as e:
-        LOG.error(f"Specialist API check failed: {e.__class__.__name__} - {str(e)}")
-        return False
+        LOG.critical(f"handle_repositories_endpoint : failed with error\n {e.__class__.__name__} - {e}")
+        if ENVIRONMENT.ENVIRONMENT == 'development': return {"code": "500","message": f"{e}"}
+        else : return {"code": "400","message": f"Endpoint was not found"}
 
-    return True
+    return {"message": "All Repositories has been successfully synced with database."}
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
