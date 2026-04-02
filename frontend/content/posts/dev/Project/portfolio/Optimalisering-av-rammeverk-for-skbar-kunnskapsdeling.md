@@ -2,8 +2,7 @@
 date: 2026-04-02T07:33:30.027Z
 title: Optimalisering av rammeverk for søkbar kunnskapsdeling
 ingress: |
-  Ved å endre rammeverkets regler har jeg åpnet lukkede informasjonskanaler og gjort nettsiden til en aktiv læringskilde for AI. Ved å koble systemet direkte til min innholdsoversikt, blir min kunnskap søkbar og anvendelig.
-  Mine prosjektresultater fungerer nå som et bevis på kompetansen, noe som sparer tid og gjør det langt enklere for andre å forstå hvordan jeg jobber.
+  Ved å innføre en dedikert modul for helsesjekk og detaljerte statusrapporter for hver enkelt tjeneste, er det nå slutt på usikkerheten om feil skyldes egen kode eller interne kilder. Systemet gir umiddelbar oversikt over alle tilkoblinger, noe som sikrer raskere feilretting og en mer stabil løsning.
 parade: ''
 star: |
   ### Health Check System Improvements
@@ -17,51 +16,24 @@ star: |
   * Jeg har lagt til en funksjon som lister opp alle tilgjengelige koblinger og viser nøyaktig hvilken tilstand hver enkelt av dem er i. \[^1]
 
   Jeg har redusert tiden det tar å fikse feil betraktelig. Nå er det lettere å finne ut hvor utfordringen ligger med en gang det skjer, noe som gjør at løsningen min er mye mer stabil for de som bruker den.
+sources: |
+  **\*\*Kildehenvisninger:\*\***
 
-  ***
+  **\[^1]: \[Helsesjekk-logikk]\(diffhunk://#diff-a29ff322ddbacd468fea10dfb6857e1026da13b23b9ae94e4c4d0e7d2c794dadR58-R86)**
 
-  ### API Endpoint and Handler Enhancements
+  **\[^2]: \[Oppdatering av app.py]\(diffhunk://#diff-a29ff322ddbacd468fea10dfb6857e1026da13b23b9ae94e4c4d0e7d2c794dadR26-R27)**
 
-  De forskjellige "veiene" og funksjonene i systemet mitt manglet klare navn, noe som gjorde det uoversiktlig å holde styr på hva som faktisk var i drift og hvordan de presterte.
+  **\[^3]: \[Navngivning av ruter del 1]\(diffhunk://#diff-a29ff322ddbacd468fea10dfb6857e1026da13b23b9ae94e4c4d0e7d2c794dadL77-R119)**
 
-  Oppgaven ble å gi hver del av systemet et tydelig navn for å få bedre kontroll og gjøre det lettere å bygge ut prosjektet senere uten at eksisterende ting går i stykker.
+  **\[^4]: \[Navngivning av ruter del 2]\(diffhunk://#diff-a29ff322ddbacd468fea10dfb6857e1026da13b23b9ae94e4c4d0e7d2c794dadL118-R143)**
 
-  * Jeg har oppdatert alle definisjonene i systemet med unike merkelapper for å gjøre det lettere å kjenne igjen hver enkelt rute. \[^3]
-  * Jeg har forbedret måten systemet rapporterer sin egen tilstand på ved å bruke disse nye navnene i oversikten. \[^4]
-  * Jeg har fjernet gamle og utdaterte sjekkfunksjoner som lå spredt rundt, og samlet alt ansvaret i den nye modulen jeg laget.
+  **\[^5]: \[Forbedret informasjonshenting]\(diffhunk://#diff-57321a2e5888376cee6138322a12905ba7914ad72e980e0ec2d956541f3ead14R79-R161)**
 
-  Dette gir meg full oversikt over driften. Det er nå mye tryggere for meg å legge til nye funksjoner i fremtiden fordi jeg har stålkontroll på hvordan de ulike delene snakker sammen.
+  **\[^6]: \[Versjonering GitHub API]\(diffhunk://#diff-64dd72ede1cf3c4de88954e75ad5e36f5c23996dc07b0815df59e2b4a269bfeaR25)**
 
-  ***
+  **\[^7]: \[Versjonering Database Handler]\(diffhunk://#diff-3daf7b2329166f033ef0def6136075bbd560929dff8b033530f31656b45acb7bR18-R19)**
 
-  ### Web Scraping and Crawler Improvements
-
-  Verktøyet jeg bruker for å hente informasjon var tregt og tok ofte med seg mye unødvendig "støy" fra nettsidene, noe som krevde mye tid på å vaske dataene i etterkant.
-
-  Jeg ønsket å gjøre informasjonsinnhentingen raskere og sørge for at jeg bare sitter igjen med den informasjonen som faktisk har verdi for sluttproduktet.
-
-  * Jeg har oppgradert logikken i innsamlingsverktøyet mitt slik at det nå automatisk kjenner igjen og filtrerer bort uinteressant innhold. \[^5]
-  * Jeg har lagt til nye metoder for å vaske nettsidene for unødvendige elementer før dataene lagres. \[^5]
-  * Jeg har gjort det mulig for verktøyet å utføre mange innsamlinger samtidig i stedet for å måtte vente på én og én, noe som øker farten voldsomt. \[^5]
-  * Jeg har forsterket måten systemet håndterer feilmeldinger fra nettsider på, slik at det ikke stopper opp ved små avbrudd.
-
-  Jeg får nå levert ferdig vaskede data med mye høyere nøyaktighet og på mye kortere tid. Dette øker kvaliteten på informasjonen jeg leverer uten at jeg trenger å bruke tid på manuelt etterarbeid.
-
-  ***
-
-  ### Versioning for Key Classes
-
-  Jeg manglet en oversikt over hvilken utgave av logikken som ble brukt i de forskjellige delene av koden, noe som skapte usikkerhet ved vedlikehold og oppdateringer.
-
-  Jeg bestemte meg for å innføre en fast standard for merking av de viktigste verktøyene mine for å ha full kontroll på nøyaktig hva som kjører til enhver tid.
-
-  * Jeg har lagt inn et fast versjonsnummer på verktøyet som snakker med GitHub. \[^6]
-  * Jeg har merket databasemodulen min med en egen versjonskode for bedre sporing. \[^7]
-  * Jeg har lagt til versjonsmerking på oppsettet for selve klienten. \[^8]
-  * Jeg har innført versjonskontroll på innsamlingsverktøyet (Scanneren) slik at jeg vet nøyaktig hvilken logikk som ble brukt. \[^9]
-
-  Jeg har nå full kontroll og sporbarhet i alt jeg gjør. Dette fjerner all usikkerhet ved vedlikehold og gjør det mye enklere og tryggere å gjøre store oppgraderinger senere.
-sources: ''
+  **\[^8]: \[Versjonering Klient Konfigurasjon]\(diffhunk://#diff-57321a2**
 ---
 
 **Dagens Aktivitet**
