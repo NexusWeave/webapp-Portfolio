@@ -1,5 +1,5 @@
 ---
-date: 2026-04-07T13:37:12.702Z
+date: 2026-04-06T13:37:12.702Z
 title: Forbedringer av nettside skanning
 ingress: |
   Tidligere var prosessen med å hente informasjon både treg og full av støy. Ved å lære verktøyet å kjenne igjen og fjerne uinteressant innhold automatisk, leveres nå ferdigvaskede data. Med evnen til å gjøre mange oppgaver samtidig og tåle små avbrudd, spares det mye tid. I tillegg er feil med manglende sider løst, slik at alt alltid er klart til bruk.
