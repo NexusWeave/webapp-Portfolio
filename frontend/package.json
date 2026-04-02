@@ -9,7 +9,7 @@
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
     "serve": "npm run build && nuxt preview",
-    "deploy": "npm run build && npm run generate && netlify deploy --dir=.output/dist --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
+    "deploy": "npm run build && npm run generate && netlify deploy --dir=dist --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
   },
   "dependencies": {
     "@nuxt/content": "^3.12.0",
