@@ -12,7 +12,7 @@ from fastapi.routing import APIRoute
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
-from lib.utils.health_check import check_specializt_api, check_github_api
+from lib.utils.health_check import check_specializt_api, check_github_database_repositories
 
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
@@ -55,6 +55,35 @@ PATH = f"/api/{VERSION}"
 def read_root():
     return {"message": "END POINT NOT FOUND !"}
 
+@app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.", name="Health Check")  
+async def health_check() -> NESTED_DICTS:
+    """
+        Health Check Endpoint
+    """
+    LOG.info("Health check endpoint accessed.")
+
+    dictionary: NESTED_DICTS = {
+        "ApiRunning": True,
+        "EndpointsAvailable": f"{len(app.routes)}",
+        "ApiName": ENVIRONMENT.API_NAME,
+        "version" : ENVIRONMENT.API_VERSION,
+        'GET' : [],
+        'POST': []
+        }
+
+    health_check_chart = {
+        'AI-specialist' : await check_specializt_api(),
+        'Fetch Repositories' : await check_github_database_repositories()
+    }
+
+    for route in app.routes:
+        if isinstance(route, APIRoute) and hasattr(route, 'methods') and not route.name == 'Health Check':
+            model_name = str(route.response_model) if route.response_model else "None"
+            if 'GET' in route.methods:
+                dictionary["GET"].append({ f"{route.name}": { 'path': route.path, 'model': model_name, 'methods': list(route.methods), 'status': health_check_chart.get(route.name) if health_check_chart.get(route.name) else "Not Connected" } })
+    
+    return dictionary
+
 @app.get(f"{PATH}/blogs/heavy/", tags=["exercise", "blogs"])
 async def get_heavy_data() ->None:
     pass
@@ -84,36 +113,8 @@ async def fetch_repositories(request: Request) -> Sequence[RepositoryModel] | Di
 
     async with DB_CONTEXT.SessionLocal() as session:
         HANDLER = GithubDatabaseHandler(session = session)
+
         return await HANDLER.fetch_all_repositories()
-
-@app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.", name="Health Check")  
-async def health_check() -> NESTED_DICTS:
-    """
-        Health Check Endpoint
-    """
-    LOG.info("Health check endpoint accessed.")
-
-    dictionary: NESTED_DICTS = {
-        "ApiRunning": True,
-        "EndpointsAvailable": f"{len(app.routes)}",
-        "ApiName": ENVIRONMENT.API_NAME,
-        "version" : ENVIRONMENT.API_VERSION,
-        'GET' : [],
-        'POST': []
-        }
-
-    health_check_chart = {
-        'AI-specialist' : await check_specializt_api(),
-        'Synchronize Repositories' : await check_github_api()
-    }
-
-    for route in app.routes:
-        if isinstance(route, APIRoute) and hasattr(route, 'methods') and not route.name == 'Health Check':
-            model_name = str(route.response_model) if route.response_model else "None"
-            if 'GET' in route.methods:
-                dictionary["GET"].append({ f"{route.name}": { 'path': route.path, 'model': model_name, 'methods': list(route.methods), 'status': health_check_chart.get(route.name) if health_check_chart.get(route.name) else "Not Connected" } })
-    
-    return dictionary
 
 @app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database", name= 'Synchronize Repositories')
 async def handle_repositories(request: Request) -> Dict[str, str]:

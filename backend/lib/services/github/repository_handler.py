@@ -15,6 +15,8 @@ LOG = DatabaseWatcher(dir="logs", name="Github-Database-Handler")
 LOG.file_handler()
 
 class GithubDatabaseHandler():
+
+    __VERSION__ = 'v1.0.0'
     def __init__(self, session: AsyncSession): self.session = session
 
     @staticmethod
