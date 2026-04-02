@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 const srcDir = dirname(fileURLToPath(import.meta.url)); // Du har denne allerede
 
 export default defineNuxtConfig({
+  ssr:true,
   dir: { public:'public' },
   devtools: { enabled: true },
   compatibilityDate: '2025-07-15',
