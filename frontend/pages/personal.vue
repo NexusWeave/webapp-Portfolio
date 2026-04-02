@@ -24,7 +24,10 @@
 </template>
 <script setup lang="ts">
 
-    //  Importing dependencies & types
+    //  --- Meta information
+    useSeoMeta({ title: 'LMC - Om Kristoffer Gjøsund', description: "Kristoffer Gjøsund (Krigjo25): Drevet av å forstå kontekst og mønstre. Utforsker krysningen mellom analytisk tenkning, EQ og dype menneskelige relasjoner.",  author: 'Kristoffer Gjøsund', ogTitle: 'Om Kristoffer Gjøsund', ogDescription: "Kristoffer Gjøsund (Krigjo25): Drevet av å forstå kontekst og mønstre. Utforsker krysningen mellom analytisk tenkning, EQ og dype menneskelige relasjoner.", ogImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg',ogUrl: 'https://krigjo25.no', ogType: 'website', ogLocale: 'nb_NO', twitterCard: 'summary_large_image', twitterTitle: 'LMCS - Om Kristoffer Gjøsund', twitterDescription: "Kristoffer Gjøsund (Krigjo25): Drevet av å forstå kontekst og mønstre. Utforsker krysningen mellom analytisk tenkning, EQ og dype menneskelige relasjoner.", twitterImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg', themeColor: '#ffffff' });
+    
+    //  --- Importing dependencies & types
     import { ref, computed } from 'vue';
     import { fetchCollection } from '#imports';
     import { blogPagination } from '@/composables/pagination';
@@ -52,9 +55,6 @@
 
     const currentPage = ref<number>(1);
     const totalPages = computed(() => { if (rawPersonal.value) return Math.ceil(rawPersonal.value.length / n); return 0; });
-
-    //  --- Carousel Data
-    const CarouselData: FigureItem[] = [ { type : 'jpg', alt : 'Portrait of Kristoffer Gjøsund', src : 'media/images/carousel/20240903_165612.jpg', caption : '- Motivert av å gi, og heve resultater gjennom samarbeid. Hver utfordring, er en felles reise. - Kristoffer Gjøsund' } ];
 
     //  --- Debugging tools
     //console.log(rawPersonal.value);

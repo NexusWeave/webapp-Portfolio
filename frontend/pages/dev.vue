@@ -31,10 +31,12 @@
 
 <script setup lang="ts">
 
+    //  --- Meta information
+    useSeoMeta({ title: 'LMCS - Portefølje', description: 'Kristoffer Gjøsund (Krigjo25) - Utvikler som forenkler det komplekse. Se min sanntids GitHub-aktivitet, akademiske reise og tekniske logger fra .NET til filosofi.', author: 'Kristoffer Gjøsund', ogTitle: 'Portefølje - Kristoffer Gjøsund', ogDescription: 'Kristoffer Gjøsund (Krigjo25) - Utvikler som forenkler det komplekse. Se min sanntids GitHub-aktivitet, akademiske reise og tekniske logger fra .NET til filosofi.', ogImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg',ogUrl: 'https://krigjo25.no', ogType: 'website', ogLocale: 'nb_NO', twitterCard: 'summary_large_image', twitterTitle: 'LMCS - Portefølje', twitterDescription: 'Kristoffer Gjøsund (Krigjo25) - Utvikler som forenkler det komplekse. Se min sanntids GitHub-aktivitet, akademiske reise og tekniske logger fra .NET til filosofi.', twitterImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg', themeColor: '#ffffff' });
+
     //  --- Import & types logic
-    import { useLanguageStore } from '@/stores/languageBytesStore';
     import { fetchCollection } from '#imports';
-    
+    import { useLanguageStore } from '@/stores/languageBytesStore';
 
     import type { DevCollectionItem } from '@nuxt/content';
 

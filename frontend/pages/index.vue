@@ -36,11 +36,14 @@
 </template>
 <script setup lang="ts">
 
+    //  --- Meta information
+    useSeoMeta({ title: 'LMCS - Portefølje', description: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", author: 'Kristoffer Gjøsund', ogTitle: 'Portefølje - Kristoffer Gjøsund',  ogDescription: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", ogImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg',  ogUrl: 'https://krigjo25.no', ogType: 'website', ogLocale: 'nb_NO', twitterCard: 'summary_large_image', twitterTitle: 'LMCS - Portefølje', twitterDescription: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", twitterImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg', themeColor: '#ffffff' });
+    
+    //  --- Import dependencies & Types
     import { ref, computed } from 'vue';
-    import { blogPagination } from '@/composables/pagination';  // @ts-ignore
-
-    //  --- Import & types logic
     import { fetchCollection, mapTimeline } from '#imports';
+    import { blogPagination } from '@/composables/pagination';
+
     import type { DevPostsCollectionItem, AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 
