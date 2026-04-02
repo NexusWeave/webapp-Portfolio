@@ -6,6 +6,8 @@ import { readdir } from 'fs/promises';
 const srcDir = dirname(fileURLToPath(import.meta.url)); // Du har denne allerede
 
 export default defineNuxtConfig({
+
+  
   ssr:true,
   dir: { public:'public' },
   devtools: { enabled: true },
@@ -55,5 +57,6 @@ export default defineNuxtConfig({
         console.warn('[prerender] Klarte ikke lese content-mappen:', e)
       }
     }
-  }
+  },
+  app: {head : {title: 'Portefølje - Kristoffer Gjøsund(krigjo25)', viewport: 'width=device-width, initial-scale=1', htmlAttrs: { lang: 'no' }, meta: [{name:'description', content:'Portefølje side for Kristoffer Gjøsund'}, {charset:'utf-8'}], link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]}}
 })
