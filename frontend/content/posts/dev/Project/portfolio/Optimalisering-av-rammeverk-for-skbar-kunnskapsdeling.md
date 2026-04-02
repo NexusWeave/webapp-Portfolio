@@ -23,7 +23,7 @@ sources: ''
 
 **Dagens Aktivitet**
 
-* Kartlegge hvilke sikkerhetsregler i rammeverket som blokkerer ekstern datainnsamling (scannere).
+* Kartlegge hvilke regler i rammeverket som blokkerer ekstern datainnsamling (scannere).
 * Konfigurere rammeverket slik at spesifikke loggsider tillater forespørsler fra andre datasystemer.
 * Validere at systemet fungerer som et digitalt bevis på kompetanse, slik at min kunnskap blir søkbar og tidsbesparende for eksterne parter.
 
