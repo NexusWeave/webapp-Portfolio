@@ -6,18 +6,61 @@ ingress: |
   Mine prosjektresultater fungerer nå som et bevis på kompetansen, noe som sparer tid og gjør det langt enklere for andre å forstå hvordan jeg jobber.
 parade: ''
 star: |
-  På nettsiden hadde jeg en del kunnskap som skulle hentes til en nettside-skanner (robot), men som en konsekvens av å bruke moderne rammeverk, var denne informasjonen låst kun til nettstedet. Selv om innholdet er offentlig på nettsiden, nektet rammeverket å dele disse dataene med andre datasystemer. Dette skapte en vegg som hindret meg i å bruke min egen kunnskap til andre interne systemer.
+  ### Health Check System Improvements
 
-  Hovedmålet var å åpne opp disse informasjonskanalene slik at de interne systemene får tilgang til alt innholdet. Jeg måtte sørge for at rammeverket som ble brukt, tilatte at andre systemer henter informasjon fra de spesifikke sidene som ble delt.
+  Jeg hadde ingen god måte å vite om feil skyldtes min egen kode eller om det var problemer hos de eksterne tjenestene jeg henter data fra. Dette gjorde det vanskelig å vite hvor jeg skulle starte feilsøkingen når noe stoppet opp.
 
-  Innsamlingsverktøyet logget nøyaktig hvilke sider som feilet og hva de returnerte. Dette pekte direkte mot at publiseringsprosessen ikke forberedte artiklene for maskinell tilgang – kun de 4 artiklene som var fremhevet på forsiden ble gjort tilgjengelige, resten ble hoppet over.
+  Oppgave ble å lage til et varslingssystem som gir meg svar med en gang på om alle koblinger fungerer som de skal, slik at jeg slipper å lete i blinde når noe ikke virker.
 
-  * Endret publiseringsprosessen slik at alle artikler klargjøres eksplisitt for henting, ikke bare de som er synlig lenket.
-  * Nye artikler inkluderes uten ekstra arbeid ved hver publisering.
+  * Jeg har laget en helt ny, egen modul som kun har som oppgave å sjekke tilkoblingene mine mot interne kilder. \[^1]
+  * Jeg har bygget om systemets hovedpunkt for helsesjekk slik at det gir en detaljert statusrapport for hver enkelt tjeneste i stedet for bare en generell melding. \[^2]
+  * Jeg har lagt til en funksjon som lister opp alle tilgjengelige koblinger og viser nøyaktig hvilken tilstand hver enkelt av dem er i. \[^1]
 
-  Ved å åpne disse kanalene har jeg forvandlet en nettside til en aktiv læringskilde for AI. Den største forretningsverdien ligger i at jeg nå kan hente ut informasjon om nøyaktig hva jeg har gjort i mine tidligere prosjekter, noe som fungerer som et digitalt bevis på kunnskapen jeg sitter på. I stedet for at andre må gjette seg til min kompetanse, har jeg nå et system som automatisk gir AI tilgang til mine resultater. Dette gjør at min erfaring blir søkbar og anvendelig, og sparer både meg og andre for betydelig tid i kartleggingsprosesser.
+  Jeg har redusert tiden det tar å fikse feil betraktelig. Nå er det lettere å finne ut hvor utfordringen ligger med en gang det skjer, noe som gjør at løsningen min er mye mer stabil for de som bruker den.
 
-  God påske !
+  ***
+
+  ### API Endpoint and Handler Enhancements
+
+  De forskjellige "veiene" og funksjonene i systemet mitt manglet klare navn, noe som gjorde det uoversiktlig å holde styr på hva som faktisk var i drift og hvordan de presterte.
+
+  Oppgaven ble å gi hver del av systemet et tydelig navn for å få bedre kontroll og gjøre det lettere å bygge ut prosjektet senere uten at eksisterende ting går i stykker.
+
+  * Jeg har oppdatert alle definisjonene i systemet med unike merkelapper for å gjøre det lettere å kjenne igjen hver enkelt rute. \[^3]
+  * Jeg har forbedret måten systemet rapporterer sin egen tilstand på ved å bruke disse nye navnene i oversikten. \[^4]
+  * Jeg har fjernet gamle og utdaterte sjekkfunksjoner som lå spredt rundt, og samlet alt ansvaret i den nye modulen jeg laget.
+
+  Dette gir meg full oversikt over driften. Det er nå mye tryggere for meg å legge til nye funksjoner i fremtiden fordi jeg har stålkontroll på hvordan de ulike delene snakker sammen.
+
+  ***
+
+  ### Web Scraping and Crawler Improvements
+
+  Verktøyet jeg bruker for å hente informasjon var tregt og tok ofte med seg mye unødvendig "støy" fra nettsidene, noe som krevde mye tid på å vaske dataene i etterkant.
+
+  Jeg ønsket å gjøre informasjonsinnhentingen raskere og sørge for at jeg bare sitter igjen med den informasjonen som faktisk har verdi for sluttproduktet.
+
+  * Jeg har oppgradert logikken i innsamlingsverktøyet mitt slik at det nå automatisk kjenner igjen og filtrerer bort uinteressant innhold. \[^5]
+  * Jeg har lagt til nye metoder for å vaske nettsidene for unødvendige elementer før dataene lagres. \[^5]
+  * Jeg har gjort det mulig for verktøyet å utføre mange innsamlinger samtidig i stedet for å måtte vente på én og én, noe som øker farten voldsomt. \[^5]
+  * Jeg har forsterket måten systemet håndterer feilmeldinger fra nettsider på, slik at det ikke stopper opp ved små avbrudd.
+
+  Jeg får nå levert ferdig vaskede data med mye høyere nøyaktighet og på mye kortere tid. Dette øker kvaliteten på informasjonen jeg leverer uten at jeg trenger å bruke tid på manuelt etterarbeid.
+
+  ***
+
+  ### Versioning for Key Classes
+
+  Jeg manglet en oversikt over hvilken utgave av logikken som ble brukt i de forskjellige delene av koden, noe som skapte usikkerhet ved vedlikehold og oppdateringer.
+
+  Jeg bestemte meg for å innføre en fast standard for merking av de viktigste verktøyene mine for å ha full kontroll på nøyaktig hva som kjører til enhver tid.
+
+  * Jeg har lagt inn et fast versjonsnummer på verktøyet som snakker med GitHub. \[^6]
+  * Jeg har merket databasemodulen min med en egen versjonskode for bedre sporing. \[^7]
+  * Jeg har lagt til versjonsmerking på oppsettet for selve klienten. \[^8]
+  * Jeg har innført versjonskontroll på innsamlingsverktøyet (Scanneren) slik at jeg vet nøyaktig hvilken logikk som ble brukt. \[^9]
+
+  Jeg har nå full kontroll og sporbarhet i alt jeg gjør. Dette fjerner all usikkerhet ved vedlikehold og gjør det mye enklere og tryggere å gjøre store oppgraderinger senere.
 sources: ''
 ---
 
