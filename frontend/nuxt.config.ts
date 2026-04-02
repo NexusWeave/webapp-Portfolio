@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   ssr:true,
   dir: { public:'public' },
   devtools: { enabled: true },
+  nitro: { preset: 'netlify' },
   compatibilityDate: '2025-07-15',
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
@@ -21,7 +22,6 @@ export default defineNuxtConfig({
   ],
   routeRules: { '/artikkel/**': { isr: true } },
   //gtag: { id: process.env.GA_MEASUREMENT_ID || 'G-4XX727FZCG' }
-  nitro: { prerender: { crawlLinks: true, routes: ['/api/log-urls','/sitemap.xml', '/'] }},
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
   runtimeConfig:{ public:{ GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080' } },
   sitemap: { autoLastmod: true, includeAppSources:true, exclude: [ '/admin/**' ], sources: ['/api/log-urls'], defaults: { priority: 0.9, changefreq: 'daily'} },
