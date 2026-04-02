@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ssr:true,
   dir: { public:'public' },
   devtools: { enabled: true },
-  nitro: { preset: 'netlify' },
+  nitro: { preset: 'static' },
   compatibilityDate: '2025-07-15',
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
