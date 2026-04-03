@@ -1,5 +1,5 @@
 ---
-date: 2026-03-18T00:00:00.000Z
+date: 2026-04-02T23:00:00.000Z
 title: Orientert Utvikler
 strength: |
   ### **Struktur & Risikostyring** ( Bygg & Anlegg )
