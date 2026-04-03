@@ -24,7 +24,7 @@ strength: |
 agile: |
   ### **Kollega og Lagspiller**
 
-  Gjennom aktivt bruk av arbeidsverktøy som **mermaid**.js, Github & dokumentasjon, viser jeg evne til å kommunisere på tvers av fagfelt. Dette sikrer at de ulike samarbeidsgruppene forstår logikken i en funksjon. Selv om jeg har ansvar for egne arbeidsoppgaver, er jeg fortsatt en lagspiller for mine kolleger og birdrar til en flyt i prosjektene.
+  Med å bruke verktøy som **Mermaid.js** visualiserer jeg logikk, slik at løsninger blir forståelige også for de utenfor utviklerteamet. Gjennom god struktur på GitHub sørger jeg for full gjennomsiktighet i prosessen. Dette gjør at jeg kan kommunisere effektivt med ulike miljøer, og bygge broer mellom avdelinger og sikre at alle har felles forståelse for prosjektets fremdrift.
 
   ### **Dokumentert Ansvar**
 
