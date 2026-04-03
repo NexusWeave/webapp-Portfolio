@@ -2,7 +2,7 @@
 date: 2025-09-30T00:00:00.000Z
 title: Nøkkel Informasjon om Kristoffer Gjøsund
 strength: |
-  ### S**e kontekst, ikke kun innhold**
+  #### S**e kontekst, ikke kun innhold**
 
   Helt siden barndommen har jeg vært drevet av en vilje om å forstå "*hva"*. Min **nysgjerrighet** leder meg til å utforske kontekst – de underliggende forholdene og mønstrene som skaper virkeligheten, heller enn kun det åpenbare innholdet. Denne tilnærmingen har formet mitt sinn og evnen til å ta inn vanskelige utfordringer og identifisere løsninger. Denne kompetansen har blitt en sentral drivkraft i min personlige utvikling.
 
