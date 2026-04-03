@@ -16,7 +16,7 @@ strength: |
 
   ### **Leveranse og Kundedialog**
 
-  Gjennom prosjekter i samarbeid med andre bedrifter som [SosEnT Norge](https://sosent.no) beviser jeg at jeg kan snu kundeh behov til ferdige produkter. Ved å kombinere tett dialog med kunden og moderne arbeidsmåter leverer jeg løsninger som treffer kunders behov.
+  Gjennom prosjekter i samarbeid med andre bedrifter som [SosEnT Norge](https://sosent.no) beviser jeg at jeg kan snu kunde behov til ferdige produkter. Ved å kombinere tett dialog med kunden og moderne arbeidsmåter leverer jeg løsninger som treffer kunders behov.
 
   ### **Tilpassningsevne**
 
