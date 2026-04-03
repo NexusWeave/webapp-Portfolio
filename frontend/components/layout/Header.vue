@@ -33,7 +33,7 @@
                         <span v-for="text in data.title" :key="text">{{ text }} </span>
                     </h2>
                     <p>
-                        Forener min tidligere akademiske reise ifra bygg, helse og IT. til å skape løsninger gjennom samarbeid. For meg er hver utfordring en felles reise.
+                        Forener min akademiske reise fra bygg, helse og IT. Til å skape løsninger gjennom samarbeid. For meg er utfordringer en felles reise
                     </p>
                 </section>
                 <section class="flex-column-align-items-center some">
