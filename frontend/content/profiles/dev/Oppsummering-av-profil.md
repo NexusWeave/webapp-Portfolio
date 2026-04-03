@@ -2,23 +2,23 @@
 date: 2026-04-02T23:00:00.000Z
 title: Orientert Utvikler
 strength: |
-  ### **Struktur & Risikostyring** ( Bygg & Anlegg )
+  #### **Struktur & Risikostyring** ( Bygg & Anlegg )
 
   Jeg overfører HMS-tankegangen fra byggbransjen til kode. Ved å prioritere struktur og typesikkerhet tidlig i prosessen, reduserer jeg feilmarginer og bygger løsninger som tåler fremtiden uten behov for midlertidige lappeløsninger.
 
-  ### **Dokumentasjon & Kommunikasjon** (Fra Helsefag)
+  #### **Dokumentasjon & Kommunikasjon** (Fra Helsefag)
 
   Med bakgrunn fra helsesektoren vet jeg at tydelig dokumentasjon er avgjørende for at medarbeidere skal kunne handle trygt og effektivt. Denne disiplinen tar jeg med meg inn i kodingen. Jeg bruker aktivt diagrammer og et lettleselig språk i min dokumentasjon, slik at andre utviklere raskt forstår logikken bak prosjektene. Dette sikrer en god kommunikasjon på samarbeid og sparer andre for unødvendig tidsbruk i fremtiden.
 
-  ### **Problemløsning** (Filiosofi, HarvardX & Getacademy)
+  #### **Problemløsning** (Filiosofi, HarvardX & Getacademy)
 
-  Gjennom filosofi og intensiv koding (HarvardX & GET Academy) trener jeg på evenen til å se logiske mønstre der andre ser kaos. Jeg bruker moderne, typesikre verktøy for å sikre at kunden får smarte systemer som er utviklet for å vokse. 
+  Gjennom filosofi og intensiv koding (HarvardX & GET Academy) trener jeg på evenen til å se logiske mønstre der andre ser kaos. Jeg bruker moderne, typesikre verktøy for å sikre at kunden får smarte systemer som er utviklet for å vokse.
 
-  ### **Leveranse og Kundedialog**
+  #### **Leveranse og Kundedialog**
 
   Gjennom prosjekter i samarbeid med andre bedrifter som [SosEnT Norge](https://sosent.no) beviser jeg at jeg kan snu kunde behov til ferdige produkter. Ved å kombinere tett dialog med kunden og moderne arbeidsmåter leverer jeg løsninger som treffer kunders behov.
 
-  ### **Tilpassningsevne**
+  #### **Tilpassningsevne**
 
   Jeg har ikke tradisjonell høyere utdanning, men har i stedet prioritert praktisk mestring, gjennom min karrier. Min evne til å mestre nye områder er bekreftet gjennom en variert karriere (**glassblåsing**, **detaljhandel** og **produksjon**). Som person tilpasser jeg meg  til andres behov og utforsker verktøyene som gjør jobben enklere.
 agile: |
