@@ -1,6 +1,6 @@
 ---
 date: 2026-03-18T00:00:00.000Z
-title: Orientert Backend-Utvikler
+title: Orientert Utvikler
 strength: |
   ### **Struktur & Risikostyring** ( Bygg & Anlegg )
 
