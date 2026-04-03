@@ -31,4 +31,6 @@ agile: |
   Tidligere arbeidsgivere beskriver meg som en person som "angriper utfordringer med mot", en pålitelighet som er bekreftet gjennom ansvaret jeg har hatt i detaljhandel og evnen til å beholde roen under store omstillinger. Dette gjør meg til en utholdende kollega som bidrar med nødvendig stabilitet og trygghet i teamet over tid.
 ---
 
-jeg overfører min kunnskap  om HMS- og dokumentasjonskrav fra bygg og helse til programvareutvikling. Ved å kombinere logisk trening med moderne verktøy som GitHub og Mermaid.js, sikrer jeg gjennomsiktighet og effektivt samarbeid på tvers av fagfelt. Jeg brenner for å levere smarte, typesikre løsninger som treffer kundens faktiske behov og tåler å vokse.
+#### Profil informasjon
+
+Jeg overfører min kunnskap  om HMS- og dokumentasjonskrav fra bygg og helse til programvareutvikling. Ved å kombinere logisk trening med moderne verktøy som GitHub og Mermaid.js, sikrer jeg gjennomsiktighet og effektivt samarbeid på tvers av fagfelt. Jeg brenner for å levere smarte, typesikre løsninger som treffer kundens faktiske behov og tåler å vokse.
