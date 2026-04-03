@@ -22,15 +22,11 @@ strength: |
 
   Jeg har ikke tradisjonell høyere utdanning, men har i stedet prioritert praktisk mestring, gjennom min karrier. Min evne til å mestre nye områder er bekreftet gjennom en variert karriere (**glassblåsing**, **detaljhandel** og **produksjon**). Som person tilpasser jeg meg  til andres behov og utforsker verktøyene som gjør jobben enklere.
 agile: |
-  **Kollega og Lagspiller**
+  ### **Kollega og Lagspiller**
 
-  Gjennom aktivt bruk av verktøy som mermaid.js under planlegging, viser jeg evne til å kommunisere på tvers av fagfelt. Dette sikrer at alle forstår logikken i en funksjon. Selv om jeg har ansvar for egne arbeidsoppgaver, er jeg fortsatt en lagspiller for mine kolleger og birdrar til en flyt i prosjektene.
+  Gjennom aktivt bruk av arbeidsverktøy som **mermaid**.js, Github & dokumentasjon, viser jeg evne til å kommunisere på tvers av fagfelt. Dette sikrer at de ulike samarbeidsgruppene forstår logikken i en funksjon. Selv om jeg har ansvar for egne arbeidsoppgaver, er jeg fortsatt en lagspiller for mine kolleger og birdrar til en flyt i prosjektene.
 
-  **Mestring og Bærekraft**
-
-  Jeg drives av å forenkle kompliserte spørsmål. og leverer kode med type-hints, dette sikrer at systemet har en lang levetid og forblir enkelt å vedlikeholde for andre utviklere.
-
-  **Dokumentert Ansvar**
+  ### **Dokumentert Ansvar**
 
   Tidligere arbeidsgivere beskriver meg som en person som "angriper utfordringer med mot", en pålitelighet som er bekreftet gjennom ansvaret jeg har hatt i detaljhandel og evnen til å beholde roen under store omstillinger. Dette gjør meg til en utholdende kollega som bidrar med nødvendig stabilitet og trygghet i teamet over tid.
 ---
