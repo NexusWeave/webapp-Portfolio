@@ -20,7 +20,7 @@ sources: ''
 
 **Dagens Aktiviteter**
 
-* Oppdaget og analyserte et avbrudd i systemet som hindret redaktørpanelet (TinaCMS) i å koble seg trygt til skyen.
+* Oppdaget og analyserte et avbrudd i systemet som hindret redaktørpanelet i å koble seg trygt til skyen.
 * Implementerte verktøyet `dotenv-cli` for å sikre at sensitive passord og ID-nøkler hentes direkte fra en låst fil i stedet for å ligge åpent i koden.
 * Testet at systemet nå starter stabilt og at alle tilkoblinger er krypterte og beskyttet mot uønskede gjester.
 * Dokumenterte metoden som en ny sikkerhetsstandard for prosjektet for å hindre fremtidige menneskelige feil og spare tid ved videre utvikling.
