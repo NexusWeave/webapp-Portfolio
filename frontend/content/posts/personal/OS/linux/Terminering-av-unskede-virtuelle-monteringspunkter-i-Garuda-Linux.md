@@ -28,9 +28,6 @@ star: |
   sudo systemctl stop docker.socket docker.service
   sudo systemctl disable --now docker.service docker.socket.
 
-
-
-
   ```
 
   Det forventede resultatet er at Dockeren ikke starter automatisk ved oppstart av operativ systemet og at jeg kan manuelt mounte disken som normalt.
