@@ -17,4 +17,4 @@ techStack:
   - GITHUB
 ---
 
-Gjennom dette introduksjonskurset videreutviklet jeg en **grunnleggende kompetanse** og **praktisk forståelse** for Utvikler faget i et bredt spekter av språk. Kurset la et særlig grunnlag innen **algoritmisk tenking**, **datamaskinarkitektur** og bruken av **datastrukturer** for effektiv problemløsning
+Gjennom dette introduksjonskurset videreutviklet jeg en **grunnleggende kompetanse** og **praktisk forståelse** for Utvikler faget i et bredt spekter av språk. Kurset la et særlig grunnlag innen **algoritmisk tenking**, **datamaskinarkitektur** og bruken av **datastrukturer** for effektiv håndtering av programmering utfordringer.
