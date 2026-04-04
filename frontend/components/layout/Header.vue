@@ -15,13 +15,13 @@
                                 :data="{ type: 'jpg', src: 'media/images/carousel/20240903_165612.jpg', alt: 'Portrett av Kristoffer Gjøsund', caption: data.quote}"
                                 :cls="['profile-avatar']"
                             />
-                            <h3>
+                            <h4>-
                                 <cite>
                                     <NavigationAnchor 
                                         :data="data.anchor"
                                     />
                                 </cite>
-                            </h3>
+                            </h4>
                         </article>
                     </section>
                 
