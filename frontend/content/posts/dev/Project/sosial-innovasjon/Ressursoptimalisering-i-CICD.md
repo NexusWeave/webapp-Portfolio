@@ -9,7 +9,7 @@ parade: ''
 star: |
   #### Github Actions-Kvoter
 
-  Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører rutiner, ved en produksjons klar programvare.I Github har man en fast månedlig kvote på 2000 gratis bygge minutter for både offentlige og private prosjekter.
+  Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører rutiner, ved en produksjons klar programvare.I Github har man en fast månedlig kvote på** 2000 gratis bygge minutter** for både offentlige og private prosjekter.
 
   #### Oversikt over Githubs Multiplikator.
 
@@ -19,13 +19,13 @@ star: |
   | Windows            | 2x                | 2 minutt               |
   | macOS              | 10x\*             | 10 minutt              |
 
-  Min oppgave var å løse utfordringen på hvordan vi kunne bruke de byggeminuttene i Github maksimalt, for å ha en rimlig løsning, både for meg selv og kunden, uten om å betale mer enn nødvendig.
+  Min oppgave var å løse utfordringen på hvordan jeg kunne bruke de byggeminuttene i Github maksimalt, for å ha en rimlig løsning, både for meg selv og kunden, uten om å betale mer enn nødvendig.
 
   * Under undersøkingenen av dokumentasjonen om [Github Action billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions), oppdaget jeg at mac-maskiner i skyen har en multiplier på 10, som vil si at 1min med bygging koster 10min av bygge kvoten.
-  * Som tabellen over viser at Linux kun har en kostnad på 1x per minutt, besluttet jeg i å kjøre alle prosessene på Linux. Dette er klart det rimligste alternativet som gir mest verdi for pengene.
+  * Som tabellen over viser at Linux kun har en kostnad på 1x per minutt, besluttet jeg i å kjøre alle prosessene på Linux. Dette er klart det rimligste alternativet som gir mest verdi for meg.
   * Istedet for at maskinen starter opp hver gang det skjer en liten endring, satte jeg opp systemet til å kun kjøre når koden blir sammenslått til hovedprosjektet. Dette sparer store mengder med tid, da det er ofte behov for mange endringen løpet av et prosjekt.
 
-  I stedet for å gjøre alt dette manuelle arbeidet hver gang en ny versjon, lgis ut, har vi laget en prosess som kjører av seg selv på en rask og rimlig måte og jeg sikrerat kvoten på 2 000 bygge minutter varer så lenge som mulig. Dette reduserer unødvendig bruk av ressurser og at jeg oppretter meg full kontroll på utgiftene knyttet til sky-tjenesten. Dette det vi kaller for et CI/CD system som er strategi for å redusere utviklingstid og holder seg til budskjetter.
+  I stedet for å gjøre alt dette manuelle arbeidet hver gang en ny versjon, lanseres, har jeg laget en prosess som kjører av seg selv på en rask og rimlig måte og jeg sikrer at kvoten på 2 000 bygge minutter varer så lenge som mulig. Dette reduserer unødvendig bruk av ressurser og at jeg har full kontroll på utgiftene knyttet til sky-tjenesten.
 sources: ''
 ---
 
