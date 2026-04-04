@@ -25,6 +25,6 @@ sources: ''
 * Testet at systemet nå starter stabilt og at alle tilkoblinger er krypterte og beskyttet mot uønskede gjester.
 * Dokumenterte metoden som en ny sikkerhetsstandard for prosjektet for å hindre fremtidige menneskelige feil og spare tid ved videre utvikling.
 
-**Motivasjon & Energi** - **10** / **10**
+**Motivasjon** & **Energi** - **10** / **10**
 
 Dagen har vært så fin den kan bli.
