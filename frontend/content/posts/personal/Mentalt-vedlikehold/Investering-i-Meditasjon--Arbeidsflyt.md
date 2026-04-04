@@ -2,7 +2,7 @@
 date: 2025-12-02T00:00:00.000Z
 title: Investering i Meditasjon & Arbeidsflyt
 ingress: |
-  For å sikre at jeg leverer arbeid av kvalitet og unngår dyre feil, har jeg i dag investert i nødvendig restitusjon og nye verktøy for stressmestring. Ved å ta grep før batteriene ble helt flate, har jeg beskyttet meg selv, min bedrift og kunder mot uforutsette stopp og sikret at jeg kan jobbe raskere og mer presist i tiden som kommer. Dette er en investering i stabil fremdrift som sparer både bedriften og kunden for fremtidige kostnader.
+  For å sikre at jeg leverer arbeid av kvalitet og unngår feil, har jeg i dag investert i nødvendig restitusjon og nye verktøy for stressmestring. Ved å ta grep før batteriene ble helt flate, har jeg beskyttet meg selv, min bedrift og kunder mot uforutsette stopp og sikret at jeg kan jobbe raskere og mer presist i tiden som kommer. Dette er en investering i stabil fremdrift som sparer både bedriften og kunden for fremtidige kostnader.
 parade: ''
 star: |
   #### 48-timers venting og Overvåkning
