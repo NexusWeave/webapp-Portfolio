@@ -1,6 +1,6 @@
 ---
 created: 2024-08-01T00:00:00.000Z
-end: 2026-05-01T00:00:00.000Z
+end: 2025-04-27T00:00:00.000Z
 organization: GetAcademy
 org_link: 'https://getacademy.no/'
 title: It- Utvikling faget
