@@ -7,7 +7,7 @@ ingress: |
   Ved å la prossesen fra ferdig kode til publisering, gå av seg selv, har jeg skapt en løsning som sparer både tid og penger. Jeg har valgt et rimlig alternativ som forlenger bygge minutter i Github. Resultatet er et selvgående system som reduserer både kostnader og utviklertid for å utføre manuelle rutine oppgaver.
 parade: ''
 star: |
-  ### Github Actions-Kvoter
+  #### Github Actions-Kvoter
 
   Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører rutiner, ved en produksjons klar programvare.I Github har man en fast månedlig kvote på 2000 gratis bygge minutter for både offentlige og private prosjekter.
 
