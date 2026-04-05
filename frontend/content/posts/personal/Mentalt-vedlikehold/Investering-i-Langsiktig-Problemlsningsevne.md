@@ -2,7 +2,7 @@
 date: 2025-11-05T00:00:00.000Z
 title: Investering i Langsiktig Problemløsningsevne
 ingress: |
-  For å unngå feil og utbrenthet, tok jeg et valg om å bytte ut koding med enkle praktiske oppgaver i dag. Dette var som en "omstart" av hjernen. Ved å hvile den kreative delen, sikrer jeg at jeg jobber  raskere og bedre i morgen. Dette er en smart investering i egen helse som hindrer kostbar nedetid og sørger for at prosjektet holder stø kurs videre.
+  For å unngå feil og utbrenthet, tok jeg et valg om å bytte ut koding med enkle praktiske oppgaver i dag. Dette var som en omstart av hjernen. Ved å hvile den kreative delen, sikrer jeg at jeg jobber  raskere og bedre i morgen. Dette er en smart investering i egen helse som hindrer kostbar nedetid og sørger for at prosjektet holder stø kurs videre.
 parade: ''
 star: |
   #### Gjennomgang av arbeidsdag
