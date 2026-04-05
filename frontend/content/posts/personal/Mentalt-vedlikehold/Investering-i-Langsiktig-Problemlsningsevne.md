@@ -5,6 +5,8 @@ ingress: |
   For å unngå feil og utbrenthet, tok jeg et valg om å bytte ut koding med enkle praktiske oppgaver i dag. Dette var som en "omstart" av hjernen. Ved å hvile den kreative delen, sikrer jeg at jeg jobber  raskere og bedre i morgen. Dette er en smart investering i egen helse som hindrer kostbar nedetid og sørger for at prosjektet holder stø kurs videre.
 parade: ''
 star: |
+  #### Gjennomgang av arbeidsdag
+
   Etter en periode med intensiv koding over 365 dager, hadde jeg møtt et punkt i min kreative og problemløsende kapasitet. Dette indikerte på et behov for en  omstrukturering av arbeidsdagen for å unngå redusert kvalitet og mental utmattelse.
 
   Målet med dagen var å gi hjernen et bevisst skifte i fokus for å restarte den kreative kapasiteten.
@@ -15,13 +17,13 @@ star: |
 sources: ''
 ---
 
-**Dagens Aktiviteter**
+#### **Dagens Aktiviteter**
 
 * Tok en bevisst pause fra koding for å unngå mental utmattelse og sikre kvalitet i fremtidig arbeid.
 * Prioriterte selvpleie for å opprettholde ytelse over tid.
 * Håndterte forfallende oppgaver som krever mindre hjernekapasitet.
 * ar bevisst på når hodet ble slitent og energien var tom, for å kunne jobbe bedre over tid.
 
-**Motivasjon** & **Energi** - **3** / **10**
+#### **Motivasjon** & **Energi** - **3** / **10**
 
 Dagen har vært så fin den kunne bli, men opplevde lav energi.
