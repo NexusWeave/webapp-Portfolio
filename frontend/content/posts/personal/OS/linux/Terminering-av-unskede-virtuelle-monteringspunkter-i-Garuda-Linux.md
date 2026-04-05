@@ -5,11 +5,17 @@ tags:
 KildeHenvisning: |
   Offisiell dokumentasjon : [docs.docker.com](https://docs.docker.com/engine/manage-resources/pruning/)
 date: 2026-03-16T00:00:00.000Z
-title: Terminering av uønskede virtuelle monteringspunkter i Garuda Linux
+title: Fjerning av «spøkelses-disker»
 ingress: |
   Etter observasjoner av "spøkelsesdisker" i Garuda, ble det identifisert at automatiske Docker-prosesser genererte uønskede virtuelle lag ved systemoppstart. Ved å identifisere aktive containere og deaktivere både Docker-tjenesten og dens socket-enhet, ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
 parade: ''
 star: |
+  #### Fjerning av «spøkelses-disker» og optimalisering av oppstart
+
+  Jeg oppdaget jeg en merkelig feil Operativ systemet mitt som heter Garuda, systemet viste flere lagringsdisker (stasjoner) som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». 
+
+  Jeg mistenkte at dette skyldtes Docker, et verktøy som lager egne små arbeidsområder på maskinen, og at disse startet automatisk uten at jeg trengte dem.
+
   Jeg har operativsystemet garuda, jeg har oppdaget at systemet monterer disker som ikke eksisterer (spøkelses disk) og jeg antar at dette har noe med automatisk oppstart av Dockere.
 
   Oppgaven blir å slå av den automatiske handlingen av dockerne, slik at systemet ikke automatisk monterer dockere som ikke eksisterer.
@@ -34,3 +40,12 @@ star: |
 sources: ''
 ---
 
+#### Dagens agenda 
+
+* Finne årsaken til at systemet viser "falske" disker.
+* Stoppe tunge programmer som kjører uten at de trengs.
+* Endre innstillinger slik at jeg selv bestemmer når verktøyene skal starte.
+
+#### Motivasjon & Energi 10 / 10
+
+Dagen er så fin den kan bli.
