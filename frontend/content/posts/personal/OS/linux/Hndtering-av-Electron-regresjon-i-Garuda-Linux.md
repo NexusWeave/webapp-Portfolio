@@ -2,7 +2,7 @@
 date: 2025-12-16T00:00:00.000Z
 title: Håndtering av Electron-tilbakerulling i Garuda-Linux
 ingress: |
-  En oppdatering av utvikler verktøyet **VS Code** skapte en feil i menyene som stoppet alt arbeid. I stedet for tidkrevende feilsøking, valgte jeg strategisk å rulle tilbake  til forrige stabile versjon med linux verktøyet `downgrade`. Dette gjenopprettet arbeidsflyten raskt og fjernet nedetid uten risiko for datatap. Beslutningen var å prioritere rask fremdrift fremfor unødvendig detaljfokus.
+  En oppdatering av utvikler verktøyet <abbr title ="Et redigerings verktøy for programmering">VS Code</abbr> skapte en feil i menyene som stoppet alt arbeid. I stedet for tidkrevende feilsøking, valgte jeg strategisk å rulle tilbake  til forrige stabile versjon med linux verktøyet <abbr title="Et verktøy som lar deg velge nøyaktig hvilken tidligere versjon av et program du vil installere.">downgrade</abbr>. Dette gjenopprettet arbeidsflyten raskt og fjernet nedetid uten risiko for datatap. Beslutningen var å prioritere rask fremdrift fremfor unødvendig detaljfokus.
 parade: ''
 star: |
   #### Korrupt Brukergrensesnitt i VS Code
