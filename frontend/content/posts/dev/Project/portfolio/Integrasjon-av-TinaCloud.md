@@ -6,7 +6,7 @@ title: Integrasjon av TinaCloud
 ingress: ''
 parade: ''
 star: |
-  For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt <abbr title= "Headless content management System er uavhengig av visuell teknologi som brukes på nettsiden eller lagrings mulighetene">**TinaCMS**</abbr>. Utfordringen lå i prosjektets struktur, hvor den visuelle teknologien lever i en undermappe som f.eks (**/frontend)**. Dette skapte synkroniserings utfordringer med Tina Cloud, som i utgangspunktet ikke klarte å indeksere innholdsgrenen (CMS-branch).
+  For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt <abbr title= "Headless content management System er uavhengig av visuell teknologi som brukes på nettsiden eller lagrings mulighetene">**TinaCMS**</abbr>. Utfordringen lå i prosjektets struktur, hvor den visuelle teknologien lever i en undermappe som f.eks (**/frontend)**. Dette skapte synkroniserings utfordringer med <abbr title="Tina Cloud er nettsiden hvor bindeleddet  for redaktørpanelet blir kontrollert">Tina Cloud</abbr>, som i utgangspunktet ikke klarte å indeksere innholdsgrenen (CMS-branch).
 
   Oppgave (Mål)
 
