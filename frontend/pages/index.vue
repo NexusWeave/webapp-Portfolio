@@ -59,11 +59,12 @@
     const devPostCache = 'devPostCache';
     const rawPosts = await fetchCollection<DevPostsCollectionItem>(devPostPath, devPostCache)
     
-    const mappedPosts =  computed(() => {currentPage.value; return blogPagination(rawPosts.value, currentPage.value)});
+    const n = 2; // Number of posts per page
+    const mappedPosts =  computed(() => {currentPage.value; return blogPagination(rawPosts.value, currentPage.value, n)});
     
     //  --- Pagination Logic
     const currentPage = ref<number>(1);
-    const totalPages = computed(() => { if (rawPosts.value) { const n = 3; return Math.ceil(rawPosts.value.length / n); } return 0; });
+    const totalPages = computed(() => { if (rawPosts.value) {return Math.ceil(rawPosts.value.length / n); } return 0; });
     const PageButtons = computed(() =>
     [
         { id: 0, label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- },
@@ -74,5 +75,5 @@
     //  --- Debugging Logic
     //console.log("Processed timeline:", academicTimeline.value);
     //console.log("Achievements data on load:", achievementsTimeline.value);
-    //console.log("Mapped posts - ", mappedPosts.value)
+    console.log("Mapped posts - ", mappedPosts.value)
 </script>

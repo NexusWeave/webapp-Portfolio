@@ -43,10 +43,11 @@
     const personalPostPath = 'personalPosts';
     const personalPostCache = 'personalCache';
     const rawPersonal = await fetchCollection<DevPostsCollectionItem>(personalPostPath, personalPostCache);
-    const mappedPosts = computed(() => {currentPage.value; return blogPagination(rawPersonal.value, currentPage.value)});
+    
     
     //  --- Pagination Logic
     const n = 3;
+    const mappedPosts = computed(() => {currentPage.value; return blogPagination(rawPersonal.value, currentPage.value, n)});
     const PageButtons = computed(() =>
     [
         { id: 0, label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- },
