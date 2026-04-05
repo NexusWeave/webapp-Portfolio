@@ -8,7 +8,6 @@ ingress: |
 parade: ''
 star: |
   Da prosjektet vokste, ble det tydelig at den eksisterende arkitekturen basert på <abbr title="Et eldre og mer tradisjonelt teknologi-verktøy (rammeverk) som ofte brukes til enklere nettsider, men som kan bli tregt når mange ting skjer samtidig.">**Flask**</abbr> ikke lenger klarte å holde tritt med kravene til effektivitet. Applikasjonen fungerte primært som et bindeledd mot eksterne tjenester som <abbr title="En skybasert tjeneste som lagrer kode og prosjektdata. I dette tilfellet fungerte GitHub som den eksterne datakilden systemet måtte hente informasjon fra.">**GitHub**</abbr>, og den tradisjonelle metoden for å håndtere data førte til at hele systemet ble stående og vente på svar. Dette skapte en kø som begrenset systemets kapasitet og resulterte i en tregere opplevelse for sluttbrukerne etter hvert som datamengden økte.
-
   Min oppgave var å gjennomføre en teknisk modernisering ved å sammenslå applikasjonen til et teknologi-verktøy  som støttet moderne standarder for parallell håndtering av oppgaver. Målet var ikke bare å øke hastigheten på datahenting, men også å bygge en mer pålitelig og typesikker grunnmur som ville redusere fremtidige vedlikehold og  gjøre løsningen klar for å vokse
 
   For å løse dette utførte jeg følgende tiltak:
