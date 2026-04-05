@@ -5,7 +5,7 @@ ingress: |
   En oppdatering av utvikler verktøyet **VS Code** skapte en feil i menyene som stoppet alt arbeid. I stedet for tidkrevende feilsøking, valgte jeg strategisk å rulle tilbake  til forrige stabile versjon med linux verktøyet `downgrade`. Dette gjenopprettet arbeidsflyten raskt og fjernet nedetid uten risiko for datatap. Beslutningen var å prioritere rask fremdrift fremfor unødvendig detaljfokus.
 parade: ''
 star: |
-  ### Korrupt Brukergrensesnitt i VS Code
+  #### Korrupt Brukergrensesnitt i VS Code
 
   Etter en nylig oppdatering i `visual-studio-code-bin `(v1.107), i  **Garuda Dr460nized Gaming**-**distribusjon**, oppsto det en uforutsett feil som deaktiverte hovedmenyen i VS Code. Dette gjorde prosjektnavigasjonen og bruken av menyvalgene umulig. Diagnosen indikerte en inkompatibilitet mellom **VS Code** og **KDE Plasma**, spesifikt knyttet til hvordan **Electron-biblioteket** håndterer rendring av globale menyer i skrivebordsmiljøet.
 
@@ -23,12 +23,12 @@ star: |
 sources: ''
 ---
 
-**Dagens Agenda**
+**Dagens Aktiviteter**
 
 * Identifiserte en feil i hovedverktøyet for programmet (CodeVS) som hindret alt videre arbeid. For å raskt avklare om utfordringen lå i mitt system eller i programvaren, for å ta en besluttning på hvilket tiltak jeg kan gjøre, og benytte tiden riktig.
 * Vurderte tidsbruk mellom reparasjon og tilbakestilling. Valgte å rulle tilbake til en tidligere fungerende versjon. Da valgte jeg den raskeste veien tilbake til normal produksjon og unngå unødvendig nedetid.
 * Tilbakestilte programvaren til en stabil utgave uten tap av data. For å sikre at arbeidet kunne fortsette umiddelbart.
 * Verifiserte at alt utstyr nå fungerer som normalt før arbeidet ble gjenopptatt. For å garantere at dagens leveranser ikke blir forsinket av avbrudd.
 
-**Energi & Motivasjon - 10**/**10**
+**Motivasjon** & **Energi** - **10**/**10**
 Dagen har vært så fin den kunne bli.
