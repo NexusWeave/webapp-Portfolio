@@ -22,7 +22,7 @@ star: |
 sources: ''
 ---
 
-**Dagens aktiviteter**
+#### **Dagens aktiviteter**
 
 * Gjennomførte et arkitektonisk skifte ved å oppgradere applikasjonen fra <abbr title="Et tekonologi-verktøy">rammeverket</abbr> <abbr title="Et mikro verktøy for programmeringsspråket Python">"**Flask**</abbr> til <abbr title="Et mikro verktøy for programmeringsspråket Python">**FastAPI**.</abbr>
 * Erstattet den eldre standarden <abbr title= "Web Server Gateway Interface er en eldre standard som lar koden håndtere en og en oppgave samtidig">WSGI<abbr> med den moderne <abbr title="Asynchronous Server Gateway Interface, en moderne standard som lar koden håndtere mange oppgaver samtidig">ASGI</abbr>, som gjør det mulig for systemet å utføre mange oppgaver samtidig.
@@ -30,3 +30,5 @@ sources: ''
 * Gjennomførte en fullstendig rens av prosjektets biblioteker og avhengigheter for å sikre en lett og stabil installasjon.
 * Valgte en kontrollert utrulling ved å beholde eksisterende datastrukturer midlertidig. Dette ble gjort for å verifisere at ytelsen økte som forventet før videre strukturelle endringer gjøres med Pydantic.
 * Bekreftet at den nye arkitekturen fjernet tidligere kø-problematikk og økte systemets kapasitet betydelig.
+
+#### **Motivasjon** & **Energi** - **10** / **10**
