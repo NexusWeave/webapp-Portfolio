@@ -7,7 +7,7 @@ KildeHenvisning: |
 date: 2026-03-16T00:00:00.000Z
 title: Fjerning av «spøkelses-disker»
 ingress: |
-  Etter observasjoner av spøkelsesdisker i Garuda, ble det identifisert at automatiske <abbr title = "et verktøy som lager egne små arbeidsområder på maskinen">Docker\*\*</abbr>-prosesser genererte uønskede virtuelle lag ved systemoppstart. Ved å identifisere aktive containere og deaktivere både Docker-tjenesten og dens socket-enhet, ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
+  Etter observasjoner av spøkelsesdisker i Garuda, ble det identifisert at automatiske <abbr title = "et verktøy som lager egne små arbeidsområder på maskinen">Docker</abbr>-prosesser genererte uønskede virtuelle lag ved systemoppstart. Ved å identifisere aktive containere og deaktivere både Docker-tjenesten og dens socket-enhet, ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
 parade: ''
 star: |
   #### Fjerning av «spøkelses-disker» og optimalisering av oppstart
