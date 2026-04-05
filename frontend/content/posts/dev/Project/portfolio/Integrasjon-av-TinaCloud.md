@@ -7,7 +7,7 @@ ingress: |
   Ved å skille nettsidens tekniske kode fra selve tekstene, har jeg utviklet et system som er både enklere å vedlikeholde og tryggere å bruke. Denne loggen beskriver hvordan jeg løste utfordringer med mappestrukturer for å sikre at bilder og innhold alltid flyter feilfritt. Resultatet er en stabil plattform som er kalr for fremtidig vekst og enklere samarbeid.
 parade: ''
 star: |
-  #### Case
+  #### Prosjektanalyse
 
   For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt <abbr title= "Headless Content Management System er uavhengig av visuell teknologi som brukes på nettsiden">**TinaCMS**</abbr>. Utfordringen lå i prosjektets struktur, hvor <abbr title = "visuelle teknologien"> nettsiden </abbr> lever i en undermappe som Dette skapte synkroniserings utfordringer med <abbr title="Tina Cloud er bindleddet som kontrollerer og kobler sammen redaktørpanelet med innholdet">**Tina Cloud**</abbr>, som i utgangspunktet ikke klarte å lese innholdsgrenen hvor dokumentasjonen og tekstene lagres.
   Målet var å etablere en effektiv og feilfri flyt mellom redaktørpanelet og selve kildekoden til nettsiden. Dette krevde oppsettsmetode for hvordan panelet tolker mappestrukturen min. I tillegg måtte jeg sikre at alle filer, bilder og ressurser ble lastet korrekt, selv om de ligger lagret i ulike undermapper i prosjektet.
