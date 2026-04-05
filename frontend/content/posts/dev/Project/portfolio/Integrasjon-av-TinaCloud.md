@@ -3,27 +3,10 @@ tags:
   - dev-journey
 date: 2025-11-05T00:00:00.000Z
 title: Integrasjon av TinaCloud
-ingress: ''
+ingress: |
+  test ingress
 parade: ''
-star: |
-  For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt <abbr title= "Headless content management System er uavhengig av visuell teknologi som brukes på nettsiden eller lagrings mulighetene">**TinaCMS**</abbr>. Utfordringen lå i prosjektets struktur, hvor den visuelle teknologien lever i en undermappe som f.eks (**/frontend)**. Dette skapte synkroniserings utfordringer med <abbr title="Tina Cloud er nettsiden hvor bindeleddet  for redaktørpanelet blir kontrollert">**Tina Cloud**</abbr>, som i utgangspunktet ikke klarte å indeksere innholdsgrenen. 
-
-  Målet var å etablere en effektiv flyt mellom redaktørpanelet og kildekoden. Dette krevde en dypere konfigurasjon av hvordan redaktørpanelet tolker filstrukturen, samt sikring av at statiske ressurser ble lastet korrekt i et lagdelt miljø.
-
-  Jeg utførte en systematisk feilsøking og rekonfigurering:
-
-  * Verifiserte Webhooks og bindeledd nøkler for å isolere utfordringen  til sti-oppløsning fremfor autentisering.
-  * Implementerte rootPath: "frontend" i konfigurasjonen. Dette er "Best Practice" for prosjekter som ikke ligger i rotkatalogen, da det tvinger Tina Cloud til å lete på riktig sted i repoet.
-  * Korrigerte publicFolder til en relativ sti (../public). Dette løste problemet med brutte bildelenker i redaktørpanelet ved å peke CMS-et direkte til frontendens statiske mappe.
-  * Identifiserte og skilte ut urelaterte backend-tilkoblingsfeil (ECONNREFUSED), som sikret at feilsøkingen forble fokusert og effektiv.
-
-  Resultat & Verdi
-
-  Robust Arkitektur: Prosjektet følger nå en skalerbar monorepo-standard. Konfigurasjonen er robust nok til å tåle fremtidige endringer i mappestrukturen.
-
-  Effektiv arbeidsflyt: Ved å skille innholdsproduksjon (i CMS-branch) fra kildekode (i main), har jeg oppnådd en tryggere "Decoupled Workflow". Man kan nå redigere nettsiden visuelt uten risiko for å ødelegge applikasjonslogikken.
-
-  Teknisk kvalitet: Løsningen fjernet alle feilmeldinger i konsollen og sørget for at redaktørpanelet laster lynraskt med alle visuelle ressurser intakt.
+star: "For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt <abbr title= \"Headless content management System er uavhengig av visuell teknologi som brukes på nettsiden eller lagrings mulighetene\">**TinaCMS**</abbr>. Utfordringen lå i prosjektets struktur, hvor den visuelle teknologien lever i en undermappe som f.eks (**/frontend)**. Dette skapte synkroniserings utfordringer med <abbr title=\"Tina Cloud er nettsiden hvor bindeleddet  for redaktørpanelet blir kontrollert\">**Tina Cloud**</abbr>, som i utgangspunktet ikke klarte å indeksere innholdsgrenen. \n\nMålet var å etablere en effektiv flyt mellom redaktørpanelet og kildekoden. Dette krevde en dypere konfigurasjon av hvordan redaktørpanelet tolker filstrukturen, samt sikring av at statiske ressurser ble lastet korrekt i et lagdelt miljø.\n\nJeg utførte en systematisk feilsøking og rekonfigurering:\n\n* Jeg bekreftet at nøkler og adgangskort fungerte som de skulle, for å isolere om utfordringenen kom som en konsekvens av manglede tilgang eller om at systemet ikke finner den korrekte\_grenen i github\n* I konfigurasjonen hos leverandøren la jeg til stien hvor  konfigurasjons filene ligger, da dette tvinger bindeleddet å lete på riktig sted i prosjektet.\n* Jeg korrigerte også stien for “publicFolder”. Dette løste problemet med brutte bildelenker i redaktørpanelet ved å peke redaktørpanelet direkte til den statiske mappen.\n* Jeg Identifiserte og skilte ut urelaterte tilkoblingsfeil, som sikret at feilsøkingen forble fokusert og effektiv.\n\nDet som har blitt lagt til har resultert i en pålitelig arkitektur som følger en struktur som tåler vekst. Ved å konfigurere systemet for underkataloger er løsningen nå fleksibel nok til å tåle fremtidige strukturelle endringer uten behov for omfattende rekonfigurering. Dette danner et grunnlag for videre vekst i prosjektet.\n\nGjennom å separere innholdsproduksjonen i en dedikert gren i github fra kildekoden, har jeg etablert en effektiv arbeidsflyt basert på prinsippet om en \"**Decoupled Workflow**\". Dette gir en trygghet i utviklingsløpet, da innhold nå kan redigeres og forhåndsvises visuelt uten risiko for å påvirke eller ødelegge den underliggende applikasjonslogikken.\n\nTil slutt har arbeidet løftet den tekniske kvaliteten i hele prosjektet. Ved å eliminere feilmeldinger i konsollen og optimalisere ressurslastingen, sikres en lynrask og stabil brukeropplevelse i redaktørpanelet. Resultatet er en profesjonell plattform hvor alle visuelle ressurser fungerer intakt, og hvor skillet mellom teknologi og innhold er fullstendig optimalisert.\n"
 sources: ''
 ---
 
