@@ -32,3 +32,5 @@ sources: ''
 * Bekreftet at den nye arkitekturen fjernet tidligere kø-problematikk og økte systemets kapasitet betydelig.
 
 #### **Motivasjon** & **Energi** - **10** / **10**
+
+Dagen er så fin den kan bli !
