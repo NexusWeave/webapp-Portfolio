@@ -13,9 +13,7 @@ star: |
 
   * Jeg tok en bevisst beslutning om å koble helt av i 56 timer.
   * Jeg fjernet det indre presset og lot tankene vandre fritt uten om å tvinge de frem.
-  * Konkrete tiltakt jeg har valgt for å forebygge dette har jeg besluttet å sette av 10 min 2-3 ganger om dagen for å
-
-  > slippe energien fri og koble ut.
+  * Konkrete tiltakt jeg har valgt for å forebygge dette har jeg besluttet å sette av 10 min 2-3 ganger om dagen for å «slippe energien fri og koble ut».
 
   Pausen resulterte i en omstart. Energien kom automatisk tilbake og jeg er klar for å ta på meg nye oppgaver. Jeg har nå et konkret verktøy 10-min meditasjon som gjør at jeg kan levere stabilt over tid uten å gå tom.
 
@@ -23,7 +21,7 @@ star: |
 sources: ''
 ---
 
-**Dagens Aktiviteter**
+#### **Dagens Aktiviteter**
 
 * Jeg innså at etter to år med hardt arbeid var energien tom og kreativiteten stoppet opp.
 * Jeg Investerte tid på å forstå hvorfor ting gikk saktere, slik at jeg kunne løse utfordringen i stedet for å bare presse på.
@@ -33,5 +31,6 @@ sources: ''
 * Jeg har lagt en plan som reduserer sjansen for feil og sikrer at jeg leverer gode resultater, selv når det er mye å gjøre.
 * Ved å ta grep nå, har jeg spart bedriften og kunden for uforutsette stopp og fremtidige kostnader.
 
-**Motivasjon** & **Energi** - **1** / **10**
+#### **Motivasjon** & **Energi** - **1** / **10**
+
 Dagen har vært så fin den kan bli, men jeg ser at energien min er borte.
