@@ -7,43 +7,27 @@ ingress: |
   Denne læringsloggen dokumenterer den arkitektoniske migreringen av en Python-applikasjon fra det synkrone **Flask**-rammeverket (WSGI) til det moderne, asynkrone **FastAPI**-rammeverket (ASGI). Flask ble funnet å være overflødig og ineffektivt for applikasjonens API-formål, spesielt ved håndtering av I/O-tunge operasjoner som eksterne API-kall (f.eks., Github). Hovedmålet var å utnytte **ASGI**-støtten for å redusere ventetid og forbedre gjennomstrømningen. Migreringen omfattet en omfattende refaktorering av konfigurasjon (ved bruk av\*\* Pydantic Settings\*\*) og konvertering av synkrone ruter til asynkrone funksjoner (`async def`). Den bevisste utsettelsen av Pydantic-datamodellering tillot en\*\* isolert og verifiserbar test \*\*av ASGI-gevinstene. Lærdommen understreker viktigheten av å velge et arkitektonisk korrekt rammeverk for å maksimere ytelsen i moderne API-design.
 parade: ''
 star: |
-  Etter hvert som prosjektet vokste ble strukturen til den eksisterende <abbr title="Et ferdig byggesett for å lage nettsider med kodespråket Python. Dette rammeverket gir deg grunnmuren og de viktigste delene, slik at du kan konsentrere deg om å designe selve settsiden.">**Flask-rammeverket**</abbr> for overflødig og ueffektiv nok, da Python-applikasjonen kun fungerte som et API med et behov for både Rene bindeledd som kunne håndtere I/O-tunge operasjoner som kall til
+  Da prosjektet vokste, ble det tydelig at den eksisterende arkitekturen basert på <abbr title="Et eldre og mer tradisjonelt teknologi-verktøy (rammeverk) som ofte brukes til enklere nettsider, men som kan bli tregt når mange ting skjer samtidig.">**Flask**</abbr> ikke lenger klarte å holde tritt med kravene til effektivitet. Applikasjonen fungerte primært som et bindeledd mot eksterne tjenester som GitHub, og den tradisjonelle metoden for å håndtere data førte til at hele systemet ble stående og vente på svar. Dette skapte en flaskehals som begrenset systemets kapasitet og resulterte i en tregere opplevelse for sluttbrukerne etter hvert som datamengden økte.
 
-  * Rene endepunkter som kan håndtere  I/O-tunge operasjoner som
-    (f.eks ved kall til eksterne API-er som Github ) .
+  Task (Oppgave)
 
-  Flask er bygget på den sykrone **WSGI**-standarden (**W**eb **S**erver **G**ateway **I**nterface) og er primært et lettvektig rammeverk for tradisjonelle webapplikasjoner. Dette står i kontrast til **FastAPI**, som er spesifikt designet for moderne API-er basert på den asynkrone **ASGI**-standarden (**A**synchronous **S**erver **G**ateway **I**nterface), som håndterer  I/O-tunge operasjoner mer effektivt.
+  Min oppgave var å gjennomføre en teknisk modernisering ved å migrere applikasjonen til et rammeverk som støttet moderne standarder for parallell håndtering av oppgaver. Målet var ikke bare å øke hastigheten på datahenting, men også å bygge en mer robust og typesikker grunnmur som ville redusere fremtidige vedlikeholdskostnader og gjøre det enklere å skalere løsningen.
 
-  Hovedmålet med denne migreringen er å Utnytte **ASGI**-støtten for å forbedre ytelse ved I/O-venting.
+  Action (Handling)
 
-  * Refaktorere requirements.txt, for å inneholde de nødvendige pakkene for prosjektet.
-  * Refaktorere konfigurasjons filene
-  * Refaktorere hovedfilen for applikasjonen
+  For å løse dette utførte jeg følgende tiltak:
 
-  ### Modernisering av Konfigurasjon
+  Arkitektonisk skifte: Migrerte fra Flask (WSGI) til FastAPI (ASGI) for å muliggjøre asynkron håndtering av tunge dataoperasjoner.
 
-  Et nytt Python-miljø ble installert også ble avhengighetsstyringen refaktorert. Flask-spesifikke pakker ble fjernet fra requirements.txt og nye sentrale FastAPI-komponenter ble installert, primært FastAPI, Uvicorn og Pydantic for datamodellering.
+  Isolert migreringsstrategi: Valgte å beholde eksisterende datastrukturer midlertidig og utsatte full implementering av Pydantic. Dette ble gjort for å isolere og verifisere ytelsesgevinsten fra den asynkrone driften før man gjorde omfattende strukturelle endringer.
 
-  ### Konvertering av Ruter og Datamodellering
+  Modernisering av konfigurasjon: Refaktorerte hvordan systemet håndterer miljøvariabler ved å innføre typesikker validering, som sikrer at systemet ikke starter med feilaktige innstillinger.
 
-  Deretter ble applikasjonens konfigurasjonsfiler refaktorert. Håndteringen av typiske Flask variabler ble erstattet med typesikker konfigurasjon ved å arve BaseSettings fra Pydantic Settings. Dette sikrer en robust og automatisert validering av miljøvariabler ved oppstart, dette gjør også konfigurasjonen kompatibel med FastAPIs rammeverk
+  Optimalisering av avhengigheter: Ryddet i prosjektets biblioteker og installerte en moderne webserver (Uvicorn) som er optimalisert for den nye asynkrone standarden.
 
-  ### Ruter og Modellering
+  Result & Learning (Resultat og læring)
 
-  Selve migrasjonen av endepunktene var det mest kritiske steget. Jeg ønsket å lage en robust, samtidig vedlikeholdbart kode
-
-  * Flasks synkrone ruter ble konvertert til FastAPIs asynkrone funksjoner ved bruk av async def. Dette utnytter ASGI-standarden fullt ut og gjør applikasjonen i stand til å håndtere I/O-tunge operasjoner, for å unngå blokkering.
-  * Konvertering av datastrukturene til Pydantic-modeller var ikke nødvendig, men er utsatt til neste implementasjon for å isolere migreringseffekten av ASGI og asynkronitet først. Dette tillater meg å vertifisere ytelsesgevinsten fra ASGI uavhengig av de strukturelle endringene Pydantic krever.
-
-  Migreringen til FastAPI var en suksess og sikret at applikasjonen effektivt utnytter asynkron I/O for i I/O-tunge operasjoner som Github-kall. Dette reduserer   ventetiden og forbedrer den generelle gjennomstrømningen (throughout) av API-et.
-
-  Selv om Pydantic-datamodelleringen er utsatt, bekreftes det at den fremtidige bruken av Pydantic vil sikre at koden er typesikker og robust.
-
-  ### Faglig lærings utbytte
-
-  Den viktigste lærdommen fra dette arbeidet er verdien av å velge et arkitektonisk riktig rammeverk for formålet. Ved å bytte fra synkron WSGI (Flask) til asynkron ASGI (FastAPI), har jeg demonstrert forståelse for hvordan moderne APIer håndterer I/O-venting.
-
-  Videre var utsettelsen av Pydantic et viktig faglig valg som tillot meg å isolere testen av ASGI-gevinstene fra de strukturelle endringene Pydantic krever. Dette sikret en ryddig og verifiserbar migreringsprosess.
+  Migreringen resulterte i et API med betydelig høyere gjennomstrømning og redusert ventetid, spesielt ved tunge integrasjoner mot eksterne kilder. Ved å fjerne blokkeringer i koden kan systemet nå håndtere langt flere forespørsler samtidig med de samme ressursene, noe som gir direkte kostnadsbesparelser og en bedre brukeropplevelse. Den viktigste faglige lærdommen var verdien av en metodisk tilnærming; ved å isolere testen av ytelsesgevinsten fra de strukturelle endringene, sikret jeg en risikofri overgang og fikk bekreftet at det arkitektoniske valget var riktig før prosjektet ble bygget videre.
 sources: ''
 ---
 
