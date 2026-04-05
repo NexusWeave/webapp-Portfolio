@@ -6,23 +6,16 @@ title: Integrasjon av TinaCloud
 ingress: ''
 parade: ''
 star: |
-  For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt <abbr title= "Headless content management System er uavhengig av visuell teknologi som brukes på nettsiden eller lagrings mulighetene">**TinaCMS**</abbr>. Utfordringen lå i prosjektets struktur, hvor den visuelle teknologien lever i en undermappe som f.eks (**/frontend)**. Dette skapte synkroniserings utfordringer med <abbr title="Tina Cloud er nettsiden hvor bindeleddet  for redaktørpanelet blir kontrollert">Tina Cloud</abbr>, som i utgangspunktet ikke klarte å indeksere innholdsgrenen (CMS-branch).
+  For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt <abbr title= "Headless content management System er uavhengig av visuell teknologi som brukes på nettsiden eller lagrings mulighetene">**TinaCMS**</abbr>. Utfordringen lå i prosjektets struktur, hvor den visuelle teknologien lever i en undermappe som f.eks (**/frontend)**. Dette skapte synkroniserings utfordringer med <abbr title="Tina Cloud er nettsiden hvor bindeleddet  for redaktørpanelet blir kontrollert">**Tina Cloud**</abbr>, som i utgangspunktet ikke klarte å indeksere innholdsgrenen. 
 
-  Oppgave (Mål)
-
-  Målet var å etablere en sømløs bro mellom sky-editoren og kildekoden. Dette krevde en dypere konfigurasjon av hvordan CMS-et tolker filstrukturen, samt sikring av at statiske ressurser (assets) ble lastet korrekt i et lagdelt miljø.
-
-  Handling (Gjennomføring)
+  Målet var å etablere en effektiv flyt mellom redaktørpanelet og kildekoden. Dette krevde en dypere konfigurasjon av hvordan redaktørpanelet tolker filstrukturen, samt sikring av at statiske ressurser ble lastet korrekt i et lagdelt miljø.
 
   Jeg utførte en systematisk feilsøking og rekonfigurering:
 
-  Diagnostisering: Verifiserte Webhooks og tokens for å isolere feilen til sti-oppløsning (path resolution) fremfor autentisering.
-
-  Sti-korreksjon: Implementerte rootPath: "frontend" i konfigurasjonen. Dette er "Best Practice" for prosjekter som ikke ligger i rotkatalogen, da det tvinger Tina Cloud til å lete på riktig sted i repoet.
-
-  Asset-pipeline: Korrigerte publicFolder til en relativ sti (../public). Dette løste problemet med brutte bildelenker i redaktørpanelet ved å peke CMS-et direkte til frontendens statiske mappe.
-
-  Feilhåndtering: Identifiserte og skilte ut urelaterte backend-tilkoblingsfeil (ECONNREFUSED), som sikret at feilsøkingen forble fokusert og effektiv.
+  * Verifiserte Webhooks og bindeledd nøkler for å isolere utfordringen  til sti-oppløsning fremfor autentisering.
+  * Implementerte rootPath: "frontend" i konfigurasjonen. Dette er "Best Practice" for prosjekter som ikke ligger i rotkatalogen, da det tvinger Tina Cloud til å lete på riktig sted i repoet.
+  * Korrigerte publicFolder til en relativ sti (../public). Dette løste problemet med brutte bildelenker i redaktørpanelet ved å peke CMS-et direkte til frontendens statiske mappe.
+  * Identifiserte og skilte ut urelaterte backend-tilkoblingsfeil (ECONNREFUSED), som sikret at feilsøkingen forble fokusert og effektiv.
 
   Resultat & Verdi
 
