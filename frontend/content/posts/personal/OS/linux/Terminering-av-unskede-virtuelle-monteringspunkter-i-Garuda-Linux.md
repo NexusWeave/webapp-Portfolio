@@ -27,7 +27,7 @@ star: |
 sources: ''
 ---
 
-#### Dagens agenda 
+#### Dagens Aktiviteter
 
 * Finne årsaken til at systemet viser "falske" disker.
 * Stoppe tunge programmer som kjører uten at de trengs.
