@@ -12,31 +12,18 @@ parade: ''
 star: |
   #### Fjerning av «spøkelses-disker» og optimalisering av oppstart
 
-  Jeg oppdaget jeg en merkelig feil Operativ systemet mitt som heter Garuda, systemet viste flere lagringsdisker (stasjoner) som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». 
+  I mitt nåværende oppsett med operativsystemet Garuda, oppdaget jeg en merkelig feil. Systemet viste flere lagringsdisker i oversikten som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». Jeg mistenkte at dette skyldtes <abbr title = "et verktøy som lager egne små arbeidsområder på maskinen">**Docker**</abbr>, og at disse ble koblet til automatisk ved oppstart uten at jeg hadde bruk for dem.
 
-  Jeg mistenkte at dette skyldtes Docker, et verktøy som lager egne små arbeidsområder på maskinen, og at disse startet automatisk uten at jeg trengte dem.
+  Målet var å stoppe denne automatiske handlingen for å hindre at maskinen monterte disse falske diskene ved oppstart. Dette ble gjort for at oversikten over lagringsplass ble korrekt og at systemet ikke brukte unødvendige ressurser på tjenester som ikke var i bruk.
 
-  Jeg har operativsystemet garuda, jeg har oppdaget at systemet monterer disker som ikke eksisterer (spøkelses disk) og jeg antar at dette har noe med automatisk oppstart av Dockere.
+  For å løse dette utførte jeg følgende tiltak:
 
-  Oppgaven blir å slå av den automatiske handlingen av dockerne, slik at systemet ikke automatisk monterer dockere som ikke eksisterer.
+  * Jeg undersøkte hvilke tjenester som kjørte i det skjulte. Ved å bruke kommandoen <abbr title="En kommando som lister opp alle aktive pakker (containere) som kjører på maskinen akkurat nå.">`docker ps`</abbr>, oppdaget jeg at tre ulike containere fra to tidligere prosjekter sto og kjørte virtuelt uten at de ble brukt aktivt.
+  * For å frigjøre systemressurser umiddelbart, stoppet jeg de inaktive prosessene manuelt med kommandoen <abbr title = "Stopper en spesifikk prosess som kjører i bakgrunnen.">`docker stop`</abbr>. Dette avsluttet koblingen mellom de virtuelle arbeidsområdene og systemets filoversikt.
+  * Jeg kjørte en grundig rengjøring med kommandoen <abbr title = "En kraftig oppryddingskommando som sletter alt som er ubrukt fra Docker.">`docker system prune`</abbr>. Dette slettet midlertidige filer og rester som skapte rot i listene over disker, slik at de falske stasjonene forsvant.
+  * For å være sikker på at utfordringen ikke oppstår igjen ved neste oppstart, deaktiverte jeg selve tjenesten helt med kommandoen <abbr title = "En instruks til operativsystemet om at et program ikke skal starte av seg selv når PC-en slås på.">`sudo systemctl disable --now`</abbr>. Dette endret maskinens innstillinger slik at **Docker**-motoren forblir avslått frem til jeg selv velger å starte den manuelt.
 
-  * Jeg startet med å sparre dette med AI og eventuelt høre om råd med denne situasjonen for å finne ut effektivt hvordan jeg håndterer denne situasjonen.
-  * Siden jeg ikke aktivt bruker Docker i dette øyblikket valgte jeg å stoppe containerne med kommandoene under
-
-  ```shell
-  # Check for containers which running virtually( if list is empty they might run in the background)
-  docker ps # This outputted a list with 3 different containers from 2 different projects.
-  # Stopper docker container som er inaktive
-  docker stop <container_id>
-
-  # Clean up & disable services
-  docker system prune
-  sudo systemctl stop docker.socket docker.service
-  sudo systemctl disable --now docker.service docker.socket.
-
-  ```
-
-  Det forventede resultatet er at Dockeren ikke starter automatisk ved oppstart av operativ systemet og at jeg kan manuelt mounte disken som normalt.
+  Resultatet ble at de falske «spøkelses-diskene» forsvant umiddelbart. Nå starter maskinen opp helt rent, og jeg kan manuelt koble til de diskene jeg faktisk trenger. erfaringen jeg sitter igjen med var at bakgrunnstjenester kan påvirke systemets visuelle oversikt, og at det er lurt å deaktivere tunge verktøy man ikke bruker daglig.
 sources: ''
 ---
 
