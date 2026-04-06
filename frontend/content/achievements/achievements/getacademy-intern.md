@@ -1,5 +1,6 @@
 ---
 created: 2025-04-14T00:00:00.000Z
+end: 2026-05-01T13:26:53.604Z
 organization: GetAcademy
 org_link: 'https://getacademy.no/'
 title: Utvikler
