@@ -1,5 +1,8 @@
 #   Visual presentation of the Database
 ```mermaid
+---
+title: Chatbot ErDiagram
+---
 erDiagram
     
     CATEGORIES ||--o{ BOT_RESPONSE : "contains"
