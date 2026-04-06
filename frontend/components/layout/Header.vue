@@ -75,7 +75,7 @@
         },
         menu: [ { href: '/', label: 'Portfolio' }, { href: '/dev', label: 'Dev Profile' }, { href: '/personal', label: 'Om Kristoffer' } ]
     }
-    const btn = { id: 0, label: 'Se min CV', cls: ['btn', 'pdf-btn'], href: '/media/documents/CV-Kristoffer-Gjøsund.pdf', type: ['pdf'] };
+    const btn = { id: 0, label: 'CV & Portefølje ', cls: ['btn', 'pdf-btn'], href: '/media/documents/CV-Portofolio.pdf', type: ['pdf'] };
 
     const SocialMedia = [ { type: ['linkedin'], href: 'https://www.linkedin.com/in/krigjo25' }, { type: ['github'],  href: 'https://www.github.com/krigjo25' }, { type: ['mail','external'], href: 'mailto:krigjo25@outlook.com' }, { type: ['ytube','external'], href: 'https://www.youtube.com/@krigjo25' }, { type: ['facebook'], href: 'https://www.facebook.com/krigjo25' }, { type: ['instagram'], href: 'https://www.instagram.com/krigjo25' } ];
 
