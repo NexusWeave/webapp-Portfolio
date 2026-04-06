@@ -9,6 +9,7 @@ from fastapi import FastAPI, Request
 from fastapi.routing import APIRoute
 
 #   Internal Libraries
+from backend.lib.services.scanner.scanner_api import Scanner
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
@@ -130,15 +131,25 @@ async def handle_repositories(request: Request) -> Dict[str, str]:
     return {"message": "All Repositories has been successfully synced with database."}
 
 @app.get(f"{PATH}/specialist", tags=["AI", "specialist"], summary="Upserts the Database", description="Upserts the Database", name='AI-specialist')
-async def specialist(request: Request) -> Dict[str, str]:
+async def specialist(request: Request) -> List[Dict[Any, Any]]:
+    list_of_links: List[str] = ENVIRONMENT.SPECIALIST_LINKS
 
-    try:
-        await ApiDatabaseBridge.repositories_sync(request, ENVIRONMENT.GITHUB_REST, ENVIRONMENT.GITHUB_PARAMS, ENVIRONMENT.PERSONAL_GITHUB_REST_API, ENVIRONMENT.GITHUB_TOKEN)
+    json: List[Dict[Any, Any]] = []
+    for i in list_of_links:
+        scan = Scanner(URL = i, KEY = None)
+        
+        try:
+            status = await scan.check_status()
+            if not status : raise Exception(f"Status check failed - {status}")
+            dictionary = await scan.scrape_information(url=i)
+            json.append(dictionary)
+        except Exception as e:
+            LOG.critical(f"AI-specialist Endpoint : failed with error\n {e.__class__.__name__} - {e}")
+            json.append({"code": "500","message": f"{e}"})
+            return json
 
-    except Exception as e:
-        LOG.critical(f"handle_repositories_endpoint : failed with error\n {e.__class__.__name__} - {e}")
-        if ENVIRONMENT.ENVIRONMENT == 'development': return {"code": "500","message": f"{e}"}
-        else : return {"code": "400","message": f"Endpoint was not found"}
+    return json
+
 
     return {"message": "All Repositories has been successfully synced with database."}
 

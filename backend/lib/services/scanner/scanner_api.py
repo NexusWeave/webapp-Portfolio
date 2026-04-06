@@ -32,7 +32,7 @@ class Scanner(AsyncAPIClientConfig):
 
         except Exception as e: 
             LOG.critical(f'Crawling not successfull - {e.__class__.__name__} - {str(e)}')
-            raise
+            raise e
 
         return True
 

@@ -5,9 +5,8 @@ from typing import Dict
 #   Third-Party Libraries
 
 #   Internal Libraries
-from lib.settings.api_config import Scanner
 from lib.utils.logger_config import AppWatcher
-
+from lib.services.scanner.scanner_api import Scanner
 
 # Initialize the logger
 LOG = AppWatcher(dir="logs", name='Health-Check')
