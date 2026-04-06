@@ -1,6 +1,5 @@
 ---
 created: 2022-01-01T00:00:00.000Z
-end: 2022-12-01T00:00:00.000Z
 organization: HarvardX
 org_link: 'https://www.edx.org/school/harvardx'
 title: Introduction To Computer Science
@@ -18,4 +17,4 @@ techStack:
   - FLASK.PY
 ---
 
-Gjennom dette introduksjonskurset videreutviklet jeg en **grunnleggende kompetanse** og **praktisk forståelse** for Utvikler faget i et bredt spekter av språk. Kurset la et særlig grunnlag innen **algoritmisk tenking**, **datamaskinarkitektur** og bruken av **datastrukturer** for effektiv håndtering av programmering utfordringer.
+Gjennom dette introduksjonskurset videreutviklet jeg **grunnleggende kunnskaper** og **praktisk forståelse** for Utvikler faget i et bredt spekter av språk. Kurset legger et gunnlag innen **algoritmisk tenking**, **datamaskinarkitektur** og bruken av **datastrukturer** for å håndtere  programmering effektivt.
