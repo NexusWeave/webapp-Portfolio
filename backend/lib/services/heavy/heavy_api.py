@@ -29,7 +29,7 @@ class HeavyAPI(AsyncAPIClientConfig):
         path = f"{self.API_URL}{self.VERSION}{endpoint}"
 
         response: List[Dict[str, object]]
-        response = await self.ApiCall(endpoint = f"{path}", head = self.HEAD)
+        response = await self.api_call(endpoint = f"{path}", head = self.HEAD)
 
         return response
     

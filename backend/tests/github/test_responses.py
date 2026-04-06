@@ -17,7 +17,7 @@ class TestResponsesAPI:
         api = GithubAPI()
 
         #   Actual response from the Api Call
-        response = api.ApiCall(endpoint = f"{api.API_URL}user/repos", head = api.head)
+        response = api.api_call(endpoint = f"{api.API_URL}user/repos", head = api.head)
 
         array = [i['name'] for i in response]
         mock_response = []

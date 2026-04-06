@@ -33,7 +33,7 @@ class AsyncAPIClientConfig(WebAPIModel):
         self.QUEUE: int = 5
         self.SEM = Semaphore(self.QUEUE)
 
-    async def ApiCall(self, endpoint: Optional[str], head: Dict[str, str], params: Optional[Dict[str, str | int]] = None) ->  httpx.Response:
+    async def api_call(self, endpoint: Optional[str], head: Dict[str, str], params: Optional[Dict[str, str | int]] = None) ->  httpx.Response:
 
         """
         Makes an API call to the specified endpoint with given headers.
@@ -61,7 +61,7 @@ class AsyncAPIClientConfig(WebAPIModel):
                 LOG.warn(f"Request was not successful.\n {e.__class__.__name__} Error Message: {e}.\nTime elapsed: {perf_counter()-start} Endpoint used : {endpoint}\n Heading: {head}\n")
                 raise e
 
-    async def calculate_n(self, endpoint: str, header: Dict[str, str]): return await self.ApiCall(endpoint = f"{endpoint}", head = header)
+    async def calculate_n(self, endpoint: str, header: Dict[str, str]): return await self.api_call(endpoint = f"{endpoint}", head = header)
 
     async def wait_in_queue(self, coro: Coroutine[Any, Any, T]) -> T:
         try:
@@ -103,7 +103,7 @@ class Scanner(AsyncAPIClientConfig):
 
         try :
             path: str = urljoin(self.URL, site_map)
-            res: httpx.Response = await self.ApiCall(endpoint = path, head = self.HEADER)
+            res: httpx.Response = await self.api_call(endpoint = path, head = self.HEADER)
 
         except Exception as e: 
             LOG.critical(f'Crawling not successfull - {e.__class__.__name__} - {str(e)}')
@@ -137,7 +137,7 @@ class Scanner(AsyncAPIClientConfig):
         response:httpx.Response
         dictionary: Dict[str,str | int] = {"url": url}
         try:
-            response = await self.ApiCall(endpoint=url, head = self.HEADER)
+            response = await self.api_call(endpoint=url, head = self.HEADER)
 
             dictionary['content'] = await self.strip_web_elements(response.text)
             dictionary['status'] = response.status_code
