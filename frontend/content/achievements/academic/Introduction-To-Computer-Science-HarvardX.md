@@ -6,7 +6,7 @@ org_link: 'https://www.edx.org/school/harvardx'
 title: Introduction To Computer Science
 location: Remote
 loc_link: ''
-references: Sertifisert sertifikat
+references: CS50's Introduction to Computer Science
 ref_link: 'https://courses.edx.org/certificates/cc7f7cb258a24538af14c876023cf932'
 techStack:
   - C
