@@ -1,5 +1,5 @@
 ---
-created: 2022-01-01T00:00:00.000Z
+created: 2026-04-06T23:00:00.000Z
 organization: CS50
 org_link: 'https://harvardonline.harvard.edu/program/professional-certificate-in-computer-science-for-python-programming'
 title: Introduction To Computer Science for Python Programming
