@@ -6,7 +6,7 @@ title: Introduction To Computer Science for Python Programming
 location: Remote
 loc_link: ''
 references: CS50's Computer Science for Python Programming
-ref_link: 'https://courses.edx.org/certificates/cc7f7cb258a24538af14c876023cf932'
+ref_link: 'https://credentials.edx.org/credentials/5d92b04ab6f243a4b02133c1d60efee5/'
 techStack:
   - C
   - FLASK.py
