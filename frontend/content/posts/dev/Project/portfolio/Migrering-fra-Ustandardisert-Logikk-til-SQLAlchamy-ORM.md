@@ -26,7 +26,7 @@ sources: ''
 
 * Erstattet utdatert databaselogikk med en moderne bransjestandard for å sikre et pålitelig og fremtidsrettet system.
 * Skilte tekniske databaseoppgaver fra systemets forretningslogikk, noe som gjør løsningen modulær og reduserer risikoen for følgefeil ved fremtidige endringer.
-* Forenklet malen for håndtering av informasjon \<abbr title ="Create, Read, Update & Delete. De fire grunnleggende operasjonene for å håndtere data i databaser.""CRUD</abbr>, som sikrer lik praksis i hele koden og gjør den enklere for andre utviklere å forstå.
+* Forenklet malen for håndtering av informasjon <abbr title="Create, Read, Update & Delete. De fire grunnleggende operasjonene for å håndtere data i databaser.">CRUD</abbr>, som sikrer lik praksis i hele koden og gjør den enklere for andre utviklere å forstå.
 
 Modernisering av tilkoblinger: Etablerte nye og sikre koblingspunkter mot databasen for mer effektiv trafikkflyt og høyere stabilitet.
 
