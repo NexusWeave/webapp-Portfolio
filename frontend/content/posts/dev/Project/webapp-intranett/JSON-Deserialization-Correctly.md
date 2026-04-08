@@ -24,7 +24,7 @@ star: |
 sources: ''
 ---
 
-**Dagens Aktiviteter**
+#### **Dagens Aktiviteter**
 
 * Analyserte hvorfor systemet stoppet opp og hvorfor JSON-data med instruksjonslisten ikke ble lest inn i minnet.
 * Gjennomførte en feilsøkings prosess for å finne ut hvorfor sikkerhetslaget hindret verifisering av tilganger.
@@ -34,5 +34,6 @@ sources: ''
 * Sikret at sikkerhetskontrollen fungerer som den skal, slik at ansatte og studenter igjen kan logge inn uten utfordringer.
 * Etablert en stabil metode for fremtidig håndtering av klasser og data som sikrer vedvarende systemstabilitet.
 
-**Motivasjon & Energi** - **10** / **10**
+#### **Motivasjon & Energi** - **10** / **10**
+
 Dagen har vært så fin den kunne bli
