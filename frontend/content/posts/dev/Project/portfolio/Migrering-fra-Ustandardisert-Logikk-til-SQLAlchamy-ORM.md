@@ -7,7 +7,7 @@ ingress: |
   Jeg har modernisert datalaget ved å implementere SQLAlchemy og gå over til en ORM-basert struktur. Ved å etablere DAO-lag og skille databaseoperasjoner fra forretningslogikken, har jeg forbedret kodekvaliteten og vedlikeholdbarheten betydelig. Refaktoreringen innebar oppsett av Engine- og Session-instanser samt definisjon av modeller. Resultatet er en ryddigere arkitektur som sikrer robust databaselogikk og følger moderne Python-standarder for profesjonell utvikling.
 parade: ''
 star: |
-  #### Migrering til SQLAlchomy
+  #### Flytting til biblioteket SQLAlchomy
 
   Systemets måte å kommunisere med databasen på var utdatert. Selv om det fungerte, var det ikke et pålitelig system. Dette gjorde det vanskelig å vedlikeholde koden og økte risikoen for feil hver gang jeg skulle gjøre endringer eller legge til ny funksjonalitet.
 
