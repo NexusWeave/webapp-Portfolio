@@ -2,7 +2,7 @@
 tags:
   - dev-journey
 date: 2025-12-01T00:00:00.000Z
-title: Migrering fra Ustandardisert Logikk til SQLAlchamy ORM
+title: Omgjøring fra Ustandardisert Logikk til SQLAlchamy ORM
 ingress: |
   Jeg har modernisert datalaget ved å implementere SQLAlchemy og gå over til en ORM-basert struktur. Ved å etablere DAO-lag og skille databaseoperasjoner fra forretningslogikken, har jeg forbedret kodekvaliteten og vedlikeholdbarheten betydelig. Refaktoreringen innebar oppsett av Engine- og Session-instanser samt definisjon av modeller. Resultatet er en ryddigere arkitektur som sikrer robust databaselogikk og følger moderne Python-standarder for profesjonell utvikling.
 parade: ''
