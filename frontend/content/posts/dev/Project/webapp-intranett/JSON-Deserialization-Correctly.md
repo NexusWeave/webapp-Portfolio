@@ -4,10 +4,10 @@ tags:
 date: 2025-11-10T00:00:00.000Z
 title: Løsning av kommunikasjonsfeil og korrekt klargjøring av tilgangskontroll
 ingress: |
-  Ved å løse en feil i systemets tilgangskontroll (RBAC), har vi sørget for at både kollegaer og studenter slipper avbrudd når de skal logge inn. Tidligere stoppet hele systemet opp fordi det ikke forsto sine egne sikkerhetsregler, noe som skapte unødvendige avbrudd i arbeidsdagen. Ved å rydde opp i denne kommunikasjonssvikten har vi fjernet risikoen for at ansatte blir låst ute, og dermed spart bedriften for tapt arbeidstid. Resultatet er en tryggere hverdag hvor sensitiv informasjon er godt beskyttet, og et system som alltid er klart til bruk når folk trenger det.
+  Ved å løse en feil i systemets tilgangskontroll, har jeg sørget for at kollegaer slipper avbrudd når de skal logge inn. Tidligere stoppet hele systemet opp fordi det ikke forsto sine egne sikkerhetsregler, noe som skapte unødvendige avbrudd i arbeidsdagen. Ved å rydde opp i denne kommunikasjonssvikten har vi fjernet risikoen for at kollegaer blir låst ute. Resultatet er en tryggere hverdag hvor sensitiv informasjon er beskyttet, og et system som alltid er klart til bruk.
 parade: ''
 star: |
-  Systemet har en Rollebasert tilgangs kontroll (**RBAC**) som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten (JSON-data) ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
+  Systemet har en Rollebasert tilgangs kontroll som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
 
   Oppgaven min var å feilsøke for å finne ut grunnen til at instruksjonslisten og mottakeren i systemet ikke lenger kommuniserte på samme språk.
   Som en konsekvens av at de to systemene er avhengig av hverandre for at sikkerhets laget skal fungere, var målet mitt å korrigere feilene slik at systemet kunne vertifisere tilganger og sikre en normal oppstart.
