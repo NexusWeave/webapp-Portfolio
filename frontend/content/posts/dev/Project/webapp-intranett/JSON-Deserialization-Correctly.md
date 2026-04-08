@@ -7,6 +7,8 @@ ingress: |
   Ved å løse en feil i systemets tilgangskontroll, har jeg sørget for at kollegaer slipper avbrudd når de skal logge inn. Tidligere stoppet hele systemet opp fordi det ikke forsto sine egne sikkerhetsregler, noe som skapte unødvendige avbrudd i arbeidsdagen. Ved å rydde opp i denne kommunikasjonssvikten har vi fjernet risikoen for at kollegaer blir låst ute. Resultatet er en tryggere hverdag hvor sensitiv informasjon er beskyttet, og et system som alltid er klart til bruk.
 parade: ''
 star: |
+  #### Løsning på kritiske innloggingsfeil i AccessService
+
   Systemet har en Rollebasert tilgangs kontroll som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
 
   Oppgaven min var å feilsøke for å finne ut grunnen til at instruksjonslisten og mottakeren i systemet ikke lenger kommuniserte på samme språk.
