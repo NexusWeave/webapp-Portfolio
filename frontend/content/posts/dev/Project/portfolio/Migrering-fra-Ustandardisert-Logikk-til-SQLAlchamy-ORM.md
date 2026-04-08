@@ -1,81 +1,39 @@
 ---
-date: 2025-12-01T00:00:00.000Z
 tags:
   - dev-journey
+date: 2025-12-01T00:00:00.000Z
 title: Migrering fra Ustandardisert Logikk til SQLAlchamy ORM
-ingress: >
-  Til tross for at den eksisterende databaseinteraksjonslogikken var
-  funksjonell, brøt den med moderne Python-praksiser. Dette resulterte med
-  redusert vedlikeholdbarhet og lav kodekvalitet. For å løse dette, ble det
-  igangsatt en refaktorering av datalaget gjennom implementeringen av
-  SQLAlchemy. Dette involverte etablering av DAO-abstraksjonslag,
-  konfigurasjonen av Engine- og Session-instanser for databasetilkobling, og
-  definiasjon av SQLAlchemy-modeller for å etablere ORM-funksjonalitet. Dette
-  resulterte til at koden ble vesentlig ryddigere og ansvaret for
-  databaseoperasjoner ble separert fra forretningslogikken. Hovedlæringen var å
-  oppnå en praksis forståelse av hvordan moderne ORM-biblioteker sikrer en
-  robust databaselogikk.
-star: >
-  ### Migrering til SQLAlchomy
+ingress: |
+  Jeg har modernisert datalaget ved å implementere SQLAlchemy og gå over til en ORM-basert struktur. Ved å etablere DAO-lag og skille databaseoperasjoner fra forretningslogikken, har jeg forbedret kodekvaliteten og vedlikeholdbarheten betydelig. Refaktoreringen innebar oppsett av Engine- og Session-instanser samt definisjon av modeller. Resultatet er en ryddigere arkitektur som sikrer robust databaselogikk og følger moderne Python-standarder for profesjonell utvikling.
+parade: ''
+star: |
+  #### Migrering til SQLAlchomy
 
+  Systemets måte å kommunisere med databasen på var utdatert. Selv om det fungerte, var det ikke et pålitelig system. Dette gjorde det vanskelig å vedlikeholde koden og økte risikoen for feil hver gang jeg skulle gjøre endringer eller legge til ny funksjonalitet.
 
-  Den eksisterende databaseinteraksjonslogikken var funksjonell, men brøt med
-  moderne Python-praksis for databaseforbindelser. Dette var dårlig kodekvalitet
-  og den langsiktige vedlikeholdbarheten var redusert.
+  Mitt mål var å bygge om denne grunnmuren ved hjelp av bransjestandarden **SQLAlchemy**. Oppgaven handlet om å profesjonalisere hvordan data lagres og hentes, slik at systemet ble pålitelig, lettere å forstå for andre utviklere, og klar for fremtidig vekst.
 
+  * Ryddet i ansvarsområder: Jeg skilte de tekniske databaseoppgavene fra selve forretningslogikken. Dette betyr at om vi endrer på databasen, påvirker det ikke resten av systemet.
+  * Standardiserte databehandlingen: Jeg laget en felles mal for hvordan vi legger til, leser eller sletter informasjon, noe som sikrer lik praksis i hele løsningen.
+  * Moderniserte koblingen: Jeg satte opp nye, trygge «koblingspunkter» mot databasen som håndterer trafikken mer effektivt.
+  * Oversatte data til logiske modeller: Jeg sørget for at dataene i databasen alltid stemmer overens med slik systemet forventer å se dem, noe som reduserer sjansen for logiske feil.
 
-  #### Robust Tilnærming til Datahåndtering
-
-
-  * Refaktorere databaseinteraksjonslaget ved å implementere SQLAlchemy for å
-  møte moderne Python-praksiser
-
-
-  #### &#xA;Abstraksjonslag (DAO)
-
-
-  Det ble etablert en universell abstrakt klasse for å håndtere  den generisk
-  datatilgangslogikken ( CRUD ). Dette sikrer et rent grensesnitt for å isolere
-  databaseoperasjoner fra forretningslogikken.
-
-
-  #### Konfigurasjon av Databaseforbindelsen
-
-
-  Nødvendige Motorer- og Sesong-instanser for SQLite-databasen ble konfiguert og
-  initialisert for å håndtere databasen.
-
-
-  #### SQLAlchemy-modeller
-
-
-  Ble definert i det korrekte laget for å etablere ORM-funksjonaliteten.
-
-
-  #### Prosjektets Status
-
-
-  Koden ble vesentlig ryddigere, og ansvaret for databaseoperasjoner ble
-  separert fra foretningslogikken. Ved å erstatte den gamle database logikken
-  med SQLAlchemy, ble det etablert et vedlikeholdsvennlig datalag som sikrer
-  moderne Python-praksis for databaseforbindelser.
-
-
-  ##### Testing av Databaselaget
-
-
-  Neste fase er å etablere enhetstester for det nye databaselaget. Dette er
-  avgjørende for å vertifisere at alle funksjoner fungerer som tiltenkt og for å
-  bevise at testbarheten er sikret etter refaktoreringen.
-
-
-  #### Læringsutbyttet
-
-
-  Selv om Implementeringen av SQLAlchemy var skummel, fikk jeg en praktisk
-  forståelse av hvordan et moderne OOP ORM-bibliotek fungerer i Python. Jeg
-  lærte om konfigurasjonen av Engine og Session. Hvordan bruk av modeller sikrer
-  at databaselogikken er robust.
+  Jeg har nå fjernet teknisk rot og sitter igjen med en ryddigere og mer stabil plattform. Dette reduserer behovet for å vedlikeholde koden og gjør det tryggere å rulle ut nye oppdateringer. Systemet er nå også klargjort for automatiserte tester, for å sikre at funksjonaliteten gir et ønsket resultat.
 sources: ''
 ---
 
+#### Dagens Aktiviteter
+
+* Erstattet utdatert databaselogikk med en moderne bransjestandard for å sikre et pålitelig og fremtidsrettet system.
+* Skilte tekniske databaseoppgaver fra systemets forretningslogikk, noe som gjør løsningen modulær og reduserer risikoen for følgefeil ved fremtidige endringer.
+* Forenklet malen for håndtering av informasjon \<abbr title ="Create, Read, Update & Delete. De fire grunnleggende operasjonene for å håndtere data i databaser.""CRUD</abbr>, som sikrer lik praksis i hele koden og gjør den enklere for andre utviklere å forstå.
+
+Modernisering av tilkoblinger: Etablerte nye og sikre koblingspunkter mot databasen for mer effektiv trafikkflyt og høyere stabilitet.
+
+Implementering av logiske modeller: Definerte objektorienterte modeller som sørger for at dataene alltid samsvarer med systemets krav, noe som minimerer faren for logiske feil.
+
+Kvalitetssikring og testforberedelse: Fjernet teknisk gjeld og klargjorde arkitekturen for automatiserte tester, slik at fremtidige oppdateringer kan rulles ut med høyere trygghet.
+
+#### Motivasjon & Energi 10 / 10
+
+Dagen er så fin den kan bli !
