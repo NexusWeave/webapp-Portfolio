@@ -1,6 +1,6 @@
 ---
 date: 2026-04-08T12:19:50.252Z
-title: ytyt
+title: Oppgradering og feilsikring av skjemasystem og brukergrensesnitt
 ingress: |
   Gjennom målrettet opprydding i kildekode, filstruktur og skjemasystem, har jeg i dag lagt grunnlaget for en mer effektiv og fleksibel medlemsportal. Ved å tette tekniske gap og finpusse grensesnittet, har jeg skapt en plattform som er enklere å vedlikeholde for utviklere og mer intuitiv å navigere for sluttbrukere. Resultatet er en operasjonell effektivisering som korter ned tiden fra idé til lansering.
 parade: ''
