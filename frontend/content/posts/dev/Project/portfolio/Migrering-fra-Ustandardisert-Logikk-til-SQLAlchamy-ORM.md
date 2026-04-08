@@ -13,10 +13,10 @@ star: |
 
   Mitt mål var å bygge om denne grunnmuren ved hjelp av bransjestandarden **SQLAlchemy**. Oppgaven handlet om å profesjonalisere hvordan data lagres og hentes, slik at systemet ble pålitelig, lettere å forstå for andre utviklere, og klar for fremtidig vekst.
 
-  * Ryddet i ansvarsområder: Jeg skilte de tekniske databaseoppgavene fra selve forretningslogikken. Dette betyr at om vi endrer på databasen, påvirker det ikke resten av systemet.
-  * Standardiserte databehandlingen: Jeg laget en felles mal for hvordan vi legger til, leser eller sletter informasjon, noe som sikrer lik praksis i hele løsningen.
-  * Moderniserte koblingen: Jeg satte opp nye, trygge «koblingspunkter» mot databasen som håndterer trafikken mer effektivt.
-  * Oversatte data til logiske modeller: Jeg sørget for at dataene i databasen alltid stemmer overens med slik systemet forventer å se dem, noe som reduserer sjansen for logiske feil.
+  * Jeg skilte de tekniske databaseoppgavene fra selve forretningslogikken. Dette betyr at om vi endrer på databasen, påvirker det ikke resten av systemet.
+  * Jeg laget en felles mal for hvordan jeg legger til, leser eller sletter informasjon, som sikrer lik praksis i hele løsningen.
+  * Jeg satte opp nye, trygge «koblingspunkter» mot databasen som håndterer trafikken mer effektivt.
+  * Jeg sørget for at dataene i databasen alltid stemmer overens med slik systemet forventer å se dem, som reduserer sjansen for logiske feil.
 
   Jeg har nå fjernet teknisk rot og sitter igjen med en ryddigere og mer stabil plattform. Dette reduserer behovet for å vedlikeholde koden og gjør det tryggere å rulle ut nye oppdateringer. Systemet er nå også klargjort for automatiserte tester, for å sikre at funksjonaliteten gir et ønsket resultat.
 sources: ''
