@@ -31,13 +31,5 @@ export interface DateObject
     updated?: string | null;
 }
 
-export interface TechStack
-{
-    type: string;
-    label: string;
-}
-export interface ReferencePoint
-{
-    name: string;
-    anchor: Anchor;
-}
+export interface TechStack { category: string; label: string; }
+export interface ReferencePoint { name: string; anchor: Anchor; }

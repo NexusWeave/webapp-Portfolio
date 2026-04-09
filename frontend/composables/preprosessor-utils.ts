@@ -65,18 +65,10 @@ export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[]
 
         if (techStack && techStack.length > 0) {
             tech = techStack.map((item) => {
-                const itemType = item.type.toLowerCase();
-                const label = item.label;
+                const label = item.label.toLowerCase();
+                const category = item.category.toLowerCase();
 
-                return {
-
-                    type: 'svg',
-                    frameWork: label,
-                    techType: itemType,
-                    alt: 'Image for ' + label,
-                    src: `/media/tech-lang-icons/${label.toLowerCase()}.svg`,
-                    srcset: `/media/tech-lang-icons/${label.toLowerCase()}.svg`
-                } as FigureItem;
+                return { type: 'svg', frameWork: label, category: category, alt: 'A visual representation of ' + label, src: `/media/tech-lang-icons/${label}.svg`, srcset: `/media/tech-lang-icons/${label}.svg` } as FigureItem;
             });
         }
 
