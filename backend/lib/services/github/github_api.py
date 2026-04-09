@@ -11,7 +11,7 @@ import httpx
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
 from lib.settings.api_config import AsyncAPIClientConfig
-from backend.lib.services.github.utils.github_maps import GithubUtils
+from lib.services.github.utils.github_maps import GithubUtils
 
 #   Initialize Logger
 LOG = APIWatcher(dir="logs", name='Github-API')

@@ -1,16 +1,17 @@
-#   Dependencies
+#   Standard Libraries
 import os, ssl
-from typing import Optional
+from typing import Any, Optional
 
-#   Third-Party Dependencies
+#   Third-Party Libraries
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
 from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy import event, Engine
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 
 
-#   Internal Dependencies
+#   Internal Libraries
 from .db_providers import Sqlite3Provider, PostgresProvider
 
 #   Initialize Enviorment variables
@@ -26,6 +27,23 @@ def initialize_turso_engine() -> Sqlite3Provider:
     SESSION = sessionmaker( class_ = Session, bind = SYNC_ENGINE, expire_on_commit = False)
 
     return Sqlite3Provider( engine = SYNC_ENGINE, session_factory = SESSION)
+
+def initialize_sqlite3_engine() -> Sqlite3Provider:
+    SQLITE3_DB: Optional[str] = os.getenv('SQLITE3_DB', None)
+    if not SQLITE3_DB: raise ValueError("Mising Environment Variable SQLITE3_DB")
+    PATH : str = f"aios+sqlite+{SQLITE3_DB}"
+    ENGINE: Engine = create_engine( PATH, connect_args={"check_same_thread": False})
+
+    @event.listens_for(ENGINE, "connect")
+    def set_sqlite_pragma(dbapi_connection: Any) -> None: # pyright: ignore[reportUnusedFunction]
+        cursor = dbapi_connection.cursor()
+        cursor.execute("PRAGMA journal_mode=WAL;")
+        cursor.execute("PRAGMA synchronous=NORMAL;")
+        cursor.close()
+
+    SESSION = sessionmaker( class_ = Session, bind = ENGINE, expire_on_commit = False)
+
+    return Sqlite3Provider( engine = ENGINE, session_factory = SESSION)
 
 async def initialize_postgress_engine() -> PostgresProvider:
     ctx = ssl.create_default_context()

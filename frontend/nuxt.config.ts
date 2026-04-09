@@ -46,7 +46,7 @@ export default defineNuxtConfig({
       }
 
       try {
-        const routes = await getRoutes('./content/posts')
+        const routes = await getRoutes(join(srcDir, 'content', 'posts'))
         console.log(`[prerender] Fant ${routes.length} artikkelruter`)
         nitroConfig.prerender ??= {}
         nitroConfig.prerender.routes = [

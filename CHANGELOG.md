@@ -1,3 +1,49 @@
+# [1.13.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.12.0...v1.13.0) (2026-04-02)
+
+
+### Bug Fixes
+
+* **Github:** 🐛 Resolved issues with modeNotFound error, by correcting the import path. ([4915795](https://github.com/NexusWeave/webapp-Portfolio/commit/491579536b81b0d3271cca20f90ec0382755637d))
+
+
+### Features
+
+* **Database:** ✨ Add support for SQLite engine ([16e5e7a](https://github.com/NexusWeave/webapp-Portfolio/commit/16e5e7a0fff3b2e0dcde004281123a1794775282))
+* **Database:** ✨ Create a blueprint for Chatbot database. ([659e11a](https://github.com/NexusWeave/webapp-Portfolio/commit/659e11a28dd40d970591e2e91c926f2340f1f8fc))
+* **Docker:** ✨ Introduce Litestream for real-time data ([22e96c5](https://github.com/NexusWeave/webapp-Portfolio/commit/22e96c5a4f67dd280a6b9905c93d5e5858bdff40))
+* **HealthCheck:** ✨ ADD a check healt for specialist ([1cc00e2](https://github.com/NexusWeave/webapp-Portfolio/commit/1cc00e234c8b120f85483cacab28cd9f50f1cbf9))
+* **HealthCheck:** ✨ ADD health Check for Scanner class. ([ce787ce](https://github.com/NexusWeave/webapp-Portfolio/commit/ce787cee7f4b4c1a5989e535779e26c8e7da88cf))
+* **WebScan:** ✨ Implemented a web Scanner to automate data discovery. ([fd5c85d](https://github.com/NexusWeave/webapp-Portfolio/commit/fd5c85d61fd93cc5ca1181133dd12a60fb96812e))
+
+# [1.12.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.11.0...v1.12.0) (2026-04-02)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Resolved an build issue, by adding a '}' at the end of sitemap config. ([202f0a6](https://github.com/NexusWeave/webapp-Portfolio/commit/202f0a6b2b0c53940fed5b619e27d8a533882634))
+* Fix deploy command output directory in package.json ([3108b00](https://github.com/NexusWeave/webapp-Portfolio/commit/3108b002f3969580668ec35642ec25be092135ea))
+* Fix formatting in nuxt.config.ts ([d823713](https://github.com/NexusWeave/webapp-Portfolio/commit/d82371394514d811cb17680972e0fdc6856165de))
+
+
+### Features
+
+* **API:** ✨ Introduce a sitemap API, to find every paths for articles in the SEO. ([5e3533e](https://github.com/NexusWeave/webapp-Portfolio/commit/5e3533e8de45c62cd8a113b63823f79e1f221c8d))
+
+# [1.11.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.10.0...v1.11.0) (2026-03-25)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Resolving potential unexpetect behavior with gtag & site, ([877d152](https://github.com/NexusWeave/webapp-Portfolio/commit/877d1529cc0bf3d23ef93ab3f268a0f35ecf9958))
+* **Package.json:** ➕ Correcting dependency installation. ([ea28f1e](https://github.com/NexusWeave/webapp-Portfolio/commit/ea28f1ee49bd3926dea9f12e46920416e180094d))
+* **SEO:** 🐛 Resolving the issue where the search engines can not find robot.txt ([86aa604](https://github.com/NexusWeave/webapp-Portfolio/commit/86aa604de896493651120e474202d303d959b63f))
+* **UI:** 🐛 Resolving issue where Image disappeared from page. ([fa4be91](https://github.com/NexusWeave/webapp-Portfolio/commit/fa4be91bb302df404e69be4d9d3ed5853d97203e))
+
+
+### Features
+
+* **Google-Analystics:** ✨ Introduce Google Analystics, for user behavior tracking. ([6653bfd](https://github.com/NexusWeave/webapp-Portfolio/commit/6653bfd65fddf83935638b25965f28bd34573849))
+
 # [1.10.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.9.2...v1.10.0) (2026-03-24)
 
 

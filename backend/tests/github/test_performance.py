@@ -2,11 +2,10 @@
 
 #   Third-Party Libraries
 import pytest, os, anyio
-from pytest_benchmark.fixture import BenchmarkFixture
 from dotenv import load_dotenv
+from pytest_benchmark.fixture import BenchmarkFixture
 
 #   Internal Libraries
-from lib.services.heavy.heavy_api import HeavyAPI
 from lib.services.github.github_api import GithubAPI
 
 load_dotenv()
@@ -14,10 +13,6 @@ load_dotenv()
 GIT_TOKEN = os.getenv("GithubToken", "none")
 TEST_URL = os.getenv("TEST_URL", "http://127.0.0.1:8000")
 GITHUB_ENDPOINT = os.getenv("GithubBase", "https://api.github.com")
-
-HEAVY_TOKEN = os.getenv("HEAVYTOKEN", "none")
-HEAVY_ENDPOINT = os.getenv("HEAVYAPI", "https://api.hevyapp.com")
-HEAVY_VERSION = os.getenv("HEAVYVERSION", "/v1")
 
 N = 1  # Number of iterations for performance tests
 
@@ -71,17 +66,3 @@ class TestAPIServicePerformance:
 
 
         benchmark.pedantic(run_performance_test, setup=lambda: None, rounds=1, warmup_rounds=0) #   type: ignore
-
-    def test_heavy_api(self, heavy_setup:HeavyAPI, benchmark: BenchmarkFixture):
-        """Placeholder for HeavyAPI performance test."""
-
-        def run_performance_test():
-            async def fetch_data(api:HeavyAPI, endpoint:str):
-                return await api.fetch_data(endpoint)
-
-            data = anyio.run(fetch_data, heavy_setup, "/workouts")
-
-            assert data is not None
-            assert isinstance(data, dict)
-        
-        benchmark.pedantic(run_performance_test, setup=lambda: None, rounds=N, warmup_rounds=0) #   type: ignore

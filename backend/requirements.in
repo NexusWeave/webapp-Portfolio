@@ -2,12 +2,13 @@ httpx
 uvicorn
 fastAPI
 asyncpg
+aiofiles
 pydantic
+pip-tools
 sqlAlchemy
 pydantic-core
 pydantic-settings
 
-pytest
 pytest-cov
 pytest-html
 python-dotenv
