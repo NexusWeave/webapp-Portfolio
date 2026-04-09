@@ -1,4 +1,4 @@
-import type { ReferenceItem } from '~/types/references';
+import type { ReferenceItem } from '~/types/documents';
 import type { ReferenceCollectionItem } from '@nuxt/content';
 
 export function mapReference(data: Ref<ReferenceCollectionItem[]>): ReferenceItem[]
