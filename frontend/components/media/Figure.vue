@@ -2,7 +2,7 @@
         <picture>
             <figure :class="cls[0]">
                 <source v-if="!!isImageModern" :srcset="data.srcset" :type="'image/' + data.type">
-                <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]" :type="'image/' + data.type">
+                <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]" :type="'image/' + data.type" :title=data.alt>
                 <figcaption v-if="!!isFigure">{{ caption ? caption : '' }}</figcaption>
             </figure>
         </picture>

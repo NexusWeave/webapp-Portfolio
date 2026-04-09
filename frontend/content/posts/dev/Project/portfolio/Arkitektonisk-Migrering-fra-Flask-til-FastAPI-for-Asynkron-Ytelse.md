@@ -1,109 +1,38 @@
 ---
-date: 2025-11-22T00:00:00.000Z
 tags:
   - dev-journey
-title: Arkitektonisk Migrering fra Flask til FastAPI for Asynkron Ytelse
-ingress: >
-  Denne læringsloggen dokumenterer den arkitektoniske migreringen av en
-  Python-applikasjon fra det synkrone **Flask**-rammeverket (WSGI) til det
-  moderne, asynkrone **FastAPI**-rammeverket (ASGI). Flask ble funnet å være
-  overflødig og ineffektivt for applikasjonens API-formål, spesielt ved
-  håndtering av I/O-tunge operasjoner som eksterne API-kall (f.eks., Github).
-  Hovedmålet var å utnytte **ASGI**-støtten for å redusere ventetid og forbedre
-  gjennomstrømningen. Migreringen omfattet en omfattende refaktorering av
-  konfigurasjon (ved bruk av** Pydantic Settings**) og konvertering av synkrone
-  ruter til asynkrone funksjoner (`async def`). Den bevisste utsettelsen av
-  Pydantic-datamodellering tillot en** isolert og verifiserbar test **av
-  ASGI-gevinstene. Lærdommen understreker viktigheten av å velge et
-  arkitektonisk korrekt rammeverk for å maksimere ytelsen i moderne API-design.
-star: >
-  Det eksisterende Flask-rammeverket ble **arkitektonisk** **overflødig** og
-  ikke effektiv nok, da Python-applikasjonen kun fungerte som et API med et
-  behov for både 
+date: 2025-11-22T00:00:00.000Z
+title: Modernisering av bindeledd for å øke ytelse og stabilitet
+ingress: |
+  Da den økte datamengde skapte kø og treghet i systemet, ble løsningen en teknisk modernisering av selve motoren for nettsiden. Ved å gå over til moderne standarder for å håndtere flere forespørsler samtidig, ble resultatet et raskere, mer stabilt system som er laget for fremtidig vekst.
+parade: ''
+star: |
+  #### Prosjektanalyse
 
+  Da prosjektet vokste, ble det tydelig at den eksisterende arkitekturen basert på <abbr title="Et eldre og mer tradisjonelt teknologi-verktøy (rammeverk) som ofte brukes til enklere nettsider, men som kan bli tregt når mange ting skjer samtidig.">**Flask**</abbr> ikke lenger klarte å holde tritt med kravene til effektivitet. Applikasjonen fungerte primært som et bindeledd mot eksterne tjenester som <abbr title="En skybasert tjeneste som lagrer kode og prosjektdata. I dette tilfellet fungerte GitHub som den eksterne datakilden systemet måtte hente informasjon fra.">**GitHub**</abbr>, og den tradisjonelle metoden for å håndtere data førte til at hele systemet ble stående og vente på svar. Dette skapte en kø som begrenset systemets kapasitet og resulterte i en tregere opplevelse for sluttbrukerne etter hvert som datamengden økte.
+  Min oppgave var å gjennomføre en teknisk modernisering ved å oppgradere til et verktøyet som støtter moderne IT standarder for håndtering av flere oppgaver samtidig. Målet var ikke bare å øke hastigheten på datahenting, men også å utvikle en mer pålitelig og typesikker grunnmur som ville redusere fremtidige vedlikehold og  gjøre løsningen klar for å vokse.
 
-  * Rene endepunkter som kan håndtere  I/O-tunge operasjoner som
-    (f.eks ved kall til eksterne API-er som Github ) . 
+  For å løse dette utførte jeg følgende tiltak:
 
-  Flask er bygget på den sykrone **WSGI**-standarden (**W**eb **S**erver
-  **G**ateway **I**nterface) og er primært et lettvektig rammeverk for
-  tradisjonelle webapplikasjoner. Dette står i kontrast til **FastAPI**, som er
-  spesifikt designet for moderne API-er basert på den asynkrone
-  **ASGI**-standarden (**A**synchronous **S**erver **G**ateway **I**nterface),
-  som håndterer  I/O-tunge operasjoner mer effektivt.
+  Jeg oppgraderte verktøyet, fra **Flask** til verktøyet FastAPI. Dette innebar et skifte fra en eldre standard <abbr title= "Web Server Gateway Interface er en eldre standard som lar koden håndtere en og en oppgave samtidig">WSGI</abbr>  til et mer moderne standard <abbr title="Asynchronous Server Gateway Interface, en moderne standard som lar koden håndtere mange oppgaver samtidig">ASGI</abbr>. Denne oppgraderingen gjør det mulig for å håndterer opp til flere forespørsler samtidig.
 
+  Jeg valgte å beholde eksisterende strukturen midlertidig og utsatte bruken av verktøyet <abbr title="Et verktøy som automatisk sjekker at dataene i systemet er korrekte og har riktig format.">**Pydantic**.
 
-  Hovedmålet med denne migreringen er å Utnytte **ASGI**-støtten for å forbedre
-  ytelse ved I/O-venting.
+  Ryddet i prosjektets biblioteker og installerte verktøyet <abbr title="En moderne og rask motor som kreves for å kjøre applikasjoner som håndterer mange oppgaver samtidig">Uvicorn</abbr> som er optimalisert for den moderne standarden.
 
-
-  * Refaktorere requirements.txt, for å inneholde de nødvendige pakkene for
-  prosjektet.
-
-  * Refaktorere konfigurasjons filene
-
-  * Refaktorere hovedfilen for applikasjonen
-
-
-  ### Modernisering av Konfigurasjon
-
-
-  Et nytt Python-miljø ble installert også ble avhengighetsstyringen
-  refaktorert. Flask-spesifikke pakker ble fjernet fra requirements.txt og nye
-  sentrale FastAPI-komponenter ble installert, primært FastAPI, Uvicorn og
-  Pydantic for datamodellering.
-
-
-  ### Konvertering av Ruter og Datamodellering
-
-
-  Deretter ble applikasjonens konfigurasjonsfiler refaktorert. Håndteringen av
-  typiske Flask variabler ble erstattet med typesikker konfigurasjon ved å arve
-  BaseSettings fra Pydantic Settings. Dette sikrer en robust og automatisert
-  validering av miljøvariabler ved oppstart, dette gjør også konfigurasjonen
-  kompatibel med FastAPIs rammeverk
-
-
-  ### Ruter og Modellering
-
-
-  Selve migrasjonen av endepunktene var det mest kritiske steget. Jeg ønsket å
-  lage en robust, samtidig vedlikeholdbart kode
-
-
-  * Flasks synkrone ruter ble konvertert til FastAPIs asynkrone funksjoner ved
-  bruk av async def. Dette utnytter ASGI-standarden fullt ut og gjør
-  applikasjonen i stand til å håndtere I/O-tunge operasjoner, for å unngå
-  blokkering. 
-
-  * Konvertering av datastrukturene til Pydantic-modeller var ikke nødvendig,
-  men er utsatt til neste implementasjon for å isolere migreringseffekten av
-  ASGI og asynkronitet først. Dette tillater meg å vertifisere ytelsesgevinsten
-  fra ASGI uavhengig av de strukturelle endringene Pydantic krever. 
-
-
-  Migreringen til FastAPI var en suksess og sikret at applikasjonen effektivt
-  utnytter asynkron I/O for i I/O-tunge operasjoner som Github-kall. Dette
-  reduserer   ventetiden og forbedrer den generelle gjennomstrømningen
-  (throughout) av API-et.
-
-
-  Selv om Pydantic-datamodelleringen er utsatt, bekreftes det at den fremtidige
-  bruken av Pydantic vil sikre at koden er typesikker og robust. 
-
-
-  ### Faglig lærings utbytte
-
-
-  Den viktigste lærdommen fra dette arbeidet er verdien av å velge et
-  arkitektonisk riktig rammeverk for formålet. Ved å bytte fra synkron WSGI
-  (Flask) til asynkron ASGI (FastAPI), har jeg demonstrert forståelse for
-  hvordan moderne APIer håndterer I/O-venting.
-
-
-  Videre var utsettelsen av Pydantic et viktig faglig valg som tillot meg å
-  isolere testen av ASGI-gevinstene fra de strukturelle endringene Pydantic
-  krever. Dette sikret en ryddig og verifiserbar migreringsprosess.
+  Oppgraderingen fjernet kø-problematikken helt. Resultatet er et system som kan håndtere langt flere forespørsler med de samme ressursene, noe som gir økt pålitelighet og lavere driftsrisiko. Den viktigste erfaringen var verdien av en trinnvis metodikk; ved å prioritere ytelse først, fikk jeg bekreftet at det arkitektoniske valget fungerte før koden ble videreutviklet.
 sources: ''
 ---
 
+#### **Dagens aktiviteter**
+
+* Gjennomførte et arkitektonisk skifte ved å oppgradere applikasjonen fra <abbr title="Et tekonologi-verktøy">rammeverket</abbr> <abbr title="Et mikro verktøy for programmeringsspråket Python">"**Flask**</abbr> til <abbr title="Et mikro verktøy for programmeringsspråket Python">**FastAPI**.</abbr>
+* Erstattet den eldre standarden <abbr title= "Web Server Gateway Interface er en eldre standard som lar koden håndtere en og en oppgave samtidig">WSGI<abbr> med den moderne <abbr title="Asynchronous Server Gateway Interface, en moderne standard som lar koden håndtere mange oppgaver samtidig">ASGI</abbr>, som gjør det mulig for systemet å utføre mange oppgaver samtidig.
+* Installerte og konfigurerte <abbr title="En moderne og rask motor som kreves for å kjøre applikasjoner som håndterer mange oppgaver samtidig">Uvicorn</abbr>, en rask motor spesielt utviklet for å drive moderne og samtidige web-applikasjoner.
+* Gjennomførte en fullstendig rens av prosjektets biblioteker og avhengigheter for å sikre en lett og stabil installasjon.
+* Valgte en kontrollert utrulling ved å beholde eksisterende datastrukturer midlertidig. Dette ble gjort for å verifisere at ytelsen økte som forventet før videre strukturelle endringer gjøres med Pydantic.
+* Bekreftet at den nye arkitekturen fjernet tidligere kø-problematikk og økte systemets kapasitet betydelig.
+
+#### **Motivasjon** & **Energi** - **10** / **10**
+
+Dagen er så fin den kan bli !

@@ -2,15 +2,41 @@
 tags:
   - dev-journey
 date: 2025-11-05T00:00:00.000Z
-title: Integrasjon av TinaCloud
-ingress: ''
+title: Separering av kode og innhold i et moderne prosjekt
+ingress: |
+  Ved å skille nettsidens tekniske kode fra selve tekstene, har jeg utviklet et system som er både enklere å vedlikeholde og tryggere å bruke. Denne loggen beskriver hvordan jeg løste utfordringer med mappestrukturer for å sikre at bilder og innhold alltid flyter feilfritt. Resultatet er en stabil plattform som er kalr for fremtidig vekst og enklere samarbeid.
 parade: ''
 star: |
-  Jeg initierte integrasjonen av Tina Cloud med et Nuxt.js-frontend prosjekt. Prosjektet er strukturert som et monorepo-lignende oppsett, der frontend-koden og TinaCMS-konfigurasjonen (tina/config.ts) er lokalisert i en undermappe (frontend/). Den initielle utfordringen var at Tina Cloud ikke klarte å indeksere den dedikerte innholdsgrenen (CMS), noe som resulterte i feilmeldingen: ERROR: Branch 'CMS' is not on TinaCloud.
+  #### Prosjektanalyse
 
-  Oppgaven var å fullføre TinaCMS-integrasjonen ved å:Få Tina Cloud til å anerkjenne og indeksere CMS-grenen.Løse den påfølgende feilen med asset-lasting i CMS-grensesnittet.Implementere Best Practice for TinaCMS-konfigurasjon i et underkatalog-miljø.⚙️ Action (Handling)Jeg brukte en trinnvis, diagnostisk protokoll for å adressere feilårsakene i rekkefølge:StegHandling (Teknisk Implementering)Funksjonelt MålResultat1. Verifisering og IsolasjonUtførte 'whitespace-trikset' (push til CMS). Sjekket GitHub Webhook (200 OK). Endret NEXT\_PUBLIC\_TINA\_BRANCH til main (lokal test).Isolere feilen mellom token-autorisasjon og grenspesifikk synkronisering/konfigurasjon.main startet uten feil. Konklusjon: Token er gyldig. Feilen er grenspesifikk og skyldes serverside-indeksering.2. Korreksjon av Repository-stiOppdaterte frontend/tina/config.ts med rootPath: "frontend" og pushet til CMS-grenen.Informere Tina Cloud om at koden ligger i en underkatalog, kritisk for at sky-tjeneren skal finne tina/config.ts.Opprinnelig Branch Not Found-feil forsvant. Ny feil: Failed loading TinaCMS assets.3. Korreksjon av Asset-sti (Best Practice)Endret build.publicFolder i frontend/tina/config.ts fra frontend/public til ../public.Korrigere banen for statiske filer. publicFolder må være relativ fra tina/config.ts (frontend/tina/) til public-mappen (frontend/public/).Venter på testing.4. Middleware-AvbruddUnder testingen av frontend-lastingen, mottok jeg feilen ECONNREFUSED 127.0.0.1:5000.Midlertidig diagnostisere en urelatert, men blokkerende, backend-tilkoblingsfeil (Flask-server på port 5000 er nede).Bekreftet at backend-tjenesten må startes separat før frontend-applikasjonen kan testes fullstendig.
+  For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt <abbr title= "Headless Content Management System er uavhengig av visuell teknologi som brukes på nettsiden">**TinaCMS**</abbr>. Utfordringen lå i prosjektets struktur, hvor <abbr title = "visuelle teknologien"> nettsiden </abbr> lever i en undermappe som Dette skapte synkroniserings utfordringer med <abbr title="Tina Cloud er bindleddet som kontrollerer og kobler sammen redaktørpanelet med innholdet">**Tina Cloud**</abbr>, som i utgangspunktet ikke klarte å lese innholdsgrenen hvor dokumentasjonen og tekstene lagres.
+  Målet var å etablere en effektiv og feilfri flyt mellom redaktørpanelet og selve kildekoden til nettsiden. Dette krevde oppsettsmetode for hvordan panelet tolker mappestrukturen min. I tillegg måtte jeg sikre at alle filer, bilder og ressurser ble lastet korrekt, selv om de ligger lagret i ulike undermapper i prosjektet.
 
-  TinaCMS Løsning: De to primære feilårsakene for sky-integrasjonen ble identifisert og korrigert:Indekseringsfeilen ble løst ved å tvinge synkronisering etter at rootPath: "frontend" ble implementert (Best Practice for underkataloger).Asset-feilen ble adressert ved å korrigere publicFolder: "../public", som er den korrekte relative banen for at TinaCMS CLI skal laste grensesnitt-filene korrekt i et sub-directory-oppsett.Arkitektur Læring: Prosessen bekreftet nødvendigheten av å skille mellom feilsøking i frontend/CMS-konfigurasjonen (steg 1-3) og i backend-tjenestetilgjengelighet (steg 4 - ECONNREFUSED).
+  Jeg utførte en systematisk feilsøking og rekonfigurering:
+
+  * Jeg bekreftet først at digitale "nøkler og adgangskort" fungerte som de skulle. Dette gjorde jeg for å avklare om utfordringene skyldtes manglende tilgang, eller om det var selve koblingen til riktig mappe i GitHub som var utfordringen.
+  * I oppsettet hos leverandøren la jeg inn stien til konfigurasjonsfilene. Dette tvinger <abbr title="TinaCMS">bindeleddet</abbr> å lete på riktig sted i prosjektet.
+  * Jeg korrigerte stien for den såkalte "publicFolder". Dette løste utfordringen med brutte bildelenker i redaktørpanelet ved å peke systemet direkte til mappen hvor bildene faktisk ligger lagret.
+  * Underveis identifiserte og skilte jeg ut urelaterte tilkoblingsfeil som ikke hadde med selve panelet å gjøre. Dette sikret at feilsøkingen forble fokusert, effektiv og målrettet.
+
+  Det som har blitt lagt til har resultert i en pålitelig arkitektur som følger en struktur som tåler vekst. Ved å konfigurere systemet for underkataloger er løsningen nå fleksibel nok til å tåle fremtidige strukturelle endringer uten behov for omfattende rekonfigurering. Dette danner et grunnlag for videre vekst i prosjektet.
+
+  Gjennom å dedikere en gren i github for dokumentasjon og innholdsproduksjonen, har jeg etablert en effektiv arbeidsflyt basert på prinsippet om en <abbr title = "Dette prinsippet handler om å skille innholdet fra kodebasen">"**Decoupled Workflow**"</abbr>. Dette gir en trygghet i utviklingsløpet, da innhold nå kan redigeres uten risiko for å påvirke eller ødelegge den underliggende applikasjonslogikken.
+
+  Til slutt har arbeidet løftet den tekniske kvaliteten i hele prosjektet. Ved å fjerne feilmeldinger i konsollen og optimalisere ressurslastingen, sikres en rask og stabil brukeropplevelse i redaktørpanelet. Resultatet er en plattform hvor alle visuelle ressurser fungerer intakt, og hvor skillet mellom teknologi og innhold er fullstendig optimalisert.
 sources: ''
 ---
 
+#### **Dagens Aktiviteter**
+
+* Integrerte <abbr title="Headless Content Management System er uavhengig av visuell teknologi som brukes på nettsiden">TinaCMS</abbr> for å forenkle styringen av dokumentasjon og innhold.
+* Bekreftet at digitale "nøkler og adgangskort" fungerte korrekt for å utelukke autentiseringsfeil.
+* Løste utfordringer med at <abbr title="Den visuelle teknologien">nettsiden</abbr> ligger i undermapper ved å definere nøyaktige stier for konfigurasjonsfiler hos <abbr title="Tina Cloud er bindeleddet som kontrollerer og kobler sammen redaktørpanelet med innholdet">leverandøren</abbr>.
+* Korrigerte banen for "publicFolder", som fikset brutte bildelenker og sørget for at alle ressurser vises korrekt i panelet.
+* Identifiserte og skilte ut urelaterte tilkoblingsfeil for å sikre en målrettet og effektiv prosess.
+* Dedikerte en egen gren i GitHub for dokumentasjon, som muliggjør en <abbr title="Dette prinsippet handler om å skille innholdet fra selve kodebasen">"Decoupled Workflow"</abbr> der innhold kan redigeres uten risiko for kildekoden.
+* Fjernet feilmeldinger i konsollen og optimaliserte ressurslastingen for en raskere og mer stabil brukeropplevelse.
+
+#### **Motivasjon** & **Energi** - **10** / **10**
+
+Dagen er så fin den kan bli !

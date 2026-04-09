@@ -39,3 +39,4 @@ jobs:
           # App
           NODE_ENV: production
           GOOGLE_CLOUD: ${{ secrets.GOOGLE_CLOUD }}
+

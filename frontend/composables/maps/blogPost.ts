@@ -4,9 +4,10 @@ import type { DevPostsCollectionItem } from '@nuxt/content';
 export const mapBlogData = (data: DevPostsCollectionItem[]) => {
         if (!data) return [];
         data = data.sort((a, b) => { const dateA = new Date(a.date); const dateB = new Date(b.date); return dateB.getTime() - dateA.getTime(); });
-
+        const today = new Date()
         let AUTOINCREMENT = 0;
         return data.map((item) => {
+            const isPublished = new Date(item.date) <= today
             const id = item.id.split('/')
             const date:DateItem = {date: item.date};
             const path = id.pop()?.replace('.md', '').toLowerCase();
@@ -27,6 +28,7 @@ export const mapBlogData = (data: DevPostsCollectionItem[]) => {
                 id: AUTOINCREMENT++,
                 star: item.star ?? '',
                 body: item.body ?? '',
+                isPublished: isPublished,
                 date: setDateFormat(date),
                 parade: item.parade ?? '',
                 ingress: item.ingress ?? '',
