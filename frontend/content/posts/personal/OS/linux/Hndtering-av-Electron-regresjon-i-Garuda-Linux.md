@@ -2,33 +2,30 @@
 date: 2025-12-16T00:00:00.000Z
 title: Håndtering av Electron-tilbakerulling i Garuda-Linux
 ingress: |
-  En oppdatering av utvikler verktøyet **VS Code** skapte en feil i menyene som stoppet alt arbeid. I stedet for tidkrevende feilsøking, valgte jeg strategisk å rulle tilbake  til forrige stabile versjon med linux verktøyet `downgrade`. Dette gjenopprettet arbeidsflyten raskt og fjernet nedetid uten risiko for datatap. Beslutningen var å prioritere rask fremdrift fremfor unødvendig detaljfokus.
+  En oppdatering av utvikler verktøyet <abbr title ="Et redigerings verktøy for programmering">`VS Code`</abbr> skapte en feil i menyene som stoppet alt arbeid. I stedet for tidkrevende feilsøking, valgte jeg strategisk å rulle tilbake  til forrige stabile versjon med linux verktøyet <abbr title="Et verktøy som lar deg velge nøyaktig hvilken tidligere versjon av et program du vil installere.">`downgrade`</abbr>. Dette gjenopprettet arbeidsflyten raskt og fjernet nedetid uten risiko for datatap. Beslutningen var å prioritere rask fremdrift fremfor unødvendig detaljfokus.
 parade: ''
 star: |
-  ### Korrupt Brukergrensesnitt i VS Code
+  #### Korrupt Brukergrensesnitt i VS Code
 
-  Etter en nylig oppdatering i `visual-studio-code-bin `(v1.107), i  **Garuda Dr460nized Gaming**-**distribusjon**, oppsto det en uforutsett feil som deaktiverte hovedmenyen i VS Code. Dette gjorde prosjektnavigasjonen og bruken av menyvalgene umulig. Diagnosen indikerte en inkompatibilitet mellom **VS Code** og **KDE Plasma**, spesifikt knyttet til hvordan **Electron-biblioteket** håndterer rendring av globale menyer i skrivebordsmiljøet.
+  Etter en oppdatering av programmet VS Code i mitt Garuda operativsystem, oppsto det en uforutsett feil som deaktiverte hovedmenyen. Dette gjorde det umulig å navigere i prosjekter eller bruke vanlige menyvalg. feilsøkingen viste at det var en konflikt mellom VS Code og skrivebordsmiljøet <abbr title="Det visuelle miljøet på maskinen (knapper, menyer og vinduer).">`KDE-Plasma`</abbr>, spesifikt knyttet til hvordan grafikken i menyene blir tegnet.
+  Siden dette er mitt primære arbeidsverktøy for prosjekter, var målet å bringe systemet tilbake til en fungerende versjon så raskt som mulig. Oppgaven var å finne feilen og installere en stabil versjon av programmet, uten å risikere tap av data eller endre på andre deler av maskinen.
 
-  Da denne feilen ble tatt opp idag, ønsket jeg å bringe systemet tilbake til en fungerende versjon, siden dette er et arbeidsverktøy for både profesjonell koding og hobby koding.
-  Jeg skal bekrefte hvor feilen ligger, om det er VS Code-konfigurasjon eller operativsystemet og rulle tilbake til en tidligere versjon for å eliminere feilkilden uten at jeg mister data.
-  Uten om å vertifisere feilen direkte i  terminalen, skjønte jeg raskt at dette var en feil som hadde oppstått iVSCode siden det var den eneste applikasjonen denne feilen kom med.
+  For å løse situasjonen effektivt utførte jeg følgende tiltak:
 
-  * **Isolering og Diagnose** - Det ble identifisert at feilen lå på pakkenivå og ikke den generelle systemkonfigurasjonen. Feilen hadde kommet en KDE-oppdatering, selv om dette var isolert til applikasjonen. Behovet for å endre pakke versjonen til en tidligere utgave ble prioritert for å gjenopprette arbeidsflyten.
-  * **Utførelse & Teknikk** - Før jeg rullet tilbake til en tidligere versjon forsøkte jeg å tvinge VS Code håndtere hovedmenyen, i programmeet. Jeg konkluderte raskt med at det var nødvendig å rulle tilbake, for å være effektiv da instaliseringen av `window.titleBar`, ikke gikk som forventet.
-  * **Rollback** - Jeg benyttet verktøyet `downgrade` for manuelt å rulle pakken tilbake til tidligere versjon. Siden dette er et Arch-basert system, ble følgende system kommando brukt `sudo downgrade visual-studio-code-bin` til dentidligere stabile versjonen (`v.1.106`) som ikke hadde den spesifikke Electron-utfordringen knyttet til de globale menyer i KDE Plasma.
+  * Jeg bekreftet raskt at feilen kun gjaldt VS Code og ikke hele maskinen. Selv om feilen oppsto etter en systemoppdatering, var utfordringen koblet til selve programpakken.
+  * Jeg forsøkte først å tvinge programmet til å tegne menyene på en annen måte inne i innstillingene, men da dette ikke ga ønsket resultat, prioriterte jeg en mer effektiv løsning.
+  * Jeg benyttet verktøyet <abbr title="Et verktøy som lar deg velge nøyaktig hvilken tidligere versjon av et program du vil installere.">`downgrade`</abbr> for å manuelt installere den tidligere `versjonen 1.106`. Ved å bruke kommandoen `sudo downgrade visual-studio-code-bin` fikk jeg installert versjonen som fungerte feilfritt med systemet mitt.
 
-  VS Code fungerer nå feilfritt. Ved å velge en målrettet nedgradering framfor en full systemgjenopprettning, ble feilen eliminert isolert fra systemet.
-  I et aktivt utviklingsmiljø er en rask rollback ofte bedre enn en dyp feilsøking hvis målet er å minimere nedetid.
-  Denne erfaringen bekrefter at  `downgrade` er et verktøy som kan brukes til å rulle tilbake til tidligere versjoner i linux-baserte systemer.
+  VS Code fungerer igjen. Ved å velge en målrettet nedgradering fremfor en full gjenoppretting av hele maskinen, ble feilen fisket med minimal nedetid. Den viktigste erfaringen er at i et aktivt utviklingsmiljø er en rask tilbakestilling ofte bedre enn dyp feilsøking hvis målet er å komme raskt i gang med arbeidet igjen. Jeg har nå bekreftet at `downgrade` er et effektivt verktøy for å håndtere slike konflikter i et Linux-basert system.
 sources: ''
 ---
 
-**Dagens Agenda**
+#### **Dagens Aktiviteter**
 
-* Identifiserte en feil i hovedverktøyet for programmet (CodeVS) som hindret alt videre arbeid. For å raskt avklare om utfordringen lå i mitt system eller i programvaren, for å ta en besluttning på hvilket tiltak jeg kan gjøre, og benytte tiden riktig.
-* Vurderte tidsbruk mellom reparasjon og tilbakestilling. Valgte å rulle tilbake til en tidligere fungerende versjon. Da valgte jeg den raskeste veien tilbake til normal produksjon og unngå unødvendig nedetid.
-* Tilbakestilte programvaren til en stabil utgave uten tap av data. For å sikre at arbeidet kunne fortsette umiddelbart.
-* Verifiserte at alt utstyr nå fungerer som normalt før arbeidet ble gjenopptatt. For å garantere at dagens leveranser ikke blir forsinket av avbrudd.
+* Finne årsaken til at menyene i programmet VS Code forsvant.
+* Gjenopprette arbeidsverktøyet raskest mulig.
+* Utføre en trygg tilbakestilling av en spesifikk programvarepakke.
 
-**Energi & Motivasjon - 10**/**10**
+#### **Motivasjon** & **Energi** - **10**/**10**
+
 Dagen har vært så fin den kunne bli.

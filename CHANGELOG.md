@@ -1,3 +1,35 @@
+# [1.14.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.13.0...v1.14.0) (2026-04-09)
+
+
+### Bug Fixes
+
+* resolved issue where abbr-element was hidden behind codeed text. ([8b83f67](https://github.com/NexusWeave/webapp-Portfolio/commit/8b83f67b9ecd67376aa4c8d4ec714131400f7b13))
+* Resolved issue where some logs where removed. ([c463d54](https://github.com/NexusWeave/webapp-Portfolio/commit/c463d54951aaa5b3e7ccbe6c6b1c4b15fb3447d5))
+* **UI:** ✨ Resolves issues with images not found by adding flask & sqlite.svg. ([51397b1](https://github.com/NexusWeave/webapp-Portfolio/commit/51397b1eee25294340bb3dcb18b93a29ecc56345))
+
+
+### Features
+
+* **SEO:** ✨ Add meta data, to increase site visibility. ([617acf1](https://github.com/NexusWeave/webapp-Portfolio/commit/617acf137992640d0522518d87a9f753b9c9b2d0))
+* **UI:** ✨ Add check for isPublished & enchance the articles with isPublished to check if the date is or is past todays date. ([4dec6ce](https://github.com/NexusWeave/webapp-Portfolio/commit/4dec6ce092494078272973ca907b3ba0fa88adae))
+
+# [1.13.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.12.0...v1.13.0) (2026-04-02)
+
+
+### Bug Fixes
+
+* **Github:** 🐛 Resolved issues with modeNotFound error, by correcting the import path. ([4915795](https://github.com/NexusWeave/webapp-Portfolio/commit/491579536b81b0d3271cca20f90ec0382755637d))
+
+
+### Features
+
+* **Database:** ✨ Add support for SQLite engine ([16e5e7a](https://github.com/NexusWeave/webapp-Portfolio/commit/16e5e7a0fff3b2e0dcde004281123a1794775282))
+* **Database:** ✨ Create a blueprint for Chatbot database. ([659e11a](https://github.com/NexusWeave/webapp-Portfolio/commit/659e11a28dd40d970591e2e91c926f2340f1f8fc))
+* **Docker:** ✨ Introduce Litestream for real-time data ([22e96c5](https://github.com/NexusWeave/webapp-Portfolio/commit/22e96c5a4f67dd280a6b9905c93d5e5858bdff40))
+* **HealthCheck:** ✨ ADD a check healt for specialist ([1cc00e2](https://github.com/NexusWeave/webapp-Portfolio/commit/1cc00e234c8b120f85483cacab28cd9f50f1cbf9))
+* **HealthCheck:** ✨ ADD health Check for Scanner class. ([ce787ce](https://github.com/NexusWeave/webapp-Portfolio/commit/ce787cee7f4b4c1a5989e535779e26c8e7da88cf))
+* **WebScan:** ✨ Implemented a web Scanner to automate data discovery. ([fd5c85d](https://github.com/NexusWeave/webapp-Portfolio/commit/fd5c85d61fd93cc5ca1181133dd12a60fb96812e))
+
 # [1.12.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.11.0...v1.12.0) (2026-04-02)
 
 

@@ -10,4 +10,4 @@ references: ''
 ref_link: ''
 ---
 
-Gjennom utdanningen utviklet jeg grunnleggende kunnskap om helse, etikk og mellommenneskelig kommunikasjon, supplert med en solid forståelse for **profesjonelt ansvar**, **systematisk dokumentasjon** og evnen til å **tilpasse kommunikasjon** i krevende situasjoner.
+Gjennom utdanningen utviklet jeg grunnleggende kunnskap om **helse**, **etikk** og **mellommenneskelig kommunikasjon**, supplert med en forståelse for **profesjonelt ansvar**, **dokumentasjon** og evnen til å **tilpasse kommunikasjon** i krevende situasjoner.

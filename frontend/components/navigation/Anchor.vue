@@ -14,8 +14,8 @@
         </span>
 
         <span v-else-if="isIcon()" class="icon">
-            <MediaIcon :cls="data.type[0]"/>
             {{ data.label }}
+            <MediaIcon :cls="data.type[0]"/>    
         </span>
 
         <span v-else> {{ data.label }} </span>
@@ -79,9 +79,8 @@
     };
 
     const isImage = () => {
-        const dataProps = data.value;
         const imgProps = img.value;
-        console.log("Checking if data is image with type: ", dataProps);
+        const dataProps = data.value;
         if (!dataProps.type && !imgProps) return false;
         const imageTypes = ['jpg', 'jpeg', 'png', 'svg', "webp"];
         if (imageTypes.some(type => dataProps.type && dataProps.type.includes(type))) return true;
@@ -98,6 +97,6 @@
     };
 
     //  --- Debug logic
-    console.log("Anchor component loaded with data: ", img.value, isImage());
-    console.log("Link component loaded with data: ", data.value);
+    //console.log("Anchor component loaded with data: ", img.value, isImage());
+    //console.log("Link component loaded with data: ", data.value);
 </script>

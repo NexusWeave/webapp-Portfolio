@@ -103,12 +103,12 @@ export function mapReference(data: Ref<ReferenceCollectionItem[]>): ReferenceIte
     return data.value.map((doc:ReferenceCollectionItem) => {
         return {
             id: AUTOINCREMENT++,
-            quote: doc.quote,
+            quote: `"${doc.quote}"`,
             anchor: 
             {
+                type: ['pdf'],
                 href: doc.link,
                 label: doc.title,
-                type: ['external']
             },
             isVisible: AUTOINCREMENT - 1 === randomID,
         } as ReferenceItem;
