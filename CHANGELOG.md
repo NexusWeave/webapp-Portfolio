@@ -1,3 +1,18 @@
+# [1.14.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.13.0...v1.14.0) (2026-04-09)
+
+
+### Bug Fixes
+
+* resolved issue where abbr-element was hidden behind codeed text. ([8b83f67](https://github.com/NexusWeave/webapp-Portfolio/commit/8b83f67b9ecd67376aa4c8d4ec714131400f7b13))
+* Resolved issue where some logs where removed. ([c463d54](https://github.com/NexusWeave/webapp-Portfolio/commit/c463d54951aaa5b3e7ccbe6c6b1c4b15fb3447d5))
+* **UI:** ✨ Resolves issues with images not found by adding flask & sqlite.svg. ([51397b1](https://github.com/NexusWeave/webapp-Portfolio/commit/51397b1eee25294340bb3dcb18b93a29ecc56345))
+
+
+### Features
+
+* **SEO:** ✨ Add meta data, to increase site visibility. ([617acf1](https://github.com/NexusWeave/webapp-Portfolio/commit/617acf137992640d0522518d87a9f753b9c9b2d0))
+* **UI:** ✨ Add check for isPublished & enchance the articles with isPublished to check if the date is or is past todays date. ([4dec6ce](https://github.com/NexusWeave/webapp-Portfolio/commit/4dec6ce092494078272973ca907b3ba0fa88adae))
+
 # [1.13.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.12.0...v1.13.0) (2026-04-02)
 
 

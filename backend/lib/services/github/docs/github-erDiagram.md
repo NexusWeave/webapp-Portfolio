@@ -1,7 +1,9 @@
 ##  Visual presentation of the Database
 ```mermaid
+---
+title: ER Diagram of the Database
+---
 erDiagram
-
     Repo ||--o{ Repo_ProgrammingLanguage : has
     "Programming Language" ||--o{ Repo_ProgrammingLanguage : used_in
     Repo ||--o{ Repo_Collaborator : has
