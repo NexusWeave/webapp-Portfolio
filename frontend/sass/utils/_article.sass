@@ -4,7 +4,7 @@
 article.article-wrapper
     margin: 0 auto
     max-inline-size: 100%
-    
+
 article
     .ingress-header
         block-size: auto
@@ -72,7 +72,6 @@ article
             position: relative
             text-decoration: none !important
             border-bottom: 1px dotted rgb(255, 69, 0)!important
-            
 
     @include mix.text-wrap-safe()
 
@@ -92,3 +91,35 @@ article.bio
     div
         margin: 3em auto
         max-inline-size: 50em
+
+article.profile-bar
+
+    section
+        picture
+            figure
+                figcaption
+                    font-size: 0.7em
+                    text-align: center
+
+                img, source
+                    border-radius: 100%
+            max-inline-size: 11em
+
+        q
+            inline-size: 100%
+            text-align: center
+            margin: auto 1.5em
+        margin: auto 0.5em
+        max-inline-size: 22em
+
+    section.profile-content
+        p
+            h2
+                margin: 0
+                inline-size: 9em
+                text-align: left
+                display: inline-block
+
+        .slogan-wrapper
+            inline-size: 21em
+   
