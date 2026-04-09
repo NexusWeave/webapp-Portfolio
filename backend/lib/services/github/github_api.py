@@ -22,6 +22,7 @@ class GithubAPI(AsyncAPIClientConfig):
     """ Github API Configuration
         API : https://api.github.com/
     """
+    __VERSION__ = 'v1.2.0'
 
     def __init__(self, URL:str, KEY:str):
         super().__init__(URL=URL, KEY=KEY)
@@ -37,7 +38,7 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, endpoint)
 
         response: httpx.Response
-        try: response = await self.wait_in_queue(self.ApiCall(path, head=self.HEADER, params=params))
+        try: response = await self.wait_in_queue(self.api_call(path, head=self.HEADER, params=params))
 
         except Exception as e:
             LOG.error(f"Error fetching data from endpoint: {endpoint} - {e.__class__.__name__} - {str(e)}")
@@ -86,7 +87,7 @@ class GithubAPI(AsyncAPIClientConfig):
             LOG.debug(f"Fetching next page of repositories from URL: {next_page} {_next_page_}")
 
             try: 
-                response = await self.wait_in_queue(self.ApiCall(next_page, head=self.HEADER))
+                response = await self.wait_in_queue(self.api_call(next_page, head=self.HEADER))
 
             except Exception as e:
                 LOG.error(f"Error fetching next page: {e.__class__.__name__} - {str(e)}")
@@ -98,7 +99,7 @@ class GithubAPI(AsyncAPIClientConfig):
     async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, List[str] | str | object]]:
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
         
-        response: httpx.Response = await self.wait_in_queue(self.ApiCall(path, head = self.HEADER))
+        response: httpx.Response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
         languages: List[Dict[str, List[str] | str | object]] = []
         json: Dict[str, str] = response.json()
     
@@ -118,7 +119,7 @@ class GithubAPI(AsyncAPIClientConfig):
         """ Analyzes the repository data to determine its characteristics. """
         response: httpx.Response
         try:
-            response = await self.wait_in_queue(self.ApiCall(trees_url, head=self.HEADER))
+            response = await self.wait_in_queue(self.api_call(trees_url, head=self.HEADER))
 
         except Exception as e:
             LOG.error(f"Error analyzing repository: {e.__class__.__name__} - {str(e)}\n")

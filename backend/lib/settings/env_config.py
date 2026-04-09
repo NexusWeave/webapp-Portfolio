@@ -32,6 +32,9 @@ class Config(BaseSettings):
     HEAVY_TOKEN: str = ""
     HEAVY_WORKOUTS: str = ""
 
+    #   AI Specialist
+    SPECIALIST_LINKS: List[str] = []
+
     #   Database
     PG_USER: str = ""
     PG_HOST: str = ""

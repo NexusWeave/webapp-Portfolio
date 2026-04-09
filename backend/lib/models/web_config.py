@@ -21,5 +21,5 @@ class WebAPIModel(ABC):
     server_error: List[int] = [500, 501, 502, 503, 504]
 
     @abstractmethod
-    def ApiCall(self, endpoint: str, head: Dict[str, str]) ->  Dict[str, object] | object:
+    def api_call(self, endpoint: str, head: Dict[str, str]) ->  Dict[str, object] | object:
         pass

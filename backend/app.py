@@ -1,16 +1,19 @@
 #   Standard Libraries
 import os, __future__, uvicorn
 from datetime import datetime
-from typing import Dict, Optional, List, Sequence
+from typing import Dict, Optional, List, Sequence, Any, Union
 
 #   Third-Party Libraries
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
+from fastapi.routing import APIRoute
 
 #   Internal Libraries
+from backend.lib.services.scanner.scanner_api import Scanner
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
+from lib.utils.health_check import check_specializt_api, check_github_database_repositories
 
 from lib.models.github_model import RepositoryModel
 from lib.models.announcement_model import AnnouncementModel
@@ -20,6 +23,8 @@ from lib.services.github.repository_handler import GithubDatabaseHandler
 from lib.services.announcements.announcements import AnnouncementsService
 
 from lib.settings.database_config import ASynchronousDatabaseConfig
+
+NESTED_DICTS = Union[str, Dict[str, Any], bool, int]
 
 #   Initialize Enviorment variables
 load_dotenv()
@@ -51,6 +56,35 @@ PATH = f"/api/{VERSION}"
 def read_root():
     return {"message": "END POINT NOT FOUND !"}
 
+@app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.", name="Health Check")  
+async def health_check() -> NESTED_DICTS:
+    """
+        Health Check Endpoint
+    """
+    LOG.info("Health check endpoint accessed.")
+
+    dictionary: NESTED_DICTS = {
+        "ApiRunning": True,
+        "EndpointsAvailable": f"{len(app.routes)}",
+        "ApiName": ENVIRONMENT.API_NAME,
+        "version" : ENVIRONMENT.API_VERSION,
+        'GET' : [],
+        'POST': []
+        }
+
+    health_check_chart = {
+        'AI-specialist' : await check_specializt_api(),
+        'Fetch Repositories' : await check_github_database_repositories()
+    }
+
+    for route in app.routes:
+        if isinstance(route, APIRoute) and hasattr(route, 'methods') and not route.name == 'Health Check':
+            model_name = str(route.response_model) if route.response_model else "None"
+            if 'GET' in route.methods:
+                dictionary["GET"].append({ f"{route.name}": { 'path': route.path, 'model': model_name, 'methods': list(route.methods), 'status': health_check_chart.get(route.name) if health_check_chart.get(route.name) else "Not Connected" } })
+    
+    return dictionary
+
 @app.get(f"{PATH}/blogs/heavy/", tags=["exercise", "blogs"])
 async def get_heavy_data() ->None:
     pass
@@ -74,35 +108,16 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
 
     return response
 
-@app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"])
+@app.get(f"{PATH}/repository", response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"], name='Fetch Repositories' )
 async def fetch_repositories(request: Request) -> Sequence[RepositoryModel] | Dict[str, str]:
     DB_CONTEXT: ASynchronousDatabaseConfig = request.app.state.db
 
     async with DB_CONTEXT.SessionLocal() as session:
         HANDLER = GithubDatabaseHandler(session = session)
+
         return await HANDLER.fetch_all_repositories()
 
-@app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.")  
-async def health_check() -> Dict[str, str | bool]:
-    """
-        Health Check Endpoint
-    """
-    LOG.info("Health check endpoint accessed.")
-
-    dictionary: Dict[str, str | bool] = {
-        "ApiRunning": True,
-        "EndpointsAvailable": "4",
-        "ApiName": ENVIRONMENT.API_NAME,
-        "version" : ENVIRONMENT.API_VERSION,
-        "status": "OK", "message": "API is healthy and running.",
-        }
-
-    dictionary["github_api"] = "Responsive" if await check_github_api() else "Unresponsive"
-    dictionary['Crawler'] = "Responsive" if await check_specializt_api() else "Unresponsive"
-    
-    return dictionary
-
-@app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database")
+@app.get(f"{PATH}/handleRepositories", tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database", name= 'Synchronize Repositories')
 async def handle_repositories(request: Request) -> Dict[str, str]:
 
     try:
@@ -115,47 +130,28 @@ async def handle_repositories(request: Request) -> Dict[str, str]:
 
     return {"message": "All Repositories has been successfully synced with database."}
 
-async def check_github_api() -> bool:
-    """ Checks the availability of the GitHub API. """
-    from lib.services.github.github_api import GithubAPI
+@app.get(f"{PATH}/specialist", tags=["AI", "specialist"], summary="Upserts the Database", description="Upserts the Database", name='AI-specialist')
+async def specialist(request: Request) -> List[Dict[Any, Any]]:
+    list_of_links: List[str] = ENVIRONMENT.SPECIALIST_LINKS
 
-    URL = ENVIRONMENT.GITHUB_REST
-    TOKEN = ENVIRONMENT.GITHUB_TOKEN
+    json: List[Dict[Any, Any]] = []
+    for i in list_of_links:
+        scan = Scanner(URL = i, KEY = None)
+        
+        try:
+            status = await scan.check_status()
+            if not status : raise Exception(f"Status check failed - {status}")
+            dictionary = await scan.scrape_information(url=i)
+            json.append(dictionary)
+        except Exception as e:
+            LOG.critical(f"AI-specialist Endpoint : failed with error\n {e.__class__.__name__} - {e}")
+            json.append({"code": "500","message": f"{e}"})
+            return json
 
-    try:
-        if not URL or not TOKEN:
-            raise ValueError("GITHUB_REST and GITHUB_TOKEN must be set in the environment variables.")
-    
-    except ValueError as e:
-        LOG.error(f"Error initializing GithubAPI: {e.__class__.__name__} - {str(e)}")
-        return False
-    
-    github = GithubAPI(URL=URL, KEY=TOKEN)
-    PERSONAL_ENDPOINT: str = f"{ENVIRONMENT.PERSONAL_GITHUB_REST_API}{ENVIRONMENT.GITHUB_PARAMS}"
+    return json
 
-    try:
-        await github.fetch_data(endpoint=PERSONAL_ENDPOINT)
-    
-    except Exception as e:
-        LOG.error(f"GitHub API check failed: {e.__class__.__name__} - {str(e)}, {URL}{PERSONAL_ENDPOINT}")
-        return False
 
-    return True
-
-async def check_specializt_api() -> bool:
-    from lib.settings.api_config import Scanner
-
-    cb = Scanner(URL = 'https://krigjo25.no', KEY = '')
-    response = None
-    try:
-        response = await cb.fetch_web_rules()
-        if not response: raise Exception('Response is none')
-
-    except Exception as e:
-        LOG.error(f"Specialist API check failed: {e.__class__.__name__} - {str(e)}")
-        return False
-
-    return True
+    return {"message": "All Repositories has been successfully synced with database."}
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
