@@ -13,7 +13,7 @@ export function fetchTechType(array: string[] | undefined): TechStack[]
         const techMap = techStackMap.reduce((map, obj) => { obj.codes.forEach(code => { map[code.toUpperCase()] = obj.name.toUpperCase(); }); return map; }, {} as Record<string, string>);
         const category = techMap[key];
 
-        try { if (!category) throw new Error(`TechUtils - No category found for key: ${key}`); } catch (error) { console.error(error); }
+        try { if (!category) throw new Error(`No category found for key: ${key}`); } catch (error) { console.error(error); }
 
         if(category) { const obj: TechStack = { label: key ?? 'N/A', category: category }; JAMstack.push(obj); }
         //console.log("--- TechUtils ---")
