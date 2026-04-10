@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.1...v1.15.2) (2026-04-10)
+
+
+### Bug Fixes
+
+* **APP:** Resolved Import Error ([977aae6](https://github.com/NexusWeave/webapp-Portfolio/commit/977aae61990c06153948cb5fdd8c60cadf5cea0e))
+
 ## [1.15.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.0...v1.15.1) (2026-04-10)
 
 
