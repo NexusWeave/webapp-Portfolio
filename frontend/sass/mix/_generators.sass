@@ -1,10 +1,12 @@
 @use 'sass:map' as map
-@use '../utils/mixins' as mix
+@use './mixins' as mix
 @use '../colors/colors' as color
+
 @use '../mappings/tags' as tag-map
 @use '../mappings/icons' as icon-map
 @use '../mappings/tech-icons' as tech-map
 @use '../mappings/flexbox' as flexbox-mapping
+
 
 @mixin tag-generator()
     @each $category, $maps in tag-map.$tags
