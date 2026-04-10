@@ -16,7 +16,6 @@
             "Database",
             "Env",
             "Docker",
-            "Sass",
             "AUTO",
             "Deps",
             "Move",
@@ -44,7 +43,7 @@
             "Upgrade",
             "Store",
             "SEO",
-            "Google-Analystics",
+            "Google-Analytics",
             "Diagram",
             "API",
             "Tests",
@@ -54,7 +53,9 @@
             "Chatbot",
             "Media",
             "Blog",
-            "article"
+            "Article",
+            "Routing",
+            "Nav"
         ],
     },
 }
