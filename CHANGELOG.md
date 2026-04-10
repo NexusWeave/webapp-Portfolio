@@ -1,3 +1,10 @@
+## [1.15.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.2...v1.15.3) (2026-04-10)
+
+
+### Bug Fixes
+
+* **Docker:** 🐛 Temporary remove installation of litestream. ([50ab00b](https://github.com/NexusWeave/webapp-Portfolio/commit/50ab00b130d59831b5b7551f15bcca70f936a3f7))
+
 ## [1.15.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.1...v1.15.2) (2026-04-10)
 
 
