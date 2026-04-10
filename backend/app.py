@@ -52,6 +52,9 @@ LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'{ENVIRONMENT.API_VERSION}\' 
 VERSION: str = ENVIRONMENT.API_VERSION
 PATH = f"/api/{VERSION}"
 
+@app.get("/")
+def read_root(): return {"status": "404","message": "Page not found"}
+
 @app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.", name="Health Check")  
 async def health_check() -> NESTED_DICTS:
     """
