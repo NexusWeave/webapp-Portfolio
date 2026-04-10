@@ -1,3 +1,10 @@
+## [1.15.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.3...v1.15.4) (2026-04-10)
+
+
+### Bug Fixes
+
+* remove litestream replicate command. ([5bb906e](https://github.com/NexusWeave/webapp-Portfolio/commit/5bb906e81c784c44690486e3c7f4003dfbda3b99))
+
 ## [1.15.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.2...v1.15.3) (2026-04-10)
 
 
