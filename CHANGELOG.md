@@ -1,3 +1,31 @@
+## [1.15.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.1...v1.15.2) (2026-04-10)
+
+
+### Bug Fixes
+
+* **APP:** Resolved Import Error ([977aae6](https://github.com/NexusWeave/webapp-Portfolio/commit/977aae61990c06153948cb5fdd8c60cadf5cea0e))
+
+## [1.15.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.0...v1.15.1) (2026-04-10)
+
+
+### Bug Fixes
+
+* **sitemap:** resolving issue where incorrect path appears in sitemap.xml. ([0d9993d](https://github.com/NexusWeave/webapp-Portfolio/commit/0d9993df5fe5a9aead36b648a4c657d9ad65d98d))
+
+# [1.15.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.14.0...v1.15.0) (2026-04-10)
+
+
+### Bug Fixes
+
+* **layout:** resolved undefined type errors in `Footer.vue`. ([498be04](https://github.com/NexusWeave/webapp-Portfolio/commit/498be04803dd66439a6bb8302a58fd54379fcb6c))
+* **Repos:** resolved an error where the repos disapeared. ([6c5b460](https://github.com/NexusWeave/webapp-Portfolio/commit/6c5b4609995f42773b501989eed11866b7d26812))
+* **Types:** 🐛 Add `@ts-ignore` for Nuxt Content module resolution. ([55e34c7](https://github.com/NexusWeave/webapp-Portfolio/commit/55e34c7d814deb5720c231c9878a2ccd4c8a34c5))
+
+
+### Features
+
+* **Routing:** ✨ Introduce new `logs/tags/[slug]` route. ([ed288fe](https://github.com/NexusWeave/webapp-Portfolio/commit/ed288fec76e0439f44aac6e97c48ee5693713adc))
+
 # [1.14.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.13.0...v1.14.0) (2026-04-09)
 
 
