@@ -1,6 +1,4 @@
-<template>
-<ArticlePage :data="article" :isPage="true" />
-</template>
+<template> <ArticlePage :data="article" :isPage="true" /> </template>
 
 <script lang="ts" setup>
 
