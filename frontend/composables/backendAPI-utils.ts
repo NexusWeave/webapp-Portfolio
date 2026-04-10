@@ -1,8 +1,8 @@
-
 // Configure the backend API base URL
-//import type { GithubRepo } from '@/types/props';
 
-export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<Ref<GithubRepo[]>>
+import type { RepositoryData } from "~/types/props";
+
+export async function fetchRepositories<T>(cacheKey: string): Promise<RepositoryData>
 {
     const {public: env} = useRuntimeConfig();
 
@@ -10,19 +10,10 @@ export async function fetchRepositories<GithubRepo>(cacheKey: string): Promise<R
     const endpoint = '/repository';
     const path = `${env.GCLOUD}${version}${endpoint}`;
 
-    const {data, error} = await useFetch<GithubRepo[]>(path, 
-        {
-            key: cacheKey,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-    });
+    const {data, error} = await useFetch<T>(path, { key: cacheKey, headers: { 'Content-Type': 'application/json' } });
 
-    if (error.value)
-    {
-        console.error(`Error fetching data from ${path}:`, error.value);
-        return {data: ref(null), error };
-    }
-    //console.log(path, data.value)
+    if (error.value) console.error(`Error fetching data from ${path}:`, error.value);
+
     return { data, error }; 
 }
+
