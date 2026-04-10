@@ -1,3 +1,17 @@
+## [1.15.6](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.5...v1.15.6) (2026-04-10)
+
+
+### Bug Fixes
+
+* resolving issue where nuxt can't find logs. ([87f2d0a](https://github.com/NexusWeave/webapp-Portfolio/commit/87f2d0a6840dd63365672ba285f9d91a8652b2b8))
+
+## [1.15.5](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.4...v1.15.5) (2026-04-10)
+
+
+### Bug Fixes
+
+* resolving issue where nuxt can't find logs. ([6f1d356](https://github.com/NexusWeave/webapp-Portfolio/commit/6f1d35604c3b65b0fb930d57c66316e1c8a3518c))
+
 ## [1.15.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.3...v1.15.4) (2026-04-10)
 
 
