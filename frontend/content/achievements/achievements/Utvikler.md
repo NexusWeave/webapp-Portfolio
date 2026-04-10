@@ -8,7 +8,7 @@ techStack:
   - SASS
   - NUXT
   - TYPESCRIPT
-  - GITHUB
+  - GIT
   - MARKDOWN
 ---
 
