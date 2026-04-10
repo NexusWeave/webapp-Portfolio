@@ -1,8 +1,7 @@
 //  Index file for the main SASS styles of the frontend Elements styles
+@use './mix/mixins' as mix
 @use './colors/colors' as color
-@use './utils/mixins' as mix
 
-@forward './utils/layout'
 @forward './views/dev'
 @forward './views/portfolio'
 
@@ -13,11 +12,12 @@
 @forward './utils/buttons'
 @forward './utils/flexbox'
 @forward './utils/timeline'
-@forward './utils/generators'
+
 @forward './utils/navigation'
 @forward './utils/components'
 @forward './utils/tech-content'
 @forward './utils/grid-container'
+
 
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap')
