@@ -55,7 +55,8 @@
             "Blog",
             "Article",
             "Routing",
-            "Nav"
+            "Nav",
+            "Tag"
         ],
     },
 }
