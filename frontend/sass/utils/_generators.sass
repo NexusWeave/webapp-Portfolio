@@ -9,21 +9,31 @@
 @mixin tag-generator()
     @each $category, $maps in tag-map.$tags
         @each $tag, $props in $maps
-            $icon: null//map.get($props, icon)
+            $icon: map.get($props, icon)
             $color: map.get($props, color)
             $hover-color: map.get($props, hover)
             $background-color: map.get($props, background)
-
+            
+            @if not $color
+                $color: color.$off-white
+            @if not $hover-color
+                $hover-color: $background-color
+            @if $icon
+                .#{$tag}
+                    &:before
+                        content: $icon
+    
             .#{$tag}
+
                 text-align: center
                 padding: .2em .5em
                 border-radius: .5em
                 @include mix.background-style($bg-color: $background-color, $color:$color)
 
-            @if $icon
-                .#{$tag}
-                    &:before
-                        content: $icon
+                &:hover
+                    @include mix.background-style($bg-color: $hover-color, $color:$color)
+                
+
 
 @mixin icon-generator()
     @each $category, $maps in icon-map.$icons
