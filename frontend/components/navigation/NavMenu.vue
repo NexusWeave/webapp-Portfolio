@@ -1,6 +1,6 @@
 <template>
     <nav :class="[cls[0], 'flex-wrap-row']">
-        <ul class="flex-row-align-items-center">
+        <ul class="flex-align-items-flex-end-justify-center">
             <li v-for="item in data" :key="item.id">
                 <NuxtLink v-if="hasRouterLink" :to="(item as RouterItem).path">
                     {{ item.label }}
