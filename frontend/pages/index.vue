@@ -2,15 +2,16 @@
     <article class="article-wrapper flex-column">
         <h2> Logger fra mine prosjekter </h2>
         <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly">
-            <NavigationButton v-if="currentPage > 1" :data="PageButtons[0]"/>
+            <NavigationButton v-if="currentPage > 1" :data="lastPageBtn" :cls="['button', 'pagination-btn']"/>
                 <span> {{ currentPage }} / {{ totalPages }}</span>
-            <NavigationButton v-if="currentPage < totalPages" :data="PageButtons[1]"/>
+            <NavigationButton v-if="currentPage < totalPages" :data="nextPageBtn" :cls="['button', 'pagination-btn']"/>
         </section>
+
         <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
                 <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
                 <ArticleHead :article="post" />
             </section>
-            
+
         </section>
     </article>
 
@@ -30,9 +31,7 @@
             'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
     </section>
-    <section>
-        <RepositoryPortfolio />
-    </section>
+    <RepositoryPortfolio /> 
 </template>
 <script setup lang="ts">
 
@@ -41,9 +40,12 @@
     
     //  --- Import dependencies & Types
     import { ref, computed } from 'vue';
-    import { fetchCollection, mapTimeline } from '#imports';
+    import { fetchCollection } from '#imports';
+    
     import { blogPagination } from '@/composables/pagination';
+    import { mapTimeline } from '@/composables/maps/mapTimeline';
 
+    import type { ButtonItem } from '~/types/navigation';
     import type { DevPostsCollectionItem, AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 
@@ -60,20 +62,17 @@
     const rawPosts = await fetchCollection<DevPostsCollectionItem>(devPostPath, devPostCache)
     
     const n = 2; // Number of posts per page
+    const currentPage: Ref<number> = ref(1);
     const mappedPosts =  computed(() => {currentPage.value; return blogPagination(rawPosts.value, currentPage.value, n)});
     
     //  --- Pagination Logic
-    const currentPage = ref<number>(1);
     const totalPages = computed(() => { if (rawPosts.value) {return Math.ceil(rawPosts.value.length / n); } return 0; });
-    const PageButtons = computed(() =>
-    [
-        { id: 0, label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- },
-        { id: 1, label: 'Neste', cls: ['button', 'pagination-btn'], action: () => currentPage.value ++ }
-    ]);
+    const lastPageBtn = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
+    const nextPageBtn = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
 
     
     //  --- Debugging Logic
     //console.log("Processed timeline:", academicTimeline.value);
     //console.log("Achievements data on load:", achievementsTimeline.value);
-    console.log("Mapped posts - ", mappedPosts.value)
+    //console.log("Mapped posts - ", mappedPosts.value)
 </script>

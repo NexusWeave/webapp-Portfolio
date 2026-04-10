@@ -4,11 +4,11 @@ organization: SosEnt Norge
 org_link: 'https://sosent.no'
 title: Utvikler
 techStack:
-  - CMS
+  - TinaCMS
   - SASS
   - NUXT
   - TYPESCRIPT
-  - GITHUB
+  - GIT
   - MARKDOWN
 ---
 

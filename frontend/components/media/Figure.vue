@@ -1,9 +1,9 @@
 <template>
-        <picture>
+        <picture v-if="isImageModern || isImageStandard">
             <figure :class="cls[0]">
                 <source v-if="!!isImageModern" :srcset="data.srcset" :type="'image/' + data.type">
                 <img v-if="!!isImageStandard" :src="data.src" :alt="data.alt" :class="cls[1]" :type="'image/' + data.type" :title=data.alt>
-                <figcaption v-if="!!isFigure">{{ caption ? caption : '' }}</figcaption>
+                <figcaption>{{ caption ?? data.alt }}</figcaption>
             </figure>
         </picture>
 </template>
@@ -12,19 +12,15 @@
 
     //  Importing dependencies & types
     import { computed } from 'vue';
-    import type { FigureProps, FigureItem } from '@/types/props';
+
+    import type { FigureProps, FigureItem } from '@/types/media';
 
     //  --- Props Definition Logic
-    const props = withDefaults(defineProps<FigureProps>(), 
-    {
-        data: () => ({} as FigureItem),
-        cls: () => (['figure', 'figure-img']),
-    });
+    const props = withDefaults(defineProps<FigureProps>(), { data: () => ({} as FigureItem), cls: () => (['figure', 'figure-img']) });
 
     const cls = computed(() => props.cls);
     const data = computed(() => props.data as FigureItem);
-    const isFigure = computed(() => { return !!data.value && !!data.value.caption; });
-    const caption = computed(() => { return isFigure.value ? data.value.caption : null; });
+    const caption = computed(() => {return !!data.value && !!data.value.caption ? data.value.caption : null; });
 
     const imageFormats = { img: ['jpg', 'jpeg', 'png', 'svg'], modern: ['webp', 'avif'] };
 

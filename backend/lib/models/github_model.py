@@ -19,7 +19,6 @@ class LanguageModel(BaseModel):
 
     model_config = ConfigDict(from_attributes = True)
 
-
 class LanguageAssociationModel(BaseModel):
     lang_id: int = Field(..., description = "Language ID", json_schema_extra = {"example":1})
     code_bytes: int = Field(..., description = "Code Bytes", json_schema_extra = {"example":2048})
@@ -65,12 +64,8 @@ class RepositoryModel(BaseModel):
                     {
                         "bytes": assec.code_bytes,
                         "label": assec.language.language, 
-                        "img": {
-                            "type":'svg',
-                            "alt": f'Logo for {assec.language.language}',
-                            "src": f'/media/tech-lang-icons/{assec.language.language}.svg'
-                        }
-                        })
+                        "img": { "type":'svg', "caption": ' ', "alt": f'A Visual Logo for {assec.language.language}', "src": f'/media/tech-lang-icons/{assec.language.language}.svg', "srcset": f'/media/tech-lang-icons/{assec.language.language}.svg' }
+                    })
         return languages
     
     @computed_field
@@ -115,9 +110,7 @@ class RepositoryModel(BaseModel):
 
     @computed_field
     def date(self) -> Dict[str, str]:
-        date: Dict[str, str] = {
-            "created": self.created_at.strftime("%d-%m-%Y")
-        }
+        date: Dict[str, str] = { "created": self.created_at.strftime("%d-%m-%Y") }
         return date
 
     @computed_field

@@ -1,9 +1,7 @@
 
 //  --- Import & types logic
-import type { TimelineItem } from '~/types/timeline';
-import type { ReferenceItem } from '~/types/references';
-import type { DateItem, FigureItem } from '~/types/props';
-import type { AcademicCollectionItem, ReferenceCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
+import type { DateItem } from '~/types/date';
+import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 
 type CMSArticleCollectionItem = AcademicCollectionItem | AchievementsCollectionItem;
@@ -37,80 +35,21 @@ export function sortbyDate<T extends CMSArticleCollectionItem>(data: T[], sort: 
         });
 }
 
-export function setDateFormat(data:DateItem) : DateItem
+export function setDateFormat(data:DateItem) : DateItem | undefined
 {
     const time = new Intl.DateTimeFormat('nb-NO', { hour: '2-digit', minute: '2-digit' });
     const date = new Intl.DateTimeFormat('nb-NO', { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
-
-    const dateData =
-    {
-        delimiter : 'dot',
-        date: data.date ? date.format(new Date(data.date)) : null,
-        time: data.date ? time.format(new Date(data.date)) : null,
-        text : data.updated ? `Oppdatert` : `Publisert`,
-        updated: data.updated ? date.format(new Date(data.updated)) : null,
-    };
+    if (!data.date) return undefined;
+    const dateData:DateItem = { delimiter : 'dot', date: data.date ?? ' ' ? date.format(new Date(data.date)) : null, time: data.date ? time.format(new Date(data.date)) : null, text : data.updated ? `Oppdatert` : `Publisert`, updated: data.updated ? date.format(new Date(data.updated)) : null };
     return dateData;
 }
 
-export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[] {
-    if (!data.value) return [];
+export const useCarousel = (length:number, interval: number = 5000) => {
+    const index = ref(Math.floor(Math.random() * length));
 
-    let AUTOINCREMENT: number = 0;
-    const timeline = sortbyDate<AcademicCollectionItem>(data.value);
-
-    return timeline.map((doc: AcademicCollectionItem): TimelineItem => {
-        const techStack = fetchTechType(doc.techStack);
-        let tech: FigureItem[] | undefined = undefined;
-
-        if (techStack && techStack.length > 0) {
-            tech = techStack.map((item) => {
-                const itemType = item.type.toLowerCase();
-                const label = item.label;
-
-                return {
-
-                    type: 'svg',
-                    frameWork: label,
-                    techType: itemType,
-                    alt: 'Image for ' + label,
-                    src: `/media/tech-lang-icons/${label.toLowerCase()}.svg`,
-                    srcset: `/media/tech-lang-icons/${label.toLowerCase()}.svg`
-                } as FigureItem;
-            });
-        }
-
-        return {
-            techStack: tech as FigureItem[],
-            id: AUTOINCREMENT++,
-            body: doc.body || undefined, 
-            name: doc.tag + "-Timeline",
-            title: doc.title || undefined, 
-            isVisible: (AUTOINCREMENT - 1) === 0,
-            date: { created: doc.created, end: doc.end },
-            description: doc.meta.description || undefined,
-            location: { name: doc.location, anchor: { label: doc.location, href: doc.loc_link || undefined } },
-            organization: { name: doc.organization, anchor: { label: doc.organization, href: doc.org_link } },
-            reference: { name: doc.references, anchor: { label: doc.references, href: doc.ref_link || undefined } },
-        } as unknown as TimelineItem;
-    });
-}
-
-export function mapReference(data: Ref<ReferenceCollectionItem[]>): ReferenceItem[]
-{
-    let AUTOINCREMENT:number = 0;
-    const randomID = Math.floor(Math.random() * data.value.length);
-    return data.value.map((doc:ReferenceCollectionItem) => {
-        return {
-            id: AUTOINCREMENT++,
-            quote: `"${doc.quote}"`,
-            anchor: 
-            {
-                type: ['pdf'],
-                href: doc.link,
-                label: doc.title,
-            },
-            isVisible: AUTOINCREMENT - 1 === randomID,
-        } as ReferenceItem;
-    });
-}
+    let timer: ReturnType<typeof setInterval> | null = null;
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+    const start = () => { if (length <= 1) return; timer = setInterval(() => { index.value = (index.value + 1) % length }, interval) };
+    onUnmounted(() => stop());
+    return { index, start};
+    };

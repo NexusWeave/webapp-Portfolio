@@ -1,13 +1,11 @@
-<template>
-<ArticlePage :data="article" :isPage="true" />
-</template>
+<template> <ArticlePage :data="article" :isPage="true" /> </template>
 
 <script lang="ts" setup>
 
     //  --- Import dependencies & types
     import { useRoute } from 'vue-router';
     import { fetchCollection } from '#imports';
-    import { mapBlogData } from '@/composables/maps/blogPost';
+    import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
     import type { DevPostsCollectionItem } from '@nuxt/content';
     
