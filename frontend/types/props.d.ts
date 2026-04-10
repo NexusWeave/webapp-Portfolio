@@ -1,32 +1,6 @@
-//  --- Imports ---
-import type { TimelineItem } from "./timeline";
-
-
-//  --- Timeline component ---
-export interface TimelineProps
-{
-    title: string;
-    range?: number;
-    cls?: Array<any>;
-    data: TimelineItem[];
-}
-
-export interface FilterProps
-{
-    cls?: Array<any>;
-    data: Record<string, any>;
-}
-
-export interface TimelineCardProps
-{
-    cls?: Array<any>;
-    data: TimelineItem;
-    isVisible?: boolean;
-}
 
 
 //  --- Misc Props ---
-export interface DateYearProps{ data: string; isVisible: boolean; }
 
 export interface listData
 {
@@ -46,14 +20,7 @@ export interface listData
         }
     }
 }
-export interface DateItem
-{
-    time?: string | null;
-    date?: string | null;
-    text?: string;
-    delimiter?: string;
-    updated?: Date | string | null;
-}
+
 
 export interface listProps
 {
