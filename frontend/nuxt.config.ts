@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-gtag'
   ],
-  routeRules: { '/artikkel/**': { prerender: true } },
+  routeRules: { '/artikkel/records/**': { prerender: true } },
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
   runtimeConfig:{ public:{ GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080' } },
   nitro: { preset: 'static', prerender: { crawlLinks: true, routes: ['/sitemap.xml', '/'] } },
@@ -39,7 +39,7 @@ export default defineNuxtConfig({
             routes.push(...await getRoutes(join(dir, entry.name)))
           } else if (entry.name.endsWith('.md')) {
             const slug = entry.name.replace(/\.md$/, '').toLowerCase()
-            routes.push(`/artikkel/${slug}`)
+            routes.push(`/logs/records/${slug}`)
           }
         }
         return routes
@@ -47,7 +47,6 @@ export default defineNuxtConfig({
 
       try {
         const routes = await getRoutes(join(srcDir, 'content', 'posts'))
-        console.log(`[prerender] Fant ${routes.length} artikkelruter`)
         nitroConfig.prerender ??= {}
         nitroConfig.prerender.routes = [
           ...(nitroConfig.prerender.routes ?? []),
