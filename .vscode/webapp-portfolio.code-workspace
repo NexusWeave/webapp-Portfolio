@@ -52,7 +52,9 @@
             "Utils",
             "WebScan",
             "Chatbot",
-            "Media"
+            "Media",
+            "Blog",
+            "article"
         ],
     },
 }
