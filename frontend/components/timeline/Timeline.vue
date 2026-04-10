@@ -31,12 +31,7 @@
     import type { TimelineItem, TimelineProps } from '~/types/timeline';
 
     //  --- Props & reactive logic
-    const props = withDefaults(defineProps<TimelineProps>(),
-    {
-
-        cls: () => ['component-blue', 'timeline-container',
-        'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'],
-    });
+    const props = withDefaults(defineProps<TimelineProps>(), { cls: () => ['component-blue', 'timeline-container', 'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'] });
 
     const cls = computed(() => 
     {

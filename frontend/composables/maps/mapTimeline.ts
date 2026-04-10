@@ -1,4 +1,4 @@
-import type { FigureItem } from '~/types/props';
+import type { FigureItem } from '~/types/media';
 import type { TimelineItem } from '~/types/timeline';
 import type { AcademicCollectionItem } from '@nuxt/content';
 
@@ -16,8 +16,7 @@ export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[]
             tech = techStack.map((item) => {
                 const label = item.label.toLowerCase();
                 const category = item.category.toLowerCase();
-
-                return { type: 'svg', frameWork: label, category: category, alt: 'A visual representation of ' + label, src: `/media/tech-lang-icons/${label}.svg`, srcset: `/media/tech-lang-icons/${label}.svg` } as FigureItem;
+                return { type: 'svg', frameWork: label, category: category, alt: 'A visual representation of ' + label, src: `/media/tech-lang-icons/${label}.svg`, srcset: `/media/tech-lang-icons/${label}.svg`, caption: " " } as FigureItem;
             });
         }
 

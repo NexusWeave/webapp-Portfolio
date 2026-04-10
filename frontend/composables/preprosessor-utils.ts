@@ -1,6 +1,6 @@
 
 //  --- Import & types logic
-import type { DateItem } from '~/types/props';
+import type { DateItem } from '~/types/date';
 import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 
@@ -35,19 +35,12 @@ export function sortbyDate<T extends CMSArticleCollectionItem>(data: T[], sort: 
         });
 }
 
-export function setDateFormat(data:DateItem) : DateItem
+export function setDateFormat(data:DateItem) : DateItem | undefined
 {
     const time = new Intl.DateTimeFormat('nb-NO', { hour: '2-digit', minute: '2-digit' });
     const date = new Intl.DateTimeFormat('nb-NO', { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
-
-    const dateData =
-    {
-        delimiter : 'dot',
-        date: data.date ? date.format(new Date(data.date)) : null,
-        time: data.date ? time.format(new Date(data.date)) : null,
-        text : data.updated ? `Oppdatert` : `Publisert`,
-        updated: data.updated ? date.format(new Date(data.updated)) : null,
-    };
+    if (!data.date) return undefined;
+    const dateData:DateItem = { delimiter : 'dot', date: data.date ?? ' ' ? date.format(new Date(data.date)) : null, time: data.date ? time.format(new Date(data.date)) : null, text : data.updated ? `Oppdatert` : `Publisert`, updated: data.updated ? date.format(new Date(data.updated)) : null };
     return dateData;
 }
 
