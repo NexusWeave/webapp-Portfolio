@@ -5,8 +5,10 @@ asyncpg
 aiofiles
 pydantic
 pip-tools
+setuptools
 sqlAlchemy
 pydantic-core
+beautifulsoup4
 pydantic-settings
 
 pytest-cov
