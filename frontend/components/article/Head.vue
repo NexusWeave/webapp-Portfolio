@@ -1,26 +1,15 @@
 <template>
-    <NavigationButton  v-if="isArticlePage" 
-        :data="anchor"
-        :cls="['orange-btn']"
-    />
+    <NavigationButton  v-if="isArticlePage"  :data="button" :cls="['orange-btn']"/>
 
     <section :class="[cls[0], {'article-section': !!isArticlePage}]">
         <section :class="[{'blog-header': !isArticlePage}, {'ingress-header': isArticlePage}]">
             <h1> {{ article.title }}</h1>
             <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
-                <span v-if="!!article.date" :class="cls[3]">
-                    Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
-                    <UtilsTags v-for="(tag) in article.tags"
-                        :data="tag"
-                    />
-
+                <span v-if="!!article.date" :class="cls[3]"> Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
+                <UtilsTags v-for="(tag) in article.tags" :data="tag" />
             </p>
             <MDC :value="article.ingress" class="ingress-content" />
-            <NavigationNavMenu v-if="!isArticlePage && !!article.anchor" toggle="router"
-            :data="article.anchor"
-            :cls="[
-                ['nav-list', 'flex-wrap-row-align-items-center'],
-                ['nav-item'], ['read-more']]"
+            <NavigationNavMenu v-if="!isArticlePage && !!article.anchor" :data="article.anchor" :cls="['nav-bar', 'read-more']"
         />
         </section>
     </section>
@@ -39,10 +28,11 @@
     const cls = props.cls;
     const article = computed(() => props.article);
     const isArticlePage = computed(() => props.isArticlePage);
-    const anchor = computed<ButtonItem>(() => { if (isArticlePage.value) return { label: 'Gå tilbake', type: 'button', action: () => { window.history.back() }}; return {} });
+
+    const button = computed<ButtonItem>(() => {  if (isArticlePage.value) return  { label: 'Gå tilbake', action: () => { window.history.back(); }}; return {} });
 
     //  --- Debugging logic
-    //console.log("Article Header Component - Anchor :", anchor.value);
+    //console.log("Article Header Component - Button :", button.value);
     //console.log("Article Header Component - isNewsPage :", isNewsPage.value);
     //console.log("Article Header Component - isArticlePage :", isArticlePage.value);
     //console.log("Article Header Component - Article :", article);

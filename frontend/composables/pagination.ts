@@ -1,4 +1,4 @@
-import { mapBlogData } from './maps/blogPost';
+import { mapBlogData } from './maps/mapBlogPost';
 
 import type { DevPostsCollectionItem } from '@nuxt/content';
 
