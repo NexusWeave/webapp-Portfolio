@@ -24,7 +24,6 @@ export interface TimelineCardProps
     isVisible?: boolean;
 }
 
-
 //  --- Carousel component ---
 export interface CarouselProps
 {
@@ -42,36 +41,7 @@ export interface CarouselButton
 
 
 //  --- Misc Props ---
-export interface DateYearProps
-{
-    isVisible: boolean;
-    data: string;
-}
-
-export interface Anchor
-{
-    label: string;
-    href : string;
-    type : string[];
-    img? : FigureItem;
-    
-}
-
-export interface FigureItem
-{
-    src : string;
-    alt : string;
-    id? : string;
-    type : string;
-    srcset? : string;
-    caption? : string;
-}
-
-export interface FigureProps
-{
-    cls?   : string[];
-    data    : Record<FigureItem>;
-}
+export interface DateYearProps{ data: string; isVisible: boolean; }
 
 export interface listData
 {
@@ -99,18 +69,6 @@ export interface listProps
     cls?: Array<string | string[]>;
 }
 
-export interface iconProps { cls?: string[]; }
-
-export interface NavProp
-{
-    totalPage?: number;
-    activePage?: number;
-    toggle: 'router' | 'anchor' | 'pagination';
-
-    data: Array<Record<string, any>> | Record<string, any>;
-    cls?: Array<string | string[] | Array<string | string[]>>;
-}
-
 export interface GithubRepo
 {
     
@@ -127,11 +85,7 @@ export interface GithubRepo
     languages: Array<{img: FigureItem[]; label: string, bytes: number}>;
 }
 
-export interface RepoProps
-{
-    data: GithubRepo;
-    cls?: Array<string | string[] | Array<string | string[]>>;
-}
+export interface RepoProps { data: GithubRepo; cls?: Array<string | string[] | Array<string | string[]>>; }
 
 export interface ProgressProps {
     value: number;
@@ -140,12 +94,6 @@ export interface ProgressProps {
     cls?: string[];
 }
 
-export interface PaginationProps
-{
-    activePage?: number;
-    totalPage?: number;
-    cls?: string[];
-}
 
 export interface DateItem
 {

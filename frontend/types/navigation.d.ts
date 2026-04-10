@@ -1,55 +1,17 @@
-export interface RouterItem
-{
-    type: string[];
-    path: string;
-    order: number;
-    label: string;
-    anchor?: Anchor;
-}
-export interface Anchor
-{
-    href: string[];
-    label?: string;
-    type: string[];
-    img?: FigureItem;
-}
-export interface FigureItem
-{
-    src: string;
-    alt: string;
-    type: string;
-    srcset?: string;
-    caption?: string;
-}
+import type { FigureItem } from '~/types/media';
 
-interface NavigationItem
-{
-    
+interface BaseItem {
     id?: string;
-    type: string;
-    path?: string;
     label?: string;
-    anchor: Anchor;
+    cls?: string[];
+    type?: string[];
 }
 
-export interface NavigationProp
-{
-    cls?: string[] | Array<string[]>;
-    
-    data?: NavigationItem | NavigationItem[] | RouterItem[];
-}
+export interface RouterItem extends BaseItem { path: string; order: number; }
+export interface AnchorItem extends BaseItem { href: string; media?: FigureItem; isDownload?: boolean; isDisabled?: boolean;}
+export interface ButtonItem extends BaseItem { disabled?: boolean; anchor?: AnchorItem; action?: () => void; type?: "submit" | "reset"; }
 
-export interface ButtonItem
-{
-    cls?: string[];
-    label?: string;
-    anchor?: Anchor;
-    action?: () => void;
-    disabled?: boolean;
-    type?: "button" | "submit" | "reset";
-}
-export interface ButtonProps
-{
-    cls?: string[];
-    data: ButtonItem
-}
+export interface ButtonProps { cls?: string[]; data: ButtonItem; }
+export interface AnchorProps { data:  AnchorItem; cls?: string[]; }
+export interface PaginationProps { activePage?: number; totalPage?: number; cls?: string[]; }
+export interface NavigationProp { cls?: string[]; data:  (AnchorItem[] | RouterItem[]); }
