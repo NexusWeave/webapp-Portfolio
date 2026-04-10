@@ -25,4 +25,5 @@ ENV PORT=8080
 ENV PYTHONPATH=/app:/app/fastAPI
 #ENV SQLITE_DB_PATH=/app/data/db/chatbot.db
 
-CMD ["sh", "-c", "litestream replicate -exec \"uvicorn app:app --host 0.0.0.0 --port $PORT\""]
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port $PORT"]
+# "litestream replicate -exec \"uvicorn app:app --host 0.0.0.0 --port $PORT\""]
