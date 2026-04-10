@@ -1,17 +1,8 @@
 <template>
     <span :class="[cls[0]]">
         <span v-if="!!dateObject.text">{{ dateObject.text }}</span>
-
-        <template v-if="dateObject.delimiter">
-            <span :class="dateObject.delimiter">
-                <i :class="cls[cls.length - 1]" :aria-label="dateObject.type"></i>
-            </span>
-        </template>
-
-        <time :datetime="dateObject.current || dateObject.created">
-            {{ dateObject.current || dateObject.created }}
-        </time>
-
+        <span v-if="dateObject.delimiter" :class="dateObject.delimiter"> <i :class="cls[cls.length - 1]" :aria-label="dateObject.type"></i> </span>
+        <time :datetime="dateObject.current || dateObject.current"> {{ dateObject.current || dateObject.current }} </time>
         <MediaIcon :cls="['calendar']"/>
     </span>
 </template>
@@ -20,15 +11,10 @@
     //  Importing dependencies & types
     import { computed } from 'vue';
 
-    //  --- Props Definition Logic
-    interface Props
-    {
-        cls?: Array<string>;
-        data:Record<string, any>;
-        isArticle?: boolean;
-    };
+    import type { DateItem, DateProps } from '@/types/date';
 
-    const props = withDefaults(defineProps<Props>(),
+    //  --- Props Definition Logic
+    const props = withDefaults(defineProps<DateProps>(),
     {
         cls: () => [],
         isArticle: () => false
@@ -37,21 +23,6 @@
     const cls = props.cls;
     const data = computed(() => props.data);
 
-    const norwegianTime = new Intl.DateTimeFormat('nb-NO',
-    {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-    })
-
-    const dateObject =
-    {
-        type: 'date',
-        delimiter: !!data.delimiter ? data.delimiter : 'dot',
-        created: data.created ? norwegianTime.format(new Date(data.created)) : undefined,
-        text : props.isArticle  ? (!!data.current ? 'Oppdatert' : 'Publisert') : undefined,
-        current: !!data.current ? norwegianTime.format(new Date(data.current)) : undefined,
-        
-    }
+    const dateObject: DateItem = setDateFormat(data.value) || {};
     //console.log("Date Component loaded with data: ", dateObject);
 </script>

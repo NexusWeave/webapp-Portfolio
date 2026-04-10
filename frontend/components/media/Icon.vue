@@ -4,7 +4,7 @@
 <script lang="ts" setup>
 
     // --- Importing dependencies ---
-    import type { iconProps } from '@/types/props';
+    import type { iconProps } from '@/types/media';
 
     const props = withDefaults(defineProps<iconProps>(),{ cls: () => ['default'] });
 

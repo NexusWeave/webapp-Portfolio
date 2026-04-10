@@ -10,7 +10,7 @@
 
     //  --- Import & Interfaces logic
     import {computed } from 'vue';
-    import type { FilterProps } from '@/types/props';
+   import type { FilterProps } from '@/types/timeline';
 
     //  --- Props definition
     const props = withDefaults(defineProps<FilterProps>(),

@@ -3,11 +3,11 @@
         <article class="article-wrapper">
             <h2> Mine Personlige Logger </h2>
             <section class="blog-section flex-wrap-row-align-items-center-justify-space-between">
-                <NavigationButton v-if="currentPage > 1" :data="PageButtons[0]"/>
+                <NavigationButton v-if="currentPage > 1" :data="prevPage"/>
                 <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
                     <ArticleHead :article="post" />
                 </section>
-                <NavigationButton v-if="currentPage < totalPages" :data="PageButtons[1]"/>
+                <NavigationButton v-if="currentPage < totalPages" :data="nextPage"/>
             </section>
         </article>
         <section class="flex-wrap-row-justify-space-evenly">
@@ -31,14 +31,15 @@
     import { ref, computed } from 'vue';
     import { fetchCollection } from '#imports';
     import { blogPagination } from '@/composables/pagination';
-    
-    import type {FigureItem } from '@/types/props';
-    import type { DevPostsCollectionItem } from '@nuxt/content';
+
+    import type { ButtonItem } from '~/types/navigation';
+    import type { DevPostsCollectionItem, PersonalProfileCollectionItem } from '@nuxt/content';
+
 
     //  --- Content fetching logic
     const profilePath = 'personalProfile';
     const profileCache = 'personalProfileCache';
-    const biography = await fetchCollection(profilePath, profileCache);
+    const biography = await fetchCollection<PersonalProfileCollectionItem>(profilePath, profileCache);
 
     const personalPostPath = 'personalPosts';
     const personalPostCache = 'personalCache';
@@ -46,16 +47,13 @@
     
     
     //  --- Pagination Logic
-    const n = 3;
-    const mappedPosts = computed(() => {currentPage.value; return blogPagination(rawPersonal.value, currentPage.value, n)});
-    const PageButtons = computed(() =>
-    [
-        { id: 0, label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- },
-        { id: 1, label: 'Neste', cls: ['button', 'pagination-btn'], action: () => currentPage.value ++ }
-    ]);
-
+    const num:number = 3;
+    const mappedPosts = computed(() => {currentPage.value; return blogPagination(rawPersonal.value, currentPage.value, num)});
+    const nextPage = computed<ButtonItem>(() => { return{ label: 'Neste', cls: ['button', 'pagination-btn'], action: () => currentPage.value ++ }});
+    const prevPage = computed<ButtonItem>(() => { return{ label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- }});
+    
     const currentPage = ref<number>(1);
-    const totalPages = computed(() => { if (rawPersonal.value) return Math.ceil(rawPersonal.value.length / n); return 0; });
+    const totalPages = computed<number>(() => { if (rawPersonal.value) return Math.ceil(rawPersonal.value.length / num); return 0; });
 
     //  --- Debugging tools
     //console.log(rawPersonal.value);

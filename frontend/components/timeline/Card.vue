@@ -29,7 +29,7 @@
                 </section>
                 <section v-if="!!data.techStack && data.techStack.length > 0"
                     :class="['tech-container']">
-                    <h4>Teknologi : </h4>
+                    <h4>Teknologi(er) : </h4>
                     <p :class="['flex-wrap-row-justify-space-evenly']">
                         <span v-for="(tech, i) in data.techStack" :key="i">
                             <MediaFigure v-if="tech" :data="tech"
@@ -65,15 +65,11 @@
     
     //  --- Import & Props -setup logic
     import { computed } from 'vue';
-    import type { TimelineCardProps } from '~/types/props';
+    import type { TimelineCardProps } from '~/types/timeline';
 
-    const props = withDefaults(defineProps<TimelineCardProps>(),
-    {
-        cls: () => [],
-        isVisible: () => false,
-    });
+    const props = withDefaults(defineProps<TimelineCardProps>(), { cls: () => [], isVisible: () => false });
     
-    const cls = props.cls;
+    const cls = computed(() => props.cls);
     const data = computed(() => props.data);
     const emits = defineEmits(['toggleVisibility']);
 

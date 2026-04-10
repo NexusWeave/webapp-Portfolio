@@ -38,6 +38,7 @@
     import { fetchCollection } from '#imports';
     import { useLanguageStore } from '@/stores/languageBytesStore';
 
+    // @ts-ignore - TypeScript error: Cannot find module '@nuxt/content' or its corresponding type declarations.
     import type { DevCollectionItem } from '@nuxt/content';
 
 

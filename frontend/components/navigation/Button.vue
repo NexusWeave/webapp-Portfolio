@@ -1,16 +1,10 @@
 <template>
-    <button 
-        :class="btn.cls"    
-        :type="btn.type"
-        @click="btn.action()"     
-        :disabled="btn.disabled">
+    <button :class="cls" :type="btn.type ?? 'button'" @click="isActionable()" :disabled="isDisabled">
 
         <NavigationAnchor v-if="btn.anchor" :data="btn.anchor"/>
 
-        <template v-else>
-            {{ btn.label }}
-        </template>    
-            
+        <template v-else> {{ btn.label }} </template>
+
     </button>
 </template>
 
@@ -18,23 +12,15 @@
 
     //  --- Importing dependencies & types
     import { watch, computed } from 'vue';
-
-    interface ButtonProps { data:ButtonItem; }
-
-    interface ButtonItem
-    {
-        id: number;
-        label: string;
-        cls: string[];
-        type?: "button" | "submit" | "reset";
-        disabled?: boolean;
-        action: () => void;
-        anchor?: { type: string[]; label: string; href: string; } | null; 
-    }
+    import type { ButtonProps } from '@/types/navigation';
 
     //  --- props definition logic
-    const props = withDefaults(defineProps<ButtonProps>(), { data: () => ({ anchor: null, type: 'button', disabled: false, action: () => {} } as ButtonItem) });
+    const props = withDefaults(defineProps<ButtonProps>(), { cls: () => [], action: () => {}});
+    const cls = computed(() => props.cls);
     const btn = computed(() => props.data);
+    const isDisabled = computed(() => !!btn.value.disabled);
+    const isActionable = computed(() => btn.value.action ? btn.value.action : () => {});
+    
 
     //  --- Watcher
     watch(() => props.data, (newValue) => { Object.assign(btn.value, newValue); }, { immediate: true });

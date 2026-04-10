@@ -1,46 +1,36 @@
-@use './mixins' as mix
+@use '../mix/mixins' as mix
 @use '../colors/colors' as color
 
-nav.nav-bar
-    inline-size: 22em
+nav.router-nav, nav.logo-nav
+    ul
+        li
+            a
+                &:hover
+                    @include mix.background-style(color.$light-orange, color.$soft-white)
 
-nav.logo-bar
-    max-inline-size: 10em
+                &:active
+                    @include mix.background-style(color.$dark-orange, color.$soft-white)
 
-ul.nav-list, .logo-list
-    margin: 0
-    padding: 0
-    list-style: none
-    inline-size: 100%
+                margin: 0
+                padding: 0.5em 1em
+                border-radius: .5em
+            @include mix.link-styles(color.$dark-grey, color.$dark-grey, color.$soft-white, color.$dark-grey)
 
-li.nav-item, .logo-item
-    margin: 0
-    
-    @include mix.link-styles(color.$dark-grey, color.$dark-grey, color.$soft-white, color.$dark-grey)
-
-.nav-link
-
-    &:hover
-        @include mix.background-style(color.$light-orange, color.$soft-white)
-
-    &:active
-        @include mix.background-style(color.$dark-orange, color.$soft-white)
-
-    padding: 0.5em 1em
-    border-radius: .5em
-
-nav.some-bar
-    ul.some-ul
+        padding:0
         margin: auto
-        max-inline-size: 30em
-        list-style-type: none
-
-    li.some-li
-        margin: 0.5em 0
-        display: inline
         list-style: none
+        inline-size: 100%
+        border-radius: .5em
 
-        a
-            text-decoration: none
-    
-    max-inline-size: 100%
+nav.anchor-nav, nav.some-nav, nav.portofolio-nav
+    ul
+        padding:0
+        margin: auto
+        list-style: none
+        inline-size: 100%
+        border-radius: .5em
+
+nav.some-nav
+    ul
+        li
+            max-inline-size: 2em
