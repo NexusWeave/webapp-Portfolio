@@ -47,13 +47,13 @@
     
     
     //  --- Pagination Logic
-    const n:number = 3;
-    const mappedPosts = computed(() => {currentPage.value; return blogPagination(rawPersonal.value, currentPage.value, n)});
+    const num:number = 3;
+    const mappedPosts = computed(() => {currentPage.value; return blogPagination(rawPersonal.value, currentPage.value, num)});
     const nextPage = computed<ButtonItem>(() => { return{ label: 'Neste', cls: ['button', 'pagination-btn'], action: () => currentPage.value ++ }});
     const prevPage = computed<ButtonItem>(() => { return{ label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- }});
     
     const currentPage = ref<number>(1);
-    const totalPages = computed<number>(() => { if (rawPersonal.value) return Math.ceil(rawPersonal.value.length / n); return 0; });
+    const totalPages = computed<number>(() => { if (rawPersonal.value) return Math.ceil(rawPersonal.value.length / num); return 0; });
 
     //  --- Debugging tools
     //console.log(rawPersonal.value);
