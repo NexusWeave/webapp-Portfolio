@@ -31,8 +31,7 @@
     import { ref, computed } from 'vue';
     import { fetchCollection } from '#imports';
     import { blogPagination } from '@/composables/pagination';
-    
-    import type {FigureItem } from '@/types/props';
+
     import type { DevPostsCollectionItem } from '@nuxt/content';
 
     //  --- Content fetching logic
