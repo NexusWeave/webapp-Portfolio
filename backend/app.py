@@ -9,7 +9,7 @@ from fastapi import FastAPI, Request
 from fastapi.routing import APIRoute
 
 #   Internal Libraries
-from backend.lib.services.scanner.scanner_api import Scanner
+from lib.services.scanner.scanner_api import Scanner
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
@@ -51,10 +51,6 @@ LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'{ENVIRONMENT.API_VERSION}\' 
 #   Registering Enpoint Services
 VERSION: str = ENVIRONMENT.API_VERSION
 PATH = f"/api/{VERSION}"
-
-@app.get("/")
-def read_root():
-    return {"message": "END POINT NOT FOUND !"}
 
 @app.get(f"{PATH}/healthcheck", tags=["HealthCheck"], summary="Health Check Endpoint", description="Endpoint to check the health status of the API.", name="Health Check")  
 async def health_check() -> NESTED_DICTS:
@@ -149,9 +145,6 @@ async def specialist(request: Request) -> List[Dict[Any, Any]]:
             return json
 
     return json
-
-
-    return {"message": "All Repositories has been successfully synced with database."}
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
