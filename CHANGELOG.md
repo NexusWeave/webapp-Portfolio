@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.0...v1.15.1) (2026-04-10)
+
+
+### Bug Fixes
+
+* **sitemap:** resolving issue where incorrect path appears in sitemap.xml. ([0d9993d](https://github.com/NexusWeave/webapp-Portfolio/commit/0d9993df5fe5a9aead36b648a4c657d9ad65d98d))
+
 # [1.15.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.14.0...v1.15.0) (2026-04-10)
 
 

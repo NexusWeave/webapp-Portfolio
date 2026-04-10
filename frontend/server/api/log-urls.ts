@@ -1,8 +1,5 @@
 import { DevPostsCollectionItem } from "@nuxt/content";
-export async function fetchCollection<T>(event, path:string)
-{
-     return await queryCollection(event, path).all()
-}
+export async function fetchCollection<T>(event: any, path: any) { return await queryCollection(event, path).all() }
 
 const mapBlogData = (data: DevPostsCollectionItem[]) => {
         if (!data) return [];
@@ -34,7 +31,7 @@ const mapBlogData = (data: DevPostsCollectionItem[]) => {
                 parade: item.parade ?? '',
                 ingress: item.ingress ?? '',
                 sources: item.sources ?? '',
-                anchor: [{ href: `artikkel/${path}`, label: 'Les mer' }]
+                anchor: [{ href: `logs/records/${path}`, label: 'Les mer' }]
             }
         });
     }
