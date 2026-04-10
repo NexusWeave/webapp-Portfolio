@@ -51,23 +51,22 @@
     //  --- Pagination Logic
     const totalPages = ref<number>(num);
     const currentPage = ref<number>(num);
-    const type: Ref<string> = ref<string>(' ');
+    const type: Ref<string> = ref<string>('0');
 
     const paginationData =  computed(() =>
     {
         if (!data.value) return
         const n: number = 9;
-        
 
-        let filteredData= computed<Array<GithubData>>(() => data.value);
-        if (type.value) filteredData = computed(() =>  { return data.value?.filter((item: GithubData) => item.flags[type.value] === true); });
-        
+        let filteredData = computed<Array<GithubData>>(() => {return data.value});
+        if (type.value != '0') filteredData = computed(() =>  { return data.value?.filter((item: any) => item.flags[type.value] === true); });
+
         const start = (currentPage.value - num) * n;
         const end = start + n;
 
         filteredData.value.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-
         totalPages.value = Math.ceil(filteredData.value.length / n);
+
         return  filteredData.value.slice(start, end) ?? null;
     });
 
@@ -103,9 +102,11 @@
     function changePage(page: number) { const total = totalPages.value; if (page >= 1 && page <= total) currentPage.value = page; }
 
     //  --- Debug logic
+    //console.log("--- Portfolio component ---");
     //console.error(data.value)
     //console.error(paginationData.value)
-    
+    //console.log("Repository data:", data.value);
+    //console.log("Repository error:", error.value);
     //console.log("Pagination data:", paginationData.value);
     // console.log('Pagination component initialized with data:', data);
 </script>
