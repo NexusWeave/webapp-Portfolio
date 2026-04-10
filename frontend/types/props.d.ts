@@ -24,21 +24,6 @@ export interface TimelineCardProps
     isVisible?: boolean;
 }
 
-//  --- Carousel component ---
-export interface CarouselProps
-{
-    data    : FigureItem[];
-    buttons? : CarouselButton[];
-}
-
-export interface CarouselButton
-{
-    cls ?  : string;
-    icon?    : string;
-    exist?   : boolean;
-    action  : () => void;
-}
-
 
 //  --- Misc Props ---
 export interface DateYearProps{ data: string; isVisible: boolean; }
@@ -60,6 +45,14 @@ export interface listData
             alt?: string;
         }
     }
+}
+export interface DateItem
+{
+    time?: string | null;
+    date?: string | null;
+    text?: string;
+    delimiter?: string;
+    updated?: Date | string | null;
 }
 
 export interface listProps
@@ -87,19 +80,5 @@ export interface GithubRepo
 
 export interface RepoProps { data: GithubRepo; cls?: Array<string | string[] | Array<string | string[]>>; }
 
-export interface ProgressProps {
-    value: number;
-    tech?: string;
-    label: string;
-    cls?: string[];
-}
+export interface ProgressProps { value: number; tech?: string; label: string; cls?: string[]; }
 
-
-export interface DateItem
-{
-    time?: string | null;
-    date?: string | null;
-    text?: string;
-    delimiter?: string;
-    updated?: Date | string | null;
-}
