@@ -1,14 +1,10 @@
-// content.config.ts
-
 //  --- Imports & Zod Schema Definitions
 import { z } from 'zod';
 import { defineCollection, defineContentConfig } from '@nuxt/content';
 
-const profileCollection = z.object({
-    title: z.string(), 
-    createdts: z.string(),
-    updatedts: z.string().optional(),
-});
+
+const referencesCollection = z.object({ link: z.string(), title: z.string(), quote: z.string() });
+const profileCollection = z.object({ title: z.string(),  createdts: z.string(), updatedts: z.string().optional() });
 
 const achievementsCollection = z.object({
     tag: z.string(),
@@ -27,20 +23,13 @@ const achievementsCollection = z.object({
     techStack: z.array(z.string()).optional(),
 });
 
-const referencesCollection = z.object({
-    link: z.string(),
-    title: z.string(),
-    quote: z.string()
-});
-
 const blogCollection = z.object({
     date:z.string(),
     title: z.string(),
+    body: z.strictObject({}),
     ingress: z.string(),
-    star: z.string().optional(),
-    parade: z.string().optional(),
-    sources: z.string().optional(),
-    tags: z.array(z.string()).optional()
+    status: z.string().optional(),
+    sources: z.string().optional()
 })
 
 
@@ -48,62 +37,15 @@ const blogCollection = z.object({
 export default defineContentConfig({
   collections: 
   {
-    'academic': defineCollection(
-        {
-            type: 'data',
-            schema: achievementsCollection,
-            source: 'achievements/academic/*.md', 
-        }),
-
-    'achievements': defineCollection(
-        {
-            type: 'page', 
-            schema: achievementsCollection,
-            source: 'achievements/achievements/*.md', 
-        }),
-
-    'devProfile': defineCollection(
-        {
-            type: 'page',
-            schema: profileCollection,
-            source: 'profiles/dev/*.md', 
-        }),
-
-    'reference': defineCollection(
-        {
-            type: 'data',
-            schema: referencesCollection,
-            source: 'quotes/references/*.md', 
-        }),
-
-    'personalProfile': defineCollection(
-                {
-            type: 'page',
-            schema: profileCollection,
-            source: 'profiles/personal-profiles/*.md', 
-        }),
-
-    'devPosts': defineCollection(
-        {
-            type: 'page',
-            schema: blogCollection,
-            source: 'posts/dev/**/*.md',
-        }
-    ),
-
-    'personalPosts': defineCollection(
-        {
-            type: 'page',
-            schema: blogCollection,
-            source: 'posts/personal/**/*.md',
-        }
-    ),
+    'devPosts': defineCollection( { type: 'page', schema: blogCollection, source: 'posts/dev/**/*.md', }),
+    'devProfile': defineCollection( { type: 'page', schema: profileCollection, source: 'profiles/dev/*.md' }),
+    'personalPosts': defineCollection( { type: 'page', schema: blogCollection, source: 'posts/personal/**/*.md' } ),
+    'reference': defineCollection( { type: 'data', schema: referencesCollection, source: 'quotes/references/*.md' }),
+    'academic': defineCollection( { type: 'data', schema: achievementsCollection, source: 'achievements/academic/*.md' }),
+    'personalProfile': defineCollection( { type: 'page', schema: profileCollection, source: 'profiles/personal-profiles/*.md' }),
+    'achievements': defineCollection( { type: 'page', schema: achievementsCollection, source: 'achievements/achievements/*.md' }),
 
     // 'content' Standard Collection definition
-
-    content: defineCollection({
-      type: 'page',
-      source: '**/*.md',
-    }),
+    content: defineCollection({ type: 'page', source: '**/*.md', }),
   },
 });

@@ -26,17 +26,17 @@ export const mapBlogData = (data: DevPostsCollectionItem[]) => {
                         const label = folder === listOfAvailableTags[0] ? id[index + 1] : folder;
 
                         const tag = { label: label, type: ['tag'], href: `${dir}/tags/${label}`, cls: [label], path: id.pop()?.toLocaleLowerCase() || misc };
-                        return tag;})()
+                        return tag;
+                    })();
             return {
                 path: path,
                 tags: [tags],
                 title: item.title,
                 id: AUTOINCREMENT++,
-                star: item.star ?? '',
-                body: item.body ?? '',
+                body: item.body,
                 isPublished: isPublished,
                 date: setDateFormat(date),
-                parade: item.parade ?? '',
+                status: item.status ?? '',
                 ingress: item.ingress ?? '',
                 sources: item.sources ?? '',
                 anchor: [{ type: ['router'], path: `${dir}/records/${path}`, label: 'Les mer', cls: ['read-more-btn'] }]
