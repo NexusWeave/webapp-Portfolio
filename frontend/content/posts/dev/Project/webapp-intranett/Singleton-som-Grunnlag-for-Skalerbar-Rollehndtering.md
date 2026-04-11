@@ -2,7 +2,7 @@
 date: 2025-11-07T00:00:00.000Z
 title: Sikring av Data og Brukertilganger
 ingress: |
-  For å sikre bedriftens data har jeg lagt til en ny løsning for rettighetsstyring som skiller tydelig mellom ansatte og studenter. Ved å samle alle regler i en oversikt, har vi eliminert risikoen for at feil personer får tilgang til skjermet informasjon. Løsningen er bygget for å være både rask og rimlig, som sparer tid i den daglige driften og gir oss tryggheten for fremtidig vekst.
+  For å øke sikkerheten har jeg lagt til en ny løsning for tilgang til systemet. Ved å skille tydelig mellom ansatte og studenter, sikrer vi at sensitiv informasjon ikke kommer på avveie. Systemet er nå organisert slik at rettigheter tildeles automatisk og effektivt ved pålogging. Dette fjerner manuelle feilkilder, sparer tid i den daglige driften og gir bedriften en trygg og profesjonell grunnmur for videre vekst.
 parade: ''
 star: |
   Bedriften hadde behov for å styrke sikkerheten og kontrollen rundt hvem som har tilgang til sensitivt innhold i systemet våres. Uten et rollebasert  system var det utfordrende å skille studenter fra ansatte på en trygg og oversiktlig måte etter hvert som organisasjonen vokser. Dette skapte risiko for at feil brukere hadde tilgang til skjermet informasjon.
@@ -22,7 +22,7 @@ sources: |
   3. [Prinsipp for Single Responsibility (SRP).](https://en.wikipedia.org/wiki/Single-responsibility_principle)
 ---
 
-**Dagens Aktiviteter**:
+#### Dagens Aktiviteter
 
 * Utviklet en løsning som skiller mellom ansatte og studenter for å sikre at brukere kun har tilgang til informasjon relevant for deres rolle.
 * Opprettet en JSON-basert oversikt over alle tilgangsregler for å forenkle styringen og fremtidig vekst.
@@ -31,6 +31,6 @@ sources: |
 * Gjennomført teknisk kontroll av løsningen mot gjeldende bransjestandarder (ved bruk av Google Gemini) for å sikre moderne sikkerhetskrav.
 * Identifisert nåværende fordeler ved JSON-løsningen (rask utrulling og lav kostnad) samt dokumentert behovet for manuell oppfølging ved stor organisatorisk vekst.
 
-**Motivasjon & Energi** **10** / **10**
+#### Motivasjon & Energi 10 / 10
 
 Dagen har vært så fin den kunne bli.
