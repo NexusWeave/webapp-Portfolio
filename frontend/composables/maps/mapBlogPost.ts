@@ -26,8 +26,8 @@ export const mapBlogData = (data: DevPostsCollectionItem[]) => {
                         const label = folder === listOfAvailableTags[0] ? id[index + 1] : folder;
 
                         const tag = { label: label, type: ['tag'], href: `${dir}/tags/${label}`, cls: [label], path: id.pop()?.toLocaleLowerCase() || misc };
-                        return tag;})()
-                        console.log(item.body)
+                        return tag;
+                    })();
             return {
                 path: path,
                 tags: [tags],

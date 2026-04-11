@@ -25,7 +25,7 @@
     const isPage = computed(() => {return route.name?.toString().startsWith('logs-records')});
 
     //  --- Debugging logic
-    console.log("Articles Component - Article Data :", route.name);
-    console.log("Articles Component - isPage :", isPage.value);
+    //console.log("Articles Component - Article Data :", route.name);
+    //console.log("Articles Component - isPage :", isPage.value);
     //console.log("Articles Component :", isPage.value, article, isNewsPage, isArticlePage), article.conclusion;
 </script>
