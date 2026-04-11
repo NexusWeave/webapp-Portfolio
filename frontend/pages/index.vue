@@ -1,7 +1,7 @@
 <template>
     <article class="article-wrapper flex-column">
         <h2> Logger fra mine prosjekter </h2>
-        <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly">
+        <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
             <NavigationButton v-if="currentPage > 1" :data="lastPageBtn" :cls="['button', 'pagination-btn']"/>
                 <span> {{ currentPage }} / {{ totalPages }}</span>
             <NavigationButton v-if="currentPage < totalPages" :data="nextPageBtn" :cls="['button', 'pagination-btn']"/>
