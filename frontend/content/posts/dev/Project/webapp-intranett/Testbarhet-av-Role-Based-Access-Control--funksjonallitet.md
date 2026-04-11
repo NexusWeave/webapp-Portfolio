@@ -4,7 +4,7 @@ tags:
 date: 2025-11-14T00:00:00.000Z
 title: Redusert risiko og lavere vedlikeholdskostnader
 ingress: |
-  Vi har styrket systemets grunnmur for å fjerne risikoen for kostbare feil i daglig drift. Ved å skille virksomhetens regler fra den tekniske motoren, har vi skapt en løsning som er langt enklere å kontrollere. Dette gir oss en stabil sikkerhet som fungerer nøyaktig som planlagt, samtidig som vi reduserer tidsbruk til fremtidig vedlikehold. Resultatet er en tryggere investering som raskere kan tilpasses nye behov i organisasjonen uten økt sårbarhet.
+  Vi har styrket systemets grunnmur for å fjerne risikoen for feil i daglig drift. Ved å skille virksomhetens regler fra den tekniske motoren, har vi skapt en løsning som er langt enklere å kontrollere. Dette gir en stabil sikkerhet som fungerer slik det er planlagt, samtidig som vi reduserer tidsbruk til vedlikehold. Resultatet er en trygg investering som raskt kan tilpasses nye behov i organisasjonen uten økt sårbarhet og risiko.
 parade: ''
 star: |
   Systemets funksjon for tilgangsstyring var organisert på en måte som blandet foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken isolert , som øker risiko for feil ved fremtidige endringer og gjorde det vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer som planlagt.
@@ -23,7 +23,7 @@ star: |
 sources: ''
 ---
 
-**Dagens aktiviteter**
+#### Dagens aktiviteter
 
 * Identifisert og kartlagt svakheter i nåværende tilgangsstyring, med fokus på å skille virksomhetens regler fra tekniske avhengigheter.
 * Gjennomført en omfattende opprydding i systemets oppbygging for å sikre klare ansvarsforhold mellom sikkerhetslogikk og infrastruktur.
@@ -32,6 +32,6 @@ sources: ''
 * Implementert nye rutiner som gir umiddelbare svar på om sikkerhetslogikken fungerer korrekt, noe som styrker systemets integritet.
 * Bekreftet at den nye arkitekturen følger anerkjente standarder for økt motstandsdyktighet mot feil og enklere fremtidig vedlikehold.
 
-**Motivasjon & Energi** **10** / **10**
+#### Motivasjon & Energi 10 / 10
 
 Dagen har vært så fin den kunne bli
