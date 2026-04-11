@@ -4,10 +4,10 @@ tags:
 date: 2025-11-10T00:00:00.000Z
 title: Løsning av kommunikasjonsfeil og korrekt klargjøring av tilgangskontroll
 ingress: |
-  Ved å løse en feil i systemets tilgangskontroll, har jeg sørget for at kollegaer slipper avbrudd når de skal logge inn. Tidligere stoppet hele systemet opp fordi det ikke forsto sine egne sikkerhetsregler, noe som skapte unødvendige avbrudd i arbeidsdagen. Ved å rydde opp i denne kommunikasjonssvikten har vi fjernet risikoen for at kollegaer blir låst ute. Resultatet er en tryggere hverdag hvor sensitiv informasjon er beskyttet, og et system som alltid er klart til bruk.
+  Da en feil i systemet hindret kollegaer i å logge inn, identifiserte jeg årsaken i hvordan de digitale tilgangsreglene ble lest på. Ved å korrigere hvordan systemet klargjør nødvendig sikkerhetsinformasjon, har jeg nå fjernet alle avbrudd ved oppstart. Resultatet er en stabil og trygg innlogging som beskytter sensitiv informasjon og sikrer at alle ansatte kan utføre jobben sin helt uavbrutt. Dette gir bedriften en trygg mur for digital trygghet.
 parade: ''
 star: |
-  #### Løsning på kritiske innloggingsfeil i AccessService
+  #### Løsning på innloggingsfeil
 
   Systemet har en Rollebasert tilgangs kontroll som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
 
@@ -26,7 +26,7 @@ star: |
 sources: ''
 ---
 
-#### **Dagens Aktiviteter**
+#### Dagens Aktiviteter
 
 * Analyserte hvorfor systemet stoppet opp og hvorfor JSON-data med instruksjonslisten ikke ble lest inn i minnet.
 * Gjennomførte en feilsøkings prosess for å finne ut hvorfor sikkerhetslaget hindret verifisering av tilganger.
@@ -36,6 +36,6 @@ sources: ''
 * Sikret at sikkerhetskontrollen fungerer som den skal, slik at ansatte og studenter igjen kan logge inn uten utfordringer.
 * Etablert en stabil metode for fremtidig håndtering av klasser og data som sikrer vedvarende systemstabilitet.
 
-#### **Motivasjon & Energi** - **10** / **10**
+#### Motivasjon & Energi - 10 / 10
 
 Dagen har vært så fin den kunne bli
