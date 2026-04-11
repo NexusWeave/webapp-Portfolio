@@ -14,61 +14,35 @@ ingress: >
   Responsibility Principle (SRP), ved å flytte konfigurasjonslogikk ut av
   hovedapplikasjonsfilen. Dette reduserte teknisk gjeld og sikret at
   applikasjonen er mer vedlikeholdsvennlig for fremtidig utvikling.
-star: >
-  ### Håndtering av Livssyklus-svikt
+status: |
+sources: ''
+---
+### Håndtering av Livssyklus-svikt
 
+### Scheduler- og Database initialiseringssvikt
 
-  ### Scheduler- og Database initialiseringssvikt
+Slik som det er Identifisert i den tidligere loggen, ble APSchedule-logikken for periodisk synkronisering definert, men loggmeldingene bekrefter at funksjonaliteten har den samme utfordringen som Databasen at de ikke ble initiert ved oppstart. Dette indikerer på at livssyklus logikken, ikke blir initiert ved oppstart av FastAPI-Applikasjonen, som er en konsekvens av caching-dataene aldri blir oppdatert.
 
+#### Migrere til  lifespan context mananger
 
-  Slik som det er Identifisert i den tidligere loggen, ble APSchedule-logikken
-  for periodisk synkronisering definert, men loggmeldingene bekrefter at
-  funksjonaliteten har den samme utfordringen som Databasen at de ikke ble
-  initiert ved oppstart. Dette indikerer på at livssyklus logikken, ikke blir
-  initiert ved oppstart av FastAPI-Applikasjonen, som er en konsekvens av
-  caching-dataene aldri blir oppdatert.
+Dette sikrer at både APScheduler og databasen blir korrekt initialisert, starte jobbene ved startup  av livssyklusen og rydde opp under nedstengningen av applikasjonen.
 
+Oppgaven min er å  migrere FastAPI-Applikasjonens livssyklus,  til den moderne FastAPI V2.
 
-  ### Sikring av Pålitlig Kjørning av Bakgrunnsjobber
+#### Redusere Teknisk gjeld i hoved-applikasjonen
 
-
-  #### Migrere til  lifespan context mananger
-
-
-  Dette sikrer at både APScheduler og databasen blir korrekt initialisert,
-  starte jobbene ved startup  av livssyklusen og rydde opp under nedstengningen
-  av applikasjonen.
-
-
-  Oppgaven min er å  migrere FastAPI-Applikasjonens livssyklus,  til den moderne
-  FastAPI V2.
-
-
-  #### Redusere Teknisk gjeld i hoved-applikasjonen
-
-
-  Dette sikrer at applikasjonens prinsipper blir fulgt, og sikrer at
-  applikasjonen kan være mest mulig lese- og vedlikeholds vennlig.
+Dette sikrer at applikasjonens prinsipper blir fulgt, og sikrer at applikasjonen kan være mest mulig lese- og vedlikeholds vennlig.
 
 
   Handling
 
 
   #### Migrering til Lifespan Context Manger
+* Den utdaterte @app.on\_event-definasjonen ble fjernet fra det asynkrone kallet. Den nye lifespan-metoden ble definert som en asynkron context mananger. Den definerte lifespan funksjonen ble lagt til som et parameter i initialiserings prosessen.
 
+* En try/except-blokk ble implementert. Den asynkrone motoren ble brukt til å kjøre den synkrone DDL-kommandoen via await conn.run\_sync(). Dette sikrer integeriteten til tabellopprettelsen.
 
-  Den utdaterte @app.on\_event-definasjonen ble fjernet fra det asynkrone
-  kallet. Den nye lifespan-metoden ble definert som en asynkron context
-  mananger. Den definerte lifespan funksjonen ble lagt til som et parameter i
-  initialiserings prosessen.
-
-
-  * En try/except-blokk ble implementert. Den asynkrone motoren ble brukt til å
-  kjøre den synkrone DDL-kommandoen via await conn.run\_sync(). Dette sikrer
-  integeriteten til tabellopprettelsen.
-
-
-  Etter Instanseringen av databasene, startet APScheduler
+Etter Instanseringen av databasene, startet APScheduler
 
 
   ```python
@@ -77,9 +51,7 @@ star: >
 
   # Imports...
 
-
   @asynccontext
-
   async def lifespan_function(app:FastAPI):
     try:
       #  Database Initialization
@@ -106,45 +78,21 @@ star: >
 
   ```
 
+#### Make it right - Reduksjon av Teknisk Gjeld
 
-  #### Make it right - Reduksjon av Teknisk Gjeld
-
-
-  Både lifespan funksjonaliteten, middelware instansene ble trukket ut av
-  hovedapplikasjonen. Disse elementene ble plassert i en dedikert
-  konfigurasjonsklasse for FastAPI.
+Både lifespan funksjonaliteten, middelware instansene ble trukket ut av hovedapplikasjonen. Disse elementene ble plassert i en dedikert konfigurasjonsklasse for FastAPI. Dette er en robust metode som sikrer separasjon av ansvar (SRP), da hovedapplikasjon nå kun har ansvar for å instansiere applikasjonen og definere endepunkter, mens konfigurasjonsklassen, håndterer tverrgående funksjonalitet.
 
 
-  Dette er en robust metode som sikrer separasjon av ansvar (SRP), da
-  hovedapplikasjon nå kun har ansvar for å instansiere applikasjonen og definere
-  endepunkter, mens konfigurasjonsklassen, håndterer tverrgående funksjonalitet.
+##### Status for Oppstart av APScheduler og Database Instansen
+
+Utfordringen som handlet om oppstart av Scheduler og database instansen, er nå løst i app.py. Refaktorereringen sikret at det ble lettere å vedlikeholde og forstå hovedapplikasjonen enn tidligere.
 
 
-  ### Status for Oppstart av APScheduler og Database Instansen
+##### Resultat, Status & Læringsutbytte
 
+Denne feilsøkingen har krystallisert viktigheten av å bruke korrekt dokumentasjon for bibliotek versjon man bruke i en applikasjon, det har også vært merkbart hvor viktig det er å bruke applikasjonens context mananger for all ressurskontroll. Dette er viktig for å garantere at tredjepartsverktøy som APScheduler og databasesystemer initialisereres og stenges ned pålitelig.
 
-  Utfordringen som handlet om oppstart av Scheduler og database instansen, er nå
-  løst i app.py. Refaktorereringen sikret at det ble lettere å vedlikeholde og
-  forstå hovedapplikasjonen enn tidligere.
+##### Bruk av Standardiserte Prinsippene.
 
-
-  ### Resultat, Status & Læringsutbytte
-
-
-  Denne feilsøkingen har krystallisert viktigheten av å bruke korrekt
-  dokumentasjon for bibliotek versjon man bruke i en applikasjon, det har også
-  vært merkbart hvor viktig det er å bruke applikasjonens context mananger for
-  all ressurskontroll. Dette er viktig for å garantere at tredjepartsverktøy som
-  APScheduler og databasesystemer initialisereres og stenges ned pålitelig.
-
-
-  #### Bruk av Standardiserte Prinsippene.
-
-
-  Prosessen demostrerte den praktiske verdien av SRP i en
-  mikrotjenestearkitektur. Ved å flytte konfigurasjonsdetaljer ut av
-  hovedapplikasjonsfilen, reduserer teknisk gjeld og fremtidig utvikling
-  forenkles betraktelig.
-sources: ''
----
+Prosessen demostrerte den praktiske verdien av SRP i en mikrotjenestearkitektur. Ved å flytte konfigurasjonsdetaljer ut av hovedapplikasjonsfilen, reduserer teknisk gjeld og fremtidig utvikling forenkles betraktelig.
 

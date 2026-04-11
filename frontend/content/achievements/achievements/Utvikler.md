@@ -9,6 +9,5 @@ techStack:
   - NUXT
   - TYPESCRIPT
   - GIT
-  - MARKDOWN
 ---
 

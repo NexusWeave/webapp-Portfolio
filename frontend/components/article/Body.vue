@@ -1,36 +1,17 @@
 <template>
-        <section class="flex-column">
-            <section :class="!!data.cta && !!data.img? ['grid-container', 'article-section']: 
-                !!data.cta ? ['grid-container-cta']:
-                !!data.img ? ['grid-container-image', 'article-section']:
-                ['grid-container-content','article-section']"> 
-
-                <section :class="['article-section']">
-                    <ContentRenderer v-if="data.body"
-                        :value ="data.body"
-                        class="article-content"
-                        />
-                </section>
-                <section :class="['article-section']">
-                    <MDC v-if="data.parade"
-                        :value ="data.parade"
-                        class="article-content"
-                    />
-                </section>
-                <section :class="['article-section']">
-                    <MDC v-if="data.star"
-                        :value ="data.star"
-                        class="article-content"
-                    />
-                </section>
-                <section :class="['article-section']">
-                    <MDC v-if="data.sources"
-                        :value ="data.sources"
-                        class="article-content"
-                    />
+    <Suspense>
+        <template # default>
+            <section :class="!!data.cta && !!data.img? ['article-section','flex-column']:  !!data.cta ? ['grid-container-cta']: !!data.media ? ['grid-container-image', 'article-section']: ['grid-container-content','article-section']"> 
+                <section v-if="data.status" :class="['article-content']"> <MDC :value ="data.status" /> </section>
+                <section class="article-content flex-column" v-if ="data.body">
+                    <h4> Utfordring & Løsning</h4>
+                    <ContentRenderer :value ="data.body"/>
+                    <MDC v-if="data.sources" :value ="data.sources" />
                 </section>
             </section>
-        </section>
+        </template>
+        <template #fallback> <div class="loading">Laster innhold...</div> </template>
+    </Suspense>
 </template>
 
 <script lang="ts" setup>

@@ -12,124 +12,47 @@ ingress: >
   ORM-ens "Unit of Work"-mønster og objektbaserte assosiasjoner, demonstreres
   det hvordan man sikrer atomær lagring og referanseintegritet i komplekse
   relasjonsdatabaser.
-star: >
-  ### Fra rå ID-håndtering til objektbasert assosiasjon
-
-
-  #### Brudd på relasjonell Integeritet
-
-
-  Etter vellykket asynkron henting av repositories og tilhørende språk-data,
-  oppstod det en utfordring under opprettelsen av relasjonene i
-  assosisjonstabellen. Utfordringen manifisterte seg som en krasj i
-  presistenslaget når applikasjonen forsøkte å binde sammen språk-entiteter med
-  de respektive repositoriene.
-
-
-  #### Teknisk Analyse av Kilden
-
-
-  Diagnosen viste at feilen var en konsekvens av et brudd på
-  fremmednøkkel-restriksjoner. Applikasjonen forsøkte å persistere kombinasjoner
-  av språk-ID og repository-ID i assosiasjonstabellen før de respektive
-  entitetene var ferdig initialisert og tildelt unike identifikatorer i
-  databasen. Dette medførte at asspsoasjonstabellen refererte til nøkler som
-  ikke eksisterte i foreldretabellene.
-
-
-  ##### Tidligere utfordrende Desing.
-
-
-  ```python
-
-  def new_assoc_record(self, repo: int, lang: int, code_bytes: int):
-    association_obj = LanguageAssosiationModel(repo_id = repo.repo_id, lang_id = language.id, code_bytes = code_bytes)
-    self.session.add(association_obj)
-
-  ```
-
-
-  Implementering av objektbasert assosiasjon
-
-
-  For å løse utfordringen med manglende identifikatorer ved initialisering, ble
-  metoden new\_assoc\_record redesignet. I stedet for å operere med
-  fremmednøkkel-ID-er, tar metoden nå i mot komplette instanser av
-  RepositoryModel og LanguageModel.
-
-
-  Ved å knytte selve modellobjektene til LanguageAssosiationModel, overlates
-  håndteringen av nøkkelavhengigheter til ORM-ens enhet-av-arbeid-mønster (Unit
-  of Work). Dette sikrer at assosiasjonen først persisteres når de relaterte
-  objektene har gylldige identifikatorer, dette eliminerer bruddet på
-  integritetsreglene.
-
-
-  ##### Ny og Robust Design
-
-
-  ```python
-
-  def new_assoc_record(self, repo: RepositoryModel, lang: LanguageModel,
-  code_bytes: int) -> None:
-    association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
-    self.session.add(association_obj)
-
-  ```
-
-
-  #### Eliminering av integritetsbrudd
-
-
-  Etter implementeringen av det nye designet for new\_assoc\_record, ble
-  Integeritetsbruddene eliminert. Ved integrerelogikken for assosiasjonstabellen
-  direkte i arbeidsflyten for lagring av repositories, sikres det at relasjonene
-  opprettes i rekkefølge. Dette har resultert til en robust prosess der
-  koblinger mellom repositories og språk presisteres stabilt og i tråd med
-  databasens integritetskrav.
-
-
-  #### Evaulering og Refleksjon
-
-
-  Erfaringen bekrefter, operasjoner med råd fremmednøkkel-ID'er i et asynkront
-  miljø medfører høy risiko for IntegertyError. 
-
-
-  Arbeidet har gitt en dypere forståelse for rekkefølgeavhengigheten i
-  relasjonsdatabaser. Selv om dataene skrives asynkront, må dataene persisteres
-  sekvensielt for at fremmednøkler skal være gyldige. Bruken av modellobjekter
-  som argumenter i new\_assoc\_record sikrer at systemet er robust mot tidsfeil.
-
-
-  Konklusjonen er at den nye implementeringen fungerer som en intelligent
-  oppdateringsmekanisme som forebygger duplikater i assosiasjonstabellen. Dette
-  reduserer behovet for kompleks feilhåndtering senere i logikken og sikrer en
-  renere databasetilstand over tid. 
+star: |
 sources: ''
 ---
 
-### Teknisk beskrivelse av modellen
+Etter vellykket  henting av repositories og tilhørende språk-data, oppstod det en utfordring under opprettelsen av relasjonene i assosisjonstabellen. Utfordringen manifisterte seg som en krasj i lagrings-laget når applikasjonen forsøkte å binde sammen språk-entiteter med de respektive repositoriene.
 
-#### **LanguageAssosiationModel**
+Utfordringen oppsto som en konsekvens av at applikasjonen prøvde å koble sammen prosjekter og språk i feil rekkefølge. Den forsøkte å registrere koblingen mellom dem i en oversiktsliste før selve prosjektet og språket var ferdig opprettet og hadde fått sine egne "ID-kort" i systemet. Siden systemet har strenge regler for at alt som kobles sammen må eksistere fra før, oppsto det en krasj. Det blir som å prøve å skrive en kontrakt mellom to personer som ennå ikke er registrert i folkeregisteret – systemet nekter å godta koblingen fordi partene den viser til, offisielt sett ikke finnes ennå.
 
-##### **Modell arkitektur**
+##### Tidligere utfordrende vrtdo.
 
-Modellen fungerer som en assosiasjonstabell som dekomponerer mange-til-mange-relasjonen mellom Language og RepositoryModel. I stedet for en enkel kobling, lagrer den også metadata om relasjonen, som kode\_byte.
+Etter vellykket <abbr title="Asynchronous - en måte å kjøre flere operasjoner samtidig">asynkron</abbr> henting av repositories og tilhørende språk-data, oppstod det en utfordring under opprettelsen av relasjonene i assosiasjonstabellen. Utfordringen manifesterte seg som en krasj i lagrings-laget når applikasjonen forsøkte å binde sammen språk-entiteter med de respektive repositoriene.
+Etter vellykket asynkron henting av prosjekter og tilhørende språk-data, oppstod det en utfordring under opprettelsen av relasjonene i assosiasjonstabellen. Utfordringen manifesterte seg som en krasj i lagrings-laget når applikasjonen forsøkte å binde sammen språk-entiteter med de respektive prosjektene.
 
-Ved å definere en relasjon slik, sikrer vi at
+Denne feilen oppsto fordi applikasjonen prøvde å koble sammen prosjekter og språk i feil rekkefølge. Den forsøkte å registrere koblingen i en oversiktsliste før selve prosjektet og språket var ferdig opprettet og hadde fått sine egne "ID-kort" i systemet. Siden systemet har strenge regler for at alt som kobles sammen må eksistere fra før, oppsto det en krasj. Det blir som å prøve å skrive en kontrakt mellom to personer som ennå ikke er registrert i folkeregisteret – systemet nekter å godta koblingen fordi partene den viser til, offisielt sett ikke finnes ennå.
 
-* Et repository kan være knyttet til ulike språk.
-* Ett Språk (som C#) kan være også knyttet til flere Repositorier
-* Som en konsekvens av unikheten, forhindrer dette redundante data.
+#### Tidligere utfordrende design
 
-#### Modellens Ansvar
+I det tidligere designet for `new_assoc_record` opererte metoden med rå ID-er for både repository og språk.
 
-Modellen fungerer som knutepunktet i databasen. Definering av relasjonen på denne måten oppnår vi tre arkitektoniske fordeler
+```python
+def new_assoc_record(self, repo: int, lang: int, code_bytes: int):
+  # Her brukes rå ID-er som kanskje ikke eksisterer i databasen ennå
+  association_obj = LanguageAssosiationModel(repo_id = repo.repo_id, lang_id = language.id, code_bytes = code_bytes)
+  self.session.add(association_obj)
+```
+Dette skapte en risiko for `IntegrityError`-krasj, spesielt i et asynkront miljø hvor rekkefølgen av operasjoner ikke er garantert. Hvis metoden ble kalt før objektene var fullstendig opprettet, ville forsøket på å bruke ugyldige fremmednøkler føre til systemstans.
 
-* Mange-til-mange-fleksibilitet
-  * Et repository kan være knyttet til flere ulike språk som (C# og C)
-* Don't Repeat Yourself
-  * Ett enkelt språk, kan knyttes til ubegrenset antall repositorier ved å være unik.
-* Data-normalisering
-  * Som en konsekvens av unikheten i koblingene, forhindrer  modellen redundante data. Sikrer at databasen forblir konsistent og effektiv under skalering.
+#### Smidigere løsning med ORM-objekter
+For å løse utfordringen med manglende identifikatorer, laget jeg metoden `new_assoc_record` på nytt. I stedet for å operere med rå tall-ID-er, tar metoden nå imot komplette instanser av `RepositoryModel` og `LanguageModel`.
+
+Ved å knytte selve modellobjektene sammen, overlates håndteringen av avhengigheter til systemets innebygde <abbr title="(Unit of Work) - en måte å håndtere transaksjoner og endringer i en database på">transaksjonshåndtering</abbr>. Dette sikrer at koblingen først lagres når de relaterte objektene har fått gyldige ID-er, noe som fjerner bruddet på integritetsreglene.
+```python
+  def new_assoc_record(self, repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -> None:
+    association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
+    self.session.add(association_obj)
+  ```
+Etter at jeg omgjorde funksjonen, ble integritetsbruddene fjernet. Ved å integrere logikken direkte i arbeidsflyten, sikres det at relasjonene opprettes i riktig rekkefølge. Dette har resultert i en pålitelig prosess der koblinger mellom prosjekter og språk lagres stabilt.
+
+
+Erfaringen bekrefter at operasjoner med rå fremmednøkkel-ID-er i et asynkront miljø medfører en stor risiko for tekniske feil. Arbeidet har gitt en dypere forståelse for hvordan rekkefølgen i en database fungerer; selv om dataene hentes samtidig, må de lagres korrekt for at koblingene skal være gyldige. Ved å bruke hele modellobjekter som argumenter, har jeg sørget for at systemet tåler tidsavvik og alltid finner riktig informasjon.
+
+Verdien av mitt arbeid med denne oppdateringen ligger i overgangen fra en sårbar håndtering av data til en selvgående prosess som jeg har utviklet. Ved å sikre at systemet nå alltid kontrollerer informasjonen før den lagres, har jeg fjernet en feilkilde som tidligere førte til systemstans og mangelfulle rapporter. Mitt grep sørger for at jeg har fjernet risikoen for feilaktige data, slik at informasjonen som vises alltid stemmer med virkeligheten.
+
+Konklusjonen er at den nye løsningen fungerer som en intelligent oppdateringsmekanisme som hindrer at samme informasjon lagres flere ganger. Dette fjerner behovet for utfordrende feilretting senere og sikrer at databasen holder seg ryddig over tid. Ved å løse problemet på denne måten har jeg redusert teknisk rot og fjernet fremtidig tidsbruk knyttet til reparasjon av data. Jeg har bygget et fundament som tåler vekst, noe som gir en direkte besparelse i form av spart arbeidstid og full tillit til det systemet leverer. Dette er helt avgjørende for at jeg kan garantere en stabil og forutsigbar drift.
