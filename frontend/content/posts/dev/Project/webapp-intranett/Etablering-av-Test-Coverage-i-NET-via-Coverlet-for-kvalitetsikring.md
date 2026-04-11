@@ -5,30 +5,29 @@ date: 2025-12-09T00:00:00.000Z
 title: Objektiv kvalitetssikring og optimalisert ressursbruk gjennom automatisert rapportering
 ingress: |
   Ved å fjerne blindsoner i utviklingsprosessen, har vi nå etablert et objektivt målesystem som gir full innsikt i den digitale løsningens kvalitet og faktiske risikobilde. Gjennom automatisert rapportering og sanntidsvisning har vi gått fra antakelser til faktabasert styring, noe som sikrer en målrettet ressursbruk og driftssikkerheten. Denne oppgraderingen reduserer faren for uforutsette feil og gir bedriften et mer pålitelig produkt som er rigget for stabil leveranse i takt med forretningens behov.
-parade: ''
-star: |
-  Utviklingsmiljøet manglet et system for å måle og visualisere hvor stor del av den digitale løsningen som faktisk ble kontrollert av sikkerhetstester. Dette skapte "blindsoner" i utviklingsprosessen. Uten objektive data var det umulig å vurdere den faktiske risikoen for feil eller størrelsen på den tekniske gjelden, noe som gjorde bedriften sårbar for uforutsette utfordringer i drift.
+status: |
+  #### Dagens Aktiviteter 
 
-  Målet var å etablere en automatisert målingsmekanisme som gir full innsikt i systemets kvalitet. Oppgaven innebar å implementere verktøy som genererer konkrete rapporter over testdekning. Disse rapportene skal fungere som et styringsverktøy for ledelsen og utviklerne, slik at ressurser kan målrettes mot de delene av applikasjonen som har høyest risiko.
+  * Etablert et nytt målesystem som gir full oversikt over hvor godt den digitale løsningen er testet, noe som fjerner usikkerhet rundt systemets faktiske tilstand.
+  * Implementert automatiserte rapporter som gir ledelsen og teamet et objektivt beslutningsgrunnlag for å prioritere ressurser der risikoen for feil er størst.
+  * Fullført integrasjon av verktøy som fanger opp svakheter i koden før de når sluttbrukerne, noe som reduserer faren for uforutsette driftsavbrudd.
+  * Lagt til rette for visuelle tilbakemeldinger i sanntid, som gjør at teamet kan jobbe raskere og mer målrettet med feilretting og forbedringer.
+  * Sikret at vi nå har målbare bevis på systemets kvalitet, noe som gir økt trygghet for at programvaren vi leverer er stabil og pålitelig.
+  * Gått fra antakelser til fakta i kvalitetsarbeidet, slik at vi kan bruke utviklingstiden der den skaper størst verdi for bedriften.
 
-  * Gjennomførte en grundig analyse av prosjektoppsettet for å identifisere hvorfor kritiske måledata ikke ble generert.
-  * Identifiserte og implementerte manglende komponenter i systemets instruksjonsfiler som er nødvendige for å kunne "lese" testresultatene korrekt.
-  * Koblet sammen testverktøyene med prosjektet slik at hver testkjøring nå automatisk produserer forståelige dekningsgrader i prosent.
-  * Tilrettela for at utviklingsteamet kan se svakheter og utestet kode i sanntid, noe som forenkler arbeidet med å forbedre systemet.
+  #### Motivasjon & Energi   10  /  10 
 
-  Ved å fjerne de tekniske blindsonene har vi nå fått et objektivt og målbart bevis på systemets kvalitet. Dette har resultert i en betydelig mer profesjonell utviklingsprosess der risiko kan identifiseres og håndteres før den når brukerne. Dette øker driftssikkerhet og gir en målrettet ressursbruk, da vi nå kan prioritere forbedringer basert på fakta fremfor antakelser. Resultatet er et mer pålitelig produkt, redusert teknisk risiko og et utviklingsteam som har verktøyene de trenger for å levere stabil programvare i takt med bedriftens behov.
+  Dagen er så fin den kan bli
 sources: ''
 ---
 
-**Dagens Aktiviteter**
+Utviklingsmiljøet manglet et system for å måle og visualisere hvor stor del av den digitale løsningen som faktisk ble kontrollert av sikkerhetstester. Dette skapte "blindsoner" i utviklingsprosessen. Uten objektive data var det umulig å vurdere den faktiske risikoen for feil eller størrelsen på den tekniske gjelden, noe som gjorde bedriften sårbar for uforutsette utfordringer i drift.
 
-* Etablert et nytt målesystem som gir full oversikt over hvor godt den digitale løsningen er testet, noe som fjerner usikkerhet rundt systemets faktiske tilstand.
-* Implementert automatiserte rapporter som gir ledelsen og teamet et objektivt beslutningsgrunnlag for å prioritere ressurser der risikoen for feil er størst.
-* Fullført integrasjon av verktøy som fanger opp svakheter i koden før de når sluttbrukerne, noe som reduserer faren for uforutsette driftsavbrudd.
-* Lagt til rette for visuelle tilbakemeldinger i sanntid, som gjør at teamet kan jobbe raskere og mer målrettet med feilretting og forbedringer.
-* Sikret at vi nå har målbare bevis på systemets kvalitet, noe som gir økt trygghet for at programvaren vi leverer er stabil og pålitelig.
-* Gått fra antakelser til fakta i kvalitetsarbeidet, slik at vi kan bruke utviklingstiden der den skaper størst verdi for bedriften.
+Målet var å etablere en automatisert målingsmekanisme som gir full innsikt i systemets kvalitet. Oppgaven innebar å implementere verktøy som genererer konkrete rapporter over testdekning. Disse rapportene skal fungere som et styringsverktøy for ledelsen og utviklerne, slik at ressurser kan målrettes mot de delene av applikasjonen som har høyest risiko.
 
-**Motivasjon & Energi** **10** / **10**
+* Gjennomførte en grundig analyse av prosjektoppsettet for å identifisere hvorfor kritiske måledata ikke ble generert.
+* Identifiserte og implementerte manglende komponenter i systemets instruksjonsfiler som er nødvendige for å kunne "lese" testresultatene korrekt.
+* Koblet sammen testverktøyene med prosjektet slik at hver testkjøring nå automatisk produserer forståelige dekningsgrader i prosent.
+* Tilrettela for at utviklingsteamet kan se svakheter og utestet kode i sanntid, noe som forenkler arbeidet med å forbedre systemet.
 
-Dagen er så fin den kan bli
+Ved å fjerne de tekniske blindsonene har vi nå fått et objektivt og målbart bevis på systemets kvalitet. Dette har resultert i en betydelig mer profesjonell utviklingsprosess der risiko kan identifiseres og håndteres før den når brukerne. Dette øker driftssikkerhet og gir en målrettet ressursbruk, da vi nå kan prioritere forbedringer basert på fakta fremfor antakelser. Resultatet er et mer pålitelig produkt, redusert teknisk risiko og et utviklingsteam som har verktøyene de trenger for å levere stabil programvare i takt med bedriftens behov.
