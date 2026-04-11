@@ -1,10 +1,7 @@
 <template>
     <article class = 'article-wrapper flex-column'>
        <header>
-           <ArticleHead
-                :article="article"
-                :isNewsPage="isPage"
-                :isArticlePage="isPage"/>
+           <ArticleHead :article="article" :isNewsPage="isPage" :isArticlePage="isPage"/>
        </header>
        <main v-if="isPage">
         <ArticleBody :data="article" />
@@ -25,10 +22,10 @@
     const article = computed(() => props.data);
 
     const route = useRoute();
-    const isPage = computed(() => {return route.name?.toString().startsWith('artikkel')});
+    const isPage = computed(() => {return route.name?.toString().startsWith('logs-records')});
 
     //  --- Debugging logic
-    //console.log("Articles Component - Article Data :", route.name);
-    //console.log("Articles Component - isPage :", isPage.value);
+    console.log("Articles Component - Article Data :", route.name);
+    console.log("Articles Component - isPage :", isPage.value);
     //console.log("Articles Component :", isPage.value, article, isNewsPage, isArticlePage), article.conclusion;
 </script>
