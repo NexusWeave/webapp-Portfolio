@@ -1,3 +1,10 @@
+## [1.15.7](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.6...v1.15.7) (2026-04-11)
+
+
+### Bug Fixes
+
+* resolved issue with slug name, to define page as a logs-record ([6036177](https://github.com/NexusWeave/webapp-Portfolio/commit/6036177a98ac80720859d764b87bc7742ac68082))
+
 ## [1.15.6](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.5...v1.15.6) (2026-04-10)
 
 
