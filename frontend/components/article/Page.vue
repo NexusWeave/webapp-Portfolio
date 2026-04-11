@@ -5,9 +5,7 @@
        </header>
        <main v-if="isPage">
         <ArticleBody :data="article" />
-       </main>
-        <footer v-if="article.conclusion && isPage">
-        </footer>        
+       </main>        
     </article>
 </template>
 
