@@ -1,9 +1,7 @@
 ---
 date: 2025-12-23T00:00:00.000Z
-tags:
-  - dev-journey
 title: Integrasjonsutfordringer i Skytjenesten
-ingress: >
+ingress: |
   Denne artikkelen tar for seg utfordringene som oppstår når en applikasjon
   migrerer fra et lokalt utviklingsmiljø til en profesjonell tjenestestruktur i
   Google Cloud. Gjennom feilsøking av brutte kommunikasjonslinjer mellom klient

@@ -10,7 +10,6 @@ ingress: >
   eliminering av flaskehalsen, noe som bekrefter den kritiske viktigheten av
   non-blokkerende I/O for å oppnå robust systemskalerbarhet i asynkrone
   arkitekturer.
-status: |
 sources: ''
 ---
 ### Pontensiell stopp

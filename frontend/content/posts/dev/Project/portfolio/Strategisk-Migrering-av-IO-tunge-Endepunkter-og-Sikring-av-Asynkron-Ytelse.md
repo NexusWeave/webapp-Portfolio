@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-23T00:00:00.000Z
 title: Modernisering av GitHub-koblingen
 ingress: |

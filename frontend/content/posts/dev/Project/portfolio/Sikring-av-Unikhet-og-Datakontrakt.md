@@ -1,7 +1,5 @@
 ---
 date: 2025-12-15T00:00:00.000Z
-tags:
-  - dev-journey
 title: Sikring av Unikhet og Datakontrakt
 ingress: |
  Arbeidet med å stabilisere databaselaget har ført til viktige utbedringer i håndteringen av prosjekt- og språkdata. Ved å legge til en `Get or Create`-strategi og oppgradere <abbr title ="Et typesikkert bibliotek for datavalidering og innstilling av data i Python, dette reduserer risiko marginen.">Pydantic</abbr>-modeller til <abbr title="Versjon 2">V2</abbr>, er lagring av unike språkobjekter og datahenting nå sikret mot `IntegrityError` og valideringskrasj. To av tre hovedfeil er løst, mens gjenstående arbeid fokuserer på å rette en krasj i assosiasjonstabellen for å sikre full systemintegritet.

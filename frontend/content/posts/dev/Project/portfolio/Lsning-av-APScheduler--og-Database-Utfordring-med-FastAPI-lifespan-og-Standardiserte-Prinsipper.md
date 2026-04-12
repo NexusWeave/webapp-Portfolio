@@ -1,9 +1,9 @@
 ---
 date: 2025-12-11T00:00:00.000Z
-title: >-
+title: |
   Løsning av APScheduler- og Database Utfordring med FastAPI lifespan og
   Standardiserte Prinsipper
-ingress: >
+ingress: |
   En feil ble identifisert der både `APScheduler` og databaseinitialisering
   feilet under FastAPI-applikasjonens oppstart, som følge av bruk av utdaterte
   livssyklushendelser. Løsningen krevde en migrering til den moderne `lifespan`

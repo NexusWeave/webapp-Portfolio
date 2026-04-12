@@ -1,9 +1,7 @@
 ---
 date: 2025-12-22T00:00:00.000Z
-tags:
-  - dev-journey
 title: Bro bygging mellom miljøer
-ingress: >
+ingress: |
   Denne læringsloggen dokumenterer overgangen fra et utviklingsmiljø til en
   produksjonsarkitektur på Google Cloud Run. Ved flytting av backend-logikk til
   skyen oppstod det utfordringer knyttet til isolasjon i Docker-containere og

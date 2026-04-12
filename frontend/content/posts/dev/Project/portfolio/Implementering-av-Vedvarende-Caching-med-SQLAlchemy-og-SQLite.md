@@ -1,9 +1,7 @@
 ---
 date: 2025-12-06T00:00:00.000Z
-tags:
-  - dev-journey
 title: Implementering av Vedvarende Caching med SQLAlchemy og SQLite
-ingress: >
+ingress: |
   En ytelsesutfordring ble identifisert der API-responsen for GitHub-data førte
   til uakseptabel høy latens (**O**(**n**)-kompleksitet) i FastAPI. For å løse
   dette ble det initiert et prosjekt for å implementere et vedvarende
