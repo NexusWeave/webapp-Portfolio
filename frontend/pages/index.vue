@@ -2,16 +2,15 @@
     <article class="article-wrapper flex-column">
         <h2> Logger fra mine prosjekter </h2>
         <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
-            <NavigationButton v-if="currentPage > 1" :data="lastPageBtn" :cls="['button', 'pagination-btn']"/>
+            <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
                 <span> {{ currentPage }} / {{ totalPages }}</span>
-            <NavigationButton v-if="currentPage < totalPages" :data="nextPageBtn" :cls="['button', 'pagination-btn']"/>
+            <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
         </section>
 
         <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
                 <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
                 <ArticleHead :article="post" />
             </section>
-
         </section>
     </article>
 
@@ -67,8 +66,8 @@
     
     //  --- Pagination Logic
     const totalPages = computed(() => { if (rawPosts.value) {return Math.ceil(rawPosts.value.length / n); } return 0; });
-    const lastPageBtn = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
-    const nextPageBtn = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
+    const prevPage = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
+    const nextPage = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
 
     
     //  --- Debugging Logic

@@ -2,13 +2,17 @@
     <section class="flex-column">
         <article class="article-wrapper">
             <h2> Mine Personlige Logger </h2>
-            <section class="blog-section flex-wrap-row-align-items-center-justify-space-between">
-                <NavigationButton v-if="currentPage > 1" :data="prevPage"/>
+                    <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
+            <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
+                <span> {{ currentPage }} / {{ totalPages }}</span>
+            <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
+        </section>
+
+        <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
                 <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
-                    <ArticleHead :article="post" />
-                </section>
-                <NavigationButton v-if="currentPage < totalPages" :data="nextPage"/>
+                <ArticleHead :article="post" />
             </section>
+        </section>
         </article>
         <section class="flex-wrap-row-justify-space-evenly">
             <section class="flex-column-justify-center-align-center">
