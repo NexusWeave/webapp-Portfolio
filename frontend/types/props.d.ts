@@ -18,7 +18,7 @@ export interface GithubData
     flags: Record<string, boolean>;
     languages: GithubRepoLanguage[];
 }
+export interface RepositoryData extends Array<GithubData> {}
 export interface GithubRepoLanguage { img: FigureItem[]; label: string, bytes: number }
+export interface ProgressProps { value: number; cls?: string[]; label: string; tech?: string; }
 export interface RepoProps { data: GithubRepo; cls?: Array<string | string[] | Array<string | string[]>>; }
-
-export interface ProgressProps { value: number; tech?: string; label: string; cls?: string[]; }
