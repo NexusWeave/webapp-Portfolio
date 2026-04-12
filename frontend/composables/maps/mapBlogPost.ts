@@ -25,7 +25,7 @@ export const mapBlogData = (data: DevPostsCollectionItem[]) => {
                         if (!id[index]) return;
                         const label = folder?.toLowerCase() === listOfAvailableTags[0] ? id[index + 1] : folder;
 
-                        return { label: `${label ? label?.charAt(0).toUpperCase() + label.slice(1)?.replace(/-/g, ' ') : ''}`, type: ['tag'], href: `${dir}/tags/${label}`, cls: [label], path: id.pop()?.toLocaleLowerCase() };
+                        return { label: `${label ? label?.charAt(0).toUpperCase() + label.slice(1)?.replace(/-/g, ' ') : ''}`, type: ['tag', 'dir'], href: `${dir}/tags/${label}`, cls: [label], path: id.pop()?.toLocaleLowerCase() };
 
                     })();
             return {
