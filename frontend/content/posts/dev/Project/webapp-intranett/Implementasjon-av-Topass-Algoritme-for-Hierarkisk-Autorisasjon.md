@@ -4,7 +4,7 @@ tags:
 date: 2025-11-21T00:00:00.000Z
 title: Styrket informasjonssikkerhet og etterlevelse gjennom ny modell for tilgangsstyring
 ingress: |
-  Jeg har utviklet en løsning for rollebasert tilgangskontroll i hierarkiske datalister. Ved å bruke en «*to-pass-algoritme*» arves rettigheter korrekt i trestrukturer, mens sensitive data skjermes etter prinsippet om <abbr title ="Prinsippet sier at brukere skal bare ha de nødvendige tilgangene de trenger for å gjøre jobben sin">minste privilegium</abbr>. Arbeidet fjerner manuelle feilkilder, tetter sikkerhetshull og sikrer at kollegaer har uavbrutt tilgang til nødvendig innhold. Dette gir en stabil og fremtidsrettet grunnmur for datasikkerhet.
+  Jeg har utviklet en løsning for rollebasert tilgangskontroll i hierarkiske datalister. Ved å bruke en «<abbr title = "En prosess som går gjennom dataen to ganger for å bli ferdig med jobben">*to-pass-algoritme*</abbr>» arves rettigheter korrekt i trestrukturer, mens sensitive data skjermes etter prinsippet om <abbr title ="Prinsippet sier at brukere skal bare ha de nødvendige tilgangene de trenger for å gjøre jobben sin">minste privilegium</abbr>. Arbeidet fjerner manuelle feilkilder, tetter sikkerhetshull og sikrer at kollegaer har uavbrutt tilgang til nødvendig innhold. Dette gir en stabil og fremtidsrettet grunnmur for datasikkerhet.
 status: |
   #### Dagens aktiviteter
 
