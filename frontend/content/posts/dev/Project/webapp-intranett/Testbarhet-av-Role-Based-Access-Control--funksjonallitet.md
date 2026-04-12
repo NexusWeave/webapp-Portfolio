@@ -4,7 +4,7 @@ tags:
 date: 2025-11-14T00:00:00.000Z
 title: Redusert risiko og lavere vedlikeholdskostnader
 ingress: |
-  Vi har styrket systemets grunnmur for å fjerne risikoen for feil i daglig drift. Ved å skille virksomhetens regler fra den tekniske motoren, har vi skapt en løsning som er langt enklere å kontrollere. Dette gir en stabil sikkerhet som fungerer slik det er planlagt, samtidig som vi reduserer tidsbruk til vedlikehold. Resultatet er en trygg investering som raskt kan tilpasses nye behov i organisasjonen uten økt sårbarhet og risiko.
+  Vi har styrket systemets grunnmur ved å skille forretningslogikk fra infrastruktur. Tidligere sammenkobling gjorde sikkerhetskontroll vanskelig og økte risikoen for feil. Ved å rydde i arkitekturen og innføre automatiserte testrutiner, har vi skapt en løsning som er enkel å verifisere. Resultatet er en pålitelig arkitektur som sikrer korrekt tilgangsstyring, reduserer vedlikeholdstiden og klargjør prosjektet for trygg videreutvikling.
 status: |
   #### Dagens aktiviteter
 
@@ -21,9 +21,9 @@ status: |
 sources: ''
 ---
 
-Systemets funksjon for tilgangsstyring var organisert på en måte som blandet foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken isolert , som øker risiko for feil ved fremtidige endringer og gjorde det vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer som planlagt.
+Systemets funksjon for tilgangsstyring var organisert på en måte som blandet foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken isolert, som øker risiko for feil ved fremtidige endringer og gjorde det vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer som planlagt.
 
-Målet var å separere ansvarsområdene i systemet for å sikre at reglene kan kontrolleres uavhengig av tekniske lagringsløsninger. Oppgaven var å øke systemets pålitelighet og bygge et rammeverk for effektiv og automatisert kvalitetssikring.
+Målet var å separere ansvarsområdene i systemet for å sikre at reglene kan kontrolleres uavhengig av tekniske lagringsløsninger mens oppgaven var å øke systemets pålitelighet og bygge et rammeverk for effektiv og automatisert kvalitetssikring.
 
 Jeg har ryddet i systemets oppbygging.
 

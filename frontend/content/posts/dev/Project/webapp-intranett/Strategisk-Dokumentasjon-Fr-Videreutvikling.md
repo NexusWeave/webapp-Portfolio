@@ -2,7 +2,7 @@
 date: 2025-11-11T00:00:00.000Z
 title: Økt gjennomføringsevne gjennom strukturert kunnskapsdeling
 ingress: |
-  Ved å etablere en strukturert dokumentasjonsbase har vi nå transformert prosjektets oppstartsprosess. Tidligere mangel på oversikt medførte lang opplæringstid og operasjonell risiko. Den nye løsningen sikrer at mål og rutiner er lett tilgjengelige, noe som gjør nye medarbeidere raskere selvgående. Resultatet er økt gjennomføringsevne, mindre dødtid og en mer effektiv verdiskaping for hele teamet og bedriften i fremtiden.
+  Mangel på sentral informasjon og lang opplæringstid utgjorde en risiko for prosjektet. Ved å designe en strukturert dokumentasjonsbase med klare guider, systemoversikt og vedlikeholdsplaner, har vi transformert hvordan nye medarbeidere onboardes. Resultatet er et intuitivt rammeverk som fjerner dødtid og sikrer at nødvendig kunnskap er tilgjengelig for alle. Nå blir nye ressurser raskt selvgående, noe som øker teamets totale verdiskaping.
 status: |
   #### Dagens aktiviteter
 
