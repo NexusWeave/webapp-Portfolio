@@ -4,7 +4,7 @@ tags:
 date: 2025-11-14T00:00:00.000Z
 title: Redusert risiko og lavere vedlikeholdskostnader
 ingress: |
-  Vi har styrket systemets grunnmur for å fjerne risikoen for feil i daglig drift. Ved å skille virksomhetens regler fra den tekniske motoren, har vi skapt en løsning som er langt enklere å kontrollere. Dette gir en stabil sikkerhet som fungerer slik det er planlagt, samtidig som vi reduserer tidsbruk til vedlikehold. Resultatet er en trygg investering som raskt kan tilpasses nye behov i organisasjonen uten økt sårbarhet og risiko.
+  Vi har styrket systemets grunnmur ved å skille forretningslogikk fra infrastruktur. Tidligere sammenkobling gjorde sikkerhetskontroll vanskelig og økte risikoen for feil. Ved å rydde i arkitekturen og innføre automatiserte testrutiner, har vi skapt en løsning som er enkel å verifisere. Resultatet er en pålitelig arkitektur som sikrer korrekt tilgangsstyring, reduserer vedlikeholdstiden og klargjør prosjektet for trygg videreutvikling.
 status: |
   #### Dagens aktiviteter
 
