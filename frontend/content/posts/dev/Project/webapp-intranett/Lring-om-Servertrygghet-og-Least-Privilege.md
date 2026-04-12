@@ -4,7 +4,7 @@ tags:
 date: 2025-11-20T00:00:00.000Z
 title: Sikring av sensitive URL-stier og forbedring av systemets tilgangskontroll
 ingress: |
-  For å beskytte bedriftens interne informasjon har jeg utviklet en sikkerhetsløsning som sikrer at brukere kun ser data de har rettmessig tilgang til. Ved å flytte filtreringen til serveren i tråd med prinsippet om <abbr title="Prinsippet sier at brukere skal ha tilgang til det de trenger for å gjøre jobben sin">**minste privilegium**</abbr>, har vi tettet lekkasjer av systemets struktur. Tiltaket fjerner unødvendig støy, styrker motstandskraften mot angrep og sikrer at våre systemer nå opererer profesjonelt og etter beste praksis.
+  For å beskytte bedriftens interne informasjon har jeg utviklet en sikkerhetsløsning som sikrer at brukere kun ser data de har rettmessig tilgang til. Ved å flytte filtreringen til serveren i tråd med prinsippet om <abbr title="Prinsippet sier at brukere skal ha bare tilgang til det de trenger for å gjøre jobben sin">**minste privilegium**</abbr>, har vi tettet lekkasjer av systemets struktur. Tiltaket fjerner unødvendig støy, styrker motstandskraften mot angrep og sikrer at våre systemer nå opererer profesjonelt og etter beste praksis.
 status: |
   #### Dagens Aktiviteter
 
@@ -28,7 +28,7 @@ Min oppgave var å finne ut hvorfor denne informasjonen ble lekket og vurdere ri
 Jeg undersøkte hvordan dataene ble hentet ut og oppdaget at sikkerhetskontrollen ble gjort for sent i prosessen (hos brukeren istedenfor på serveren).
 
 * Jeg fant ut av at det manglet en filtrering i øyblikket da dataen ble hentet ut av systemtes underliggende filer.
-* Jeg sammenlignet dagens praksis med "Prinsippet om minste privilegium" – en viktig standard innen IT-sikkerhet som sier at “ingen skal se mer enn det som er strengt nødvendig for å utføre jobben sin”.
+* Jeg sammenlignet dagens praksis med prinsippet om <abbr title = "ingen skal se mer enn det som er strengt nødvendig for å utføre jobben sin">"minste privilegium"</abbr>.
 * Jeg utarbeidet en logikk for sikre at de stiene ble fjernet før den nådde brukerensskjerm
 
 Arbeidet resulterte i en styrking av systemets sikkerhet og integritet. Ved å legge til en funksjonalitet hvor jeg kan filtrere ut stie fra brukerens øyner, dette er noe som reduserer risikoen for målrettede angrep mot interne systemer. Vi har ikke bare laget en løsning som fjerner unødvendig støy for de besøkende på nettsiden, men vi følger nå beste praksis for personvern og datasikkerhet. Dette beskytter bedriftens interne arkitektur og sikrer at systemet oppleves som trygt og profesjonelt for sluttbrukeren.
