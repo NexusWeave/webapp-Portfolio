@@ -4,7 +4,7 @@ tags:
 date: 2025-12-24T00:00:00.000Z
 title: Trygg og stabil oppstart av nettsidens redaktørpanel
 ingress: |
-  Gjennom smart bruk av sikkerhetsverktøy i nettsidens redaktørpanel sikrer vi at hemmelige tilgangskoder ikke lenger er tilgjenglige for uønskede gjester, samtidig som den gjør det både raskere og tryggere for teamet å jobbe videre med nettsiden.
+  Ved å sikre  <abbr title="Et publiserings verktøy for bilder og tekst">redaktørpanelt</abbr> mot datainnbrudd har jeg lagt grunnlaget for en trygg og selvstendig drift. Jeg løste feil i <abbr title="Når koden utviklings koden skal oversettes til produksjons kode">kompileringen</abbr> ved å legge til en sikker håndtering av <abbr title ="Variabler i et isolert miljø">miljøvariabler</abbr> og sensitive tilgangsnøkler. Gjennom bruk av profesjonelle verktøy hindres lekkasje av konfidensiell data, samtidig som systemet er stabilisert. Dette har etablert en ny standard som forenkler videre utvikling og beskytter bedriftens digitale verdier.
 status: |
   #### Dagens Aktiviteter
 
@@ -15,15 +15,13 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
 
-  Dagen har vært så fin den kan bli.  
+  Dagen har vært så fin den kan bli.
 sources: ''
 ---
 
-for at kunden skulle håndtere tekst og bilder på nettsiden sin har det tidligere blitt laget et redaktørpanel (CMS), da jeg skulle klargjøre dette systemet for bruk, oppstod det et avbrudd i oversettelsen som en konskekvens av systemet manglet digitale nøkler (Identifikasjon ID og passord ) for å koble seg trygt til skyen.
+Det hadde tidligere blitt laget til et tilpasset <abbr title="Et publiserings verktøy for bilder og tekst">redaktørpanelt</abbr>, dette skulle hjelpe bedriften for å bli mer selvstendig og redusere behovet for teknisk hjelp. Da jeg skulle klargjøre dette systemet for bruk, oppstod det et avbrudd i <abbr title="Når koden utviklings koden skal oversettes til produksjons kode">kompileringen</abbr> som en konskekvens av systemet manglet digitale identifikasjoner og nøkler for å koble seg trygt til skyen. Jeg forsto at systemet ikke fant de nødvendige tilgangskodene i den lokale miljø-filen kalt <abbr title="En isolert fil som gjemmer sensitive nøkler">`**.env**`.</abbr>
+Målet var å få systemet tilgjenglig på nett, uten at dette gikk utover sikkerheten. Oppgaven var å mate bedriftens plattform med disse hemmlige nøklene, på en måte de ikke er offentliggjort.
 
-Min oppgave var å få systemet tilgjenglig på nett, uten at dette går utover sikkerheten. Utfordringen var å mate publiseringsverktøyet  med disse hemmlige nøklene slik at de ikke er offentliggjort.
+* Jeg installerte et hjelpeverktøy kalt <abbr title = "Et hjelpeverktøy i Node JS">`dotenv-cli`</abbr>, som har ansvaret for å finne `.env`-filen. Jeg endret også oppstartskommandoen slik at hjelpeverktøyet henter de sensitive nøklene og verdiene fra miljø filen og overleverer dem direkte til systemet i bygge fasen. Ved å bruke denne metoden sikret jeg at hemmlige nøkler ikke blir offentliggjort, ved å skrive de inn direkte i filen, dette holder systemet trygt for uønskede gjester.
 
-* Jeg forsto at systemet ikke fant de nødvendige tilgangskoedne i den lokale miljø filen kalt **`.env`**.
-* Jeg installerte et hjelpeverktøy kalt `dotenv-cli`, som har ansvaret for å finne `.env`-filen.  og  jeg endret oppstartskommandoen slik at hjelpeverktøyet henter de sensitive nøklene og verdiene fra miljø filen  og overleverer dem direkte til systemet i bygge fasen. Ved å bruke denne metoden sikret jeg at hemmlige nøkler ikke blir offentliggjort, ved å skrive de inn direkte i filen, dette holder systemet trygt for uønskede gjester.
-
-Denne løsningen har sikret at nettsiden og innholdssystemet nå er stabilt og klart til bruk for organisasjonen. Jeg sikret at systemet finner nøklene samtidig som at systemet ikke offentliggjør disse nøklene, dermed beskytter jeg bedriften mot potensielle datainnbrudd og økonomiske tap rundt dette. Verdien for videre utvikling av prosjektet er at jeg har etablert en ny sikkerhets standard, som gjør at fremtidige utviklere kan sette opp systemet raskt og trygt. Dette reduserer også risikoen for mennesklige feil i fremtiden.
+Denne løsningen har sikret at nettsiden og innholdssystemet nå er stabilt og klart til bruk for organisasjonen. Jeg sikret at systemet finner nøklene samtidig som at systemet ikke offentliggjør disse nøklene, dermed beskytter jeg bedriften mot potensielle datainnbrudd og tap rundt dette. Verdien for videre utvikling av prosjektet er at jeg har etablert en ny sikkerhets standard, som gjør at fremtidige utviklere kan sette opp systemet raskt og trygt. Dette reduserer også risikoen for mennesklige feil i fremtiden.
