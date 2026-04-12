@@ -1,9 +1,10 @@
 ## Prosjektstruktur
 
-Dette treet viser dagens frontend-struktur og utelater mapper som er ignorert i gitignore.
+Dette treet viser dagens frontend-struktur og utelater mappeinnhold som vanligvis ignoreres (for eksempel `node_modules/`).
 
 ```text
 frontend/
+├── .dockerignore
 ├── Dockerfile
 ├── Makefile
 ├── README.md
@@ -11,6 +12,7 @@ frontend/
 ├── content.config.ts
 ├── eslint.config.mjs
 ├── nuxt.config.ts
+├── package-lock.json
 ├── package.json
 ├── tsconfig.json
 ├── components/
@@ -35,37 +37,50 @@ frontend/
 │   ├── profiles/
 │   └── quotes/
 ├── docs/
-│   ├── ARCHITECTURE.md
+│   ├── architecture.md
 │   ├── context-diagram.md
 │   └── logs/
 ├── pages/
-│   ├── Dev.vue
-│   ├── Personal.vue
+│   ├── dev.vue
 │   ├── index.vue
-│   └── artikkel/
+│   ├── logs/
+│   │   ├── records/
+│   │   │   └── [slug].vue
+│   │   └── tags/
+│   │       └── [slug].vue
+│   └── personal.vue
 ├── public/
 │   ├── _redirects
-│   ├── robot.txt
-│   └── media/
+│   ├── admin/
+│   ├── favicon.ico
+│   ├── media/
+│   └── robot.txt
 ├── sass/
 │   ├── colors/
 │   ├── flexbox/
 │   ├── mappings/
 │   ├── media-query/
+│   ├── mix/
 │   ├── utils/
 │   ├── views/
 │   └── index.sass
+├── server/
+│   └── api/
+│       └── log-urls.ts
 ├── stores/
 │   └── languageBytesStore.ts
 ├── tina/
+│   ├── __generated__/
 │   ├── collections/
 │   ├── config.ts
 │   └── tina-lock.json
 ├── types/
 │   ├── article.d.ts
+│   ├── date.d.ts
+│   ├── documents.d.ts
+│   ├── media.d.ts
 │   ├── navigation.d.ts
 │   ├── props.d.ts
-│   ├── references.d.ts
 │   └── timeline.d.ts
 └── utils/
     ├── tech-utils.ts
