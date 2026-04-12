@@ -4,9 +4,7 @@ tags:
 date: 2025-11-21T00:00:00.000Z
 title: Styrket informasjonssikkerhet
 ingress: |
-  Jeg har utviklet en løsning for rollebasert tilgangskontroll i hierarkiske datalister. Ved å bruke en to-pass-algoritme arves rettigheter korrekt i trestrukturer, mens sensitive data skjermes etter prinsippet om minste privilegium. Arbeidet fjerner manuelle feilkilder, tetter sikkerhetshull og sikrer at kollegaer har uavbrutt tilgang til innhold. Dette gir en stabil, trygg og fremtidsrettet grunnmur for bedriftens datasikkerhet.
-
-  Jeg har utviklet en løsning for rollebasert tilgangskontroll i hierarkiske datalister. Ved å bruke en «<abbr title = "En prosess som går gjennom dataen to ganger for å bli ferdig med jobben">*«to-pass-algoritme»*</abbr>» arves rettigheter korrekt i trestrukturer, mens sensitive data skjermes etter prinsippet om <abbr title ="Prinsippet sier at brukere skal bare ha de nødvendige tilgangene de trenger for å gjøre jobben sin">«*minste privilegium*»</abbr>. Arbeidet fjerner feilkilder, tetter hull og sikrer uavbrutt tilgang til innhold for bedriften.
+  Jeg har utviklet en løsning for rollebasert tilgangskontroll i hierarkiske datalister. Ved å bruke en « <abbr title = "En prosess som går gjennom dataen to ganger for å bli ferdig med jobben">*to-pass-algoritme*</abbr>» arves rettigheter korrekt i trestrukturer, mens sensitive data skjermes etter prinsippet om <abbr title ="Prinsippet sier at brukere skal bare ha de nødvendige tilgangene de trenger for å gjøre jobben sin">*minste privilegium*</abbr>. Arbeidet reduserer manuelle feilkilder, tetter sikkerhetshull og sikrer uavbrutt tilgang til innhold. Dette gir en stabil grunnmur for bedriftens datasikkerhet.
 status: |
   #### Dagens aktiviteter
 
