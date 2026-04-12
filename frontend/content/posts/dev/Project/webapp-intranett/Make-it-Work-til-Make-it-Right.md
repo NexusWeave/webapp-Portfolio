@@ -4,7 +4,7 @@ tags:
 date: 2025-11-24T00:00:00.000Z
 title: Fra "Make it Work" til "Make it Right"
 ingress: |
-  Gjennom en målrettet modernisering har vi fjernet vedlikeholdsetterslep og driftsrisiko i systemet. Ved å skille forretningsregler fra datalagring og innføre universelle grensesnitt, har vi skapt en fleksibel arkitektur. Dette har redusert koden med over femti linjer, noe som redusert feilmarginer og forenkle opplæring. Systemet fungerer nå som en pålitelig plattform som sikrer rimeligere og raskere videreutvikling.
+  Gjennom en målrettet modernisering har vi fjernet vedlikeholdsetterslep og driftsrisiko i systemet. Ved å skille forretningsregler fra datalagring og innføre universelle grensesnitt, har vi skapt en fleksibel arkitektur. Dette reduserer feilmarginer og forenkler opplæringen av nye ansatte, samtidig som koden er kortere. Systemet er nå en pålitelig plattform som sikrer både rimeligere og raskere videreutvikling.
 status: |
   #### Dagens Aktiviteter
 
