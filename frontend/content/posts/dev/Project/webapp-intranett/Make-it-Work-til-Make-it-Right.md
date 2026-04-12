@@ -4,7 +4,7 @@ tags:
 date: 2025-11-24T00:00:00.000Z
 title: Fra "Make it Work" til "Make it Right"
 ingress: |
-  Gjennom en målrettet opprydding i systemets fundament har vi fjernet operasjonell risiko og lagt til rette for en mer lønnsom videreutvikling. Moderniseringen har gjort kildekoden mer oversiktlig og pålitelig, noe som gir umiddelbare gevinster i form av lavere feilmarginer og enklere opplæring av nye medarbeidere.
+  Gjennom en målrettet modernisering har vi fjernet vedlikeholdsetterslep og driftsrisiko i systemet. Ved å skille forretningsregler fra datalagring og innføre universelle grensesnitt, har vi skapt en fleksibel arkitektur. Dette har redusert koden med over femti linjer, noe som redusert feilmarginer og forenkle opplæring. Systemet fungerer nå som en pålitelig plattform som sikrer rimeligere og raskere videreutvikling.
 status: |
   #### Dagens Aktiviteter
 
