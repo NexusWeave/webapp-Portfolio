@@ -21,9 +21,9 @@ status: |
 sources: ''
 ---
 
-Systemets funksjon for tilgangsstyring var organisert på en måte som blandet foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken isolert , som øker risiko for feil ved fremtidige endringer og gjorde det vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer som planlagt.
+Systemets funksjon for tilgangsstyring var organisert på en måte som blandet foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken isolert, som øker risiko for feil ved fremtidige endringer og gjorde det vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer som planlagt.
 
-Målet var å separere ansvarsområdene i systemet for å sikre at reglene kan kontrolleres uavhengig av tekniske lagringsløsninger. Oppgaven var å øke systemets pålitelighet og bygge et rammeverk for effektiv og automatisert kvalitetssikring.
+Målet var å separere ansvarsområdene i systemet for å sikre at reglene kan kontrolleres uavhengig av tekniske lagringsløsninger mens oppgaven var å øke systemets pålitelighet og bygge et rammeverk for effektiv og automatisert kvalitetssikring.
 
 Jeg har ryddet i systemets oppbygging.
 
