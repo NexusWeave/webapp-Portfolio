@@ -56,7 +56,8 @@
             "Article",
             "Routing",
             "Nav",
-            "Tag"
+            "Tag",
+            "Form"
         ],
     },
 }
