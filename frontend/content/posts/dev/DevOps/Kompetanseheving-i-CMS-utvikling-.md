@@ -1,7 +1,4 @@
 ---
-challanges_model: ''
-tags:
-  - dev-journey
 date: 2025-09-10T22:00:00.000Z
 title: Raskere Nettsideutvikling med Stabilt Redaktørpanel
 ingress: |

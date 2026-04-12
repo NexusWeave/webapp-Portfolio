@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-10T00:00:00.000Z
 title: Forbedre flyt og tryggere styring av systemtilganger
 ingress: |

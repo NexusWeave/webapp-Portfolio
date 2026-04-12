@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-12-09T00:00:00.000Z
 title: Objektiv kvalitetssikring og optimalisert ressursbruk gjennom automatisert rapportering
 ingress: |

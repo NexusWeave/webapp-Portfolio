@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-27T00:00:00.000Z
 title: Sikring av forretningskritisk logikk og etablering av fundament for raskere utvikling
 ingress: |

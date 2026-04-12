@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-12-29T00:00:00.000Z
 title: Optimalisering for en Tyggere Nettside og Økt Pålitelighet
 ingress: |

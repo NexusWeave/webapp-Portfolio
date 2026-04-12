@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-25T00:00:00.000Z
 title: Sikring av datakvalitet og en feilfri brukeropplevelse
 ingress: |

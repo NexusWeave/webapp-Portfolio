@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-03T00:00:00.000Z
 title: Gjenoppretting av intranett og sikring av universell systemtilgang
 ingress: |

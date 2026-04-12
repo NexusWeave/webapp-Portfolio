@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-12-16T00:00:00.000Z
 title: Erfaringer med assembly-konflikter og mappehierarki
 ingress: |

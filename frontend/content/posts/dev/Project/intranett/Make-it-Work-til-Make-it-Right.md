@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-24T00:00:00.000Z
 title: Fra "Make it Work" til "Make it Right"
 ingress: |

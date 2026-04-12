@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-12-24T00:00:00.000Z
 title: Trygg og stabil oppstart av nettsidens redaktørpanel
 ingress: |

@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-20T00:00:00.000Z
 title: Sikring av sensitive URL-stier og forbedring av systemets tilgangskontroll
 ingress: |

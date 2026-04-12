@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-12-23T00:00:00.000Z
 title: Fra manuell rutine til selvgående CI/CD prossees
 ingress: |

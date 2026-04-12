@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-14T00:00:00.000Z
 title: Redusert risiko og lavere vedlikeholdskostnader
 ingress: |
