@@ -2,7 +2,7 @@
 date: 2025-12-19T00:00:00.000Z
 title: Automatisert Infrastruktur for Isolerte miljøer (CI/CD) Prosesser
 ingress: |
-  Hvordan sikrer man at datamaskinen alltid finner frem til de riktige verktøyene uten mennesklig hjelp? Ved å etablere en fast struktur for digitale matbokser, har jeg laget et selvgående system som automatisk kobler seg til riktig miljø. Løsningen sikrer en pålitelig og reproduserbar arbeidsflyt, der systemet selv finner de nødvendige oppskriftene for en sikker og rask programvarekjøring uavhengig av hvilken maskin som benyttes.
+  Dagens arbeid har fokusert på å løse kritiske utfordringer med miljøkonfigurasjon i Linux. Ved å etablere en fast struktur for lokale verktøy og automatisere koblingen mot <abbr title="forkortet :venv  - Et miljø som er isolert mot andre miljøer">Virtuelt miljøer</abbr>, har jeg fjernet behovet for manuell intervensjon ved oppstart. Dette sikrer en stabil, selvgående og reproduserbar arbeidsflyt. Resultatet er et mer pålitelig system som prioriterer riktig programvare automatisk, noe som reduserer tid og risiko for feil.
 status: |
   #### Dagens Aktiviteter
 
