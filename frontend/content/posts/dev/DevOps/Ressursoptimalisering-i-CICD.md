@@ -4,11 +4,11 @@ tags:
 date: 2025-12-23T00:00:00.000Z
 title: Fra manuell rutine til selvgående CI/CD prossees
 ingress: |
-  Ved å la prossesen fra ferdig kode til publisering, gå av seg selv, har jeg skapt en løsning som sparer både tid og penger. Jeg har valgt et rimlig alternativ som forlenger bygge minutter i Github. Resultatet er et selvgående system som reduserer både kostnader og utviklertid for å utføre manuelle rutine oppgaver.
+  Ved å la prosessen fra ferdig kode til publisering gå helt av seg selv, har jeg skapt en moderne løsning som sparer både tid og penger. Jeg har valgt et rimelig alternativ som effektivt forlenger tilgjengelige byggeminutter i GitHub Actions. Resultatet er et stabilt og selvgående system som reduserer både direkte kostnader og utviklertid ved å fjerne manuelle rutineoppgaver, slik at fokuset heller kan ligge på videreutvikling av selve kjernefunksjonaliteten.
 status: |
   ##### Dagens aktiviteter
 
-  * Gjennomgang av GitHubs kvote på 2000 bygge-minutter og hvordan jeg kan unngå å gå tom.
+  * Gjennomgang av <abbr title="En sky lagring tjeneste for utviklere hvor kildekoden er lagret.">GitHub</abbr>s kvote på 2000 bygge-minutter og hvordan jeg kan unngå å gå tom.
   * Avsløring av "10x-fellen" – hvorfor jeg velger Linux fremfor Mac for å få 10 ganger mer arbeid for pengene.
   * Hvordan vi sparer tid ved å la maskinene hvile helt til koden er klar for produksjon.
   * Erstatte manuelt rutinearbeid med en selvgående prosess (CI/CD) for versjonering og nettsidebygging.
@@ -19,7 +19,8 @@ status: |
   Dagen har vært så fin, som det har vært mulig
 sources: ''
 ---
-Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører rutiner, ved en produksjons klar programvare.I Github har man en fast månedlig kvote på **2000 gratis bygge minutter** for både offentlige og private prosjekter.
+
+Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører rutiner, ved en produksjons klar programvare.I <abbr title="En sky lagring tjeneste for utviklere hvor kildekoden er lagret.">GitHub</abbr> har man en fast månedlig kvote på **2000 gratis bygge minutter** for både offentlige og private prosjekter.
 
 ##### Oversikt over Githubs Multiplikator.
 
