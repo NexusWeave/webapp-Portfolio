@@ -9,10 +9,10 @@ status: |
   #### Dagens aktiviteter
 
   * Stoppe uønskede nedlastningsvarsler som forstyrrer brukere.
-  * Innføring av "smart-sjekker" som sørger for at nettsiden forblir oppe, selv når data mangler.
   * Gjennom gang av hvordan nettsiden er mer påliteleig under panseret.
   * Øke datakvaliteten, for å spare kostbar feilsøking og raske fiks i fremtiden.
   * Oppsummere hvordan en forutsigbar nettside øker tilliten hos sluttbrukeren.
+  * Innføring av "smart-sjekker" som sørger for at nettsiden forblir oppe, selv når data mangler.
 
   #### Motivasjon & Energi - 10 / 10
 
