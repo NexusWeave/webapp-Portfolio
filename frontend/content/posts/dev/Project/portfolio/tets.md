@@ -1,6 +1,6 @@
 ---
 date: 2026-04-11T16:02:03.086Z
-title: tets
+title: Standardisering og teknisk optimalisering av brukerreisen
 ingress: |
   Gjennom teknisk opprydding og standardisering har jeg styrket nettsidens identitet og brukeropplevelse. Ved å forenkle navigasjonslogikken og etablere standardiserte bildebeskrivelser, har jeg fjernet teknisk etterslep og visuell støy. Resultatet er en stabil og responsiv plattform som øker brukernes opplevelse, forbedrer tilgjengelighet og optimaliserer applikasjonen for effektiv videre vekst og forenkler vedlikehold i fremtiden.
 status: |
