@@ -32,23 +32,22 @@ Resultatet er en fokusert leseopplevelse med forbedret <abbr title ="Universell 
 
 #### Teknisk Refaktorering og Skalerbarhet
 
-Den eksisterende logikken i `mapBlogPost.ts` og `Progress.vue` var lite fleksibel og basert på utdatert rangeringsmetodikk, noe som hindret effektiv skalering av innholdstyper.
-**Oppgave:** Modernisere innholdshåndteringen ved å innføre mer granulær logikk og øke typesikkerheten i frontend.
-**Handling:** \* Utvidet mapping-logikken til å skille mellom 'tag' og 'dir' (kataloger).
+Etter at mappestrukturen for loggene hadde blitt forandret, oppsto det en feil i navigasjonen, som en konsekvens av at kartleggingsfunksjonaliteten benyttet seg av utdaterte stier. Samtidig inneholdt komponenten for kodeaktivitet mye "legacy"-kode som gjorde vedlikeholdet krevende.
+Målet var å oppdatere stiene i kartleggingsfunksjonaliteten, for å gjenopprette korrekt navigasjon, samt fjerne ubrukt kode ifra kodeaktivitets komponenten
 
-* Refaktorerte `Progress.vue` med computed properties for bedre ytelse og renere kode.
-* La til støtte for katalog-ikoner i `Anchor.vue` for visuelle hint i navigasjonen.
-  **Resultat:** En robust og skalerbar arkitektur som håndterer komplekse metadata automatisk uten å øke vedlikeholdskostnadene.
-  **Læring:** Jeg så verdien av å bruke typesikkerhet og computed properties tidlig; det gjør kodebasen mer selvdokumenterende og reduserer risikoen for logiske feil ved senere utvidelser.
+* Oppdaterte kartleggingslogikken for logger med de korrekte stiene til loggene.
+* Jeg optimaliserte ytelsen til kodeaktivitets komponentet med `computed properties`,ga meg selv en renere kode.
+* La til støtte for katalog-ikoner i sass koden for visualisere hint for etiketter.
+
+Endringene resulterte i en pålitelig kartleggingsfunksjonalitet som leverer korrekte lenker. Systemet er nå pålitelig, og fjerningen av "legacy"-kode har gjort komponenten mer lettlest og effektiv. Jeg erfarte hvor sårbare automatiserte stisystemer er for strukturelle endringer. Ved å rydde i utdatert kode samtidig som feil rettes, forhindrer jeg at teknisk etterslep skaper uforutsigbare feil i fremtiden.
 
 ***
 
 #### Systemvedlikehold og Utvikleropplevelse (DX)
 
-**Situasjon:** Kodebasen hadde over tid samlet opp "død kode" og ubrukte imports, og prosjektoppsettet i VSCode var ikke optimalisert for rask navigering mellom hyppig brukte komponenter.
-**Oppgave:** Effektivisere utviklingsmiljøet og fjerne teknisk gjeld for å redusere friksjon i fremtidig utvikling.
-**Handling:** \* Ryddet bort ubrukte imports og sanerte koden i Vue-komponenter.
+Kodebasen hadde over tid samlet opp ubrukt kode og ubrukte imports.
+Målet var å effektivisere utviklingsmiljøet og fjerne teknisk etterslep for å redusere friksjon i fremtidig utvikling.
 
-* Konfigurerte VSCode-workspace med direkte tilgang til sentrale filer som `Form`.
-  **Resultat:** En lettere kodebase og et raskere arbeidsverktøy som gjør feilsøking og videreutvikling betydelig mer effektivt.
-  **Læring:** God "husvask" i kodebasen er ikke bare estetisk; det fjerner kognitiv belastning for utvikleren og gjør det enklere å holde oversikt over applikasjonens faktiske avhengigheter.
+* Jeg ryddet bort ubrukte `imports` og sanerte koden i Vue-komponenter.
+
+En lettere kodebase  som gjør feilsøking og videreutvikling betydelig mer effektivt. God hygene i kodebasen er ikke bare estetisk; det forenkler hverdagen til utvikleren og gjør det enklere å holde oversikt i applikasjonen.
