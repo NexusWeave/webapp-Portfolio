@@ -20,13 +20,13 @@ Målet var å strukturere loggene og forenkle leser vennligheten for andre leser
 
 #### Brukergrensesnitt og Semantisk Struktur
 
-**Situasjon:** Artikkelvisningen i `Head.vue` brukte `<h1>` på en måte som brøt med det semantiske hierarkiet, og unødvendige footere skapte visuell støy som distraherte leseren.
-**Oppgave:** Rydde i layouten for å optimalisere leseopplevelsen og sikre at siden følger beste praksis for SEO og tilgjengelighet.
-**Handling:** \* Nedgraderte overskrifter fra `<h1>` til `<h2>` for å skape korrekt dokumentstruktur.
+Loggvisningen brukte ukorrekte tittel elementer som`<h1>` som bryter med det semantiske hierarkiet, og ubrukte footere skapte utfordringer for prosjektet.
+Målet mitt er å optimalisere leseopplevelsen og sikre at siden følger industrielle standard for tilgjenglighet, ved å rydde i <abbr title="den grafiske plasseringen og organiseringen av tekst, bilder og elementer på en flate, som en nettside, bok eller avis">layouten</abbr>.
 
-* Fjernet overflødige komponenter som `Footer.vue` fra artikler for et renere design.
-  **Resultat:** En mer fokusert leseopplevelse med forbedret UU-score (Universell Utforming) og ryddigere visuell profil.
-  **Læring:** Erfaringen bekreftet at "less is more" i et brukergrensesnitt; ved å fjerne elementer som ikke gir verdi, øker man brukerens fokus på hovedinnholdet.
+* Jeg byttet ut overskriften fra`<h1>` til `<h2>` for å skape korrekt dokumentstruktu
+* Jeg fjernet overflødige komponenter som `Footer.vue` fra artikler, som løste en utfordring med  `undefined object`, dette rettingen gir et renere design.
+
+Resultatet er en fokusert leseopplevelse med forbedret <abbr title ="Universell Utforming - Å forme noe slik at flest mulig, kan benytte seg av tjenesten, uten behov for tilpasning">UU</abbr>-score  og en ryddigere visuell logg. Jeg erfarte at "less is more" i et brukergrensesnitt ved å fjerne elementer som ikke gir verdi, øker man brukerens fokus på hovedinnholdet.
 
 ***
 
