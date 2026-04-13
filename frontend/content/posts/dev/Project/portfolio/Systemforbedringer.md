@@ -13,7 +13,7 @@ Målet var å strukturere loggene og forenkle leser vennligheten for andre leser
 
 * Jeg reviderte titler og ingresser for å forenkle språket for leseren og reviderte ingresser for sette en standard på 425 +- tegn.
 * Jeg la til `<abbr>`-elementer for å gi umiddelbar kontekst til tekniske akronymer.
-* Jeg flyttet filer (f.eks. "Ressursoptimalisering i CI/CD") til dedikerte emnemapper, for å forbedre strukturen på loggene.
+* Jeg flyttet logger til dedikerte emnemapper, for å forbedre strukturen på loggene.
   Resultatet forbedret innholdsuttrykket med økt lesbarhet og en intuitiv navigasjonsstruktur. Jeg erfarte at innholdsarkitektur er like viktig all annen arkitektur, hvis leseren ikke forstår begrepet eller finner frem, faller verdien av de tekniske loggene bort.
 
 ***
@@ -24,15 +24,15 @@ Loggvisningen brukte ukorrekte tittel elementer som`<h1>` som bryter med det sem
 Målet mitt er å optimalisere leseopplevelsen og sikre at siden følger industrielle standard for tilgjenglighet, ved å rydde i <abbr title="den grafiske plasseringen og organiseringen av tekst, bilder og elementer på en flate, som en nettside, bok eller avis">layouten</abbr>.
 
 * Jeg byttet ut overskriften fra`<h1>` til `<h2>` for å skape korrekt dokumentstruktu
-* Jeg fjernet overflødige komponenter som `Footer.vue` fra artikler, som løste en utfordring med  `undefined object`, dette rettingen gir et renere design.
+* Jeg fjernet overflødige komponenter som `Footer.vue` fra artikler, som løste en utfordring i koden med  <abbr title ="en feil i koden som betyr at koden prøver å bruke noe som ikke er definert">`undefined object`</abbr>, denne rettingen gir et renere design.
 
-Resultatet er en fokusert leseopplevelse med forbedret <abbr title ="Universell Utforming - Å forme noe slik at flest mulig, kan benytte seg av tjenesten, uten behov for tilpasning">UU</abbr>-score  og en ryddigere visuell logg. Jeg erfarte at "less is more" i et brukergrensesnitt ved å fjerne elementer som ikke gir verdi, øker man brukerens fokus på hovedinnholdet.
+Resultatet er en fokusert leseopplevelse med forbedret <abbr title ="Universell Utforming - Å forme noe slik at flest mulig, kan benytte seg av tjenesten, uten behov for tilpasning">UU</abbr>-score  og en ryddigere visuell logg. Jeg erfarte at «less is more» i et brukergrensesnitt ved å fjerne elementer som ikke gir verdi, øker man brukerens fokus på hovedinnholdet.
 
 ***
 
 #### Teknisk Refaktorering og Skalerbarhet
 
-**Situasjon:** Den eksisterende logikken i `mapBlogPost.ts` og `Progress.vue` var lite fleksibel og basert på utdatert rangeringsmetodikk, noe som hindret effektiv skalering av innholdstyper.
+Den eksisterende logikken i `mapBlogPost.ts` og `Progress.vue` var lite fleksibel og basert på utdatert rangeringsmetodikk, noe som hindret effektiv skalering av innholdstyper.
 **Oppgave:** Modernisere innholdshåndteringen ved å innføre mer granulær logikk og øke typesikkerheten i frontend.
 **Handling:** \* Utvidet mapping-logikken til å skille mellom 'tag' og 'dir' (kataloger).
 
