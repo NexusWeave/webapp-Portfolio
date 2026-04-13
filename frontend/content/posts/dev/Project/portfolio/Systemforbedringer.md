@@ -32,7 +32,7 @@ Resultatet er en fokusert leseopplevelse med forbedret <abbr title ="Universell 
 
 #### Teknisk Refaktorering og Skalerbarhet
 
-Etter at mappestrukturen for loggene hadde blitt forandret, oppsto det en feil i navigasjonen, som en konsekvens av at kartleggingsfunksjonaliteten benyttet seg av utdaterte stier. Samtidig inneholdt komponenten for kodeaktivitet, hadde en del ubrukt kode, som bare tok opp plass.
+Etter at mappestrukturen for loggene hadde blitt forandret, oppsto det en feil i logg navigasjonen, som en konsekvens av at kartleggingsfunksjonaliteten benyttet seg av utdaterte stier. Samtidig inneholdt komponenten for kodeaktivitet, hadde en del ubrukt kode, som bare tok opp plass.
 Målet var å oppdatere stiene i kartleggingsfunksjonaliteten, for å gjenopprette navigasjonen , samt fjerne ubrukt kode ifra kodeaktivitets komponenten
 
 * Oppdaterte kartleggingslogikken for logger med de korrekte stiene til loggene.
