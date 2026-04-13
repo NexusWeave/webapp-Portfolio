@@ -32,14 +32,14 @@ Resultatet er en fokusert leseopplevelse med forbedret <abbr title ="Universell 
 
 #### Teknisk Refaktorering og Skalerbarhet
 
-Etter at mappestrukturen for loggene hadde blitt forandret, oppsto det en feil i navigasjonen, som en konsekvens av at kartleggingsfunksjonaliteten benyttet seg av utdaterte stier. Samtidig inneholdt komponenten for kodeaktivitet mye "legacy"-kode som gjorde vedlikeholdet krevende.
-Målet var å oppdatere stiene i kartleggingsfunksjonaliteten, for å gjenopprette korrekt navigasjon, samt fjerne ubrukt kode ifra kodeaktivitets komponenten
+Etter at mappestrukturen for loggene hadde blitt forandret, oppsto det en feil i navigasjonen, som en konsekvens av at kartleggingsfunksjonaliteten benyttet seg av utdaterte stier. Samtidig inneholdt komponenten for kodeaktivitet, hadde en del ubrukt kode, som bare tok opp plass.
+Målet var å oppdatere stiene i kartleggingsfunksjonaliteten, for å gjenopprette navigasjonen , samt fjerne ubrukt kode ifra kodeaktivitets komponenten
 
 * Oppdaterte kartleggingslogikken for logger med de korrekte stiene til loggene.
 * Jeg optimaliserte ytelsen til kodeaktivitets komponentet med `computed properties`,ga meg selv en renere kode.
 * La til støtte for katalog-ikoner i sass koden for visualisere hint for etiketter.
 
-Endringene resulterte i en pålitelig kartleggingsfunksjonalitet som leverer korrekte lenker. Systemet er nå pålitelig, og fjerningen av "legacy"-kode har gjort komponenten mer lettlest og effektiv. Jeg erfarte hvor sårbare automatiserte stisystemer er for strukturelle endringer. Ved å rydde i utdatert kode samtidig som feil rettes, forhindrer jeg at teknisk etterslep skaper uforutsigbare feil i fremtiden.
+Endringene resulterte i en pålitelig kartleggingsfunksjonalitet som leverer korrekte lenker. Systemet er nå pålitelig, og fjerningen av ubrukt kode har gjort komponenten mer lettlest og effektiv. Jeg erfarte hvor sårbare automatiserte stisystemer er for strukturelle endringer. Ved å rydde i utdatert kode samtidig som feil rettes, forhindrer jeg at teknisk etterslep skaper uforutsigbare feil i fremtiden.
 
 ***
 
