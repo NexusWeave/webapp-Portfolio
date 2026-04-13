@@ -2,8 +2,14 @@
 date: 2026-04-30T16:02:03.086Z
 title: tets
 ingress: |
-  Gjennom teknisk opprydding og standardisering har jeg styrket nettsidens identitet og brukeropplevelse. Ved å forenkle navigasjonslogikken og etablere standardiserte bildebeskrivelser, har jeg fjernet teknisk etterslep og visuell støy. Resultatet er en stabil og responsiv plattform som øker brukernes engasjement, forbedrer tilgjengelighet og optimaliserer applikasjonen for effektiv videre vekst og forenkler vedlikehold i fremtiden.
-status: ''
+  Gjennom teknisk opprydding og standardisering har jeg styrket nettsidens identitet og brukeropplevelse. Ved å forenkle navigasjonslogikken og etablere standardiserte bildebeskrivelser, har jeg fjernet teknisk etterslep og visuell støy. Resultatet er en stabil og responsiv plattform som øker brukernes opplevelse, forbedrer tilgjengelighet og optimaliserer applikasjonen for effektiv videre vekst og forenkler vedlikehold i fremtiden.
+status: |
+  #### Dagens Aktiviteter
+
+  * Samlet og forbedret visning av datoer og mediekomponenter på tvers av nettstedets hovedelementer for å skape et helhetlig visuelt uttrykk.
+  * Reduserte kompleksitet i <abbr title ="Toppen seksjonen av en nettside">header</abbr>-seksjonen ved å rydde i navigasjons- og logologikken, noe som har resultert i en forutsigbar og flytende brukeropplevelse.
+  * Forbedret logikken for bildekomponenter slik at bildets alternative tekst automatisk brukes som bildetekst når spesifikk beskrivelse mangler.
+  * Oppgradert backend-modellen for å sikre at bildebeskrivelser leveres i riktig format, samt innført typesikkerhet for å øke applikasjonens langsiktige vekstevne.
 sources: ''
 ---
 
@@ -20,7 +26,7 @@ Dette resulterte til et visuelt helhetlig grensesnitt hvor all informasjon følg
 
 #### Navigasjon og Brukerreise
 
-Oppbyggingen av <abbr title ="Toppen seksjonen av en nettside">header</abbr> seksjonen var unødvendig kompleks, noe som gjorde tidkrevende å vedlikeholde og skapte en uforutsigbar opplevelse for besøkende.
+Oppbyggingen av header-seksjonen var unødvendig kompleks, noe som gjorde tidkrevende å vedlikeholde og skapte en uforutsigbar opplevelse for besøkende.
 Målet var å forenkle navigasjonen for å gi brukeren en lettere reise gjennom nettstedet og redusere fremtidig tidkrevende vedlikehold.
 
 * Jeg forenklet oppbyggingen av Header seksjonen ved å fjerne unødvendig kompleksitet fra navigasjons- og logologikken.
