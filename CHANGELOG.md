@@ -1,3 +1,13 @@
+## [1.15.8](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.7...v1.15.8) (2026-04-14)
+
+
+### Bug Fixes
+
+* add import for computed. ([41773d0](https://github.com/NexusWeave/webapp-Portfolio/commit/41773d0b244e8163a2450f3527631dc094aca6d7))
+* Ensure blog filtering checks for published status. ([312aa2a](https://github.com/NexusWeave/webapp-Portfolio/commit/312aa2a97aaf67f96d943e0a654a9495fa8a292a))
+* Prevented unexpected behavior, by adding export for LanguageData. ([17de4e6](https://github.com/NexusWeave/webapp-Portfolio/commit/17de4e6ae7e2afcd52761cf0302cbd2fe7649e0b))
+* Removed unused component as it causing crashes. ([1ea331f](https://github.com/NexusWeave/webapp-Portfolio/commit/1ea331f4e88657fe22b8ee697c98afe2033bac40))
+
 ## [1.15.7](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.6...v1.15.7) (2026-04-11)
 
 
