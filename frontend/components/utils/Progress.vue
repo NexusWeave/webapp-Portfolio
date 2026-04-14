@@ -1,8 +1,10 @@
 <template>
-    <section>
-        <h3>{{ label }}</h3>
-        <progress :value="data" :class="cls" max="1024"></progress>
+    <section class="flex-column-align-items-center">
+        <h3>{{ data.label }}</h3>
+        <span>(<b>{{ data.bytes }} / {{ num }} {{ data.type }}</b>)</span>
+        <progress :value="data.bytes" :class="cls" :max="num"></progress>
     </section>
+
 </template>
 <script setup lang="ts">
 
@@ -11,12 +13,12 @@
 
     //  Props Logic
     const props = defineProps<ProgressProps>();
-    const data = computed(() => props.value);
-    const label = computed(() => props.label);
-    const cls = computed(() => props.cls) || '';
+    const data = computed(() => props.data);
+    const cls = computed(() => props.cls || []);
+
+    const num = 1024 * 10;
 
     //  Debugging Logic
-    //console.log('Tech:', label.value);
+    //console.log('Tech:', cls.value);
     //console.log('Progress data:', data.value);
-    //console.log('Current rank:', currentRank);
 </script>

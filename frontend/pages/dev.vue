@@ -1,20 +1,17 @@
 <template>
     <section class="flex-wrap-row-justify-space-around">
         <section class="dev-bar">
-            <section class="dev-skill flex-column-justify-center-align-center">
+            <section class="dev-skill flex-column-justify-center-align-center" v-if="formattedLanguages.length > 0">
                 <h2> Min Kode Aktivitet</h2>
+                <span> Aktivteten er basert på min GitHub-aktivitet og oppdateres i sanntid for å reflektere min nåværende engasjement og bidrag til ulike prosjekter. </span>
+                <span> Aktiviteten er målt antall KB</span>
                 <span> </span>
                 <section class="flex-wrap-row-justify-space-evenly">
-
                     <UtilsProgress v-for="(data, i) in formattedLanguages" :key="i" 
-                        :value="data.bytes"
-                        :label="data.label"
+                        :data="data"
                         :cls="[data.label.toLowerCase()]"
                     />
                 </section>
-                <span> Aktivteten er basert på min GitHub-aktivitet og oppdateres i sanntid for å reflektere min nåværende engasjement og bidrag til ulike prosjekter. </span>
-                <span> Aktiviteten er målt antall KB</span>
-
             </section>
         </section>
         <section class="flex-column-justify-space-evenly">
@@ -49,7 +46,6 @@
 
     //  --- Progress Bar Logic
     const { formattedLanguages } = storeToRefs(useLanguageStore());
-
 
     //  --- Debugging Logic ---
     //console.warn('Reference Data:', sortedReference.value);
