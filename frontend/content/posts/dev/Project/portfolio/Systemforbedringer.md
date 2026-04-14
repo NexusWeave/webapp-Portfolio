@@ -43,19 +43,3 @@ Målet var å forenkle navigasjonsstrukturen for å gi besøkende en smidigere b
 
 Denne omgjøringen resulterte til en raskere og mer responsiv meny, som reduserer friksjon i brukeropplevelsen, dette forbedrer inntrykket på nettsiden.
 En forenklet brukeropplevelse og korrekt metadata er avgjørende for å forbedre opplevelsen andre.
--------------------------------------------------------------------------------------------------
-
-#### Operasjonell Effektivitet og Systemstabilitet
-
-Ubrukt kode Footer komponentet, en skrivefeil i arbeidsområde-konfigurasjonen sine scopes og inkonsistent datoformatering i backend økte risikoen for feil og gjorde vedlikehold unødvendig ressurskrevende.
-Rydde opp i teknisk gjeld og organisere prosjektmiljøet for å senke operasjonelle kostnader og øke utviklingshastigheten.
-
-**Handling:**
-
-* Sanerte kodebasen ved å fjerne den utdaterte `Footer.vue`-komponenten og rydde bort ubrukte importer på tvers av grensesnittet. \[^14]\[^18]
-* Rettet skrivefeil i `.code-workspace` og innførte et strukturert merkingssystem for bedre navigasjon mellom prosjektfiler. \[^12]\[^13]
-* Standardiserte datoformat i `github_model.py` for å garantere en konsistent informasjonsflyt gjennom hele systemet. \[^16]\[^17]
-
-**Resultat:** Et ryddig og korrekt konfigurert arbeidsmiljø reduserer unødvendig tidsbruk for utviklere og senker tid-til-marked for nye funksjoner. Systemet er nå mer stabilt og frigjør kapasitet til ny funksjonalitet fremfor reaktiv feilretting.
-
-**Erfaring:** Teknisk gjeld er eksponentielt dyrere å håndtere jo lenger det venter. Hyppige og målrettede oppryddingsrunder er langt mer kostnadseffektive enn store, forsinkede omskrivninger.
