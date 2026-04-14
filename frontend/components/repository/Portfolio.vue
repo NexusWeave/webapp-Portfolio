@@ -57,12 +57,12 @@
 
         const n: number = 9;
 
-        if (type.value != '0') { const data = repo.value.filter((item: any) => item.flags[type.value] === true); totalPages.value = Math.ceil(data.length / n); return  data; }
-
         const start = (currentPage.value - num) * n;
         const end = start + n;
 
         totalPages.value = Math.ceil(repo.value.length / n);
+
+        if (type.value != '0') { const data = repo.value.filter((item: any) => item.flags[type.value] === true); totalPages.value = Math.ceil(data.length / n); return data.slice(start, end) ?? null; }
         return  repo.value.slice(start, end) ?? null;
     });
 
@@ -71,7 +71,6 @@
 
     //  --- Watchers
     watch(() => currentPage.value, (newValue) => { currentPage.value = newValue; });
-    watch(() => type.value, (newValue) => { type.value = newValue; currentPage.value = num; });
 
     //  --- Navigation Logic
     const nextPage = computed<ButtonItem>(() => ({label: 'Neste', action: () => changePage(currentPage.value + num) }));
