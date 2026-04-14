@@ -40,5 +40,5 @@
 
     //  --- Debugging Logic
     //console.log("BusinessCard props:", props.data);
-console.error("BusinessCard data:", data.value);
+    //console.error("BusinessCard data:", data.value);
 </script>
