@@ -3,7 +3,7 @@
 
     <section :class="[cls[0], {'article-section': !!isArticlePage}]">
         <section :class="[{'blog-header': !isArticlePage}, {'ingress-header': isArticlePage}]">
-            <h1> {{ article.title }}</h1>
+            <h2> {{ article.title }}</h2>
             <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
                 <span v-if="!!article.date" :class="cls[3]"> Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
                 <NavigationAnchor v-for="(tag) in article.tags" :data="tag" :class="tag.cls"/>

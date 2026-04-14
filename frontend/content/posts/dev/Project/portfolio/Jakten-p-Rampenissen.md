@@ -1,9 +1,7 @@
 ---
 date: 2025-12-18T00:00:00.000Z
-tags:
-  - dev-journey
 title: Jakten på Rampenissen
-ingress: >
+ingress: |
   I moderne asynkron webutvikling kan samspillet mellom database og API-modeller
   by på uventede utfordringer, her omtalt som "rampenisser". Denne loggen
   dokumenterer feilsøkingen av en s`qlalchemy.exc.MissingGreenlet`-feil, utløst

@@ -1,5 +1,4 @@
 ---
-challanges_model: ''
 tags:
   - dev-journey
 date: 2025-09-09T22:00:00.000Z

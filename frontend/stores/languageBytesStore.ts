@@ -1,5 +1,5 @@
+import { computed } from 'vue'
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
 
 export const useLanguageStore = defineStore('tech-language', () => {
 
@@ -9,13 +9,16 @@ export const useLanguageStore = defineStore('tech-language', () => {
   const formattedLanguages = computed(() => {
     const object = sortByBytes();
     const kb = 1024;
-    return Object.entries(object).filter(([_, bytes]) => bytes >= (kb*100)).map(([language, bytes]) => {
-      const kiloBytes: number = 1024;
-      const kb: number = bytes / kiloBytes;
+
+    return Object.entries(object).filter(([_, bytes]) => bytes >= (kb*100)).map(([language, x]) => {
+      const bytes: number = 1024;
+      const kb: number = x / bytes;
+      const mb: number = kb / bytes;
 
       return {
-        label: language.charAt(0).toUpperCase() + language.slice(1),
+        type: 'KB',
         bytes: Number(kb.toFixed(2)),
+        label: language.charAt(0).toUpperCase() + language.slice(1),
         percentage: Object.values(object).reduce((acc, val) => acc + val, 0) > 0 ? (kb / Object.values(object).reduce((acc, val) => acc + val, 0)) * 100 : 0
       }
     })
@@ -28,8 +31,8 @@ export const useLanguageStore = defineStore('tech-language', () => {
     if (!languages[key]) languages[key] = 0;
     
     languages[key] += value;
-    //console.log(`Updated ${key}: ${languages[key]} bytes`);
   }
+
   function sortByBytes(): Record<string, number> {
     const sorted = Object.entries(languages).sort((a, b) => b[1] - a[1]);
     return Object.fromEntries(sorted);

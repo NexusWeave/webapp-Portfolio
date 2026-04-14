@@ -1,7 +1,7 @@
 ---
 date: 2026-03-17T00:00:00.000Z
 title: Kvalitetssikring Gjennom Automatisering
-ingress: >
+ingress: |
   For å gi besøkende en profesjonell og ryddig oversikt over mine personlige
   prosjekter, har jeg utviklet et selvgående system som automatisk kategoriserer
   mine prosjekter, i stedenfor at jeg merker hvert prosjekt manuelt, har jeg

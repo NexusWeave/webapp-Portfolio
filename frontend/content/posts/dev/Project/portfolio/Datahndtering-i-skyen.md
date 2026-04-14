@@ -1,9 +1,7 @@
 ---
 date: 2025-12-21T00:00:00.000Z
-tags:
-  - dev-journey
 title: Datahåndtering i skyen
-ingress: >
+ingress: |
   I overgangen fra utvikling til lansering kreves det ofte et skifte i hvordan
   data håndteres for å sikre både skalering og sikkerhet. Denne artikkelen
   dokumenterer reisen fra en lokal SQLite-løsning til den skybaserte

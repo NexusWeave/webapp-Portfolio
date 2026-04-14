@@ -1,6 +1,6 @@
 <template>
     <article class="article-wrapper flex-column">
-        <h2> Logger fra {{ slug }} Prosjektet</h2>
+        <h2> Logger fra {{ slug.charAt(0).toUpperCase() + String(route.params.slug).slice(1).replace(/-/g, ' ') }} Etiketten</h2>
         <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
                 <section v-for="post in article" :key="post.id" class="blog-content">
                 <ArticleHead :article="post" />
@@ -21,7 +21,7 @@
 
      //  --- Route & slug logic
     const route = useRoute();
-    const slug = route.params.slug;
+    const slug = route.params.slug as string;
 
         //  --- Dev Data Logic
     const devPath = 'devPosts';
@@ -37,9 +37,8 @@
 
         const findBlog = (collection: DevPostsCollectionItem[]) => {
             if (!collection) return null;
-            console.log("Finding blog in collection: ", currentSlug);
             const mapped = mapBlogData(collection);
-            return mapped?.filter(item => item.tags.some(tag => tag?.label === currentSlug));
+            return mapped?.filter(item => item.isPublished && item.tags.some(tag => tag?.name === currentSlug));
         };
         return findBlog(rawDev.value) ?? findBlog(rawPersonal.value);
 

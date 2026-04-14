@@ -1,11 +1,8 @@
 ---
-challanges_model: ''
-tags:
-  - dev-journey
 date: 2025-09-10T22:00:00.000Z
 title: Raskere Nettsideutvikling med Stabilt Redaktørpanel
 ingress: |
-  Denne loggen dokumenterer hvordan vi ved å velge et ferdig redaktørpanel <abbr title="Et verktøy for å redigere nettsideinnhold">Tina CMS</abbr> har spart betydelig utviklingstid sammenlignet med å bygge en egen database. Ved å kombinere offisiell dokumentasjon med moderne <abbr title = "Kunstig Intelligens">KI</abbr>-verktøy, har jeg etablert en stabil løsning for <abbr title="Et verktøy for å bygge interaktive brukeropplevelser på nett">Vue.js</abbr> som kunden enkelt kan styre selv. Arbeidet har resultert i en gjenbrukbar metode for bedriften som sikrer høyere kvalitet og raskere leveranse i fremtidige prosjekter.
+  Denne loggen dokumenterer hvordan vi ved å velge et ferdig redaktørpanel som <abbr title="Et verktøy for å redigere nettsideinnhold">Tina CMS</abbr> har spart betydelig utviklingstid sammenlignet med å bygge en egen database. Ved å kombinere offisiell dokumentasjon med moderne <abbr title = "Kunstig Intelligens">KI</abbr>-verktøy, har jeg etablert en stabil løsning for <abbr title="Et verktøy for å bygge interaktive brukeropplevelser på nett">Vue.js</abbr> som kunden enkelt kan styre selv. Arbeidet har resultert i en gjenbrukbar metode som sikrer høyere kvalitet og langt raskere leveranse i alle fremtidige prosjekter.
 status: |
   #### Dagens Aktiviteter
 

@@ -1,9 +1,7 @@
 ---
 date: 2025-12-07T00:00:00.000Z
-tags:
-  - dev-journey
 title: Feilsøking av SQLAlchomy Persistering & FastAPI Livssyklus
-ingress: >
+ingress: |
   En feil ble identifisert der SQLAlchemy ORM-tabeller ikke ble pålitelig
   persistert ved oppstart av FastAPI-applikasjonen. Utfordringen var å sikre at
   synkron DDL-logikk (create\_all) ble utført i det asynkrone miljøet. Aksjonen

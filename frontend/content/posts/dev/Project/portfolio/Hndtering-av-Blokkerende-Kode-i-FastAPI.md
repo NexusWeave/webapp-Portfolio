@@ -1,7 +1,7 @@
 ---
 date: 2025-11-22T00:00:00.000Z
 title: Håndtering av Blokkerende Kode i FastAPI
-ingress: >
+ingress: |
   Denne loggen dokumenterer en strategisk migrering for å løse en hybrid
   arkitektur forårsaket av at Announcement-endepunktet var igjen i det synkrone
   Flask (WSGI)-rammeverket etter en større refaktorering. Målet var å integrere

@@ -1,49 +1,24 @@
 <template>
-    <section>
-        <h3>{{ label }}</h3>
-        <progress :value="value" :class="cls" max="1024"></progress>
+    <section class="flex-column-align-items-center">
+        <h3>{{ data.label }}</h3>
+        <span>(<b>{{ data.bytes }} / {{ num }} {{ data.type }}</b>)</span>
+        <progress :value="data.bytes" :class="cls" :max="num"></progress>
     </section>
+
 </template>
 <script setup lang="ts">
 
     //  Importing dependencies & types
-    //import type { ProgressProps } from '@/types/props';
+    import type { ProgressProps } from '@/types/props';
 
-    interface ProgressProps {
-        value: number;
-        cls?: string[];
-        label: string;
-        tech?: string;
-    }
     //  Props Logic
     const props = defineProps<ProgressProps>();
+    const data = computed(() => props.data);
+    const cls = computed(() => props.cls || []);
 
-    const data = computed(() => props.value);
-    const label = computed(() => props.label);
-    const cls = computed(() => props.cls) || '';
-    
-
-    //  Rank Logic
-    const rankList = 
-    [
-        {name:'Nybegynner', min:0, max:14.29},    
-        {name:'Grunnleggende', min:14.30, max:28.59},
-        {name:'Intern', min:28.60, max:42.90},
-        {name:'Junior Utvikler', min:42.91, max:57.20},
-        {name:'Mellomnivå Utvikler', min:57.21, max:71.50},
-        {name:'Senior Utvikler', min:71.51, max:99.90},
-        {name:'Ekspert / Principal', min:83.35, max:100},
-    ]
-    
-
-    const n = 100;
-    const rank = Math.round((data.value / n) * n);
-    const currentRank = rankList.find(rankItem => rankItem.min <= rank && rankItem.max >= rank)?.name || 'Ukjent';
+    const num = 1024 * 10;
 
     //  Debugging Logic
-    //console.log('Tech:', label.value);
+    //console.log('Tech:', cls.value);
     //console.log('Progress data:', data.value);
-    //console.log('Current rank:', currentRank);
-    
-
 </script>

@@ -17,7 +17,7 @@
 </template>
 <script setup>
 
-    import { computed} from 'vue';
+    import { computed } from 'vue';
 
     import Anchor from '$src/components/navigation/Anchor.vue';
 

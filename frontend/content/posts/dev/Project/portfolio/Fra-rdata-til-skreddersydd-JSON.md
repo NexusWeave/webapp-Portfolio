@@ -1,7 +1,7 @@
 ---
 date: 2025-12-18T00:00:00.000Z
 title: Fra rådata til skreddersydd JSON
-ingress: >
+ingress: |
   Etter å ha overvunnet asynkrone utfordringer i backend, oppstår ofte nye
   utfordringer som “Hvordan presentere komplekse datastrukturer på en ryddig og
   effektiv måte?” Denne loggen utforsker fenomenet "Ekkoet fra API-responsen",

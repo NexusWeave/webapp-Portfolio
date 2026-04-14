@@ -1,8 +1,7 @@
 ---
 date: 2026-03-16T00:00:00.000Z
-tags: []
 title: Kaos til Strukturert Kontroll
-ingress: >
+ingress: |
   For å sikre at mine lesere alltid finner relevant innhold, har jeg utviklet en
   automatisk sorteringsløsning. Ved å fjerne manuelt rot og automatisere
   kategoriseringen, har jeg skapt en enklere brukeropplevelse som setter din tid

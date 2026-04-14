@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-22T00:00:00.000Z
 title: Modernisering av bindeledd for å øke ytelse og stabilitet
 ingress: |

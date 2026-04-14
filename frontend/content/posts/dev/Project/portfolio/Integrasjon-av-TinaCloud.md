@@ -1,6 +1,4 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-05T00:00:00.000Z
 title: Separering av kode og innhold i et moderne prosjekt
 ingress: |

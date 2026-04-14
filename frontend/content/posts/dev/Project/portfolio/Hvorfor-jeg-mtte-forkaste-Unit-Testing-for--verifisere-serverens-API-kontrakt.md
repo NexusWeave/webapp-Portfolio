@@ -1,11 +1,9 @@
 ---
 date: 2025-12-04T00:00:00.000Z
-tags:
-  - dev-journey
-title: >-
+title: |
   Hvorfor jeg måtte forkaste Unit Testing for å verifisere serverens
   API-kontrakt
-ingress: >
+ingress: |
   Å bygge en robust applikasjon krever mer enn bare å teste intern logikk det
   handler om å validere samspillet mellom komponentene. Da jeg skulle sikre
   dataflyt mellom server og eksterne API-endepunkter, startet jeg med Unit

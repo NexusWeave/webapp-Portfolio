@@ -1,10 +1,8 @@
 ---
-tags:
-  - dev-journey
 date: 2025-12-16T00:00:00.000Z
 title: Erfaringer med assembly-konflikter og mappehierarki
 ingress: |
-  Ved å gjennomføre en strategisk reorganisering av systemarkitekturen har vi i dag fjernet tekniske sperrer som hindret stabil drift og videreutvikling. Ved å forenkle og standardisere måten systemet er bygget opp på, har vi redusert risikoen for feil og lagt til rette for en mer kostnadseffektiv og forutsigbar produksjonslinje. Dette sikrer at bedriftens digitale løsninger leveres med høyere kvalitet og færre avbrytelser.
+  Ved å rydde opp i prosjektets grunnmur har vi fjernet tekniske konflikter som hindret stabil drift og ferdigstillelse. Gjennom en logisk omorganisering av systemets filer har vi oppnådd en forutsigbar byggeprosess uten feilmeldinger. Dette reduserer teknisk etterslep og sikrer at utviklingstiden brukes på verdiskaping fremfor feilretting. Resultatet er en trygg produksjonslinje som leverer høy kvalitet uten uforutsette avbrudd.
 status: |
   #### Dagens Aktiviteter
 
@@ -17,10 +15,10 @@ status: |
   #### Motivasjon & Energi - 10 / 10
 
   Dagen er så fin den kan bli
-
 sources: ''
 ---
-Bedriftens sentrale programvareoppsett opplevde tekniske konflikter som hindret systemet i å bli ferdigstilt og tatt i bruk. Ulike deler av systemet "snakket forbi hverandre", noe som førte til feilmeldinger og stans i hele produksjonslinjen for programvaren. For organisasjonen betydde dette uforutsigbarhet og risiko for forsinkelser i leveranser.
+
+Bedriftens sentrale programvareoppsett opplevde tekniske konflikter som hindret systemet i å bli ferdigstilt og tatt i bruk. Ulike deler av systemet snakket forbi hverandre, noe som førte til feilmeldinger og stans i hele produksjonslinjen for programvaren. For organisasjonen betydde dette uforutsigbarhet og risiko for forsinkelser i leveranser.
 
 Hovedmålet var å fjerne de tekniske blokkeringene og sikre at systemet kunne bygges feilfritt hver gang. Dette krevde en dypere analyse av hvordan filene i prosjektet var organisert, for å fjerne duplikater og sikre at alle komponenter fant hverandre i systemstrukturen.
 
@@ -29,4 +27,4 @@ Hovedmålet var å fjerne de tekniske blokkeringene og sikre at systemet kunne b
 * Flyttet sentrale styringsfiler til et mer logisk og standardisert nivå for å sikre korrekte baner og stabil referansehåndtering.
 * Testet ut ulike strategier for å deaktivere unødvendige autogenererte filer som skapte støy i byggeprosessen.
 
-Ved å rydde opp i prosjektets grunnmur har vi nå oppnådd en 100% stabil og forutsigbar byggeprosess. Alle tekniske konflikter er fjernet, noe som betyr at utviklingstiden kan brukes på verdiskapende funksjonalitet fremfor teknisk brannslukking. Vi har redusert den tekniske gjelden betydelig ved å innføre et standardisert oppsett som er mindre sårbart for feil, noe som sikrer bedriften en tryggere og mer effektiv digital produksjon i tiden fremover.
+Ved å rydde opp i prosjektets grunnmur har vi nå oppnådd en 100% stabil og forutsigbar byggeprosess. Alle tekniske konflikter er fjernet, noe som betyr at utviklingstiden kan brukes på verdiskapende funksjonalitet fremfor spontane tekniske fikser. Vi har redusert tekniske etterslepet betydelig ved å innføre et standardisert oppsett som er mindre sårbart for feil, dette sikrer at bedriften har en tryggere og mer effektiv digital produksjon i tiden fremover.

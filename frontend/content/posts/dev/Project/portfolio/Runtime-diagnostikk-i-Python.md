@@ -1,7 +1,5 @@
 ---
 date: 2025-12-21T00:00:00.000Z
-tags:
-  - dev-journey
 title: Runtime-diagnostikk i Python
 ingress: >
   I kjølvannet av database-migreringen til Turso oppsto utfordringer i
@@ -14,7 +12,6 @@ ingress: >
   verdifull innsikt i behovet for nøyaktighet i dynamiske språk og moderne
   ORM-verktøy, og markerer overgangen til neste fase: Profesjonalisering av
   driften gjennom deployment til Google Cloud Run.
-star: |
 sources: ''
 ---
 

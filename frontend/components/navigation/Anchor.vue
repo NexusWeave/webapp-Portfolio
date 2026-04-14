@@ -59,7 +59,7 @@
         return false;
     };
 
-    const isIcon = () => { const dataProps = data.value; if (!dataProps.type) return false; const iconTypes = ['docs', 'pdf', 'mail', 'telephone', 'school', 'globe', 'map-pin', 'diploma', 'github', 'ytube', 'linkedin', 'facebook', 'instagram']; return iconTypes.some(type => dataProps.type && dataProps.type.includes(type)); };
+    const isIcon = () => { const dataProps = data.value; if (!dataProps.type) return false; const iconTypes = ['docs', 'pdf', 'mail', 'telephone', 'school', 'globe', 'map-pin', 'diploma', 'github', 'ytube', 'linkedin', 'facebook', 'instagram','dir']; return iconTypes.some(type => dataProps.type && dataProps.type.includes(type)); };
 
     //  --- Debug logic
     //console.log("Anchor component loaded with data: ", img.value, isImage());

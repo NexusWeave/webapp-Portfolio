@@ -1,12 +1,10 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-10T00:00:00.000Z
-title: Bedre flyt og tryggere styring av systemtilganger
+title: Forbedre flyt og tryggere styring av systemtilganger
 ingress: |
   Ved å rette en logikkfeil i systemets tilgangskontroll har vi fjernet tekniske hindringer som tidligere låste ute ansatte med tilgang. Feilen førte til unødvendig avbrudd i arbeidet. Gjennom en systematisk opprydding har vi sørget for at sikkerheten er både streng og sikker. Dette sikrer at de ansatte får gjort jobben sin effektivt, samtidig som bedriften har full kontroll på dataene. Arbeidet gir oss en mer stabil og forutsigbar drift i fremtiden.
 status: |
-  #### Dagens Aktiviteter 
+  #### Dagens Aktiviteter
 
   * Gjennomførte en systematisk analyse for å finne grunnen til at ansatte ble utelukket fra mapper og verktøy de rettmessig skulle ha tilgang til.
   * Identifiserte og rettet en logikkfeil i tilgangsstyringen som gjorde sikkerhetsreglene unødvendig strenge og til hinder for arbeidet.
@@ -15,10 +13,9 @@ status: |
   * Fjernet rot i systemet, noe som sparer organisasjonen for tapt arbeidstid og frustrasjon.
   * Utarbeidet innsikt om viktigheten av nøyaktige data og faste maler for å sikre en stabil og forutsigbar drift i fremtiden.
 
-  #### Motivasjon & Energi   10  /  10 
+  #### Motivasjon & Energi   10  /  10
 
   Dagen er så fin den kan bli
-
 sources: ''
 ---
 
@@ -27,6 +24,7 @@ Systemets rollebasert tilgangs kontroll (RBAC) hadde en logikkfeil som gjorde de
 Målet mitt var å finne ut hvorfor  tilgangslogikken ikke forsto sine egne instruksjoner når det ble brukt samletegn. Oppgaven ble å rette denne logikken slik at sikkerhetslaget skjermer innholdet for brukere uten spesifikke roller. Dette handler om å sikre at de ansatte får gjort jobben sin uten tekniske hindringer, samtidig som bedriften har kontroll på hvem som har tilgang til hva.
 
 Jeg gjennomførte en systematisk feilsøkningsprosess for å finne ut hvorfor systemet ikke kjente igjen rollene som var lagt inn.
+
 * Ved å sammenligne hvordan tilgangene var skrevet i konfigurasjonsfilen med hvordan systemet leste dem, oppdaget jeg en liten skrivefeil. Det var lagt inn et ekstra tegn i filstiene som gjorde at mønsteret ikke stemte overes med rollen.
 * Jeg fjernet de unødvendige tegnene fra alle stiene i instruksjonsfilen.
 * Etter rettingen kontrollerte jeg at systemet nå klarte å koble sammen samletegnet med de riktige mappene slik at sikkerhetsreglene ble fulgt som planlagt.

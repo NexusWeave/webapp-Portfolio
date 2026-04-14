@@ -1,10 +1,8 @@
 ---
-tags:
-  - dev-journey
 date: 2025-11-10T00:00:00.000Z
 title: Løsning av kommunikasjonsfeil og korrekt klargjøring av tilgangskontroll
 ingress: |
-  Da en feil i systemet hindret kollegaer i å logge inn, identifiserte jeg årsaken i hvordan de digitale tilgangsreglene ble lest på. Ved å korrigere hvordan systemet klargjør nødvendig sikkerhetsinformasjon, har jeg nå fjernet alle avbrudd ved oppstart. Resultatet er en stabil og trygg innlogging som beskytter sensitiv informasjon og sikrer at alle ansatte kan utføre jobben sin helt uavbrutt. Dette gir bedriften en trygg mur for digital trygghet.
+  Da en feil i den rollebaserte tilgangskontrollen hindret systemet å starte, ble sikkerheten prioritert foran drift. Ved å identifisere en manglende klargjøring av `AccessService`-klassen, fikk jeg rettet kommunikasjonssvikten som hindret innlasting av tilgangsreglene. Resultatet er en stabil og trygg innlogging for kollegaer og studenter, der en pålitelig sikkerhetskontroll nå sikrer en uavbrutt arbeidshverdag og trygghet for alle.
 status: |
   #### Dagens Aktiviteter
 
@@ -22,7 +20,7 @@ status: |
 sources: ''
 ---
 
-Systemet har en Rollebasert tilgangs kontroll som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
+Systemet har en Rollebasert tilgangskontroll som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
 
 Oppgaven min var å feilsøke for å finne ut grunnen til at instruksjonslisten og mottakeren i systemet ikke lenger kommuniserte på samme språk. Som en konsekvens av at de to systemene er avhengig av hverandre for at sikkerhets laget skal fungere, var målet mitt å korrigere feilene slik at systemet kunne vertifisere tilganger og sikre en normal oppstart.
 

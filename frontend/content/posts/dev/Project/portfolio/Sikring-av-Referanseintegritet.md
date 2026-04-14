@@ -1,7 +1,5 @@
 ---
 date: 2025-12-17T00:00:00.000Z
-tags:
-  - dev-journey
 title: Sikring av Referanseintegritet
 ingress: >
   Denne artikkelen er en fortsettelse på Sikring av Unikhet og Datakontrakt og
@@ -12,7 +10,6 @@ ingress: >
   ORM-ens "Unit of Work"-mønster og objektbaserte assosiasjoner, demonstreres
   det hvordan man sikrer atomær lagring og referanseintegritet i komplekse
   relasjonsdatabaser.
-star: |
 sources: ''
 ---
 

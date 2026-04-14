@@ -18,15 +18,15 @@ export const mapBlogData = (data: DevPostsCollectionItem[]) => {
             const tags = (() =>
                     {
                         const listOfAvailableTags = ['project', 'devops', 'os', 'rd', 'mentalt-vedlikehold',];
-                        const index = id.findIndex(p => listOfAvailableTags.includes(p.toLocaleLowerCase()));
+                        const index:number = id.findIndex(p => listOfAvailableTags.includes(p.toLocaleLowerCase()));
 
-                        const misc = 'misc';
-                        const folder = (index + 1) != -1 ? id[index]?.toLowerCase() : misc;
+                        const misc: string = 'misc';
+                        const folder:string | undefined = (index + 1) != -1 ? id[index] : misc;
                         if (!id[index]) return;
-                        const label = folder === listOfAvailableTags[0] ? id[index + 1] : folder;
+                        const label = folder?.toLowerCase() === listOfAvailableTags[0] ? id[index + 1] : folder;
 
-                        const tag = { label: label, type: ['tag'], href: `${dir}/tags/${label}`, cls: [label], path: id.pop()?.toLocaleLowerCase() || misc };
-                        return tag;
+                        return { name: label, label: `${label ? label?.charAt(0).toUpperCase() + label.slice(1)?.replace(/-/g, ' ') : ''}`, type: ['tag', 'dir'], href: `${dir}/tags/${label}`, cls: [label], path: id.pop()?.toLocaleLowerCase() };
+
                     })();
             return {
                 path: path,
