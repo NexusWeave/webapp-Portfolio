@@ -8,7 +8,7 @@ sources: ''
 
 #### Redaksjonell Kvalitet og Innholdsarkitektur
 
-Flere blogginnlegg innen DevOps temaet hadde for mange It begreper og manglet struktur, dette gjorde det tungt for andre å lese blogginnleggene. Enkelte logger var også plassert i feil mappe, dette gjorde at informasjon flyten for leseren uoversiktlig.
+Flere blogginnlegg innen DevOps temaet hadde for mange It begreper og manglet struktur, dette gjorde det tungt for andre å lese blogginnleggene. Enkelte logger var også plassert i feil mappe, dette gjorde at informasjonflyten for leseren var uoversiktlig.
 Målet var å strukturere loggene og forenkle leser vennligheten for andre lesere.
 
 * Jeg reviderte titler og ingresser for å forenkle språket for leseren og reviderte ingresser for sette en standard på 425 +- tegn.
@@ -36,7 +36,7 @@ Etter at mappestrukturen for loggene hadde blitt forandret, oppsto det en feil i
 Målet var å oppdatere stiene i kartleggingsfunksjonaliteten, for å gjenopprette navigasjonen , samt fjerne ubrukt kode ifra kodeaktivitets komponenten
 
 * Oppdaterte kartleggingslogikken for logger med de korrekte stiene til loggene.
-* Jeg optimaliserte ytelsen til kodeaktivitets komponentet med `computed properties`,ga meg selv en renere kode.
+* Jeg optimaliserte ytelsen til kodeaktivitets komponentet med <abbr title ="En smart variabel, som sørger for at dataene alltid er oppdaterete ">`computed properties`</abbr>,ga meg selv en renere kode.
 * La til støtte for katalog-ikoner i sass koden for visualisere hint for etiketter.
 
 Endringene resulterte i en pålitelig kartleggingsfunksjonalitet som leverer korrekte lenker. Systemet er nå pålitelig, og fjerningen av ubrukt kode har gjort komponenten mer lettlest og effektiv. Jeg erfarte hvor sårbare automatiserte stisystemer er for strukturelle endringer. Ved å rydde i utdatert kode samtidig som feil rettes, forhindrer jeg at teknisk etterslep skaper uforutsigbare feil i fremtiden.
