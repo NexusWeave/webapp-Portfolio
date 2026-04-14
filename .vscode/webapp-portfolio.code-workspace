@@ -57,7 +57,8 @@
             "Routing",
             "Nav",
             "Tag",
-            "Form"
+            "Form",
+            "Portfolio"
         ],
     },
 }
