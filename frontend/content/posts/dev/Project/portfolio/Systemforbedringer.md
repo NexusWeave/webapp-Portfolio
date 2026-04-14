@@ -1,11 +1,12 @@
 ---
 date: 2026-04-13T13:25:36.739Z
 title: Systemforbedringer
-ingress: ''
+ingress: |
+  GitHub-dataene er nå kartlagt til et <abbr title ="En funksjonalitet i vue som gjør at koden lytter til forandringer">reaktiv</abbr> frontend-format med automatisk sortering og organisering av kildekodestatistikk. Ved å flytte logikken ut av visningslaget og optimalisere servermodellen, oppnås en ren separasjon av ansvar og redusert båndbreddebruk. Samtidig sikrer standardisering av datoer, <abbr title="En skytjeneste, hvor utviklere laster opp prosjektet sitt">GitHub</abbr>-kort og bildebehandling et enhetlig visuelt uttrykk, <abbr title ="UU - å forme noe som passer de fleste forbrukere uten tilpassning"> universell utforming</abbr> og en smidigere navigasjon for de besøkende.
 status: |
   #### Dagens Aktiviteter
 
-  * Utviklet et verktøy for å kartlegge rådata fra <abbr title="En skytjeneste for utviklere">GitHub</abbr> til et frontend-vennlig format, inkludert automatisk sortering og organisering av kildekodestatistikk.
+  * Utviklet et verktøy for å kartlegge rådata fra <abbr title="En skytjeneste, hvor utviklere laster opp prosjektet sitt">GitHub</abbr> til et frontend-vennlig format, inkludert automatisk sortering og organisering av kildekodestatistikk.
   * Omstrukturert bindeleddet mellom nettsiden og serveren ved å legge til et kartleggingsverktøy som returnerer en vasket, <abbr title ="En funksjonalitet i vue som gjør at koden lytter til forandringer">reaktiv</abbr> liste med innebygd refresh-funksjonalitet.
   * Optimalisert servermodellen ved å fjerne unødvendige felt for bilder og typer for å redusere båndbreddebruk og forenkle JSON-responsen.
   * Gjennomført en omfattende standardisering av datovisning i <abbr title = "å dele noe opp i flere biter (legoklosser)">komponentene</abbr> ved hjelp av strengere typesikkerhet og et sentralt verktøy for datoformatering.
@@ -49,7 +50,7 @@ Denne omgjøringen resulterte til et visuelt helhetlig grensesnitt hvor all info
 
 #### Navigasjon, Tilgjengelighet og Synlighet
 
-Hoved navigasjonen i <abbr title ="Toppen av en nettside / element">Header</abbr>> var veldig kompleks og media komponentet manglet en presis måte å håndtere bildetekster på, noe som førte til at bildene ikke hadde en beskrivelse. Dette svekker både brukeropplevelsen, <abbr title ="Universell Utforming - å forme noe som passer de fleste forbrukere uten tilpassning"> UU.
+Hoved navigasjonen i <abbr title ="Toppen av en nettside / element">Header</abbr>> var veldig kompleks og media komponentet manglet en presis måte å håndtere bildetekster på, noe som førte til at bildene ikke hadde en beskrivelse. Dette svekker både brukeropplevelsen, <abbr title ="Universell Utforming - å forme noe som passer de fleste forbrukere uten tilpassning"> UU</abbr>.
 Målet var å forenkle navigasjonsstrukturen for å gi besøkende en smidigere brukeropplevelse og legge til en kontrollert løsning for <abbr title ="Skjult beskrivende data om bilde / video">metadata</abbr> som sikrer at riktig innhold vises i riktig situasjon.
 
 * Jeg forenklet oppbyggingen av Hovednavigasjonen ved å ta i bruk <abbr title = "En teknikk i vue der koden lytter til forandringer i data">`computed properties`</abbr> for navigasjons- og håndtering av logo. \[^6]
