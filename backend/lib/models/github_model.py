@@ -69,17 +69,9 @@ class RepositoryModel(BaseModel):
         ANCHOR: List[Dict[str, str | object]] = []
 
         if self.is_private == 0:
-            ANCHOR.append(
-                {
-                    'name': 'github',
-                    'id': uuid.uuid4().hex,
-                    'href': self.repo_url,
-                    'type': ['github','external']
-                }
-            )
-
-        if self.youtube_url: ANCHOR.append( { 'name': 'ytube', 'id': uuid.uuid4().hex, 'href': self.youtube_url })
+            ANCHOR.append( { 'name': 'github', 'id': uuid.uuid4().hex, 'href': self.repo_url } )
         if self.demo_url: ANCHOR.append({ 'name': 'globe', 'id': uuid.uuid4().hex, 'href': self.demo_url })
+        if self.youtube_url: ANCHOR.append( { 'name': 'ytube', 'id': uuid.uuid4().hex, 'href': self.youtube_url })
 
         return ANCHOR
 
