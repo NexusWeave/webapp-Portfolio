@@ -2,13 +2,28 @@
 date: 2026-04-13T13:25:36.739Z
 title: Systemforbedringer
 ingress: ''
-status: ''
+status: |
+  #### Dagens Aktiviteter
+
+  * Utviklet et verktøy for å kartlegge rådata fra <abbr title="En skytjeneste for utviklere">GitHub</abbr> til et frontend-vennlig format, inkludert automatisk sortering og organisering av kildekodestatistikk.
+  * Omstrukturert bindeleddet mellom nettsiden og serveren ved å legge til et kartleggingsverktøy som returnerer en vasket, <abbr title ="En funksjonalitet i vue som gjør at koden lytter til forandringer">reaktiv</abbr> liste med innebygd refresh-funksjonalitet.
+  * Optimalisert servermodellen ved å fjerne unødvendige felt for bilder og typer for å redusere båndbreddebruk og forenkle JSON-responsen.
+  * Gjennomført en omfattende standardisering av datovisning i <abbr title = "å dele noe opp i flere biter (legoklosser)">komponentene</abbr> ved hjelp av strengere typesikkerhet og et sentralt verktøy for datoformatering.
+  * Oppdatert GitHub-kortene for å gi en enhetlig visning av teknologier, inkludert visualisering av bytes og spesifikke språktyper.
+  * Synkronisert mediekomponentene for å sikre lik strukturell logikk over hele nettstedet.
+  * Forenklet oppbyggingen av hovednavigasjonen ved å ta i bruk <abbr title = "En teknikk i vue der koden lytter til forandringer i data">`computed properties`</abbr> for håndtering av navigasjon og logo.
+  * Forbedret logikken for bildebehandling slik at korrekt bildetekst vises basert på bildetypen i stedet for standardtekster.
+  * Utvidet støtten for lenker og blogg-kartlegging med nye ikontyper for bedre visuell kategorisering av innhold.
+
+  #### Motivasjon & Energi 9 / 10
+
+  Dagen er så fin den kan bli !
 sources: ''
 ---
 
 ##### Datakartlegging og Systemarkitektur
 
-Håndteringen av rådata fra \<abbr="En skytjeneste for utviklere">GitHub</abbr>-bindeleddet var ustrukturert i forhold til hva som trengtes i frontend. Dette skapte utfordringer med å opprettholde konsistent sortering og formatering av teknologistatistikk,  og resulterte i et unødvendig komplekst grensesnitt mellom backend og frontend.
+Håndteringen av rådata fra <abbr title="En skytjeneste for utviklere">GitHub</abbr>-bindeleddet var ustrukturert i forhold til hva som trengtes i frontend. Dette skapte utfordringer med å opprettholde konsistent sortering og formatering av teknologistatistikk,  og resulterte i et unødvendig komplekst grensesnitt mellom backend og frontend.
 Målet er å etablere et pålitelig bro mellom server og den visuelle delen av nettsiden for å sikre typesikkerhet, øke ytelsen og forenkle videreutvikling.
 
 * Jeg utviklet en funksjonalitet for å kartlegge dataene  til et frontend-vennlig format, som inkluderer automatisk sortering, kartlegging av bilder og organisering av min kildekode statistikk.
