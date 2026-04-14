@@ -48,6 +48,6 @@ Endringene resulterte i en pålitelig kartleggingsfunksjonalitet som leverer kor
 Kodebasen hadde over tid samlet opp ubrukt kode og ubrukte imports.
 Målet var å effektivisere utviklingsmiljøet og fjerne teknisk etterslep for å redusere friksjon i fremtidig utvikling.
 
-* Jeg ryddet bort ubrukte `imports` og sanerte koden i Vue-komponenter.
+* Jeg ryddet bort ubrukte `imports` og forbedret kodeflyten i Vue-komponenter, ved å rydde bort død kode.
 
 En lettere kodebase  som gjør feilsøking og videreutvikling betydelig mer effektivt. God hygene i kodebasen er ikke bare estetisk; det forenkler hverdagen til utvikleren og gjør det enklere å holde oversikt i applikasjonen.
