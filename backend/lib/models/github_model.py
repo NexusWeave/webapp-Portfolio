@@ -60,12 +60,7 @@ class RepositoryModel(BaseModel):
         for assec in self.lang_assosiations:
             
             if assec.language.id == assec.lang_id and self.id == assec.repo_id:
-                languages.append(
-                    {
-                        "bytes": assec.code_bytes,
-                        "label": assec.language.language, 
-                        "img": { "type":'svg', "caption": ' ', "alt": f'A Visual Logo for {assec.language.language}', "src": f'/media/tech-lang-icons/{assec.language.language}.svg', "srcset": f'/media/tech-lang-icons/{assec.language.language}.svg' }
-                    })
+                languages.append( { "bytes": assec.code_bytes, "label": assec.language.language,  })
         return languages
     
     @computed_field
@@ -83,35 +78,15 @@ class RepositoryModel(BaseModel):
                 }
             )
 
-        if self.youtube_url:
-            ANCHOR.append(
-            {
-                'name': 'ytube',
-                'id': uuid.uuid4().hex,
-                'href': self.youtube_url,
-                'type': ['ytube','external']
-            })
-        if self.demo_url:
-            ANCHOR.append(
-            {
-                'name': 'globe',
-                'id': uuid.uuid4().hex,
-                'href': self.demo_url,
-                'type': ['globe','external']
-            })
+        if self.youtube_url: ANCHOR.append( { 'name': 'ytube', 'id': uuid.uuid4().hex, 'href': self.youtube_url })
+        if self.demo_url: ANCHOR.append({ 'name': 'globe', 'id': uuid.uuid4().hex, 'href': self.demo_url })
 
         return ANCHOR
 
     @computed_field
-    def name(self) -> List[str]:
-        sep = '-'
-        label: List[str] = str(self.label).split(sep)
+    def name(self) -> str:
+        label: str = self.label
         return label
-
-    @computed_field
-    def date(self) -> Dict[str, str]:
-        date: Dict[str, str] = { "created": self.created_at.strftime("%d-%m-%Y") }
-        return date
 
     @computed_field
     def flags(self) -> Dict[str, bool]:
