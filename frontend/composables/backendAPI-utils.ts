@@ -1,7 +1,8 @@
 // Configure the backend API base URL
 
-
+import { computed } from "vue";
 import { mapRepoData } from "./maps/mapRepoData";
+
 import type { GithubData, RepositoryData } from "~/types/props";
 
 
