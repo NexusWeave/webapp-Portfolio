@@ -19,8 +19,8 @@ sources: ''
 #### Systemmiljø
 
 * **Operativsystem**  - Garuda Arch Linux
-* Skrivebordmiljø - <abbr title="Et visuelt miljø for operativsystemet (knapper, menyer og vinduer).">`KDE-Plasma`</abbr>
-* Brukte verktøy - <abbr title="Et verktøy på linux som lar deg velge nøyaktig hvilken tidligere versjon av et program du vil installere.">`downgrade`</abbr>
+* **Skrivebordmiljø** - <abbr title="Et visuelt miljø for operativsystemet (knapper, menyer og vinduer).">`KDE-Plasma`</abbr>
+* **Verktøy** - <abbr title="Et verktøy på linux som lar deg velge nøyaktig hvilken tidligere versjon av et program du vil installere.">`downgrade`</abbr>
 
 Etter en oppdatering av programmet VS Code i operativsystemet, oppsto det en uforutsett feil som deaktiverte hovedmenyen. Dette gjorde det umulig å navigere i prosjekter eller bruke vanlige menyvalg. feilsøkingen viste at det var en konflikt mellom VS Code og skrivebordsmiljøet, spesifikt knyttet til hvordan grafikken i menyene blir tegnet.
 
