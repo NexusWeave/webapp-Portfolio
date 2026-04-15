@@ -10,8 +10,8 @@
         <article class="profile-bar flex-wrap-row-align-items-center profile">
             <section class="flex-column-align-items-center">
                 <MediaFigure :data="media" />
-                <q>{{ sortedReference[activeIndex]?.quote }}</q>
-                <cite> <NavigationAnchor :data="sortedReference[activeIndex]?.anchor" /> </cite>
+                <ContentRenderer :value="reference[index]?.body ?? {} " />
+                <cite> <NavigationAnchor :data="reference[index]?.anchor" /> </cite>
             </section>
             <section class="profile-content flex-column">
                 <h2>Kristoffer Gjøsund</h2>
@@ -51,15 +51,16 @@
 
     const referencePath = 'reference';
     const referenceCache = 'referenceCache';
-    const reference = await fetchCollection<ReferenceCollectionItem>(referencePath, referenceCache);
+    const reference = await fetchCollection<ReferenceCollectionItem, ReturnType<typeof mapReference>>(referencePath, referenceCache, mapReference);
     const media = { type: 'jpg', src: 'media/images/carousel/20240903_165612.jpg', srcset: 'media/images/carousel/20240903_165612.jpg', alt: 'Portrett av Kristoffer Gjøsund'}
 
-    const activeIndex = ref(0);
-    const sortedReference = computed(() => { const data = mapReference(reference); return data.sort((a, b) => a.id - b.id); });
     //  --- Timer Logic
-    const { index, start } = useCarousel(sortedReference.value.length, 10000);
+    const { index, start } = useCarousel(reference.value.length, 10000);
 
     // --- Lifecycle Logic
-    watch(index, (newIndex) => { activeIndex.value = newIndex; });
     onMounted(() => { start(); });
+
+    // --- Debugging Logic
+    //console.warn('Reference Data:', sortedReference.value);
+    //console.log("Reference Data:", reference);
 </script>

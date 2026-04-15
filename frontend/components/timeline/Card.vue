@@ -32,30 +32,18 @@
                     <h4>Teknologi(er) : </h4>
                     <p :class="['flex-wrap-row-justify-space-evenly']">
                         <span v-for="(tech, i) in data.techStack" :key="i">
-                            <MediaFigure v-if="tech" :data="tech"
-                                :cls="['tech-figure', 'tech-img']"
-                            />
+                            <MediaFigure v-if="tech" :data="tech" :cls="['tech-figure', 'tech-img']" />
                         </span>
                     </p>
                 </section>
 
                 <section :class="cls[2]">
-                    <h3 v-if="!!data.location.anchor.href">
-                        <NavigationAnchor :data="data.location.anchor" />
-                    </h3>
-                    <h3 v-else>
-                        {{ data.location.name }}
-                    </h3>
-                    
-                    <h3 v-if="!!data.reference.anchor">
-                        <NavigationAnchor  :data="data.reference.anchor" />
-                    </h3>
+                    <h3 v-if="!!data.location.anchor.href"> <NavigationAnchor :data="data.location.anchor" /> </h3>
+                    <h3 v-else> {{ data.location.name }} </h3>
+                    <h3 v-if="!!data.reference.anchor"> <NavigationAnchor  :data="data.reference.anchor" /> </h3>
                 </section>
             </section>
-
-            <section class="section">
-                    <ContentRenderer v-if="data.body" :value="data.body" />
-            </section>
+            <section class="section"> <ContentRenderer v-if="data.body" :value="data.body" /> </section>
         </section>
 
     </section>

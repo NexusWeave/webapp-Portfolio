@@ -1,12 +1,13 @@
-import { mapBlogData } from './maps/mapBlogPost';
+import type { PostItem } from '~/types/documents';
 
 import type { DevPostsCollectionItem } from '@nuxt/content';
 
-export const blogPagination =  (rawData:DevPostsCollectionItem[], currentPage:number, n:number) =>
+export const blogPagination =  (data:PostItem[], currentPage:number, n:number) =>
     {
-        if (!rawData) return [];
-        const data = mapBlogData(rawData).filter(post => post.isPublished);
+        if (!data) return [];
+        
         const start = (currentPage - 1) * n;
         const end = start + n;
-        return !!data ? data.slice(start, end) : null;
+        const filteredData = data.filter(post => post.isPublished);
+        return !!filteredData ? filteredData.slice(start, end) : null;
     }

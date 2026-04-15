@@ -1,5 +1,4 @@
 import { setDateFormat } from '#imports';
-import { useLanguageStore } from '@/stores/languageBytesStore';
 import type { RepositoryData, GithubData, LanguageData } from "@/types/props";
 
 export function mapRepoData(data: RepositoryData): GithubData[]
@@ -9,9 +8,6 @@ export function mapRepoData(data: RepositoryData): GithubData[]
     return repositories.map((item: any) => {
         const languages = [...(item.languages ?? [])].sort((a: any, b: any) => b.bytes - a.bytes);
 
-        const { increment, formattedLanguages } = useLanguageStore();
-        if (!formattedLanguages) languages.forEach((lang: LanguageData) => increment(lang.label, lang.bytes));
-        
         const media = languages.map((lang: LanguageData) => {
             
             return { type: 'svg', caption: ' ', alt: ` Visual Representation of ${lang.label}`, "src": `/media/tech-lang-icons/${lang.label.toLowerCase()}.svg`, 

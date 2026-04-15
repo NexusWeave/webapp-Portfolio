@@ -7,16 +7,15 @@ import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/c
 type CMSArticleCollectionItem = AcademicCollectionItem | AchievementsCollectionItem;
 
 //  --- Data Fetching Logic
-export async function fetchCollection<T>(path:any, cacheKey:string): Promise<Ref<T[]>>
+export async function fetchCollection<T, R>(path:any, cacheKey:string, mapper: (data:T[]) => R): Promise<Ref<R>>
 {
-    const {data} = await useAsyncData(cacheKey, () => 
-    {return queryCollection(path).all() as Promise<T[]>;});
+    const {data, error} = await useAsyncData(cacheKey, () =>  {return queryCollection(path).all();});
     
     // --- Debugging
     // console.log("FetchCollection - Path:", path);
     // console.log("FetchCollection - Data:", data.value);
-
-    if(data) return data as Ref<T[]>; else return ref([]);
+    if (error.value) console.log("FetchCollection - Error:", error.value);
+    return (data.value ? ref(mapper(data.value)) : ref([])) as Ref<R>;
 }
 
 //  --- Data Processing Logic
@@ -40,7 +39,9 @@ export function setDateFormat(data:DateItem) : DateItem | undefined
     const time = new Intl.DateTimeFormat('nb-NO', { hour: '2-digit', minute: '2-digit' });
     const date = new Intl.DateTimeFormat('nb-NO', { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
     if (!data.date) return undefined;
-    const dateData:DateItem = { delimiter : 'dot', date: data.date ?? ' ' ? date.format(new Date(data.date)) : null, time: data.date ? time.format(new Date(data.date)) : null, text : data.updated ? `Oppdatert` : `Publisert`, updated: data.updated ? date.format(new Date(data.updated)) : null };
+    const dateData:DateItem = { delimiter : 'dot', date: data.date ?? ' ' ? date.format(new Date(data.date)) : null,
+        time: data.date ? time.format(new Date(data.date)) : null, text : data.updated ? `Oppdatert` : `Publisert`, 
+        updated: data.updated ? date.format(new Date(data.updated)) : null };
     return dateData;
 }
 

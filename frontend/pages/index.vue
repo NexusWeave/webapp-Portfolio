@@ -1,6 +1,6 @@
 <template>
     <article class="article-wrapper flex-column">
-        <h2> Logger fra mine prosjekter </h2>
+        <h2> Tekniske Logger </h2>
         <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
             <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
                 <span> {{ currentPage }} / {{ totalPages }}</span>
@@ -16,16 +16,16 @@
 
     <section :class="['flex-wrap-row-justify-space-evenly']">
 
-        <Timeline v-if="academicTimeline.length > 0"
+        <Timeline v-if="academicData.length > 0"
             title="Akademisk Tidslinje"
-            :data="academicTimeline"
+            :data="academicData"
             :cls = "['component-blue', 'timeline-container',
             'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
 
-        <Timeline v-if="achievementsTimeline.length > 0"
+        <Timeline v-if="achievementData.length > 0"
             title="Prestasjonstidslinje"
-            :data="achievementsTimeline"
+            :data="achievementData"
             :cls = "['component-seagreen', 'timeline-container',
             'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
@@ -43,22 +43,22 @@
     
     import { blogPagination } from '@/composables/pagination';
     import { mapTimeline } from '@/composables/maps/mapTimeline';
+    import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
     import type { ButtonItem } from '~/types/navigation';
     import type { DevPostsCollectionItem, AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 
-    //  --- Component logic
-    const academicData = await fetchCollection<AcademicCollectionItem>('academic', 'academic-info');
-    const achievementData = await fetchCollection<AchievementsCollectionItem>('achievements', 'achievements-info');
 
-    const academicTimeline = computed(() => mapTimeline(academicData));
-    const achievementsTimeline = computed(() => mapTimeline(achievementData));
+    //  --- Component logic
+    const academicData = await fetchCollection<AcademicCollectionItem, ReturnType<typeof mapTimeline>>('academic', 'academic-info', mapTimeline);
+    const achievementData = await fetchCollection<AchievementsCollectionItem, ReturnType<typeof mapTimeline>>('achievements', 'achievements-info', mapTimeline);
+
 
         //  --- Conent logic
     const devPostPath = 'devPosts';
     const devPostCache = 'devPostCache';
-    const rawPosts = await fetchCollection<DevPostsCollectionItem>(devPostPath, devPostCache)
+    const rawPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPostPath, devPostCache, mapBlogData);
     
     const n = 2; // Number of posts per page
     const currentPage: Ref<number> = ref(1);

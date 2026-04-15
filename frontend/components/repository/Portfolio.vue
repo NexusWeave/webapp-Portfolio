@@ -35,8 +35,9 @@
     //  Importing dependencies & types
     import { fetchRepositories} from '#imports';
     import { ref, watch, computed, onMounted } from 'vue';
+    import { useLanguageStore } from '@/stores/languageBytesStore';
 
-    import type { RepositoryData } from '~/types/props';
+    import type { RepositoryData, LanguageData, GithubData } from '~/types/props';
     import type { ButtonItem } from '~/types/navigation';
 
 
@@ -79,7 +80,26 @@
 
     function changePage(page: number) { const total = totalPages.value; if (page >= 1 && page <= total) currentPage.value = page; }
 
-    onMounted(() => { refresh() });
+
+    //  --- Lifecycle Hooks
+
+    const { increment, formattedLanguages, resetBytes } = useLanguageStore();
+
+    watch(() => repo.value, (newVal) => 
+    {
+    if (newVal && newVal.length > 0  && formattedLanguages.length === 0) {
+        newVal.forEach((item) => { const data = item.languages; if (data && data.length > 0) data.forEach((lang: LanguageData) => increment(lang.label, lang.bytes)); });
+    }
+}, { immediate: true, deep: true });
+    onMounted(() => {
+        resetBytes();
+        if (repo.value) repo.value.forEach((item: GithubData) => {
+            const languages = item.languages;
+
+            if (languages && languages.length > 0) languages.forEach((lang: LanguageData) => increment(lang.label, lang.bytes));
+        });
+                
+        refresh() });
 
     //  --- Debug logic
     //console.log("--- Portfolio component ---");
