@@ -1,3 +1,10 @@
+## [1.15.10](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.9...v1.15.10) (2026-04-15)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Restricted middleware to CORS_ORIGINS and prevents any lazy-loading issues. ([92be8aa](https://github.com/NexusWeave/webapp-Portfolio/commit/92be8aa23e6de9114454908c207836c9ee508d89))
+
 ## [1.15.9](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.8...v1.15.9) (2026-04-15)
 
 
