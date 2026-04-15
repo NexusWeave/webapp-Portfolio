@@ -19,8 +19,6 @@ status: |
 sources: ''
 ---
 
-#### Garuda Arch Linux / Windows Dual Boot
-
 #### Systemmiljø
 
 * **Operativsystem**  - Garuda Arch Linux / Windows 10 (Dual Boot)
