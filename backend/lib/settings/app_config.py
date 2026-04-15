@@ -33,7 +33,7 @@ class AppConfig:
     @staticmethod
     def middleware_initialization(app: FastAPI, config: Config) -> None:
         LOG.info("Initializing Middleware...")
-        app.add_middleware( CORSMiddleware, allow_credentials = True, allow_origins=config.CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"])
+        app.add_middleware( CORSMiddleware, allow_credentials = False, allow_origins=config.CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"])
 
     @asynccontextmanager
     async def app_initialization(self,app: FastAPI):
