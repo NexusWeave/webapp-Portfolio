@@ -8,22 +8,24 @@ export const useLanguageStore = defineStore('tech-language', () => {
   const allLanguages = computed(() => languages)
   const formattedLanguages = computed(() => {
     const object = sortByBytes();
-    const kb = 1024;
 
-    return Object.entries(object).filter(([_, bytes]) => bytes >= (kb*100)).map(([language, x]) => {
+    return Object.entries(object).map(([language, x]) => {
       const bytes: number = 1024;
       const kb: number = x / bytes;
-      const mb: number = kb / bytes;
 
-      return {
-        type: 'KB',
-        bytes: Number(kb.toFixed(2)),
-        label: language.charAt(0).toUpperCase() + language.slice(1),
-        percentage: Object.values(object).reduce((acc, val) => acc + val, 0) > 0 ? (kb / Object.values(object).reduce((acc, val) => acc + val, 0)) * 100 : 0
+      return { 
+        type: 'KB', bytes: Number(kb.toFixed(2)), label: language.charAt(0).toUpperCase() + language.slice(1),
+        original: x,
+        percentage: Object.values(object).reduce((acc, val) => acc + val, 0) > 0 ? (kb / Object.values(object).reduce((acc, val) => acc + val, 0)) * 100 : 0.
+        
       }
-    })
+    }).filter((item) => item.bytes >= 100)
   });
 
+
+  function resetBytes(): void {
+    for (const key in languages) languages[key] = 0;
+  }
 
   function increment(key:string, value: number) : void {
     if (!key || typeof value !== 'number') return;
@@ -40,6 +42,7 @@ export const useLanguageStore = defineStore('tech-language', () => {
 
 
   return {
+    resetBytes,
     languages,
     increment,
     allLanguages,
