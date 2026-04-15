@@ -1,3 +1,10 @@
+## [1.15.9](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.8...v1.15.9) (2026-04-15)
+
+
+### Bug Fixes
+
+* disable allow_credentials in CORS middleware as the page does not require cookies or login. ([3d7f79e](https://github.com/NexusWeave/webapp-Portfolio/commit/3d7f79ebd8bf51696d153fa6ca9a08797bd05675))
+
 ## [1.15.8](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.7...v1.15.8) (2026-04-14)
 
 
