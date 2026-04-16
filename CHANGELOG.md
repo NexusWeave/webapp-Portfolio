@@ -1,3 +1,19 @@
+# [1.16.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.10...v1.16.0) (2026-04-16)
+
+
+### Bug Fixes
+
+* **UI:** 🐛 Resolve hydration mismatch by standardizing tag structures. ([b88364b](https://github.com/NexusWeave/webapp-Portfolio/commit/b88364b8399568e1d0fc9d9dfffedccb7a8c0663))
+* **UI:** 🐛 Resolve hydration mismatch by standardizing tag structures. ([f3432f5](https://github.com/NexusWeave/webapp-Portfolio/commit/f3432f5177c6396b7fd988f246bfb7ebda102772))
+* **UI:** 🐛 Resolve hydration mismatch in MediaFigure by restructuring picture element. ([4f2b011](https://github.com/NexusWeave/webapp-Portfolio/commit/4f2b011861f98a2dc5b832232d2f3c8dbb23f7a3))
+* **UI:** 🐛 Resolve hydration mismatch in MediaFigure component. ([67d4512](https://github.com/NexusWeave/webapp-Portfolio/commit/67d4512191ef334df9dccca5a5c0b00e28372761))
+* **UI:** 🐛 Resolve hydration text mismatch in reference render. ([f353702](https://github.com/NexusWeave/webapp-Portfolio/commit/f353702e63d88662d08240dad96936f47d58897f))
+
+
+### Features
+
+* **UI:** ✨ Add `Suspense` for asynchronous data fetching across pages. ([0092d24](https://github.com/NexusWeave/webapp-Portfolio/commit/0092d240b5551c4da6169ce9585fc8fcbf6a3c5e))
+
 ## [1.15.10](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.9...v1.15.10) (2026-04-15)
 
 
