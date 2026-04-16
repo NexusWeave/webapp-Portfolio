@@ -1,11 +1,11 @@
 <template>
-        <picture v-if="data.src || data.srcset">
-            <figure :class="cls[0]">
-                <source v-if="!!data.srcset" :srcset="data.srcset" :type="'image/' + data.type">
-                <img :src="data.src ?? data.srcset" :alt="data.alt ?? ' Unknown picture'" :class="cls[1]" :type="'image/' + data.type" :title="data.alt ?? ''">
-                <figcaption>{{ data.caption ?? data.alt }}</figcaption>
-            </figure>
+    <figure :class="cls[0]" v-if="data.src || data.srcset">
+        <picture>
+            <source :srcset="data.srcset" :type="'image/' + data.type">
+            <img :src="data.src " :alt="data.alt ?? ' Unknown picture'" :class="cls[1]" :type="'image/' + data.type" :title="data.alt ?? ''" loading:="lazy" />
         </picture>
+        <figcaption>{{ data.caption ?? data.alt }}</figcaption>
+    </figure>
 </template>
 
 <script setup lang="ts">
@@ -24,7 +24,7 @@
         const rawData = props.data as FigureItem;
         const imageFormats = { modern: ['webp', 'avif'] };
         const isImageModern =!!rawData.srcset && !!imageFormats.modern.find(item => rawData.srcset?.endsWith(item));
-        return { ...rawData, srcset: isImageModern ? rawData.srcset : '', caption: rawData.caption ?? rawData.alt ?? '' };
+        return { ...rawData, srcset: isImageModern ? rawData.srcset : rawData.src, caption: rawData.caption ?? rawData.alt ?? '' };
     });
 
     //  --- Debug logic
