@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Dagens Aktiviteter
 
-  * Rettet opp i strukturelle avvik mellom server-rendret HTML og nettleserens virtuelle dokument (DOM) i bilde-, prosjekt- og tidslinjekomponentene.
+  * Rettet opp i strukturelle avvik mellom <abbr title = "innhold som bygges ferdig på serveren før det sendes til nettleseren">server</abbr> bygget HTML og nettleserens virtuelle dokument (DOM) i bilde-, prosjekt- og tidslinjekomponentene.
   * Erstattet problematiske p- og span-elementer med template-rammer for å sikre nøyaktig symmetri i antall noder mellom server og klient.
   * Lagt inn sikkerhetshåndtering for srcset og andre potensielt udefinerte data for å unngå rendering-feil.
   * Pakket inn sider og loggkomponenter som henter eksterne data for å sikre en kontrollert og stabil innlasting.
@@ -19,7 +19,7 @@ status: |
 sources: ''
 ---
 
-Under utvikling oppdaget jeg at det oppstår en kommunikasjonssvikt under <abbr title ="øyblikket der innlastingen skjer, og gjøres interaktivt">hydrering</abbr> av nettstedet, som en konsekvens av at <abbr title = "innhold som bygges ferdig på serveren før det sendes til nettleseren">server-rendrede</abbr> HTML-<abbr title="En del av et strukturert dokument">elementer</abbr> inneholdt færre underelementer enn nettleseren hadde i sitt virtuelle Dokument. Dette avviket oppstod i bilde<abbr title ="Delen">komponenten</abbr>, komponenten for prosjektene mine og de akademiske tidslinjen under visning av ikoner, noe som skapte strukturelle uoverensstemmelser mellom server og den visuelle delen av nettsiden ved første innlasting.
+Under utvikling oppdaget jeg at det oppstår en kommunikasjonssvikt under <abbr title ="øyblikket der innlastingen skjer, og gjøres interaktivt">hydrering</abbr> av nettstedet, som en konsekvens av at <abbr title = "innhold som bygges ferdig på serveren før det sendes til nettleseren">server</abbr> bygget HTML-<abbr title="En del av et strukturert dokument">elementer</abbr> inneholdt færre underelementer enn nettleseren hadde i sitt virtuelle Dokument. Dette avviket oppstod i bilde<abbr title ="Delen">komponenten</abbr>, komponenten for prosjektene mine og de akademiske tidslinjen under visning av ikoner, noe som skapte strukturelle uoverensstemmelser mellom server og den visuelle delen av nettsiden ved første innlasting.
 
 Målet var å fjerne hydreringsvarsler og sikre at både <abbr title="En datamaskin / progam / funksjonsenhet som kobler seg til for å få adgang til informasjonstjenester">serveren og nettleseren samsvarte. Dette gjør at nettsiden er pålitelig og gir en flyt i brukeropplevelsen for besøkende.
 
