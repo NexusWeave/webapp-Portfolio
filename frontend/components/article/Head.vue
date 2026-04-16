@@ -1,17 +1,20 @@
 <template>
     <NavigationButton  v-if="isArticlePage"  :data="button" :class="['orange-btn']"/>
-
     <section :class="['flex-column-align-items-center', {'article-section': !!isArticlePage}]">
-        <section :class="[{'blog-header': !isArticlePage}, {'ingress-header': isArticlePage}]">
-            <h2> {{ article.title }}</h2>
-            <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
-                <span v-if="!!article.date" :class="'meta-date'"> Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
-                <NavigationAnchor v-for="(tag) in article.tags" :data="tag" :class="tag.cls" />
-            </p>
-            <MDC :value="article.ingress" class="ingress-content" />
-            <NavigationNavMenu v-if="!isArticlePage && !!article.anchor" :data="article.anchor" :class="['nav-bar', 'read-more']"
-        />
-        </section>
+        <Suspense>
+            <template #default>
+                <section :class="[{'blog-header': !isArticlePage}, {'ingress-header': isArticlePage}]">
+                    <h2>{{ article.title }}</h2>
+                    <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
+                        <span v-if="!!article.date" :class="'meta-date'"> Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
+                        <NavigationAnchor v-for="(tag) in article.tags" :data="tag" :class="tag.cls" />
+                    </p>
+                    <MDC :value="article.ingress" class="ingress-content" />
+                    <NavigationNavMenu v-if="!!article.anchor" :data="article.anchor" :class="['nav-bar', 'read-more']"/>
+                </section>
+            </template>
+            <template #fallback> <section class="loading">Laster innlegg til logger...</section> </template>
+        </Suspense>
     </section>
 </template>
 
