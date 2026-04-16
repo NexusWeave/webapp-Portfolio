@@ -24,7 +24,7 @@
         const rawData = props.data as FigureItem;
         const imageFormats = { modern: ['webp', 'avif'] };
         const isImageModern =!!rawData.srcset && !!imageFormats.modern.find(item => rawData.srcset?.endsWith(item));
-        return { ...rawData, srcset: isImageModern ? rawData.srcset : undefined, caption: rawData.caption ?? rawData.alt ?? '' };
+        return { ...rawData, srcset: isImageModern ? rawData.srcset : '', caption: rawData.caption ?? rawData.alt ?? '' };
     });
 
     //  --- Debug logic
