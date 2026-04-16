@@ -1,8 +1,21 @@
 ---
 date: 2026-04-30T07:01:40.829Z
-title: test
-ingress: ''
-status: ''
+title: Stabilisering av visning og en forbedret flyt for brukeropplevelse
+ingress: |
+  Denne oppdateringen sørger for at nettsiden starter opp riktig og uten feilmeldinger i bakgrunnen. Ved å rydde i hvordan bilder, prosjekter og tidslinjen bygges opp, unngår man at innholdet hopper eller flytter på seg mens det laster. Bruken av smarte venteløsninger og en ryddigere struktur gjør at alt vises slik det skal med en gang. Dette gir en mer sømløs opplevelse for besøkende og gjør siden mer pålitelig for søkemotorer.
+status: |
+  #### Dagens Aktiviteter
+
+  * Rettet opp i strukturelle avvik mellom server-rendret HTML og nettleserens virtuelle dokument (DOM) i bilde-, prosjekt- og tidslinjekomponentene.
+  * Erstattet problematiske p- og span-elementer med template-rammer for å sikre nøyaktig symmetri i antall noder mellom server og klient.
+  * Lagt inn sikkerhetshåndtering for srcset og andre potensielt udefinerte data for å unngå rendering-feil.
+  * Pakket inn sider og loggkomponenter som henter eksterne data for å sikre en kontrollert og stabil innlasting.
+  * Standardisert lastestrukturen for å eliminere layout-skift, noe som forbedrer både brukeropplevelsen og søkemotoroptimalisering (SEO).
+  * Etablert bruk av semantisk korrekt kode og template-elementer som en standard for å opprettholde stabilitet i en universell applikasjon.
+
+  #### Motivasjon & Energi 10 / 10
+
+  Dagen er så fin den kan bli.
 sources: ''
 ---
 
