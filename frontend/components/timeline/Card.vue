@@ -4,11 +4,8 @@
 
         <section class="flex-wrap-row-align-items-center-justify-space-between">
             <section class="section">
-                <h3 v-if="!!data.organization.anchor">
-                    <NavigationAnchor :data="data.organization.anchor" />
-                </h3>
+                <h3 v-if="!!data.organization.anchor"> <NavigationAnchor :data="data.organization.anchor" /> </h3>
                 <h3 v-else>{{ data.organization.name }}</h3>
-
                 <h4 v-if="!!data.title"> {{ data.title }}</h4>
 
                 <section v-if="!!data.date"
@@ -30,11 +27,11 @@
                 <section v-if="!!data.techStack && data.techStack.length > 0"
                     :class="['tech-container']">
                     <h4>Teknologi(er) : </h4>
-                    <p :class="['flex-wrap-row-justify-space-evenly']">
-                        <span v-for="(tech, i) in data.techStack" :key="i">
-                            <MediaFigure v-if="tech" :data="tech" :cls="['tech-figure', 'tech-img']" />
-                        </span>
-                    </p>
+                    <section :class="['flex-wrap-row-justify-space-evenly']"> 
+                        <template v-for="(tech, i) in data.techStack" :key="i">
+                            <MediaFigure  v-if="tech"  :data="tech"  :cls="['tech-figure', 'tech-img']"  />
+                        </template>
+                    </section>
                 </section>
 
                 <section :class="cls[2]">
@@ -62,5 +59,5 @@
     const emits = defineEmits(['toggleVisibility']);
 
     //  --- Debug / log logic
-    //console.log("Timeline Card data:", data.value);
+    console.log("Timeline Card data:", data.value);
 </script>
