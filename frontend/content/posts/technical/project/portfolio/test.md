@@ -6,15 +6,15 @@ status: ''
 sources: ''
 ---
 
-Under utvikling oppdaget jeg at hydrering av nettstedet feilet som en konsekvens av at server-renderte elementer inneholdt færre barnenoder enn klientens virtuelle DOM. Dette avviket oppstod i komponentene bildekomponentene, komponenten for prosjektene mine og de akademiske kortene Under rendering av ikoner, noe som skapte strukturelle uoverensstemmelser mellom server og frontend ved første innlasting.
+Under utvikling oppdaget jeg at det oppstår en kommunikasjonssvikt under <abbr title ="øyblikket der innlastingen skjer, og gjøres interaktivt">hydrering</abbr> av nettstedet, som en konsekvens av at <abbr title = "innhold som bygges ferdig på serveren før det sendes til nettleseren">server-rendrede</abbr> elementer inneholdt færre under elementer enn nettleseren hadde i sitt virtuelle Dokument. Dette avviket oppstod i bilde<abbr title ="Delen">komponentet</abbr>, komponentet for prosjektene mine og de akademiske kortene Under visning av ikoner, noe som skapte strukturelle uoverensstemmelser mellom server og den visuelle delen av nettsiden ved første innlasting.
 
-Målet var å fjerne hydreringsvarsler og sikre perfekt DOM-symmetri. Dette gjør at applikasjonen min er pålitelig og gir en flyt i brukeropplevelsen for besøkende.
+Målet var å fjerne hydreringsvarsler og sikre at både serveren og nettleseren samsvarte. Dette gjør at applikasjonen min er pålitelig og gir en flyt i brukeropplevelsen for besøkende.
 
-* Restrukturerte elementhierarkiet ved å erstatte `p `og `span`-elementer med `template`-wrappere for å forhindre ugyldig nesting og sikre samsvar i antall noder.
-* Jeg la til en reserveløsning for `srcset` for å håndtere potensielt udefinerte data under rendering.
-* Pakket inn alle sider og loggkomponenter som henter eksterne data i `Suspense` for å håndtere asynkrone lastetilstander på en kontrollert måte.
-* Aktiverte en standardisert arkitektur for lasting som forhindrer layout-skift og forbedrer den opplevde ytelsen under datainnhenting.
+* Jeg erstattet `p`og `span`-elementer med `template`-rammer for å sikre at element samsvaret med antall elementer.
+* Jeg la til en reserveløsning for `srcset` for å håndtere potensielle data som er udefinerte under visning.
+* Jeg pakket inn alle sider og loggkomponenter som henter eksterne data i <abbr title ="en teknikk for å håndtere operasjoner med flere lastetilstander">`Suspense`</abbr> for å håndtere flere lastetilstander  på en kontrollert måte.
+* Jeg aktiverte en standardisert arkitektur for lasting som forhindrer <abbr title="oppstår når en klosse plutselig dukker opp eller endrer dadata slik at data blir presset nedover">layout-skift</abbr> og forbedrer Flyten under datainnhenting.
 
-Disse endringene løste hydreringsfeilene i tidslinjen og mediekomponentene, slik at grensesnittet nå lastes feilfritt. Bruken av `template`-wrappere sørget for at HTML-strukturen forblir identisk mellom server og nettleser, som forbedrer stabiliteten og påliteligheten overfor søkemotorer og besøkede.
+Disse endringene løste hydreringsfeilene i tidslinjen, mediekomponentene og prosjektkomponentene, slik at grensesnittet nå lastes feilfritt. Bruken av `template`-rammene sørget for at `HTML`-strukturen forblir identisk mellom server og nettleser. Dette forbedrer stabiliteten og påliteligheten overfor søkemotorer og besøkede.
 
-For å sikre kommunikasjonen mellom server og nettleser er det avgjørende at kodesymmetrien opprettholdes gjennom semantisk korrekthet. Jeg erfarte at data som kan være `udefinerte` krever en trygg reserveløsning, og at bruk av ikke-rendrende wrappere som template er essensielt for å unngå strukturelle avvik i en universell applikasjon.
+For å sikre kommunikasjonen mellom server og nettleser er det avgjørende at symmetrien opprettholdes gjennom semantisk korrekthet. Jeg erfarte at data som kan være <abbr title="udefinerte data">`udefinerte`</abbr> krever en trygg reserveløsning, og at bruk av rammeverk som ikke visualiseres som `template` er standardisert for å unngå strukturelle avvik i en universell applikasjon.
