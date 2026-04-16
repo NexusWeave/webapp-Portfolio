@@ -1,8 +1,8 @@
 <template>
     <figure :class="cls[0]" v-if="data.src || data.srcset">
         <picture>
-            <source :srcset="data.srcset" :type="'image/' + data.type">
-            <img :src="data.src " :alt="data.alt ?? ' Unknown picture'" :class="cls[1]" :type="'image/' + data.type" :title="data.alt ?? ''" loading:="lazy" />
+            <source :srcset="data.srcset" :type="'image/' + data.type" >
+            <img :src="data.src " :alt="data.alt ?? ' Unknown picture'" :class="cls[1]"  :title="'image/' + data.type"  />
         </picture>
         <figcaption>{{ data.caption ?? data.alt }}</figcaption>
     </figure>
