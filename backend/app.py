@@ -45,7 +45,7 @@ except ValueError as ve:
 #   Initialize FastAPI
 app = FastAPI(title = ENVIRONMENT.API_NAME, version = ENVIRONMENT.API_VERSION, lifespan = CONFIG.app_initialization)
 
-CONFIG.middleware_initialization(app, ENVIRONMENT)
+CONFIG.middleware_initialization(app, ENVIRONMENT.CORS_ORIGINS)
 LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
 
 #   Registering Enpoint Services
@@ -84,7 +84,7 @@ async def health_check() -> NESTED_DICTS:
     
     return dictionary
 
-@app.get(f"{PATH}/blogs/heavy/", tags=["exercise", "blogs"])
+@app.get(f"{PATH}/blogs/heavy", tags=["exercise", "blogs"])
 async def get_heavy_data() ->None:
     pass
 

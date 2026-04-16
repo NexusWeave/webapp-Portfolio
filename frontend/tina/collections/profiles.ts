@@ -7,37 +7,19 @@ export const profileCollection: Collection =
     path: "content/profiles",
     fields: 
     [
+        { name: "date", label: "Date", required: true, type: "datetime", ui: { dateFormat: 'DD-MM-YY'} },
+        { name: "title", isTitle: true, type: "string", label: "Title", required: true },
         {
-            name: "date",
-            label: "Date",
             required: true,
-            type: "datetime",
-            ui: { dateFormat: 'DD-MM-YY'}
+            name: "summary",
+            type: "rich-text",
+            label: "Introduksjons tekst"
         },
+        { isBody: true, name: "body", required: true, type: "rich-text", label: "Profile information" },
         {
-            name: "title",
-            isTitle: true,
-            type: "string",
-            label: "Title",
-            required: true
-        },
-        {
-            isBody: true,
+            name: "coop",
             required: true,
             type: "rich-text",
-            name: "profile",
-            label: "Profile information"
-        },
-        {
-            required: true,
-            type: "rich-text",
-            name: "strength",
-            label: "Mine styrker"
-        },
-        {
-            required: true,
-            type: "rich-text",
-            name: "agile",
             label: "Smidige erfaringer"
         },
     ],

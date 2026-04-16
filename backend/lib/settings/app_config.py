@@ -1,4 +1,7 @@
-from lib.settings.database_config import BASE
+#   Standard Library Dependencies
+import __future__
+
+from typing import List
 
 #   Third Party Dependencies
 from fastapi import FastAPI
@@ -6,7 +9,7 @@ from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
 #   Internal Dependencies
-
+from lib.settings.database_config import BASE
 from lib.utils.logger_config import AppWatcher
 from lib.database.db_engine import initialize_postgress_engine
 from lib.settings.env_config import Config, DevelopmentConfig, ProdConfig
@@ -31,9 +34,9 @@ class AppConfig:
             raise e
 
     @staticmethod
-    def middleware_initialization(app: FastAPI, config: Config) -> None:
-        LOG.info("Initializing Middleware...")
-        app.add_middleware( CORSMiddleware, allow_credentials = True, allow_origins=config.CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"])
+    def middleware_initialization(app: FastAPI, CORS_ORIGINS: List[str]) -> None:
+        app.add_middleware( CORSMiddleware, allow_credentials = False, allow_origins=CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"])
+
 
     @asynccontextmanager
     async def app_initialization(self,app: FastAPI):

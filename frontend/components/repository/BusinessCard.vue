@@ -1,38 +1,25 @@
 <template>
     <section :class="['business-card', 'flex-column']">
-        <section :class="['flex-wrap-row-justify-space-between', 'card-content']">
-            <span v-for="(tech, i) in data.languages" :key="i">
-                <MediaFigure v-if="data.languages && data.languages.length > 0 && i < 1"
-                    :data="tech.img"
-                    :cls="['tech-figure', 'tech-img']"
-                />
-            </span>
-
-            <h3  v-if="Array.isArray(data.name) && data.name.length > 1">
-                {{ data.name[1] }}
-                <span v-if="data.flags.collaborator" :class="['icon']">
-                    <MediaIcon :cls="['collaborator']"/>
-                </span>
-            </h3> 
-            <h3  v-else>
+        <section  :class="['flex-wrap-row-justify-space-between', 'card-data']">
+            <MediaFigure v-if="hasLanguages" :data="data.media[num]" :cls="['tech-figure', 'tech-img']" />
+            <div v-else ></div>
+            <span :class="['date-container']"> <b> <time :datetime="data?.date.date"> {{ data?.date.date }} </time> </b> </span>
+        </section>
+        <section :class="['card-content', 'flex-column-items-center']">
+            <h3>
                 {{ data.label }}
                 <span v-if="data.flags.collaborator" :class="['icon']"> <MediaIcon :cls="['collaborator']"/> </span>
             </h3>
-            <span :class="['date-container']">
-                <b><time :datetime="data.date.created">{{ data.date.created }}</time>
-                </b>
-            </span>
-        </section>
-
-        <section class="flex-column-items-center">
             <NavigationNavMenu v-if="hasAnchor" :cls="['portofolio-nav']" :data="data.anchor" />
             <p>{{ data.description }}</p>
 
-            <section v-if="hasLanguages" :class="['tech-container']">
+            <section v-if="hasTechnology" :class="['tech-container']">
                 <h4>Andre teknologi(er) : </h4>
-                <p :class="['flex-wrap-row-justify-space-evenly']">
-                    <span v-for="(tech, i) in data.languages" :key="i"> <MediaFigure v-if="i > 0" :data="tech.img" :cls="['tech-figure', 'tech-img']" /> </span>
-                </p>
+                <section :class="['flex-wrap-row-justify-space-evenly']">
+                    <template v-for="(media, i) in data.media" :key="i">
+                     <MediaFigure  v-if="i > num" :data="media" :cls="['tech-figure', 'tech-img']" />
+                    </template>
+                </section>
     
             </section>
         </section>
@@ -48,8 +35,10 @@
     const data = computed(() => props.data);
 
     //  --- Flags & Computed Logic
-    const hasAnchor = computed(() => props.data.anchor && props.data.anchor.length > 0);
-    const hasLanguages = computed(() => props.data.languages && props.data.languages.length > 1);
+    const num = 0;
+    const hasAnchor = computed(() => props.data.anchor && props.data.anchor.length > num);
+    const hasLanguages = computed(() => props.data.languages && props.data.languages.length > num);
+    const hasTechnology = computed(() => props.data.languages && props.data.languages.length > 1);
 
     //  --- Debugging Logic
     //console.log("BusinessCard props:", props.data);

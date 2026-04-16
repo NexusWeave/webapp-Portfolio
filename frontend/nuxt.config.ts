@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-gtag'
   ],
+  experimental: { payloadExtraction: false},
   routeRules: { '/logs/records/**': { prerender: true } },
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
   runtimeConfig:{ public:{ GCLOUD: process.env.GOOGLE_CLOUD || 'http://0.0.0.0:8080' } },

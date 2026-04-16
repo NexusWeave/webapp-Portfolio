@@ -1,45 +1,53 @@
 import type { DateItem } from '~/types/date';
+import type { PostItem, PostTag } from '~/types/documents';
 import type { DevPostsCollectionItem } from '@nuxt/content';
 
-export const mapBlogData = (data: DevPostsCollectionItem[]) => {
+export const mapBlogData = (data: DevPostsCollectionItem[]): PostItem[] => {
         if (!data) return [];
         data = data.sort((a, b) => { const dateA = new Date(a.date); const dateB = new Date(b.date); return dateB.getTime() - dateA.getTime(); });
-        
-        let AUTOINCREMENT = 0;
+
         const today = new Date();
         
-        return data.map((item) => {
+        return data.map((item, index) => {
             const id = item.id.split('/')
             const date:DateItem = {date: item.date};
             const isPublished = new Date(item.date) <= today;
             const path = id.pop()?.replace('.md', '').toLowerCase();
 
             const dir = '/logs';
-            const tags = (() =>
+            const tags:PostTag = (() =>
                     {
-                        const listOfAvailableTags = ['project', 'devops', 'os', 'rd', 'mentalt-vedlikehold',];
-                        const index = id.findIndex(p => listOfAvailableTags.includes(p.toLocaleLowerCase()));
-
                         const misc = 'misc';
-                        const folder = (index + 1) != -1 ? id[index]?.toLowerCase() : misc;
-                        if (!id[index]) return;
-                        const label = folder === listOfAvailableTags[0] ? id[index + 1] : folder;
+                        const listOfAvailableTags = ['project', 'support', 'os', 'devops', 'rd', 'mentalt-vedlikehold' ];
+                        const index:number = id.findIndex(p => listOfAvailableTags.includes(p.toLowerCase()));
+                        
+                        
+                        if (!id[index]) return { name: misc, cls: ['misc'], type: ['tag', 'dir'], href: `${dir}/tags/misc`, path: 'misc', label: 'Misc' };
 
-                        const tag = { label: label, type: ['tag'], href: `${dir}/tags/${label}`, cls: [label], path: id.pop()?.toLocaleLowerCase() || misc };
-                        return tag;
+                        const folder:string = id[index].toLowerCase() ?? misc;
+                        
+                        const label: string = listOfAvailableTags.includes(folder) ? folder == 'project' || folder == 'support' ? `${id[index + 1]}` : folder : misc;
+                        const name = label ? label.toLowerCase() : misc;
+                        
+                        return {
+                            name: name, cls: [name], type: ['tag', 'dir'],
+                            href: `${dir}/tags/${name}`,  path: id.pop()?.toLowerCase(),
+                            label: `${label && !listOfAvailableTags.includes(name) ? name.charAt(0).toUpperCase() + name.slice(1)?.replace(/-/g, ' ') : label}` };
                     })();
+
             return {
-                path: path,
-                tags: [tags],
-                title: item.title,
-                id: AUTOINCREMENT++,
-                body: item.body,
+                
+                id: index,
+                path: path!,
+                tags: [tags!],
+                body: item.body ?? {},
+                title: item.title ?? '',
                 isPublished: isPublished,
                 date: setDateFormat(date),
-                status: item.status ?? '',
-                ingress: item.ingress ?? '',
-                sources: item.sources ?? '',
+                status: item.status!,
+                ingress: item.ingress,
+                sources: item.sources,
                 anchor: [{ type: ['router'], path: `${dir}/records/${path}`, label: 'Les mer', cls: ['read-more-btn'] }]
             }
         });
-    }
+    };
