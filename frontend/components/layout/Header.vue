@@ -10,8 +10,14 @@
         <article class="profile-bar flex-wrap-row-align-items-center profile">
             <section class="flex-column-align-items-center">
                 <MediaFigure :data="media" />
-                <ContentRenderer :value="reference[index]?.body ?? {} " />
+                <clientOnly>
+                    <template #default>
+                         <ContentRenderer :value="reference[index]?.body ?? {} " />
+                    </template>
+                    <template #fallback> <section class="loading">Laster referanser...</section> </template>
+                </clientOnly>
                 <cite> <NavigationAnchor :data="reference[index]?.anchor" /> </cite>
+                
             </section>
             <section class="profile-content flex-column">
                 <h2>Kristoffer Gjøsund</h2>
