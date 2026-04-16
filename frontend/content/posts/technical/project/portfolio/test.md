@@ -6,11 +6,11 @@ ingress: |
 status: |
   #### Dagens Aktiviteter
 
-  * Rettet opp i strukturelle avvik mellom <abbr title = "innhold som bygges ferdig på serveren før det sendes til nettleseren">server</abbr> bygget HTML og nettleserens virtuelle dokument (DOM) i bilde-, prosjekt- og tidslinjekomponentene.
-  * Erstattet problematiske p- og span-elementer med template-rammer for å sikre nøyaktig symmetri i antall noder mellom server og klient.
-  * Lagt inn sikkerhetshåndtering for srcset og andre potensielt udefinerte data for å unngå rendering-feil.
+  * Rettet opp i strukturelle avvik mellom <abbr title = "innhold som bygges ferdig på serveren før det sendes til nettleseren">server</abbr> bygget HTML og nettleserens virtuelle dokument i bilde-, prosjekt- og tidslinjekomponentene.
+  * Erstattet problematiske p- og span-elementer med <abbr title="Et ikke illustrerende ramme">`template`</abbr>-rammer for å sikre nøyaktig symmetri i antall noder mellom server og klient.
+  * Lagt inn reserve løsning for `srcset` og andre potensielt udefinerte data for å unngå visuelle-feil.
   * Pakket inn sider og loggkomponenter som henter eksterne data for å sikre en kontrollert og stabil innlasting.
-  * Standardisert lastestrukturen for å eliminere layout-skift, noe som forbedrer både brukeropplevelsen og søkemotoroptimalisering (SEO).
+  * Standardisert lastestrukturen for å fjerne <abbr title="oppstår når en klosse plutselig dukker opp eller endrer dadata slik at data blir presset nedover">layout-skift</abbr>, dette forbedrer både brukeropplevelsen og  <abbr title="søkemotoroptimalisering">SEO</abbr>.
   * Etablert bruk av semantisk korrekt kode og template-elementer som en standard for å opprettholde stabilitet i en universell applikasjon.
 
   #### Motivasjon & Energi 10 / 10
@@ -19,7 +19,7 @@ status: |
 sources: ''
 ---
 
-Under utvikling oppdaget jeg at det oppstår en kommunikasjonssvikt under <abbr title ="øyblikket der innlastingen skjer, og gjøres interaktivt">hydrering</abbr> av nettstedet, som en konsekvens av at <abbr title = "innhold som bygges ferdig på serveren før det sendes til nettleseren">server</abbr> bygget HTML-<abbr title="En del av et strukturert dokument">elementer</abbr> inneholdt færre underelementer enn nettleseren hadde i sitt virtuelle Dokument. Dette avviket oppstod i bilde<abbr title ="Delen">komponenten</abbr>, komponenten for prosjektene mine og de akademiske tidslinjen under visning av ikoner, noe som skapte strukturelle uoverensstemmelser mellom server og den visuelle delen av nettsiden ved første innlasting.
+Under utvikling oppdaget jeg at det oppstår en kommunikasjonssvikt under <abbr title ="øyblikket der innlastingen skjer, og gjøres interaktivt">hydrering</abbr> av nettstedet, som en konsekvens av at <abbr title = "innhold som bygges ferdig på serveren før det sendes til nettleseren">server</abbr> bygget HTML-<abbr title="En del av et strukturert dokument">elementer</abbr> inneholdt færre underelementer enn nettleseren hadde i sitt virtuelle Dokument. Dette avviket oppstod i bilde-, prosjekt- og tidslinje<abbr title ="Delen">komponenten</abbr>e under visning av ikoner, noe som skapte strukturelle uoverensstemmelser mellom server og den visuelle delen av nettsiden ved første innlasting.
 
 Målet var å fjerne hydreringsvarsler og sikre at både <abbr title="En datamaskin / progam / funksjonsenhet som kobler seg til for å få adgang til informasjonstjenester">serveren og nettleseren samsvarte. Dette gjør at nettsiden er pålitelig og gir en flyt i brukeropplevelsen for besøkende.
 
