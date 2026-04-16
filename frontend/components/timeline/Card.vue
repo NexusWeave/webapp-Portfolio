@@ -59,5 +59,5 @@
     const emits = defineEmits(['toggleVisibility']);
 
     //  --- Debug / log logic
-    console.log("Timeline Card data:", data.value);
+    //console.log("Timeline Card data:", data.value);
 </script>
