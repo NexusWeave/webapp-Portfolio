@@ -1,12 +1,13 @@
+
 import type { FigureItem } from '~/types/media';
 import type { TimelineItem } from '~/types/timeline';
 import type { AcademicCollectionItem } from '@nuxt/content';
 
-export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[] {
-    if (!data.value) return [];
+export function mapTimeline(data: AcademicCollectionItem[]): TimelineItem[] {
+    if (!data) return [];
 
     let AUTOINCREMENT: number = 0;
-    const timeline = sortbyDate<AcademicCollectionItem>(data.value);
+    const timeline = sortbyDate<AcademicCollectionItem>(data);
 
     return timeline.map((doc: AcademicCollectionItem): TimelineItem => {
         const techStack = fetchTechType(doc.techStack);
@@ -21,11 +22,11 @@ export function mapTimeline(data: Ref<AcademicCollectionItem[]>): TimelineItem[]
         }
 
         return {
-            techStack: tech as FigureItem[],
             id: AUTOINCREMENT++,
             body: doc.body || undefined, 
             name: doc.tag + "-Timeline",
             title: doc.title || undefined, 
+            techStack: tech as FigureItem[],
             isVisible: (AUTOINCREMENT - 1) === 0,
             date: { created: doc.created, end: doc.end },
             description: doc.meta.description || undefined,

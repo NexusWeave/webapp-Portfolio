@@ -1,13 +1,7 @@
 <template>
-
         <section :class="[cls[0], cls[1]]">
             <section :class="cls[2], cls[3]">
-                <TimelineFilter
-                    :data="filter"
-                    :cls="[['flex-column-align-items-center', 'timeline-item'],
-                    'timeline-input-label', 'timeline-input']"
-                    @toggleVisibility="toggleVisibility"
-                />
+                <TimelineFilter :data="filter" :cls="[['flex-column-align-items-center', 'timeline-item'], 'timeline-input-label', 'timeline-input']" @toggleVisibility="toggleVisibility" />
             </section>
             <section :class="cls[3]">
                 <DatesYear v-for="item in data" :key="item.id"

@@ -16,6 +16,7 @@
     import { fetchCollection } from '#imports';
     import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
+    import type { PostItem } from '~/types/documents';
     import type { DevPostsCollectionItem } from '@nuxt/content';
 
 
@@ -23,24 +24,22 @@
     const route = useRoute();
     const slug = route.params.slug as string;
 
-        //  --- Dev Data Logic
     const devPath = 'devPosts';
     const devCache = 'devCache';
-    const rawDev = await fetchCollection<DevPostsCollectionItem>(devPath, devCache)
+    const devPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPath, devCache, mapBlogData);
 
     const personalPath = 'personalPosts';
     const personalCache = 'personalCache';
-    const rawPersonal = await fetchCollection<DevPostsCollectionItem>(personalPath, personalCache);
-
+    const personalPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(personalPath, personalCache, mapBlogData);
+    
     const article = computed(() => 
     { const currentSlug = String(slug);
 
-        const findBlog = (collection: DevPostsCollectionItem[]) => {
+        const findBlog = (collection: PostItem[] | undefined) => {
             if (!collection) return null;
-            const mapped = mapBlogData(collection);
-            return mapped?.filter(item => item.isPublished && item.tags.some(tag => tag?.name === currentSlug));
+            return collection?.filter(item => item.isPublished && item.tags.some(tag => tag?.name === currentSlug));
         };
-        return findBlog(rawDev.value) ?? findBlog(rawPersonal.value);
+        return findBlog(devPosts.value) ?? findBlog(personalPosts.value);
 
     });
 

@@ -1,5 +1,9 @@
 //  --- Import types logic
 
-import type { FigureItem } from "./props";
+import type { Anchor } from '~/types/anchor';
 
-export interface ReferenceItem { id: number; quote: string; anchor: Anchor; media: FigureItem; }
+interface DocumentItem { id: number; title: string; body: Record<string, any>; anchor: Anchor; }
+
+export interface ReferenceItem extends DocumentItem {}
+export interface PostTag { name: string; href: string;  label: string; cls: string[];  type: string[]; };
+export interface PostItem extends DocumentItem {  path: string;  anchor: Anchor; date: DateItem;  status: string; ingress: string; sources?: string; isPublished: boolean; tags: PostTag[]; }

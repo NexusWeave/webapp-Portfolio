@@ -1,7 +1,7 @@
 <template>
     <section class="flex-column-align-items-center">
         <h3>{{ data.label }}</h3>
-        <span>(<b>{{ data.bytes }} / {{ num }} {{ data.type }}</b>)</span>
+        <span>(<b>{{ data.bytes }} {{ data.type }}</b>)</span>
         <progress :value="data.bytes" :class="cls" :max="num"></progress>
     </section>
 

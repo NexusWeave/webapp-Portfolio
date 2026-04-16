@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { defineCollection, defineContentConfig } from '@nuxt/content';
 
 
-const referencesCollection = z.object({ link: z.string(), title: z.string(), quote: z.string() });
+const referencesCollection = z.object({ link: z.string(), title: z.string(), body: z.strictObject({}), });
 const profileCollection = z.object({ title: z.string(),  createdts: z.string(), updatedts: z.string().optional() });
 
 const achievementsCollection = z.object({
@@ -32,19 +32,18 @@ const blogCollection = z.object({
     sources: z.string().optional()
 })
 
-
+const profileInformationCollection = z.object({ date:z.string(), title: z.string(), coop: z.string(), summary: z.string(), body: z.strictObject({}) })
 // defineContentConfig & collections definition
 export default defineContentConfig({
   collections: 
   {
-    'devPosts': defineCollection( { type: 'page', schema: blogCollection, source: 'posts/dev/**/*.md', }),
-    'devProfile': defineCollection( { type: 'page', schema: profileCollection, source: 'profiles/dev/*.md' }),
+    'reference': defineCollection( { type: 'data', schema: referencesCollection, source: 'references/*.md' }),
+    'devPosts': defineCollection( { type: 'page', schema: blogCollection, source: 'posts/technical/**/*.md', }),
     'personalPosts': defineCollection( { type: 'page', schema: blogCollection, source: 'posts/personal/**/*.md' } ),
-    'reference': defineCollection( { type: 'data', schema: referencesCollection, source: 'quotes/references/*.md' }),
     'academic': defineCollection( { type: 'data', schema: achievementsCollection, source: 'achievements/academic/*.md' }),
-    'personalProfile': defineCollection( { type: 'page', schema: profileCollection, source: 'profiles/personal-profiles/*.md' }),
+    'profileInfo': defineCollection( { type: 'page', schema: profileInformationCollection, source: 'profiles/*.md' }),
     'achievements': defineCollection( { type: 'page', schema: achievementsCollection, source: 'achievements/achievements/*.md' }),
-
+  
     // 'content' Standard Collection definition
     content: defineCollection({ type: 'page', source: '**/*.md', }),
   },

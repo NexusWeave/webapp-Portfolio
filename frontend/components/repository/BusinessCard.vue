@@ -15,9 +15,11 @@
 
             <section v-if="hasTechnology" :class="['tech-container']">
                 <h4>Andre teknologi(er) : </h4>
-                <p :class="['flex-wrap-row-justify-space-evenly']">
-                    <span v-for="(media, i) in data.media" :key="i"> <MediaFigure v-if="i > num" :data="media" :cls="['tech-figure', 'tech-img']" /> </span>
-                </p>
+                <section :class="['flex-wrap-row-justify-space-evenly']">
+                    <template v-for="(media, i) in data.media" :key="i">
+                     <MediaFigure  v-if="i > num" :data="media" :cls="['tech-figure', 'tech-img']" />
+                    </template>
+                </section>
     
             </section>
         </section>

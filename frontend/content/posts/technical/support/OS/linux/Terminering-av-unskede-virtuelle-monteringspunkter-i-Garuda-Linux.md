@@ -13,11 +13,14 @@ status: |
   #### Motivasjon & Energi 10 / 10
 
   Dagen er så fin den kan bli.
-sources: 'Offisiell dokumentasjon : [docs.docker.com](https://docs.docker.com/engine/manage-resources/pruning/)'
+sources: |
+  Offisiell dokumentasjon : [docs.docker.com](https://docs.docker.com/engine/manage-resources/pruning/)
 ---
-#### Fjerning av «spøkelses-disker» og optimalisering av oppstart
 
-I mitt nåværende oppsett med operativsystemet Garuda, oppdaget jeg en merkelig feil. Systemet viste flere lagringsdisker i oversikten som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». Jeg mistenkte at dette skyldtes <abbr title = "et verktøy som lager egne små arbeidsområder på maskinen">Docker</abbr>, og at disse ble koblet til automatisk ved oppstart uten at jeg hadde bruk for dem.
+* **Operativsystem**  - Garuda Arch Linux / Windows 10 (Dual Boot)
+* **Verktøy** - <abbr title = "et verktøy som lager egne små arbeidsområder på maskinen">Docker</abbr>
+
+I mitt nåværende oppsett med operativsystemet, fikk jeg en uventet brukeropplevelse. Systemet viste flere lagringsdisker i oversikten som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». Jeg mistenkte at dette skyldtes Docker, og at disse ble koblet til automatisk ved oppstart uten at jeg hadde bruk for dem.
 
 Målet var å stoppe denne automatiske handlingen for å hindre at maskinen monterte disse falske diskene ved oppstart. Dette ble gjort for at oversikten over lagringsplass ble korrekt og at systemet ikke brukte unødvendige ressurser på tjenester som ikke var i bruk.
 
@@ -29,4 +32,3 @@ For å løse dette utførte jeg følgende tiltak:
 * For å være sikker på at utfordringen ikke oppstår igjen ved neste oppstart, deaktiverte jeg selve tjenesten helt med kommandoen <abbr title = "En instruks til operativsystemet om at et program ikke skal starte av seg selv når PC-en slås på.">`sudo systemctl disable --now`</abbr>. Dette endret maskinens innstillinger slik at Docker-motoren forblir avslått frem til jeg selv velger å starte den manuelt.
 
 Resultatet ble at de falske «spøkelses-diskene» forsvant umiddelbart. Nå starter maskinen opp helt rent, og jeg kan manuelt koble til de diskene jeg faktisk trenger. erfaringen jeg sitter igjen med var at bakgrunnstjenester kan påvirke systemets visuelle oversikt, og at det er lurt å deaktivere tunge verktøy man ikke bruker daglig.
-
