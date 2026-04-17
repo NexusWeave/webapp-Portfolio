@@ -1,6 +1,6 @@
 ---
 date: 2026-04-30T17:59:38.807Z
-title: test
+title: Arkitektonisk optimalisering av nettsiden
 ingress: ''
 status: |
   #### Dagens Aktiviteter
@@ -8,8 +8,6 @@ status: |
   #### Motivasjon & Energi 10 / 10
 sources: ''
 ---
-
-### **STARL: Arkitektonisk optimalisering av hjemsiden**
 
 Etter at en nylig lansering førte uforutsette feil på kundens nettside, ble det nødvendig å rulle tilbake til en tidligere versjon som fungerte. Denne eldre versjonen  hadde tekniske etterslep og utfordringer som påvirket brukeropplevelsen, men var stabil. Versjonen hadde mange feilmeldinger i bakgrunnen, og en lite oversiktlig kodestruktur som gjorde det tidkrevende å rette de gamle feilene uten å introdusere nye feil.
 Hovedmålet var å raskt stabilisere den eldre versjonen etter tilbakerullingen, samtidig som jeg fjernet teknisk støy og etterslep". Jeg ønsket å skape en flytende brukeropplevelse og bygge en moderne grunnmur som gjorde det trygt og effektivt å videreutvikle siden uten at den tekniske etterslepet hindret fremdriften.
