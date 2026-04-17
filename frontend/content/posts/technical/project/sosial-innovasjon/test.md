@@ -6,6 +6,8 @@ status: |
   #### Dagens Aktiviteter
 
   #### Motivasjon & Energi 10 / 10
+
+  Dagen er så fin den kan bli !
 sources: ''
 ---
 
