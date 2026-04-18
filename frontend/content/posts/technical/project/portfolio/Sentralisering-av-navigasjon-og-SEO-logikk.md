@@ -13,8 +13,6 @@ status: |
 sources: ''
 ---
 
-### \*\*\*\*
-
 Jeg satt med en hybridløsning der navigasjonsmenyen krevde manuelt vedlikehold av lister, samtidig som SEO-informasjon (som titler og beskrivelser) var spredt rundt i de enkelte sidekomponentene. Dette gjorde arkitekturen uoversiktlig og økte risikoen for at metadata ble utdatert eller manglet ved endringer.
 
 Målet var å automatisere navigasjonsstrukturen og sentralisere SEO-ansvaret i én felles kilde. Ved å etablere en **Single Source of Truth**, ønsket jeg å fjerne manuelle rutineoppgaver og sikre at både den visuelle menyen og søkemotoroptimaliseringen alltid er synkronisert og korrekt.
