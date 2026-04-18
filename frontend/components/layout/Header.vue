@@ -4,7 +4,7 @@
             <NavigationNavMenu :data="[logo.anchor]" />
         </section>
         <section class="flex-wrap-row-align-items-center-justify-center">
-            <NavigationNavMenu :data="menu"/>
+            <NavigationNavMenu :data="dynamicMenu"/>
             <NavigationNavMenu :data="anchorMenu" :cls="['anchor-nav']"/>
         </section>
         <article class="profile-bar flex-wrap-row-align-items-center profile">
@@ -38,10 +38,11 @@
 
     //  --- Import & types logic
     import { onMounted, fetchCollection } from '#imports';
+    import { useNavigation } from '@/composables/preprosessor-utils';
 
     import type { ReferenceCollectionItem } from '@nuxt/content';
     import { mapReference } from '~/composables/maps/mapReferences';
-    import type { AnchorItem, RouterItem } from '~/types/navigation';
+    import type { AnchorItem } from '~/types/navigation';
 
     const logo = computed(() =>
     {
@@ -51,8 +52,9 @@
         
         return { title: title, anchor: anchor};
     });
+
+    const dynamicMenu = useNavigation();
     const anchorMenu:AnchorItem[] = [{ label: 'CV & Portefølje ', href: 'https://krigjo25.no/media/documents/CV-Portofolio.pdf', type: ['pdf'] }];
-    const menu: RouterItem[] = [{ order: 0, type: ['router'], path: '/', label: 'Portfolio' }, { order: 1, type: ['router'], path: '/dev', label: 'Dev Profile' }, { order: 2, type: ['router'], path: '/personal', label: 'Om Kristoffer' }];
     const SocialMedia: AnchorItem[] = [ { type: ['linkedin'], href: 'https://www.linkedin.com/in/krigjo25' }, { type: ['github'],  href: 'https://www.github.com/krigjo25' }, { type: ['mail','external'], href: 'mailto:krigjo25@outlook.com' }, { type: ['ytube','external'], href: 'https://www.youtube.com/@krigjo25' }, { type: ['facebook'], href: 'https://www.facebook.com/krigjo25' }, { type: ['instagram'], href: 'https://www.instagram.com/krigjo25' } ];
 
     const referencePath = 'reference';

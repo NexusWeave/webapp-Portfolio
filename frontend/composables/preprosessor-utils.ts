@@ -1,5 +1,9 @@
 
 //  --- Import & types logic
+import { computed } from 'vue';
+import { useRouter } from '#app';
+import type { RouterItem } from '~/types/navigation';
+
 import type { DateItem } from '~/types/date';
 import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
@@ -54,3 +58,23 @@ export const useCarousel = (length:number, interval: number = 5000) => {
     onUnmounted(() => stop());
     return { index, start};
     };
+
+
+export const useNavigation = () => {
+    return computed<RouterItem[]>(() => {
+        const router = useRouter();
+        const routes = router.getRoutes();
+
+        watchEffect(() => { routes.forEach(route => { if (route.meta.seo) useSeoMeta(route.meta.seo); })});
+
+        // { order: 0, type: ['router'], path: '/', label: 'Portfolio' }
+        const navItems: RouterItem[] = routes
+        .map(route => { return { type: ['router'], path: route.path, order: route.meta.order as number|| 0, label: route.meta.label as string };})
+        .filter(route => !route.path.includes(':') && route.label)
+        .sort((a, b) => a.order - b.order);
+
+        // --- Debug logic
+        //console.log("useNavigation - Routes:", routes);
+        //console.log("useNavigation - NavItems:", navItems);
+        return navItems; });
+};
