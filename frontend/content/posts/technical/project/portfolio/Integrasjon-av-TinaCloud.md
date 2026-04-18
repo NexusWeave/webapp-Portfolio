@@ -27,9 +27,10 @@ For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør pa
 Målet var å etablere en effektiv og feilfri flyt mellom redaktørpanelet og selve kildekoden til nettsiden. Dette krevde oppsettsmetode for hvordan panelet tolker mappestrukturen min. I tillegg måtte jeg sikre at alle filer, bilder og ressurser ble lastet korrekt, selv om de ligger lagret i ulike undermapper i prosjektet.
 
 Jeg utførte en systematisk feilsøking og rekonfigurering:
-* Jeg bekreftet først at digitale "nøkler og adgangskort" fungerte som de skulle. Dette gjorde jeg for å avklare om utfordringene skyldtes manglende tilgang, eller om det var selve koblingen til riktig mappe i GitHub som var utfordringen.
+
+* Jeg bekreftet først at digitale nøkler og adgangskort fungerte som de skulle. Dette gjorde jeg for å avklare om utfordringene skyldtes manglende tilgang, eller om det var selve koblingen til riktig mappe i GitHub som var utfordringen.
 * I oppsettet hos leverandøren la jeg inn stien til konfigurasjonsfilene. Dette tvinger <abbr title="TinaCMS">bindeleddet</abbr> å lete på riktig sted i prosjektet.
-* Jeg korrigerte stien for den såkalte "publicFolder". Dette løste utfordringen med brutte bildelenker i redaktørpanelet ved å peke systemet direkte til mappen hvor bildene faktisk ligger lagret.
+* Jeg korrigerte stien for den såkalte `publicFolder`. Dette løste utfordringen med brutte bildelenker i redaktørpanelet ved å peke systemet direkte til mappen hvor bildene faktisk ligger lagret.
 * Underveis identifiserte og skilte jeg ut urelaterte tilkoblingsfeil som ikke hadde med selve panelet å gjøre. Dette sikret at feilsøkingen forble fokusert, effektiv og målrettet.
 
 Det som har blitt lagt til har resultert i en pålitelig arkitektur som følger en struktur som tåler vekst. Ved å konfigurere systemet for underkataloger er løsningen nå fleksibel nok til å tåle fremtidige strukturelle endringer uten behov for omfattende rekonfigurering. Dette danner et grunnlag for videre vekst i prosjektet.
