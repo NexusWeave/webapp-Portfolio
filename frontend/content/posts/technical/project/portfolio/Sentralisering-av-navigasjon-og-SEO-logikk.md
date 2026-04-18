@@ -1,5 +1,5 @@
 ---
-date: 2026-04-17T10:29:04.937Z
+date: 2026-04-30T10:29:04.937Z
 title: Sentralisering av navigasjon og SEO-logikk
 ingress: ''
 status: |
