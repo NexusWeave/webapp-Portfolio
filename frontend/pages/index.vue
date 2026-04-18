@@ -1,14 +1,8 @@
 <template>
     <article class="article-wrapper flex-column">
-        <h2> Tekniske Logger </h2>
-        <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
-            <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
-                <span> {{ currentPage }} / {{ totalPages }}</span>
-            <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
-        </section>
-
+        <h2> Siste tekniske logger </h2>
         <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
-                <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
+            <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
                 <ArticleHead :article="post" />
             </section>
         </section>
@@ -62,14 +56,8 @@
     
     const n = 2; // Number of posts per page
     const currentPage: Ref<number> = ref(1);
-    const mappedPosts =  computed(() => {currentPage.value; return blogPagination(rawPosts.value, currentPage.value, n)});
-    
-    //  --- Pagination Logic
-    const totalPages = computed(() => { if (rawPosts.value) {return Math.ceil(rawPosts.value.length / n); } return 0; });
-    const prevPage = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
-    const nextPage = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
+    const mappedPosts =  computed(() => {return blogPagination(rawPosts.value, 1, n)});
 
-    
     //  --- Debugging Logic
     //console.log("Processed timeline:", academicTimeline.value);
     //console.log("Achievements data on load:", achievementsTimeline.value);

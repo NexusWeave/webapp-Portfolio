@@ -36,17 +36,17 @@ export const mapBlogData = (data: DevPostsCollectionItem[]): PostItem[] => {
                     })();
 
             return {
-                
                 id: index,
                 path: path!,
                 tags: [tags!],
+                status: item.status!,
                 body: item.body ?? {},
+                ingress: item.ingress,
+                sources: item.sources,
+                isArchived: index > 4,
                 title: item.title ?? '',
                 isPublished: isPublished,
                 date: setDateFormat(date),
-                status: item.status!,
-                ingress: item.ingress,
-                sources: item.sources,
                 anchor: [{ type: ['router'], path: `${dir}/records/${path}`, label: 'Les mer', cls: ['read-more-btn'] }]
             }
         });
