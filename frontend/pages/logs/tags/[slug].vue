@@ -1,9 +1,10 @@
 <template>
     <article class="article-wrapper flex-column">
+        
         <h2> Logger fra {{ slug.charAt(0).toUpperCase() + String(route.params.slug).slice(1).replace(/-/g, ' ') }} Etiketten</h2>
         <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
-                <section v-for="post in article" :key="post.id" class="blog-content">
-                <ArticleHead :article="post" />
+            <section v-for="post in article" :key="post.id" class="blog-content">
+                <ArticlePage :data="post"/>
             </section>
         </section>
     </article>
@@ -35,7 +36,7 @@
     const article = computed(() => 
     { const currentSlug = String(slug);
 
-        const findBlog = (collection: PostItem[] | undefined) => {
+        const findBlog = (collection: PostItem[]) => {
             if (!collection) return null;
             return collection?.filter(item => item.isPublished && item.tags.some(tag => tag?.name === currentSlug));
         };

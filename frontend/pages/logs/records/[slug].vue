@@ -1,4 +1,6 @@
-<template> <ArticlePage :data="article" :isPage="true" /> </template>
+<template> 
+    <ArticlePage :data="posts"/>
+</template>
 
 <script lang="ts" setup>
 
@@ -8,7 +10,7 @@
     import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
     import type { DevPostsCollectionItem } from '@nuxt/content';
-import type { PostItem } from '~/types/documents';
+    import type { PostItem } from '~/types/documents';
     
 
      //  --- Route & slug logic
@@ -24,13 +26,12 @@ import type { PostItem } from '~/types/documents';
     const personalCache = 'personalCache';
     const personalPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(personalPath, personalCache, mapBlogData);
     
-    const article = computed(() => 
+    const posts = computed<PostItem >(() => 
     {
         const currentSlug = String(slug);
 
-        const findBlog = (collection: PostItem[] | undefined) => {
-            if (!collection) return null;
-            return collection.find(blog => String(blog.path) === currentSlug) || null;
+        const findBlog = (collection: PostItem[]) => {
+            return collection.find(blog => String(blog.path) === currentSlug) || {} as PostItem;
         };
 
         return findBlog(devPosts.value) ?? findBlog(personalPosts.value);
