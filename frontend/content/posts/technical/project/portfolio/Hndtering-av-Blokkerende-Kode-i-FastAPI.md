@@ -2,32 +2,23 @@
 date: 2025-11-22T00:00:00.000Z
 title: Håndtering av Blokkerende Kode i FastAPI
 ingress: |
-  Denne loggen dokumenterer en strategisk migrering for å løse en hybrid
-  arkitektur forårsaket av at Announcement-endepunktet var igjen i det synkrone
-  Flask (WSGI)-rammeverket etter en større refaktorering. Målet var å integrere
-  dette endepunktet i den nye, asynkrone FastAPI (ASGI)-strukturen uten å
-  blokkere ytelsen.
+  Denne loggen dokumenterer en strategisk migrering for å løse en hybrid arkitektur forårsaket av at Announcement-endepunktet var igjen i det synkrone Flask (WSGI)-rammeverket etter en større refaktorering. Målet var å integrere dette endepunktet i den nye, asynkrone FastAPI (ASGI)-strukturen uten å blokkere ytelsen.
+status: |
+  #### Dagens Aktiviteter
+
+  #### Motivasjon & Energi 10 / 10
+
+  Dagen er så fin den kan bli i øyblikket
 sources: ''
 ---
-Etter den første migreringsfasen til FastAPI, ble  **Announcement endepunktet**  igjen i det eldre Flask rammeverket, som en konsekvens av at Flask-rammeverket er et sykront (**WSGI**)-rammeverk det skapte forskjell fra det nye (**ASGI**)-**rammeverket** **FastAPI**. Dermed fungerte ikke `announcements` endepunktet slik som forventet.
 
+Etter den første overflyttingen til <abbr title ="Et moderne teknologi verktøy som har muligheter for samtidige forespørsler">FastAPI</abbr>, ble  `Announcement`-<abbr title ="et bindeledd mellom logikken og nettleseren">endepunktet</abbr>  igjen i det eldre <abbr title="Et eldre og mer tradisjonelt teknologi-verktøy (rammeverk) som ofte brukes til enklere nettsider, men som kan bli tregt når mange ting skjer samtidig.">**Flask**</abbr> <abbr title="En samling av kode">rammeverk</abbr>et, som en konsekvens av at Flask-rammeverket er basert på <abbr title= "Web Server Gateway Interface er en eldre standard som lar koden håndtere en og en oppgave samtidig">WSGI</abbr>-standarden skapte det forskjell fra det nye <abbr title="Asynchronous Server Gateway Interface, en moderne standard som lar koden håndtere mange oppgaver samtidig">ASGI</abbr>-standarden FastAPI. Dermed fungerte ikke `announcements` endepunktet slik som forventet.
 
-#### Migrering av Announcement Endepunkt
+* Jeg konverterte den gamle logikken til å bruke en strukturert modell som **Pydantic**. Dette sikrer at koden blir automatisk validert gjennom <abbr title="en teknikk for Utvikling for å redusere feil marginer">typesikkerhet og automatisk validering, som er et kjennetegn ved FastAPI.
+* Jeg la til FastAPIs ruting `@app.get` i hovedapplikasjonen for å erstatte den gamle Flask-rutingen, og dermed fullføre migrasjonen.
 
-* Jeg konverterte den gamle **synkron/Flask logikken** til å bruke **Pydantic Modellen**. Dette sikrer typesikkerhet og automatisk validering, som er et kjennetegn ved FastAPI.
+For å legge til den eksisterende, <abbr title="Betegnelse for å gjøre en og en oppgave">synkron</abbr>e <abbr title ="Data som kommer inn / data som kommer ut">I/O</abbr>-logikken i Announcement-endepunktet uten å blokkere FastAPIs event-loop, ble endepunktfunksjonen definert uten nøkkelordet `async`. FastAPI gjenkjenner dette og kjører automatisk den synkrone koden i en separat trådpulje. Dette tillot en rask og sikker overflytting av den foreldret koden, samtidig som det bevarte den <abbr title="En tilstand der programmet kan kjøre flere forespørsler samtidig">asynkrone</abbr> ytelsen for resten av applikasjonen.
 
-* La inn ruting i hovedfilen: Implementere FastAPIs ruting (`@app.get`) i hovedapplikasjonen for å erstatte den gamle Flask-rutingen, og dermed fullføre migrasjonen.
+Dette arbeidet har resultert i en betydelig pålitelig og fremtidsdrevent applikasjon. Ved å samle alle endepunkter under en moderne standard, har jeg fjernet den tekniske etterslepet mellom ulike systemer og redusert risikoen for driftsstans. Bruken av Pydantic gir meg høyere datakvalitet og færre feilmeldinger, da systemet nå automatisk stopper ugyldig informasjon før den behandles. Den strategiske bruken av trådpuljer betyr at nettsiden forblir rask og responsiv for sluttbrukerne, selv når tunge dataoppgaver kjøres i bakgrunnen. Resultatet er en moderne plattform som er vesentlig enklere å vedlikeholde, og som har kapasitet til å håndtere langt mer trafikk enn tidligere.
 
-##### Håndtering av Blokkerende Kode
-
-For å integrere den eksisterende, synkrone I/O-logikken i Announcement-endepunktet uten å blokkere FastAPIs event-loop, ble endepunktfunksjonen definert uten nøkkelordet async (def i stedet for async def). FastAPI gjenkjenner dette og kjører automatisk den synkrone koden i en separat trådpulje. Dette tillot en rask og sikker migrering av den gamle koden, samtidig som det bevarte den asynkrone ytelsen for resten av applikasjonen.
-
-##### Løsning med Hybrid Arkitektur
-
-Migreringen av Announcement-endepunktet er fullført. Applikasjonen kjører på en ASGI-arkitektur, men funksjonaliteten er fortsatt synkron kode og kjøres i FastAPIs trådpulje.
-
-* Strategisk Synkronitet - Funksjonaliteten i announcement-endepunktet ble bevisst beholdt som synkron kode (def). 
-* Trådpulje-gevinst - Takket være FastAPIs design, kjøres den sykrone koden automatisk i en seperat trådpulje. Dette hindrer koden fra å blokkere FastAPIs primære, asynkrone event-loop, slik at applikasjonen bevarer sin gjennomstrømning
-
-
-Lærdommen er verdien av å velge gradvis migreringsstrategi og utnytte rammeverkets innebygde mekanismer. Forståelse for at synkron, blokkerende I/O-kode kan integreres i et ASGI-rammeverk, forutsatt at den kjøres i en trådpulje for å sikre at event-loopen forblir fri.
+Verdien av å velge gradvis overflyttingsstrategi og utnytte <abbr title="en samling av kode">rammeverk</abbr>ets innebygde mekanismer. Forståelse for at synkron, blokkerende I/O-kode kan integreres i et ASGI-rammeverk, forutsatt at den kjøres i en trådpulje for å sikre at event-loopen forblir fri.
