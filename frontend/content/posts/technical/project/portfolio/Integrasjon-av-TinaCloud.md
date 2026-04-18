@@ -2,7 +2,7 @@
 date: 2025-11-05T00:00:00.000Z
 title: Separering av kode og innhold i et moderne prosjekt
 ingress: |
-  Ved å skille nettsidens tekniske kode fra selve tekstene, har jeg utviklet et system som er både enklere å vedlikeholde og tryggere å bruke. Denne loggen beskriver hvordan jeg løste utfordringer med mappestrukturer for å sikre at bilder og innhold alltid flyter feilfritt. Resultatet er en stabil plattform som er kalr for fremtidig vekst og enklere samarbeid.
+  For å standardisere måten innholdet styres på, har jeg koblet et redaktørpanel til prosjektet. Ved å rydde i hvordan systemet finner frem i mappene, har jeg fjernet feilmeldinger og utfordringer med bilder som ikke viste seg. Dette har skapt en trygg og ryddig arbeidsflyt der tekst og bilder kan endres fritt uten at man risikerer å ødelegge selve nettsiden. Resultatet er en stabil og enkel løsning som er klar for fremtidig vekst.
 status: |
   #### Dagens Aktiviteter
 
