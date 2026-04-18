@@ -32,7 +32,7 @@
     //  --- Debugging logic
     //console.log("Article Header Component - Article :", article.value);
     //console.log("Article Header Component - Button :", button.value);
-    console.log("Article Header Component - isPostPage :", isPost.value);
+    //console.log("Article Header Component - isPostPage :", isPost.value);
     //console.log("Article Header Component - Article Anchor :", article.anchor);
     //console.log("Article Header Component - Article Ingress :", article.value.tags);
 </script>

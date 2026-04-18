@@ -24,8 +24,6 @@
         </article>
     </section>
 
-
-    
 </template>
 <script lang="ts" setup>
 
@@ -58,7 +56,7 @@
     const nextPage = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
 
     //  --- Debugging Logic
-    console.log("All Tags: ", tags.value);
-    console.log("Mapped Posts: ", current.value);
+    //console.log("All Tags: ", tags.value);
+    //console.log("Mapped Posts: ", current.value);
     
 </script>
