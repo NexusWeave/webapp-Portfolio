@@ -7,9 +7,9 @@ status: |
   #### Dagens Aktiviteter
 
   * Integrerte <abbr title="Headless Content Management System er uavhengig av visuell teknologi som brukes på nettsiden">TinaCMS</abbr> for å forenkle styringen av dokumentasjon og innhold.
-  * Bekreftet at digitale "nøkler og adgangskort" fungerte korrekt for å utelukke autentiseringsfeil.
+  * Bekreftet at digitale nøkler og adgangskort fungerte korrekt for å utelukke autentiseringsfeil.
   * Løste utfordringer med at <abbr title="Den visuelle teknologien">nettsiden</abbr> ligger i undermapper ved å definere nøyaktige stier for konfigurasjonsfiler hos <abbr title="Tina Cloud er bindeleddet som kontrollerer og kobler sammen redaktørpanelet med innholdet">leverandøren</abbr>.
-  * Korrigerte banen for "publicFolder", som fikset brutte bildelenker og sørget for at alle ressurser vises korrekt i panelet.
+  * Korrigerte banen for `publicFolder`, som fikset brutte bildelenker og sørget for at alle ressurser vises korrekt i panelet.
   * Identifiserte og skilte ut urelaterte tilkoblingsfeil for å sikre en målrettet og effektiv prosess.
   * Dedikerte en egen gren i GitHub for dokumentasjon, som muliggjør en <abbr title="Dette prinsippet handler om å skille innholdet fra selve kodebasen">"Decoupled Workflow"</abbr> der innhold kan redigeres uten risiko for kildekoden.
   * Fjernet feilmeldinger i konsollen og optimaliserte ressurslastingen for en raskere og mer stabil brukeropplevelse.
