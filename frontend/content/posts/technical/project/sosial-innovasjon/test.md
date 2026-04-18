@@ -1,5 +1,5 @@
 ---
-date: 2026-04-30T17:59:38.807Z
+date: 2026-04-17T17:59:38.807Z
 title: Arkitektonisk optimalisering av nettsiden
 ingress: ''
 status: |
