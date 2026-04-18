@@ -12,9 +12,6 @@ status: |
   * Oppgradert backend-modellen for å sikre at bildebeskrivelser leveres i riktig format, samt innført typesikkerhet for å øke applikasjonens langsiktige vekstevne.
 sources: ''
 ---
-
-#### Brukergrensesnitt og Merkevarekonsistens
-
 Datoer og ikoner ble vist på ulike måter på tvers av nettstedet, uten en felles standard for hvordan informasjon skulle presenteres. Dette hadde en risiko for at besøkede kunne få en uventet brukeropplevelse.
 
 Målet var å samle all visuell presentasjon av dato- og medieinformasjon under en felles standard, for å sikre at det digitale uttrykket var  gjenkjennelig og profesjonell opplevelse for brukeren.
@@ -24,7 +21,6 @@ Målet var å samle all visuell presentasjon av dato- og medieinformasjon under 
 
 Dette resulterte til et visuelt helhetlig grensesnitt hvor all informasjon følger det samme uttrykket, som styrker identiteten til nettsiden, dette påvirker direkte engasjementet fra besøkede. Jeg erfarte at små visuelle avvik mellom sider kan virke som små bagateller, men samlet skaper et uventet inntrykk. Å etablere felles standarder gjennom å bruke typesikkerhet tidlig er en lav investering med langsiktig verdi, for vekstevnen til applikasjonen.
 
-#### Navigasjon og Brukerreise
 
 Oppbyggingen av header-seksjonen var unødvendig kompleks, noe som gjorde tidkrevende å vedlikeholde og skapte en uforutsigbar opplevelse for besøkende.
 Målet var å forenkle navigasjonen for å gi brukeren en lettere reise gjennom nettstedet og redusere fremtidig tidkrevende vedlikehold.
@@ -35,8 +31,6 @@ Målet var å forenkle navigasjonen for å gi brukeren en lettere reise gjennom 
 Dette resulterte til en forutsigbar meny som reduserer uventet feil brukeropplevelsen. Dette øker tiden brukeren er på siden og gir en brukeren en flytende opplevelse. Gjennom denne situasjonen har jeg forstått at det tekniske etterslepet i navigasjon har en tendens til å vokse stille og usynlig over tid. Regelmessig forenkling gjør løsningen enklere å forstå, enklere å teste og raskere å utvikle videre på.
 
 ***
-
-## Media og beskrivelse
 
 Et av media filene manglet en presis måte å håndtere bildetekster på, dette første til at en standardtekst ble vist automatisk på tvers av nettstedet. Dette ga et rotete visuelt inntrykk og svekket både tilgjengeligheten og synligheten elementene på nettsiden.
 Målet var å innføre en kontrollert løsning som automatisk benytter bildets alternative beskrivelse som bildetekst dersom en egen beskrivelse mangler. Dette sikrer at ingen bilder blir stående uten forklaring, samtidig unngår prosjektet rotete eller irrelevante tekstvisninger.
