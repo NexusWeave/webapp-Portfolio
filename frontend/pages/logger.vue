@@ -87,20 +87,7 @@
 
     // --- Watchers
     watch(label, (newValue) => { label.value = newValue; });
-    watch(label, (newValue) => {
 
-        const allTags = rawPosts.value.flatMap(post => post.tags);
-
-        const matches = allTags.filter(tag => tag.labels?.includes(newValue)).length;
-        
-        currentPage.value = 1;
-        totalPages.value = Math.ceil(matches / n);
-        
-
-        //console.log("Watcher - Matching tags: ", matches);
-        //console.log("Watcher - Label changed to: ", newValue);
-    });
-    watch(current, (newValue) => { console.log("new current", newValue); });
     //  --- Debugging Logic
     //console.log("All Tags: ", tags.value);
     //console.log("ALl Posts: ", rawPosts.value);
