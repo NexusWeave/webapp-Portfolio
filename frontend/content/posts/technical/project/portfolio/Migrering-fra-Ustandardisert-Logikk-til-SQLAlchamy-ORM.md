@@ -29,3 +29,5 @@ Målet mitt var å bygge om dette systemet ved hjelp av bransjestandarden **SQLA
 * Jeg sørget for at dataene i databasen alltid stemmer overens med slik systemet forventer å se dem, som reduserer sjansen for logiske feil.
 
 Jeg har nå fjernet teknisk rot og sitter igjen med en ryddigere og mer stabil plattform. Dette reduserer behovet for å vedlikeholde koden og gjør det tryggere å rulle ut nye oppdateringer. Systemet er nå også klargjort for automatiserte tester, for å sikre at funksjonaliteten gir et ønsket resultat.
+
+Gjennom denne prosessen har jeg fått erfart verdien av prinsippet om å skille bekymringer ved bruk av <abbr title="Data Access Object">DAO</abbr>-mønsteret. Jeg har fått en dypere forståelse for hvordan SQLAlchemy og Pydantic sammen skaper en kontrakt-basert lag mellom kode og database, som reduserer logiske feil. Den viktigste erfaringen er at investering i arkitektur tidlig reduserer teknisk gjeld og gjør systemet klargjort  for både samarbeid og automatisert testing.
