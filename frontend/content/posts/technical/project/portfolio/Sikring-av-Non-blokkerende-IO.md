@@ -1,40 +1,31 @@
 ---
 date: 2025-12-04T00:00:00.000Z
 title: Sikring av Non-blokkerende I/O
-ingress: >
-  En sårbarhet ble identifisert der den underliggende logikken i Base Class
-  benyttet et synkront I/O-kall. Dette hadde potensial til å forårsake
-  trådblokkering i det asynkrone API-laget. For å løse dette ble Base
-  Class-funksjonen refaktorert med `async def` og `await` i underklassene, samt
-  integrering av et asynkront tredjepartsbibliotek. Resultatet var en
-  eliminering av flaskehalsen, noe som bekrefter den kritiske viktigheten av
-  non-blokkerende I/O for å oppnå robust systemskalerbarhet i asynkrone
-  arkitekturer.
+ingress: |
+  Hovedklassen for <abbr title="Application Programming Interface">API</abbr>-konfigurasjoner inneholdt <abbr title="Vente på oppgave">synkron</abbr> <abbr title="Innhenting av informasjon">I/O</abbr> som låste ressurser og skapte risiko for stans. For å sikre at systemet håndterer flere forespørsler samtidig, har jeg erstattet `requests` med `httpx`. Ved å legge til `async` og `await` i hele kjeden, kan oppgaver nå pauses uten å stoppe programmet. Dette frigjør ressurser og sikrer en stabil struktur for høy belastning.
+status: |
+  #### Dagens Aktiviteter
+
+  * Oppdaget at måten systemet hentet informasjon på tvang programmet til å vente på ett svar om gangen. Dette førte til at ressurser ble låst, noe som kunne få hele applikasjonen til å stoppe opp hvis mange oppgaver kjørte samtidig.
+  * Valgte å bytte ut det gamle verktøyet `requests` med `httpx`. Dette nye verktøyet gjør det mulig for programmet å utføre flere oppgaver samtidig i stedet for å stå i kø.
+  * Skrev om de viktigste delene av koden med `async`. Dette gjør at systemet nå kan starte mange forespørsler på en gang uten å måtte vente på at den forrige er helt ferdig.
+  * La til `await` i alle delene av systemet som henter informasjon. Dette sørger for at programmet kan sette en oppgave på pause mens det venter på svar, slik at det kan jobbe med andre ting i mellomtiden.
+  * Bekreftet at programvaren nå frigjør plass og kraft mens den henter data. Dette gjør at systemet håndterer mer trafikk og oppleves som langt mer stabilt.
+
+  #### Motivasjon & Energi 10 / 10
+
+  Dagen er så fin den kan bli
 sources: ''
 ---
-### Pontensiell stopp
 
-Den underliggende logikken i base klassen inneholdt et **synkront I/O-kall**. Dette hadde et **pontensiale** for å utgjøre en stopp i applikasjonen da det var **pontensielt mulig å forårsake trådblokkering** som hindrer serveren i å håndtere andre innkommende API-forespørsler effektivt.
+Den underliggende logikken i hovedklassen for <abbr title="Application Programming Interface – en kobling som lar to systemer utveksle informasjon på en trygg måte">API</abbr>-konfigurasjoner inneholdt et <abbr title="En metode der systemet må vente på at én oppgave blir ferdig før neste kan starte">synkront</abbr> <abbr title="Innhenting og utsending av informasjon">I/O</abbr>-kall, med denne teknikken ble ressursene låst til en oppgave om gangen, noe som kunne føre til at applikasjonen stoppet uventet ved høy belastning.
 
-#### Migrering til ASynkrone Kall
+Målet er at programmet skal kunne håndtere flere forespørsler samtidig og frigjøre ressurser etter behov. Oppgaven var å erstatte det nåværende biblioteket `requests` med et <abbr title="en teknikk som lar programmet håndtere flere forespørsler samtidig">asynkront</abbr> bibliotek som `httpx`.
 
-* Det må legges til asynkront funksjons kall til funksjonen som håndterer det asynkrone kallet.
-* Applikasjonen må integrere et tredjepartsbibliotek for å håndtere asynkrone kall
+* De eksisterende funksjonene i API-hovedklassen ble omdefinert med nøkkelordet `async` for å tillate at funksjonen kan håndtere flere forespørsler.
+* Jeg la til nøkkelordet `await` i klassene som benytter funksjonaliteten i hovedklassen for å sikrer at alle kallene til funksjonen nå kan sette oppgaver på pause uten å stoppe resten av programmet.
 
+Ved å erstatte teknikkene for tjenestene, kan vi stole på at systemet frigjør ressurser mens I/O-operasjoner pågår, programvaren kan nå håndtere flere forespørsler samtidig. Dette sikrer at gjennomstrømmingen ikke lenger begrenses av kall til hovedklassen. De delene som henter informasjon fra hovedklassen er nå oppdatert med instruksjonen `await`, Dette forteller programmet at det skal vente på svar i bakgrunnen, slik at hele prosessen, flyter effektivt uten stans.
 
-#### Gjennomfør bare Tiltak for Eliminering av I/O Blokkeringen
-
-Definisjon av Asynkron Signatur & Implementering av Await
-
-
-Den eksisterende funksjonen i Base klassen ble omdefinert med nøkkelordet async def for å tillate ikke-blokkerende operasjoner, mens underklassene fikk en implementering av nøkkelordet await. Dette sikrer at alle kallene til funksjonen nå er ikke-blokkerende og fullt asynkront
-
-#### Integrering av Asynkrone Verktøy
-
-Det nødvendige asynkrone tredjepartsbiblioteket ble integrert for å erstatte den synkrone I/O-funksjonaliteten.
-
-#### Eliminering av Blokkering
-
-Den pontensielle blokkeringen i API-laget ble eliminert. Gjennom migreringen til asynkrone kall grigjør applikasjonen nå tråden for å håndtere andre forespørsler mens I/O operasjonen pågår. Dette sikrer at gjennomstrømmningen ikke lenger er kompromittert av de underliggende base klasse-kallet.  Alle underklasser ble oppdatert med et await-kall, som bekrefter at den asynkrone kjeden fra API-et ned til base funksjon er ikke-blokkerende og operasjonell.
-
-Migreringen understreker nødvendigheten av å benytte asynkrone kall framfor synkrone kall i applikasjoner med flere API-endepunkter og forventninger om høy gjennomstrømning. Dette bekrefter at i en asynkron arkitektur kan selv ett enkelt synkront kall i en base klasse være en risiko for en stopp som kompromitterer den generelle systemskalerbarheten. Dette poengterer viktigheten av å velsekundære biblioteker som støtter `non-blokkerende I/O`
+Denne oppgraderingen viser hvorfor asynkrone kall er avgjørende i moderne systemer som håndterer store mengder informasjon. Jeg har erfart at en slik struktur at vi er aldri sterkere enn det svakeste leddetet.
+Selv ett enkelt gammeldags "vente-kall" i bunnen av systemet kan skape en uventet oppførsel som hindrer hele applikasjonen i å vokse. Dette viser viktigheten av å velge moderne verktøy og biblioteker som støtter flere forespørsler samtidig, slik at programmet alltid har ressurser for nye oppgaver.
