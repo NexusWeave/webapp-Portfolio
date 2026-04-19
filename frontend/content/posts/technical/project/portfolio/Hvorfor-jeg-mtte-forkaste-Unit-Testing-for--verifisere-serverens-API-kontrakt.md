@@ -4,7 +4,7 @@ title: |
   Hvorfor jeg måtte forkaste Unit Testing for å verifisere serverens
   API-kontrakt
 ingress: |
-  Pålitelig systemutvikling krever validering av samspill mellom komponenter, ikke bare intern logikk. Ved sikring av dataflyt mot eksterne <abbr title="Application Programming Interface">API</abbr>-<abbr title="Adressen informasjonen hentes fra">endepunkter</abbr>, startet jeg med unit-testing, men innså at <abbr title="Simulering av ekte data">mocking</abbr> ikke bekreftet faktisk kommunikasjon. Ved å skifte strategi til <abbr title="en teknikk for å validere samspillet mellom systemkomponentene">integrasjonstesting</abbr>, oppnådde jeg en testdekning som garanterer en funksjonell kommunikasjonskjede og minimerer risikoen for feil.
+  Pålitelig systemutvikling krever validering av samspill mellom komponenter, ikke bare intern logikk. Ved sikring av dataflyt mot eksterne <abbr title="Application Programming Interface">API</abbr>-<abbr title="Adressen informasjonen hentes fra">endepunkter</abbr>, startet jeg med <abbr title="En testmetode der man sjekker at hver minste del av koden fungerer helt perfekt hver for seg">`unit-testing`</abbr>, men innså at <abbr title="Simulering av ekte data">mocking</abbr> ikke bekreftet faktisk kommunikasjon. Ved å skifte strategi til <abbr title="en teknikk for å validere samspillet mellom systemkomponentene">integrasjonstesting</abbr>, oppnådde jeg en testdekning som garanterer en funksjonell kommunikasjonskjede og minimerer risikoen for feil.
 status: |
   #### Dagens Aktiviteter
 
