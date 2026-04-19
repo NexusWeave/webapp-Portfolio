@@ -32,7 +32,7 @@ export const mapBlogData = (data: DevPostsCollectionItem[]): PostItem[] => {
                             name: name, cls: [name], type: ['tag', 'dir'],
                             href: `${dir}/tags/${name}`,  path: id.pop()?.toLowerCase(),
                             label: `${label && !listOfAvailableTags.includes(name) ? name.charAt(0).toUpperCase() + name.slice(1)?.replace(/-/g, ' ') : label}`,
-                            labels: ['name' , 'blog-post']
+                            labels: [name , 'blog-post']
                         };
                     })();
 
