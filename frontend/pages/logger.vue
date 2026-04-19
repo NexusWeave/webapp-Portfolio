@@ -1,29 +1,44 @@
 <template>
-    <section>
-        <template v-if="tags && tags.length > 0">
-            <NavigationAnchor v-for="(tag, i) in tags" :key="i" :data="tag" :cls="['button', tag.name]"/>
-        </template>
-    </section>
-    
-    <h2> Siste Tekniske Logger </h2>
-    <section class="flex-wrap-row-justify-space-evenly">
-        <article v-for="post in current">
-            <ArticleHead  v-if="!post.isArchived" :key="post.id" :article="post" />
-        </article>
+    <section class="flex-wrap-row-justify-center tag-wrapper">
+        <section v-if="tags && tags.length > 0">
+            <h2> Filtrer etter Merkelapp </h2>
+            <NavigationButton v-for="(tag, i) in tags" :key="i" :data="tag" :cls="['button', tag.name, 'tag-btn']"/>
+            <NavigationButton :data="resetButton" :cls="['button', 'reset-btn', 'tag-btn']"/>
+        </section>
     </section>
 
-    <h2> Eldre Tekniske Logger </h2>
-    <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
+    <template v-if="postsByTag && postsByTag.length > 0">
+        <h2> Tekniske Logger filtrert etter {{ label.charAt(0).toUpperCase() + label.slice(1).replace(/-/g, ' ') }} </h2>
+        <section class="flex-wrap-row-justify-space-evenly" v-if="archived && archived.length > 0">
+            <article v-for="post in postsByTag">
+                <ArticleHead :key="post.id" :article="post" />
+            </article>
+        </section>
+    </template>
+
+    <template v-if="current && current.length > 0 && postsByTag && postsByTag.length === 0">
+        <h2> Siste Tekniske Logger </h2>
+        <section class="flex-wrap-row-justify-space-evenly">
+            <article v-for="post in current">
+                <ArticleHead  v-if="!post.isArchived" :key="post.id" :article="post" />
+            </article>
+        </section>
+    </template>
+
+    <template v-if="totalPages && totalPages > 0 && postsByTag && postsByTag.length === 0">
+        <h2> Eldre Tekniske Logger </h2>
+        <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
             <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
                 <span> {{ currentPage }} / {{ totalPages }}</span>
             <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
         </section>
-    <section class="flex-wrap-row-justify-space-evenly">
-        <article v-for="post in archived">
-            <ArticleHead v-if="post.isArchived" :key="post.id" :article="post" />
-        </article>
-    </section>
-
+        <section class="flex-wrap-row-justify-space-evenly" v-if="archived && archived.length > 0">
+            <article v-for="post in archived">
+                <ArticleHead v-if="post.isArchived" :key="post.id" :article="post" />
+            </article>
+        </section>
+    </template>
+    
 </template>
 <script lang="ts" setup>
 
@@ -38,25 +53,59 @@
     //  --- Meta information
     definePageMeta( { order: 1, label: 'Tekniske Logger', seo: { title: 'LMCS - Logger', description: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", author: 'Kristoffer Gjøsund', ogTitle: 'Logger - Kristoffer Gjøsund',  ogDescription: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", ogImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg',  ogUrl: 'https://krigjo25.no/logger', ogType: 'website', ogLocale: 'nb_NO', twitterCard: 'summary_large_image', twitterTitle: 'LMCS - Logger', twitterDescription: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", twitterImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg', themeColor: '#ffffff' } });
 
-    //  --- Conent logic
+    //  --- Content logic
     const devPostPath = 'devPosts';
     const devPostCache = 'devPostCache';
     const rawPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPostPath, devPostCache, mapBlogData);
-    
-    const n = 3; // Number of posts per page
-    const currentPage: Ref<number> = ref(1);
-    const current =  computed(() => {return blogPagination(rawPosts.value, 1, n)});
-    const archived =  computed(() => {currentPage.value; return blogPagination(rawPosts.value.filter(post => post.isArchived), currentPage.value, n)});
-    const tags = [] /*computed(() => rawPosts.value.flatMap(post => post.tags)
-    .reduce((map, tag) => map.set(tag.name, tag), new Map()));*/
-    
 
-    const totalPages = computed(() => { if (rawPosts.value) {return Math.ceil((rawPosts.value.length) / n) - 1; } return 0; });
+    //  --- Pagination logic
+    const n = 3;
+    const num:number = 1;
+    const label = ref('blog-post');
+    const currentPage: Ref<number> = ref(1);
+
+    const current =  computed(() => {return blogPagination(rawPosts.value.filter(post => !post.isArchived), num, n);});
+    const archived =  computed(() => {currentPage.value; return blogPagination(rawPosts.value.filter(post => post.isArchived), currentPage.value, n);});
+
+    const postsByTag = computed(() => {
+        if (!rawPosts.value || rawPosts.value.length === 0) return [];
+        if (!label.value || label.value === 'blog-post') return [];
+
+        return blogPagination(rawPosts.value.filter(post => post.tags.some(t => t.labels.includes(label.value))), currentPage.value, rawPosts.value.length - num, label.value);
+    });
+    const totalPages = ref(Math.ceil((rawPosts.value.length) / n) - 1 || 0);
     const prevPage = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
     const nextPage = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
 
+    //  --- Tag filtering logic
+    const tags = computed(() => {
+        const data = rawPosts.value.flatMap(post => post.tags).filter((tag, index, self) => index === self.findIndex(t => t.name === tag.name))
+        return data.map(tag => { return { ...tag, action: () => label.value = tag.name.toLowerCase() } });
+    });
+
+    const resetButton: ButtonItem = { label: 'Tilbakestill', action: () => label.value = 'blog-post'};
+
+    // --- Watchers
+    watch(label, (newValue) => { label.value = newValue; });
+    watch(label, (newValue) => {
+
+        const allTags = rawPosts.value.flatMap(post => post.tags);
+
+        const matches = allTags.filter(tag => tag.labels.includes(newValue)).length;
+        
+        currentPage.value = 1;
+        totalPages.value = Math.ceil(matches / n);
+        
+
+        //console.log("Watcher - Matching tags: ", matches);
+        //console.log("Watcher - Label changed to: ", newValue);
+    });
+    watch(current, (newValue) => { console.log("new current", newValue); });
     //  --- Debugging Logic
     //console.log("All Tags: ", tags.value);
-    //console.log("Mapped Posts: ", current.value);
+    //console.log("ALl Posts: ", rawPosts.value);
+    console.log("Mapped Posts: ", current.value);
+    //console.log("Archived Posts: ", archived.value);
+    
     
 </script>
