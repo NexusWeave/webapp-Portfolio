@@ -71,7 +71,7 @@
         if (!rawPosts.value || rawPosts.value.length === 0) return [];
         if (!label.value || label.value === 'blog-post') return [];
 
-        return blogPagination(rawPosts.value.filter(post => post.tags.some(t => t.labels.includes(label.value))), currentPage.value, rawPosts.value.length - num, label.value);
+        return blogPagination(rawPosts.value.filter(post => post.tags.some(t => t.labels?.includes(label.value))), currentPage.value, rawPosts.value.length - num, label.value);
     });
     const totalPages = ref(Math.ceil((rawPosts.value.length) / n) - 1 || 0);
     const prevPage = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
@@ -91,7 +91,7 @@
 
         const allTags = rawPosts.value.flatMap(post => post.tags);
 
-        const matches = allTags.filter(tag => tag.labels.includes(newValue)).length;
+        const matches = allTags.filter(tag => tag.labels?.includes(newValue)).length;
         
         currentPage.value = 1;
         totalPages.value = Math.ceil(matches / n);
@@ -104,7 +104,7 @@
     //  --- Debugging Logic
     //console.log("All Tags: ", tags.value);
     //console.log("ALl Posts: ", rawPosts.value);
-    console.log("Mapped Posts: ", current.value);
+    //console.log("Mapped Posts: ", current.value);
     //console.log("Archived Posts: ", archived.value);
     
     
