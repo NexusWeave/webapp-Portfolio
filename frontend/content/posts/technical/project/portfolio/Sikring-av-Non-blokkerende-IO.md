@@ -2,9 +2,15 @@
 date: 2025-12-04T00:00:00.000Z
 title: Sikring av Non-blokkerende I/O
 ingress: |
-  En sårbarhet ble identifisert der den underliggende logikken i Base Class benyttet et synkront I/O-kall. Dette hadde potensial til å forårsake trådblokkering i det asynkrone API-laget. For å løse dette ble Base Class-funksjonen refaktorert med `async def` og `await` i underklassene, samt integrering av et asynkront tredjepartsbibliotek. Resultatet var en eliminering av flaskehalsen, noe som bekrefter den kritiske viktigheten av non-blokkerende I/O for å oppnå robust systemskalerbarhet i asynkrone arkitekturer.
+  Hovedklassen for <abbr title="Application Programming Interface">API</abbr>-konfigurasjoner inneholdt <abbr title="Vente på oppgave">synkron</abbr> <abbr title="Innhenting av informasjon">I/O</abbr> som låste ressurser og skapte risiko for stans. For å sikre at systemet håndterer flere forespørsler samtidig, har jeg erstattet `requests` med `httpx`. Ved å legge til `async` og `await` i hele kjeden, kan oppgaver nå pauses uten å stoppe programmet. Dette frigjør ressurser og sikrer en stabil struktur for høy belastning.
 status: |
-  Dagens Aktiviteter
+  #### Dagens Aktiviteter
+
+  * Oppdaget at måten systemet hentet informasjon på tvang programmet til å vente på ett svar om gangen. Dette førte til at ressurser ble låst, noe som kunne få hele applikasjonen til å stoppe opp hvis mange oppgaver kjørte samtidig.
+  * Valgte å bytte ut det gamle verktøyet `requests` med `httpx`. Dette nye verktøyet gjør det mulig for programmet å utføre flere oppgaver samtidig i stedet for å stå i kø.
+  * Skrev om de viktigste delene av koden med `async`. Dette gjør at systemet nå kan starte mange forespørsler på en gang uten å måtte vente på at den forrige er helt ferdig.
+  * La til `await` i alle delene av systemet som henter informasjon. Dette sørger for at programmet kan sette en oppgave på pause mens det venter på svar, slik at det kan jobbe med andre ting i mellomtiden.
+  * Bekreftet at programvaren nå frigjør plass og kraft mens den henter data. Dette gjør at systemet håndterer mer trafikk og oppleves som langt mer stabilt.
 
   #### Motivasjon & Energi 10 / 10
 
