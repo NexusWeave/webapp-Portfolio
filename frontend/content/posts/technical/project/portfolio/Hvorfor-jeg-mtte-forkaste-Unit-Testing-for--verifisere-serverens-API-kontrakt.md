@@ -5,7 +5,18 @@ title: |
   API-kontrakt
 ingress: |
   Å bygge en robust applikasjon krever mer enn bare å teste intern logikk det handler om å validere samspillet mellom komponentene. Da jeg skulle sikre dataflyt mellom server og eksterne API-endepunkter, startet jeg med Unit Testing. Jeg innså imidlertid raskt at denne metoden, med sin bruk av mocking, ikke bekreftet den faktiske nettverkskommunikasjonen. Dette krevde en strategisk endring. Denne historien dykker ned i “hvorfor” jeg valgte å korrigere kursen til Integrasjonstesting for å oppnå en testdekning som garanterte en funksjonell, ende-til-ende kommunikasjonskjede.
-status: ''
+status: |
+  #### Dagens Aktiviteter
+
+  * Jeg valgte å prioritere testdekning for dataflyt mellom intern logikk og eksterne <abbr title="Application Programming Interface – en kobling som lar to systemer utveksle informasjon på en trygg måte">API</abbr>-<abbr title="Den adressen der informasjonen hentes fra">endepunkter</abbr> for å sikre pålitelig at dataene kommuniserer.
+  * Utviklet tester som bekrefter at serveren sender gyldige forespørsler, og at backend-logikken håndterer mottatt data korrekt.
+  * Identifiserte begrensninger ved unit-testing og <abbr title="sende liksom data for å simulere en ekte situasjon">mocking</abbr>, da dette ikke verifiserte den faktiske kommunikasjonen med tredjepartstjenester.
+  * Skiftet fokus fra isolert testing til `end-to-end-testing` uten mocking, for å validere samspillet mellom systemkomponentene.
+  * Verifiserte hele kjeden fra utgående kall til lagring, noe som reduserer risikoen for feil i produksjonsmiljøet.
+
+  #### Motivasjon & Energi 10 / 10
+
+  Dagen er så fin den kan bli !
 sources: ''
 ---
 
