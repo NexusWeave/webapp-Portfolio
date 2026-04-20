@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   dir: { public:'public' },
   devtools: { enabled: true },
   compatibilityDate: '2025-07-15',
-  vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
+  vite: { resolve: { alias: {'$src': `${srcDir}`} }, optimizeDeps: { exclude: ['@huggingface/transformers'] } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
   modules: [
     '@nuxt/content',
