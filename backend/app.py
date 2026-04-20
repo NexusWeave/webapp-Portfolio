@@ -134,14 +134,16 @@ async def specialist(request: Request) -> List[Dict[Any, Any]]:
     list_of_links: List[str] = ENVIRONMENT.SPECIALIST_LINKS
 
     json: List[Dict[Any, Any]] = []
-    for i in list_of_links:
-        scan = Scanner(URL = i, KEY = None)
+    for i in range(len(list_of_links)):
+        scan = Scanner(URL = list_of_links[i], KEY = None)
         
         try:
             status = await scan.check_status()
             if not status : raise Exception(f"Status check failed - {status}")
-            dictionary = await scan.scrape_information(url=i)
+
+            dictionary = await scan.extract_information()
             json.append(dictionary)
+            #LOG.warn(f"{json}")
         except Exception as e:
             LOG.critical(f"AI-specialist Endpoint : failed with error\n {e.__class__.__name__} - {e}")
             json.append({"code": "500","message": f"{e}"})
