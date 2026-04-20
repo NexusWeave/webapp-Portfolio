@@ -57,19 +57,33 @@ class Scanner(AsyncAPIClientConfig):
 
         return site_urls
 
-    async def extract_information(self):
+    async def extract_information(self) -> Dict[str, str]:
         start = perf_counter()
+        batch_size: int = 10
+        dictionary: Dict[str, str] = {}
+
         try :
             urls = await self.fetch_web_rules()
-            
-            tasks = [self.wait_in_queue(self.scrape_information(url)) for url in urls ]
-            results = await gather(*tasks)
+            #LOG.info(f'Total URLs fetched: {len(urls)}. Starting to scrape information in batches of {batch_size}...Z')
+
+            for i in range(0, len(urls), batch_size):
+                batch_urls = urls[i:i+batch_size]
+
+                tasks = [self.wait_in_queue(self.scrape_information(url)) for url in batch_urls ]
+                results: List[Dict[str, str | int ]] = await gather(*tasks)
+
+                for r in results:
+                    if r['status'] == 200:
+                        dictionary[str(r['url'])] = str(r['content'])
+                #LOG.info(f'Batch {i//batch_size + 1} completed. Time elapsed: {perf_counter()-start} seconds. Total URLs: {len(batch_urls)} - Successful: {len([r for r in results if r.get("status") == "200"])} - Failed: {len([r for r in results if r.get("status") != "200"])}')
         except Exception as e:
             LOG.critical(f'Crawling not successfull - {e.__class__.__name__} - {str(e)}\nTime elapsed: {perf_counter()-start} seconds.')
             raise e
 
-        LOG.info(f'Crawling completed successfully. Time elapsed: {perf_counter()-start} seconds.')
-        return [r for r in results if r['status'] == 200]
+        LOG.info(f'Crawling completed successfully. Time elapsed: {perf_counter()-start} seconds. Total URLs: {len(urls)}')
+    
+        return dictionary
+
 
     async def scrape_information(self, url:str) -> Dict[str, str | int]:
         response:httpx.Response
