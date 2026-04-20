@@ -1,49 +1,9 @@
-@use './mixins' as mix
+@use '../mix/mixins' as mix
 @use '../colors/colors' as color
 
-article.article-wrapper
-    margin: 0 auto
-    max-inline-size: 100%
-    
 article
-    .ingress-header
-        block-size: auto
-
-    .blog-header
-        block-size: 47em
-        margin: auto .5em
-        max-inline-size: 27em
-        box-shadow: 0 0 10px rgba(color.$dark-grey, 0.2)
-
-    .blog-header, .ingress-header
-        p
-            padding: .5em 1em
-            inline-size: 100%
-
-        span
-            margin: auto
-
-    .article-content, .blog-header, .ingress-header
-        code
-            padding: 0.2em 0.4em
-            border-radius: 4px
-            color: color.$white
-            background-color: color.$dark-grey
-            font-family: 'Courier New', Courier, monospace
-
-        pre
-            padding: 1em
-            border-radius: 4px
-            background-color: color.$dark-grey
-
-    article > header
-        margin-block: 0em !important
-
-    .article-content, .ingress-header
-        font-size: 1.5em
-        margin: 0em auto
-        max-inline-size: 44em
-
+    header
+        margin: 0 auto
     nav
         ul
             li
@@ -54,10 +14,83 @@ article
                     text-decoration: none
             padding: 0
 
-    h1,h2,h3,h4,h5,h6
-        a
-            color: inherit
-            text-decoration: none
+    section
+        margin: 0 auto
+        max-inline-size: 100%
+
+    .pagination-container, .blog-section
+        margin: 2em 0
+        max-inline-size: 100%
+
+    .article-wrapper
+        margin: 0 auto
+        max-inline-size: 100%
+
+    .article-content
+        margin: 2em auto
+
+    .ingress-header
+        block-size: auto
+
+    .blog-header
+        block-size: 32em
+        margin: 2em .5em
+        max-inline-size: 29em
+        box-shadow: 0 0 10px rgba(color.$dark-grey, 0.2)
+
+    .blog-header, .ingress-header
+        p.article-metadata
+            a
+                font-weight: bold
+                text-decoration: none
+                color: color.$dark-grey
+
+                &:hover
+                    text-decoration: underline
+
+        p
+            font-size: 1.1em
+            padding: .5em 1em
+        span
+            margin: auto
+
+        padding: 0 .5em
+    .article-content, .blog-header, .ingress-header
+        code
+            z-index: -1
+            font-style: italic
+            border-radius: 4px
+            color: color.$white
+            position: relative
+            padding: 0.2em 0.4em
+            background-color: color.$dark-grey
+            font-family: 'Courier New', Courier, monospace
+
+        pre
+            padding: 1em
+            border-radius: 4px
+            background-color: color.$dark-grey
+
+    .article-content, .ingress-header
+        font-size: 1.5em
+        max-inline-size: 44em
+
+    .article-content, .bio-content, .ingress-content
+        h1,h2,h3,h4,h5,h6
+            a
+                cursor: text
+                color: inherit
+                text-decoration: none
+
+            margin: auto 0
+            text-align: left
+        
+        abbr
+            z-index: 1
+            cursor: help            
+            position: relative
+            text-decoration: none !important
+            border-bottom: 1px dotted rgb(255, 69, 0)!important
 
     @include mix.text-wrap-safe()
 
@@ -77,3 +110,21 @@ article.bio
     div
         margin: 3em auto
         max-inline-size: 50em
+
+article.profile-bar
+
+    section
+        margin: auto 0.5em
+        max-inline-size: 22em
+
+    section.profile-content
+        p
+            h2
+                margin: 0
+                inline-size: 9em
+                text-align: left
+                display: inline-block
+
+        .slogan-wrapper
+            inline-size: 21em
+   

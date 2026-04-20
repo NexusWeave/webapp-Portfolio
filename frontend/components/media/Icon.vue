@@ -1,10 +1,10 @@
 <template>
-    <span :class="cls" :aria-label="`${cls}-icon`" type="icon"></span> 
+    <span :class="cls" :aria-label="`${cls}-icon`" type="icon" :title="`${cls}-icon`"></span> 
 </template>
 <script lang="ts" setup>
 
     // --- Importing dependencies ---
-    import type { iconProps } from '@/types/props';
+    import type { iconProps } from '@/types/media';
 
     const props = withDefaults(defineProps<iconProps>(),{ cls: () => ['default'] });
 

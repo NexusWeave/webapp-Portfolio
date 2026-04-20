@@ -1,44 +1,23 @@
 import { techStackMap } from './techStack';
 import type { TechStack } from '~/types/timeline';
 
-//  --- Data Fetching Logic
 export function fetchTechType(array: string[] | undefined): TechStack[]
 {
     const JAMstack:Array<TechStack> = []
 
     array?.forEach( (item) => 
     {
-        if (!item || item.trim() === '') return;
-            
-        let key: string | string[] = item.toUpperCase();//.split('.');
+        if (!item || item.trim() === '') return; 
+        let key: string | string[] = item.toUpperCase();
 
-        const techMap = techStackMap.reduce((map, obj) => {
-            obj.codes.forEach(code => {
-                map[code] = obj.name;
-            });
-            return map;
-        }, {} as Record<string, string>);
-
+        const techMap = techStackMap.reduce((map, obj) => { obj.codes.forEach(code => { map[code.toUpperCase()] = obj.name.toUpperCase(); }); return map; }, {} as Record<string, string>);
         const category = techMap[key];
-        key = key.split('.');
-        //console.error("Key:", key, category);
 
-        if (key[0] === '') key = key[1] || key;
-        else key = key[0] || key;
-        
-        if(category)
-        {
-            const obj: TechStack =
-            {
-                label: key || 'N/A',
-                type: category,
-            }
-                JAMstack.push(obj);
-        }
-        else
-        {
-            console.error(`Unknown technology code: ${item}`);
-        }
+        try { if (!category) throw new Error(`No category found for key: ${key}`); } catch (error) { console.error(error); }
+
+        if(category) { const obj: TechStack = { label: key ?? 'N/A', category: category }; JAMstack.push(obj); }
+        //console.log("--- TechUtils ---")
+        //console.log(category, key, item);
     });
 
     return JAMstack;

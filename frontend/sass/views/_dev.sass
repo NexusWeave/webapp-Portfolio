@@ -1,14 +1,8 @@
-@use '../utils/generators' as mix
+@use '../mix/generators' as mix
 
 section
     .dev-bar
         max-inline-size: 24em
-    
-        .dev-avatar
-            img, source
-                inline-size: 10em
-                border-radius: 100%
-                margin-inline: 6em
 
         .dev-skill
             h3
@@ -29,18 +23,5 @@ section
             margin-block: 1em
             inline-size: 100%
             @include mix.tech-generator($boolean: false, $element:'progress')
-
-    section.dev-references
-        article
-            h3
-                margin-block-end: 0.5em
-
-            p
-                q
-                    font-style: italic
-
-                font-size: .9em
-                margin-block: 0
-                text-align: center
 
     margin-block-end: 2em

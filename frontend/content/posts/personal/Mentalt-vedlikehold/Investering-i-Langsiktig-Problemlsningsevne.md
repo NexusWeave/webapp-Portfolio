@@ -2,26 +2,28 @@
 date: 2025-11-05T00:00:00.000Z
 title: Investering i Langsiktig Problemløsningsevne
 ingress: |
-  For å unngå feil og utbrenthet, tok jeg et valg om å bytte ut koding med enkle praktiske oppgaver i dag. Dette var som en "omstart" av hjernen. Ved å hvile den kreative delen, sikrer jeg at jeg jobber  raskere og bedre i morgen. Dette er en smart investering i egen helse som hindrer kostbar nedetid og sørger for at prosjektet holder stø kurs videre.
-parade: ''
-star: |
-  Etter en periode med intensiv koding over et helt år, hadde jeg møtt et punkt i min kreative og problemløsende kapasitet. Dette indikerte på et behov for en  omstrukturering av arbeidsdagen for å unngå redusert kvalitet og mental utmattelse.
+  For å unngå feil og utbrenthet, tok jeg et valg om å bytte ut koding med enkle praktiske oppgaver i dag. Dette var som en omstart av hjernen. Ved å hvile den kreative delen, sikrer jeg at jeg jobber  raskere og bedre i morgen. Dette er en smart investering i egen helse som hindrer kostbar nedetid og sørger for at prosjektet holder stø kurs videre.
+status: |
+  #### **Dagens Aktiviteter**
 
-  Målet med dagen var å gi hjernen et bevisst skifte i fokus for å restarte den kreative kapasiteten. 
+  * Tok en bevisst pause fra koding for å unngå mental utmattelse og sikre kvalitet i fremtidig arbeid.
+  * Prioriterte selvpleie for å opprettholde ytelse over tid.
+  * Håndterte forfallende oppgaver som krever mindre hjernekapasitet.
+  * ar bevisst på når hodet ble slitent og energien var tom, for å kunne jobbe bedre over tid.
 
-  * Jeg la bort kompliserte koder og brukte dagen på enkle praktiske oppgaver, som møter,  og helse. Jeg ga hjernen en pause fra problemløsningen
+  #### **Motivasjon** & **Energi** - **3** / **10**
 
-  Etter som dagen hadde gått hadde jeg fått ny energi av den selv pleien, noe som er en faktor for å opprettholde ytelse over tid.
+  Dagen har vært så fin den kunne bli, men opplevde lav energi.
+  
 sources: ''
 ---
 
-**Dagensagenda**
+#### Gjennomgang av arbeidsdag
 
-* Tok en bevisst pause fra koding for å unngå mental utmattelse og sikre kvalitet i fremtidig arbeid.
-* Prioriterte selvpleie for å opprettholde ytelse over tid.
-* Håndterte forfallende oppgaver som krever mindre hjernekapasitet.
-* ar bevisst på når hodet ble slitent og energien var tom, for å kunne jobbe bedre over tid.
+Etter en periode med intensiv koding over 365 dager, hadde jeg møtt et punkt i min kreative og problemløsende kapasitet. Dette indikerte på et behov for en  omstrukturering av arbeidsdagen for å unngå redusert kvalitet og mental utmattelse.
 
-**Energi & Motivasjon** - 3/10
+Målet med dagen var å gi hjernen et bevisst skifte i fokus for å restarte den kreative kapasiteten.
 
-Dagen har vært så fin den kunne bli, men opplevde lav energi.
+* Jeg la bort kompliserte koder og brukte dagen på enkle praktiske oppgaver, som møter,  og helse. Jeg ga hjernen en pause fra problemløsningen
+
+Etter som dagen hadde gått hadde jeg fått ny energi av den selv pleien, noe som er en faktor for å opprettholde ytelse over tid.

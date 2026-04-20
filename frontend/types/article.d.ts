@@ -2,6 +2,7 @@
 import type Anchor from '~/types/navigation/anchor';
 import type { FigureItem, DocumentItem } from './media';
 import type { DateItem } from './dates';
+import type { PostItem } from './documents';
 
 export interface NewsItem
 {
@@ -32,24 +33,9 @@ export interface Article
     ingress: Record<string, any>;
 }
 
+interface TagItem { label: string; anchor: Anchor; }
+
 //  Props interfaces
 export interface TagProps { data: TagItem; cls?: string[]; }
 export interface BodyProps { data: Record<string, any> | null; }
-
-interface TagItem { label: string; anchor: Anchor; }
-
-export interface ArticleProps
-{
-    data: Article;
-    isNewsPage?: boolean;
-    isArticlePage?: boolean;
-    cls?: string[];
-}
-
-export interface HeaderProps
-{
-    article: any;
-    isNewsPage?: boolean;
-    isArticlePage?: boolean;
-    cls?: string[] | string;
-}
+export interface HeaderProps { article: PostItem; isPost?: boolean; cls?: string[] | string; }

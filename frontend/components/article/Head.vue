@@ -1,28 +1,19 @@
 <template>
-    <NavigationButton  v-if="isArticlePage" 
-        :data="anchor"
-        :cls="['orange-btn']"
-    />
-
-    <section :class="[cls[0], {'article-section': !!isArticlePage}]">
-        <section :class="[{'blog-header': !isArticlePage}, {'ingress-header': isArticlePage}]">
-            <h1> {{ article.title }}</h1>
-            <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
-                <span v-if="!!article.date" :class="cls[3]">
-                    Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
-                    <UtilsTags v-for="(tag) in article.tags"
-                        :data="tag"
-                    />
-
-            </p>
-            <MDC :value="article.ingress" class="ingress-content" />
-            <NavigationNavMenu v-if="!isArticlePage && !!article.anchor" toggle="router"
-            :data="article.anchor"
-            :cls="[
-                ['nav-list', 'flex-wrap-row-align-items-center'],
-                ['nav-item'], ['read-more']]"
-        />
-        </section>
+    <section :class="['flex-column-align-items-center', {'article-section': !!isPost}]">
+        <Suspense>
+            <template #default>
+                <section :class="[{'blog-header': !isPost}, {'ingress-header': isPost}]">
+                    <h2>{{ article.title }}</h2>
+                    <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
+                        <span v-if="!!article.date" :class="'meta-date'"> Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
+                        <NavigationAnchor v-for="(tag) in article.tags" :data="tag" :class="tag.cls" />
+                    </p>
+                    <MDC :value="article.ingress" class="ingress-content" />
+                    <NavigationNavMenu v-if="!isPost && !!article.anchor" :data="article.anchor" :class="['nav-bar', 'read-more']"/>
+                </section>
+            </template>
+            <template #fallback> <section class="loading">Laster innlegg til logger...</section> </template>
+        </Suspense>
     </section>
 </template>
 
@@ -31,20 +22,17 @@
     //  --- Import dependency & types
     import { computed } from 'vue';
     import type { HeaderProps } from '@/types/article';
-    import type { ButtonItem } from '@/types/navigation';
 
     //  --- Props logic
-    const props = withDefaults(defineProps<HeaderProps>(), { cls: () => ['flex-column-align-items-center'], isArticlePage: () => false });
-    
-    const cls = props.cls;
+    const props = withDefaults(defineProps<HeaderProps>(), { isPost: () => false });
+
     const article = computed(() => props.article);
-    const isArticlePage = computed(() => props.isArticlePage);
-    const anchor = computed<ButtonItem>(() => { if (isArticlePage.value) return { label: 'Gå tilbake', type: 'button', action: () => { window.history.back() }}; return {} });
+    const isPost = computed(() => props.isPost);
 
     //  --- Debugging logic
-    //console.log("Article Header Component - Anchor :", anchor.value);
-    //console.log("Article Header Component - isNewsPage :", isNewsPage.value);
-    //console.log("Article Header Component - isArticlePage :", isArticlePage.value);
-    //console.log("Article Header Component - Article :", article);
+    //console.log("Article Header Component - Article :", article.value);
+    //console.log("Article Header Component - Button :", button.value);
+    //console.log("Article Header Component - isPostPage :", isPost.value);
     //console.log("Article Header Component - Article Anchor :", article.anchor);
+    //console.log("Article Header Component - Article Ingress :", article.value.tags);
 </script>

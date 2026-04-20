@@ -4,6 +4,8 @@
 #
 #    pip-compile requirements.in
 #
+aiofiles==25.1.0
+    # via -r requirements.in
 annotated-doc==0.0.4
     # via fastapi
 annotated-types==0.7.0
@@ -14,15 +16,21 @@ anyio==4.12.1
     #   starlette
 asyncpg==0.31.0
     # via -r requirements.in
+beautifulsoup4==4.14.3
+    # via -r requirements.in
+build==1.4.2
+    # via pip-tools
 certifi==2026.1.4
     # via
     #   httpcore
     #   httpx
 click==8.3.1
-    # via uvicorn
+    # via
+    #   pip-tools
+    #   uvicorn
 coverage[toml]==7.13.3
     # via pytest-cov
-fastapi==0.128.4
+fastapi==0.135.1
     # via -r requirements.in
 greenlet==3.3.2
     # via sqlalchemy
@@ -45,7 +53,12 @@ jinja2==3.1.6
 markupsafe==3.0.3
     # via jinja2
 packaging==26.0
-    # via pytest
+    # via
+    #   build
+    #   pytest
+    #   wheel
+pip-tools==7.5.3
+    # via -r requirements.in
 pluggy==1.6.0
     # via
     #   pytest
@@ -65,9 +78,12 @@ pydantic-settings==2.13.1
     # via -r requirements.in
 pygments==2.19.2
     # via pytest
+pyproject-hooks==1.2.0
+    # via
+    #   build
+    #   pip-tools
 pytest==9.0.2
     # via
-    #   -r requirements.in
     #   pytest-asyncio
     #   pytest-benchmark
     #   pytest-cov
@@ -91,12 +107,15 @@ python-dotenv==1.2.1
     #   pydantic-settings
 simplified-logging==1.0.13.7
     # via -r requirements.in
+soupsieve==2.8.3
+    # via beautifulsoup4
 sqlalchemy==2.0.48
     # via -r requirements.in
 starlette==0.52.1
     # via fastapi
 typing-extensions==4.15.0
     # via
+    #   beautifulsoup4
     #   fastapi
     #   pydantic
     #   pydantic-core
@@ -109,3 +128,9 @@ typing-inspection==0.4.2
     #   pydantic-settings
 uvicorn==0.41.0
     # via -r requirements.in
+wheel==0.46.3
+    # via pip-tools
+
+# The following packages are considered to be unsafe in a requirements file:
+# pip
+# setuptools

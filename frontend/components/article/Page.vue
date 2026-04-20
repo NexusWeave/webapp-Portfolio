@@ -1,16 +1,12 @@
 <template>
+    <NavigationButton  v-if="isPage || isTagPage"  :data="button" :class="['orange-btn']"/>
     <article class = 'article-wrapper flex-column'>
        <header>
-           <ArticleHead
-                :article="article"
-                :isNewsPage="isPage"
-                :isArticlePage="isPage"/>
+        <ArticleHead :article="article" :isPost="isPage"/>
        </header>
-       <main v-if="isPage">
+       <main v-if="isPage && !isTagPage">
         <ArticleBody :data="article" />
-       </main>
-        <footer v-if="article.conclusion && isPage">
-        </footer>        
+       </main>        
     </article>
 </template>
 
@@ -19,13 +15,17 @@
     import { computed } from 'vue';
     import { useRoute } from 'vue-router';
 
-    interface ArticlePageProps { data: any; }
+    import type { PostProps } from '~/types/documents';
+    import type { ButtonItem } from '@/types/navigation';
 
-    const props = defineProps<ArticlePageProps>();
+    const props = defineProps<PostProps>();
     const article = computed(() => props.data);
 
     const route = useRoute();
-    const isPage = computed(() => {return route.name?.toString().startsWith('artikkel')});
+    const isPage = computed(() => {return route.name?.toString().startsWith('logs-records')});
+    const isTagPage = computed(() => {return route.name?.toString().startsWith('logs-tags')});
+
+    const button = computed<ButtonItem>(() => {  if (isPage.value || isTagPage.value) return  { label: 'Gå tilbake', action: () => { window.history.back(); }}; return {} });
 
     //  --- Debugging logic
     //console.log("Articles Component - Article Data :", route.name);

@@ -1,18 +1,11 @@
 <template>
-    <nav :class="cls[0]">
-        <ul :class="cls[1]">
-            <li v-for="item in data" :key="item.id"
-                    :class="cls[2]">
-
-            <template v-if="isRouterLink">
-                <NuxtLink :to="item.href" :class="[item.cls, 'nav-link']">
+    <nav :class="[cls[0], 'flex-wrap-row']">
+        <ul class="flex-align-items-flex-end-justify-center">
+            <li v-for="item in data" :key="item.id">
+                <NuxtLink v-if="hasRouterLink" :to="(item as RouterItem).path">
                     {{ item.label }}
                 </NuxtLink>
-            </template>
-
-            <template v-else-if="isAnchor">
-                    <NavigationAnchor :data="item" :cls="[item.cls]"/>
-            </template>
+                <NavigationAnchor v-if="isAnchor" :data="(item as AnchorItem)" :cls="[...(item.cls || [])]" />
             </li>
         </ul>
     </nav>
@@ -22,23 +15,19 @@
 
     //  --- Importing dependencies & type definitions ---
     import { computed } from 'vue';
-    import type { NavProp } from '@/types/props';
+    import type { NavigationProp, RouterItem, AnchorItem } from '@/types/navigation';
 
     //  --- Props Definition ---
-    const props = withDefaults(defineProps<NavProp>(),
-    {
-        totalPage: 0,
-        activePage: 0,
-        cls: () => [['nav-bar', 'flex-wrap-row'], [['nav-list', 'flex-wrap-row-justify-center'], 'flex-row-align-items-center'], 'nav-item', 'anchor-item'],
-    });
+    const props = withDefaults(defineProps<NavigationProp>(), { totalPage: 0, activePage: 0, cls: () => ['router-nav'] as string[] });
 
     const data = computed(() => props.data);
 
-    const isAnchor = computed(() => props.toggle === 'anchor');
-    const isRouterLink = computed(() => props.toggle === 'router');
-
+    const cls = computed(() => props.cls );
+    const hasRouterLink = computed(() => { if (Array.isArray(data.value)) return data.value.some(item => 'path' in item && item.type && item.type.includes('router')); return (data.value as any).type && (data.value as any).type == 'router'; });
+    const isAnchor = computed(() => !hasRouterLink.value);
 
     //  --- Debug logic
-    //console.log("NavigationMenu loaded with data: ", data.value);
     //console.log("NavigationMenu toggle mode: ", props.toggle);
+    //console.log("NavigationMenu loaded with data: ", data.value);
+    //console.log("Navigation is Router Link: ", hasRouterLink.value);
 </script>

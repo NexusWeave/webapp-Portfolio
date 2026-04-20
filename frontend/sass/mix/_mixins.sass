@@ -1,0 +1,139 @@
+@use 'sass:map' as map
+@use 'sass:list' as list
+@use '../colors/colors' as color
+@use '../mappings/devices-breakpoints' as Devices
+
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
+
+@mixin media-queries ($size: null, $breakpoint: null)
+
+    @if $size == 'prefers-color-scheme'
+        @media (prefers-color-scheme: dark)
+            @content
+
+    @if $size == null and $breakpoint != null
+        $block-size: map.get(Devices.$devices, $breakpoint, 'block-size')
+        $inline-size: map.get(Devices.$devices, $breakpoint, 'inline-size')
+
+        @media screen and ($inline-size <= width <= $inline-size + 50px ) and (min-height: $block-size) and (orientation: portrait)
+            @content
+
+        @media screen and ($block-size <= height <= $block-size + 50px) and (min-width: $inline-size) and (orientation: landscape)
+            @content
+
+    @else if $size != null and $breakpoint == null
+        $size: map.get(Devices.$breakpoints, $size)
+
+    @media screen and (min-width: $size)
+        @content
+
+@mixin card-shadow-box()
+    margin: 1em
+    padding: 1em
+    box-shadow: 4px 4px 20px 4px rgba(0, 0, 0, 0.1)
+
+@mixin list-inline-reset()
+    ul 
+        li
+            margin: .5em
+            display: inline
+
+        padding: 0
+
+@mixin background-style($bg-color, $color)
+    color: $color
+    background-color: $bg-color
+
+@mixin background-image($size, $path, $bg-size: null)
+
+    @if $bg-size == null
+        $bg-size: no-repeat
+
+    background-size: $size
+    background-repeat: $bg-size
+    background-image: url($path)
+
+@mixin font-style($font, $family: null)
+
+    $sans-serif: ('Roboto', 'Work Sans', 'Nunito')
+
+    @if list.index($sans-serif, $font)
+        $family: sans-serif
+
+    font-family: $font, $family
+
+@mixin link-styles($link-color, $link-hover-color, $link-active-color, $link-visited-color)
+
+    a
+        [aria-disabled='true']
+            cursor: not-allowed
+            color: color.$dark-grey
+
+        &:hover
+            color: $link-hover-color
+
+        &:active
+            color: $link-active-color
+
+        &:visited
+            color: $link-visited-color
+
+        color: $link-color
+        text-decoration: none
+        transition: 0.3s ease-in-out
+
+@mixin transitions($property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
+
+    @if $property == null
+        $property: all
+    
+    @if $timing-function == null
+        $timing-function: ease-in-out
+
+    @if $duration == null
+        $duration: 0.3s
+
+    @if $delay == null
+        $delay: 0s
+
+    @if $behavior == null
+        $behavior: normal
+
+    transition: $property $duration $timing-function $delay $behavior
+
+@mixin input-styles($background-color)
+    input[type="range"]
+        &::-webkit-slider-runnable-track,
+        &::-moz-range-track
+            cursor: pointer
+            block-size: .9em
+            border-radius: 1em
+            -webkit-appearance: none
+            background: $background-color
+
+        &::-webkit-slider-thumb,
+        &::-moz-range-thumb
+            cursor: pointer
+            block-size: .9em
+            border-radius: 1em
+            -webkit-appearance: none
+            background: $background-color
+
+        inline-size: 100%
+
+@mixin circle-border()
+    block-size: 1em
+    inline-size: 1em
+    border-radius: 50%
+    display: inline-block
+    margin-inline-end: .5em
+
+@mixin text-wrap-safe()
+
+    p, h1, h2, h3, h4, h5, h6, figcaption, a, li
+        hyphens: auto
+        min-inline-size: 0
+        word-wrap: anywhere
+        white-space: pre-wrap
+        overflow-wrap: anywhere

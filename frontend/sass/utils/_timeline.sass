@@ -1,4 +1,4 @@
-@use './mixins' as mix
+@use '../mix/mixins' as mix
 @use '../colors/colors' as color
 
 .timeline-container
@@ -49,26 +49,25 @@
         opacity: 1 !important
         visibility: visible !important
 
+        .tech-container
+            p
+                span
+                    span
+                        @include mix.circle-border()
+                    margin-inline: .3em
+
+                margin:.5em
+
     .timeline-content
 
         h2, h3, h4
             text-align: center
         
         p
-            text-align: justify
+            text-align: left
 
         &:nth-of-type(odd)
             margin-block-end: 1em
-
-        //opacity: 0
-        margin: 1em
-        padding: 1em
-        border-radius: .5em
-        //visibility: hidden
-        max-inline-size: 100%
-        
-        box-shadow: 0 2px 4px rgba(64, 64, 64, .5)
-        @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
 
         section
             margin: .5em
@@ -87,6 +86,13 @@
                 .timeline-item
                     margin-block: .5em
                     font-size: 1.1em
+
+        margin: 1em
+        padding: 1em
+        border-radius: .5em
+        max-inline-size: 100%
+        box-shadow: 0 2px 4px rgba(64, 64, 64, .5)
+        @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
 
     padding: 1em
     margin-block: 2.5em

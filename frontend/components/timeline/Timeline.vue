@@ -1,13 +1,7 @@
 <template>
-
         <section :class="[cls[0], cls[1]]">
             <section :class="cls[2], cls[3]">
-                <TimelineFilter
-                    :data="filter"
-                    :cls="[['flex-column-align-items-center', 'timeline-item'],
-                    'timeline-input-label', 'timeline-input']"
-                    @toggleVisibility="toggleVisibility"
-                />
+                <TimelineFilter :data="filter" :cls="[['flex-column-align-items-center', 'timeline-item'], 'timeline-input-label', 'timeline-input']" @toggleVisibility="toggleVisibility" />
             </section>
             <section :class="cls[3]">
                 <DatesYear v-for="item in data" :key="item.id"
@@ -28,17 +22,10 @@
 
     //  --- Import & types logic
     import { computed } from 'vue';
-
-    import type { TimelineProps } from '~/types/props';
-    import type { TimelineItem } from '~/types/timeline';
+    import type { TimelineItem, TimelineProps } from '~/types/timeline';
 
     //  --- Props & reactive logic
-    const props = withDefaults(defineProps<TimelineProps>(),
-    {
-
-        cls: () => ['component-blue', 'timeline-container',
-        'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'],
-    });
+    const props = withDefaults(defineProps<TimelineProps>(), { cls: () => ['component-blue', 'timeline-container', 'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'] });
 
     const cls = computed(() => 
     {

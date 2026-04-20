@@ -19,7 +19,6 @@ class LanguageModel(BaseModel):
 
     model_config = ConfigDict(from_attributes = True)
 
-
 class LanguageAssociationModel(BaseModel):
     lang_id: int = Field(..., description = "Language ID", json_schema_extra = {"example":1})
     code_bytes: int = Field(..., description = "Code Bytes", json_schema_extra = {"example":2048})
@@ -61,16 +60,7 @@ class RepositoryModel(BaseModel):
         for assec in self.lang_assosiations:
             
             if assec.language.id == assec.lang_id and self.id == assec.repo_id:
-                languages.append(
-                    {
-                        "bytes": assec.code_bytes,
-                        "label": assec.language.language, 
-                        "img": {
-                            "type":'svg',
-                            "alt": f'Logo for {assec.language.language}',
-                            "src": f'/media/tech-lang-icons/{assec.language.language}.svg'
-                        }
-                        })
+                languages.append( { "bytes": assec.code_bytes, "label": assec.language.language,  })
         return languages
     
     @computed_field
@@ -79,46 +69,16 @@ class RepositoryModel(BaseModel):
         ANCHOR: List[Dict[str, str | object]] = []
 
         if self.is_private == 0:
-            ANCHOR.append(
-                {
-                    'name': 'github',
-                    'id': uuid.uuid4().hex,
-                    'href': self.repo_url,
-                    'type': ['github','external']
-                }
-            )
-
-        if self.youtube_url:
-            ANCHOR.append(
-            {
-                'name': 'ytube',
-                'id': uuid.uuid4().hex,
-                'href': self.youtube_url,
-                'type': ['ytube','external']
-            })
-        if self.demo_url:
-            ANCHOR.append(
-            {
-                'name': 'globe',
-                'id': uuid.uuid4().hex,
-                'href': self.demo_url,
-                'type': ['globe','external']
-            })
+            ANCHOR.append( { 'name': 'github', 'id': uuid.uuid4().hex, 'href': self.repo_url } )
+        if self.demo_url: ANCHOR.append({ 'name': 'globe', 'id': uuid.uuid4().hex, 'href': self.demo_url })
+        if self.youtube_url: ANCHOR.append( { 'name': 'ytube', 'id': uuid.uuid4().hex, 'href': self.youtube_url })
 
         return ANCHOR
 
     @computed_field
-    def name(self) -> List[str]:
-        sep = '-'
-        label: List[str] = str(self.label).split(sep)
+    def name(self) -> str:
+        label: str = self.label
         return label
-
-    @computed_field
-    def date(self) -> Dict[str, str]:
-        date: Dict[str, str] = {
-            "created": self.created_at.strftime("%d-%m-%Y")
-        }
-        return date
 
     @computed_field
     def flags(self) -> Dict[str, bool]:

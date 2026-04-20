@@ -7,50 +7,17 @@ export const blogCollection: Collection =
     path: "content/posts",
     fields:
     [
-        {
-            name: "date",
-            label: "Published",
-            required: true,
-            type: "datetime",
-            ui: { dateFormat: 'DD-MM-YY'}
-        },
-        {
-            name: "title",
-            isTitle: true,
-            type: "string",
-            label: "Title",
-            required: true
-        },
-        {
-            required: true,
-            name: "ingress",
-            label: "Ingress",
-            type: "rich-text"
-        },
-        {
-            isBody: true,
-            name: "body",
-            required: false,
-            type: "rich-text",
-            label: "Main text"
-        },
-        {
-            name: "parade",
-            required: false,
-            type: "rich-text",
-            label: "PARADE-Model"
-        },
-        {
-            required: false,
-            type: "rich-text",
-            name: "star",
-            label: "STAR - Modell"
-        },
-        {
-            required: false,
-            type: "rich-text",
-            name: "sources",
-            label: "Kilde Henvisning"
-        },
+        { name: "date", label: "Published", type: "datetime", ui: { dateFormat: 'DD-MM-YY' } },
+        { name: "title", isTitle: true, type: "string", label: "Title", required: true },
+        { required: true, name: "ingress", label: "Ingress", type: "rich-text" },
+        { required: false, name: "status", type: "rich-text", label: "Dagens Aktiviteter og Status" },
+        { isBody: true, name: "body", required: true, 
+            type: "rich-text", label: "Innholdet i Artikkelen", 
+            description: "Hovedinnhold i artikkelen, i star-parade formatet" },
+        { required: false, name: "sources", type: "rich-text", label: "Kilde Henvisning" },
     ],
+    ui: {
+        beforeSubmit: async({values}) =>
+        { return { ...values, date: values.date ?? new Date().toISOString(), }}
+    }
 };

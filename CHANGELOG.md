@@ -1,3 +1,136 @@
+## [1.15.10](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.9...v1.15.10) (2026-04-15)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Restricted middleware to CORS_ORIGINS and prevents any lazy-loading issues. ([92be8aa](https://github.com/NexusWeave/webapp-Portfolio/commit/92be8aa23e6de9114454908c207836c9ee508d89))
+
+## [1.15.9](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.8...v1.15.9) (2026-04-15)
+
+
+### Bug Fixes
+
+* disable allow_credentials in CORS middleware as the page does not require cookies or login. ([3d7f79e](https://github.com/NexusWeave/webapp-Portfolio/commit/3d7f79ebd8bf51696d153fa6ca9a08797bd05675))
+
+## [1.15.8](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.7...v1.15.8) (2026-04-14)
+
+
+### Bug Fixes
+
+* add import for computed. ([41773d0](https://github.com/NexusWeave/webapp-Portfolio/commit/41773d0b244e8163a2450f3527631dc094aca6d7))
+* Ensure blog filtering checks for published status. ([312aa2a](https://github.com/NexusWeave/webapp-Portfolio/commit/312aa2a97aaf67f96d943e0a654a9495fa8a292a))
+* Prevented unexpected behavior, by adding export for LanguageData. ([17de4e6](https://github.com/NexusWeave/webapp-Portfolio/commit/17de4e6ae7e2afcd52761cf0302cbd2fe7649e0b))
+* Removed unused component as it causing crashes. ([1ea331f](https://github.com/NexusWeave/webapp-Portfolio/commit/1ea331f4e88657fe22b8ee697c98afe2033bac40))
+
+## [1.15.7](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.6...v1.15.7) (2026-04-11)
+
+
+### Bug Fixes
+
+* resolved issue with slug name, to define page as a logs-record ([6036177](https://github.com/NexusWeave/webapp-Portfolio/commit/6036177a98ac80720859d764b87bc7742ac68082))
+
+## [1.15.6](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.5...v1.15.6) (2026-04-10)
+
+
+### Bug Fixes
+
+* resolving issue where nuxt can't find logs. ([87f2d0a](https://github.com/NexusWeave/webapp-Portfolio/commit/87f2d0a6840dd63365672ba285f9d91a8652b2b8))
+
+## [1.15.5](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.4...v1.15.5) (2026-04-10)
+
+
+### Bug Fixes
+
+* resolving issue where nuxt can't find logs. ([6f1d356](https://github.com/NexusWeave/webapp-Portfolio/commit/6f1d35604c3b65b0fb930d57c66316e1c8a3518c))
+
+## [1.15.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.3...v1.15.4) (2026-04-10)
+
+
+### Bug Fixes
+
+* remove litestream replicate command. ([5bb906e](https://github.com/NexusWeave/webapp-Portfolio/commit/5bb906e81c784c44690486e3c7f4003dfbda3b99))
+
+## [1.15.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.2...v1.15.3) (2026-04-10)
+
+
+### Bug Fixes
+
+* **Docker:** 🐛 Temporary remove installation of litestream. ([50ab00b](https://github.com/NexusWeave/webapp-Portfolio/commit/50ab00b130d59831b5b7551f15bcca70f936a3f7))
+
+## [1.15.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.1...v1.15.2) (2026-04-10)
+
+
+### Bug Fixes
+
+* **APP:** Resolved Import Error ([977aae6](https://github.com/NexusWeave/webapp-Portfolio/commit/977aae61990c06153948cb5fdd8c60cadf5cea0e))
+
+## [1.15.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.0...v1.15.1) (2026-04-10)
+
+
+### Bug Fixes
+
+* **sitemap:** resolving issue where incorrect path appears in sitemap.xml. ([0d9993d](https://github.com/NexusWeave/webapp-Portfolio/commit/0d9993df5fe5a9aead36b648a4c657d9ad65d98d))
+
+# [1.15.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.14.0...v1.15.0) (2026-04-10)
+
+
+### Bug Fixes
+
+* **layout:** resolved undefined type errors in `Footer.vue`. ([498be04](https://github.com/NexusWeave/webapp-Portfolio/commit/498be04803dd66439a6bb8302a58fd54379fcb6c))
+* **Repos:** resolved an error where the repos disapeared. ([6c5b460](https://github.com/NexusWeave/webapp-Portfolio/commit/6c5b4609995f42773b501989eed11866b7d26812))
+* **Types:** 🐛 Add `@ts-ignore` for Nuxt Content module resolution. ([55e34c7](https://github.com/NexusWeave/webapp-Portfolio/commit/55e34c7d814deb5720c231c9878a2ccd4c8a34c5))
+
+
+### Features
+
+* **Routing:** ✨ Introduce new `logs/tags/[slug]` route. ([ed288fe](https://github.com/NexusWeave/webapp-Portfolio/commit/ed288fec76e0439f44aac6e97c48ee5693713adc))
+
+# [1.14.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.13.0...v1.14.0) (2026-04-09)
+
+
+### Bug Fixes
+
+* resolved issue where abbr-element was hidden behind codeed text. ([8b83f67](https://github.com/NexusWeave/webapp-Portfolio/commit/8b83f67b9ecd67376aa4c8d4ec714131400f7b13))
+* Resolved issue where some logs where removed. ([c463d54](https://github.com/NexusWeave/webapp-Portfolio/commit/c463d54951aaa5b3e7ccbe6c6b1c4b15fb3447d5))
+* **UI:** ✨ Resolves issues with images not found by adding flask & sqlite.svg. ([51397b1](https://github.com/NexusWeave/webapp-Portfolio/commit/51397b1eee25294340bb3dcb18b93a29ecc56345))
+
+
+### Features
+
+* **SEO:** ✨ Add meta data, to increase site visibility. ([617acf1](https://github.com/NexusWeave/webapp-Portfolio/commit/617acf137992640d0522518d87a9f753b9c9b2d0))
+* **UI:** ✨ Add check for isPublished & enchance the articles with isPublished to check if the date is or is past todays date. ([4dec6ce](https://github.com/NexusWeave/webapp-Portfolio/commit/4dec6ce092494078272973ca907b3ba0fa88adae))
+
+# [1.13.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.12.0...v1.13.0) (2026-04-02)
+
+
+### Bug Fixes
+
+* **Github:** 🐛 Resolved issues with modeNotFound error, by correcting the import path. ([4915795](https://github.com/NexusWeave/webapp-Portfolio/commit/491579536b81b0d3271cca20f90ec0382755637d))
+
+
+### Features
+
+* **Database:** ✨ Add support for SQLite engine ([16e5e7a](https://github.com/NexusWeave/webapp-Portfolio/commit/16e5e7a0fff3b2e0dcde004281123a1794775282))
+* **Database:** ✨ Create a blueprint for Chatbot database. ([659e11a](https://github.com/NexusWeave/webapp-Portfolio/commit/659e11a28dd40d970591e2e91c926f2340f1f8fc))
+* **Docker:** ✨ Introduce Litestream for real-time data ([22e96c5](https://github.com/NexusWeave/webapp-Portfolio/commit/22e96c5a4f67dd280a6b9905c93d5e5858bdff40))
+* **HealthCheck:** ✨ ADD a check healt for specialist ([1cc00e2](https://github.com/NexusWeave/webapp-Portfolio/commit/1cc00e234c8b120f85483cacab28cd9f50f1cbf9))
+* **HealthCheck:** ✨ ADD health Check for Scanner class. ([ce787ce](https://github.com/NexusWeave/webapp-Portfolio/commit/ce787cee7f4b4c1a5989e535779e26c8e7da88cf))
+* **WebScan:** ✨ Implemented a web Scanner to automate data discovery. ([fd5c85d](https://github.com/NexusWeave/webapp-Portfolio/commit/fd5c85d61fd93cc5ca1181133dd12a60fb96812e))
+
+# [1.12.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.11.0...v1.12.0) (2026-04-02)
+
+
+### Bug Fixes
+
+* **Config:** 🐛 Resolved an build issue, by adding a '}' at the end of sitemap config. ([202f0a6](https://github.com/NexusWeave/webapp-Portfolio/commit/202f0a6b2b0c53940fed5b619e27d8a533882634))
+* Fix deploy command output directory in package.json ([3108b00](https://github.com/NexusWeave/webapp-Portfolio/commit/3108b002f3969580668ec35642ec25be092135ea))
+* Fix formatting in nuxt.config.ts ([d823713](https://github.com/NexusWeave/webapp-Portfolio/commit/d82371394514d811cb17680972e0fdc6856165de))
+
+
+### Features
+
+* **API:** ✨ Introduce a sitemap API, to find every paths for articles in the SEO. ([5e3533e](https://github.com/NexusWeave/webapp-Portfolio/commit/5e3533e8de45c62cd8a113b63823f79e1f221c8d))
+
 # [1.11.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.10.0...v1.11.0) (2026-03-25)
 
 

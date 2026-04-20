@@ -1,157 +1,26 @@
-//  --- Imports ---
-import type { TimelineItem } from "./timeline";
+import type { Dateitem } from "./date";
+import type { FigureItem } from "./figure";
+import type { AnchorItem } from "./navigation";
 
 
-//  --- Timeline component ---
-export interface TimelineProps
+interface RepositoryBase
 {
-    title: string;
-    range?: number;
-    cls?: Array<any>;
-    data: TimelineItem[];
-}
-
-export interface FilterProps
-{
-    cls?: Array<any>;
-    data: Record<string, any>;
-}
-
-export interface TimelineCardProps
-{
-    cls?: Array<any>;
-    data: TimelineItem;
-    isVisible?: boolean;
-}
-
-
-//  --- Carousel component ---
-export interface CarouselProps
-{
-    data    : FigureItem[];
-    buttons? : CarouselButton[];
-}
-
-export interface CarouselButton
-{
-    cls ?  : string;
-    icon?    : string;
-    exist?   : boolean;
-    action  : () => void;
-}
-
-
-//  --- Misc Props ---
-export interface DateYearProps
-{
-    isVisible: boolean;
-    data: string;
-}
-
-export interface Anchor
-{
-    label: string;
-    href : string;
-    type : string[];
-    img? : FigureItem;
-    
-}
-
-export interface FigureItem
-{
-    src : string;
-    alt : string;
-    id? : string;
-    type : string;
-    srcset? : string;
-    caption? : string;
-}
-
-export interface FigureProps
-{
-    cls?   : string[];
-    data    : Record<FigureItem>;
-}
-
-export interface listData
-{
-    title?: string;
-    anchor:
-    {
-        
-        href: string;
-        label?: string;
-        
-        cls?: string | string[];
-        type?: string | string[];
-        img?:
-        {
-            src: string;
-            alt?: string;
-        }
-    }
-}
-
-export interface listProps
-{
-    title?: string;
-    data: listData[];
-    cls?: Array<string | string[]>;
-}
-
-export interface iconProps { cls?: string[]; }
-
-export interface NavProp
-{
-    totalPage?: number;
-    activePage?: number;
-    toggle: 'router' | 'anchor' | 'pagination';
-
-    data: Array<Record<string, any>> | Record<string, any>;
-    cls?: Array<string | string[] | Array<string | string[]>>;
-}
-
-export interface GithubRepo
-{
-    
-    label: string;
+    name: string;
     owner: string;
-    label: string;
-    name : string[];
-    repo_id: string;
-    icon: FigureItem[];
-    created: string;
     description: string;
-    date: Record<string, string>;
-    anchor: Record<string, string>;
-    languages: Array<{img: FigureItem[]; label: string, bytes: number}>;
+    anchor: AnchorItem[];
+    collaborators?: string[];
+    flags: Record<string, boolean>;
+    languages?: GithubRepoLanguage[];
 }
 
-export interface RepoProps
-{
-    data: GithubRepo;
-    cls?: Array<string | string[] | Array<string | string[]>>;
-}
 
-export interface ProgressProps {
-    value: number;
-    tech?: string;
-    label: string;
-    cls?: string[];
-}
+interface ProgressItem extends LanguageData { type: string; percentage: number; }
 
-export interface PaginationProps
-{
-    activePage?: number;
-    totalPage?: number;
-    cls?: string[];
-}
-
-export interface DateItem
-{
-    time?: string | null;
-    date?: string | null;
-    text?: string;
-    delimiter?: string;
-    updated?: Date | string | null;
-}
+export interface LanguageData { label: string; bytes: number; }
+export interface RepositoryData extends Array<RepositoryItem> {}
+export interface ProgressProps { data: ProgressItem; cls?: string[]; }
+export interface GithubRepoLanguage extends LanguageData { img: FigureItem[];}
+export interface GithubData extends RepositoryBase { id: string; label: string; date: DateItem; }
+export interface RepoProps { data: GithubRepo; cls?: Array<string | string[] | Array<string | string[]>>; }
+export interface RepositoryItem extends RepositoryBase { label: string; repo_id: string; created_at: string; }

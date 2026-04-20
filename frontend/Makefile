@@ -5,16 +5,11 @@ test-reports: # Running tests with coverage and generating HTML report # Not wor
 	$(MAKE) -C tests test-flow
 
 clean: # Clean up cache files
-	@echo "--- Cleans up Cache files ---"
+	@echo "--- Cleans up Frontend Cache files ---"
 	
 	#	Cleans up __pycache__, pytest cache directories
 	find . -depth -type d \( -name ".data" -o -name "" -o -name "node_modules/.cache" -o -name "package-lock.json" -o -name ".netlify" -o -name "dist" \) -exec rm -rf {} \;
 
-	#	Cleans up .coverage files
-	rm -rf fastAPI/.benchmarks
-
-	#	Cleans up test database files
-	rm -rf fastAPI/.test_database.db
 	reset
-	@echo "--- Clean up Finished ---"
+	@echo "--- Cleaned up Frontend Cache files ---"
 
