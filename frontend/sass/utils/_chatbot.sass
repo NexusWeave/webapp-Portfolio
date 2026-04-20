@@ -1,0 +1,40 @@
+@use '../mix/mixins' as mix
+@use '../colors/colors' as color
+.chatbot-container
+    input
+        padding: 0.5em
+        border-radius: 0.5em
+        border: 1px solid color.$dark-grey
+
+    section
+        margin: 0
+        
+    .chatbot-content
+        .user-dialoque, .ai-dialoque
+            margin: .5em 0
+            padding: 0.1em
+            background-color: color.$light-blue
+        h3
+            text-align: left
+
+        p
+            margin: 0
+            font-size: 0.8em
+            display: inline-block
+
+        overflow: auto
+        max-block-size: 20em
+        border-radius: 0.5em
+        background-color: color.$off-white
+
+    .chat-buttons
+        button
+            font-size: 0.8em
+
+        margin-block: 0.5em
+    margin: auto
+    padding: 1em
+    border-radius: 0.5em
+
+.chatbot-container:focus-within
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
