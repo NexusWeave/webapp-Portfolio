@@ -57,43 +57,45 @@ class Scanner(AsyncAPIClientConfig):
 
         return site_urls
 
-    async def extract_information(self) -> Dict[str, str]:
+    async def extract_information(self) -> List[Dict[str, str]]:
+        batch_size: int = 30
         start = perf_counter()
-        batch_size: int = 10
-        dictionary: Dict[str, str] = {}
+        failed_scraped_contents_list: List[Dict[str, str]] = []
+        succsesfully_scraped_contents_list: List[Dict[str, str]] = []
 
         try :
             urls = await self.fetch_web_rules()
-            #LOG.info(f'Total URLs fetched: {len(urls)}. Starting to scrape information in batches of {batch_size}...Z')
+            if not urls: raise ValueError(f'No Sitemap found at {self.URL}')
 
             for i in range(0, len(urls), batch_size):
-                batch_urls = urls[i:i+batch_size]
+                batch_urls = urls[i:i + batch_size]
 
                 tasks = [self.wait_in_queue(self.scrape_information(url)) for url in batch_urls ]
                 results: List[Dict[str, str | int ]] = await gather(*tasks)
-
+                LOG.info(f"{results}")
                 for r in results:
-                    if r['status'] == 200:
-                        dictionary[str(r['url'])] = str(r['content'])
-                #LOG.info(f'Batch {i//batch_size + 1} completed. Time elapsed: {perf_counter()-start} seconds. Total URLs: {len(batch_urls)} - Successful: {len([r for r in results if r.get("status") == "200"])} - Failed: {len([r for r in results if r.get("status") != "200"])}')
-        except Exception as e:
-            LOG.critical(f'Crawling not successfull - {e.__class__.__name__} - {str(e)}\nTime elapsed: {perf_counter()-start} seconds.')
-            raise e
+                    dictionary: Dict[str, str] = { "pages": str(r['url']), "contents": str(r['content']), "status": str(r['status']) }
+                    if dictionary['status'] == "200": succsesfully_scraped_contents_list.append(dictionary)
+                    else: failed_scraped_contents_list.append(dictionary)
 
-        LOG.info(f'Crawling completed successfully. Time elapsed: {perf_counter()-start} seconds. Total URLs: {len(urls)}')
+            if failed_scraped_contents_list and len(failed_scraped_contents_list) > 0: raise Exception(f"Crawling not completed - {len(failed_scraped_contents_list)} /{len(urls)} total urls Failed.")
+        except Exception as e:
+            LOG.warn(f'Crawling not successfull - {e.__class__.__name__} - {str(e)}\nTime elapsed: {perf_counter()-start} seconds.')
+
+
+        LOG.info(f'Crawling completed successfully. Time elapsed: {perf_counter()-start} seconds. ')
     
-        return dictionary
+        return succsesfully_scraped_contents_list
 
 
     async def scrape_information(self, url:str) -> Dict[str, str | int]:
         response:httpx.Response
         dictionary: Dict[str,str | int] = {"url": url}
+
         try:
             response = await self.api_call(endpoint=url, head = self.HEADER)
-
             dictionary['content'] = await self.strip_web_elements(response.text)
             dictionary['status'] = response.status_code
-            #LOG.info(f"{dictionary}")
             return dictionary
 
         except Exception as e:
