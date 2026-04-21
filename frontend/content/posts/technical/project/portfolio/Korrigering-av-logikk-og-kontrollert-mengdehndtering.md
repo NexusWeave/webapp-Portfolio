@@ -6,15 +6,22 @@ ingress: |
 status: |
   #### Dagens Aktiviter
 
+
+  \* Oppdaget at systemet kun sendte forespørsler til forsiden i stedet for å følge hele listen med underlenker.
+  \* Erstattet den begrensede forespørselen med en funksjon som henter ut og prosesserer alle tilgjengelige lenker fra nettsiden.
+
+  \* Omgjorde kjernelogikken slik at forespørsler nå sendes i grupper på 10 av gangen for å hindre overbelastning av både eget system og eksterne servere.
+  \* Introduserte styring av samtidige forespørsler for å fjerne uventede hopp i minnebruken og unngå å bli blokkert av eksterne nettsiders begrensninger.
+
+  \* Gått fra en enkel og mangelfull innsamling til en fullstendig metode for datainnsamling som dekker hele innholdsfortegnelsen.
+  \* Økt gjennomstrømmingen i verktøyet, noe som gjør tjenesten klar for større datamengder.
+  \* Gjennomført kvalitetssikring som understreker viktigheten av å validere hvilken funksjon som kalles tidlig i prosjektet for å sikre et korrekt datagrunnlag.
+
   #### Motivasjon & Energi 9 / 10
 
   Kjenner at jeg er litt slapp idag, men ellers en ok dag.
 sources: ''
 ---
-
-### **Fra overfladisk skraping til strukturert datautvinning**
-
-***
 
 Jeg hadde ved et uhell koblet systemet til en funksjon som kun sendte forespørsler til hovednettsiden. Dette førte til at verktøyet bare samlet inn informasjon fra forsiden, i stedet for å gå gjennom den faktiske listen med lenker som var tilgjengelig. Systemet manglet dermed informasjon, noe som resulterte i et mangelfullt datagrunnlag for applikasjonen. Jeg ønsket også å rette funksjonaliteten for å gruppere flere forespørsler til å håndtere større mengder med data.
 
