@@ -27,12 +27,12 @@ class Scanner(AsyncAPIClientConfig):
 
     async def check_status(self) -> bool:
         try :
-            data = await self.extract_information()
+            data = await self.scrape_information(self.URL)
             if not data: raise ValueError(f'Data not found')
 
         except Exception as e: 
             LOG.critical(f'Crawling not successfull - {e.__class__.__name__} - {str(e)}')
-            raise e
+            return False
 
         return True
 
