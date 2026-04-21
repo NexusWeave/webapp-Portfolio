@@ -33,18 +33,20 @@
 <script setup lang="ts">
 
     //  Importing dependencies & types
-    import { fetchRepositories} from '#imports';
+    import { collectInformation } from '#imports';
     import { ref, watch, computed, onMounted } from 'vue';
+    import { mapRepoData } from '~/composables/maps/mapRepoData';
     import { useLanguageStore } from '@/stores/languageBytesStore';
 
     import type { RepositoryData, LanguageData, GithubData } from '~/types/props';
     import type { ButtonItem } from '~/types/navigation';
+    
 
 
     const num: number = 1;
 
     //  --- API Fetching Logic
-    const  { repo, refresh } = await fetchRepositories<RepositoryData>('github');
+    const  { data, refresh } = await collectInformation<RepositoryData, ReturnType<typeof mapRepoData>>('github', '/repository', mapRepoData);
     const errorLink = computed(() => { return { label: "Github Repositories", href: "https://github.com/krigjo25?tab=repositories" }; });
 
     //  --- Pagination Logic
@@ -54,21 +56,21 @@
 
     const paginationData =  computed(() =>
     {
-        if (!repo.value) return;
+        if (!data.value) return;
 
         const n: number = 9;
 
         const start = (currentPage.value - num) * n;
         const end = start + n;
 
-        totalPages.value = Math.ceil(repo.value.length / n);
+        totalPages.value = Math.ceil(data.value.length / n);
 
         if (type.value != '0') { 
-            const data = repo.value.filter((item: any) => item.flags[type.value] === true);
+            const data = data.value.filter((item: any) => item.flags[type.value] === true);
             currentPage.value = 1;
             totalPages.value = Math.ceil(data.length / n);
             return data.slice(start, end) ?? null; }
-        return  repo.value.slice(start, end) ?? null;
+        return  data.value.slice(start, end) ?? null;
     });
 
     //  --- Flags & Computed Logic
@@ -89,7 +91,7 @@
 
     const { increment, formattedLanguages, resetBytes } = useLanguageStore();
 
-    watch(() => repo.value, (newVal) => 
+    watch(() => data.value, (newVal) => 
     {
     if (newVal && newVal.length > 0  && formattedLanguages.length === 0) {
         newVal.forEach((item) => { const data = item.languages; if (data && data.length > 0) data.forEach((lang: LanguageData) => increment(lang.label, lang.bytes)); });
@@ -97,7 +99,7 @@
 }, { immediate: true, deep: true });
     onMounted(() => {
         resetBytes();
-        if (repo.value) repo.value.forEach((item: GithubData) => {
+        if (data.value) data.value.forEach((item: GithubData) => {
             const languages = item.languages;
 
             if (languages && languages.length > 0) languages.forEach((lang: LanguageData) => increment(lang.label, lang.bytes));
