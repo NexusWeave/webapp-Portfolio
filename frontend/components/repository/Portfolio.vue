@@ -38,9 +38,8 @@
     import { mapRepoData } from '~/composables/maps/mapRepoData';
     import { useLanguageStore } from '@/stores/languageBytesStore';
 
-    import type { RepositoryData, LanguageData, GithubData } from '~/types/props';
     import type { ButtonItem } from '~/types/navigation';
-    
+    import type { RepositoryData, LanguageData, GithubData } from '~/types/apis';
 
 
     const num: number = 1;
@@ -66,10 +65,10 @@
         totalPages.value = Math.ceil(data.value.length / n);
 
         if (type.value != '0') { 
-            const data = data.value.filter((item: any) => item.flags[type.value] === true);
+            const filteredItems = data.value.filter((item: any) => item.flags[type.value] === true);
             currentPage.value = 1;
-            totalPages.value = Math.ceil(data.length / n);
-            return data.slice(start, end) ?? null; }
+            totalPages.value = Math.ceil(filteredItems.length / n);
+            return filteredItems.slice(start, end) ?? null; }
         return  data.value.slice(start, end) ?? null;
     });
 
