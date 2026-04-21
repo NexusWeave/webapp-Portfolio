@@ -130,10 +130,10 @@ async def handle_repositories(request: Request) -> Dict[str, str]:
     return {"message": "All Repositories has been successfully synced with database."}
 
 @app.get(f"{PATH}/specialist", tags=["AI", "specialist"], summary="Upserts the Database", description="Upserts the Database", name='AI-specialist')
-async def specialist(request: Request) -> List[Dict[Any, Any]]:
+async def specialist(request: Request) -> Dict[Any, Any]:
     list_of_links: List[str] = ENVIRONMENT.SPECIALIST_LINKS
 
-    json: List[Dict[Any, Any]] = []
+    json: Dict[Any, Any] = {}
     for i in range(len(list_of_links)):
         scan = Scanner(URL = list_of_links[i], KEY = None)
         
@@ -142,11 +142,10 @@ async def specialist(request: Request) -> List[Dict[Any, Any]]:
             if not status : raise Exception(f"Status check failed - {status}")
 
             dictionary = await scan.extract_information()
-            json.append({"code": "200","message": f"Data fetched successfully from {list_of_links[i]}","webpage": list_of_links[i], "data": dictionary})
-            #LOG.warn(f"{json}")
+            json = {"code": "200","message": f"Data fetched successfully from {list_of_links[i]}","webpage": list_of_links[i], "data": dictionary}
         except Exception as e:
             LOG.critical(f"AI-specialist Endpoint : failed with error\n {e.__class__.__name__} - {e}")
-            json.append({"code": "500","message": f"{e}"})
+            json = {"code": "500","message": f"{e}"}
             return json
 
     return json
