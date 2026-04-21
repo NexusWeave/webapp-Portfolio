@@ -74,8 +74,9 @@ class Scanner(AsyncAPIClientConfig):
                 results: List[Dict[str, str | int ]] = await gather(*tasks)
                 LOG.info(f"{results}")
                 for r in results:
-                    dictionary: Dict[str, str] = { "source": str(r['url']), "contents": str(r['content'])}
-                    if dictionary['status'] == "200": succsesfully_scraped_contents_list.append(dictionary)
+                    dictionary: Dict[str, str] = { "source": str(r['url']), "content": str(r['content'])}
+                    if r['status'] == 200:
+                        succsesfully_scraped_contents_list.append(dictionary)
                     else:
                         dictionary['status'] = str(r['status']) 
                         failed_scraped_contents_list.append(dictionary)
