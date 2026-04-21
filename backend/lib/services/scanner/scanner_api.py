@@ -74,11 +74,13 @@ class Scanner(AsyncAPIClientConfig):
                 results: List[Dict[str, str | int ]] = await gather(*tasks)
                 LOG.info(f"{results}")
                 for r in results:
-                    dictionary: Dict[str, str] = { "pages": str(r['url']), "contents": str(r['content']), "status": str(r['status']) }
+                    dictionary: Dict[str, str] = { "source": str(r['url']), "contents": str(r['content'])}
                     if dictionary['status'] == "200": succsesfully_scraped_contents_list.append(dictionary)
-                    else: failed_scraped_contents_list.append(dictionary)
+                    else:
+                        dictionary['status'] = str(r['status']) 
+                        failed_scraped_contents_list.append(dictionary)
 
-            if failed_scraped_contents_list and len(failed_scraped_contents_list) > 0: raise Exception(f"Crawling not completed - {len(failed_scraped_contents_list)} /{len(urls)} total urls Failed.")
+            if failed_scraped_contents_list and len(failed_scraped_contents_list) > 0: raise Exception(f"Crawling not completed - {len(failed_scraped_contents_list)} /{len(urls)} total urls Failed.\n {[f for f in failed_scraped_contents_list]}")
         except Exception as e:
             LOG.warn(f'Crawling not successfull - {e.__class__.__name__} - {str(e)}\nTime elapsed: {perf_counter()-start} seconds.')
 

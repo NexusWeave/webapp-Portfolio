@@ -142,7 +142,7 @@ async def specialist(request: Request) -> Dict[Any, Any]:
             if not status : raise Exception(f"Status check failed - {status}")
 
             dictionary = await scan.extract_information()
-            json = {"code": "200","message": f"Data fetched successfully from {list_of_links[i]}","webpage": list_of_links[i], "data": dictionary}
+            json = {"code": "200","message": f"Data fetched successfully from {list_of_links[i]}","sources": list_of_links[i], "data": dictionary}
         except Exception as e:
             LOG.critical(f"AI-specialist Endpoint : failed with error\n {e.__class__.__name__} - {e}")
             json = {"code": "500","message": f"{e}"}
