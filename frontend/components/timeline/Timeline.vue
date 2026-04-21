@@ -1,7 +1,9 @@
 <template>
         <section :class="[cls[0], cls[1]]">
             <section :class="cls[2], cls[3]">
-                <TimelineFilter :data="filter" :cls="[['flex-column-align-items-center', 'timeline-item'], 'timeline-input-label', 'timeline-input']" @toggleVisibility="toggleVisibility" />
+                <h2 :class="cls[1]">{{  title ?? "Untitled Timeline" }}</h2>
+                <SchemaForm :data="schema" @input="toggleVisibility"/>
+
             </section>
             <section :class="cls[3]">
                 <DatesYear v-for="item in data" :key="item.id"
@@ -22,8 +24,10 @@
 
     //  --- Import & types logic
     import { computed } from 'vue';
-    import type { TimelineItem, TimelineProps } from '~/types/timeline';
 
+    import type { SchemaProps } from '~/types/schema';
+    import type { TimelineItem, TimelineProps } from '~/types/timeline';
+    
     //  --- Props & reactive logic
     const props = withDefaults(defineProps<TimelineProps>(), { cls: () => ['component-blue', 'timeline-container', 'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'] });
 
@@ -46,34 +50,32 @@
             ...parentCls.slice(1).filter(c => !modDefault.includes(c))
         ];
     });
-
+    const title = computed(() => props.title);
    const data = ref<TimelineItem[]>(props.data);
+   
 
-    const filter = computed(() => (
-        {
-            title: props.title,
-            range:
-            {
-                value: '0',
-                type: 'range',
-                name: "timeline-input",
-                rangeMax: data.value.length - 1,
-            }
-        }));
+    const schema =
+    {
+        action: '#',
+        name: props.title.toLowerCase().replace(/\s+/g, '-') ?? '',
+        inputControl: [ { modelValue: '0', type: 'range', name: "timeline-input", rangeMax: data.value.length - 1, }]
+    }
 
-    function toggleVisibility(id:number): void
+
+    function toggleVisibility(id: number): void
         {
             const target = Number(id);
+
             data.value.forEach((item) => 
             {
-
+                console.log(item.id, target);
                 if(item.id === target) item.isVisible = !item.isVisible;
                 else item.isVisible = false;
             });
         };
 
-        //  --- Debugging Logic
-        //console.log("Timeline.vue\n Transfered data :", data);
-        //console.log("Timeline.vue\n Processed data :", data);
-        //console.log("Timeline.vue\n Transfered filter :", filter);
+    //  --- Debugging Logic
+    //console.log("Timeline.vue\n Transfered data :", data.value);
+    //console.log("Timeline.vue\n Processed data :", data);
+    //console.log("Timeline.vue\n Transfered filter :", schema.value);
 </script>

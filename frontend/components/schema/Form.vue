@@ -11,13 +11,14 @@
         :autocomplete="data.autocomplete ?? 'off'"
         :acceptcharset="data.acceptcharset ?? 'UTF-8'">
         
-        <legend> <h3 :class="cls[1]"> {{ data.title }}</h3> </legend>
-
+        <legend v-if="data.title"> <h3 :class="cls[1]"> {{ data.title }}</h3> </legend>
+    
         <section v-if="!!data.inputControl" :class="cls[2]">
             <SchemaInputs v-for="(input, i) in data.inputControl" :key="i"
                 :data="input" 
-                v-model:[input.prompt]="input.value"
-                :cls="!!input.cls ? input.cls : []"/>
+                v-model:[input.prompt]="input.modelValue"
+                :cls="!!input.cls ? input.cls : []"
+                @inputs ="$emit('input', input.modelValue)" />
 
             <section v-if="!!error" class="warning-alert"> <p>{{ error }}</p> </section>
         </section>
@@ -31,7 +32,7 @@
 <script lang="ts" setup>
 
     // Import Dependencies & Types
-    import { computed, ref, reactive } from 'vue';
+    import { computed, ref } from 'vue';
 
     import type { SchemaProps } from '~/types/schema';
 
@@ -40,20 +41,23 @@
     const cls = computed(() => props.cls);
     const data = computed(() => props.data);
 
+
     //  --- Emit Definition Logic
-    const emits = defineEmits(['formModel', 'formData']);
-    emits('formModel', data.value);
+    const emits = defineEmits(['formModel', 'formData', 'input']);
+    if (data.value.inputControl) data.value.inputControl.forEach((input: any) => { if (input.modelValue !== undefined) emits('formModel', input.modelValue);});
+    
 
 
     //  --- Helper functions
     // Error Handling
     const error = ref('');
+
     const handleSubmission = (event: Event) =>
     {
         event.preventDefault();
         // Collect actual form values
         const formData = new FormData(event.target as HTMLFormElement);
-
+        console.log("formData",formData)
         emits('formData', formData);
     };
 

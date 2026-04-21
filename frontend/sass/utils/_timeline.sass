@@ -2,48 +2,18 @@
 @use '../colors/colors' as color
 
 .timeline-container
-    .timeline-item
-        input[type="range"]
-            &::-webkit-slider-runnable-track,
-            &::-moz-range-track
-                cursor: pointer
-                block-size: .9em
-                border-radius: 1em
-                -webkit-appearance: none
-                background: color.$sea-green
-
-            &::-webkit-slider-thumb,
-            &::-moz-range-thumb
-                cursor: pointer
-                block-size: .9em
-                border-radius: 1em
-                -webkit-appearance: none
-                background: color.$sea-green
+    form
+        div
+            input[type="range"]
+                &::-webkit-slider-runnable-track, &::-moz-range-track, &::-webkit-slider-thumb, &::-moz-range-thumb
+                    cursor: pointer
+                    block-size: .9em
+                    border-radius: 1em
+                    -webkit-appearance: none
+                    background: color.$sea-green
 
             inline-size: 100%
-
-        z-index: 1
-        inline-size: 100%
-        @include mix.input-styles(color.$sea-green)
-
-        input[type="range"]
-            inline-size: 100%
-
-            &::-webkit-slider-runnable-track,
-            &::-moz-range-track
-                cursor: pointer
-                block-size: .9em
-                border-radius: 1em
-                -webkit-appearance: none
-                background: color.$sea-green
-
-            &::-webkit-slider-thumb,
-            &::-moz-range-thumb
-                cursor: pointer
-                block-size: .9em
-                border-radius: 1em
-                -webkit-appearance: none
-                background: color.$sea-green
+            @include mix.input-styles(color.$sea-green)
 
     .timeline-active
         opacity: 1 !important
