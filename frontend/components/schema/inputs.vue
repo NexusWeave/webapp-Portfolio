@@ -38,5 +38,5 @@
     const dataMinLength: () => number = () => props.data.minlength ? Number(props.data.minlength) : 0;
 
     //  --- Debug Logic
-    console.warn("Inputs.vue : ", data.value);
+    //console.warn("Inputs.vue : ", data.value);
 </script>
