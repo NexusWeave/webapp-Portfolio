@@ -1,30 +1,31 @@
 <template>
     <form @submit.prevent="handleSubmission"
         :class="cls[0]"
-        :name="data.name"
-        :action="data.action"
-        :method="data.method ?? 'GET'"
-        :rel="data.rel ?? 'noopener'"
-        :target="data.target ?? '_self'"
-        :novalidate="data.novalidate ?? false"
-        v-on:encrypted="data.encrypted ?? false"
-        :autocomplete="data.autocomplete ?? 'off'"
-        :acceptcharset="data.acceptcharset ?? 'UTF-8'">
+        :name="data?.name"
+        :action="data?.action"
+        :method="data?.method ?? 'GET'"
+        :rel="data?.rel ?? 'noopener'"
+        :target="data?.target ?? '_self'"
+        :novalidate="data?.novalidate ?? false"
+        v-on:encrypted="data?.encrypted ?? false"
+        :autocomplete="data?.autocomplete ?? 'off'"
+        :acceptcharset="data?.acceptcharset ?? 'UTF-8'">
         
-        <legend v-if="data.title"> <h3 :class="cls[1]"> {{ data.title }}</h3> </legend>
+        <legend v-if="data?.title"> <h3 :class="cls[1]"> {{ data?.title }}</h3> </legend>
     
-        <section v-if="!!data.inputControl" :class="cls[2]">
-            <SchemaInputs v-for="(input, i) in data.inputControl" :key="i"
+        <section v-if="!!data?.inputControl" :class="cls[2]">
+            <SchemaInputs v-for="(input, i) in data?.inputControl" :key="i"
                 :data="input" 
                 v-model:[input.prompt]="input.modelValue"
                 :cls="!!input.cls ? input.cls : []"
-                @inputs ="$emit('input', input.modelValue)" />
+                @inputs ="$emit('input', input.modelValue)"
+                @prompts ="$emit('ai-context', input.modelValue)"/>
 
             <section v-if="!!error" class="warning-alert"> <p>{{ error }}</p> </section>
         </section>
 
-        <section v-if="!!data.btn" class="flex-row-justify-space-evenly">
-            <NavigationButton v-for="(btn, i) in data.btn" :key="i" :data="btn" :cls="['btn', 'orange-btn']"/>
+        <section v-if="data?.btn" class="flex-row-justify-space-evenly">
+            <NavigationButton v-for="(btn, i) in data?.btn" :key="i" :data="btn" :cls="['btn', 'orange-btn']"/>
         </section>
     </form>
 </template>
@@ -43,8 +44,8 @@
 
 
     //  --- Emit Definition Logic
-    const emits = defineEmits(['formModel', 'formData', 'input']);
-    if (data.value.inputControl) data.value.inputControl.forEach((input: any) => { if (input.modelValue !== undefined) emits('formModel', input.modelValue);});
+    const emits = defineEmits(['formModel', 'ai-context', 'formData', 'input']);
+    if (props.data?.inputControl) props.data?.inputControl.forEach((input: any) => { if (input.modelValue !== undefined) emits('formModel', input.modelValue);});
     
 
 
@@ -57,7 +58,6 @@
         event.preventDefault();
         // Collect actual form values
         const formData = new FormData(event.target as HTMLFormElement);
-        console.log("formData",formData)
         emits('formData', formData);
     };
 

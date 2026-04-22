@@ -23,11 +23,10 @@
 <script setup lang="ts">
 
     //  --- Import & types logic
-    import { computed } from 'vue';
+    import { computed, ref } from 'vue';
 
-    import type { SchemaProps } from '~/types/schema';
     import type { TimelineItem, TimelineProps } from '~/types/timeline';
-    
+
     //  --- Props & reactive logic
     const props = withDefaults(defineProps<TimelineProps>(), { cls: () => ['component-blue', 'timeline-container', 'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'] });
 
@@ -58,7 +57,7 @@
     {
         action: '#',
         name: props.title.toLowerCase().replace(/\s+/g, '-') ?? '',
-        inputControl: [ { modelValue: '0', type: 'range', name: "timeline-input", rangeMax: data.value.length - 1, }]
+        inputControl: [ { id: 'timeline-input', modelValue: '0', type: 'range', name: "timeline-input", rangeMax: data.value.length - 1, }]
     }
 
 
