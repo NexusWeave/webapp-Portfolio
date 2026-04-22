@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 
     //  --- Importing dependencies & types
-    import type { RepoProps } from '@/types/props';
+    import type { RepoProps } from '@/types/apis';
 
     //  --- Props Definition Logic
     const props = defineProps<RepoProps>();
