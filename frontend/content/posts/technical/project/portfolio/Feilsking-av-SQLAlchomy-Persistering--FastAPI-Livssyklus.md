@@ -49,9 +49,13 @@ async def livssyklus_oppstart(app:FlaskAPI):
     # Håndter potensielle feil, slik at systemet ikke krasjer.
 ```
 
-Forsøket på å sikre databaselagringen mislyktes i første omgang, da databasetabellene ikke ble opprettet i opprettningsfasen. Dette viste seg å være en konsekvens av at livssyklushendelsen `@app.on_event('startup')` er utdatert i moderne versjoner av applikasjonen.. Erfaringen bekrefter at selve kommandoen for å klargjøre databasen, `await conn.run_sync(BASE.metadata.create_all)`, var korrekt programmert, men at den var plassert i et uegnet miljø. Løsningen ble derfor å flytte logikken over til en moderne livssyklus kontekst. Ved å bruke denne metoden sikrer vi en trygg håndtering av asynkrone ressurser, som database-initiering og tilkoblingspooler, før applikasjonen åpnes for trafikk. Dette understreker nødvendigheten av å følge tett med på utviklingen i rammeverket for å sikre en stabil og fremtidsrettet løsning.
+Forsøket på å sikre databaselagringen mislyktes i første omgang, da databasetabellene ikke ble opprettet i opprettningsfasen. Dette viste seg å være en konsekvens av at livssyklushendelsen `@app.on_event('startup')` er utdatert i moderne versjoner av applikasjonen.
+
+Ved å analysere feilen i den gamle oppstartslogikken, identifiserte jeg at utfordringen ikke lå i selve koden for å lage tabeller, men i hvordan rammeverket prioriterte oppgavene. Dette førte til at jeg oppdaterte oppstarten med en tryggere struktur for å fange opp feil og styre flyten manuelt:
 
 ```python
+  # FastAPI v2
+  @asynccontextmanager
   async def livssyklus_oppstart(app:FlaskAPI):
     try:
       async with SQLACHOMYDRIVER_INSTANCE.engine.begin() as conn:
