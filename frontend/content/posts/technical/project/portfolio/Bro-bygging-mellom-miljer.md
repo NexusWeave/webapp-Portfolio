@@ -2,22 +2,14 @@
 date: 2025-12-22T00:00:00.000Z
 title: Bro bygging mellom miljøer
 ingress: |
-  Denne læringsloggen dokumenterer overgangen fra et utviklingsmiljø til en
-  produksjonsarkitektur på Google Cloud Run. Ved flytting av backend-logikk til
-  skyen oppstod det utfordringer knyttet til isolasjon i Docker-containere og
-  håndtering av lokale avhengigheter. Gjennom strategisk bruk av arbeidsområder
-  (`WORKDIR`) og manipulering av `PYTHONPATH`, ble applikasjonens søkestier
-  synkronisert for et "Cloud Native" miljø. Erfaringen gir teknisk innsikt i
-  hvordan man delegerer driftsansvar til sky-infrastruktur samtidig som man
-  beholder kontroll over komplekse interne biblioteksstrukturer.
-  
+  Denne læringsloggen dokumenterer overgangen fra et utviklingsmiljø til en produksjonsarkitektur på Google Cloud Run. Ved flytting av backend-logikk til skyen oppstod det utfordringer knyttet til isolasjon i Docker-containere og håndtering av lokale avhengigheter. Gjennom strategisk bruk av arbeidsområder (`WORKDIR`) og manipulering av `PYTHONPATH`, ble applikasjonens søkestier synkronisert for et "Cloud Native" miljø. Erfaringen gir teknisk innsikt i hvordan man delegerer driftsansvar til sky-infrastruktur samtidig som man beholder kontroll over komplekse interne biblioteksstrukturer.
+status: ''
 sources: ''
 ---
 
 Etter å ha stabilisert applikasjonen lokalt og sikret databasekommunikasjonen med Turso-databasen, har prosjektet nådd en viktig milepæl. Applikasjonen fungerer som forventet i utvikler miljøet og er klar for produksjon, for  å gjøre dette profesjonelt, sikkert og tilgjenglig, besluttes det å flytte applikasjonen til en stabil Cloud som Google Cloud. Plattformen lar oss kjøre containeriserte applikasjoner i et miljø som er driftet av fagkyndige.
 
 * Dagen startet med en at Cloud run ikke fant de lokale avhengighetene som det interne biblioteket. Etter at denne utfordringen ble løst
-
 
 Når en applikasjon blir flyttet fra utviklermiljøet til en dataplattform som Google Cloud Run, endre premissene for hvordan koden søker etter sine avhengigheter. Under oppstart i skyen oppstod det en utfordring med at Cloud Run ikke fant de lokale avhengighetene, som det interne biblioteket.
 
@@ -35,6 +27,7 @@ Gjennom prosessen med å flytte applikasjonen til Google Cloud Run har jeg fått
 * Bruken av miljøvariabler som PYTHONPATH har vist seg å være et godt verktøy for å håndtere filstrukturer uten å måtte skrive om applikasjonslogikken. Dette gir  fleksibilitet med interne biblioteker.
 
 Under finner du Dockerfile som ble brukt for å bygge containeren for Google Cloud Run:
+
 ```dockerfile
 FROM python:3.13-slim
 
