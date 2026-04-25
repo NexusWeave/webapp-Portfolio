@@ -1,6 +1,6 @@
 ---
 date: 2025-12-04T00:00:00.000Z
-title: Sikring av Non-blokkerende I/O
+title: Forbedre ressursbruk og uavbrutt drift i koblingspunkt-tjenesten
 ingress: |
   Jeg har fornyet koblingspunkt-tjenesten i prosjektet for å fjerne hindringer som førte til at systemet stoppet opp. Ved å endre hvordan informasjon hentes, har jeg sørget for at programmet nå kan håndtere mange oppgaver samtidig uten å låse seg. Dette frigjør ressurser og gjør at hele flyten i systemet er langt mer effektiv. Grepet sikrer at løsningen er klar for vekst og alltid har kapasitet til å utføre mange nye oppgaver.
 status: |
