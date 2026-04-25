@@ -28,6 +28,6 @@ Målet mitt var å bygge om dette systemet ved hjelp av biblioteket <abbr title=
 * Jeg satte opp nye, koblingspunkter mot databasen som håndterer flere forespørsler samtidig.
 * Jeg sørget for at dataene i databasen alltid stemmer overens med slik systemet forventer å se dem, som reduserer sjansen for logiske feil.
 
-Jeg har nå fjernet teknisk rot og sitter igjen med en ryddigere og mer stabil plattform. Dette reduserer behovet for å vedlikehold i koden og gjør det tryggere å rulle ut nye oppdateringer. Systemet er nå også klargjort for automatiserte tester, for å sikre at funksjonaliteten gir et ønsket resultat.
+Jeg har nå fjernet teknisk rot og sitter igjen med en ryddigere og en stabilisert plattform. Dette reduserer behovet for å vedlikehold i koden og gjør det tryggere å rulle ut nye oppdateringer. Systemet er nå også klargjort for automatiserte tester, for å sikre at funksjonaliteten gir et ønsket resultat.
 
 Gjennom denne prosessen har jeg fått erfart verdien av prinsippet om å skille bekymringer ved bruk av <abbr title="Data Access Object">DAO</abbr>-mønsteret. Jeg har fått en dypere forståelse for hvordan `SQLAlchemy` og `Pydantic` sammen skaper en kontrakt-basert lag mellom kode og database, som reduserer logiske feil. Den viktigste erfaringen er at investering i arkitektur reduserer teknisk etterslep og gjør systemet klargjort  for både samarbeid og automatisert testing.
