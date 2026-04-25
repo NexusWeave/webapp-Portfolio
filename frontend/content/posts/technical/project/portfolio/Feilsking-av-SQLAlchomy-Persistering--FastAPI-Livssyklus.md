@@ -2,15 +2,7 @@
 date: 2025-12-07T00:00:00.000Z
 title: Feilsøking av SQLAlchomy Persistering & FastAPI Livssyklus
 ingress: |
-  En feil ble identifisert der SQLAlchemy ORM-tabeller ikke ble pålitelig
-  persistert ved oppstart av FastAPI-applikasjonen. Utfordringen var å sikre at
-  synkron DDL-logikk (create\_all) ble utført i det asynkrone miljøet. Aksjonen
-  involverte implementering av den korrekte asynkrone kommandoen
-  (conn.run\_sync), men forsøket mislyktes. Konsekvensen av dette ble sporet til
-  bruken av den forkastede (deprecated) livssyklushendelsen.
-  @app.on\_event('startup'). Dette understreker  læringen om nødvendigheten av å
-  følge med på rammeverkets utvikling, for robust håndtering av asynkrone
-  ressurser og databaseinitiering i FastAPI.
+  For å sikre en stabil nettside har jeg fornyet måten systemet starter opp på. Ved å flytte viktige forberedelser til en moderne løsning, unngår vi nå tekniske feil som tidligere gjorde siden treg og ustabil. Jeg har samlet styringen på ett sted og lagt inn sikkerhetsmekanismer som hindrer krasj. Resultatet er en trygg og rask opplevelse for alle besøkende, hvor informasjon alltid er klar til bruk uten unødvendig venting.
 status: |
   **Applikasjon** - `FastAPI`
 
