@@ -1,63 +1,46 @@
 ---
 date: 2025-12-06T00:00:00.000Z
 title: Implementering av Vedvarende Caching med SQLAlchemy og SQLite
-ingress: |
-  En ytelsesutfordring ble identifisert der API-responsen for GitHub-data førte
-  til uakseptabel høy latens (**O**(**n**)-kompleksitet) i FastAPI. For å løse
-  dette ble det initiert et prosjekt for å implementere et vedvarende
-  databaselag basert på SQLAlchemy (med SQLite-driver), målet var å cache
-  eksterne data og eliminere sekundære kall. Backend-infrastrukturen er nå
-  fullført, inkludert detaljert relasjonsdesign og en APScheduler-basert
-  synkroniseringsmekanisme for lavtrafikkperioder. Status: Til tross for
-  vellykket arkitektur, ble det under testing avdekket to feil knyttet til
-  databasepersistering ved oppstart og APScheduler-integrasjon i
-  FastAPI-livssyklusen. Prosessen har gitt dyp faglig læring i universell
-  ORM-oppsett og viktigheten av korrekt håndtering av applikasjonens
-  Startup-hendelser.
+ingress: ''
+status: |
+  #### Dagens Aktiviteter
+
+  #### Motivasjon & Energi - 10/10
+
+  Dagen er så fin den kan bli
+sources: ''
 ---
 
-API-responsen for henting av Github repository data i FastAPI applikasjonen viste en **uakseptabel høy latens**, dette er en direkte konsekvens av **asynkrone kall til Github REST API**, der henting og formatering av data tok **estimert O**(**n**) **tid**, hvor **n** er antall repositories. Denne tidskompleksiteten var ugunstig for brukeropplevelsen og skalerbarheten.
+Koblingspunktet for henting av prosjektene mine som ligger på Github  i `FastAPI` applikasjonen brukte for lang tid for å hente alle prosjekter, dette er en konsekvens av at systemet må hente og formatere data x antall ganger hvor x er antall prosjekter. Dette bidrar til at informasjonen hentes tregere for besøkede
 
-Eliminering av den direkte avhengigheten til Github API for forespørsler og redusere responstiden. Dette gjorde at oppgaven ble todelt.
+Målet var å redusere tiden for at prosjekter ble vist for besøkende, som gjør at oppgaven blir todelt
 
-* Etablere et **databaselag** som er bassert på SQLAlchomy, med  SQLite driver, for å lagre den formaterte Github-informasjonen, slik at NUXT-applikasjonen kan hente data med minimal ventetid.
-* Migrere all tilleggsinformasjon  som videoer og demo-lenker direkte inn i den nye databasen for å sikre enhetlig datalagring og eliminere sekundære kall.
+* Jeg fjernet den direkte koblingspunktet mellom github.com og hjemmesiden og heller etablerte et **databaselag** som er bassert på **SQLAlchomy**, med  **SQLite** driver, for å lagre den formaterte Github-informasjonen, slik at NUXT-applikasjonen kan hente data med minimal ventetid.
+* Jeg slosammen all tilleggsinformasjon  som videoer og demo-lenker direkte inn i den nye databasen for å sikre enhetlig datalagring og fjerne sekundære kall.
 
-Jeg gjorde følgende handlinger for å implementere vedvarende caching:
-* De nødvendige avhengighetene for SQLAlchemy som ORM ble importert og
-  Database-modellene ble bygget for å sikre riktig datastruktur og relasjoner.
+For å legge til vedvarende cahing, gjorde jeg som følgende:
 
-For å sikre en robust database arkitektur, ble det implementert fem database
-modeller, for å lagre og koble informasjonen med hverandre.
+* Jeg bygget Databasemodellene for å sikre datastrukturen og relasjoner mellom tabellene og importerte de nødvendige avhengighetene for SQLAlchemy som <abbr title="En teknikk som forenkler prosessen med å bytte database ved behov.">ORM</abbr>.
 
-* En for å lagre repositorydata (Primær-tabell),
+For å sikre at sysetmet er pålitelig, la jeg til tre databasemodeller, for å lagre og koble informasjonen med hverandre.
+
+* En for å lagre prosjekt data, dette er den primære modellen,
 * En for å lagre de unike programmeringsspråkene,
 * En for å lagre informasjon om bidragytere.
 
-Det ble også laget to assosiasjonstabeller for å håndtere relasjonene mellom dataen som var kommet inn.
+Jeg la til to assosiasjonstabeller som håndterer relasjonene mellom dataen som var kommet inn.
 
-* En for å assosiere kodespråkene med repositories,
-* En for å assosiere bidragsytere med repositories.
+* En for å assosiere kodespråkene for hvert prosjekt,
+* En for å assosiere bidragsytere for hvert prosjekt.
 
+Det tidskrevende koblingspunktet til Github ble utført i et kontrollert miljø en gang for å hente de nødvendige dataene. Disse rådataene ble deretter formatert og lagret i de nye databasetabellene.  [APSchedule](https://pypi.org/project/APScheduler/) ble valgt for å sette opp periodiske jobber, som en konsekvens av at programmet har en stor fleksibilitet i tidsstyringen og støtte for teknikken for å kjøre flere forespørsler samtidig. Disse jobbene kjører daglig mellom kl\*\* 02:00\*\* - **05:00** , et tidspunkt valgt for å redusere ressursbruken. Dette sikrer at databasen holdes oppdatert uten å påvirke front-end ytelsen.
 
-#### Datainnlastning og Periodisk Synkronisering
-Det tidskrevende O(n)-kallet til Github ble utført i et kontrollert miljø en gang for å hente de nødvendige dataene. Disse rådataene ble deretter formatert og lagret i de nydesignede databasetabellene. [APSchedule](https://pypi.org/project/APScheduler/) ble valgt for å sette opp periodiske jobber. Disse jobbene kjører daglig mellom kl 02:00 og 05:00 , et tidspunkt valgt som en konsekvens av lavest forventede trafikktrykk. Dette sikrer at databasen holdes oppdatert uten å påvirke front-end ytelsen.
+Logikken for caching i infrastrukturen er fullført og klargjort for produksjon, men det gjenstår å koble logikken mot NUXT-applikasjonen. Dette er det siste steget som skal gjøres etter at de Identifiserte feilene har blitt fikset.
 
-
-##### Status oppdatering og FeilIdentifisering
-
-Backend-caching-infrastrukturen er fullført og klar for konsum, men det gjenstår å koble til NUXT-applikasjonen. Dette er det siste steget som skal gjøres etter at de Identifiserte feilene har blitt fikset. Under testingen oppsto det to feil i FastAPI-applikasjonen
+Under testingen oppsto det to utfordringer i FastAPI-applikasjonen
 
 * Databasene har blitt opprettet, men tabellene ble ikke pålitelig lagret ved
-  oppstart
+  oppstart.
+* `APScheduler`-loggikken for periodisk synkronisering har blitt definert, men loggmeldingene bekrefter at funksjonaliteten ikke ble installert ved oppstart. Dette indikerer på at `APSscheduler`-logikken ikke blir presistert i applikasjonens livssyklus.
 
-* APScheduler-loggikken for periodisk synkronisering har blitt definert, men loggmeldingene bekrefter at funksjonaliteten ikke ble initiert ved oppstart. Dette indikerer på at scheduler-logikken ikke blir presistert i FastAPI-applikasjonens livssyklus.
-
-##### ORM-forståelse og Presisering av Livssyklus
-
-Prosjektet har gitt en dypere innsikt i SQLAlchomy ORMs funksjonalitet og arkitektur. Spesielt ble viktigheten av å sette opp en universell OMR-struktur som er kompatibel med flere database-drivere som ( SQLite, PostgresSQL, MariDB, o.l) understreket.
-
-Feilidentifseringen har synliggjort rollen til Startup og Shutdown-hendelser i FastAPI, spesielt ved integrering av databasemodeller og tredjeparts planleggere (APScheduler)
-
-Jeg forstår nå hvordan SQLAlchomy ORMen fungerer, og lært å sette opp en unviersell SQLAlchomy ORM, som kan brukes på flere database drivere.
-
+Gjennom denne omgjøringen har prosjektet gitt meg en innsikt i `SQLAlchomy` ORMs funksjonalitet og struktur.  Jeg ble spessielt oppmersom på viktigheten av å sette opp en universell struktur som er kompatibel med flere databasedrivere som ( `SQLite`, `PostgresSQL`, `MariDB`, o.l). Feilidentifseringen har synliggjort rollen til Startup og Shutdown-hendelser i FastAPI, spesielt ved integrering av databasemodeller og tredjeparts planleggere (APScheduler) Jeg forstår nå hvordan SQLAlchomy ORMen fungerer, og lært å sette opp en unviersell SQLAlchomy ORM, som kan brukes på flere databasedrivere.
