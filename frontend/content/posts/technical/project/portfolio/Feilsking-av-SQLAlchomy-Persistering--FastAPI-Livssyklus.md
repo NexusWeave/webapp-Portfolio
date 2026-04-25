@@ -11,30 +11,28 @@ ingress: |
   @app.on\_event('startup'). Dette understreker  læringen om nødvendigheten av å
   følge med på rammeverkets utvikling, for robust håndtering av asynkrone
   ressurser og databaseinitiering i FastAPI.
+status: ''
 sources: ''
 ---
 
-Som det ble dokumentert i den tidligere loggen (datert 06-12-25), ble det identifisert en feil i FastAPI-applikasjonen.
-Database objektene  ble opprettet gjennom **SQLAlchemy ORM**, men alikavel ble de **ikke pålitelig lagret ved applikasjonsstart**. Dette kompromitterte det vedvarende caching-laget og forhindret at systemet ble operatvt. Dette peker mot en ukorrekt implementasjon av oppstartslogikken i Fast-API's livssyklushendelse
+Applikasjon : `FastAPI`
 
-målet vil sikre at SQLAlchemy korrekt oppretter og presisterer alle nødvendige databasetabeller før FastAPI starter å behandler innkommende forespørsler. Dette er en essensiell del av programmeringen for å sikre at caching-laget er funksjonell.
+``<abbr title="Object-Relation Mapping - en teknikk som kartlegger SQL-spørringer i programmering">ORM</abbr>: `SQLAlchemy`
 
-#### Refaktorering & Løsning FastAPI-livssyklus
+Som det ble dokumentert i den tidligere loggen *[Smartere lagring forbedrer flyten i nettsiden](https://krigjo25.no/logs/records/implementering-av-vedvarende-caching-med-sqlalchemy-og-sqlite/)*, ble det identifisert en feil i hvordan database-tabellene alikavel ikke ble pålitelig lagret ved applikasjonsstart. Dette forhindret at systemet ikke lagret dataene fra koblingspunktene. De identifiserte feilene indikerer på en ukorrekthet i oppstartslogikken til applikasjonens livssyklushendelse.
 
-Siden livssyklusen til FastAPI er Asynkron, ble det etablert en asynkron livssyklus for FastAPI-applikasjonen ved bruk av 
+Målet er å sikre at ORM-en klargjør de nødvendige databasetabellene før applikasjonen begynner å behandle forespørsler. Dette sikrer at mellomlagringen gir brukerene den raske opplevelsen som er forventet i en moderne nettside.
+
+* For at livssyklusen til applikasjonen kan behandle flere forespørsler samtidig, ble det lagt til nøkkelordet `async` for at livssyklusen, kan håndtere flere forespørsler
 
 ```python
-
-  @app.on_event("startup") # Deperached in FlaskAPI v2
-  async def livssyklus_oppstart(app:FlaskAPI):
-
+# FastAPI v1
+@app.on_event("startup")
+async def livssyklus_oppstart(app:FlaskAPI):
 ```
 
-##### Håndteringen av Presisteringsfeilen
-
-Det etablert en felles kjerne, for å håndtere den modulære database-logikken. Dette innebar import av variabelen som inneholdt declarative\_base og Driver-klassen. Denne strukturen er essensiell i applikasjonen for å kunne instansiere hele SQLAlchemy-applikasjonen fra ett sentralt punkt. 
-
-Inne i livssyklusen til FastAPI ble det etablert en try except-blokk, for å prøve å starte opp en context mananger av Databasen. Der alle tabellene, ble definert og klar gjort for å ta i mot data. 
+* For å gjøre systemet mer oversiktlig, har jeg samlet all database-logikk i en felles kjerne. Dette gjør det mulig å styre hele databasen fra ett sentralt punkt i systemet.
+* Jeg la også  inn en sikkerhetsmekanisme som `try-except` blokk som forsøker å klargjøre alle tabellene når programmet starter.
 
 ```python
 
@@ -42,16 +40,9 @@ Inne i livssyklusen til FastAPI ble det etablert en try except-blokk, for å pr�
     async with SQLACHOMYDRIVER_INSTANCE.engine.begin() as conn:
       await conn.run_sync(BASE.metadata.create_all)
   except Exception as ex:
-    # Do Something when an exception occurs
+    # Håndter potensielle feil, slik at systemet ikke krasjer.
 ```
 
+Forsøket på å sikre databaselagringen mislyktes i første omgang, da databasetabellene ikke ble opprettet pålitelig ved applikasjonsstart. Dette viste seg å være en konsekvens av at livssyklushendelsen `@app.on_event('startup')` er utdatert i moderne versjoner av rammeverket. Denne metoden er ikke en funksjonaitet forhåndtering av opprettelser av tabeller, noe som førte til en kritisk i oppstartingsfasen.
 
-##### Mislykket Persistering
-
-Førsøket på å sikre databasepersistering mislyktes. Databasetabellene ble ikke opprettet pålitelig ved applikasjonsstart. Dette er en konsekvens av at den implementerte livssyklyshendelsen `@app.on_event('start-up')` har blitt forkastet i moderne versjoner av FastAPI og var ikke lenger pålitelig for DDL-logikk. Den moderene metoden er nå å definere en funksjon og bruke lifespan context.
-
-Dette understreker nødvendigheten av å følge med på rammeverkets utvikling. Bruken av den utdaterte @app.on\_event førte til en feil i initialiseringsfasen.
-
-#### Asynkron DDL og Feilhåndtering
-
-Læringen bekrefter at den korrekte asynkrone DDL-kommandoen `await conn.run_sync(BASE.metadata.create_all)`, var korrekt, men at det var plassert i feil container. Løsningen på dette er å bruke lifespan contextmananger for å pålitelig håndtere asynkrone ressurser som ( database-initering og tilkoblingspooler) i FastAPI.
+Erfaringen bekrefter at selve kommandoen for å klargjøre databasen, `await conn.run_sync(BASE.metadata.create_all)`, var korrekt programmert, men at den var plassert i et uegnet miljø. Løsningen ble derfor å flytte logikken over til en moderne livssyklus kontekst. Ved å bruke denne metoden sikrer vi en trygg håndtering av asynkrone ressurser, som database-initiering og tilkoblingspooler, før applikasjonen åpnes for trafikk. Dette understreker nødvendigheten av å følge tett med på utviklingen i rammeverket for å sikre en stabil og fremtidsrettet løsning.
