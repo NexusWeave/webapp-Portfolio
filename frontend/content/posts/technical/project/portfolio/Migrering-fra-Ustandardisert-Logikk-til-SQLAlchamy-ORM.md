@@ -2,16 +2,16 @@
 date: 2025-12-01T00:00:00.000Z
 title: Omgjøring fra Ustandardisert Logikk til ORM
 ingress: |
-  Jeg har modernisert datalaget ved å legge til biblioteket **SQLAlchemy** og gå fra en ustandardisert logikk over til en <abbr title="Object-Relational Mapping. En programmeringsteknikk som lar deg kommunisere med en relasjonsdatabase ved hjelp av Objekt orientert kode">**ORM**</abbr>-basert struktur. Ved å etablere <abbr title="Data Access Object er et designmønster som brukes for å skille forretningslogikk fra datatilgang">DAO-lag</abbr> som skiller databaseoperasjoner fra forretningslogikken, har jeg forbedret kodekvaliteten og vedlikeholdbarheten betydelig. Omgjøringen innebar et oppsett av Motor- og økt instanser samt definisjon av modeller. Resultatet er en ryddigere arkitektur som sikrer robust databaselogikk og følger moderne Python-standarder for profesjonell utvikling.
+  Jeg har gjennomført en omfattende fornyelse av databasetjenesten for å sikre en langt mer stabil og effektiv hverdag i prosjektet mitt. Ved å rydde opp i hvordan informasjon håndteres, har jeg skapt et skille som gjør løsningen min enklere å pleie og videreutvikle i fremtiden. Dette grepet reduserer risikoen for feil og sikrer at jeg kan levere nye funksjoner raskere. Resultatet er en ryddig og trygg oppbygging med stor verdi.
 status: |
   #### Dagens Aktiviteter
 
-  * Erstattet utdatert databaselogikk med en moderne bransjestandard for å sikre et pålitelig og fremtidsrettet system.
+  * Erstattet utdatert databaselogikk med `SQLAlchomy`-biblioteket for å sikre et pålitelig og fremtidsrettet system.
   * Skilte tekniske databaseoppgaver fra systemets logikk, noe som gjør løsningen modulær og reduserer risikoen for følgefeil ved fremtidige endringer.
-  * Forenklet malen for håndtering av informasjon <abbr title="Create, Read, Update & Delete. De fire grunnleggende operasjonene for å håndtere data i databaser.">CRUD</abbr>, som sikrer lik praksis i hele koden og gjør den enklere for andre utviklere å forstå
-  * Etablerte nye og sikre koblingspunkter mot databasen for mer effektiv trafikkflyt og høyere stabilitet.
-  * Definerte objektorienterte modeller som sørger for at dataene alltid samsvarer med systemets krav, noe som minimerer faren for logiske feil.
-  * Fjernet teknisk gjeld og klargjorde arkitekturen for automatiserte tester, slik at fremtidige oppdateringer kan rulles ut med høyere trygghet.
+  * Forenklet malen for håndtering av <abbr title="Create, Read, Update & Delete. De fire grunnleggende operasjonene for å håndtere data i databaser.">CRUD</abbr> basert informasjon, som sikrer lik praksis i hele koden og gjør den enklere for andre utviklere å forstå
+  * Etablerte  nye og sikre koblingspunkter mot databasen, som forbedrer trafikkflyten og stabiliserer systemet.
+  * Definerte <abbr title="En mal som forteller utvikleren hvilken data som er tillat">objektorienterte modeller</abbr>, dettesørger for at dataene alltid samsvarer med systemets krav, som reduserer logiske feil.
+  * Fjernet teknisk etterslet og klargjorde arkitekturen for automatiserte tester, slik at fremtidige oppdateringer kan rulles ut stabilt.
 
   #### Motivasjon & Energi 10 / 10
 
