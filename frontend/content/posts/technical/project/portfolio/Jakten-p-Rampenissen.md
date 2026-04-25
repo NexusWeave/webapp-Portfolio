@@ -2,40 +2,32 @@
 date: 2025-12-18T00:00:00.000Z
 title: Jakten på Rampenissen
 ingress: |
-  I moderne asynkron webutvikling kan samspillet mellom database og API-modeller
-  by på uventede utfordringer, her omtalt som "rampenisser". Denne loggen
-  dokumenterer feilsøkingen av en s`qlalchemy.exc.MissingGreenlet`-feil, utløst
-  av ulovlig Lazy Loading i en asynkron sesjon. Ved å navigere fra en enkel
-  spørring til en dypere, nøstet Eager Loading-struktur, belyses ikke bare den
-  tekniske løsningen, men også de påfølgende konsekvensene for API-kontrakten.
-  Gjennom en analyse av Pydantics computed properties og SQLAlchemys
-  relasjonsstier, utforskes balansen mellom å hente komplette data og å unngå
-  teknisk gjeld i presentasjonslaget.
+  I moderne asynkron webutvikling kan samspillet mellom database og API-modeller by på uventede utfordringer, her omtalt som "rampenisser". Denne loggen dokumenterer feilsøkingen av en s`qlalchemy.exc.MissingGreenlet`-feil, utløst av ulovlig Lazy Loading i en asynkron sesjon. Ved å navigere fra en enkel spørring til en dypere, nøstet Eager Loading-struktur, belyses ikke bare den tekniske løsningen, men også de påfølgende konsekvensene for API-kontrakten. Gjennom en analyse av Pydantics computed properties og SQLAlchemys relasjonsstier, utforskes balansen mellom å hente komplette data og å unngå teknisk gjeld i presentasjonslaget.
+status: ''
 sources: ''
 ---
+
 ### Eliminering av ulovlig Lazy Loading i SQLAlchemy
 
 #### Rampenisser med asynkrone relasjoner
 
-
 Under utvikling av API-endepunkter for å hente ut repositories og deres tilhørende språkdata, blir det benyttet av SQLAlchomey sin måte å hente ut databaserekorder. Da Pyndantic-modellen skulle validere og mappe dataene, oppsto utfordringen om `sqlalchemy.exc.MissingGreenlet`.
 
-  ```python
+```python
 
-  async def select_repositories(self) -> Sequence[RepositoryModel]:
-    # Velge modelen som skulle hentes
-    QUERY = select(RepositoryModel).options(
+async def select_repositories(self) -> Sequence[RepositoryModel]:
+  # Velge modelen som skulle hentes
+  QUERY = select(RepositoryModel).options(
 
-    # Koble opp assosiasjons modellen
-      selectinload(RepositoryModel.lang_assosiations)
+  # Koble opp assosiasjons modellen
+    selectinload(RepositoryModel.lang_assosiations)
 
-    # Vente på at serveren kjører Statement
-     repo = await self.session.execute(QUERY)
+  # Vente på at serveren kjører Statement
+   repo = await self.session.execute(QUERY)
 
-     # Returnere alle databaserekorder
-     return repo.scalars().all()
-  ```
-
+   # Returnere alle databaserekorder
+   return repo.scalars().all()
+```
 
 #### Rampenissen, Lazy Loading
 
@@ -60,7 +52,7 @@ async def select_repositories(self) -> Sequence[RepositoryModel]:
 
   # Returnere alle databaserekorder
   return repo.scalars().all()
-  ```
+```
 
 #### Evaluering & Refleksjon
 
