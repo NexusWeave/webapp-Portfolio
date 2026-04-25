@@ -19,15 +19,15 @@ status: |
 sources: ''
 ---
 
-Systemets måte å kommunisere med databasen på var utdatert. Selv om det fungerte, var det ikke et pålitelig system. Dette gjorde det vanskelig å vedlikeholde koden og økte risikoen for feil hver gang jeg skulle gjøre endringer eller legge til ny funksjonalitet.
+Systemets måte å kommunisere med databasen på var utdatert. Selv om det fungerte, var det ikke verken pålitelig eller en optimalt system. Dette gjorde det vanskelig å vedlikeholde koden, og koden var ikke optimalisert for en fremtidige funksjonaliteter, 
 
-Målet mitt var å bygge om dette systemet ved hjelp av bransjestandarden <abbr title="Et ORM basert bibliotek i programmeringsspråket python">`SQLAlchemy`</abbr>. Oppgaven handlet om å standardisere hvordan data lagres og hentes, slik at systemet er pålitelig, forenkle den tiden det tar for at andre kan sette seg inn i koden, og klargjør tjenesten for fremtidig vekst.
+Målet mitt var å bygge om dette systemet ved hjelp av biblioteket <abbr title="Et ORM basert bibliotek i programmeringsspråket python">`SQLAlchemy`</abbr>. Oppgaven handlet om å standardisere hvordan data lagres og hentes, slik at systemet er pålitelig, og klargjør tjenesten for framtidig vekst.
 
 * Jeg separerte de tekniske databaseoppgavene fra selve forretningslogikken. Dette betyr at om vi endrer på databasen, påvirker det ikke resten av systemet.
 * Med hjelp av <abbr title="Et python basert bibliotek, som validerer kode">`Pydandic`</abbr>-modeller har jeg  laget en felles mal for hvordan jeg legger til, leser eller sletter informasjon, som sikrer lik praksis i hele løsningen.
-* Jeg satte opp nye, trygge koblingspunkter mot databasen som håndterer trafikken mer effektivt.
+* Jeg satte opp nye, koblingspunkter mot databasen som håndterer flere forespørsler samtidig.
 * Jeg sørget for at dataene i databasen alltid stemmer overens med slik systemet forventer å se dem, som reduserer sjansen for logiske feil.
 
-Jeg har nå fjernet teknisk rot og sitter igjen med en ryddigere og mer stabil plattform. Dette reduserer behovet for å vedlikeholde koden og gjør det tryggere å rulle ut nye oppdateringer. Systemet er nå også klargjort for automatiserte tester, for å sikre at funksjonaliteten gir et ønsket resultat.
+Jeg har nå fjernet teknisk rot og sitter igjen med en ryddigere og mer stabil plattform. Dette reduserer behovet for å vedlikehold i koden og gjør det tryggere å rulle ut nye oppdateringer. Systemet er nå også klargjort for automatiserte tester, for å sikre at funksjonaliteten gir et ønsket resultat.
 
-Gjennom denne prosessen har jeg fått erfart verdien av prinsippet om å skille bekymringer ved bruk av <abbr title="Data Access Object">DAO</abbr>-mønsteret. Jeg har fått en dypere forståelse for hvordan `SQLAlchemy` og `Pydantic` sammen skaper en kontrakt-basert lag mellom kode og database, som reduserer logiske feil. Den viktigste erfaringen er at investering i arkitektur tidlig reduserer teknisk gjeld og gjør systemet klargjort  for både samarbeid og automatisert testing.
+Gjennom denne prosessen har jeg fått erfart verdien av prinsippet om å skille bekymringer ved bruk av <abbr title="Data Access Object">DAO</abbr>-mønsteret. Jeg har fått en dypere forståelse for hvordan `SQLAlchemy` og `Pydantic` sammen skaper en kontrakt-basert lag mellom kode og database, som reduserer logiske feil. Den viktigste erfaringen er at investering i arkitektur reduserer teknisk etterslep og gjør systemet klargjort  for både samarbeid og automatisert testing.
