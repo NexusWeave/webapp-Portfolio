@@ -4,7 +4,7 @@ title: Overgang til moderne livssyklus for database
 ingress: |
   For å sikre en stabil nettside har jeg fornyet måten systemet starter opp på. Ved å flytte viktige forberedelser til en moderne løsning, unngår vi nå tekniske feil som tidligere gjorde siden treg og ustabil. Jeg har samlet styringen på ett sted og lagt inn sikkerhetsmekanismer som hindrer krasj. Resultatet er en trygg og rask opplevelse for alle besøkende, hvor informasjon alltid er klar til bruk uten unødvendig venting.
 status: |
-  #### **Programvare informasjon**
+  #### Programvare informasjon
 
   **Applikasjon** - `FastAPI` <abbr title="Object-Relation Mapping - en teknikk som kartlegger SQL-spørringer i programmering">**ORM**</abbr> - `SQLAlchemy`
 
