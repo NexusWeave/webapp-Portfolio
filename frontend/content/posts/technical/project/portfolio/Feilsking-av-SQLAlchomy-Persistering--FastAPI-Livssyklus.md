@@ -11,13 +11,35 @@ ingress: |
   @app.on\_event('startup'). Dette understreker  læringen om nødvendigheten av å
   følge med på rammeverkets utvikling, for robust håndtering av asynkrone
   ressurser og databaseinitiering i FastAPI.
-status: ''
+status: |
+  **Applikasjon** - `FastAPI`
+
+  ``<abbr title="Object-Relation Mapping - en teknikk som kartlegger SQL-spørringer i programmering">**ORM**</abbr> - `SQLAlchemy`
+
+  #### Dagens Aktiviteter
+
+  * Analyserte feil i applikasjonsstarten der database-tabeller ikke ble opprettet som forventet.
+  * Identifiserte at hovedårsaken var bruken av den utdaterte hendelsen `@app.on_event('startup')`.
+  * Jeg Konkluderte med at denne metoden ikke lenger gir nødvendig pålitelighet for opprettelser av tabellstrukturer i applikasjonen.
+
+  <!---->
+
+  * Jeg etablerte en felles kjerne for systemet for å samle all database-logikk på ett sted.
+  * Importerte og konfigurerte sentrale komponenter som `declarative_base` og Driver-klassen. Dette grepet sikrer at hele ORM-strukturen kan instansieres og styres fra ett sentralt punkt, noe som gjør koden enklere å vedlikeholde.
+
+  <!---->
+
+  * Jeg introduserte en `try-except`-blokk rundt oppstartslogikken for å hindre systemkrasj ved oppstartsproblemer.
+  * Jeg brukte asynkron konteksthåndtering `async with` for å sikre at databaseforbindelser åpnes og lukkes korrekt under oppsett.
+  * Flyttet logikken for tabellopprettelse `conn.run_sync(BASE.metadata.create_all)` fra de utdaterte hendelsene til en moderne lifespan context.
+  * Implementerte `async`-nøkkelordet for å sikre at systemet kan håndtere flere oppgaver parallelt uten å blokkere tråder.
+  * Dette sikrer at databasen og mellomlagringen er fullstendig operative før applikasjonen begynner å ta imot eksterne forespørsler.
+
+  #### Motivasjon & Energi 10 / 10
+
+  Dagen er så fin den kan bli
 sources: ''
 ---
-
-Applikasjon : `FastAPI`
-
-``<abbr title="Object-Relation Mapping - en teknikk som kartlegger SQL-spørringer i programmering">ORM</abbr>: `SQLAlchemy`
 
 Som det ble dokumentert i den tidligere loggen *[Smartere lagring forbedrer flyten i nettsiden](https://krigjo25.no/logs/records/implementering-av-vedvarende-caching-med-sqlalchemy-og-sqlite/)*, ble det identifisert en feil i hvordan database-tabellene alikavel ikke ble pålitelig lagret ved applikasjonsstart. Dette forhindret at systemet ikke lagret dataene fra koblingspunktene. De identifiserte feilene indikerer på en ukorrekthet i oppstartslogikken til applikasjonens livssyklushendelse.
 
