@@ -2,7 +2,7 @@
 date: 2025-12-04T00:00:00.000Z
 title: Sikring av Non-blokkerende I/O
 ingress: |
-  Hovedklassen for <abbr title="Application Programming Interface">API</abbr>-konfigurasjoner inneholdt <abbr title="Vente på oppgave">synkron</abbr> <abbr title="Innhenting av informasjon">I/O</abbr> som låste ressurser og skapte risiko for stans. For å sikre at systemet håndterer flere forespørsler samtidig, har jeg erstattet `requests` med `httpx`. Ved å legge til `async` og `await` i hele kjeden, kan oppgaver nå pauses uten å stoppe programmet. Dette frigjør ressurser og sikrer en stabil struktur for høy belastning.
+  Jeg har fornyet koblingspunkt-tjenesten i prosjektet for å fjerne hindringer som førte til at systemet stoppet opp. Ved å endre hvordan informasjon hentes, har jeg sørget for at programmet nå kan håndtere mange oppgaver samtidig uten å låse seg. Dette frigjør ressurser og gjør at hele flyten i systemet er langt mer effektiv. Grepet sikrer at løsningen er klar for vekst og alltid har kapasitet til å utføre mange nye oppgaver.
 status: |
   #### Dagens Aktiviteter
 
