@@ -4,28 +4,21 @@ title: Overgang til moderne livssyklus for database
 ingress: |
   For å sikre en stabil nettside har jeg fornyet måten systemet starter opp på. Ved å flytte viktige forberedelser til en moderne løsning, unngår vi nå tekniske feil som tidligere gjorde siden treg og ustabil. Jeg har samlet styringen på ett sted og lagt inn sikkerhetsmekanismer som hindrer krasj. Resultatet er en trygg og rask opplevelse for alle besøkende, hvor informasjon alltid er klar til bruk uten unødvendig venting.
 status: |
-  **Applikasjon** - `FastAPI`
+  #### **Programvare informasjon**
 
-  ``<abbr title="Object-Relation Mapping - en teknikk som kartlegger SQL-spørringer i programmering">**ORM**</abbr> - `SQLAlchemy`
+  **Applikasjon** - `FastAPI` <abbr title="Object-Relation Mapping - en teknikk som kartlegger SQL-spørringer i programmering">**ORM**</abbr> - `SQLAlchemy`
 
   #### Dagens Aktiviteter
 
   * Analyserte feil i applikasjonsstarten der database-tabeller ikke ble opprettet som forventet.
-  * Identifiserte at hovedårsaken var bruken av den utdaterte hendelsen `@app.on_event('startup')`.
-  * Jeg Konkluderte med at denne metoden ikke lenger gir nødvendig pålitelighet for opprettelser av tabellstrukturer i applikasjonen.
-
-  <!---->
-
+  * Identifiserte at hovedårsaken var bruken av den utdaterte hendelsen `@app.on_event('startup')`. Jeg konkluderte med at denne metoden ikke gir nødvendig pålitelighet nåværende versjon av applikasjonen for opprettelser av tabellstrukturer.
   * Jeg etablerte en felles kjerne for systemet for å samle all database-logikk på ett sted.
-  * Importerte og konfigurerte sentrale komponenter som `declarative_base` og Driver-klassen. Dette grepet sikrer at hele ORM-strukturen kan instansieres og styres fra ett sentralt punkt, noe som gjør koden enklere å vedlikeholde.
-
-  <!---->
-
+  * Importerte og konfigurerte sentrale komponenter som `declarative_base` og driver-klassen. Dette grepet sikrer at hele ORM-strukturen kan instansieres og styres fra ett sentralt punkt, som gjør koden enklere å vedlikeholde.
   * Jeg introduserte en `try-except`-blokk rundt oppstartslogikken for å hindre systemkrasj ved oppstartsproblemer.
-  * Jeg brukte asynkron konteksthåndtering `async with` for å sikre at databaseforbindelser åpnes og lukkes korrekt under oppsett.
-  * Flyttet logikken for tabellopprettelse `conn.run_sync(BASE.metadata.create_all)` fra de utdaterte hendelsene til en moderne lifespan context.
-  * Implementerte `async`-nøkkelordet for å sikre at systemet kan håndtere flere oppgaver parallelt uten å blokkere tråder.
-  * Dette sikrer at databasen og mellomlagringen er fullstendig operative før applikasjonen begynner å ta imot eksterne forespørsler.
+  * Jeg brukte en teknikk for å håndtere flere forespørsler i konteksthåndtering `async with` som sikrer at databaseforbindelser åpnes og lukkes korrekt under oppsett.
+  * Flyttet logikken for tabellopprettelse `conn.run_sync(BASE.metadata.create_all)` fra de utdaterte hendelsene til en moderne livssyklus kontekst.
+  * la til nøkkelordet `async`for å sikre at systemet kan håndtere flere oppgaver parallelt uten å hindre andre oppgaver.
+  * Dette sikrer at databasen og mellomlagringen er operative før applikasjonen begynner å ta imot eksterne forespørsler.
 
   #### Motivasjon & Energi 10 / 10
 
