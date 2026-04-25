@@ -27,5 +27,5 @@ Målet er at programmet skal kunne håndtere flere forespørsler samtidig og fri
 
 Ved å erstatte teknikkene for tjenestene, kan jeg stole på at systemet frigjør ressurser mens I/O-operasjoner pågår, programvaren kan nå håndtere flere forespørsler samtidig. Dette sikrer at flyten ikke lenger begrenses av kall til hovedklassen. De delene som henter informasjon fra hovedklassen er nå oppdatert med instruksjonen `await`, Dette forteller programmet at det skal vente på svar i bakgrunnen, slik at hele prosessen, flyter effektivt uten stans.
 
-Denne oppgraderingen viser hvorfor asynkrone kall er avgjørende i moderne systemer som håndterer store mengder informasjon. Jeg har erfart at en slik struktur at jeg er aldri sterkere enn det svakeste leddetet.
+Denne oppgraderingen viser hvorfor asynkrone kall er avgjørende i moderne systemer som håndterer store mengder informasjon. Jeg har erfart at en slik struktur at programmet er aldri sterkere enn det svakeste leddetet.
 Selv ett enkelt gammeldags vente-kall i bunnen av systemet kan skape en uventet oppførsel som hindrer hele applikasjonen i å vokse. Dette viser viktigheten av å velge moderne verktøy og biblioteker som støtter flere forespørsler samtidig, slik at programmet alltid har ressurser for nye oppgaver.
