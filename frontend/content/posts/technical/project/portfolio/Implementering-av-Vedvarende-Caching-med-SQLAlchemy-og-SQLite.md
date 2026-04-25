@@ -20,7 +20,7 @@ Målet var å redusere tiden for at prosjekter ble vist for besøkende, som gjø
 
 For å legge til vedvarende cahing, gjorde jeg som følgende:
 
-* Jeg bygget Databasemodellene for å sikre datastrukturen og relasjoner mellom tabellene og importerte de nødvendige avhengighetene for SQLAlchemy som <abbr title="En teknikk som forenkler prosessen med å bytte database ved behov.">ORM</abbr>.
+* Jeg utviklet <abbr title="En strukturert mal på hvordan en tabell skal se ut">Databasemodell</abbr>ene for å sikre datastrukturen og relasjoner mellom tabellene og importerte de nødvendige avhengighetene for SQLAlchemy som <abbr title="En teknikk som forenkler prosessen med å bytte database ved behov.">ORM</abbr>.
 
 For å sikre at sysetmet er pålitelig, la jeg til tre databasemodeller, for å lagre og koble informasjonen med hverandre.
 
