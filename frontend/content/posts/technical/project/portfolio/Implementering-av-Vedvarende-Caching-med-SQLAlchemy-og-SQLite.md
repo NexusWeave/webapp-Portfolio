@@ -10,14 +10,14 @@ status: |
 
   **Applikasjon** : FastAPI
 
-  **ORM** -  SQLAlchemy
+  <abbr title="Object-Relational Mapping - En teknikk som kartlegger objekter i programkoden til tabeller og spørringer i en relasjonsdatabase">**ORM**</abbr> -  SQLAlchemy
 
   **Bibliotek** - APScheduler
 
   #### Dagens Aktiviteter
 
   * Fjernet direkte kobling mellom GitHub koblings punktet og frontend for å fjerne ventetid.
-  * Satt opp et nytt databaselag med `SQLAlchemy` og `SQLite` for lokal mellomlagring av data.
+  * Satt opp et nytt databaselag med  `SQLAlchemy` og `SQLite` for lokal mellomlagring av data.
   * la til tilleggsdata direkte i databasen for å samle alt på ett sted.
   * Utviklet tre hovedmodeller for datalaget
     * Prosjektdata,
