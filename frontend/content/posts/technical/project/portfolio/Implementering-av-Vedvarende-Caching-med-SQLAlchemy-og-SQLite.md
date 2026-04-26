@@ -45,7 +45,7 @@ Målet var å redusere tiden for at prosjekter ble vist for besøkende, som gjor
 * Jeg la til en `try/except`-blokk der motoren brukes til å kjøre den synkrone DDL-kommandoen via `await conn.run_sync()` for å sikre integriteten til tabellopprettelsen.
 * Jeg separerte livssyklusen fra bindeleddet mellom applikasjonen og brukerens forespørsel ut av hovedapplikasjonen og plasserte dem i en dedikert konfigurasjonsklasse for å sikre separasjon av ansvar (SRP).
 
-````python
+```python
 @asynccontextmanager
 async def lifespan_function(app:FastAPI):
   try:
@@ -68,12 +68,9 @@ async def lifespan_function(app:FastAPI):
   SCHEDULER.shutdown()
 
 #  Initialize FastAPI app.
-app = FastAPI(lifespan=lifespan_function)```
+app = FastAPI(lifespan=lifespan_function)
+```
 
-````
+Gjennom denne omgjøringen har jeg ryddet og effektivisert nettsiden, slik at nettsiden viser kode prosjektene mine, raskere. Utfordringen angående `ASPScheduler` og database instansen er nå løst, og refaktorereringen forenklet vedlikeholdet og forståelsen av hovedapplikasjonen enn tidligere version. Ved å flytte konfigurasjonsdetaljer ut av hovedapplikasjonsfilen reduseres teknisk etterslep, og applikasjonen har nå en universell struktur som er kompatibel med flere databasedrivere som `SQLite`, `PostgreSQL` og andre relasjonelle databaser.
 
-Gjennom denne omgjøringen har jeg ryddet og effektivisert nettsiden, slik at nettsiden viser kode prosjektene mine, raskere. Utfordringen angående \`ASPScheduler\` og database instansen er nå løst, og refaktorereringen forenklet vedlikeholdet og forståelsen av hovedapplikasjonen enn tidligere version. Ved å flytte konfigurasjonsdetaljer ut av hovedapplikasjonsfilen reduseres teknisk etterslep, og applikasjonen har nå en universell struktur som er kompatibel med flere databasedrivere som \`SQLite\`, \`PostgreSQL\` og andre relasjonelle databaser.
-
-
-
-Denne feilsøkingen har vist meg viktigheten av å bruke korrekt dokumentasjon for bibliotekversjonen man bruker, og  jeg har lagt merke til hvor viktig det er å bruke applikasjonens livssyklus for ressurskontroll, for å garantere at tredjepartsverktøy starter og ned stenges pålitelig. Prosessen demonstrerte den praktiske verdien av \<abbr title ="Seperation of concern">SRP\</abbr> prinsippet i en mikrotjenestearkitektur, og jeg har mestret å sette opp en universell SQLAlchemy ORM som sikrer at fremtidig utvikling forenkles betraktelig.
+Denne feilsøkingen har vist meg viktigheten av å bruke korrekt dokumentasjon for bibliotekversjonen man bruker, og  jeg har lagt merke til hvor viktig det er å bruke applikasjonens livssyklus for ressurskontroll, for å garantere at tredjepartsverktøy starter og ned stenges pålitelig. Prosessen demonstrerte den praktiske verdien av <abbr title ="Seperation of concern">SRP</abbr> prinsippet i en mikrotjenestearkitektur, og jeg har mestret å sette opp en universell SQLAlchemy ORM som sikrer at fremtidig utvikling forenkles betraktelig.
