@@ -70,7 +70,10 @@ async def lifespan_function(app:FastAPI):
 #  Initialize FastAPI app.
 app = FastAPI(lifespan=lifespan_function)```
 
-Gjennom denne omgjøringen har jeg ryddet og effektivisert nettsiden, slik at nettsiden viser kode prosjektene mine, raskere. Utfordringen angående `ASPScheduler` og database instansen er nå løst, og refaktorereringen forenklet vedlikeholdet og forståelsen av hovedapplikasjonen enn tidligere version. Ved å flytte konfigurasjonsdetaljer ut av hovedapplikasjonsfilen reduseres teknisk etterslep, og applikasjonen har nå en universell struktur som er kompatibel med flere databasedrivere som `SQLite`, `PostgreSQL` og andre relasjonelle databaser.
-
-Denne feilsøkingen har vist meg viktigheten av å bruke korrekt dokumentasjon for bibliotekversjonen man bruker, og  jeg har lagt merke til hvor viktig det er å bruke applikasjonens livssyklus for ressurskontroll, for å garantere at tredjepartsverktøy starter og ned stenges pålitelig. Prosessen demonstrerte den praktiske verdien av <abbr title ="Seperation of concern">SRP</abbr> prinsippet i en mikrotjenestearkitektur, og jeg har mestret å sette opp en universell SQLAlchemy ORM som sikrer at fremtidig utvikling forenkles betraktelig.
 ````
+
+Gjennom denne omgjøringen har jeg ryddet og effektivisert nettsiden, slik at nettsiden viser kode prosjektene mine, raskere. Utfordringen angående \`ASPScheduler\` og database instansen er nå løst, og refaktorereringen forenklet vedlikeholdet og forståelsen av hovedapplikasjonen enn tidligere version. Ved å flytte konfigurasjonsdetaljer ut av hovedapplikasjonsfilen reduseres teknisk etterslep, og applikasjonen har nå en universell struktur som er kompatibel med flere databasedrivere som \`SQLite\`, \`PostgreSQL\` og andre relasjonelle databaser.
+
+
+
+Denne feilsøkingen har vist meg viktigheten av å bruke korrekt dokumentasjon for bibliotekversjonen man bruker, og  jeg har lagt merke til hvor viktig det er å bruke applikasjonens livssyklus for ressurskontroll, for å garantere at tredjepartsverktøy starter og ned stenges pålitelig. Prosessen demonstrerte den praktiske verdien av \<abbr title ="Seperation of concern">SRP\</abbr> prinsippet i en mikrotjenestearkitektur, og jeg har mestret å sette opp en universell SQLAlchemy ORM som sikrer at fremtidig utvikling forenkles betraktelig.
