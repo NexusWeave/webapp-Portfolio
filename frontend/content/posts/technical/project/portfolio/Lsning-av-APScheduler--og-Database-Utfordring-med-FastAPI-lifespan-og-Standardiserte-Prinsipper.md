@@ -9,11 +9,11 @@ status: ''
 sources: ''
 ---
 
-### Håndtering av Livssyklus-svikt
+**Applikasjon** - FastAPI
 
-### Scheduler- og Database initialiseringssvikt
+**bibliotek** - APSchedule
 
-Slik som det er Identifisert i den tidligere loggen, ble APSchedule-logikken for periodisk synkronisering definert, men loggmeldingene bekrefter at funksjonaliteten har den samme utfordringen som Databasen at de ikke ble initiert ved oppstart. Dette indikerer på at livssyklus logikken, ikke blir initiert ved oppstart av FastAPI-Applikasjonen, som er en konsekvens av caching-dataene aldri blir oppdatert.
+I den tidligerer loggen [Smartere lagring forbedrer flyten i nettsiden](https://krigjo25.no/logs/records/implementering-av-vedvarende-caching-med-sqlalchemy-og-sqlite/), ble `APSchedule`-logikken for periodisk synkronisering definert, men loggmeldingene bekrefter at funksjonaliteten hadde den samme utfordringen som Databasen at verktøyene ikke starter opp under oppstartings fasen. Dette indikerer på at livssyklus logikken, ikke starter opp sikkelig ved oppstart av applikasjonen, som er en konsekvens av at mellomlagrings-dataene aldri blir oppdatert.
 
 #### Migrere til  lifespan context mananger
 
