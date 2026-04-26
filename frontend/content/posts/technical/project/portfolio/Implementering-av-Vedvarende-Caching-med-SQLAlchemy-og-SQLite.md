@@ -6,6 +6,8 @@ ingress: |
 status: |
   #### Program informasjon
 
+  Frontend - NUXT
+
   **Applikasjon** : FastAPI
 
   **ORM** -  SQLAlchemy
@@ -32,12 +34,43 @@ status: |
 sources: ''
 ---
 
-Koblingspunktet for henting av prosjektene mine som ligger på Github  i `FastAPI` applikasjonen brukte for lang tid på å hente alle prosjekter; dette er en konsekvens av at systemet må hente og formatere data x antall ganger hvor x er antall prosjekter. Dette bidrar til at informasjonen hentes tregere for besøkende
+Koblingspunktet for henting av prosjektene mine som ligger på <abbr title="En sky tjeneste for lagring av kodeark">Github</abbr>, brukte for lang tid på å hente alle prosjekter; dette er en konsekvens av at systemet må hente og formatere data x antall ganger hvor x er antall prosjekter. Dette bidrar til at informasjonen hentes tregere for besøkende. Under testingen oppsto det to utfordringer ved at tabellene ikke ble pålitelig lagret ved oppstart, og APScheduler-logikken ble ikke installert i applikasjonens livssyklus, som er en konsekvens av at mellomlagrings-dataene aldri blir oppdatert.
 
-Målet var å redusere tiden for at prosjekter ble vist for besøkende, som gjorde at oppgaven ble todelt.
+Målet var å redusere tiden for at prosjekter ble vist for besøkende, som gjorde at oppgaven ble todelt. Jeg måtte fjerne det direkte koblingspunktet mellom Github og hjemmesiden til fordel for et databaselag for å redusere ventetiden, samtidig som jeg måtte omgjøre applikasjonens livssyklus til den nye standarden for lifespan context manager som er introdusert i V2. Dette ble gjort for å redusere det tekniske etterslepet i applikasjonen og sikre at applikasjonens prinsipper blir fulgt, for å forbedre lesbarheten og gjøre applikasjonen vedlikeholdsvennlig.
 
-* Jeg fjernet det direkte koblingspunktet mellom Github og hjemmesiden og heller la til et **databaselag** som er basert på **SQLAlchemy**, med  **SQLite** driver, for å lagre den formaterte Github-informasjonen, slik at NUXT-applikasjonen kan hente data med minimal ventetid.
+* Jeg fjernet den direkte koblingspunktet mellom Github og hjemmesiden og heller la til et **databaselag** som er basert på <abbr title="Object-Rational-Mapping - et verktøy for å kartlegge SQL spørringer for programmering">Orm</abbr>'en**SQLAlchemy**, med  **SQLite** driver, for å lagre den formaterte Github-informasjonen, slik at frontend-applikasjonen kan hente data og redusere ventetiden før brukeren har tilgang til prosjektene.
 * Jeg slo sammen all tilleggsinformasjon om prosjektene som video-, demo- og prosjekt-lenker direkte inn i den nye databasen for å sikre enhetlig datalagring og fjerne sekundære kall.
+* Utviklet <abbr title="En strukturert mal på hvordan den lagrede informasjonen skal se ut">databasemodell</abbr>ene for Prosjektdata, Bidragsytere og Programmeringsspråk, samt assosiasjonstabeller for å håndtere relasjoner via SQLAlchemy som <abbr title="En teknikk som forenkler prosessen med å bytte database ved behov.">ORM</abbr>.
+* Slo sammen all tilleggsinformasjon om prosjektene som video-, demo- og prosjekt-lenker direkte inn i den nye databasen for å sikre enhetlig datalagring og fjerne sekundære kall.
+* Konfigurert APScheduler for daglig synkronisering av data (planlagt mellom kl. 02:00 – 05:00) for å sikre ferske data uten belastning på dagtid.
+* Fjernet den utdaterte `@app.on_event`-definasjonen og implementerte den nye lifespan-metoden som en asynkron context manager.
+* Implementerte en try/except-blokk der den asynkrone motoren brukes til å kjøre den synkrone DDL-kommandoen via `await conn.run_sync()` for å sikre integriteten til tabellopprettelsen.
+* Trakk lifespan-funksjonaliteten og middleware-instansene ut av hovedapplikasjonen og plasserte dem i en dedikert konfigurasjonsklasse for å sikre separasjon av ansvar (SRP).
+
+```python
+@asynccontextmanager
+async def lifespan_function(app:FastAPI):
+  try:
+    #  Database Initialization
+    async with DB_INSTANCE.engine.begin() as conn:
+      await conn.run_sync(BASE.metadata.create_all)
+        
+  except Exception as e:
+    raise e
+
+  await DB_INSTANCE.connection
+
+  #  Scheduler Start up 
+  SCHEDULER = AsyncIOScheduler()
+  SchedulerConfig().configure_jobs(SCHEDULER)
+  SCHEDULER.start()
+  
+  yield
+
+  SCHEDULER.shutdown()
+
+#  Initialize FastAPI app.
+app = FastAPI(lifespan=lifespan_function)
 
 For å legge til vedvarende caching, gjorde jeg som følgende:
 
@@ -65,3 +98,12 @@ Under testingen oppsto det to utfordringer i FastAPI-applikasjonen
 * `APScheduler`-logikken for periodisk synkronisering har blitt definert, men loggmeldingene bekrefter at funksjonaliteten ikke ble installert ved oppstart. Dette indikerer at `APScheduler`-logikken ikke blir lagret i applikasjonens livssyklus.
 
 Gjennom denne omgjøringen har prosjektet gitt meg en innsikt i `SQLAlchemy` ORMs funksjonalitet og struktur.  Jeg ble spesielt oppmerksom på viktigheten av å sette opp en universell struktur som er kompatibel med flere databasedrivere som ( `SQLite`, `PostgreSQL`, `MariaDB`, o.l). Feilidentifiseringen har synliggjort rollen til Startup og Shutdown-hendelser i FastAPI, spesielt ved integrering av databasemodeller og tredjeparts planleggere Jeg forstår nå hvordan SQLAlchemy ORMen fungerer, og lært å sette opp en universell SQLAlchemy ORM, som kan brukes på flere databasedrivere.
+
+# Teknisk Logg: Smartere lagring og moderne livssyklushåndtering
+
+
+### Oppgave
+
+### Handling
+
+```
