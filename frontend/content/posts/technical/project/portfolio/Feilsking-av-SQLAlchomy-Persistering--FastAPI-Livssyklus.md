@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Programvare informasjon
 
-  **Applikasjon** - `FastAPI` <abbr title="Object-Relation Mapping - en teknikk som kartlegger SQL-spørringer i programmering">**ORM**</abbr> - `SQLAlchemy`
+  **Applikasjon** - `FastAPI` <abbr title="Object-Relational Mapping - En teknikk som kartlegger objekter i programkoden til tabeller og spørringer i en relasjonsdatabase">**ORM**</abbr> - `SQLAlchemy`
 
   #### Dagens Aktiviteter
 
