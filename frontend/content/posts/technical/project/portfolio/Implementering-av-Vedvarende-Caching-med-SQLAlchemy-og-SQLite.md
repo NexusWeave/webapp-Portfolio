@@ -4,13 +4,21 @@ title: Smartere lagring forbedrer flyten i nettsiden
 ingress: |
   For å gi besøkende en rask opplevelse har jeg fjernet ventetiden ved visning av mine prosjekter. Ved å lage et eget digitalt arkiv som samler alt på ett sted, slipper nettsiden å hente informasjon fra andre steder hver gang man trykker på en lenke. Systemet rydder og oppdaterer seg nå automatisk om natten når det er få brukere. Dette gir en ryddig og effektiv nettside som alltid viser frem siste nytt uten irriterende venting.
 status: |
+  #### Program informasjon
+
+  **Applikasjon** : FastAPI
+
+  **ORM** -  SQLAlchemy
+
+  **Bibliotek** - APScheduler
+
   #### Dagens Aktiviteter
 
   * Fjernet direkte kobling mellom GitHub koblings punktet og frontend for å fjerne ventetid.
   * Satt opp et nytt databaselag med `SQLAlchemy` og `SQLite` for lokal mellomlagring av data.
   * la til tilleggsdata direkte i databasen for å samle alt på ett sted.
-  * Utviklet tre hovedmodeller for datalaget 
-    *  Prosjektdata,
+  * Utviklet tre hovedmodeller for datalaget
+    * Prosjektdata,
     * Bidragsytere,
     * Programmeringsspråk.
   * La til to assosiasjonstabeller for å håndtere relasjoner mellom disse.
