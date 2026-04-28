@@ -2,9 +2,9 @@
 //  --- Import & types logic
 import { computed } from 'vue';
 import { useRouter } from '#app';
-import type { RouterItem } from '~/types/navigation';
 
 import type { DateItem } from '~/types/date';
+import type { RouterItem } from '~/types/navigation';
 import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 

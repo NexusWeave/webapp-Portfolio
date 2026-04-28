@@ -15,3 +15,15 @@ export async function collectInformation<T, R>(cacheKey: string, endpoint: strin
     return {data: (data.value ? computed(() => mapper ? mapper(data.value) : (data.value as unknown as R)) : computed(() =>[])) as ComputedRef<R>, refresh: refresh};
 }
 
+export async function collect<T, R>(endpoint: string, METHOD: string = "GET",headers: Record<string, string> = { 'Content-Type': 'application/json' }): Promise<T>
+{
+    const {public: env} = useRuntimeConfig();
+    const version = "/api/v1"
+    const url:string = `${env.GCLOUD}${version}${endpoint}`; 
+
+    const data = await $fetch<T>(url, { headers: headers });
+
+    if (!data) throw new Error(`Error fetching data from ${url}`);
+    
+    return data as T;
+}
