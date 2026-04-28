@@ -1,31 +1,90 @@
 @use '../mix/mixins' as mix
 @use '../colors/colors' as color
 
-button
+button, .button, .btn
+    border: none
+    padding: 0.8em 1.6em
+    font-size: 1em
+    cursor: pointer
+    font-weight: 600
+    text-align: center
+    border-radius: 0.8em
+    transition: all 0.2s ease-in-out
+    font-family: 'Nunito', sans-serif
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    gap: 0.5em
+    text-decoration: none
+    color: color.$dark-grey !important
+    background-color: color.$soft-white
+
+    &:hover
+        transform: translateY(-2px)
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+        background-color: darken(color.$soft-white, 2%)
+
+    &:active
+        transform: translateY(0)
+
     .timeline-btn
-        block-size: 1em
-        inline-size: 1em
+        block-size: 1.2em
+        inline-size: 1.2em
         border-radius: 100%
         @include mix.background-style(color.$dark-grey, color.$soft-white)
 
 section.tag-wrapper
-    button.tag-btn
-        margin: .5em
-        font-size: 1.5em
-        padding: 1em 1em
+    button.tag-btn, .tag-btn
+        margin: 0.5em
+        font-size: 0.95em
+        padding: 0.5em 1.2em
+        border-radius: 2em
+        background-color: white
+        border: 1px solid rgba(color.$dark-grey, 0.1)
+        
+        &:hover
+            background-color: color.$light-blue
+            color: white !important
+            border-color: color.$light-blue
+            box-shadow: 0 4px 10px rgba(color.$light-blue, 0.2)
 
     max-inline-size: 100%
-    margin: 0 auto
+    margin: 2em auto
 
-button
-    border: none
-    padding: 1em
-    font-size: 1em
-    cursor: pointer
-    font-weight: bold
-    text-align: center
-    color: color.$dark-grey !important
+button.orange-btn, .orange-btn
+    background-color: color.$dark-orange
+    color: white !important
+    
+    &:hover
+        background-color: lighten(color.$dark-orange, 5%)
+        box-shadow: 0 6px 15px rgba(color.$dark-orange, 0.3)
 
-button.reset-btn
-        background-color: color.$soft-white
-        color: color.$dark-grey
+button.reset-btn, .reset-btn
+    background-color: color.$soft-white
+    color: color.$dark-grey
+    border: 1px solid rgba(color.$dark-grey, 0.1)
+
+    &:hover
+        background-color: darken(color.$soft-white, 5%)
+
+.pagination-btn
+    padding: 0.5em 1.5em
+    font-size: 0.9em
+    background-color: transparent
+    border: 1px solid color.$light-blue
+    color: color.$light-blue !important
+    border-radius: 2em
+
+    &:hover
+        background-color: color.$light-blue
+        color: white !important
+        box-shadow: 0 4px 12px rgba(color.$light-blue, 0.2)
+
+// Specific classes found in media queries or other views
+.img-btn, .bio-btn
+    @extend button
+    background-color: color.$light-blue
+    color: white !important
+    
+    &:hover
+        background-color: darken(color.$light-blue, 5%)

@@ -3,15 +3,20 @@
 
 article
     header
-        margin: 0 auto
+        margin: 0 auto 3em
     nav
         ul
             li
-                margin: 0.5em
+                margin: 0 1em
                 display: inline
                 a
                     color: color.$dark-grey
                     text-decoration: none
+                    font-weight: 600
+                    transition: color 0.2s
+                    
+                    &:hover
+                        color: color.$light-blue
             padding: 0
 
     section
@@ -19,7 +24,7 @@ article
         max-inline-size: 100%
 
     .pagination-container, .blog-section
-        margin: 2em 0
+        margin: 4em 0
         max-inline-size: 100%
 
     .article-wrapper
@@ -27,104 +32,146 @@ article
         max-inline-size: 100%
 
     .article-content
-        margin: 2em auto
+        margin: 3em auto
+        line-height: 1.8
 
     .ingress-header
         block-size: auto
+        margin-bottom: 2em
 
     .blog-header
-        block-size: 32em
-        margin: 2em .5em
-        max-inline-size: 29em
-        box-shadow: 0 0 10px rgba(color.$dark-grey, 0.2)
+        block-size: auto
+        min-height: 25em
+        margin: 2em auto
+        max-inline-size: 32em
+        padding: 3em
+        border-radius: 1.5em
+        background-color: white
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05)
+        display: flex
+        flex-direction: column
+        justify-content: center
 
     .blog-header, .ingress-header
         p.article-metadata
+            font-size: 0.9em
+            color: rgba(color.$dark-grey, 0.6)
             a
                 font-weight: bold
                 text-decoration: none
-                color: color.$dark-grey
+                color: color.$light-blue
 
                 &:hover
                     text-decoration: underline
 
         p
-            font-size: 1.1em
-            padding: .5em 1em
+            font-size: 1.2em
+            padding: 0
+            margin-top: 1em
         span
-            margin: auto
+            margin: 0
 
-        padding: 0 .5em
     .article-content, .blog-header, .ingress-header
         code
-            z-index: -1
-            font-style: italic
+            font-style: normal
             border-radius: 4px
-            color: color.$white
+            color: color.$light-orange
             position: relative
             padding: 0.2em 0.4em
-            background-color: color.$dark-grey
+            background-color: color.$soft-white
             font-family: 'Courier New', Courier, monospace
+            font-size: 0.9em
 
         pre
-            padding: 1em
-            border-radius: 4px
+            padding: 1.5em
+            border-radius: 0.8em
             background-color: color.$dark-grey
+            overflow-x: auto
+            margin: 2em 0
+            
+            code
+                background: none
+                color: color.$white
+                padding: 0
 
     .article-content, .ingress-header
-        font-size: 1.5em
-        max-inline-size: 44em
+        font-size: 1.15em
+        max-inline-size: 48em
+        color: rgba(color.$dark-grey, 0.9)
 
     .article-content, .bio-content, .ingress-content
         h1,h2,h3,h4,h5,h6
+            color: color.$dark-grey
+            font-weight: 700
+            margin: 2em 0 1em
+            
             a
                 cursor: text
                 color: inherit
                 text-decoration: none
 
-            margin: auto 0
             text-align: left
+        
+        h1
+            font-size: 2.5em
+        h2
+            font-size: 2em
+        h3
+            font-size: 1.5em
         
         abbr
             z-index: 1
             cursor: help            
             position: relative
             text-decoration: none !important
-            border-bottom: 1px dotted rgb(255, 69, 0)!important
+            border-bottom: 2px dotted color.$light-orange
 
     @include mix.text-wrap-safe()
 
 article.bio
     h2
-        font-size: 2.5em
+        font-size: 3em
+        margin-bottom: 1em
     p
-        text-align: justify
+        text-align: left
         max-inline-size: 50em
-        margin: 0.5em auto
+        margin: 1.5em auto
+        line-height: 1.8
 
     ul
         li
-            margin-block: .5em
+            margin-block: 0.8em
         margin-inline: auto
         max-inline-size: 47em
+        padding-left: 1.5em
     div
-        margin: 3em auto
+        margin: 4em auto
         max-inline-size: 50em
 
 article.profile-bar
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: 3em
+    margin: 4em auto
+    max-width: 1000px
 
     section
-        margin: auto 0.5em
-        max-inline-size: 22em
+        margin: 0
+        max-inline-size: 30em
 
     section.profile-content
         p
             h2
                 margin: 0
-                inline-size: 9em
+                font-size: 2.2em
                 text-align: left
-                display: inline-block
+                display: block
 
         .slogan-wrapper
-            inline-size: 21em
+            inline-size: auto
+            margin-top: 1em
+            font-size: 1.1em
+            font-style: italic
+            color: rgba(color.$dark-grey, 0.7)
    

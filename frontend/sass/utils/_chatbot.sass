@@ -1,40 +1,105 @@
 @use '../mix/mixins' as mix
 @use '../colors/colors' as color
+
 .chatbot-container
     input
-        padding: 0.5em
-        border-radius: 0.5em
-        border: 1px solid color.$dark-grey
+        padding: 0.8em 1em
+        border-radius: 2em
+        border: 1px solid rgba(color.$dark-grey, 0.2)
+        width: 100%
+        outline: none
+        transition: border-color 0.2s
+        
+        &:focus
+            border-color: color.$light-blue
 
     section
         margin: 0
         
     .chatbot-content
+        display: flex
+        flex-direction: column
+        gap: 1em
+        padding: 1em
+        overflow-y: auto
+        max-block-size: 25em
+        border-radius: 1em
+        background-color: color.$soft-white
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05)
+
         .user-dialoque, .ai-dialoque
-            margin: .5em 0
-            padding: 0.1em
+            max-width: 85%
+            padding: 0.8em 1.2em
+            border-radius: 1.2em
+            position: relative
+            font-size: 0.95em
+            line-height: 1.4
+
+            h3
+                font-size: 0.75em
+                text-transform: uppercase
+                letter-spacing: 0.05em
+                margin-bottom: 0.4em
+                opacity: 0.7
+
+            p
+                margin: 0
+                display: block
+
+        .user-dialoque
+            align-self: flex-end
             background-color: color.$light-blue
-        h3
-            text-align: left
+            color: white
+            border-bottom-right-radius: 0.2em
+            border: none
+            
+            h3, p
+                color: white
+                text-align: right
 
-        p
-            margin: 0
-            font-size: 0.8em
-            display: inline-block
+        .ai-dialoque
+            align-self: flex-start
+            background-color: white
+            color: color.$dark-grey
+            border-bottom-left-radius: 0.2em
+            border: 1px solid rgba(color.$dark-grey, 0.1)
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02)
+            
+            h3
+                color: color.$light-blue
+                text-align: left
 
-        overflow: auto
-        max-block-size: 20em
-        border-radius: 0.5em
-        background-color: color.$off-white
+    .input-section
+        margin-top: 1em
+        padding: 0.5em 0
 
     .chat-buttons
-        button
-            font-size: 0.8em
+        display: flex
+        flex-wrap: wrap
+        gap: 0.5em
+        margin-block: 1em
+        justify-content: center
 
-        margin-block: 0.5em
-    margin: auto
-    padding: 1em
-    border-radius: 0.5em
+        button
+            font-size: 0.85em
+            padding: 0.6em 1.2em
+            border-radius: 2em
+            background-color: white
+            border: 1px solid color.$light-blue
+            color: color.$light-blue !important
+            transition: all 0.2s
+            
+            &:hover
+                background-color: color.$light-blue
+                color: white !important
+
+    margin: 2em auto
+    padding: 1.5em
+    border-radius: 1.5em
+    max-inline-size: 45em
+    background-color: white
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05)
+    border: 1px solid rgba(color.$dark-grey, 0.05)
 
 .chatbot-container:focus-within
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1)

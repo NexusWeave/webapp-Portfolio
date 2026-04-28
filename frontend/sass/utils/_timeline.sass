@@ -7,13 +7,15 @@
             input[type="range"]
                 &::-webkit-slider-runnable-track, &::-moz-range-track, &::-webkit-slider-thumb, &::-moz-range-thumb
                     cursor: pointer
-                    block-size: .9em
+                    block-size: 1.2em
                     border-radius: 1em
                     -webkit-appearance: none
-                    background: color.$sea-green
+                    background: color.$light-blue
+                    transition: background 0.2s
 
             inline-size: 100%
-            @include mix.input-styles(color.$sea-green)
+            margin: 2em 0
+            @include mix.input-styles(color.$light-blue)
 
     .timeline-active
         opacity: 1 !important
@@ -26,44 +28,59 @@
                         @include mix.circle-border()
                     margin-inline: .3em
 
-                margin:.5em
+                margin: 0.8em 0
 
     .timeline-content
-
+        
         h2, h3, h4
-            text-align: center
+            text-align: left
+            color: color.$dark-grey
         
         p
             text-align: left
-
-        &:nth-of-type(odd)
-            margin-block-end: 1em
+            line-height: 1.6
+            color: rgba(color.$dark-grey, 0.8)
 
         section
-            margin: .5em
+            margin-block-end: 0
 
         .section
-            
-            margin-inline: 1em
-            max-inline-size: 20em
+            margin-inline: 0
+            max-inline-size: 100%
+            padding: 1.5em
             
             &:nth-of-type(odd)
-                border-right: 1.5px groove rgba(0, 0, 0, .2)
+                border-right: none
+                border-left: 4px solid color.$light-blue
+                background-color: color.$soft-white
+                border-radius: 0 0.8em 0.8em 0
                 
-            
         .timeline-description
             .timeline-list
+                padding-left: 1.2em
                 .timeline-item
-                    margin-block: .5em
-                    font-size: 1.1em
+                    margin-block: 0.8em
+                    font-size: 1.05em
+                    position: relative
+                    
+                    &::marker
+                        color: color.$light-blue
 
-        margin: 1em
         padding: 1em
-        border-radius: .5em
+        margin: 1em 0
+        border-radius: 1em
         max-inline-size: 100%
-        box-shadow: 0 2px 4px rgba(64, 64, 64, .5)
-        @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
+        background-color: white
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05)
+        border: 1px solid rgba(color.$dark-grey, 0.05)
+        @include mix.transitions(opacity, 0.5s, ease-out, 0s)
+
+    h2
+        color: color.$dark-grey
 
     padding: 1em
-    margin-block: 2.5em
-    border-radius: .5em
+    margin-block: 4em
+    border-radius: 1.5em
+    max-inline-size: 34em
+    
+    background-color: color.$off-white
