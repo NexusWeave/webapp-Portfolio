@@ -8,3 +8,12 @@ export function generateHexID()
 
     return result;
 }
+
+export function truncateText(text: string, limit: number): string {
+    if (!text) return '';
+    return text.length > limit ? text.substring(0, limit) + '...' : text;
+}
+
+export function getFallbackText(text: string | undefined | null, fallback: string = 'Bilde mangler'): string {
+    return text && text.trim() !== '' ? text : fallback;
+}
