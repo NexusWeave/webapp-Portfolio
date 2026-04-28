@@ -11,7 +11,7 @@
                 <span v-if="data.flags.collaborator" :class="['icon']"> <MediaIcon :cls="['collaborator']"/> </span>
             </h3>
             <NavigationNavMenu v-if="hasAnchor" :cls="['portofolio-nav']" :data="data.anchor" />
-            <p>{{ data.description }}</p>
+            <p>{{ truncateText(data.description, 118) }}</p>
 
             <section v-if="hasTechnology" :class="['tech-container']">
                 <h4>Andre teknologi(er) : </h4>
@@ -29,6 +29,7 @@
 
     //  --- Importing dependencies & types
     import type { RepoProps } from '@/types/apis';
+    import { truncateText } from '@/utils/utils';
 
     //  --- Props Definition Logic
     const props = defineProps<RepoProps>();

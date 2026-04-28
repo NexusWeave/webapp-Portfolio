@@ -7,4 +7,4 @@ export interface FigureItem
     caption? : string;
 }
 export interface iconProps { cls?: string[]; }
-export interface FigureProps { cls?   : string[]; data    : Record<FigureItem>; }
+export interface FigureProps { cls?: string[]; data: FigureItem; }

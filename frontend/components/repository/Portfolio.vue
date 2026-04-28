@@ -81,7 +81,14 @@
     //  --- Navigation Logic
     const nextPage = computed<ButtonItem>(() => ({label: 'Neste', action: () => changePage(currentPage.value + num) }));
     const prevPage = computed<ButtonItem>(() => ({ label: 'Forrige', action: () => changePage(currentPage.value - num) }));
-    const buttons = computed<ButtonItem[]>(() => [ { label: 'Diverse', cls: ['button', 'filter-btn'], action: () => type.value = 'misc' }, { label: 'Backend', cls: ['button', 'filter-btn'], action: () => type.value = 'backend' }, { label: 'Frontend', cls: ['button', 'filter-btn'], action: () => type.value = 'frontend' }, { label: 'Fullstack', cls: ['button', 'filter-btn'], action: () => type.value = 'fullstack' }, { label: 'Samarbeidsprosjekt', cls: ['button', 'filter-btn'], action: () => type.value = 'collaborator' }, { label: 'reset', cls: ['button', 'filter-btn'], action: () => type.value = '0' } ]);
+    const buttons = computed<ButtonItem[]>(() => [ 
+        { label: 'Diverse', cls: ['button', 'filter-btn', type.value === 'misc' ? 'active' : ''], action: () => type.value = 'misc' }, 
+        { label: 'Backend', cls: ['button', 'filter-btn', type.value === 'backend' ? 'active' : ''], action: () => type.value = 'backend' }, 
+        { label: 'Frontend', cls: ['button', 'filter-btn', type.value === 'frontend' ? 'active' : ''], action: () => type.value = 'frontend' }, 
+        { label: 'Fullstack', cls: ['button', 'filter-btn', type.value === 'fullstack' ? 'active' : ''], action: () => type.value = 'fullstack' }, 
+        { label: 'Samarbeidsprosjekt', cls: ['button', 'filter-btn', type.value === 'collaborator' ? 'active' : ''], action: () => type.value = 'collaborator' }, 
+        { label: 'reset', cls: ['button', 'filter-btn', type.value === '0' ? 'active' : ''], action: () => type.value = '0' } 
+    ]);
 
     function changePage(page: number) { const total = totalPages.value; if (page >= 1 && page <= total) currentPage.value = page; }
 
