@@ -1,32 +1,42 @@
 <template>
-    <figure :class="cls[0]" v-if="data.src || data.srcset">
-        <picture>
-            <source :srcset="data.srcset" :type="'image/' + data.type" >
-            <img :src="data.src " :alt="data.alt ?? ' Unknown picture'" :class="cls[1]"  :title="'image/' + data.type"  />
-        </picture>
-        <figcaption>{{ data.caption ?? data.alt }}</figcaption>
+    <figure :class="cls[0]" v-if="data.src">
+        <NuxtImg 
+            :src="currentSrc" 
+            :alt="currentAlt" 
+            :class="cls[1]"  
+            :title="data.caption || data.alt"
+            format="webp"
+            loading="lazy"
+            @error="handleError"
+        />
+        <figcaption v-if="data.caption || data.alt">{{ data.caption ?? data.alt }}</figcaption>
     </figure>
 </template>
 
 <script setup lang="ts">
 
     //  Importing dependencies & types
-    import { computed } from 'vue';
+    import { computed, ref, watch } from 'vue';
+    import { getFallbackText } from '@/utils/utils';
 
-    import type { FigureProps, FigureItem } from '@/types/media';
+    import type { FigureProps } from '@/types/media';
 
     //  --- Props Definition Logic
-    const props = withDefaults(defineProps<FigureProps>(), { data: () => ({} as FigureItem), cls: () => (['figure', 'figure-img']) });
+    const props = withDefaults(defineProps<FigureProps>(), { cls: () => (['figure', 'figure-img']) });
 
     const cls = computed(() => props.cls);
+    const hasError = ref(false);
+    const data = computed(() => props.data);
 
-    const data = computed<FigureItem>(() => {
-        const rawData = props.data as FigureItem;
-        const imageFormats = { modern: ['webp', 'avif'] };
-        const isImageModern =!!rawData.srcset && !!imageFormats.modern.find(item => rawData.srcset?.endsWith(item));
-        return { ...rawData, srcset: isImageModern ? rawData.srcset : rawData.src, caption: rawData.caption ?? rawData.alt ?? '' };
-    });
+    const currentSrc = computed(() => hasError.value ? '/media/images/placeholder.png' : data.value.src);
+    const currentAlt = computed(() => hasError.value ? 'Bilde kunne ikke lastes' : getFallbackText(data.value.alt, 'Bildebeskrivelse mangler'));
 
-    //  --- Debug logic
-    //console.log('Figure data:', data.value, isImageModern.value, isImageStandard.value);
+    const handleError = () => {
+        hasError.value = true;
+    };
+
+    watch(() => props.data, () => {
+        hasError.value = false;
+    }, { deep: true });
+
 </script>
