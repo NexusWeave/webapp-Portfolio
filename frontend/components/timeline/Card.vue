@@ -2,7 +2,7 @@
     <section v-if="!!data.isVisible"
         :class="[{'timeline-active': !!data.isVisible }, 'flex-column-justify-center']">
 
-        <section class="flex-wrap-row-align-items-center-justify-space-between">
+        <section class="flex-wrap-column-align-center-justify-space-evenly">
             <section class="section">
                 <h3 v-if="!!data.organization.anchor"> <NavigationAnchor :data="data.organization.anchor" /> </h3>
                 <h3 v-else>{{ data.organization.name }}</h3>

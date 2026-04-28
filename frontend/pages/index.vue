@@ -8,7 +8,7 @@
         </section>
     </article>
 
-    <section :class="['flex-wrap-row-justify-space-evenly']">
+    <section :class="['flex-wrap-row-align-items-center-justify-space-evenly']">
 
         <Timeline v-if="academicData.length > 0"
             title="Akademisk Tidslinje"
