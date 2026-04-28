@@ -1,3 +1,4 @@
+@use 'sass:color' as sass-color
 @use '../mix/mixins' as mix
 @use '../colors/colors' as color
 
@@ -22,7 +23,7 @@ button, .button, .btn
     &:hover
         transform: translateY(-2px)
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
-        background-color: darken(color.$soft-white, 2%)
+        background-color: sass-color.adjust(color.$soft-white, $lightness: -2%)
 
     &:active
         transform: translateY(0)
@@ -56,7 +57,7 @@ button.orange-btn, .orange-btn
     color: white !important
     
     &:hover
-        background-color: lighten(color.$dark-orange, 5%)
+        background-color: sass-color.adjust(color.$dark-orange, $lightness: 5%)
         box-shadow: 0 6px 15px rgba(color.$dark-orange, 0.3)
 
 button.reset-btn, .reset-btn
@@ -65,7 +66,7 @@ button.reset-btn, .reset-btn
     border: 1px solid rgba(color.$dark-grey, 0.1)
 
     &:hover
-        background-color: darken(color.$soft-white, 5%)
+        background-color: sass-color.adjust(color.$soft-white, $lightness: -5%)
 
 .pagination-btn
     padding: 0.5em 1.5em
@@ -87,4 +88,21 @@ button.reset-btn, .reset-btn
     color: white !important
     
     &:hover
-        background-color: darken(color.$light-blue, 5%)
+        background-color: sass-color.adjust(color.$light-blue, $lightness: -5%)
+
+.repo-container
+    .filter-btn
+        margin: 0.5em
+        transition: all 0.2s
+        
+        &.active
+            background-color: color.$light-blue
+            color: white
+
+    .pagination-btn
+        margin: 0 1.5em
+        font-size: 0.9em
+        opacity: 0.8
+        
+        &:hover
+            opacity: 1
