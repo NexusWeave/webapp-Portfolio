@@ -1,0 +1,168 @@
+<mxfile host="65bd71144e">
+    <diagram id="yYtVpuI-tgfPQ_CiY9zy" name="CMS Architecture">
+        <mxGraphModel dx="1700" dy="396" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-1" value="Editor / Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="110" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-2" value="TinaCMS Admin Panel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="90" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-3" value="Tina Cloud&#xa;(Sync Engine)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="-10" y="230" width="120" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-4" value="GitHub Repository&#xa;(.md files / Git History)" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#007BFF;fontColor=#ffffff;strokeColor=#0062cc;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="230" width="140" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-5" value="Nuxt Application&#xa;(Frontend Layer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#ffffff;strokeColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="370" width="340" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-6" value="Visual Editing" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="qB8Pz80CnXIMdtJ6j9dp-1" target="qB8Pz80CnXIMdtJ6j9dp-2">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="160" y="140"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-7" value="GraphQL API /&#xa;Save Requests" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="qB8Pz80CnXIMdtJ6j9dp-2" target="qB8Pz80CnXIMdtJ6j9dp-3">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="50" y="360" as="sourcePoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-8" value="Git Push /&#xa;Content Commit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="qB8Pz80CnXIMdtJ6j9dp-3" target="qB8Pz80CnXIMdtJ6j9dp-4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-9" value="Webhooks /&#xa;Trigger Rebuild" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="qB8Pz80CnXIMdtJ6j9dp-4" target="qB8Pz80CnXIMdtJ6j9dp-5">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="240" y="350"/>
+                            <mxPoint x="160" y="350"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="qB8Pz80CnXIMdtJ6j9dp-11" value="&lt;font style=&quot;color: rgb(254, 254, 254);&quot;&gt;Headless CMS Workflow&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#404040;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="60" y="40" width="227" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="YeI64ZB-5p3YkTYQKG8I" name="Highlevel-diagram">
+        <mxGraphModel dx="850" dy="396" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="SLrZSGJNab-Hc3eWtOIX-1" value="External Data Sources&#xa;(GitHub, Heavy APIs)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="45" y="20" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="SLrZSGJNab-Hc3eWtOIX-2" value="Core System&#xa;(Processing &amp; Storage)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="325" y="20" width="180" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="SLrZSGJNab-Hc3eWtOIX-3" value="Presentation Layer&#xa;(Nuxt Web App &amp; TinaCMS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="625" y="20" width="180" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="SLrZSGJNab-Hc3eWtOIX-4" value="Fetch &amp; Structure" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#FEFEFE,#EDEDED);" parent="1" source="SLrZSGJNab-Hc3eWtOIX-1" target="SLrZSGJNab-Hc3eWtOIX-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="SLrZSGJNab-Hc3eWtOIX-5" value="Serve Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FEFEFE;" parent="1" source="SLrZSGJNab-Hc3eWtOIX-2" target="SLrZSGJNab-Hc3eWtOIX-3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="SLrZSGJNab-Hc3eWtOIX-6" value="User Interface" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2" parent="1" vertex="1">
+                    <mxGeometry x="665" y="130" width="100" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="detailed-context" name="Detailed Context Diagram">
+        <mxGraphModel dx="1200" dy="559" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="external_services" value="&lt;font style=&quot;color: rgb(64, 64, 64);&quot;&gt;External Sources&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=23;strokeColor=#404040;" parent="1" vertex="1">
+                    <mxGeometry x="10" y="40" width="180" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="API1" value="&lt;font style=&quot;color: rgb(254, 254, 254);&quot;&gt;&lt;b style=&quot;&quot;&gt;Github API&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007BFF;" parent="external_services" vertex="1">
+                    <mxGeometry x="30" y="40" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="API2" value="&lt;font style=&quot;color: rgb(254, 254, 254);&quot;&gt;&lt;b&gt;Heavy API&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007BFF;" parent="external_services" vertex="1">
+                    <mxGeometry x="30" y="110" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="frontend" value="Nuxt / TS Web App" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FF6B00;strokeColor=#FEFEFE;fontColor=#ffffff;startSize=23;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="40" width="460" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge3" value="Delivers Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=15;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;strokeColor=#FEFEFE;" parent="frontend" source="Postgres" target="Nuxt" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="270" y="70"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Nuxt" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&lt;b&gt;Client (Nuxt)&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#333333;strokeColor=#666666;" parent="frontend" vertex="1">
+                    <mxGeometry x="335" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="database" value="Database / Git" style="swimlane;whiteSpace=wrap;html=1;startSize=23;strokeColor=#404040;" parent="frontend" vertex="1">
+                    <mxGeometry x="10" y="30" width="160" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="Postgres" value="&lt;b&gt;PostgreSQL&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#007BFF;fontColor=#ffffff;strokeColor=#0062cc;" parent="database" vertex="1">
+                    <mxGeometry x="20" y="26" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="Tina" value="&lt;b&gt;TinaCMS / Blogg&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#007BFF;fontColor=#ffffff;strokeColor=#0062cc;gradientColor=none;" parent="database" vertex="1">
+                    <mxGeometry x="10" y="110" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#FEFEFE;" parent="frontend" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="250" y="170"/>
+                            <mxPoint x="250" y="70"/>
+                        </Array>
+                        <mxPoint x="130" y="170" as="sourcePoint"/>
+                        <mxPoint x="260" y="70" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Markdown / git" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge4" vertex="1" connectable="0">
+                    <mxGeometry x="-0.7317" y="1" relative="1" as="geometry">
+                        <mxPoint x="50" y="1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Dynamic" value="&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;&lt;b&gt;Dynamic Content&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#333333;strokeColor=#666666;" parent="frontend" vertex="1">
+                    <mxGeometry x="331" y="161" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.523;entryY=0.014;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.493;exitY=1.018;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#FEFEFE;" parent="frontend" source="Nuxt" target="Dynamic" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="394" y="110"/>
+                            <mxPoint x="394" y="110"/>
+                            <mxPoint x="394" y="150"/>
+                            <mxPoint x="394" y="150"/>
+                        </Array>
+                        <mxPoint x="391" y="110" as="sourcePoint"/>
+                        <mxPoint x="451" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeColor=#FEFEFE;" parent="1" source="Python" target="Postgres" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="100" y="420" as="sourcePoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="backend" value="&lt;font style=&quot;color: rgb(64, 64, 64);&quot;&gt;Python Async Worker&lt;/font&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=23;strokeColor=#404040;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="50" width="190" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="Python" value="&lt;font style=&quot;color: light-dark(rgb(254, 254, 254), rgb(237, 237, 237));&quot;&gt;&lt;b&gt;Asynchronous Python Script&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007BFF;" parent="backend" vertex="1">
+                    <mxGeometry x="10" y="50" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge1" value="Asynchronous Fetching /&#xa;Structures with Pydantic" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FEFEFE;" parent="1" target="Python" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="190" y="130" as="sourcePoint"/>
+                        <mxPoint x="419.71999999999997" y="100" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="190" y="125"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
