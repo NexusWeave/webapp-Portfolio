@@ -1,0 +1,109 @@
+<mxfile host="65bd71144e">
+    <diagram id="services-class-diagram" name="Services Class Diagram">
+        <mxGraphModel dx="850" dy="396" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="100" value="Settings &amp; Base Classes" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1;fontSize=14;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="580" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="110" value="&lt;b&gt;AsyncAPIClientConfig&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#666666;fontColor=#333333;rounded=1;arcSize=10;" parent="100" vertex="1">
+                    <mxGeometry x="10" y="50" width="240" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="111" value="+ API_URL: str&#xa;+ API_KEY: str&#xa;+ VERSION: str&#xa;+ QUEUE: int = 5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="110" vertex="1">
+                    <mxGeometry y="40" width="240" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="112" value="+ api_call(endpoint, head, params)&#xa;+ wait_in_queue(coro)&#xa;+ timeout_config(standard)$" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;borderTop=1;" parent="110" vertex="1">
+                    <mxGeometry y="130" width="240" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="&lt;b&gt;WebAPIModel&lt;/b&gt;&lt;br&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#666666;fontColor=#333333;rounded=1;arcSize=10;" parent="100" vertex="1">
+                    <mxGeometry x="330" y="65" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="+ GET: str = &#39;GET&#39;&#xa;+ PUT: str = &#39;PUT&#39;&#xa;+ POST: str = &#39;POST&#39;&#xa;+ PATCH: str = &#39;PATCH&#39;&#xa;+ DELETE: str = &#39;DELETE&#39;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="101" vertex="1">
+                    <mxGeometry y="40" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="+ api_call(endpoint, head)*" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;borderTop=1;" parent="101" vertex="1">
+                    <mxGeometry y="140" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="501" value="" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.005;entryY=0.528;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#666666;entryPerimeter=0;" parent="100" source="111" target="102" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="200" value="Github Integration" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#dae8fc;fontColor=#000000;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="360" width="840" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="210" value="&lt;b&gt;GithubAPI&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;rounded=1;arcSize=10;" parent="200" vertex="1">
+                    <mxGeometry x="20" y="50" width="240" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="211" value="+ fetch_data(endpoint, params)&#xa;+ fetch_languages(owner, name)&#xa;+ analyze_repository(trees_url)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="210" vertex="1">
+                    <mxGeometry y="40" width="240" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="230" value="&lt;b&gt;GithubUtils&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;rounded=1;arcSize=10;" parent="200" vertex="1">
+                    <mxGeometry x="320" y="50" width="220" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="231" value="+ map_repository(data, lang)$&#xa;+ track_project_stack(branch, tree)$&#xa;+ check_backend_frontend(file, exts)$" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="230" vertex="1">
+                    <mxGeometry y="40" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="220" value="&lt;b&gt;GithubDatabaseHandler&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;rounded=1;arcSize=10;" parent="200" vertex="1">
+                    <mxGeometry x="550" y="50" width="260" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="221" value="+ session: AsyncSession" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="220" vertex="1">
+                    <mxGeometry y="40" width="260" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="222" value="+ format_payload(repository)$&#xa;+ has_data_changes(exist, dict)$&#xa;+ upsert_repositories(repository)&#xa;+ fetch_all_repositories()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;borderTop=1;" parent="220" vertex="1">
+                    <mxGeometry y="70" width="260" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="300" value="External Services" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;fontStyle=1;fontSize=14;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="670" y="40" width="540" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="310" value="&lt;b&gt;HeavyAPI&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#d6b656;rounded=1;arcSize=10;" parent="300" vertex="1">
+                    <mxGeometry x="20" y="50" width="200" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="311" value="+ fetch_data(endpoint)&#xa;+ map_sessions()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="310" vertex="1">
+                    <mxGeometry y="40" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="320" value="&lt;b&gt;Scanner&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#d6b656;rounded=1;arcSize=10;" parent="300" vertex="1">
+                    <mxGeometry x="250" y="50" width="240" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="321" value="+ check_status()&#xa;+ fetch_web_rules(site_map)&#xa;+ extract_information()&#xa;+ scrape_information(url)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="320" vertex="1">
+                    <mxGeometry y="40" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="400" value="Orchestration Layer" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;fontStyle=1;fontSize=14;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="650" width="640" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="410" value="&lt;b&gt;ApiDatabaseBridge&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#9673a6;rounded=1;arcSize=10;" parent="400" vertex="1">
+                    <mxGeometry x="340" y="30" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="411" value="+ repositories_sync(request, URL, params...)$" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="410" vertex="1">
+                    <mxGeometry y="40" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="420" value="&lt;b&gt;SchedulerService&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#ffffff;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#9673a6;rounded=1;arcSize=10;" parent="400" vertex="1">
+                    <mxGeometry x="5" y="30" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="421" value="+ schedule_github()$" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;" parent="420" vertex="1">
+                    <mxGeometry y="40" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="505" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9673a6;" parent="400" source="421" target="410" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="502" value="" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;strokeWidth=2;strokeColor=#6c8ebf;" parent="1" source="210" target="110" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="160" y="340"/>
+                            <mxPoint x="370" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="503" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=1.004;exitY=0.272;exitDx=0;exitDy=0;entryX=-0.001;entryY=0.233;entryDx=0;entryDy=0;strokeColor=#6c8ebf;exitPerimeter=0;entryPerimeter=0;" parent="1" source="210" target="230" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="350" y="443"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="504" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#9673a6;" parent="1" source="410" target="220" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
