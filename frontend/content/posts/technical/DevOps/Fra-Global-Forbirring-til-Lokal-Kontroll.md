@@ -4,6 +4,10 @@ title: Automatisert Infrastruktur for Isolerte miljøer (CI/CD) Prosesser
 ingress: |
   Dagens arbeid har fokusert på å løse kritiske utfordringer med miljøkonfigurasjon i Linux. Ved å etablere en fast struktur for lokale verktøy og automatisere koblingen mot <abbr title="forkortet :venv  - Et miljø som er isolert mot andre miljøer">Virtuelt miljøer</abbr>, har jeg fjernet behovet for manuell intervensjon ved oppstart. Dette sikrer en stabil, selvgående og reproduserbar arbeidsflyt. Resultatet er et mer pålitelig system som prioriterer riktig programvare automatisk, noe som reduserer tid og risiko for feil.
 status: |
+  #### Program informasjon
+  **OS** - Garuda Drag0nized Linux
+  ** Verktøy** - CodeVS
+
   #### Dagens Aktiviteter
 
   * Identifiserte at operativsystemet ikke fant det <abbr title="forkortet :venv  - Et miljø som er isolert mot andre miljøer">Virtuelt miljøet</abbr>, noe som hindret tilgang til nødvendige konfigurasjonsfiler og gjorde verktøyene upålitelige.
@@ -13,13 +17,13 @@ status: |
   * La til  en selvgående rutine for oppkobling som sikrer en stabil, reproduserbar og sikker programvarekjøring.
   * Reduserte tidsbruk og fjernet behovet for manuell intervensjon ved hver oppstart av prosjektet.
 
-  #### Motivasjon & Energi   10  /  10
+  #### Motivasjon & Energi - 10 / 10
 
   Dagen er så fin den kan bli
 sources: ''
 ---
 
-Under oppstarten av arbeidsmiljøet for et prosjekt oppstod det en situasjon der `Linux`-operativ systemet ikke klarte å finne riktig <abbr title="forkortet :venv  - Et miljø som er isolert mot andre miljøer">Virtuelt miljø</abbr>. Dette hindret systemet å lese de nødvendige konfigurasjonsfilene, noe som førte til at utviklingsverktøyet ikke var pålitelig, som det skulle være. Jeg hadde et behov for at maskinen skulle vite nøyaktig hvor den skulle lete for å finne prosjektets virtuelle miljø, uten at jeg manuelt måtte gripe inn.
+Under oppstarten av arbeidsmiljøet for et prosjekt oppstod det en situasjon der operativ systemet ikke klarte å finne riktig <abbr title="forkortet :venv  - Et miljø som er isolert mot andre miljøer">Virtuelt miljø</abbr>. Dette hindret systemet å lese de nødvendige konfigurasjonsfilene, noe som førte til at utviklingsverktøyet ikke var pålitelig, som det skulle være. Jeg hadde et behov for at maskinen skulle vite nøyaktig hvor den skulle lete for å finne prosjektets virtuelle miljø, uten at jeg manuelt måtte gripe inn.
 
 Målet mitt var å bygge et virtuelt miljø og automatisere rutinen ved å koble opp mot den spesifikke miljøet.
 

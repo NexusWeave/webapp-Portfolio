@@ -4,6 +4,10 @@ title: Raskere Nettsideutvikling med Stabilt Redaktørpanel
 ingress: |
   Denne loggen dokumenterer hvordan vi ved å velge et ferdig redaktørpanel som <abbr title="Et verktøy for å redigere nettsideinnhold">Tina CMS</abbr> har spart betydelig utviklingstid sammenlignet med å bygge en egen database. Ved å kombinere offisiell dokumentasjon med moderne <abbr title = "Kunstig Intelligens">KI</abbr>-verktøy, har jeg etablert en stabil løsning for <abbr title="Et verktøy for å bygge interaktive brukeropplevelser på nett">Vue.js</abbr> som kunden enkelt kan styre selv. Arbeidet har resultert i en gjenbrukbar metode som sikrer høyere kvalitet og langt raskere leveranse i alle fremtidige prosjekter.
 status: |
+  #### Program informasjon
+  **OS** - Garuda Drag0nized Linux
+  ** Verktøy** - Tina CMS, Vue.js
+
   #### Dagens Aktiviteter
 
   * Besluttet å bruke et ferdig redaktørpanel for å spare tid.

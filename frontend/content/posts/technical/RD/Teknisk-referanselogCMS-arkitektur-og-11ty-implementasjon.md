@@ -6,6 +6,10 @@ title: 'Investering i Undersøkelser, Reduserer Stress'
 ingress: |
   I dag har jeg investert tid til å bli kjent med verktøyene for å bygge enkle redaktørpanelt som er enkle for kunden å bruke. Ved å tette kunnskapshullene mine har jeg ikke bare fjernet unødvendig stress, men også skaffet oss en oversikt over løsninger som eksisterer. Dette sikrer at vi leverer produkter, som er gjennomtenkte og reduserer ressurs bruken.
 status: |
+  #### Program informasjon
+  **OS** - Ikke spesifisert
+  ** Verktøy** - 11ty, Tina CMS
+
   #### Dagens Aktiviteter
 
   * Jeg har brukt tid på å forstå hvordan <abbr title="Et verktøy som bygger raske nettsider med innhold fra redaktørpaneler">`11ty`</abbr>- <abbr title = "Et verktøy som brukes av utviklere for å utvikle nettsider effektivt">rammeverket</abbr> fungerer.

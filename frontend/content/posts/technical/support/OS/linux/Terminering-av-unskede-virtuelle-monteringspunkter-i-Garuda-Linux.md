@@ -4,21 +4,22 @@ title: Fjerning av «spøkelses-disker»
 ingress: |
   Etter observasjoner av spøkelsesdisker i Garuda, ble det identifisert at automatiske <abbr title = "et verktøy som lager egne små arbeidsområder på maskinen">Docker</abbr>-prosesser genererte uønskede virtuelle lag ved systemoppstart. Ved å identifisere aktive containere og deaktivere både Docker-tjenesten og dens socket-enhet, ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
 status: |
+  #### Program informasjon
+  **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
+  ** Verktøy** - Docker
+
   #### Dagens Aktiviteter
 
   * Finne årsaken til at systemet viser "falske" disker.
   * Stoppe tunge programmer som kjører uten at de trengs.
   * Endre innstillinger slik at jeg selv bestemmer når verktøyene skal starte.
 
-  #### Motivasjon & Energi 10 / 10
+  #### Motivasjon & Energi - 10 / 10
 
   Dagen er så fin den kan bli.
 sources: |
   Offisiell dokumentasjon : [docs.docker.com](https://docs.docker.com/engine/manage-resources/pruning/)
 ---
-
-* **Operativsystem**  - Garuda Arch Linux / Windows 10 (Dual Boot)
-* **Verktøy** - <abbr title = "et verktøy som lager egne små arbeidsområder på maskinen">Docker</abbr>
 
 I mitt nåværende oppsett med operativsystemet, fikk jeg en uventet brukeropplevelse. Systemet viste flere lagringsdisker i oversikten som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». Jeg mistenkte at dette skyldtes Docker, og at disse ble koblet til automatisk ved oppstart uten at jeg hadde bruk for dem.
 

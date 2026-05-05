@@ -4,7 +4,11 @@ title: Fra manuell rutine til selvgående CI/CD prossees
 ingress: |
   Ved å la prosessen fra ferdig kode til publisering gå helt av seg selv, har jeg skapt en moderne løsning som sparer både tid og penger. Jeg har valgt et rimelig alternativ som effektivt forlenger tilgjengelige byggeminutter i <abbr title="Robot tjeneste, som autoamtiserer manuelt arbeid">GitHub Actions</abbr>. Resultatet er et stabilt og selvgående system som reduserer både direkte kostnader og utviklertid ved å fjerne manuelle rutineoppgaver, slik at fokuset heller kan ligge på videreutvikling av selve kjernefunksjonaliteten.
 status: |
-  ##### Dagens aktiviteter
+  #### Program informasjon
+  **OS** - Garuda Drag0nized Linux
+  ** Verktøy** - GitHub Actions
+
+  #### Dagens Aktiviteter
 
   * Gjennomgang av <abbr title="En sky lagring tjeneste for utviklere hvor kildekoden er lagret.">GitHub</abbr>s kvote på 2000 bygge-minutter og hvordan jeg kan unngå å gå tom.
   * Avsløring av "10x-fellen" – hvorfor jeg velger Linux fremfor Mac for å få 10 ganger mer arbeid for pengene.
@@ -12,7 +16,7 @@ status: |
   * Erstatte manuelt rutinearbeid med en selvgående prosess (CI/CD) for versjonering og nettsidebygging.
   * Oppsummering av hvordan jeg kutter utviklingstid.
 
-  ##### Motivasjon & Energi - 10 / 10
+  #### Motivasjon & Energi - 10 / 10
 
   Dagen har vært så fin, som det har vært mulig
 sources: ''
