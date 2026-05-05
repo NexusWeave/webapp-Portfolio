@@ -5,8 +5,8 @@ ingress: |
   Da en ny lansering skapte uforutsette feil, valgte jeg å gå tilbake til en eldre, men stabil versjon av nettsiden. Denne hadde imidlertid flere svakheter under overflaten som gjorde vedlikeholdet krevende. Gjennom en målrettet opprydding har jeg forvandlet denne versjonen til en pålitelig plattform. Ved å forenkle hvordan informasjon hentes og vises, er siden nå blitt både raskere og langt tryggere for absolutt alle brukerne.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt, Vue.js
-  ** Verktøy** - Innholdshenting
+  ** Teknologi** - Nuxt.js
+  ** Verktøy** - Innholdshenting, TypeScript
   ** Prinsipper** - Single Source of Truth, UU, SEO
 
   #### Dagens Aktiviteter
@@ -29,6 +29,7 @@ status: |
 
   Dagen er så fin den kan bli !
 sources: ''
+
 ---
 
 Etter at en 2 uker gammel lansering førte uforutsette feil på kundens nettside, ble det nødvendig å rulle tilbake til en tidligere versjon som fungerte. Denne eldre versjonen hadde tekniske etterslep og utfordringer som påvirket brukeropplevelsen, men var stabil. Versjonen hadde mange feilmeldinger i bakgrunnen, og en uoversiktlig kodestruktur som gjorde det tidkrevende å rette de gamle feilene uten å introdusere nye feil.

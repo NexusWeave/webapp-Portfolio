@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
+  ** Verktøy** - TypeScript
   ** Prinsipper** - DIP, Flerlagsløsning
 
   #### Dagens Aktiviteter
@@ -19,6 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
 sources: ''
+
 ---
 
 Systemets oppbygning var preget av en sammenvevd struktur der kjernefunksjonaliteten var låst til spesifikke tekniske verktøy og eksterne biblioteker. Dette skapte en teknisk blokkering som gjorde det umulig å utføre automatiserte tester. For bedriften innebar dette økt risiko for feil ved oppdateringer, tregere utviklingstid og manglende innsyn i systemets faktiske helsetilstand.

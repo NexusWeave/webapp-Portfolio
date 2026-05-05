@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
-  ** Verktøy** - JSON, KI
+  ** Verktøy** - JSON, KI, TypeScript
   ** Prinsipper** - Singleton, RBAC
 
   #### Dagens Aktiviteter
@@ -23,6 +23,7 @@ sources: |
   1. **Google Gemini (AI-modell)**: Breftende for bransjestandard og læringsverktøy
   2. [Unntak for synkron I/O i Singleton-initialisering](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-8.0).
   3. [Prinsipp for Single Responsibility (SRP).](https://en.wikipedia.org/wiki/Single-responsibility_principle)
+
 ---
 
 Bedriften hadde behov for å styrke sikkerheten og kontrollen rundt hvem som har tilgang til sensitivt innhold i systemet våres. Uten et rollebasert  system var det utfordrende å skille studenter fra ansatte på en trygg og oversiktlig måte etter hvert som organisasjonen vokser. Dette skapte risiko for at feil brukere hadde tilgang til skjermet informasjon.

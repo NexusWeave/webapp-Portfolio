@@ -5,8 +5,8 @@ ingress: |
   Gjennom målrettet opprydding i kildekode, filstruktur og skjemasystem, har jeg i dag lagt grunnlaget for en mer effektiv og fleksibel medlemsportal. Ved å tette tekniske gap og finpusse grensesnittet, har jeg skapt en plattform som er enklere å vedlikeholde for utviklere og mer intuitiv å navigere for sluttbrukere. Resultatet er en operasjonell effektivisering som korter ned tiden fra en god ide til ferdig lansert løsning.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt, Vue.js, TypeScript
-  ** Verktøy** - Skjemasystem
+  ** Teknologi** - Nuxt.js
+  ** Verktøy** - Skjemasystem, TypeScript
   ** Prinsipper** - UU
 
   #### Dagens Aktiviteter
@@ -28,6 +28,7 @@ status: |
 
   Dagen er så fin den kan bli, opplevd litt spenning i hode.
 sources: ''
+
 ---
 
 Medlemsportalen og skjemasystemet hadde en del teknikske etterslep, som gjorde det unødvendig komplisert for utviklere å tilpasse skjemaer til nye behov. Den underliggende koden hadde noen løse tråder som gjorde det vanskelig for utviklere å oppdage feil før de nådde den live nettsiden, noe som utgjorde en risiko for stabiliteten. Koden hadde mindre skjønnhetsfeil, som datoer ikke ble vist riktig i lister hvis informasjon manglet, samt teknisk etterslep fra «*legacy koden*» som lå igjen i systemet. Det fantes også små visuelle uregelmessigheter i ikoner og navigasjonslenker som kunne få nettsiden til å virke ustabil og mindre profesjonell. I tillegg var den interne organiseringen av prosjektfilene ikke optimal, noe som førte til at nye utviklere ville bruke tid på å finne frem til riktige verktøy.

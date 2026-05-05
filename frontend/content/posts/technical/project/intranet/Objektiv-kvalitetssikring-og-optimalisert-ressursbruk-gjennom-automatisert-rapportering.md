@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#, .NET
-  ** Verktøy** - Coverlet
+  ** Verktøy** - Coverlet, TypeScript
   ** Prinsipper** - Test Coverage
 
   #### Dagens Aktiviteter
@@ -20,6 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
 sources: ''
+
 ---
 
 Utviklingsmiljøet manglet et system for å måle og visualisere hvor stor del av den digitale løsningen som faktisk ble kontrollert av tester. Dette skapte blindsoner i utviklingsprosessen. Uten objektive data var det umulig å vurdere den faktiske risikoen for feil eller størrelsen på teknisk etterslep, noe som gjorde bedriften sårbar for uforutsette utfordringer i drift.

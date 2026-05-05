@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
-  ** Verktøy** - MSI Z270 Gaming Pro hovedkort med ASUS PCIe WiFi-kort
+  ** Verktøy** - MSI Z270 Gaming Pro hovedkort med ASUS PCIe WiFi-kort, TypeScript
 
   #### Dagens Aktiviteter
 

@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   **OS** - Garuda Drag0nized Linux
-  ** Verktøy** - Tina CMS, Vue.js
+  ** Verktøy** - Tina CMS, Vue.js, TypeScript
 
   #### Dagens Aktiviteter
 

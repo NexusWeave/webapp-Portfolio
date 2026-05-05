@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   **OS** - Garuda Arch Linux
-  ** Verktøy** - VS Code, downgrade, KDE-Plasma
+  ** Verktøy** - VS Code, downgrade, KDE-Plasma, TypeScript
 
   #### Dagens Aktiviteter
 

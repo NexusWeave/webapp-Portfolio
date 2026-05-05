@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
+  ** Verktøy** - TypeScript
   ** Prinsipper** - Minste privilegium
 
   #### Dagens Aktiviteter
@@ -19,6 +20,7 @@ status: |
   Dagen er så fin den kunne bli i øyblikket.
 sources: |
   1. [Minst Privilegium](https://learn.microsoft.com/en-us/entra/identity-platform/secure-least-privileged-access)
+
 ---
 
 Det ble oppdaget en sårbarhet knyttet til tilgangsstyring på nettsiden. Navigasjonslenker som skulle skjermes var eksponert for brukere. Dette var en konsekvens av at det ikke har vært lagt inn et filter for å filtrere vekk dataen i backend. Dette utgjorde en lekasje av intern informasjon om systemets struktur.

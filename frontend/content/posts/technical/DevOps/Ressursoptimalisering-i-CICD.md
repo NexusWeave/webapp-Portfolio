@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   **OS** - Garuda Drag0nized Linux
-  ** Verktøy** - GitHub Actions
+  ** Verktøy** - GitHub Actions, TypeScript
 
   #### Dagens Aktiviteter
 

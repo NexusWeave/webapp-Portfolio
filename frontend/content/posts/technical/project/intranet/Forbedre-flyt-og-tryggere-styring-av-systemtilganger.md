@@ -7,7 +7,7 @@ status: |
   #### Program informasjon
   
   ** Teknologi** - C#
-  ** Verktøy** - JSON
+  ** Verktøy** - JSON, TypeScript
   ** Prinsipper** - RBAC
 
   #### Dagens Aktiviteter
@@ -21,6 +21,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
 sources: ''
+
 ---
 
 Systemets rollebasert tilgangs kontroll (RBAC) hadde en logikkfeil som gjorde den altfor streng. Når ansatte hadde fått tillatelse til flere kategorier ved hjelp av en "samlenøkkel" (stjerne-symbolet \*), forsto ikke systemet instruksjonen. Selv om de ansatte var godkjente i systemet og skulle hatt tilgang, ble de nektet å åpne tillate filer og verktøy. Ansatte mistet tid fordi de ble stående foran en ei side de egentlig hadde tilgang til.

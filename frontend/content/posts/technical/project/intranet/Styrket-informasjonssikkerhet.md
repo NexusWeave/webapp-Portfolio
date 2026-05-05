@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
-  ** Verktøy** - KI
+  ** Verktøy** - KI, TypeScript
   ** Prinsipper** - To-pass algoritme, Minste privilegium
 
   #### Dagens Aktiviteter
@@ -20,6 +20,7 @@ status: |
   Dagen er så fin den kunne bli.
 sources: |
   1. [Tree Traversal](https://www.geeksforgeeks.org/dsa/tree-traversals-inorder-preorder-and-postorder/)
+
 ---
 
 Nettsiden viser innhold fra CSV-baserte datalister med komplekse hierarkier (foreldre-barn-relasjoner som også er kalt for content-nodes). Tidligere manglet systemet en pålitelig metode for å kontrollere at brukere kun så det innholdet de faktisk hadde rettighet til, spesielt når tilgangen var avhengig av hvor i trestrukturen informasjonen lå.

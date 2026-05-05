@@ -5,7 +5,8 @@ ingress: |
   Jeg har gjennomført en modernisering av prosjektet [SosialInnovasjon](https://sosent.no) for å sikre en raskere og mer stabil brukeropplevelse. Ved å rydde i systemets grunnmur har jeg fjernet hindringer som tidligere skapte visuelle feil og treghet. Resultatet er en profesjonell digital flate hvor informasjon alltid vises korrekt. Dette sparer meg for vedlikehold og gjør det enklere å videreutvikle siden i tråd med bedriftens behov i fremtiden.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt, Vue.js
+  ** Teknologi** - Nuxt.js
+  ** Verktøy** - TypeScript
   ** Prinsipper** - Standardisering, Fallbacks
 
   #### Dagens Aktiviteter
@@ -19,6 +20,7 @@ status: |
 
   Dagen har vært så fin den kunne bli, selv om det har vært litt små irriterende med uforutsigbare feil.
 sources: ''
+
 ---
 
 Prosjektet tekniske fundament hadde over tid blitt oppdelt. Forskjellige deler av siden brukte ulike metoder for å vise frem innhold, som artikler, forfattere og arrangementer. Dette gjorde siden tyngre å laste, økte risikoen for småfeil i visningen (som feil datoformater), og gjorde det tidkrevende for selv små endringer uten at noe annet ble påvirket.

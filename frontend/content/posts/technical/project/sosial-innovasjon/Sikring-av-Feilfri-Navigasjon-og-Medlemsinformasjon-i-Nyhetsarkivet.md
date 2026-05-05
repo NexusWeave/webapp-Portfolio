@@ -5,8 +5,8 @@ ingress: |
   Dette arbeidet handler om å sørge for at organisasjonens digitale identitet virker korrekt. Ved å løse utfordringene med navigasjonen i nyhetsarkivet har jeg sikret at medlemmene faktisk finner informasjonen de leter etter, noe som bygger tillit og profesjonalitet. Samtidig har jeg ryddet i logikken på nettsiden slik at den blir enklere å vedlikeholde. Jeg har redusert teknisk etterslep for å sikre at budskapet når helt frem.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt, Vue.js, TypeScript
-  ** Verktøy** - Nyhetsarkiv
+  ** Teknologi** - Nuxt.js
+  ** Verktøy** - Nyhetsarkiv, TypeScript
 
   #### Dagens Aktiviteter
 
@@ -20,6 +20,7 @@ status: |
 
   Dagen har vært så fin den kunne bli.
 sources: ''
+
 ---
 
 Jeg utviklet et nyhetsarkiv slik at besøkede kunne kunne finne eldre artikler. Under testingen av løsningen, oppdaget jeg at navigasjonen oppførte seg på en uventet måte. Når man trykket på knappen «Neste side», endret sidetallet seg, men artiklene på skjermen forble det samme. Selv om side tallet forandret seg.

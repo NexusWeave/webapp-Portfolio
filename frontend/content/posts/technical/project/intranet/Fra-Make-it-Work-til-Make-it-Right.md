@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
-  ** Verktøy** - JSON, Database
+  ** Verktøy** - JSON, Database, TypeScript
   ** Prinsipper** - Flerlagsløsning
 
   #### Dagens Aktiviteter
@@ -19,6 +19,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
+
 ---
 
 Prosjektet hadde et preg av et økende vedlikeholdsetterslep som følge av å følge prinsippet om "Make it work, make it right, make it fast" i startfasen. Systemet fungerte, men manglet strukturen som kreves for stabil drift over tid. Oppbyggingen skapte en risiko der små endringer kunne føre til uforutsette feil, noe som kan risikere å bremse fremdriften.
