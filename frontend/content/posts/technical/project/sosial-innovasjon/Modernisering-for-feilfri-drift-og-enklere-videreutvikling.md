@@ -7,7 +7,7 @@ status: |
   #### Program informasjon
   ** Teknologi** - Nuxt.js
   ** Verktøy** - TypeScript
-  ** Prinsipper** - Standardisering, Fallbacks
+  ** Prinsipper** - Datakvalitet, Fallbacks, Standardisering
 
   #### Dagens Aktiviteter
 
@@ -20,7 +20,6 @@ status: |
 
   Dagen har vært så fin den kunne bli, selv om det har vært litt små irriterende med uforutsigbare feil.
 sources: ''
-
 ---
 
 Prosjektet tekniske fundament hadde over tid blitt oppdelt. Forskjellige deler av siden brukte ulike metoder for å vise frem innhold, som artikler, forfattere og arrangementer. Dette gjorde siden tyngre å laste, økte risikoen for småfeil i visningen (som feil datoformater), og gjorde det tidkrevende for selv små endringer uten at noe annet ble påvirket.

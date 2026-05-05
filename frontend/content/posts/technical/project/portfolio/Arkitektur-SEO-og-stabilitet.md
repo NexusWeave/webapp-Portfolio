@@ -1,10 +1,15 @@
 ---
 date: 2026-04-20T06:57:57.091Z
-title: 'Arkitektur, SEO og stabilitet'
+title: Arkitektur, SEO og stabilitet
 ingress: |
   Dette prosjektet tok for seg utfordringene med manuelt vedlikehold av navigasjon og SEO, som skapte en uoversiktlig oppbygging og teknisk ustabilitet. Ved å etablere en felles sannhetskilde har jeg automatisert viktige rutineoppgaver og fjernet innlastingsfeil. Resultatet er en fremtidsrettet plattform med optimalisert ressursbruk, forbedret brukeropplevelse og en stabil struktur som sikrer både synlighet og videre vekstmuligheter.
 status: |
-  #### Dagens aktiviteter
+  #### Program informasjon
+  ** Teknologi** - Nuxt.js
+  ** Verktøy** - TypeScript, KI
+  ** Prinsipper** - SEO
+
+  #### Dagens Aktiviteter
 
   * Samlet styring av menyer og metadata i en dedikert logikk-modul.
   * Rettet kommunikasjonssvikten mellom server og nettleser i tidslinje-, bilde- og prosjektkomponenter.
@@ -12,7 +17,7 @@ status: |
   * Standardisert bruk av `Suspense`
   * Fjernet unødvendige `debug`-logger og oppdaterte kodedokumentasjon.
 
-  #### Motivasjon & Energi 10 / 10
+  #### Motivasjon & Energi - 10 / 10
 
   Dagen er så fin den kan bli.
 sources: ''

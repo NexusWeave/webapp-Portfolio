@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
-  ** Verktøy** - Dokumentasjonsbase, TypeScript
+  ** Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
   * Definert og dokumentert prosjektets kjernefunksjonalitet og forretningsverdi. Dette sikrer at alle medarbeidere har en felles forståelse av de viktige målene.
@@ -18,7 +18,6 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli !
 sources: ''
-
 ---
 
 Prosjektet manglet en kilde til prosjekt informasjon, noe som vil skape store utfordringer ved utvidelse av teamet. Mangelen på oversikt gjorde opplæringen unødvendig lang, og skapte en betydelig risiko for misforståelser av systemets kjernefunksjonaliteter.

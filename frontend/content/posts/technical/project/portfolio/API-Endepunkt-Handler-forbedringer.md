@@ -4,7 +4,11 @@ title: API Endepunkt &Handler forbedringer
 ingress: |
   Det var tidligere vanskelig å holde styr på alle de ulike delene av løsningen. Ved å gi hver del et eget, forståelig navn og rydde bort rot, er det nå mye enklere å se nøyaktig hva som er i drift og hvordan alt virker. Dette gjør det både tryggere og lettere å bygge ut prosjektet videre, som en konsekvens av at jeg har nå oversikt over hvordan de ulike delene snakker sammen.
 status: |
-  #### Dagens aktiviteter:
+  #### Program informasjon
+  ** Teknologi** - Python
+  ** Verktøy** - TypeScript, KI
+
+  #### Dagens Aktiviteter:
 
   * Oppdatert alle systemdefinisjoner med unike merkelapper (labels) for å sikre at hver enkelt "vei" og funksjon i systemet er lett å identifisere.
   * Implementert de nye, unike navnene i systemets oversiktsrapport, noe som gir bedre innsikt i operativ status og ytelse for hver enkelt komponent.
@@ -12,12 +16,11 @@ status: |
   * Samlet alt ansvar for tilstandskontroll i én ny, dedikert modul for å forenkle vedlikehold og fremtidig utvidelse.
   * Etablert kontroll på samspillet mellom de ulike delene av systemet, noe som gjør det tryggere og mer oversiktlig å introdusere ny funksjonalitet.
 
-  #### Motivasjon & Energi 6 / 10
+  #### Motivasjon & Energi - 6 / 10
 
   Dagen er så fin den kan være, litt irritert på at AI ikke følger instruksene den får.
 sources: ''
 ---
-
 
 De forskjellige "veiene" og funksjonene i systemet mitt manglet klare navn, noe som gjorde det uoversiktlig å holde styr på hva som faktisk var i drift og hvordan de presterte.
 

@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - Nuxt.js
-  ** Verktøy** - Nyhetsarkiv, TypeScript
+  ** Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
 
@@ -20,7 +20,6 @@ status: |
 
   Dagen har vært så fin den kunne bli.
 sources: ''
-
 ---
 
 Jeg utviklet et nyhetsarkiv slik at besøkede kunne kunne finne eldre artikler. Under testingen av løsningen, oppdaget jeg at navigasjonen oppførte seg på en uventet måte. Når man trykket på knappen «Neste side», endret sidetallet seg, men artiklene på skjermen forble det samme. Selv om side tallet forandret seg.

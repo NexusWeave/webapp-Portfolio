@@ -1,7 +1,8 @@
 ---
 date: 2026-03-19T00:00:00.000Z
 title: Intelligent filtrering og kategorisering for å øke brukervennlighet
-ingress: 'Jeg har transformert et ustabilt overvåkingssystem til en pålitelig og selvgående løsning som fjerner unødvendig støy og sikrer datakvalitet. Ved å automatisere sortering og lagring, leveres nå prosjekter ferdig kategorisert direkte til skyen. Dette fjerner behovet for manuelt vedlikehold og feilsøking, samtidig som det gir besøkende tilgang til relevante data for raskere og mer presise analyser.'
+ingress: |
+  Jeg har transformert et ustabilt overvåkingssystem til en pålitelig og selvgående løsning som fjerner unødvendig støy og sikrer datakvalitet. Ved å automatisere sortering og lagring, leveres nå prosjekter ferdig kategorisert direkte til skyen. Dette fjerner behovet for manuelt vedlikehold og feilsøking, samtidig som det gir besøkende tilgang til relevante data for raskere og mer presise analyser.'
 sources: ''
 ---
 Overvåkningssytemet GitHub-prosjekter var ustabilt og ineffektivt. Det ble overbelastet av unødvendige skoleprosjekter, noe som utfordret systemet for å skille prosjekter fra støy.

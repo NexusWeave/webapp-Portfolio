@@ -6,8 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
-  ** Verktøy** - Testrutiner, TypeScript
-  ** Prinsipper** - Separasjon av ansvarsområder
+  ** Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
   * Identifisert og kartlagt svakheter i nåværende tilgangsstyring, med fokus på å skille virksomhetens regler fra tekniske avhengigheter.
@@ -20,7 +19,6 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli
 sources: ''
-
 ---
 
 Systemets funksjon for tilgangsstyring var organisert på en måte som blandet foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken isolert, som øker risiko for feil ved fremtidige endringer og gjorde det vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer som planlagt.

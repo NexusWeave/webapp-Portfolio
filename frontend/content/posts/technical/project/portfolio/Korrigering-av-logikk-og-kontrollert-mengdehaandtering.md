@@ -4,8 +4,11 @@ title: Korrigering av logikk og kontrollert mengdehåndtering
 ingress: |
   En logisk feilkobling begrenset tidligere datainnsamlingen til kun forsiden, noe som ga et mangelfullt datagrunnlag. Ved å erstatte den enkle forespørselen med en grundig metode for å hente ut informasjon, prosesserer systemet nå hele lister med lenker. For å sikre stabilitet og unngå overbelastning, er arbeidsflyten transformert med kontrollert gruppering av oppgaver. Dette har ført til en effektiv og pålitelig tjeneste klargjort for vekst.
 status: |
-  #### Dagens Aktiviter
+  #### Program informasjon
+  ** Teknologi** - Python
+  ** Verktøy** - TypeScript, KI
 
+   Dagens Aktiviter
 
   \* Oppdaget at systemet kun sendte forespørsler til forsiden i stedet for å følge hele listen med underlenker.
   \* Erstattet den begrensede forespørselen med en funksjon som henter ut og prosesserer alle tilgjengelige lenker fra nettsiden.
@@ -17,7 +20,7 @@ status: |
   \* Økt gjennomstrømmingen i verktøyet, noe som gjør tjenesten klar for større datamengder.
   \* Gjennomført kvalitetssikring som understreker viktigheten av å validere hvilken funksjon som kalles tidlig i prosjektet for å sikre et korrekt datagrunnlag.
 
-  #### Motivasjon & Energi 9 / 10
+  #### Motivasjon & Energi - 9 / 10
 
   Kjenner at jeg er litt slapp idag, men ellers en ok dag.
 sources: ''

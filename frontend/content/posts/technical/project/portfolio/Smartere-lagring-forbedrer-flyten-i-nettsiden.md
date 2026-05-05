@@ -5,15 +5,9 @@ ingress: |
   For å gi besøkende en rask opplevelse har jeg fjernet ventetiden ved visning av mine prosjekter. Ved å lage et eget digitalt arkiv som samler alt på ett sted, slipper nettsiden å hente informasjon fra andre steder hver gang man trykker på en lenke. Systemet rydder og oppdaterer seg nå automatisk om natten når det er få brukere. Dette gir en ryddig og effektiv nettside som alltid viser frem siste nytt uten irriterende venting.
 status: |
   #### Program informasjon
-  ** Verktøy** - TypeScript
-
-  Frontend - NUXT
-
-  **Applikasjon** : FastAPI
-
-  **ORM** -  SQLAlchemy
-
-  **Bibliotek** - APScheduler
+  ** Teknologi** - FastAPI
+  ** Verktøy** - SQLAlchemy, TypeScript
+  ** Prinsipper** - SRP
 
   #### Dagens Aktiviteter
 

@@ -1,7 +1,8 @@
 ---
 date: 2025-12-21T00:00:00.000Z
 title: Runtime-diagnostikk i Python
-ingress: >
+ingress: |
+  >
   I kjølvannet av database-migreringen til Turso oppsto utfordringer i
   applikasjonens API-logikk, manifestert som en `500 Internal Server Error`.
   Denne artikkelen dokumenterer diagnostiseringen og rettingen av en "Breaking

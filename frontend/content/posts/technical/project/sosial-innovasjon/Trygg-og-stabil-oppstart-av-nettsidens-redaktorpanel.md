@@ -6,8 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - Nuxt.js
-  ** Verktøy** - dotenv-cli, TypeScript
-  ** Prinsipper** - Sikkerhetsstandarder
+  ** Verktøy** - TypeScript, dotenv-cli
 
   #### Dagens Aktiviteter
 
@@ -20,7 +19,6 @@ status: |
 
   Dagen har vært så fin den kan bli.
 sources: ''
-
 ---
 
 Det hadde tidligere blitt laget til et tilpasset redaktørpanelt, dette skulle hjelpe bedriften for å bli mer selvstendig og redusere behovet for teknisk hjelp. Da jeg skulle klargjøre dette systemet for bruk, oppstod det et avbrudd i kompileringen som en konskekvens av systemet manglet digitale identifikasjoner og nøkler for å koble seg trygt til skyen. Jeg forsto at systemet ikke fant de nødvendige tilgangskodene i den lokale miljø-filen kalt `**.env**.`.

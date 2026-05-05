@@ -4,6 +4,11 @@ title: Standardisering og teknisk optimalisering av brukerreisen
 ingress: |
   Gjennom teknisk opprydding og standardisering har jeg styrket nettsidens identitet og brukeropplevelse. Ved å forenkle navigasjonslogikken og etablere standardiserte bildebeskrivelser, har jeg fjernet teknisk etterslep og visuell støy. Resultatet er en stabil og responsiv plattform som øker brukernes opplevelse, forbedrer tilgjengelighet og optimaliserer applikasjonen for effektiv videre vekst og forenkler vedlikehold i fremtiden.
 status: |
+  #### Program informasjon
+  ** Teknologi** - Python
+  ** Verktøy** - TypeScript
+  ** Prinsipper** - Standardisering
+
   #### Dagens Aktiviteter
 
   * Samlet og forbedret visning av datoer og mediekomponenter på tvers av nettstedets hovedelementer for å skape et helhetlig visuelt uttrykk.
@@ -20,7 +25,6 @@ Målet var å samle all visuell presentasjon av dato- og medieinformasjon under 
 * Jeg sørget for at Media komponentene følger den samme strukturen og logikken over hele nettstedet.
 
 Dette resulterte til et visuelt helhetlig grensesnitt hvor all informasjon følger det samme uttrykket, som styrker identiteten til nettsiden, dette påvirker direkte engasjementet fra besøkede. Jeg erfarte at små visuelle avvik mellom sider kan virke som små bagateller, men samlet skaper et uventet inntrykk. Å etablere felles standarder gjennom å bruke typesikkerhet tidlig er en lav investering med langsiktig verdi, for vekstevnen til applikasjonen.
-
 
 Oppbyggingen av header-seksjonen var unødvendig kompleks, noe som gjorde tidkrevende å vedlikeholde og skapte en uforutsigbar opplevelse for besøkende.
 Målet var å forenkle navigasjonen for å gi brukeren en lettere reise gjennom nettstedet og redusere fremtidig tidkrevende vedlikehold.

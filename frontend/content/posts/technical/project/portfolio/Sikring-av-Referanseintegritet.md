@@ -1,7 +1,8 @@
 ---
 date: 2025-12-17T00:00:00.000Z
 title: Sikring av Referanseintegritet
-ingress: >
+ingress: |
+  >
   Denne artikkelen er en fortsettelse på Sikring av Unikhet og Datakontrakt og
   utforsker løsningen på integritetsfeil i et asynkront datasystem. Ved å
   analysere krasj i persistenslaget knyttet til mange-til-mange-relasjoner,
@@ -46,7 +47,6 @@ Ved å knytte selve modellobjektene sammen, overlates håndteringen av avhengigh
     self.session.add(association_obj)
   ```
 Etter at jeg omgjorde funksjonen, ble integritetsbruddene fjernet. Ved å integrere logikken direkte i arbeidsflyten, sikres det at relasjonene opprettes i riktig rekkefølge. Dette har resultert i en pålitelig prosess der koblinger mellom prosjekter og språk lagres stabilt.
-
 
 Erfaringen bekrefter at operasjoner med rå fremmednøkkel-ID-er i et asynkront miljø medfører en stor risiko for tekniske feil. Arbeidet har gitt en dypere forståelse for hvordan rekkefølgen i en database fungerer; selv om dataene hentes samtidig, må de lagres korrekt for at koblingene skal være gyldige. Ved å bruke hele modellobjekter som argumenter, har jeg sørget for at systemet tåler tidsavvik og alltid finner riktig informasjon.
 

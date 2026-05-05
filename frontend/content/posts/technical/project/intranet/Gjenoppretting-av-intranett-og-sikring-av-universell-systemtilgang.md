@@ -16,7 +16,6 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen var så fin den kunne bli !
 sources: ''
-
 ---
 
 Bedriftens intranett krasjet ved innlogging på nettsiden under testing etter at systemet ble flyttet fra kodespråket **PHP** → **C#** ved hjelp av AI-generert kode. Den halv automatiske flyttingen skapte hindringer som gjorde nettsiden utilgjengelig, og videre utviklingsarbeidet stanset. Dette betydde stopp i produksjon for bedriften.

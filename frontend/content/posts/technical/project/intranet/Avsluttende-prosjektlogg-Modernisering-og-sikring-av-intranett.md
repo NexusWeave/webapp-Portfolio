@@ -6,8 +6,8 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
-  ** Verktøy** - KI, TypeScript
-  ** Prinsipper** - RBAC, Minste privilegium
+  ** Verktøy** - Coverlet, KI, TypeScript
+  ** Prinsipper** - DIP, Minste privilegium, RBAC, Singleton
 
   #### Dagens Aktiviteter
   * Denne loggen oppsummerer de viktigste aktivitetene, resultatene og læringspunktene fra prosjektperioden (November – Desember 2025).
@@ -16,7 +16,6 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Prosjektet er fullført med gode resultater.
 sources: ''
-
 ---
 
 Dette prosjektet har handlet om å profesjonalisere bedriftens intranett. Ved å rydde opp i **ustabil kildekode** og innføre moderne sikkerhetsstandarder, har vi gått fra en sårbar løsning til en plattform som er klargjort for fremtidig vekst og effektiv drift.

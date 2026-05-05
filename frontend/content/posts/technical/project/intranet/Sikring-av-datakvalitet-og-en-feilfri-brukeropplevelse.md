@@ -19,7 +19,6 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
 sources: ''
-
 ---
 
 Systemet som håndterer bedriftens dataflyt og navigasjonslenker, produserte duplikater i de registrerte filene. Dette førte til at informasjonen som ble lagret ikke var unik, dette skapte rot i datagrunnlaget og forstyrret den tiltenkte flyten i systemet. For brukerne ville dette bety en uforutsigbar opplevelse og risiko for feilinformasjon.

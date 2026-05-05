@@ -21,7 +21,6 @@ status: |
 
   Dagen har vært så fin den kunne bli.
 sources: ''
-
 ---
 
 Det ble oppdaget to ukorrektheter i prosjektets komponent-bibliotek som skapte en uventet brukeropplevelse. Feilene førte til at nettsiden oppførte seg ustabil for brukeren.

@@ -6,8 +6,8 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - Nuxt.js
-  ** Verktøy** - SEO, TypeScript
-  ** Prinsipper** - Brukeropplevelse
+  ** Verktøy** - TypeScript
+  ** Prinsipper** - Brukeropplevelse, SEO
 
   #### Dagens Aktiviteter
 
@@ -21,7 +21,6 @@ status: |
 
   Dagen er så fin den kan bli.
 sources: ''
-
 ---
 
 Prosjektet hadde enkelte utfordringer knyttet til hvordan innhold ble presentert for brukerne mens det lastet, samt enkelte svakheter i hvordan forfatterinformasjon og datoer ble koblet sammen. Dette medførte en risiko for en uventet brukeropplevelse og økt tidsbruk ved vedlikehold og videreutvikling.

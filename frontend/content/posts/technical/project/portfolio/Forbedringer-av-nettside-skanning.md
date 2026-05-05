@@ -4,7 +4,11 @@ title: Forbedringer av nettside skanning
 ingress: |
   Tidligere var prosessen med å hente informasjon både treg og full av støy. Ved å lære verktøyet å kjenne igjen og fjerne uinteressant innhold automatisk, leveres nå ferdigvaskede data. Med evnen til å gjøre mange oppgaver samtidig og tåle små avbrudd, spares det mye tid. I tillegg er feil med manglende sider løst, slik at alt alltid er klart til bruk.
 status: |
-  #### Dagens aktiviteter:
+  #### Program informasjon
+  ** Teknologi** - Python
+  ** Verktøy** - TypeScript, KI
+
+  #### Dagens Aktiviteter:
 
   * Oppgradert verktøyet slik at det nå automatisk kjenner igjen og fjerner uinteressant informasjon og "støy" fra nettsider.
   * Innført nye metoder som renser nettsidene for unødvendige elementer før informasjonen blir lagret.

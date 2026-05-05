@@ -6,8 +6,8 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - Nuxt.js
-  ** Verktøy** - Innholdshenting, TypeScript
-  ** Prinsipper** - Single Source of Truth, UU, SEO
+  ** Verktøy** - TypeScript
+  ** Prinsipper** - SEO, UU
 
   #### Dagens Aktiviteter
 
@@ -29,7 +29,6 @@ status: |
 
   Dagen er så fin den kan bli !
 sources: ''
-
 ---
 
 Etter at en 2 uker gammel lansering førte uforutsette feil på kundens nettside, ble det nødvendig å rulle tilbake til en tidligere versjon som fungerte. Denne eldre versjonen hadde tekniske etterslep og utfordringer som påvirket brukeropplevelsen, men var stabil. Versjonen hadde mange feilmeldinger i bakgrunnen, og en uoversiktlig kodestruktur som gjorde det tidkrevende å rette de gamle feilene uten å introdusere nye feil.

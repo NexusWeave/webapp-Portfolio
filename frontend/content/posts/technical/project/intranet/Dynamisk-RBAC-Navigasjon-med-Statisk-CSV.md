@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
-  ** Verktøy** - CSV, CsvHelper, JSON, TypeScript
+  ** Verktøy** - CSV, JSON, TypeScript
   ** Prinsipper** - RBAC
 
   #### Dagens Aktiviteter
@@ -19,7 +19,6 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
-
 ---
 
 Systemet vårt benytter en sentral oversikt (en CSV-fil ved bruk av [`CsvHelper`](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file)) for å styre innholdslister og hovedmenyer. Utfordringen var at denne listen var statisk; alle brukere så de samme lenkene og menyvalgene, uavhengig av hvilke rettigheter de faktisk hadde i systemet. Dette skapte en uoversiktlig brukeropplevelse og potensielle sikkerhetsspørsmål, da brukere kunne se navigasjonsstier de ikke hadde tillatelse til å besøke.

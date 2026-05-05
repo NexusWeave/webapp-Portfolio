@@ -4,6 +4,11 @@ title: Omgjøring fra Ustandardisert Logikk til ORM
 ingress: |
   Jeg har gjennomført en omfattende fornyelse av databasetjenesten for å sikre en langt mer stabil og effektiv hverdag i prosjektet mitt. Ved å rydde opp i hvordan informasjon håndteres, har jeg skapt et skille som gjør løsningen min enklere å pleie og videreutvikle i fremtiden. Dette grepet reduserer risikoen for feil og sikrer at jeg kan levere nye funksjoner raskere. Resultatet er en ryddig og trygg oppbygging med stor verdi.
 status: |
+  #### Program informasjon
+  ** Teknologi** - FastAPI
+  ** Verktøy** - SQLAlchemy, TypeScript
+  ** Prinsipper** - DAO
+
   #### Dagens Aktiviteter
 
   * Erstattet utdatert databaselogikk med `SQLAlchomy`-biblioteket for å sikre et pålitelig og fremtidsrettet system.

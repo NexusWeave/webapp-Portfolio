@@ -4,8 +4,11 @@ title: Sikring av Unikhet og Datakontrakt
 ingress: |
  Arbeidet med å stabilisere databaselaget har ført til viktige utbedringer i håndteringen av prosjekt- og språkdata. Ved å legge til en `Get or Create`-strategi og oppgradere Pydantic-modeller til V2, er lagring av unike språkobjekter og datahenting nå sikret mot `IntegrityError` og valideringskrasj. To av tre hovedfeil er løst, mens gjenstående arbeid fokuserer på å rette en krasj i assosiasjonstabellen for å sikre full systemintegritet.
 status: |
+  #### Program informasjon
+  ** Teknologi** - FastAPI
+  ** Verktøy** - TypeScript, KI
 
-sources: ''
+  sources: ''
 ---
 Applikasjonen klarte å laste ned prosjekter fra Github, men feilet i å lagre de unike kode språkene til en dedikert språk-tabell. Denne tabellen er viktig for å sikre at språk data lagres effektivt. Feilen indikerte at lagringen av selve språk-objektene sviktet.
 
@@ -17,7 +20,6 @@ Etter at applikasjonen har hentet prosjektene og språkene, feilet forsøket på
 * Sikret unik og pålitlig lagring av språkobjektene
 * Korrigerte Mange-til-mange assosiasjonen mellom språk og prosjekter
 * Sikret at objektet som blir hentet ut av Repository-tabellen er pålitlige og fullstendige, og at de ikke krasjer ORM-et som en konsekvens av ufullstendige relasjonsdata.
-
 
 ### Stabilisering av Språkpersistens
 

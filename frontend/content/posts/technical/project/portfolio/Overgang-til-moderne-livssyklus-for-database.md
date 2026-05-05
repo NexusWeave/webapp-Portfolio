@@ -8,6 +8,10 @@ status: |
 
   **Applikasjon** - `FastAPI` **ORM** - `SQLAlchemy`
 
+  #### Program informasjon
+  ** Teknologi** - FastAPI
+  ** Verktøy** - SQLAlchemy, TypeScript
+
   #### Dagens Aktiviteter
 
   * Analyserte feil i applikasjonsstarten der database-tabeller ikke ble opprettet som forventet.

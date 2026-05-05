@@ -6,8 +6,8 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - C#
-  ** Verktøy** - KI, TypeScript
-  ** Prinsipper** - To-pass algoritme, Minste privilegium
+  ** Verktøy** - CSV, KI, TypeScript
+  ** Prinsipper** - Minste privilegium
 
   #### Dagens Aktiviteter
   * Utviklet en modul som omdanner flate lister til en logisk trestruktur i systemets minne. Dette gir full kontroll over informasjonsrelasjoner og fjerner teknisk risiko knyttet til uoversiktlige datasett.
@@ -20,7 +20,6 @@ status: |
   Dagen er så fin den kunne bli.
 sources: |
   1. [Tree Traversal](https://www.geeksforgeeks.org/dsa/tree-traversals-inorder-preorder-and-postorder/)
-
 ---
 
 Nettsiden viser innhold fra CSV-baserte datalister med komplekse hierarkier (foreldre-barn-relasjoner som også er kalt for content-nodes). Tidligere manglet systemet en pålitelig metode for å kontrollere at brukere kun så det innholdet de faktisk hadde rettighet til, spesielt når tilgangen var avhengig av hvor i trestrukturen informasjonen lå.
