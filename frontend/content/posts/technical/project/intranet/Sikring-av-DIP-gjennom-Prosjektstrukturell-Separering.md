@@ -5,7 +5,8 @@ ingress: |
   Ved å modernisere systemets grunnmur har vi fjernet blokkeringer som tidligere hindret oss i å videreutvikle løsningene våre effektivt. Gjennom en strategisk omorganisering har vi skilt kjerneoppgaver fra den tekniske teknologien, noe som gir en pålitelig plattform, som reduserer vedlikeholdskostnader. Oppgraderingen gir oss full kontroll over systemets helse og klargjør oss for digital vekst og raskere leveranser.
 status: |
   #### Program informasjon
-  ** Verktøy** - DIP, flerlagsløsning
+  ** Teknologi** - C#
+  ** Prinsipper** - DIP, Flerlagsløsning
 
   #### Dagens Aktiviteter
   * Konverterte systemet fra en låst og uoversiktlig modell til en fleksibel flerlagsløsning, noe som fjerner risikoen for at tekniske endringer ødelegger forretningslogikken.

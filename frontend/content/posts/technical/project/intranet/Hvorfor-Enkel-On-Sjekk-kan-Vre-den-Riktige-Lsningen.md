@@ -6,7 +6,7 @@ ingress: |
 
 status: |
   #### Program informasjon
-  ** Verktøy** - Ikke spesifisert
+  ** Teknologi** - C#
 
   #### Dagens Aktiviteter
   * Utbedret en feil i tilgangsstyringen som unødvendig blokkerte ansatte fra deres arbeidsverktøy, noe som har eliminert ventetid og frustrasjon.

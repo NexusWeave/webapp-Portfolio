@@ -5,7 +5,9 @@ ingress: |
   Vi har innført en intelligent navigasjonsløsning som automatisk tilpasser menyer etter brukernes rettigheter. Ved å filtrere bort utilgjengelig innhold har vi fjernet støy og styrket sikkerheten for ansatte og studenter. Den nye strukturen sikrer en profesjonell brukeropplevelse og forenkler vedlikehold, da vi nå kan oppdatere tilgangsnivåer uten omprogrammering. Resultatet er et verktøy som øker effektiviteten i organisasjonen betraktelig.
 status: |
   #### Program informasjon
+  ** Teknologi** - C#
   ** Verktøy** - CSV, CsvHelper, JSON
+  ** Prinsipper** - RBAC
 
   #### Dagens Aktiviteter
   * Konstruert en ny tjeneste som automatisk fjerner utilgjengelige lenker fra systemets menyer, slik at ansatte og studenter kun ser det de har tillatelse til.

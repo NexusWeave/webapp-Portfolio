@@ -5,7 +5,9 @@ ingress: |
   Vi har styrket systemets grunnmur ved å skille forretningslogikk fra infrastruktur. Tidligere sammenkobling gjorde sikkerhetskontroll vanskelig og økte risikoen for feil. Ved å rydde i arkitekturen og innføre automatiserte testrutiner, har vi skapt en løsning som er enkel å verifisere. Resultatet er en pålitelig arkitektur som sikrer korrekt tilgangsstyring, reduserer vedlikeholdstiden og klargjør prosjektet for trygg videreutvikling.
 status: |
   #### Program informasjon
-  ** Verktøy** - Arkitektur, Testrutiner
+  ** Teknologi** - C#
+  ** Verktøy** - Testrutiner
+  ** Prinsipper** - Separasjon av ansvarsområder
 
   #### Dagens Aktiviteter
   * Identifisert og kartlagt svakheter i nåværende tilgangsstyring, med fokus på å skille virksomhetens regler fra tekniske avhengigheter.

@@ -6,7 +6,9 @@ ingress: |
 status: |
   #### Program informasjon
   
-  ** Verktøy** - RBAC, JSON
+  ** Teknologi** - C#
+  ** Verktøy** - JSON
+  ** Prinsipper** - RBAC
 
   #### Dagens Aktiviteter
   * Gjennomførte en systematisk analyse for å finne grunnen til at ansatte ble utelukket fra mapper og verktøy de rettmessig skulle ha tilgang til.

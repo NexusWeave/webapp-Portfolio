@@ -5,7 +5,8 @@ ingress: |
   Ved å rydde opp i prosjektets grunnmur har vi fjernet tekniske konflikter som hindret stabil drift og ferdigstillelse. Gjennom en logisk omorganisering av systemets filer har vi oppnådd en forutsigbar byggeprosess uten feilmeldinger. Dette reduserer teknisk etterslep og sikrer at utviklingstiden brukes på verdiskaping fremfor feilretting. Resultatet er en trygg produksjonslinje som leverer høy kvalitet uten uforutsette avbrudd.
 status: |
   #### Program informasjon
-  ** Verktøy** - Assembly, .NET
+  ** Teknologi** - C#, .NET
+  ** Verktøy** - Assembly
 
   #### Dagens Aktiviteter
   * Identifisert og fjernet systemfeil som hindret programvaren i å starte korrekt, noe som sikrer uavbrutt fremdrift i prosjektet.

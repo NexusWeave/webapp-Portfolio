@@ -5,7 +5,8 @@ ingress: |
   Da en lynrask teknologiovergang lammet bedriftens intranett, ble det produksjonsstans. Ved å utbedre svakheter i AI-generert kode, ble systemet transformert fra en ustabil kilde til feil til en pålitelig, plattformuavhengig løsning. Resultatet er et feilfritt arbeidsverktøy for alle ansatte, uavhengig av operativsystem, slik at utviklingsteamet nå kan jobbe effektivt uten frykt for nye driftsstans.
 status: |
   #### Program informasjon
-  ** Verktøy** - C#, KI
+  ** Teknologi** - C#
+  ** Verktøy** - KI
 
   #### Dagens Aktiviteter
   * Fant ut hvorfor systemet sviktet for utviklere på Mac og Linux, selv om det fungerte på Windows.

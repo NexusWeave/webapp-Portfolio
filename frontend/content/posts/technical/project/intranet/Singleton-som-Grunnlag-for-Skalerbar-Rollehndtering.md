@@ -5,7 +5,9 @@ ingress: |
   For å øke sikkerheten har jeg lagt til en ny løsning for tilgang til systemet. Ved å skille tydelig mellom ansatte og studenter, sikrer vi at sensitiv informasjon ikke kommer på avveie. Systemet er nå organisert slik at rettigheter tildeles automatisk og effektivt ved pålogging. Dette fjerner manuelle feilkilder, sparer tid i den daglige driften og gir bedriften en trygg og profesjonell grunnmur for videre vekst.
 status: |
   #### Program informasjon
-  ** Verktøy** - JSON, Singleton-tjeneste, Google Gemini
+  ** Teknologi** - C#
+  ** Verktøy** - JSON, KI
+  ** Prinsipper** - Singleton, RBAC
 
   #### Dagens Aktiviteter
   * Utviklet en løsning som skiller mellom ansatte og studenter for å sikre at brukere kun har tilgang til informasjon relevant for deres rolle.

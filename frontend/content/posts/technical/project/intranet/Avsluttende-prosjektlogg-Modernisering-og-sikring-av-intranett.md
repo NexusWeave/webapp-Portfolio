@@ -5,7 +5,9 @@ ingress: |
   Gjennom en omfattende modernisering har vi profesjonalisert intranettet ved å erstatte ustabil kildekode med en legobasert arkitektur. Ved å innføre universell filhåndtering og streng tilgangsstyring har vi fjernet driftsfeil og styrket personvernet. Oppgraderingen gir oss full kontroll over systemets helse, reduserer teknisk etterslep og sikrer en pålitelig plattform som er klargjort for fremtidig vekst og effektiv drift.
 status: |
   #### Program informasjon
-  ** Verktøy** - C#, KI
+  ** Teknologi** - C#
+  ** Verktøy** - KI
+  ** Prinsipper** - RBAC, Minste privilegium
 
   #### Dagens Aktiviteter
   * Denne loggen oppsummerer de viktigste aktivitetene, resultatene og læringspunktene fra prosjektperioden (November – Desember 2025).
