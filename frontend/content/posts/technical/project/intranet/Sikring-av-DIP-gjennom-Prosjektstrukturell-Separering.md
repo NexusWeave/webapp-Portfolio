@@ -32,8 +32,8 @@ Hovedmålet var å fjerne de strukturelle hindringene for å muliggjøre kvalite
 Jeg utførte oppgaven gjennom følgende handlinger.
 
 * Konverterte systemet fra en uoversiktlig og sammenkoblet modell til en moderne flerlagsløsning.
-* Opprettet fire <abbr title="prosjekter">spesialiserte områder</abbr> for henholdsvis <abbr title="Systemets arbeids regler">**forretningslogikk**</abbr>, <abbr title="Systemets arkitektur">**teknisk infrastruktur**</abbr>, <abbr title = "En automatisk prosess som vertifiserer at logikken fungerer">**testing**</abbr> og <abbr title = "Det visuelle grensesnittet for en bruker">**brukergrensesnitt**</abbr>.
-* Sørget for at <abbr title ="Bedriftens kjerneoppgaver">domenet</abbr> nå står på egne ben, slik at vi kan bytte ut tekniske komponenter i fremtiden uten å risikere at forretningslogikken går i stykker.
+* Opprettet fire spesialiserte områder for henholdsvis **forretningslogikk**, **teknisk infrastruktur**, **testing** og **brukergrensesnitt**.
+* Sørget for at domenet nå står på egne ben, slik at vi kan bytte ut tekniske komponenter i fremtiden uten å risikere at forretningslogikken går i stykker.
 * Fjernet de tekniske sperrene som tidligere hindret oss i å skrive og kjøre tester på systemet.
 
 Gjennom denne strukturelle forbedringen har vi fjernet  den største blokkeringen for videre utvikling og kvalitetssikring av systemet. Ved å separere forretningslogikken fra den tekniske infrastrukturen, har vi skapt en løsning som er langt mer pålitelig, lettere å vedlikeholde og klar for fremtidig vekst. Dette betyr i praksis at vi nå kan innføre automatiserte tester som fanger opp feil før de når brukerne, noe som reduserer risikoen for nedetid og sparer bedriften for betydelige vedlikeholdskostnader over tid. Vi har gått fra en låst struktur til en fleksibel plattform som er rigget for sikker og effektiv digital utvikling.

@@ -2,8 +2,13 @@
 date: 2026-03-30T13:34:21.657Z
 title: Forbedret plattformstabilitet og akselerert synlighet i søkemotorer
 ingress: |
-  Dagens oppdatering fokuserer på å styrke plattformens profesjonalitet og forbedret synlighet gjennom en mer effektiv brukeropplevelse og en ryddigere nettside. Ved å fjerne visuelle forsinkelser, automatisere <abbr title="SearchEngineOptimization / Søkemotoroptimalisering / Finnbarhet for søkemotorer som Google, Bing">SEO</abbr> og fjerne tekniske hindringer, har jeg redusert risikoen for brukerfrafall og lagt til rette for en langt raskere videreutvikling av tjenesten og en forbedret digital profil for samtlige av organisasjonens mange medlemmer.
+  Dagens oppdatering fokuserer på å styrke plattformens profesjonalitet og forbedret synlighet gjennom en mer effektiv brukeropplevelse og en ryddigere nettside. Ved å fjerne visuelle forsinkelser, automatisere SEO og fjerne tekniske hindringer, har jeg redusert risikoen for brukerfrafall og lagt til rette for en langt raskere videreutvikling av tjenesten og en forbedret digital profil for samtlige av organisasjonens mange medlemmer.
 status: |
+  #### Program informasjon
+  ** Teknologi** - Nuxt, Vue.js
+  ** Verktøy** - SEO
+  ** Prinsipper** - Brukeropplevelse
+
   #### Dagens Aktiviteter
 
   * Lagt inn støtte for "venteskjermer" på artikler, gallerier og mediekort. Dette skal fjerne usikkerheten hos brukere med lav nett forbindelse, ved at nettsiden nå viser at innholdet er på vei i stedet for at siden ser tom eller defekt ut.
@@ -24,7 +29,7 @@ Målet var å forbedre brukeropplevelsen, fjerne ukorrektheter i visningen og ry
 
 * Jeg har lagt inn visuelle indikatorer som gir brukeren umiddelbar tilbakemelding mens innholdet hentes, slik at man unngår inntrykket av at siden har fryst.
 * Logikken bak kobling av forfattere og artikler er forbedret for å sikre at riktig informasjon alltid vises på tvers av hele nettstedet.
-* Jeg har fjernet <abbr title="Duplikate kode / Uoversiktlig kode">overflødig</abbr> kode og organisert arbeidsmiljøet bedre for å redusere risikoen for fremtidige feil.
-* Jeg har automatisert Optimalisert muligheten for at <abbr title="SearchEngineOptimization / Søkemotoroptimalisering / Finnbarhet for søkemotorer som Google, Bing">SEO</abbr>'n kan hente ny informasjon fra nettsiden raskere
+* Jeg har fjernet overflødig kode og organisert arbeidsmiljøet bedre for å redusere risikoen for fremtidige feil.
+* Jeg har automatisert Optimalisert muligheten for at SEO'n kan hente ny informasjon fra nettsiden raskere
 
-Gjennom disse endringene har jeg styrket plattformen ved å levere en mer stabil og tillitvekkende brukeropplevelse som reduserer sjansen for at besøkende forlater siden på grunn av treghet eller visuelle mangler. Ved å rydde opp i den underliggende strukturen og standardisere <abbr title="Lego-klosser med data">komponentene</abbr>, har jeg også redusert fremtidige forsinkelser betydelig. Dette betyr at fremtidig utvikling vil gå raskere, samtidig som systemet er klargjort for å håndtere vekst uten at kvaliteten på innholdet som presenteres for kunden svekkes.
+Gjennom disse endringene har jeg styrket plattformen ved å levere en mer stabil og tillitvekkende brukeropplevelse som reduserer sjansen for at besøkende forlater siden på grunn av treghet eller visuelle mangler. Ved å rydde opp i den underliggende strukturen og standardisere komponentene, har jeg også redusert fremtidige forsinkelser betydelig. Dette betyr at fremtidig utvikling vil gå raskere, samtidig som systemet est klargjort for å håndtere vekst uten at kvaliteten på innholdet som presenteres for kunden svekkes.

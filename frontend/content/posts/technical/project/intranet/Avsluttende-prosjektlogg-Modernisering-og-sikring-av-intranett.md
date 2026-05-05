@@ -22,7 +22,7 @@ Dette prosjektet har handlet om å profesjonalisere bedriftens intranett. Ved å
 
 ##### Systemgjenoppretting og Universell Tilgang
 
-Etter en automatisk flytting av kodespråk (fra **PHP** til **C#** via <abbr title="Kunstig intelligens">**KI**</abbr>) krasjet intranettet for utviklere med plattformen **Mac** eller **Linux**. Dette skapte full stans i videreutviklingen.
+Etter en automatisk flytting av kodespråk (fra **PHP** til **C#** via **KI**) krasjet intranettet for utviklere med plattformen **Mac** eller **Linux**. Dette skapte full stans i videreutviklingen.
 
 Min oppgave var å finne feilen og sørge for at systemet fungerte uavhengig av hvilket operativsystem som brukes som publiserings løsningen.
 
@@ -34,23 +34,23 @@ Vi fjernet tekniske skiller mellom ansatte og studenter, ved å fjernet risikoen
 
 Systemet manglet kontroll på hvem som så hva. Sensitiv intern informasjon og navigasjonslenker var synlig for alle, inkludert studenter. Dette utgjorde en sikkerhetsrisiko og skapte et uoversiktlig arbeidsmiljø.
 
-Etablere en sikkerhetsløsning <abbr title="Role Based Accsess Control / Rollebasert tilgangs kontroll">**RBAC**</abbr>) som skiller mellom roller og beskytter bedriftens data i alle ledd.
+Etablere en sikkerhetsløsning **RBAC**) som skiller mellom roller og beskytter bedriftens data i alle ledd.
 
-Jeg flyttet sikkerhetskontrollen fra brukeren til systemets <abbr title="lukkede kjerne">backend</abbr>. Jeg la til en <abbr title ="en arbeidsprosess der maskinen går gjennom den samme informasjonen to ganger">*«To-pass algoritme»*<abbr> som håndterer rettigheter i mapper og mapperstrukturer, og brukte en <abbr title ="Den delen av koden som er den eneste kilden til sannhet">*«Singleton-tjeneste»*</abbr> for å sikre at sikkerhetssjekken skjer raskt uten å belaste serveren.
+Jeg flyttet sikkerhetskontrollen fra brukeren til systemets backend. Jeg la til en *«To-pass algoritme»*<abbr> som håndterer rettigheter i mapper og mapperstrukturer, og brukte en <abbr title ="Den delen av koden som er den eneste kilden til sannhet">*«Singleton-tjeneste»* for å sikre at sikkerhetssjekken skjer raskt uten å belaste serveren.
 
-Vi følger nå internasjonale standarder for personvern <abbr title ="Prinsippet sier at brukere skal bare ha tilgang til det de trenger for å gjøre jobben sin">*«minst priviligum»*</abbr>. Dette har fjernet teknisk støy for brukerne og tettet sikkerhetshull før de kunne bli utnyttet.
+Vi følger nå internasjonale standarder for personvern *«minst priviligum»*. Dette har fjernet teknisk støy for brukerne og tettet sikkerhetshull før de kunne bli utnyttet.
 
 ##### Redusere teknisk etterslep
 
 Systemet var bygget som en helhet hvor alt hang sammen med alt. Små endringer kunne føre til uforutsette feil, og det var umulig å utføre automatisert **testing** for å sjekke om systemet faktisk var friskt.
 Målet mitt var å strukturere Rydde i systemarkitekturen for å gjøre det enklere, tryggere og billigere å vedlikeholde over tid.
 
-* Jeg separerte bedriftens regler fra den tekniske motoren ved bruk av <abbr title ="Dependency Inversion Principle - Beskytter logikken mot arkitekturen, og arkitekturen mot logikken ">*«DIP-prinsippet»*</abbr>. Jeg fjernet over 50 linjer med <abbr title ="Ubrukt kode / Duplikate funksjonalitet">overflødig kode</abbr> og innførte det objektivt målesystemet <abbr title="Et Verktøy som måler systemets kvalitet i prosent">**Coverlet** dette forenkler prosessen med å identifisere systemets kvalitet.
+* Jeg separerte bedriftens regler fra den tekniske motoren ved bruk av *«DIP-prinsippet»*. Jeg fjernet over 50 linjer med overflødig kode og innførte det objektivt målesystemet <abbr title="Et Verktøy som måler systemets kvalitet i prosent">**Coverlet** dette forenkler prosessen med å identifisere systemets kvalitet.
 
 Vi har redusert det tekniske etterslepet. Vi kan nå koble på nye datakilder eller oppgradere teknologien i fremtiden uten å måtte bygge om alt på nytt. Dette sparer bedriften for tid i fremtidig vedlikehold.
 
 ##### Erfaring og Hoved resultatet
 
-Gjennom denne innsatsen har vi i dag en stabil plattform som flyter raskt uavhengig av brukerens utstyr. Vi har tettet sikkerhetshull ved å innføre prinsippet om *minste privilegium*, som beskytter bedriftens data i alle ledd. Den nye <abbr title ="Lego basert arkitektur">modulære arkitekturen</abbr> har redusert vedlikeholds behovet betydelig og transformert vår utviklingskultur fra å styre etter antakelser til å styre etter objektive fakta. Resultatet er en trygg produksjonslinje som leverer kvalitet uten uforutsette avbrudd.
+Gjennom denne innsatsen har vi i dag en stabil plattform som flyter raskt uavhengig av brukerens utstyr. Vi har tettet sikkerhetshull ved å innføre prinsippet om *minste privilegium*, som beskytter bedriftens data i alle ledd. Den nye modulære arkitekturen har redusert vedlikeholds behovet betydelig og transformert vår utviklingskultur fra å styre etter antakelser til å styre etter objektive fakta. Resultatet er en trygg produksjonslinje som leverer kvalitet uten uforutsette avbrudd.
 
-Prosjektet har gitt verdifull innsikt i betydningen av <abbr title="Lego basert">modulær</abbr> systemutvikling og viktigheten av å bygge sikkerhet inn i selve grunnmuren fremfor å legge det på som et ettertanke. Har erfart ved å bruke objektive måleverktøy kan man styre prosjekter med langt større presisjon. Denne erfaringen har styrket min forståelse for hvordan tekniske valg direkte påvirker bedriftens smidighet ved å bygge systemer som «*Lego-klosser*» står vi nå langt sterkere rustet når behovene endrer seg i fremtiden.
+Prosjektet har gitt verdifull innsikt i betydningen av modulær systemutvikling og viktigheten av å bygge sikkerhet inn i selve grunnmuren fremfor å legge det på som et ettertanke. Har erfart ved å bruke objektive måleverktøy kan man styre prosjekter med langt større presisjon. Denne erfaringen har styrket min forståelse for hvordan tekniske valg direkte påvirker bedriftens smidighet ved å bygge systemer som «*Lego-klosser*» står vi nå langt sterkere rustet når behovene endrer seg i fremtiden.

@@ -7,7 +7,7 @@ status: |
   #### Dagens Aktiviteter
 
   * Samlet og forbedret visning av datoer og mediekomponenter på tvers av nettstedets hovedelementer for å skape et helhetlig visuelt uttrykk.
-  * Reduserte kompleksitet i <abbr title ="Toppen seksjonen av en nettside">header</abbr>-seksjonen ved å rydde i navigasjons- og logologikken, noe som har resultert i en forutsigbar og flytende brukeropplevelse.
+  * Reduserte kompleksitet i header-seksjonen ved å rydde i navigasjons- og logologikken, noe som har resultert i en forutsigbar og flytende brukeropplevelse.
   * Forbedret logikken for bildekomponenter slik at bildets alternative tekst automatisk brukes som bildetekst når spesifikk beskrivelse mangler.
   * Oppgradert backend-modellen for å sikre at bildebeskrivelser leveres i riktig format, samt innført typesikkerhet for å øke applikasjonens langsiktige vekstevne.
 sources: ''
