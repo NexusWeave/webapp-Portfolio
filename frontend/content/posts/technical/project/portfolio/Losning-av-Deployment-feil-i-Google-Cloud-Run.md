@@ -8,7 +8,7 @@ status: |
   ** Teknologi** - FastAPI
   ** Verktøy** - TypeScript, KI
 
-  ---
+---
 
 Applikasjonen krasjet under publisering til Google Cloud med feilmeldingen Container failed to start and listen to port 8080. Lokale publiseringer viser seg å fungere, men umiddelbart feilet skymiljøet ved oppstart. 
 
