@@ -61,20 +61,31 @@ export const useCarousel = (length:number, interval: number = 5000) => {
 
 
 export const useNavigation = () => {
-    return computed<RouterItem[]>(() => {
-        const router = useRouter();
+    const route = useRoute();
+    const router = useRouter();
+        
+
+    watch(() => route.path, () => {
+        const name = "LMCS";
+        const image = 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg';
+
+        const title = route.meta.label ? `${name} - ${route.meta.label}` : name;
+        const description = (route.meta.description as string) || '';
+
+        useSeoMeta({
+
+            title: title, description: description,
+            ogTitle: title, ogImage: image, ogLocale: 'nb_NO', ogType: 'website', ogDescription: description,
+            twitterImage: image, twitterTitle: title, twitterDescription: description, twitterCard: 'summary_large_image', themeColor: '#ffffff'
+        }); }, { immediate: true });
+        return computed<RouterItem[]>(() => {
         const routes = router.getRoutes();
 
-        watchEffect(() => { routes.forEach(route => { if (route.meta.seo) useSeoMeta(route.meta.seo); })});
-
-        // { order: 0, type: ['router'], path: '/', label: 'Portfolio' }
         const navItems: RouterItem[] = routes
-        .map(route => { return { type: ['router'], path: route.path, order: route.meta.order as number|| 0, label: route.meta.label as string };})
-        .filter(route => !route.path.includes(':') && route.label)
-        .sort((a, b) => a.order - b.order);
+            .map(route => { return { type: ['router'], path: route.path, order: route.meta.order as number || 0, label: route.meta.label as string }; })
+            .filter(route => !route.path.includes(':') && route.label)
+            .sort((a, b) => a.order - b.order);
 
-        // --- Debug logic
-        //console.log("useNavigation - Routes:", routes);
-        //console.log("useNavigation - NavItems:", navItems);
-        return navItems; });
+        return navItems;
+    });
 };
