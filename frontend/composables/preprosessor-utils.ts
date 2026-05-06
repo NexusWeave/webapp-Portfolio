@@ -59,7 +59,6 @@ export const useCarousel = (length:number, interval: number = 5000) => {
     return { index, start};
     };
 
-
 export const useNavigation = () => {
     const route = useRoute();
     const router = useRouter();
@@ -68,9 +67,12 @@ export const useNavigation = () => {
     watch(() => route.path, () => {
         const name = "LMCS";
         const image = 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg';
-
-        const title = route.meta.label ? `${name} - ${route.meta.label}` : name;
         const description = (route.meta.description as string) || '';
+        
+        let label = route.meta.label ? route.meta.label as string : String(route.params.slug).replace(/-/g, ' ');
+        label = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase()
+        
+        const title = label ? `${name} - ${label}` : name;
 
         useSeoMeta({
 
