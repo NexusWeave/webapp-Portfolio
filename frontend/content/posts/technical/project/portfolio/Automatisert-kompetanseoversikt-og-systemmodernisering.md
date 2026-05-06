@@ -4,6 +4,10 @@ title: Automatisert kompetanseoversikt og systemmodernisering
 ingress: |
   For å øke effektiviteten og styrke tilliten til presentert kompetanse, har jeg automatisert innsamlingen av teknologidata i porteføljen. Ved å fjerne manuelt vedlikehold sikres en alltid oppdatert og nøyaktig oversikt over kjernekompetanse. Sammen med forbedret visualisering og teknisk modernisering, gir dette en mer profesjonell og stabil plattform som reduserer tidsbruk og rigger løsningen for fremtidig vekst.
 status: |
+  #### Program informasjon
+  ** Teknologi** - Python
+  ** Verktøy** - TypeScript
+
   #### Dagens Aktiviteter
 
   * Opprettet en standardisert datamotor som automatisk beregner og summerer kodebruk (målt i KB) på tvers av alle prosjekter.

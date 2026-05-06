@@ -4,12 +4,17 @@ title: Oppgradering og feilsikring av skjemasystem og brukergrensesnitt
 ingress: |
   Gjennom målrettet opprydding i kildekode, filstruktur og skjemasystem, har jeg i dag lagt grunnlaget for en mer effektiv og fleksibel medlemsportal. Ved å tette tekniske gap og finpusse grensesnittet, har jeg skapt en plattform som er enklere å vedlikeholde for utviklere og mer intuitiv å navigere for sluttbrukere. Resultatet er en operasjonell effektivisering som korter ned tiden fra en god ide til ferdig lansert løsning.
 status: |
+  #### Program informasjon
+  ** Teknologi** - Nuxt.js
+  ** Verktøy** - TypeScript
+  ** Prinsipper** - UU
+
   #### Dagens Aktiviteter
 
   * Fjernet utdaterte notater, midlertidige loggfiler og teknisk rusk for å skape et rent og effektivt utviklingsmiljø.
   * Omorganisert prosjektfilene og plassert skjemakomponenter i en logisk mappestruktur for å redusere tid brukt på leting og øke produksjonstiden.
   * Tilrettelagt det interne arbeidsområdet for å øke den generelle produktiviteten i utviklingsteamet.
-  * Transformert flere filer til å bruke typesikkerhet, som nå fanger opp logiske feil automatisk underveis i utviklingen.
+  * Transformert flere filer to å bruke typesikkerhet, som nå fanger opp logiske feil automatisk underveis i utviklingen.
   * Oppdatert sikkerhetsreglene for innlogging for å styrke applikasjonens grunnlag.
   * Forbedret feilsikringen i applikasjonen for å forhindre tekniske feil før de når brukeren, noe som gjør fremtidig vedlikehold enklere.
   * Transformert skjemasystemet til en mer fleksibel og pålitelig løsning som enkelt kan tilpasses nye kundebehov uten spesialkoding.
@@ -25,7 +30,7 @@ status: |
 sources: ''
 ---
 
-Medlemsportalen og skjemasystemet hadde en del teknikske etterslep, som gjorde det unødvendig komplisert for utviklere å tilpasse skjemaer til nye behov. Den underliggende koden hadde noen løse tråder som gjorde det vanskelig for utviklere å oppdage feil før de nådde den live nettsiden, noe som utgjorde en risiko for stabiliteten. Koden hadde mindre skjønnhetsfeil, som datoer ikke ble vist riktig i lister hvis informasjon manglet, samt teknisk etterslep fra <abbr title ="Gammel kode som er fortsatt i bruk">«*legacy koden*»</abbr> som lå igjen i systemet. Det fantes også små visuelle uregelmessigheter i ikoner og navigasjonslenker som kunne få nettsiden til å virke ustabil og mindre profesjonell. I tillegg var den interne organiseringen av prosjektfilene ikke optimal, noe som førte til at nye utviklere ville bruke tid på å finne frem til riktige verktøy.
+Medlemsportalen og skjemasystemet hadde en del teknikske etterslep, som gjorde det unødvendig komplisert for utviklere å tilpasse skjemaer til nye behov. Den underliggende koden hadde noen løse tråder som gjorde det vanskelig for utviklere å oppdage feil før de nådde den live nettsiden, noe som utgjorde en risiko for stabiliteten. Koden hadde mindre skjønnhetsfeil, som datoer ikke ble vist riktig i lister hvis informasjon manglet, samt teknisk etterslep fra «*legacy koden*» som lå igjen i systemet. Det fantes også små visuelle uregelmessigheter i ikoner og navigasjonslenker som kunne få nettsiden til å virke ustabil og mindre profesjonell. I tillegg var den interne organiseringen av prosjektfilene ikke optimal, noe som førte til at nye utviklere ville bruke tid på å finne frem til riktige verktøy.
 
 Hovedmålet med arbeidet var å optimalisere det interne arbeidsområde for å øke produktiviteten.
 
@@ -38,8 +43,8 @@ Handlingen jeg gjorde for å oppnå målet mitt :
 
 * Fjernet utdatert notater, og midlertidige loggfiler for å skape et rent og effektivt miljø i prosjektet.
 * Samlet styringen av hvordan ikoner vises på ett sted, noe som sikrer visuell konsistens og gjør det enklere å oppdatere designet i fremtiden.
-* Sørget for at ledetekster og innlastningsfelt er korrekt knyttet sammen, for å forbedre Brukervennlighet og <abbr title="Universell Utforming">**UU**</abbr>
-* Plasserte skjemarelaterte <abbr title="legokloseer med data">komponenter</abbr> i en logisk mappestruktur, for å redusere tiden på å lete og øke tiden på å produsere.
+* Sørget for at ledetekster og innlastningsfelt er korrekt knyttet sammen, for å forbedre Brukervennlighet og UU
+* Plasserte skjemarelaterte komponenter i en logisk mappestruktur, for å redusere tiden på å lete og øke tiden på å produsere.
 * Transformerte flere filer til å bruke typesikkerhet, som fanger opp logiske feil automatisk underveis i utviklingen.
 * Oppdaterte sikkerhetsregler for innlogging, og la til støtte for flere funksjoner i skjemaer som obligatoriske felt, deaktiverte knapper og flervalg.
 * Forbedret visningen av datoer slik at systemet håndterer manglende informasjon på en elegant måte, og fjernet gamle utviklernotater.

@@ -63,7 +63,11 @@
 
         totalPages.value = Math.ceil(repo.value.length / n);
 
-        if (type.value != '0') { const data = repo.value.filter((item: any) => item.flags[type.value] === true); totalPages.value = Math.ceil(data.length / n); return data.slice(start, end) ?? null; }
+        if (type.value != '0') { 
+            const data = repo.value.filter((item: any) => item.flags[type.value] === true);
+            currentPage.value = 1;
+            totalPages.value = Math.ceil(data.length / n);
+            return data.slice(start, end) ?? null; }
         return  repo.value.slice(start, end) ?? null;
     });
 
