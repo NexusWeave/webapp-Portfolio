@@ -29,7 +29,7 @@
 <script setup lang="ts">
 
     //  --- Meta information
-    definePageMeta( { order: 0, label: 'Portefølje', seo: { title: 'LMCS - Portefølje', description: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", author: 'Kristoffer Gjøsund', ogTitle: 'Portefølje - Kristoffer Gjøsund',  ogDescription: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", ogImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg',  ogUrl: 'https://krigjo25.no', ogType: 'website', ogLocale: 'nb_NO', twitterCard: 'summary_large_image', twitterTitle: 'LMCS - Portefølje', twitterDescription: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", twitterImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg', themeColor: '#ffffff' } });
+    definePageMeta( { order: 0, label: 'Portefølje', description: "Hovedsiden som gir en oversikt over Kristoffers prosjekter, akademiske reise og de nyeste tekniske loggene. Fungerer som en inngangsport til hele nettstedet." });
 
     //  --- Import dependencies & Types
     import { ref, computed } from 'vue';

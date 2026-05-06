@@ -4,6 +4,7 @@
 
 <script lang="ts" setup>
 
+    
     //  --- Import dependencies & types
     import { useRoute } from 'vue-router';
     import { fetchCollection } from '#imports';
@@ -16,6 +17,10 @@
      //  --- Route & slug logic
     const route = useRoute();
     const slug = route.params.slug;
+
+    const name = route.params.slug?.toString().replace('-', '')
+    //  --- Meta Information
+    definePageMeta( { order: 3, label: route.params.slug, description: `Viser en enkelt loggoppføring om ${name} i sin helhet. Hver artikkel har sin egen unike nettadresse basert på tittelen.` });
 
         //  --- Dev Data Logic
     const devPath = 'devPosts';

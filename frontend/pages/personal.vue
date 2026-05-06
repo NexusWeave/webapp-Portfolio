@@ -31,7 +31,7 @@
 <script setup lang="ts">
 
     //  --- Meta information
-    definePageMeta( { order: 3, label: 'Om Kristoffer Gjøsund', seo: { title: 'LMC - Om Kristoffer Gjøsund', description: "Kristoffer Gjøsund (Krigjo25): Drevet av å forstå kontekst og mønstre. Utforsker krysningen mellom analytisk tenkning, EQ og dype menneskelige relasjoner.",  author: 'Kristoffer Gjøsund', ogTitle: 'Om Kristoffer Gjøsund', ogDescription: "Kristoffer Gjøsund (Krigjo25): Drevet av å forstå kontekst og mønstre. Utforsker krysningen mellom analytisk tenkning, EQ og dype menneskelige relasjoner.", ogImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg',ogUrl: 'https://krigjo25.no', ogType: 'website', ogLocale: 'nb_NO', twitterCard: 'summary_large_image', twitterTitle: 'LMCS - Om Kristoffer Gjøsund', twitterDescription: "Kristoffer Gjøsund (Krigjo25): Drevet av å forstå kontekst og mønstre. Utforsker krysningen mellom analytisk tenkning, EQ og dype menneskelige relasjoner.", twitterImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg', themeColor: '#ffffff' } });
+    definePageMeta( { order: 3, label: 'Om Kristoffer Gjøsund', description: "En personlig side som går i dybden på Kristoffers filosofi, verdier og personlige logger. Inneholder også en biografi med et mer personlig perspektiv." });
 
     //  --- Importing dependencies & types
     import { ref, computed } from 'vue';

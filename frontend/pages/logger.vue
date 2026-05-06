@@ -51,7 +51,7 @@
     import type { DevPostsCollectionItem } from '@nuxt/content';
 
     //  --- Meta information
-    definePageMeta( { order: 1, label: 'Tekniske Logger', seo: { title: 'LMCS - Logger', description: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", author: 'Kristoffer Gjøsund', ogTitle: 'Logger - Kristoffer Gjøsund',  ogDescription: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", ogImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg',  ogUrl: 'https://krigjo25.no/logger', ogType: 'website', ogLocale: 'nb_NO', twitterCard: 'summary_large_image', twitterTitle: 'LMCS - Logger', twitterDescription: "Utforsk Kristoffer Gjøsund (krigjo25) - Min personlige nettside med mine prosjekter, en oversikt over min akademiske reise og tekniske logger fra min hverdag som utvikler.", twitterImage: 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg', themeColor: '#ffffff' } });
+    definePageMeta( { order: 1, label: 'Tekniske Logger', description : "En samling av tekniske artikler og erfaringer fra hverdagen som utvikler. Her kan man filtrere logger etter emneknagger for å finne spesifikke temaer."});
 
     //  --- Content logic
     const devPostPath = 'devPosts';
