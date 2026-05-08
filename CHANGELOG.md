@@ -1,3 +1,56 @@
+## [1.18.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.0...v1.18.1) (2026-05-08)
+
+
+### Bug Fixes
+
+* **backend:** standardize language names and fix TypeScript recognition ([374952f](https://github.com/NexusWeave/webapp-Portfolio/commit/374952fb4dec7e82461ecb66b23eaa077cbce7b0))
+* **ui:** remove redundant CSS rules in cards sass ([8ec03a7](https://github.com/NexusWeave/webapp-Portfolio/commit/8ec03a7daddf0bc0ba315d6d7bd700a0cf14c4a7))
+
+# [1.18.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.17.0...v1.18.0) (2026-05-08)
+
+
+### Bug Fixes
+
+* **backend:** implement language byte synchronization in database ([2de8d75](https://github.com/NexusWeave/webapp-Portfolio/commit/2de8d75ea551e94f9cf16aadbe04f884c42083bd))
+
+
+### Features
+
+* add STAR-L log for sosial-innovasjon project updates ([0a6f948](https://github.com/NexusWeave/webapp-Portfolio/commit/0a6f94876d21bccb53fc632cbdf2f2e9ef9a44ff))
+* **ui:** refine portfolio display and standardize navigation icons ([33bafc6](https://github.com/NexusWeave/webapp-Portfolio/commit/33bafc6c6a681f04412afc86565efb2f607ab29b))
+
+# [1.17.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.16.0...v1.17.0) (2026-05-06)
+
+
+### Bug Fixes
+
+* added a reset before filtering by type ([ca7d6a5](https://github.com/NexusWeave/webapp-Portfolio/commit/ca7d6a58eddbfe9281ef656d890558fe5cd1b1b1))
+* replaced static name with variable. resolves issue where tags is not filtered by labels. ([28abc7d](https://github.com/NexusWeave/webapp-Portfolio/commit/28abc7dcd936f766d31755b91cfb59dc3042051b))
+* resolved undefined type error. ([9a4c52d](https://github.com/NexusWeave/webapp-Portfolio/commit/9a4c52d2dd50bc87e55d79827473a29050ac8a31))
+* **SEO:** activate reactivity for SEO metadata in SPA ([8a7e8f4](https://github.com/NexusWeave/webapp-Portfolio/commit/8a7e8f4a1142167ed29325cb134037d0a50aa18c))
+* **seo:** resolve prerender 500 error by centralizing dynamic titles ([262f220](https://github.com/NexusWeave/webapp-Portfolio/commit/262f220f315350aa8708f1ae8f83309c6ec46f1c))
+
+
+### Features
+
+* **Blog:** ✨ Introduce dedicated log archive with centralized pagination. ([335a19c](https://github.com/NexusWeave/webapp-Portfolio/commit/335a19c6b0c40a0e5e708572ce43823cd5049ef2))
+
+# [1.16.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.10...v1.16.0) (2026-04-16)
+
+
+### Bug Fixes
+
+* **UI:** 🐛 Resolve hydration mismatch by standardizing tag structures. ([b88364b](https://github.com/NexusWeave/webapp-Portfolio/commit/b88364b8399568e1d0fc9d9dfffedccb7a8c0663))
+* **UI:** 🐛 Resolve hydration mismatch by standardizing tag structures. ([f3432f5](https://github.com/NexusWeave/webapp-Portfolio/commit/f3432f5177c6396b7fd988f246bfb7ebda102772))
+* **UI:** 🐛 Resolve hydration mismatch in MediaFigure by restructuring picture element. ([4f2b011](https://github.com/NexusWeave/webapp-Portfolio/commit/4f2b011861f98a2dc5b832232d2f3c8dbb23f7a3))
+* **UI:** 🐛 Resolve hydration mismatch in MediaFigure component. ([67d4512](https://github.com/NexusWeave/webapp-Portfolio/commit/67d4512191ef334df9dccca5a5c0b00e28372761))
+* **UI:** 🐛 Resolve hydration text mismatch in reference render. ([f353702](https://github.com/NexusWeave/webapp-Portfolio/commit/f353702e63d88662d08240dad96936f47d58897f))
+
+
+### Features
+
+* **UI:** ✨ Add `Suspense` for asynchronous data fetching across pages. ([0092d24](https://github.com/NexusWeave/webapp-Portfolio/commit/0092d240b5551c4da6169ce9585fc8fcbf6a3c5e))
+
 ## [1.15.10](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.9...v1.15.10) (2026-04-15)
 
 
