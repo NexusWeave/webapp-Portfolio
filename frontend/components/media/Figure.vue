@@ -37,7 +37,8 @@
     const size = computed(() => {return props.data.width ? `${props.data.width}px` : undefined });
     const height = computed(() => { return props.data.height ?`${props.data.height}px` : undefined})
     const aspectRatio = computed(() => { 
-        if (!size || !height ) return 16 / 9
+        if (cls.value.includes('tech-img') || cls.value.includes('tech-figure')) return undefined;
+        if (!size.value || !height.value ) return 16 / 9
         return undefined
      } )
 

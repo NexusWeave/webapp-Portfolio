@@ -43,7 +43,7 @@ class GithubDatabaseHandler():
         repository.pop('collaborators', None)
         dictionary: Dict[str, Any] = {**repository,
             'youtube_url': video_url, 'demo_url': preview_url, 'repo_url': repo_url,
-            'lang_associations': LANGUAGE_ASSOCIATION,'last_check': datetime.now()}
+            'lang_assosiations': LANGUAGE_ASSOCIATION,'last_check': datetime.now()}
 
         return dictionary
 
@@ -62,6 +62,15 @@ class GithubDatabaseHandler():
             if DB_VALUE != API_VALUE: 
                 #LOG.debug(f"Changes detected for label: {dictionary['label']}, field: {field}")
                 return True
+        
+        # Check for language changes
+        new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
+        exist_langs = {assoc.language.language: assoc.code_bytes for assoc in exist.lang_assosiations}
+
+        if new_langs != exist_langs:
+            #LOG.debug(f"Language changes detected for label: {dictionary['label']}")
+            return True
+
         #LOG.debug(f"No Changes for label: {dictionary['label']} - Skipping update.")
         return False
 
@@ -89,15 +98,33 @@ class GithubDatabaseHandler():
 
         #LOG.debug(f"Successfully created new repository record for label: {repository['label']}")
 
-    def _apply_repositories_updates(self, dictionary: Dict[str, Any], DUPLICATION: RepositoryModel) -> None:
-        EXCCLUDE_FIELDS = ['repo_id', 'created_at']
-        updated_data = {k: v for k, v in dictionary.items() if k != 'lang_assosiations' and k not in EXCCLUDE_FIELDS}
+    async def _apply_repositories_updates(self, dictionary: Dict[str, Any], DUPLICATION: RepositoryModel) -> None:
+        EXCCLUDE_FIELDS = ['repo_id', 'created_at', 'lang_assosiations']
+        updated_data = {k: v for k, v in dictionary.items() if k not in EXCCLUDE_FIELDS}
 
         for key, value in updated_data.items():
             if hasattr(DUPLICATION, key):
                 setattr(DUPLICATION, key, value)
-                self.session.add(DUPLICATION)
-                LOG.debug(f"Repository was successfully updated to the database.")
+        
+        # Sync languages
+        new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
+        exist_assoc = {assoc.language.language: assoc for assoc in DUPLICATION.lang_assosiations}
+
+        for lang_name, code_bytes in new_langs.items():
+            if lang_name in exist_assoc:
+                if exist_assoc[lang_name].code_bytes != code_bytes:
+                    exist_assoc[lang_name].code_bytes = code_bytes
+                    self.session.add(exist_assoc[lang_name])
+            else:
+                lang_obj = await self.new_language_record(lang_name)
+                self.new_association_record(DUPLICATION, lang_obj, code_bytes)
+
+        for lang_name, assoc in exist_assoc.items():
+            if lang_name not in new_langs:
+                await self.session.delete(assoc)
+
+        self.session.add(DUPLICATION)
+        LOG.debug(f"Repository {DUPLICATION.label} was successfully updated in the database.")
 
     async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
         lang_obj: Result[Tuple[LanguageModel]] = await self.session.scalar(select(LanguageModel).where(LanguageModel.language == LANG_NAME))
@@ -114,7 +141,11 @@ class GithubDatabaseHandler():
     async def upsert_repositories(self, repository: List[Dict[str, Any]]) -> None:
 
         repo_ids = [repo['repo_id'] for repo in repository]
-        QUERY = select(RepositoryModel).where(RepositoryModel.repo_id.in_(repo_ids))
+        QUERY = (select(RepositoryModel)
+                 .options(selectinload(RepositoryModel.lang_assosiations)
+                          .selectinload(LanguageAssosiationModel.language))
+                 .where(RepositoryModel.repo_id.in_(repo_ids)))
+        
         DB_RESULTS = await self.session.execute(QUERY)
 
         EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in DB_RESULTS.scalars().all()}
@@ -126,8 +157,11 @@ class GithubDatabaseHandler():
             DUPLICATION = EXISTING_REPOS.get(repo_id)
 
             if DUPLICATION:
-                if GithubDatabaseHandler.has_data_changes(DUPLICATION, dictionary): self._apply_repositories_updates(dictionary, DUPLICATION)
-                else: LOG.warn(f"No changes detected ! Skipping update for label: {repository[i]['label']}")
+                if GithubDatabaseHandler.has_data_changes(DUPLICATION, dictionary): 
+                    await self._apply_repositories_updates(dictionary, DUPLICATION)
+                else: 
+                    #LOG.warn(f"No changes detected ! Skipping update for label: {repository[i]['label']}")
+                    pass
 
             else:
                 repository[i].update(
