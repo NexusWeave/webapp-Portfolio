@@ -1,3 +1,19 @@
+# [1.17.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.16.0...v1.17.0) (2026-05-06)
+
+
+### Bug Fixes
+
+* added a reset before filtering by type ([ca7d6a5](https://github.com/NexusWeave/webapp-Portfolio/commit/ca7d6a58eddbfe9281ef656d890558fe5cd1b1b1))
+* replaced static name with variable. resolves issue where tags is not filtered by labels. ([28abc7d](https://github.com/NexusWeave/webapp-Portfolio/commit/28abc7dcd936f766d31755b91cfb59dc3042051b))
+* resolved undefined type error. ([9a4c52d](https://github.com/NexusWeave/webapp-Portfolio/commit/9a4c52d2dd50bc87e55d79827473a29050ac8a31))
+* **SEO:** activate reactivity for SEO metadata in SPA ([8a7e8f4](https://github.com/NexusWeave/webapp-Portfolio/commit/8a7e8f4a1142167ed29325cb134037d0a50aa18c))
+* **seo:** resolve prerender 500 error by centralizing dynamic titles ([262f220](https://github.com/NexusWeave/webapp-Portfolio/commit/262f220f315350aa8708f1ae8f83309c6ec46f1c))
+
+
+### Features
+
+* **Blog:** ✨ Introduce dedicated log archive with centralized pagination. ([335a19c](https://github.com/NexusWeave/webapp-Portfolio/commit/335a19c6b0c40a0e5e708572ce43823cd5049ef2))
+
 # [1.16.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.15.10...v1.16.0) (2026-04-16)
 
 
