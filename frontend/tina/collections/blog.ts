@@ -7,7 +7,7 @@ export const blogCollection: Collection =
     path: "content/posts",
     fields:
     [
-        { name: "date", label: "Published", required: true, type: "datetime", ui: { dateFormat: 'DD-MM-YY' } },
+        { name: "date", label: "Published", type: "datetime", ui: { dateFormat: 'DD-MM-YY' } },
         { name: "title", isTitle: true, type: "string", label: "Title", required: true },
         { required: true, name: "ingress", label: "Ingress", type: "rich-text" },
         { required: false, name: "status", type: "rich-text", label: "Dagens Aktiviteter og Status" },
@@ -16,4 +16,8 @@ export const blogCollection: Collection =
             description: "Hovedinnhold i artikkelen, i star-parade formatet" },
         { required: false, name: "sources", type: "rich-text", label: "Kilde Henvisning" },
     ],
+    ui: {
+        beforeSubmit: async({values}) =>
+        { return { ...values, date: values.date ?? new Date().toISOString(), }}
+    }
 };

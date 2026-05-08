@@ -1,9 +1,15 @@
 <template>
     <figure :class="cls[0]" v-if="data.src || data.srcset">
-        <picture>
-            <source :srcset="data.srcset" :type="'image/' + data.type" >
-            <img :src="data.src " :alt="data.alt ?? ' Unknown picture'" :class="cls[1]"  :title="'image/' + data.type"  />
-        </picture>
+        <NuxtImg v-if="isImage && data"
+            format="webp"
+            loading="lazy"    
+            :src="data.src" 
+            :alt="data.alt" 
+            :class="cls[0]"
+            :sizes="size"
+            :height="height"
+            :modifiers="({ar : aspectRatio} as any) "
+        />
         <figcaption>{{ data.caption ?? data.alt }}</figcaption>
     </figure>
 </template>
@@ -27,6 +33,21 @@
         return { ...rawData, srcset: isImageModern ? rawData.srcset : rawData.src, caption: rawData.caption ?? rawData.alt ?? '' };
     });
 
+    //  --- Attributes
+    const size = computed(() => {return props.data.width ? `${props.data.width}px` : undefined });
+    const height = computed(() => { return props.data.height ?`${props.data.height}px` : undefined})
+    const aspectRatio = computed(() => { 
+        if (cls.value.includes('tech-img') || cls.value.includes('tech-figure')) return undefined;
+        if (!size.value || !height.value ) return 16 / 9
+        return undefined
+     } )
+
+    //  --- Flag logic
+    const isImage = computed(() => {
+        const types = ['image/', 'jpg', 'jpeg', 'png', 'svg', 'webp'];
+        return types.some(t => data.value.type.includes(t));
+    });
+    
     //  --- Debug logic
     //console.log('Figure data:', data.value, isImageModern.value, isImageStandard.value);
 </script>

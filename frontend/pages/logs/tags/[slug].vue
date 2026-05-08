@@ -1,50 +1,86 @@
 <template>
-    <article class="article-wrapper flex-column">
-        <h2> Logger fra {{ slug.charAt(0).toUpperCase() + String(route.params.slug).slice(1).replace(/-/g, ' ') }} Etiketten</h2>
-        <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
-                <section v-for="post in article" :key="post.id" class="blog-content">
-                <ArticleHead :article="post" />
-            </section>
+    <section class="flex-wrap-row-justify-center tag-wrapper">
+        <section v-if="tags && tags.length > 0">
+            <h2> Filtrer etter Merkelapp </h2>
+            <NavigationButton v-for="(tag, i) in tags" :key="i" :data="tag" :cls="['button', tag.name, 'tag-btn']"/>
+            <NavigationButton :data="resetButton" :cls="['button', 'reset-btn', 'tag-btn']"/>
         </section>
-    </article>
-</template>
+    </section>
 
+    <template v-if="current && current.length > 0">
+        <h2> Siste Tekniske Logger for {{ displaySlug }} </h2>
+        <section class="flex-wrap-row-justify-space-evenly">
+            <article v-for="post in current">
+                <ArticleHead  v-if="!post.isArchived" :key="post.id" :article="post" />
+            </article>
+        </section>
+    </template>
+
+    <template v-if="totalPages && totalPages > 0">
+        <h2> Eldre Tekniske Logger for {{ displaySlug }} </h2>
+        <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
+            <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
+                <span> {{ currentPage }} / {{ totalPages }}</span>
+            <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
+        </section>
+        <section class="flex-wrap-row-justify-space-evenly" v-if="archived && archived.length > 0">
+            <article v-for="post in archived">
+                <ArticleHead v-if="post.isArchived" :key="post.id" :article="post" />
+            </article>
+        </section>
+    </template>
+    
+</template>
 <script lang="ts" setup>
 
-    //  --- Import dependencies & types
-    import { useRoute } from 'vue-router';
+    import { ref, computed, watch } from 'vue';
+    import { useRoute, useRouter } from 'vue-router';
     import { fetchCollection } from '#imports';
+    import { blogPagination } from '@/composables/pagination';
     import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
-    import type { PostItem } from '~/types/documents';
+    import type { ButtonItem } from '~/types/navigation';
     import type { DevPostsCollectionItem } from '@nuxt/content';
 
-
-     //  --- Route & slug logic
     const route = useRoute();
-    const slug = route.params.slug as string;
+    const router = useRouter();
+    const slug = computed(() => route.params.slug as string);
+    const displaySlug = computed(() => slug.value.charAt(0).toUpperCase() + slug.value.slice(1).replace(/-/g, ' '));
 
-    const devPath = 'devPosts';
-    const devCache = 'devCache';
-    const devPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPath, devCache, mapBlogData);
+    //  --- Content logic
+    const devPostPath = 'devPosts';
+    const devPostCache = 'devPostCache';
+    const rawDevPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPostPath, devPostCache, mapBlogData);
 
-    const personalPath = 'personalPosts';
-    const personalCache = 'personalCache';
-    const personalPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(personalPath, personalCache, mapBlogData);
-    
-    const article = computed(() => 
-    { const currentSlug = String(slug);
+    const personalPostPath = 'personalPosts';
+    const personalPostCache = 'personalPostCache';
+    const rawPersonalPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(personalPostPath, personalPostCache, mapBlogData);
 
-        const findBlog = (collection: PostItem[] | undefined) => {
-            if (!collection) return null;
-            return collection?.filter(item => item.isPublished && item.tags.some(tag => tag?.name === currentSlug));
-        };
-        return findBlog(devPosts.value) ?? findBlog(personalPosts.value);
-
+    const rawPosts = computed(() => {
+        const all = [...rawDevPosts.value, ...rawPersonalPosts.value];
+        return all.filter(post => post.tags.some(t => t.name.toLowerCase() === slug.value.toLowerCase()));
     });
 
-    //  --- Debug Logic
-    //console.log("Articles in page: ", article.value);
-    //console.log("Article Page loaded with article: ", article.value?.ingress);
-    //console.error("Slug from route: ", slug);
+    //  --- Pagination logic
+    const n = 3;
+    const num:number = 1;
+    const currentPage: Ref<number> = ref(1);
+
+    const current =  computed(() => {return blogPagination(rawPosts.value.filter(post => !post.isArchived), num, n);});
+    const archived =  computed(() => {currentPage.value; return blogPagination(rawPosts.value.filter(post => post.isArchived), currentPage.value, n);});
+
+    const totalPages = computed(() => Math.ceil((rawPosts.value.length) / n) - 1 || 0);
+    const prevPage = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
+    const nextPage = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
+
+    //  --- Tag filtering logic
+    const tags = computed(() => {
+        // We fetch tags from all posts to allow switching between tags
+        const allPosts = [...rawDevPosts.value, ...rawPersonalPosts.value];
+        const data = allPosts.flatMap(post => post.tags).filter((tag, index, self) => index === self.findIndex(t => t.name === tag.name))
+        return data.map(tag => { return { ...tag, action: () => router.push(`/logs/tags/${tag.name.toLowerCase()}`) } });
+    });
+
+    const resetButton: ButtonItem = { label: 'Tilbakestill', action: () => router.push('/logger')};
+
 </script>

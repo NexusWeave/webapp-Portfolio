@@ -27,6 +27,7 @@
     const isAnchor = computed(() => !hasRouterLink.value);
 
     //  --- Debug logic
-    //console.log("NavigationMenu loaded with data: ", data.value);
     //console.log("NavigationMenu toggle mode: ", props.toggle);
+    //console.log("NavigationMenu loaded with data: ", data.value);
+    //console.log("Navigation is Router Link: ", hasRouterLink.value);
 </script>

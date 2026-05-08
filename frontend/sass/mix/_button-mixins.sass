@@ -1,0 +1,54 @@
+@use '../colors/colors' as color
+
+@mixin button-neumorphism($bg: color.$soft-white, $text: color.$dark-grey, $shadow-dark: rgba(0, 0, 0, 0.1), $shadow-light: rgba(255, 255, 255, 0.8))
+    border: 1px solid rgba(255, 255, 255, 0.4)
+    padding: 0.8em 1.5em
+    font-size: 1em
+    cursor: pointer
+    font-weight: bold
+    text-align: center
+    border-radius: 12px
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    outline: none
+    text-decoration: none
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    background-color: $bg
+    color: $text !important
+    box-shadow: 6px 6px 12px $shadow-dark, -6px -6px 12px $shadow-light
+
+    &:hover
+        transform: translateY(-3px)
+        box-shadow: 8px 8px 16px rgba($shadow-dark, 0.15), -8px -8px 16px rgba($shadow-light, 0.9)
+
+    &:active
+        transform: translateY(1px)
+        box-shadow: inset 4px 4px 8px $shadow-dark, inset -4px -4px 8px $shadow-light
+        transition: all 0.1s ease
+
+    &:disabled
+        cursor: not-allowed
+        opacity: 0.6
+        box-shadow: none
+        transform: none
+
+@mixin primary-button-neumorphism()
+    @include button-neumorphism(color.$logo-red, color.$white, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.2))
+    border: 1px solid rgba(255, 255, 255, 0.1)
+
+    &:hover
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.4), -6px -6px 14px rgba(255, 255, 255, 0.3)
+
+    &:active
+        box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.1)
+
+@mixin colored-button-neumorphism($bg-color)
+    @include button-neumorphism($bg-color, color.$white, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2))
+    border: 1px solid rgba(255, 255, 255, 0.1)
+
+    &:hover
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.25), -8px -8px 16px rgba(255, 255, 255, 0.3)
+
+    &:active
+        box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.1)

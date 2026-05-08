@@ -1,9 +1,20 @@
 @use '../mix/mixins' as mix
+@use '../mix/button-mixins' as btn
 @use '../colors/colors' as color
 
 article
     header
         margin: 0 auto
+        .article-metadata
+            span.meta-date
+                margin-inline-end: 1em
+            a
+                display: inline-block
+                text-decoration: none
+                // The actual 3D styling and colors are handled by the tag-generator classes (e.g., .linux, .devops)
+                // We just ensure they have consistent spacing here.
+                margin: 0.2em
+                font-size: 0.85em
     nav
         ul
             li
@@ -40,19 +51,12 @@ article
 
     .blog-header, .ingress-header
         p.article-metadata
-            a
-                font-weight: bold
-                text-decoration: none
-                color: color.$dark-grey
-
-                &:hover
-                    text-decoration: underline
+            span
+                margin: auto
 
         p
             font-size: 1.1em
             padding: .5em 1em
-        span
-            margin: auto
 
         padding: 0 .5em
     .article-content, .blog-header, .ingress-header

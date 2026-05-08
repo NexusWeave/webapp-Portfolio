@@ -20,34 +20,22 @@ export const mapBlogData = (data: DevPostsCollectionItem[]): PostItem[] => {
                         const misc = 'misc';
                         const listOfAvailableTags = ['project', 'support', 'os', 'devops', 'rd', 'mentalt-vedlikehold' ];
                         const index:number = id.findIndex(p => listOfAvailableTags.includes(p.toLowerCase()));
-                        
-                        
+
                         if (!id[index]) return { name: misc, cls: ['misc'], type: ['tag', 'dir'], href: `${dir}/tags/misc`, path: 'misc', label: 'Misc' };
 
                         const folder:string = id[index].toLowerCase() ?? misc;
-                        
+
                         const label: string = listOfAvailableTags.includes(folder) ? folder == 'project' || folder == 'support' ? `${id[index + 1]}` : folder : misc;
-                        const name = label ? label.toLowerCase() : misc;
+                        const name: string = label ? label.toLowerCase() : misc;
                         
                         return {
                             name: name, cls: [name], type: ['tag', 'dir'],
                             href: `${dir}/tags/${name}`,  path: id.pop()?.toLowerCase(),
-                            label: `${label && !listOfAvailableTags.includes(name) ? name.charAt(0).toUpperCase() + name.slice(1)?.replace(/-/g, ' ') : label}` };
+                            label: `${label && !listOfAvailableTags.includes(name) ? name.charAt(0).toUpperCase() + name.slice(1)?.replace(/-/g, ' ') : label}`,
+                            labels: [name , 'blog-post']
+                        };
                     })();
 
-            return {
-                
-                id: index,
-                path: path!,
-                tags: [tags!],
-                body: item.body ?? {},
-                title: item.title ?? '',
-                isPublished: isPublished,
-                date: setDateFormat(date),
-                status: item.status!,
-                ingress: item.ingress,
-                sources: item.sources,
-                anchor: [{ type: ['router'], path: `${dir}/records/${path}`, label: 'Les mer', cls: ['read-more-btn'] }]
-            }
+            return { id: index, path: path!, tags: [tags!], status: item.status!, body: item.body ?? {}, ingress: item.ingress, sources: item.sources, isArchived: index > 4, title: item.title ?? '', isPublished: isPublished, date: setDateFormat(date), anchor: [{ type: ['router'], path: `${dir}/records/${path}`, label: 'Les mer', cls: ['read-more-btn'] }] }
         });
     };

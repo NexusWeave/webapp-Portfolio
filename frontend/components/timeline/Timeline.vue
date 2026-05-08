@@ -1,6 +1,6 @@
 <template>
         <section :class="[cls[0], cls[1]]">
-            <section :class="cls[2], cls[3]">
+            <section :class="[cls[2], cls[3]]">
                 <TimelineFilter :data="filter" :cls="[['flex-column-align-items-center', 'timeline-item'], 'timeline-input-label', 'timeline-input']" @toggleVisibility="toggleVisibility" />
             </section>
             <section :class="cls[3]">
@@ -9,11 +9,11 @@
                     :isVisible="!!item.isVisible"
                 />
             </section>
-            <section :class="[, 'timeline-content',cls[4]]">
+            <section :class="['timeline-content', cls[4]]">
                 <TimelineCard v-for="item in data" :key="item.id"
                     :data="item"
                     :isVisible="item.isVisible"
-                    :cls="[, cls[4], 'timeline-card', 'timeline-active', cls[5], cls[6]]"
+                    :cls="[cls[4], 'timeline-card', 'timeline-active', cls[5], cls[6]]"
                 />
             </section>
         </section>
@@ -21,7 +21,7 @@
 <script setup lang="ts">
 
     //  --- Import & types logic
-    import { computed } from 'vue';
+    import { computed, ref } from 'vue';
     import type { TimelineItem, TimelineProps } from '~/types/timeline';
 
     //  --- Props & reactive logic
@@ -48,27 +48,28 @@
     });
 
    const data = ref<TimelineItem[]>(props.data);
+   const rangeValue = ref('0');
 
     const filter = computed(() => (
         {
             title: props.title,
             range:
             {
-                value: '0',
+                value: rangeValue.value,
+                step: 0.1,
                 type: 'range',
                 name: "timeline-input",
-                rangeMax: data.value.length - 1,
+                rangeMax: Math.max(0, data.value.length - 1),
             }
         }));
 
     function toggleVisibility(id:number): void
         {
-            const target = Number(id);
+            rangeValue.value = String(id);
+            const target = Math.round(Number(id));
             data.value.forEach((item) => 
             {
-
-                if(item.id === target) item.isVisible = !item.isVisible;
-                else item.isVisible = false;
+                item.isVisible = (item.id === target);
             });
         };
 

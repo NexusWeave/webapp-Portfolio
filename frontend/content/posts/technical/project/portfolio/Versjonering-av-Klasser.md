@@ -4,6 +4,10 @@ title: Versjonering av Klasser
 ingress: |
   Det var tidligere uklart hvilken utgave av logikken som ble brukt i de ulike delene av systemet. Ved å innføre en fast standard for merking av alle viktige verktøy, er usikkerheten nå fjernet. Med full oversikt over hvilke versjoner som kjører til enhver tid, er det nå langt tryggere å gjøre store forbedringer uten at noe går i stykker.
 status: |
+  #### Program informasjon
+  ** Teknologi** - Python
+  ** Verktøy** - TypeScript
+
   #### Dagens Aktiviteter:
 
   * Opprettet en ny standard for å merke alle viktige deler av systemet med egne numre, slik at det alltid er klart hvilken utgave som er i bruk.

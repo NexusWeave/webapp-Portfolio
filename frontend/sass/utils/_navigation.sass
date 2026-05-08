@@ -1,20 +1,23 @@
 @use '../mix/mixins' as mix
+@use '../mix/button-mixins' as btn
 @use '../colors/colors' as color
 
-nav.router-nav, nav.logo-nav
+nav.router-nav
     ul
         li
             a
+                @include btn.button-neumorphism()
+                margin: 0.2em 0.5em
+                
                 &:hover
-                    @include mix.background-style(color.$light-orange, color.$soft-white)
+                    color: color.$logo-red !important
+                    transform: translateY(-2px)
 
                 &:active
-                    @include mix.background-style(color.$dark-orange, color.$soft-white)
+                    transform: translateY(1px)
+                    opacity: 1
 
-                margin: 0
-                padding: 0.5em 1em
-                border-radius: .5em
-            @include mix.link-styles(color.$dark-grey, color.$dark-grey, color.$soft-white, color.$dark-grey)
+            @include mix.link-styles(color.$dark-grey, color.$logo-red, color.$soft-white, color.$dark-grey)
 
         padding:0
         margin: auto
@@ -22,8 +25,73 @@ nav.router-nav, nav.logo-nav
         inline-size: 100%
         border-radius: .5em
 
-nav.anchor-nav, nav.some-nav, nav.portofolio-nav
+nav.logo-nav
     ul
+        li
+            a
+                // Reset all styling for the logo
+                background-color: transparent
+                box-shadow: none
+                border: none
+                padding: 0
+                margin: 0
+                width: auto
+                height: auto
+                border-radius: 0
+                text-decoration: none
+                display: block
+                
+                &:hover
+                    transform: none
+                    background-color: transparent
+                    box-shadow: none
+
+                figure
+                    margin: 0
+                    padding: 0
+                    max-inline-size: none
+
+                img
+                    // Original size or natural size
+                    max-inline-size: 100%
+                    height: auto
+                    object-fit: contain
+
+        padding: 0
+        margin: 0
+        list-style: none
+
+nav.anchor-nav, nav.portofolio-nav
+    ul
+        li
+            a
+                @include btn.button-neumorphism()
+                margin: 0.15em
+                padding: 0
+                border-radius: 50%
+                width: 2.2em
+                height: 2.2em
+                display: inline-flex
+                align-items: center
+                justify-content: center
+                font-size: 1em
+                
+                .icon
+                    font-size: 1.5em
+                    margin: 0
+                    display: inline-flex
+                    align-items: center
+                    justify-content: center
+                    
+                    // But keep the actual MediaIcon visible
+                    span, .bi, [type="icon"]
+                        font-size: 1em
+                        display: inline-block
+
+                // Hide direct span text labels to keep them perfectly round
+                > span:not(.icon)
+                    display: none
+
         padding:0
         margin: auto
         list-style: none
@@ -33,4 +101,20 @@ nav.anchor-nav, nav.some-nav, nav.portofolio-nav
 nav.some-nav
     ul
         li
-            max-inline-size: 2em
+            a
+                @include btn.button-neumorphism()
+                margin: 0.5em
+                padding: 0
+                border-radius: 50%
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 2.5em
+                height: 2.5em
+                
+        padding: 0
+        margin: auto
+        list-style: none
+        display: flex
+        flex-wrap: wrap
+        justify-content: center

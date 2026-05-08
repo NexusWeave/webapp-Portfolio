@@ -1,7 +1,8 @@
 ---
 date: 2025-12-17T00:00:00.000Z
 title: Sikring av Referanseintegritet
-ingress: >
+ingress: |
+  >
   Denne artikkelen er en fortsettelse på Sikring av Unikhet og Datakontrakt og
   utforsker løsningen på integritetsfeil i et asynkront datasystem. Ved å
   analysere krasj i persistenslaget knyttet til mange-til-mange-relasjoner,
@@ -19,7 +20,7 @@ Utfordringen oppsto som en konsekvens av at applikasjonen prøvde å koble samme
 
 ##### Tidligere utfordrende vrtdo.
 
-Etter vellykket <abbr title="Asynchronous - en måte å kjøre flere operasjoner samtidig">asynkron</abbr> henting av repositories og tilhørende språk-data, oppstod det en utfordring under opprettelsen av relasjonene i assosiasjonstabellen. Utfordringen manifesterte seg som en krasj i lagrings-laget når applikasjonen forsøkte å binde sammen språk-entiteter med de respektive repositoriene.
+Etter vellykket asynkron henting av repositories og tilhørende språk-data, oppstod det en utfordring under opprettelsen av relasjonene i assosiasjonstabellen. Utfordringen manifesterte seg som en krasj i lagrings-laget når applikasjonen forsøkte å binde sammen språk-entiteter med de respektive repositoriene.
 Etter vellykket asynkron henting av prosjekter og tilhørende språk-data, oppstod det en utfordring under opprettelsen av relasjonene i assosiasjonstabellen. Utfordringen manifesterte seg som en krasj i lagrings-laget når applikasjonen forsøkte å binde sammen språk-entiteter med de respektive prosjektene.
 
 Denne feilen oppsto fordi applikasjonen prøvde å koble sammen prosjekter og språk i feil rekkefølge. Den forsøkte å registrere koblingen i en oversiktsliste før selve prosjektet og språket var ferdig opprettet og hadde fått sine egne "ID-kort" i systemet. Siden systemet har strenge regler for at alt som kobles sammen må eksistere fra før, oppsto det en krasj. Det blir som å prøve å skrive en kontrakt mellom to personer som ennå ikke er registrert i folkeregisteret – systemet nekter å godta koblingen fordi partene den viser til, offisielt sett ikke finnes ennå.
@@ -39,14 +40,13 @@ Dette skapte en risiko for `IntegrityError`-krasj, spesielt i et asynkront milj�
 #### Smidigere løsning med ORM-objekter
 For å løse utfordringen med manglende identifikatorer, laget jeg metoden `new_assoc_record` på nytt. I stedet for å operere med rå tall-ID-er, tar metoden nå imot komplette instanser av `RepositoryModel` og `LanguageModel`.
 
-Ved å knytte selve modellobjektene sammen, overlates håndteringen av avhengigheter til systemets innebygde <abbr title="(Unit of Work) - en måte å håndtere transaksjoner og endringer i en database på">transaksjonshåndtering</abbr>. Dette sikrer at koblingen først lagres når de relaterte objektene har fått gyldige ID-er, noe som fjerner bruddet på integritetsreglene.
+Ved å knytte selve modellobjektene sammen, overlates håndteringen av avhengigheter til systemets innebygde transaksjonshåndtering. Dette sikrer at koblingen først lagres når de relaterte objektene har fått gyldige ID-er, noe som fjerner bruddet på integritetsreglene.
 ```python
   def new_assoc_record(self, repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -> None:
     association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
     self.session.add(association_obj)
   ```
 Etter at jeg omgjorde funksjonen, ble integritetsbruddene fjernet. Ved å integrere logikken direkte i arbeidsflyten, sikres det at relasjonene opprettes i riktig rekkefølge. Dette har resultert i en pålitelig prosess der koblinger mellom prosjekter og språk lagres stabilt.
-
 
 Erfaringen bekrefter at operasjoner med rå fremmednøkkel-ID-er i et asynkront miljø medfører en stor risiko for tekniske feil. Arbeidet har gitt en dypere forståelse for hvordan rekkefølgen i en database fungerer; selv om dataene hentes samtidig, må de lagres korrekt for at koblingene skal være gyldige. Ved å bruke hele modellobjekter som argumenter, har jeg sørget for at systemet tåler tidsavvik og alltid finner riktig informasjon.
 

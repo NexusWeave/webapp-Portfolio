@@ -7,7 +7,7 @@ const referencesCollection = z.object({ link: z.string(), title: z.string(), bod
 const profileCollection = z.object({ title: z.string(),  createdts: z.string(), updatedts: z.string().optional() });
 
 const achievementsCollection = z.object({
-    tag: z.string(),
+    tag: z.string().optional(),
     title: z.string(),
     created: z.string(),
     end: z.string().optional().nullable(),

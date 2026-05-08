@@ -1,8 +1,9 @@
 <template>
     <a
+        v-if="data"
         :class="cls"
         :href="data.href"
-        :aria-label="data.label"
+        :aria-label="data.label || fallbackLabel"
         :aria-disabled="!!isDisabled()"
         :download="isDownload() ? '' : null"
         :data-external-link="!!isExternal()"
@@ -11,10 +12,10 @@
     >
         <span v-if="isImage()"> <MediaFigure :data="media" :cls="cls" /> </span>
         <span v-else-if="isIcon()" class="icon">
-            {{ data.label }}
+            <template v-if="data.label"> {{ data.label }} </template>
             <MediaIcon :cls="data.type"/>
         </span>
-        <span v-else> {{ data.label }} </span>
+        <span v-else> {{ data.label || fallbackLabel }} </span>
     </a>
 </template>
 
@@ -29,16 +30,21 @@
     const props = withDefaults(defineProps<AnchorProps>(), { cls: () => [], type: () => [], img: () => null, isDisabled: () => false });
     const cls = computed(() => props.cls);
     const data = computed(() => props.data);
-    const media = computed(() => data.value.media?? null);
+    const media = computed(() => data.value?.media?? null);
+
+    const fallbackLabel = computed(() => {
+        const path = data.value?.href || media.value?.src;
+        return path ? path.split('/').pop()?.replace('.md', '') : "Media plassholder";
+    });
 
     /// --- Computed Flags
-    const isExternal = () => { const dataProps = data.value; if (!dataProps.href) return false; const external_links = ['https://', 'http://', 'mailto:', 'tel:']; return external_links.some(link => dataProps.href.includes(link)); };
+    const isExternal = () => { const dataProps = data.value; if (!dataProps?.href) return false; const external_links = ['https://', 'http://', 'mailto:', 'tel:']; return external_links.some(link => dataProps.href.includes(link)); };
 
-    const isDisabled = () => { const dataProps = data.value; if (!dataProps.isDisabled) return false; return dataProps.isDisabled  };
+    const isDisabled = () => { const dataProps = data.value; if (!dataProps?.isDisabled) return false; return dataProps.isDisabled  };
 
     const isDownload = () => {
         const dataProps = data.value;
-        if (!Array.isArray(dataProps.type)) return;
+        if (!dataProps || !Array.isArray(dataProps.type)) return;
 
         const downloadAble: string[] = ['docx', 'xlsx', 'csv' ];
 
@@ -49,7 +55,7 @@
         const imgProps = media.value;
         const dataProps = data.value;
 
-        if (!dataProps.type && !imgProps) return false;
+        if (!dataProps || (!dataProps.type && !imgProps)) return false;
 
         const imageTypes = ['jpg', 'jpeg', 'png', 'svg', "webp"];
 
@@ -59,7 +65,7 @@
         return false;
     };
 
-    const isIcon = () => { const dataProps = data.value; if (!dataProps.type) return false; const iconTypes = ['docs', 'pdf', 'mail', 'telephone', 'school', 'globe', 'map-pin', 'diploma', 'github', 'ytube', 'linkedin', 'facebook', 'instagram','dir']; return iconTypes.some(type => dataProps.type && dataProps.type.includes(type)); };
+    const isIcon = () => { const dataProps = data.value; if (!dataProps?.type) return false; const iconTypes = ['docs', 'pdf', 'mail', 'telephone', 'school', 'globe', 'map-pin', 'diploma', 'github', 'ytube', 'linkedin', 'facebook', 'instagram','dir']; return iconTypes.some(type => dataProps.type && dataProps.type.includes(type)); };
 
     //  --- Debug logic
     //console.log("Anchor component loaded with data: ", img.value, isImage());

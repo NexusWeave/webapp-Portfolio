@@ -1,13 +1,13 @@
 <template>
-    <label v-if="!!data.label":for="data.name" :class="cls[0]">{{ !!data.label ? data.label : data.name }}</label>
+    <label v-if="!!data.label" :for="data.name" :class="cls[0]">{{ !!data.label ? data.label : data.name }}</label>
     <input 
         :id="data.id"
         :class="cls[1]"
         :name="data.name"
         :placeholder="!!data.placeholder ? data.placeholder : ''"
-        :min="data.type =='range' ? !!data.rangeMin? data.rangeMin : 0 : ''"
-        :step="data.type =='range' ? 1 : 0"
-        :max="data.type =='range' ? !!data.rangeMax? data.rangeMax : 100 : ''"
+        :min="data.type =='range' ? (!!data.rangeMin ? data.rangeMin : 0) : ''"
+        :step="data.type =='range' ? (!!data.step ? data.step : 1) : 0"
+        :max="data.type =='range' ? (!!data.rangeMax ? data.rangeMax : 100) : ''"
         :value="!!data.value ? data.value : ''"
         :type="data.type ? data.type : 'text'"
         :size="!!data.size ? data.size : '30'"
@@ -25,6 +25,7 @@
     />
 </template>
 <script setup>
+    import { computed } from 'vue';
 
     const props = defineProps({
         data: {
@@ -33,16 +34,18 @@
         },
         cls: {
             type: Array,
-            required: false
+            required: false,
+            default: () => []
         },
         modelValue: {
             type: [String, Number, Boolean],
             required: false
         }
     });
-    const cls = props.cls;
-    const data = props.data;
+
+    const data = computed(() => props.data);
+    const cls = computed(() => props.cls);
     const emit = defineEmits(['update:modelValue']);
 
-    //console.warn("Inputs.vue : ", data);
+    //console.warn("Inputs.vue : ", data.value);
 </script>

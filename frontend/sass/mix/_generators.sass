@@ -1,5 +1,6 @@
 @use 'sass:map' as map
 @use './mixins' as mix
+@use './button-mixins' as btn
 @use '../colors/colors' as color
 
 @use '../mappings/tags' as tag-map
@@ -21,16 +22,19 @@
             @if not $hover-color
                 $hover-color: $background-color
     
-            .#{$tag}
-                &:hover
-                    @include mix.background-style($bg-color: $hover-color, $color:$color)
+            // Using high specificity to ensure tag colors win over base button styles
+            button.#{$tag}, .button.#{$tag}, a.#{$tag}
+                @include btn.colored-button-neumorphism($background-color)
+                
+                background-color: $background-color !important
+                color: $color !important
+
                 .icon
                     font-size: .8em
 
                 text-align: center
-                padding: .2em .5em
-                border-radius: .5em
-                @include mix.background-style($bg-color: $background-color, $color:$color)
+                padding: .5em 1.2em
+                border-radius: 12px
 
 
 @mixin icon-generator()

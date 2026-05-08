@@ -1,7 +1,8 @@
 ---
 date: 2025-12-21T00:00:00.000Z
 title: Runtime-diagnostikk i Python
-ingress: >
+ingress: |
+  >
   I kjølvannet av database-migreringen til Turso oppsto utfordringer i
   applikasjonens API-logikk, manifestert som en `500 Internal Server Error`.
   Denne artikkelen dokumenterer diagnostiseringen og rettingen av en "Breaking
@@ -17,7 +18,7 @@ sources: ''
 
 Etter å ha etablert tilkoblingen til Turso-databasen, kom det en ny hindring i APIet som henter github repositoriene. Applikasjonen sendte en 500 error som indikerer på at det er serveren som feilet.  Loggen avslørte følgende teknisk utfordring. `TypeError: 'language' is an invalid keyword argument for LanguageModel`
 
-En <abbr title="En generell konflikt på serversiden">`500 Internal Server Error`</abbr> oppstod. Ved å grave dypere inn i loggene ble denne feilen spesifisert med en `TypeError `knyttet til objekt-initialiseringen. Den spesifikke feilmeldingen `language is an invalid keyword argument` indikerer på at applikasjonen forsøker å sende inn et parameter som LanguageModel- klassen ikke aksepterer. Dette oppsto som en konskevens av å forandre `LanguageModel`-klassen, uten at instaniseringen av modellen ikke ble oppdatert. Python er et dynamisk språk, da oppdages ikke slike uheld før koden faktisk kjører. Dette førte til at instanseringen av et nytt språk objekt kresjet før det hele tatt fikk instansere objektet.
+En `500 Internal Server Error` oppstod. Ved å grave dypere inn i loggene ble denne feilen spesifisert med en `TypeError `knyttet til objekt-initialiseringen. Den spesifikke feilmeldingen `language is an invalid keyword argument` indikerer på at applikasjonen forsøker å sende inn et parameter som LanguageModel- klassen ikke aksepterer. Dette oppsto som en konskevens av å forandre `LanguageModel`-klassen, uten at instaniseringen av modellen ikke ble oppdatert. Python er et dynamisk språk, da oppdages ikke slike uheld før koden faktisk kjører. Dette førte til at instanseringen av et nytt språk objekt kresjet før det hele tatt fikk instansere objektet.
 
 Før å løse denne konflikten og eliminere 500-feilen, ble det korrigert i parameterene som instanserere de nye Language-objektene
 * Ved å erstatte det utdaterte argumentet language med lang i instansierings prosessen, samsvarte argumentet med det nye argumentet i LanguageModel-klassen.

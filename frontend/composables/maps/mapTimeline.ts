@@ -24,7 +24,7 @@ export function mapTimeline(data: AcademicCollectionItem[]): TimelineItem[] {
         return {
             id: AUTOINCREMENT++,
             body: doc.body || undefined, 
-            name: doc.tag + "-Timeline",
+            name: (doc.tag || doc.title || 'Achievement') + "-Timeline",
             title: doc.title || undefined, 
             techStack: tech as FigureItem[],
             isVisible: (AUTOINCREMENT - 1) === 0,

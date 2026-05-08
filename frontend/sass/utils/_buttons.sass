@@ -1,9 +1,72 @@
 @use '../mix/mixins' as mix
+@use '../mix/button-mixins' as btn
 @use '../colors/colors' as color
 
+// -- Base Button Styles --
+button, .button
+    @include btn.button-neumorphism()
 
-.timeline-btn
-    block-size: 1em
-    inline-size: 1em
+// -- Primary Button Styles --
+button.primary-btn, .button.primary-btn
+    @include btn.primary-button-neumorphism()
+
+    .icon
+        font-size: 1.5em
+        margin-inline-start: 0.4em
+        color: color.$files !important
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2)
+        
+        *
+            color: inherit !important
+
+// -- Categorized Filter Buttons (Matching Tag Colors) --
+.filter-btn.backend
+    @include btn.colored-button-neumorphism(color.$db)
+    background-color: color.$db !important
+    color: color.$white !important
+.filter-btn.frontend
+    @include btn.colored-button-neumorphism(color.$frontend-sky-blue)
+    background-color: color.$frontend-sky-blue !important
+    color: color.$white !important
+.filter-btn.fullstack
+    @include btn.colored-button-neumorphism(color.$fullstack-vibrant-orange)
+    background-color: color.$fullstack-vibrant-orange !important
+    color: color.$white !important
+.filter-btn.collaborator
+    @include btn.colored-button-neumorphism(color.$sea-green)
+    background-color: color.$sea-green !important
+    color: color.$white !important
+.filter-btn.misc
+    @include btn.colored-button-neumorphism(color.$misc-purple)
+    background-color: color.$misc-purple !important
+    color: color.$white !important
+
+// -- Specific Button Overrides --
+button.timeline-btn
+    block-size: 1.2em
+    inline-size: 1.2em
+    padding: 0
     border-radius: 100%
     @include mix.background-style(color.$dark-grey, color.$soft-white)
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2), -3px -3px 6px rgba(255, 255, 255, 0.8)
+
+section.tag-wrapper
+    button.tag-btn, .button.tag-btn
+        margin: .5em
+        font-size: 1.1em
+        // Reset base button styles to allow tag-generator colors to show
+        background-color: transparent
+        box-shadow: none
+        color: inherit
+        border: none
+
+    max-inline-size: 100%
+    margin: 0 auto
+
+button.reset-btn, .button.reset-btn
+    @include btn.button-neumorphism(color.$soft-white, color.$dark-grey)
+    background-color: color.$soft-white !important
+    color: color.$dark-grey !important
+    font-size: 1.1em
+    padding: 0.5em 1.2em
+    margin: .5em

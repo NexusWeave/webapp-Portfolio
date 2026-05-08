@@ -4,14 +4,18 @@ title: Investering i Langsiktig Problemløsningsevne
 ingress: |
   For å unngå feil og utbrenthet, tok jeg et valg om å bytte ut koding med enkle praktiske oppgaver i dag. Dette var som en omstart av hjernen. Ved å hvile den kreative delen, sikrer jeg at jeg jobber  raskere og bedre i morgen. Dette er en smart investering i egen helse som hindrer kostbar nedetid og sørger for at prosjektet holder stø kurs videre.
 status: |
-  #### **Dagens Aktiviteter**
+  #### Program informasjon
+  **OS** - Ikke spesifisert
+  ** Verktøy** - Ikke spesifisert
+
+  #### Dagens Aktiviteter
 
   * Tok en bevisst pause fra koding for å unngå mental utmattelse og sikre kvalitet i fremtidig arbeid.
   * Prioriterte selvpleie for å opprettholde ytelse over tid.
   * Håndterte forfallende oppgaver som krever mindre hjernekapasitet.
   * ar bevisst på når hodet ble slitent og energien var tom, for å kunne jobbe bedre over tid.
 
-  #### **Motivasjon** & **Energi** - **3** / **10**
+  #### Motivasjon & Energi - 3 / 10
 
   Dagen har vært så fin den kunne bli, men opplevde lav energi.
   
