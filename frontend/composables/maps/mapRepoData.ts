@@ -8,7 +8,7 @@ export function mapRepoData(data: RepositoryData): GithubData[]
     return repositories.map((item: any) => {
         const languages = [...(item.languages ?? [])].sort((a: any, b: any) => b.bytes - a.bytes);
 
-        const validIcons = ['c', 'cp', 'cs', 'css', 'cython', 'dockerfile', 'flask', 'fortran', 'git', 'go', 'hack', 'html', 'javascript', 'jinja', 'jupyter', 'lua', 'makefile', 'meson', 'mssql', 'nunjuncks', 'nuxt', 'php', 'powershell', 'python', 'roff', 'sass', 'scratch', 'shell', 'smarty', 'sqlite', 'tinacms', 'typescript', 'vue'];
+        const validIcons = ['c', 'cp', 'cs', 'css', 'cython', 'dockerfile', 'flask', 'fortran', 'git', 'go', 'hack', 'html', 'javascript', 'jinja', 'jupyter', 'liquid', 'lua', 'makefile', 'meson', 'mssql', 'nunjucks', 'nuxt', 'php', 'powershell', 'python', 'roff', 'sass', 'scratch', 'shell', 'smarty', 'sqlite', 'tinacms', 'typescript', 'vue'];
 
         const media = languages.map((lang: LanguageData) => {
             const hasIcon = validIcons.includes(lang.label.toLowerCase());
