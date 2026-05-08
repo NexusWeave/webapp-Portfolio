@@ -1,3 +1,11 @@
+## [1.18.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.1...v1.18.2) (2026-05-08)
+
+
+### Bug Fixes
+
+* **build:** correct icon whitelist for liquid and nunjucks ([a368ec5](https://github.com/NexusWeave/webapp-Portfolio/commit/a368ec5c979135db66a2a2021c2f05380016e412))
+* **build:** resolve prerender 404 for missing icons and silence sass warnings ([9f044ee](https://github.com/NexusWeave/webapp-Portfolio/commit/9f044eeb2bc858ae1860ec2561865bf192291a2e))
+
 ## [1.18.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.0...v1.18.1) (2026-05-08)
 
 
