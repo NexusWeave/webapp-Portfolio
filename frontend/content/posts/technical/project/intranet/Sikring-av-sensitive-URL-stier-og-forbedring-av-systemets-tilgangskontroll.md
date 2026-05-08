@@ -5,9 +5,9 @@ ingress: |
   For å beskytte bedriftens interne informasjon har jeg utviklet en sikkerhetsløsning som sikrer at brukere kun ser data de har rettmessig tilgang til. Ved å flytte filtreringen til serveren i tråd med prinsippet om *minste privilegium*, har vi tettet lekkasjer av systemets struktur. Tiltaket fjerner unødvendig støy, styrker motstandskraften mot angrep og sikrer at våre systemer nå opererer profesjonelt og etter beste praksis.
 status: |
   #### Program informasjon
-  ** Teknologi** - C#
-  ** Verktøy** - TypeScript
-  ** Prinsipper** - Minste privilegium
+  **Teknologi** - C#
+  **Verktøy** - TypeScript
+  **Prinsipper** - Minste privilegium
 
   #### Dagens Aktiviteter
   * Avdekket en sårbarhet på nettsiden der sensitiv informasjon om bedriftens interne systemoppbygging var synlig for uvedkommende.

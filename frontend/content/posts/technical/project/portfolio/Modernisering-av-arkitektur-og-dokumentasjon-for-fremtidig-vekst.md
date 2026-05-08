@@ -5,8 +5,8 @@ ingress: |
   For å sikre fremtidig vekst og stabil drift har jeg gjennomført en profesjonalisering av applikasjonens grunnmur. Ved å tette gapet mellom dokumentasjon og virkelighet har jeg redusert tidsbruken på vedlikehold og fjernet usynlige hindringer i utviklingsløpet. Dette betyr at jeg nå kan levere nye funksjoner raskere. Jeg har nå en stabil drift som er klar for å vokse.
 status: |
   #### Program informasjon
-  ** Teknologi** - Python
-  ** Verktøy** - TypeScript
+  **Teknologi** - Python
+  **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
 

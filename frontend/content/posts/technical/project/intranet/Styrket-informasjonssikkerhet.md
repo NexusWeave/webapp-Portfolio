@@ -5,9 +5,9 @@ ingress: |
   Jeg har utviklet en løsning for rollebasert tilgangskontroll i hierarkiske datalister. Ved å bruke en « *to-pass-algoritme*» arves rettigheter korrekt i trestrukturer, mens sensitive data skjermes etter prinsippet om *minste privilegium*. Arbeidet reduserer manuelle feilkilder, tetter sikkerhetshull og sikrer uavbrutt tilgang til innhold. Dette gir en stabil grunnmur for bedriftens datasikkerhet.
 status: |
   #### Program informasjon
-  ** Teknologi** - C#
-  ** Verktøy** - CSV, KI, TypeScript
-  ** Prinsipper** - Minste privilegium
+  **Teknologi** - C#
+  **Verktøy** - CSV, KI, TypeScript
+  **Prinsipper** - Minste privilegium
 
   #### Dagens Aktiviteter
   * Utviklet en modul som omdanner flate lister til en logisk trestruktur i systemets minne. Dette gir full kontroll over informasjonsrelasjoner og fjerner teknisk risiko knyttet til uoversiktlige datasett.

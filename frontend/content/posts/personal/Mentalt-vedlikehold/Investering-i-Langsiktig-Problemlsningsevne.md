@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   **OS** - Ikke spesifisert
-  ** Verktøy** - Ikke spesifisert
+  **Verktøy** - Ikke spesifisert
 
   #### Dagens Aktiviteter
 

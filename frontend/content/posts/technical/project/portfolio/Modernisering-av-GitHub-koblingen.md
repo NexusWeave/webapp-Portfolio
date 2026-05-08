@@ -5,8 +5,8 @@ ingress: |
   Da deler av nettsiden ble hengende igjen i gammel teknologi, merket brukerne at ting gikk tregt. Jeg valgte å fornye selve motoren i systemet slik at den nå kan håndtere mange oppgaver samtidig i stedet for én og én. Ved å rydde i hvordan data hentes og kontrolleres, har jeg fjernet ventetiden og gjort siden langt mer pålitelig. Resultatet er en raskere opplevelse for gjestene og en løsning som er klar for fremtidig vekst.
 status: |
   #### Program informasjon
-  ** Teknologi** - FastAPI
-  ** Verktøy** - KI, TypeScript
+  **Teknologi** - FastAPI
+  **Verktøy** - KI, TypeScript
 
   #### Dagens Aktiviteter
 

@@ -5,9 +5,9 @@ ingress: |
   Gjennom målrettet opprydding i kildekode, filstruktur og skjemasystem, har jeg i dag lagt grunnlaget for en mer effektiv og fleksibel medlemsportal. Ved å tette tekniske gap og finpusse grensesnittet, har jeg skapt en plattform som er enklere å vedlikeholde for utviklere og mer intuitiv å navigere for sluttbrukere. Resultatet er en operasjonell effektivisering som korter ned tiden fra en god ide til ferdig lansert løsning.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt.js
-  ** Verktøy** - TypeScript
-  ** Prinsipper** - UU
+  **Teknologi** - Nuxt.js
+  **Verktøy** - TypeScript
+  **Prinsipper** - UU
 
   #### Dagens Aktiviteter
 

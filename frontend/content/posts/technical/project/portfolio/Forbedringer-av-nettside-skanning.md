@@ -5,8 +5,8 @@ ingress: |
   Tidligere var prosessen med å hente informasjon både treg og full av støy. Ved å lære verktøyet å kjenne igjen og fjerne uinteressant innhold automatisk, leveres nå ferdigvaskede data. Med evnen til å gjøre mange oppgaver samtidig og tåle små avbrudd, spares det mye tid. I tillegg er feil med manglende sider løst, slik at alt alltid er klart til bruk.
 status: |
   #### Program informasjon
-  ** Teknologi** - Python
-  ** Verktøy** - TypeScript, KI
+  **Teknologi** - Python
+  **Verktøy** - TypeScript, KI
 
   #### Dagens Aktiviteter:
 

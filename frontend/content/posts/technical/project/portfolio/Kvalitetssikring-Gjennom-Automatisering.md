@@ -9,8 +9,8 @@ ingress: |
   gjør at jeg sparer tid.
 status: |
   #### Program informasjon
-  ** Teknologi** - Python
-  ** Verktøy** - TypeScript
+  **Teknologi** - Python
+  **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
 

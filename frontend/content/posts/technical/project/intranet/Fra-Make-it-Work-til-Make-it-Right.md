@@ -5,9 +5,9 @@ ingress: |
   Gjennom en målrettet modernisering har vi fjernet vedlikeholdsetterslep og driftsrisiko i systemet. Ved å skille forretningsregler fra datalagring og innføre universelle grensesnitt, har vi skapt en fleksibel arkitektur. Dette reduserer feilmarginer og forenkler opplæringen av nye ansatte, samtidig som koden er kortere. Systemet er nå en pålitelig plattform som sikrer både rimeligere og raskere videreutvikling.
 status: |
   #### Program informasjon
-  ** Teknologi** - C#
-  ** Verktøy** - CSV, JSON, TypeScript
-  ** Prinsipper** - Flerlagsløsning
+  **Teknologi** - C#
+  **Verktøy** - CSV, JSON, TypeScript
+  **Prinsipper** - Flerlagsløsning
 
   #### Dagens Aktiviteter
   * Korrigere navigasjonsstiene som ble avdekket under refaktoreringen for å sikre at brukeropplevelsen er så stabil som mulig.

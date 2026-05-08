@@ -5,9 +5,9 @@ ingress: |
   Ved å rette en logikkfeil i systemets tilgangskontroll har vi fjernet tekniske hindringer som tidligere låste ute ansatte med tilgang. Feilen førte til unødvendig avbrudd i arbeidet. Gjennom en systematisk opprydding har vi sørget for at sikkerheten er både streng og sikker. Dette sikrer at de ansatte får gjort jobben sin effektivt, samtidig som bedriften har full kontroll på dataene. Arbeidet gir oss en mer stabil og forutsigbar drift i fremtiden.
 status: |
   #### Program informasjon
-  ** Teknologi** - C#
-  ** Verktøy** - JSON, TypeScript
-  ** Prinsipper** - RBAC
+  **Teknologi** - C#
+  **Verktøy** - JSON, TypeScript
+  **Prinsipper** - RBAC
 
   #### Dagens Aktiviteter
   * Gjennomførte en systematisk analyse for å finne grunnen til at ansatte ble utelukket fra mapper og verktøy de rettmessig skulle ha tilgang til.
