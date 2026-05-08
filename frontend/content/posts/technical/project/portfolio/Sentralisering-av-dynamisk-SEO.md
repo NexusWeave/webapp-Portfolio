@@ -5,8 +5,8 @@ ingress: |
   Dagens arbeid fokuserte på å løse en kritisk 500-feil under bygging og forbedre applikasjonens dokumentasjon. Ved å flytte dynamisk <abbr title="Search Engine Optimization">SEO</abbr>-logikk fra sideoppsett til en sentralisert composable, har jeg fjernet <abbr title="Uoverensstemmelse mellom den server-genererte HTML-en og den klient-side JavaScript-en">hydreringsfeil</abbr> og sikret en stabil <abbr title="Prosessen med å generere statiske HTML-sider på forhånd for bedre ytelse og SEO">prerendering</abbr>. Resultatet er en mer robust arkitektur som skiller klart mellom statisk metadata og runtime-dynamikk, samtidig som brukeropplevelsen er ivaretatt gjennom konsistente sidetitler.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt 4, Vue 3
-  ** Verktøy** - TypeScript, Nuxt Content
+  **Teknologi** - Nuxt 4, Vue 3
+  **Verktøy** - TypeScript, Nuxt Content
 
   #### Dagens Aktiviteter
   * Diagnostiserte og fikset en "Cannot read properties of undefined (reading 'params')" feil under prerendering.

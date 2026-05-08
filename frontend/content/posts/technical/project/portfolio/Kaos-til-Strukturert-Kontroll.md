@@ -8,8 +8,8 @@ ingress: |
   i fokus. Her er hvordan jeg løste utfordringen!
 status: |
   #### Program informasjon
-  ** Teknologi** - Python
-  ** Verktøy** - TypeScript
+  **Teknologi** - Python
+  **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
 

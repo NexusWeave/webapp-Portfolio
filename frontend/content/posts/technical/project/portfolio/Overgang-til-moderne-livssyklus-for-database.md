@@ -9,8 +9,8 @@ status: |
   **Applikasjon** - `FastAPI` **ORM** - `SQLAlchemy`
 
   #### Program informasjon
-  ** Teknologi** - FastAPI
-  ** Verktøy** - SQLAlchemy, TypeScript
+  **Teknologi** - FastAPI
+  **Verktøy** - SQLAlchemy, TypeScript
 
   #### Dagens Aktiviteter
 

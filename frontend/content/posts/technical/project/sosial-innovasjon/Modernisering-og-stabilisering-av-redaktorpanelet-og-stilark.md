@@ -5,9 +5,9 @@ ingress: |
   Dagen i dag har fokusert på å løse kritiske feil i redaktørpanelet og forbedre arkitekturen for stilarkene. Ved å rydde opp i hvordan data hentes og struktureres i TinaCMS, samt separere ansvarsområder i CSS-en, har vi nå en mer robust og vedlikeholdbar plattform. Dette sikrer at videre utvikling kan skje uten at uventede feil hindrer fremdriften.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt.js
-  ** Verktøy** - TypeScript, TinaCMS, React
-  ** Prinsipper** - Arkitektur, Modulisering
+  **Teknologi** - Nuxt.js
+  **Verktøy** - TypeScript, TinaCMS, React
+  **Prinsipper** - Arkitektur, Modulisering
 
   #### Dagens Aktiviteter
 

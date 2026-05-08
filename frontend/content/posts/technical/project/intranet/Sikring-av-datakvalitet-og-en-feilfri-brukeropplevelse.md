@@ -6,8 +6,8 @@ ingress: |
 
 status: |
   #### Program informasjon
-  ** Teknologi** - C#
-  ** Verktøy** - TypeScript
+  **Teknologi** - C#
+  **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
   * Utbedret en feil i tilgangsstyringen som unødvendig blokkerte ansatte fra deres arbeidsverktøy, noe som har eliminert ventetid og frustrasjon.

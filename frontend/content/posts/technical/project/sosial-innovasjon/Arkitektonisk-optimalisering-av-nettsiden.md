@@ -5,9 +5,9 @@ ingress: |
   Da en ny lansering skapte uforutsette feil, valgte jeg å gå tilbake til en eldre, men stabil versjon av nettsiden. Denne hadde imidlertid flere svakheter under overflaten som gjorde vedlikeholdet krevende. Gjennom en målrettet opprydding har jeg forvandlet denne versjonen til en pålitelig plattform. Ved å forenkle hvordan informasjon hentes og vises, er siden nå blitt både raskere og langt tryggere for absolutt alle brukerne.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt.js
-  ** Verktøy** - TypeScript
-  ** Prinsipper** - SEO, UU
+  **Teknologi** - Nuxt.js
+  **Verktøy** - TypeScript
+  **Prinsipper** - SEO, UU
 
   #### Dagens Aktiviteter
 

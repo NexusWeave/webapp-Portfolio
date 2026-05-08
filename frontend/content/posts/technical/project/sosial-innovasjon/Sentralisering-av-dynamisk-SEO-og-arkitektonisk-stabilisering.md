@@ -5,8 +5,8 @@ ingress: |
   Dagens arbeid har fokusert på å eliminere teknisk ustabilitet under bygging (<abbr title="Prosessen med å generere statiske HTML-sider på forhånd for bedre ytelse og SEO">prerendering</abbr>) og automatisere <abbr title="Search Engine Optimization">SEO</abbr>-håndteringen i applikasjonen. Ved å flytte dynamisk tittel-oppløsning fra <abbr title="En funksjon eller instruksjon som prosesseres av kompilatoren fremfor å kjøres som vanlig kode i nettleseren">compiler-makroer</abbr> til en sentralisert reaktiv composable, har jeg løst kritiske feil som oppstod ved aksessering av rute-parametre før instansiering. Resultatet er en robust arkitektur som sikrer korrekt metadata for søkemotorer samtidig som den opprettholder en stabil og forutsigbar bygg-pipeline.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt 4, Vue 3, TypeScript
-  ** Verktøy** - Nuxt Content, Composables
+  **Teknologi** - Nuxt 4, Vue 3, TypeScript
+  **Verktøy** - Nuxt Content, Composables
 
   #### Dagens Aktiviteter
 

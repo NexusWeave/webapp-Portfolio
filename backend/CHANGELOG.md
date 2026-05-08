@@ -100,7 +100,7 @@ The legacy 2D array structure is deprecated, any code consuming this data must b
 - **mixins**: Added a mixin-style for circle-boarders     -   Introduced a new Sass/Less mixin to standardize the application     of circular border-radius styles. This ensures visual consistency     across all components requiring perfect circle shapes.
 - **utils/preprosessor-utils**: Initialize data mapping function     -   Created and initialized the 'utils/preprosessor-utils.ts' file     to house data processing logic, specifically implementing the primary     data mapping function (`mapTimeline`). This centralizes and cleans     up complex data transformations previously located in presentation     components.
 - **utilities/utilities.ts**: Introducing  a helper function to fetch porgamming type by an array.     -   Created the new `utilities/utilities.ts` file to centralize     reusable helper functionallity. Implemented a function within this     file to efficiently fetch programming language type data based on an     input array.
-- **content.config **: Define content collections for Nuxt SSG interface
+- **content.config**: Define content collections for Nuxt SSG interface
 - **utils/utils.js**: Initialize helper functions utility script
 - Initialize "aktuelt" page structure Motivation     -   Set up the basic layout and components for the "aktuelt" section of the application     -   This serves as a starting point for building out the news functionality
 - Initialize developer profile page structure
@@ -285,8 +285,8 @@ The legacy 2D array structure is deprecated, any code consuming this data must b
 - **tina/config**: Merge related content collections for simplicity
 - **.gitignore**:  Includeded .gitkeep.json & .gitkeep.md
 - **content-structure**: Move academic data to 'achievements' and convert to Markdown
-- **content/dev **: Move profiles to common `profiles` directory
-- **content/dev **: Move profiles to common `profiles` directory
+- **content/dev**: Move profiles to common `profiles` directory
+- **content/dev**: Move profiles to common `profiles` directory
 - **config.ts**: Standardize platform naming and field keys
 - **portfolioStore.ts**: Simplify item structure and refactor store logic
 - Remove unused variables and breakpoints from mappings file

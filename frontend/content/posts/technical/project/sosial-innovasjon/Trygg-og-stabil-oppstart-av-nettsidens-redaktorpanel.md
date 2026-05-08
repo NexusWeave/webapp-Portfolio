@@ -5,8 +5,8 @@ ingress: |
   Ved å sikre redaktørpanelt mot datainnbrudd har jeg lagt grunnlaget for en trygg og selvstendig drift. Jeg løste feil i kompileringen ved å legge til en sikker håndtering av miljøvariabler og sensitive tilgangsnøkler. Gjennom bruk av profesjonelle verktøy hindres lekkasje av konfidensiell data, samtidig som systemet er stabilisert. Dette har etablert en ny standard som forenkler videre utvikling og beskytter bedriftens digitale verdier.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt.js
-  ** Verktøy** - TypeScript, dotenv-cli
+  **Teknologi** - Nuxt.js
+  **Verktøy** - TypeScript, dotenv-cli
 
   #### Dagens Aktiviteter
 

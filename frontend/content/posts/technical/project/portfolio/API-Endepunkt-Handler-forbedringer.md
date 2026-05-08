@@ -5,8 +5,8 @@ ingress: |
   Det var tidligere vanskelig å holde styr på alle de ulike delene av løsningen. Ved å gi hver del et eget, forståelig navn og rydde bort rot, er det nå mye enklere å se nøyaktig hva som er i drift og hvordan alt virker. Dette gjør det både tryggere og lettere å bygge ut prosjektet videre, som en konsekvens av at jeg har nå oversikt over hvordan de ulike delene snakker sammen.
 status: |
   #### Program informasjon
-  ** Teknologi** - Python
-  ** Verktøy** - TypeScript, KI
+  **Teknologi** - Python
+  **Verktøy** - TypeScript, KI
 
   #### Dagens Aktiviteter:
 

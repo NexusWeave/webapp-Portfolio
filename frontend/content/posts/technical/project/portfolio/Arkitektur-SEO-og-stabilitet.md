@@ -5,9 +5,9 @@ ingress: |
   Dette prosjektet tok for seg utfordringene med manuelt vedlikehold av navigasjon og SEO, som skapte en uoversiktlig oppbygging og teknisk ustabilitet. Ved å etablere en felles sannhetskilde har jeg automatisert viktige rutineoppgaver og fjernet innlastingsfeil. Resultatet er en fremtidsrettet plattform med optimalisert ressursbruk, forbedret brukeropplevelse og en stabil struktur som sikrer både synlighet og videre vekstmuligheter.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt.js
-  ** Verktøy** - TypeScript, KI
-  ** Prinsipper** - SEO
+  **Teknologi** - Nuxt.js
+  **Verktøy** - TypeScript, KI
+  **Prinsipper** - SEO
 
   #### Dagens Aktiviteter
 

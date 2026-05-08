@@ -5,8 +5,8 @@ ingress: |
   For å standardisere og fremtidssikre applikasjonen har jeg fullført flyttingen til en moderne plattform. Ved å samle alle tjenester under samme system har jeg fjernet teknisk etterslep og gjort siden mer stabil. Innføring av automatisk kontroll av data betyr færre feil og høyere pålitelighet. Resultatet er en raskere og mer effektiv nettside som håndterer mye trafikk uten ventetid, og som nå er enkel å utvikle videre.
 status: |
   #### Program informasjon
-  ** Teknologi** - FastAPI
-  ** Verktøy** - TypeScript
+  **Teknologi** - FastAPI
+  **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
 

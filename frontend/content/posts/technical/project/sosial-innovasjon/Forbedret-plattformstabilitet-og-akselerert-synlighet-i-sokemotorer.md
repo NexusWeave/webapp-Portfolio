@@ -5,9 +5,9 @@ ingress: |
   Dagens oppdatering fokuserer på å styrke plattformens profesjonalitet og forbedret synlighet gjennom en mer effektiv brukeropplevelse og en ryddigere nettside. Ved å fjerne visuelle forsinkelser, automatisere SEO og fjerne tekniske hindringer, har jeg redusert risikoen for brukerfrafall og lagt til rette for en langt raskere videreutvikling av tjenesten og en forbedret digital profil for samtlige av organisasjonens mange medlemmer.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt.js
-  ** Verktøy** - TypeScript
-  ** Prinsipper** - Brukeropplevelse, SEO
+  **Teknologi** - Nuxt.js
+  **Verktøy** - TypeScript
+  **Prinsipper** - Brukeropplevelse, SEO
 
   #### Dagens Aktiviteter
 

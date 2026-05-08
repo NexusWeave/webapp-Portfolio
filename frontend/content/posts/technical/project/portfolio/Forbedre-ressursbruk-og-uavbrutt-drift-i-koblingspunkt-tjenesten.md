@@ -5,8 +5,8 @@ ingress: |
   Jeg har fornyet koblingspunkt-tjenesten i prosjektet for å fjerne hindringer som førte til at systemet stoppet opp. Ved å endre hvordan informasjon hentes, har jeg sørget for at programmet nå kan håndtere mange oppgaver samtidig uten å låse seg. Dette frigjør ressurser og gjør at hele flyten i systemet er langt mer effektiv. Grepet sikrer at løsningen er klar for vekst og alltid har kapasitet til å utføre mange nye oppgaver.
 status: |
   #### Program informasjon
-  ** Teknologi** - Python
-  ** Verktøy** - TypeScript
+  **Teknologi** - Python
+  **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
 

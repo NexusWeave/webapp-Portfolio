@@ -5,9 +5,9 @@ ingress: |
   Gjennom teknisk opprydding og standardisering har jeg styrket nettsidens identitet og brukeropplevelse. Ved å forenkle navigasjonslogikken og etablere standardiserte bildebeskrivelser, har jeg fjernet teknisk etterslep og visuell støy. Resultatet er en stabil og responsiv plattform som øker brukernes opplevelse, forbedrer tilgjengelighet og optimaliserer applikasjonen for effektiv videre vekst og forenkler vedlikehold i fremtiden.
 status: |
   #### Program informasjon
-  ** Teknologi** - Python
-  ** Verktøy** - TypeScript
-  ** Prinsipper** - Standardisering
+  **Teknologi** - Python
+  **Verktøy** - TypeScript
+  **Prinsipper** - Standardisering
 
   #### Dagens Aktiviteter
 

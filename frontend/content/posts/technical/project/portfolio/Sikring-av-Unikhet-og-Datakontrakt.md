@@ -5,8 +5,8 @@ ingress: |
  Arbeidet med å stabilisere databaselaget har ført til viktige utbedringer i håndteringen av prosjekt- og språkdata. Ved å legge til en `Get or Create`-strategi og oppgradere Pydantic-modeller til V2, er lagring av unike språkobjekter og datahenting nå sikret mot `IntegrityError` og valideringskrasj. To av tre hovedfeil er løst, mens gjenstående arbeid fokuserer på å rette en krasj i assosiasjonstabellen for å sikre full systemintegritet.
 status: |
   #### Program informasjon
-  ** Teknologi** - FastAPI
-  ** Verktøy** - TypeScript, KI
+  **Teknologi** - FastAPI
+  **Verktøy** - TypeScript, KI
 
   sources: ''
 ---

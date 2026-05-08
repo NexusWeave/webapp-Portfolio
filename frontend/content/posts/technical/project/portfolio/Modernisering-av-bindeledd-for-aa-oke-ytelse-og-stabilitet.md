@@ -18,8 +18,8 @@ ingress: |
   For å standardisere og forbedre flyten i prosjektet har jeg oppgradert den tekniske grunnmuren til en moderne løsning. Ved å bytte ut verktøyene som håndterte dataene, har jeg fjernet køer og venting som tidligere gjorde siden treg. Dette har skapt et mer pålitelig system som kan gjøre mange oppgaver samtidig uten å stoppe opp. Resultatet er en raskere og tryggere nettside som enkelt kan vokse i takt med brukernes behov.
 status: |
   #### Program informasjon
-  ** Teknologi** - FastAPI
-  ** Verktøy** - TypeScript
+  **Teknologi** - FastAPI
+  **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
 

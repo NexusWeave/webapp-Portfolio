@@ -5,9 +5,9 @@ ingress: |
   Ved å rydde opp i usynlige logikkfeil har jeg gjort nettsiden mer pålitelig og brukervennlig. Jeg har fjernet småfeil som forstyrret kundene, og sørget for at systemet nå tåler manglende data uten å krasje. Dette betyr i praksis et mer profesjonelt digitalt bilde av kunden, færre kundeklager og besparelser i fremtidig tid for vedlikehold, fordi jeg slipper tidkrevende runder med raske nødfikser og kan fokusere på ny verdi.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt.js
-  ** Verktøy** - TypeScript
-  ** Prinsipper** - Datakvalitet
+  **Teknologi** - Nuxt.js
+  **Verktøy** - TypeScript
+  **Prinsipper** - Datakvalitet
 
   #### Dagens Aktiviteter
 

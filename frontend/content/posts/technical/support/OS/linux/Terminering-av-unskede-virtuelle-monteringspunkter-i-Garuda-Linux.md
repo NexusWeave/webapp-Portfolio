@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
-  ** Verktøy** - Docker, TypeScript
+  **Verktøy** - Docker, TypeScript
 
   #### Dagens Aktiviteter
 

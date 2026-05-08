@@ -5,8 +5,8 @@ ingress: |
   Dette arbeidet handler om å sørge for at organisasjonens digitale identitet virker korrekt. Ved å løse utfordringene med navigasjonen i nyhetsarkivet har jeg sikret at medlemmene faktisk finner informasjonen de leter etter, noe som bygger tillit og profesjonalitet. Samtidig har jeg ryddet i logikken på nettsiden slik at den blir enklere å vedlikeholde. Jeg har redusert teknisk etterslep for å sikre at budskapet når helt frem.
 status: |
   #### Program informasjon
-  ** Teknologi** - Nuxt.js
-  ** Verktøy** - TypeScript
+  **Teknologi** - Nuxt.js
+  **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
 

@@ -8,7 +8,7 @@ ingress: |
 status: |
   #### Program informasjon
   **OS** - Ikke spesifisert
-  ** Verktøy** - 11ty, Tina CMS, TypeScript
+  **Verktøy** - 11ty, Tina CMS, TypeScript
 
   #### Dagens Aktiviteter
 
