@@ -74,7 +74,7 @@ class GithubUtils:
 
         frontend_extensions:List[str] = [
             '.html', '.htm', '.css', '.scss', '.sass', '.less', 
-            '.jsx', '.tsx', '.vue', '.svelte'
+            '.jsx', '.tsx', '.ts', '.vue', '.svelte'
             ]
         
         backend_extensions:List[str] = [

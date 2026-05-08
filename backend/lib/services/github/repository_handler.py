@@ -36,7 +36,8 @@ class GithubDatabaseHandler():
         LANGUAGE_ASSOCIATION: List[str] = []
 
         for i in repository['lang']:
-            LANGUAGE: LanguageModel = LanguageModel(language = str(i['language']))
+            LANG_NAME = str(i['language']).lower()
+            LANGUAGE: LanguageModel = LanguageModel(language = LANG_NAME)
             LANGUAGE_ASSOCIATION.append(LanguageAssosiationModel(language = LANGUAGE, code_bytes = i['bytes']))
 
         repository.pop('anchor', None)
@@ -127,6 +128,7 @@ class GithubDatabaseHandler():
         LOG.debug(f"Repository {DUPLICATION.label} was successfully updated in the database.")
 
     async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
+        LANG_NAME = LANG_NAME.lower()
         lang_obj: Result[Tuple[LanguageModel]] = await self.session.scalar(select(LanguageModel).where(LanguageModel.language == LANG_NAME))
 
         if not lang_obj:
