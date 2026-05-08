@@ -20,7 +20,7 @@ status: |
   AI ble benyttet som en autonom ingeniør med tilgang til hele stacken, noe som ga følgende fordeler:
   1. **Kontekstuelt Oversyn**: Evnen til å se sammenhengen mellom en databaseendring i Python og en stilendring i Sass, noe som forhindret regresjoner i UI-et.
   2. **Rask Diagnostikk**: Lynrask identifisering av skrivefeil i filnavn som forårsaket bygg-feil, en oppgave som manuelt ville krevd gjennomgang av store mengder loggdata.
-  3. **Presis Utførelse**: Bruk av kirurgiske `replace`-operasjoner sikret at kun nødvendig kode ble endret, noe som bevarte prosjektets integritet og kodestil.
+  3. **Presis Utførelse**: Målrettede endringer sikret at kun nødvendig kode ble modifisert, noe som bevarte prosjektets integritet og kodestil.
   4. **Effektiv Git-håndtering**: Automatisering av komplekse git-operasjoner (fetch, rebase, merge) sikret en ren historikk til tross for flere parallelle endringsspor.
 
   #### Motivasjon & energi 10 / 10
