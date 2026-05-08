@@ -1,3 +1,16 @@
+# [1.18.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.17.0...v1.18.0) (2026-05-08)
+
+
+### Bug Fixes
+
+* **backend:** implement language byte synchronization in database ([2de8d75](https://github.com/NexusWeave/webapp-Portfolio/commit/2de8d75ea551e94f9cf16aadbe04f884c42083bd))
+
+
+### Features
+
+* add STAR-L log for sosial-innovasjon project updates ([0a6f948](https://github.com/NexusWeave/webapp-Portfolio/commit/0a6f94876d21bccb53fc632cbdf2f2e9ef9a44ff))
+* **ui:** refine portfolio display and standardize navigation icons ([33bafc6](https://github.com/NexusWeave/webapp-Portfolio/commit/33bafc6c6a681f04412afc86565efb2f607ab29b))
+
 # [1.17.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.16.0...v1.17.0) (2026-05-06)
 
 
