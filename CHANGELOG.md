@@ -1,3 +1,11 @@
+## [1.18.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.0...v1.18.1) (2026-05-08)
+
+
+### Bug Fixes
+
+* **backend:** standardize language names and fix TypeScript recognition ([374952f](https://github.com/NexusWeave/webapp-Portfolio/commit/374952fb4dec7e82461ecb66b23eaa077cbce7b0))
+* **ui:** remove redundant CSS rules in cards sass ([8ec03a7](https://github.com/NexusWeave/webapp-Portfolio/commit/8ec03a7daddf0bc0ba315d6d7bd700a0cf14c4a7))
+
 # [1.18.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.17.0...v1.18.0) (2026-05-08)
 
 
