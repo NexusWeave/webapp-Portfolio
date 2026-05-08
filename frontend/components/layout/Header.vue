@@ -1,11 +1,11 @@
 <template>
     <section class="flex-wrap-row-align-items-center-justify-space-around">
         <section>
-            <NavigationNavMenu :data="[logo.anchor]" />
+            <NavigationNavMenu :data="[logo.anchor]" :cls="['logo-nav']" />
         </section>
         <section class="flex-wrap-row-align-items-center-justify-center">
             <NavigationNavMenu :data="dynamicMenu"/>
-            <NavigationNavMenu :data="anchorMenu" :cls="['anchor-nav']"/>
+            <NavigationNavMenu :data="anchorMenu"/>
         </section>
         <article class="profile-bar flex-wrap-row-align-items-center profile">
             <section class="flex-column-align-items-center">
@@ -54,7 +54,7 @@
     });
 
     const dynamicMenu = useNavigation();
-    const anchorMenu:AnchorItem[] = [{ label: 'CV & Portefølje ', href: '/media/documents/CV-Portfolio.pdf', type: ['pdf'] }];
+    const anchorMenu:AnchorItem[] = [{ label: 'CV - Portefølje', href: '/media/documents/CV-Portfolio.pdf', type: ['pdf'], cls: ['button', 'primary-btn'] }];
     const SocialMedia: AnchorItem[] = [ { type: ['linkedin'], href: 'https://www.linkedin.com/in/krigjo25' }, { type: ['github'],  href: 'https://www.github.com/krigjo25' }, { type: ['mail','external'], href: 'mailto:krigjo25@outlook.com' }, { type: ['ytube','external'], href: 'https://www.youtube.com/@krigjo25' }, { type: ['facebook'], href: 'https://www.facebook.com/krigjo25' }, { type: ['instagram'], href: 'https://www.instagram.com/krigjo25' } ];
 
     const referencePath = 'reference';

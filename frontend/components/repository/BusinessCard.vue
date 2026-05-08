@@ -11,7 +11,7 @@
                 <span v-if="data.flags.collaborator" :class="['icon']"> <MediaIcon :cls="['collaborator']"/> </span>
             </h3>
             <NavigationNavMenu v-if="hasAnchor" :cls="['portofolio-nav']" :data="data.anchor" />
-            <p>{{ data.description }}</p>
+            <p>{{ truncatedDescription }}</p>
 
             <section v-if="hasTechnology" :class="['tech-container']">
                 <h4>Andre teknologi(er) : </h4>
@@ -28,6 +28,7 @@
 <script lang="ts" setup>
 
     //  --- Importing dependencies & types
+    import { computed } from 'vue';
     import type { RepoProps } from '@/types/props';
 
     //  --- Props Definition Logic
@@ -39,6 +40,12 @@
     const hasAnchor = computed(() => props.data.anchor && props.data.anchor.length > num);
     const hasLanguages = computed(() => props.data.languages && props.data.languages.length > num);
     const hasTechnology = computed(() => props.data.languages && props.data.languages.length > 1);
+
+    const truncatedDescription = computed(() => {
+        const description = data.value?.description || '';
+        const limit = 81; // Basert på eksempelet ditt
+        return description.length > limit ? description.substring(0, limit) + '...' : description;
+    });
 
     //  --- Debugging Logic
     //console.log("BusinessCard props:", props.data);

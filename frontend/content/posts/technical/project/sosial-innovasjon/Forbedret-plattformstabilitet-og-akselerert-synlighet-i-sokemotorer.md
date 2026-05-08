@@ -11,7 +11,7 @@ status: |
 
   #### Dagens Aktiviteter
 
-  * Lagt inn støtte for "venteskjermer" på artikler, gallerier og mediekort. Dette skal fjerne usikkerheten hos brukere med lav nett forbindelse, ved at nettsiden nå viser at innholdet er på vei i stedet for at siden ser tom eller defekt ut.
+  * Lagt inn støtte for venteskjermer på artikler, gallerier og mediekort. Dette skal fjerne usikkerheten hos brukere med lav nett forbindelse, ved at nettsiden nå viser at innholdet er på vei i stedet for at siden ser tom eller defekt ut.
   * Forbedret logikken for hvordan systemet kobler sammen forfattere og artikler. Dette sikrer at riktig skribent alltid krediteres.
   * Fjernet utdatert og overflødig kode (inkludert ubrukte funksjoner) og forenklet kompliserte beregninger. Dette reduserer risikoen for fremtidige system feil.
   * Automatisert og forbedret måten teknisk informasjon som sendes til søkemotorer. Dette gjør at søkemotorer som Google raskere kan plukke opp og vise ferske oppdateringer fra nettsiden.

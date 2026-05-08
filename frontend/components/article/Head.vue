@@ -6,7 +6,7 @@
                     <h2>{{ article.title }}</h2>
                     <p class="flex-wrap-row-align-items-center-justify-center article-metadata">
                         <span v-if="!!article.date" :class="'meta-date'"> Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
-                        <NavigationAnchor v-for="(tag) in article.tags" :data="tag" :class="tag.cls" />
+                        <NavigationAnchor v-for="(tag) in article.tags" :data="tag" :class="[...tag.cls, 'button', 'tag-btn']" />
                     </p>
                     <MDC :value="article.ingress" class="ingress-content" />
                     <NavigationNavMenu v-if="!isPost && !!article.anchor" :data="article.anchor" :class="['nav-bar', 'read-more']"/>

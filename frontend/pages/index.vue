@@ -20,7 +20,7 @@
         <Timeline v-if="achievementData.length > 0"
             title="Prestasjonstidslinje"
             :data="achievementData"
-            :cls = "['component-seagreen', 'timeline-container',
+            :cls = "['component-slate', 'timeline-container',
             'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
     </section>

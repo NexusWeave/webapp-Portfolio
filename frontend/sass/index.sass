@@ -17,6 +17,8 @@
 @forward './utils/components'
 @forward './utils/grid-container'
 
+@forward './mix/generators'
+
 @forward './media/images'
 
 // Fonts
@@ -30,6 +32,7 @@ body
     h1, h2, h3, h4, h5, h6
         text-align: center
         margin: 0.5em auto
+        color: color.$dark-grey
 
     @include mix.text-wrap-safe()
     @include mix.font-style('Nunito')

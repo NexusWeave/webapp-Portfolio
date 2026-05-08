@@ -42,7 +42,10 @@
      } )
 
     //  --- Flag logic
-    const isImage = computed(() => data.value.type.includes('image/'));
+    const isImage = computed(() => {
+        const types = ['image/', 'jpg', 'jpeg', 'png', 'svg', 'webp'];
+        return types.some(t => data.value.type.includes(t));
+    });
     
     //  --- Debug logic
     //console.log('Figure data:', data.value, isImageModern.value, isImageStandard.value);

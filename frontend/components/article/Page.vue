@@ -1,5 +1,5 @@
 <template>
-    <NavigationButton  v-if="isPage || isTagPage"  :data="button" :class="['orange-btn']"/>
+    <NavigationButton  v-if="isPage || isTagPage"  :data="button" :class="['primary-btn']"/>
     <article class = 'article-wrapper flex-column'>
        <header>
         <ArticleHead :article="article" :isPost="isPage"/>

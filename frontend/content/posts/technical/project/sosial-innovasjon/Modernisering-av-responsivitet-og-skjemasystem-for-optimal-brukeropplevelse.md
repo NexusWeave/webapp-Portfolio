@@ -6,7 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   ** Teknologi** - Nuxt.js, TinaCMS
-  ** Verktøy** - TypeScript, Sass, Tailwind CSS
+  ** Verktøy** - TypeScript, Sass, React
   ** Prinsipper** - Responsivt Design, UU, Dataintegritet
 
   #### Dagens Aktiviteter

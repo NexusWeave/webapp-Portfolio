@@ -1,10 +1,10 @@
 <template>
-    <button :class="cls" :type="btn.type ?? 'button'" @click="isActionable()" :disabled="isDisabled">
+    <button :class="cls" :type="btn.btnType ?? 'button'" @click="isActionable()" :disabled="isDisabled">
 
         <NavigationAnchor v-if="btn.anchor" :data="btn.anchor"/>
         <span v-else-if="isIcon()" class="icon">
-            {{ data.label }}
-            <MediaIcon :cls="data.type"/>
+            {{ btn.label }}
+            <MediaIcon :cls="btn.type ?? []"/>
         </span>
 
         <template v-else> {{ btn.label }} </template>

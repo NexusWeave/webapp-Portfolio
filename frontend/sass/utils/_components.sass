@@ -4,6 +4,9 @@
 .component-blue
     @include mix.background-style(color.$deep-midnight-blue, color.$off-white)
 
+.component-slate
+    @include mix.background-style(color.$dark-grey, color.$off-white)
+
 .component-seagreen
     @include mix.background-style(color.$sea-green, color.$off-white)
     @include mix.link-styles(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
@@ -21,7 +24,8 @@
     @include mix.link-styles(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
 
-.component-blue, .component-seagreen
+.component-blue, .component-seagreen, .component-slate
     h2, h3, h4
         margin: 0
+        color: inherit
         @include mix.font-style('Roboto')
