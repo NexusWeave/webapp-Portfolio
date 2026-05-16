@@ -49,4 +49,11 @@ title: API Classes
         }
 
     }
+
+    classDef primary fill:#FF6B00,stroke:#333,stroke-width:2px,color:#fff
+    classDef azure fill:#2979FF,stroke:#333,stroke-width:2px,color:#fff
+    classDef rose fill:#C2185B,stroke:#333,stroke-width:2px,color:#fff
+
+    class GithubAPI,APIConfig azure
+    class HeavyAPI rose
 ```
