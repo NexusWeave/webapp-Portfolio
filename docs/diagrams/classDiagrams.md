@@ -41,4 +41,10 @@ classDiagram
             fetch_languages(self, repo:object, endpoint:str)
         }
     }
+
+    classDef azure fill:#2979FF,stroke:#333,stroke-width:2px,color:#fff
+    classDef rose fill:#C2185B,stroke:#333,stroke-width:2px,color:#fff
+
+    class GithubAPI,APIConfig,PhotosAPI azure
+    class HeavyAPI rose
 ```
