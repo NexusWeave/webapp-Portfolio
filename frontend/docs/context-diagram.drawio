@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="context-diagram" name="System Context Diagram">
-        <mxGraphModel dx="1369" dy="740" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="803" dy="434" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -28,7 +28,7 @@
                 <mxCell id="edge1" value="" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="group-backend" source="group-ext" edge="1">
                     <mxGeometry x="0.5" y="10" relative="1" as="geometry">
                         <mxPoint x="-140" y="144.5" as="sourcePoint"/>
-                        <mxPoint x="-10" y="144.5" as="targetPoint"/>
+                        <mxPoint y="135" as="targetPoint"/>
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
@@ -38,33 +38,27 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="group-db" value="Database" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=30;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="400" y="350" width="200" height="200" as="geometry"/>
+                    <mxGeometry x="400" y="350" width="200" height="290" as="geometry"/>
                 </mxCell>
                 <mxCell id="node-postgres" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00C853;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-db" vertex="1">
-                    <mxGeometry x="60" y="60" width="80" height="100" as="geometry"/>
+                    <mxGeometry x="60" y="50" width="80" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="node-tina" value="TinaCMS / Blogg" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00BFA5;fontColor=#333333;strokeColor=#333333;fontStyle=1" parent="group-db" vertex="1">
+                    <mxGeometry x="60" y="200" width="80" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="group-frontend" value="Nuxt / TS Web App" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FF6B00;strokeColor=#333333;startSize=30;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="40" y="350" width="240" height="280" as="geometry"/>
                 </mxCell>
                 <mxCell id="node-nuxt" value="Client (Nuxt)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-frontend" vertex="1">
-                    <mxGeometry x="60" y="110" width="120" height="50" as="geometry"/>
+                    <mxGeometry x="60" y="150" width="120" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="node-dynamic" value="Dynamic Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF3D00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-frontend" vertex="1">
-                    <mxGeometry x="60" y="40" width="120" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-tina" value="TinaCMS / Blogg" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFAB00;fontColor=#333333;strokeColor=#333333;fontStyle=1" parent="group-frontend" vertex="1">
-                    <mxGeometry x="80" y="200" width="80" height="60" as="geometry"/>
+                    <mxGeometry x="60" y="80" width="120" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="edge4" value="" style="endArrow=block;endFill=1;html=1;" parent="group-frontend" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="120" y="90" as="sourcePoint"/>
-                        <mxPoint x="120" y="110" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="edge5" value="Markdown/Git" style="endArrow=block;endFill=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=0;" parent="group-frontend" source="node-tina" target="node-nuxt" edge="1">
-                    <mxGeometry x="-0.4286" relative="1" as="geometry">
-                        <mxPoint as="offset"/>
-                        <Array as="points"/>
+                        <mxPoint x="120" y="130" as="sourcePoint"/>
+                        <mxPoint x="120" y="150" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="edge2" value="Structures with&#xa;Pydantic &amp; Stores" style="endArrow=block;endFill=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="group-backend" target="group-db" edge="1">
@@ -72,7 +66,7 @@
                 </mxCell>
                 <mxCell id="edge3" value="Delivers Data" style="endArrow=block;endFill=1;html=1;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="420" y="450" as="sourcePoint"/>
+                        <mxPoint x="400" y="450" as="sourcePoint"/>
                         <mxPoint x="280" y="450" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
