@@ -1,7 +1,7 @@
 <template>
     <figure :class="cls[0]" v-if="data.src || data.srcset">
         <NuxtImg v-if="isImage && data"
-            format="webp"
+            :format="isSvg ? undefined : 'webp'"
             loading="lazy"    
             :src="data.src" 
             :alt="data.alt" 
@@ -43,6 +43,7 @@
      } )
 
     //  --- Flag logic
+    const isSvg = computed(() => data.value.type.includes('svg'));
     const isImage = computed(() => {
         const types = ['image/', 'jpg', 'jpeg', 'png', 'svg', 'webp'];
         return types.some(t => data.value.type.includes(t));

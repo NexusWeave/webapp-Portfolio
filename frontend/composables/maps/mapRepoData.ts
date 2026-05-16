@@ -12,8 +12,8 @@ export function mapRepoData(data: RepositoryData): GithubData[]
 
         const media = languages.map((lang: LanguageData) => {
             const hasIcon = validIcons.includes(lang.label.toLowerCase());
-            return { type: 'svg', caption: ' ', alt: ` Visual Representation of ${lang.label}`, "src": hasIcon ? `/media/tech-lang-icons/${lang.label.toLowerCase()}.svg` : "", 
-            "srcset": hasIcon ? `/media/tech-lang-icons/${lang.label.toLowerCase()}.svg ` : ""
+            return { type: 'svg', caption: ' ', alt: ` Visual Representation of ${lang.label}`, src: hasIcon ? `/media/tech-lang-icons/${lang.label.toLowerCase()}.svg` : "", 
+            srcset: hasIcon ? `/media/tech-lang-icons/${lang.label.toLowerCase()}.svg` : ""
         }
             });
         const date = setDateFormat({date: item.created_at, updated: item.updated});

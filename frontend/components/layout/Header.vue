@@ -60,7 +60,7 @@
     const referencePath = 'reference';
     const referenceCache = 'referenceCache';
     const reference = await fetchCollection<ReferenceCollectionItem, ReturnType<typeof mapReference>>(referencePath, referenceCache, mapReference);
-    const media = { type: 'jpg', src: 'media/images/carousel/20240903_165612.jpg', srcset: 'media/images/carousel/20240903_165612.jpg', alt: 'Portrett av Kristoffer Gjøsund'}
+    const media = { type: 'jpg', src: '/media/images/carousel/20240903_165612.jpg', srcset: '/media/images/carousel/20240903_165612.jpg', alt: 'Portrett av Kristoffer Gjøsund'}
 
     //  --- Timer Logic
     const { index, start } = useCarousel(reference.value.length - 1, 10000);

@@ -1,5 +1,5 @@
-import type { Dateitem } from "./date";
-import type { FigureItem } from "./figure";
+import type { DateItem } from "./date";
+import type { FigureItem } from "./media";
 import type { AnchorItem } from "./navigation";
 
 
@@ -22,5 +22,5 @@ export interface RepositoryData extends Array<RepositoryItem> {}
 export interface ProgressProps { data: ProgressItem; cls?: string[]; }
 export interface GithubRepoLanguage extends LanguageData { img: FigureItem[];}
 export interface GithubData extends RepositoryBase { id: string; label: string; date: DateItem; }
-export interface RepoProps { data: GithubRepo; cls?: Array<string | string[] | Array<string | string[]>>; }
+export interface RepoProps { data: GithubData; cls?: Array<string | string[] | Array<string | string[]>>; }
 export interface RepositoryItem extends RepositoryBase { label: string; repo_id: string; created_at: string; }
