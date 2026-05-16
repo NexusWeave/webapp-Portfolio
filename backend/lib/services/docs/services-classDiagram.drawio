@@ -6,7 +6,7 @@
                 <mxCell id="1" parent="0"/>
                 
                 <!-- Title Bar -->
-                <mxCell id="title" value="API Classes - Comprehensive Services Diagram" style="text;html=1;strokeColor=#666666;fillColor=#FF6B00;fontColor=#ffffff;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" parent="1" vertex="1">
+                <mxCell id="title" value="API Classes - Services (Code-Aligned)" style="text;html=1;strokeColor=#666666;fillColor=#FF6B00;fontColor=#ffffff;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="20" width="750" height="40" as="geometry"/>
                 </mxCell>
 
@@ -15,55 +15,46 @@
                     <mxGeometry x="40" y="80" width="750" height="1000" as="geometry"/>
                 </mxCell>
 
-                <!-- APIConfig Class -->
-                <mxCell id="class-apiconfig" value="APIConfig / AsyncAPIClientConfig" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=1;columnLines=1;fontStyle=1;align=center;resizeLast=1;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#0066CC;" parent="group-namespace" vertex="1">
-                    <mxGeometry x="240" y="50" width="280" height="340" as="geometry"/>
+                <!-- APIConfig (AsyncAPIClientConfig) Class -->
+                <mxCell id="class-apiconfig" value="&lt;b&gt;AsyncAPIClientConfig&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#0066CC;html=1;" parent="group-namespace" vertex="1">
+                    <mxGeometry x="240" y="50" width="280" height="360" as="geometry"/>
                 </mxCell>
-                <mxCell id="attrs-apiconfig" value="Attributes" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;bottom=0;right=0;fontStyle=1;fontColor=#ffffff;" parent="class-apiconfig" vertex="1">
-                    <mxGeometry y="30" width="280" height="120" as="geometry"/>
+                <mxCell id="attrs-apiconfig" value="API_URL: str&lt;br&gt;API_KEY: str&lt;br&gt;VERSION: str&lt;br&gt;QUEUE: int&lt;br&gt;SEM: Semaphore" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;html=1;" parent="class-apiconfig" vertex="1">
+                    <mxGeometry y="30" width="280" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="attr-apiconfig-list" value="API_URL: str&#xa;API_KEY: str&#xa;VERSION: str&#xa;QUEUE: int&#xa;SEM: Semaphore" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;" parent="attrs-apiconfig" vertex="1">
-                    <mxGeometry width="280" height="120" as="geometry"/>
+                <mxCell id="sep-apiconfig" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#ffffff;html=1;" parent="class-apiconfig" vertex="1">
+                    <mxGeometry y="130" width="280" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="methods-apiconfig" value="Methods" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;bottom=0;right=0;fontStyle=1;fontColor=#ffffff;" parent="class-apiconfig" vertex="1">
-                    <mxGeometry y="150" width="280" height="190" as="geometry"/>
-                </mxCell>
-                <mxCell id="method-apiconfig-list" value="__init__(URL, KEY, version)&#xa;api_call(endpoint, head, params)&#xa;calculate_n(endpoint, header)&#xa;wait_in_queue(coro)&#xa;@staticmethod timeout_config(standard)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;" parent="methods-apiconfig" vertex="1">
-                    <mxGeometry width="280" height="190" as="geometry"/>
+                <mxCell id="methods-apiconfig" value="__init__(URL, KEY, version)&lt;br&gt;api_call(endpoint, head, params)&lt;br&gt;calculate_n(endpoint, header)&lt;br&gt;wait_in_queue(coro)&lt;br&gt;@staticmethod timeout_config()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;html=1;" parent="class-apiconfig" vertex="1">
+                    <mxGeometry y="138" width="280" height="222" as="geometry"/>
                 </mxCell>
 
                 <!-- HeavyAPI Class -->
-                <mxCell id="class-heavyapi" value="HeavyAPI" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=1;columnLines=1;fontStyle=1;align=center;resizeLast=1;fillColor=#C2185B;fontColor=#ffffff;strokeColor=#333333;" parent="group-namespace" vertex="1">
-                    <mxGeometry x="40" y="550" width="280" height="200" as="geometry"/>
+                <mxCell id="class-heavyapi" value="&lt;b&gt;HeavyAPI&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#C2185B;fontColor=#ffffff;strokeColor=#333333;html=1;" parent="group-namespace" vertex="1">
+                    <mxGeometry x="40" y="550" width="280" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="attrs-heavyapi" value="Attributes" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;bottom=0;right=0;fontStyle=1;fontColor=#ffffff;" parent="class-heavyapi" vertex="1">
-                    <mxGeometry y="30" width="280" height="60" as="geometry"/>
+                <mxCell id="attrs-heavyapi" value="VERSION: str&lt;br&gt;HEAD: dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;html=1;" parent="class-heavyapi" vertex="1">
+                    <mxGeometry y="30" width="280" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="attr-heavyapi-list" value="VERSION: str&#xa;HEAD: dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;" parent="attrs-heavyapi" vertex="1">
-                    <mxGeometry width="280" height="60" as="geometry"/>
+                <mxCell id="sep-heavyapi" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#ffffff;html=1;" parent="class-heavyapi" vertex="1">
+                    <mxGeometry y="80" width="280" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="methods-heavyapi" value="Methods" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;bottom=0;right=0;fontStyle=1;fontColor=#ffffff;" parent="class-heavyapi" vertex="1">
-                    <mxGeometry y="90" width="280" height="110" as="geometry"/>
-                </mxCell>
-                <mxCell id="method-heavyapi-list" value="__init__(URL, KEY, version)&#xa;fetch_data(endpoint)&#xa;map_sessions()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;" parent="methods-heavyapi" vertex="1">
-                    <mxGeometry width="280" height="110" as="geometry"/>
+                <mxCell id="methods-heavyapi" value="__init__(URL, KEY, version)&lt;br&gt;fetch_data(endpoint)&lt;br&gt;map_sessions()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;html=1;" parent="class-heavyapi" vertex="1">
+                    <mxGeometry y="88" width="280" height="152" as="geometry"/>
                 </mxCell>
 
                 <!-- GithubAPI Class -->
-                <mxCell id="class-githubapi" value="GithubAPI" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=1;columnLines=1;fontStyle=1;align=center;resizeLast=1;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#0066CC;" parent="group-namespace" vertex="1">
-                    <mxGeometry x="430" y="550" width="280" height="240" as="geometry"/>
+                <mxCell id="class-githubapi" value="&lt;b&gt;GithubAPI&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#0066CC;html=1;" parent="group-namespace" vertex="1">
+                    <mxGeometry x="430" y="550" width="280" height="280" as="geometry"/>
                 </mxCell>
-                <mxCell id="attrs-githubapi" value="Attributes" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;bottom=0;right=0;fontStyle=1;fontColor=#ffffff;" parent="class-githubapi" vertex="1">
-                    <mxGeometry y="30" width="280" height="60" as="geometry"/>
+                <mxCell id="attrs-githubapi" value="__VERSION__: str&lt;br&gt;HEADER: dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;html=1;" parent="class-githubapi" vertex="1">
+                    <mxGeometry y="30" width="280" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="attr-githubapi-list" value="__VERSION__: str&#xa;HEADER: dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;" parent="attrs-githubapi" vertex="1">
-                    <mxGeometry width="280" height="60" as="geometry"/>
+                <mxCell id="sep-githubapi" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#ffffff;html=1;" parent="class-githubapi" vertex="1">
+                    <mxGeometry y="80" width="280" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="methods-githubapi" value="Methods" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;bottom=0;right=0;fontStyle=1;fontColor=#ffffff;" parent="class-githubapi" vertex="1">
-                    <mxGeometry y="90" width="280" height="150" as="geometry"/>
-                </mxCell>
-                <mxCell id="method-githubapi-list" value="__init__(URL, KEY)&#xa;fetch_data(endpoint, params)&#xa;fetch_languages(repo, endpoint)&#xa;analyze_repository(trees_url)&#xa;process_github_items(raw_items)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;" parent="methods-githubapi" vertex="1">
-                    <mxGeometry width="280" height="150" as="geometry"/>
+                <mxCell id="methods-githubapi" value="__init__(URL, KEY)&lt;br&gt;fetch_data(endpoint, params)&lt;br&gt;fetch_languages(repo, endpoint)&lt;br&gt;analyze_repository(trees_url)&lt;br&gt;process_github_items(raw_items)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#ffffff;html=1;" parent="class-githubapi" vertex="1">
+                    <mxGeometry y="88" width="280" height="192" as="geometry"/>
                 </mxCell>
 
                 <!-- Relationships (Inheritance) -->
@@ -75,8 +66,8 @@
                 </mxCell>
 
                 <!-- Notes -->
-                <mxCell id="note-apiconfig" value="Base class for Async API calls.&#xa;Manages rate limiting (Semaphore)." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#333333;" parent="group-namespace" vertex="1">
-                    <mxGeometry x="290" y="410" width="180" height="70" as="geometry"/>
+                <mxCell id="note-apiconfig" value="Base class for Async API calls.&lt;br&gt;Manages rate limiting (Semaphore)." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#333333;html=1;" parent="group-namespace" vertex="1">
+                    <mxGeometry x="290" y="430" width="180" height="70" as="geometry"/>
                 </mxCell>
 
             </root>
