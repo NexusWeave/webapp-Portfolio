@@ -1,76 +1,93 @@
-<mxfile host="65bd71144e">
-    <diagram id="context-diagram" name="System Context Diagram">
-        <mxGraphModel dx="803" dy="434" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
-            <root>
-                <mxCell id="0"/>
-                <mxCell id="1" parent="0"/>
-                <mxCell id="group-ext" value="External Sources" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=30;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="40" width="200" height="270" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-github" value="Github API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D32F2F;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-ext" vertex="1">
-                    <mxGeometry x="40" y="50" width="120" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-heavy" value="Heavy API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C2185B;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-ext" vertex="1">
-                    <mxGeometry x="40" y="120" width="120" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="2" value="LinkedIn API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="group-ext">
-                    <mxGeometry x="40" y="190" width="120" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-linkedin" value="LinkedIn API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B71C1C;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-ext">
-                    <mxGeometry x="40" y="190" width="120" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="group-backend" value="FAST API / Python Async Worker" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="400" y="40" width="200" height="200" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-python" value="Asynchronous&#xa;Python Script" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-backend" vertex="1">
-                    <mxGeometry x="40" y="75" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="edge1" value="" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="group-backend" source="group-ext" edge="1">
-                    <mxGeometry x="0.5" y="10" relative="1" as="geometry">
-                        <mxPoint x="-140" y="144.5" as="sourcePoint"/>
-                        <mxPoint y="135" as="targetPoint"/>
-                        <mxPoint as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="4" value="&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(0, 0, 0);&quot;&gt;Asynchronous Fetching /&lt;/span&gt;&lt;br style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(0, 0, 0);&quot;&gt;Structures with Pydantic&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge1">
-                    <mxGeometry x="-0.053" y="-1" relative="1" as="geometry">
-                        <mxPoint as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="group-db" value="Database" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=30;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="400" y="350" width="200" height="290" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-postgres" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00C853;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-db" vertex="1">
-                    <mxGeometry x="60" y="50" width="80" height="90" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-tina" value="TinaCMS / Blogg" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00BFA5;fontColor=#333333;strokeColor=#333333;fontStyle=1" parent="group-db" vertex="1">
-                    <mxGeometry x="60" y="200" width="80" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="group-frontend" value="Nuxt / TS Web App" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FF6B00;strokeColor=#333333;startSize=30;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="350" width="240" height="280" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-nuxt" value="Client (Nuxt)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-frontend" vertex="1">
-                    <mxGeometry x="60" y="150" width="120" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="node-dynamic" value="Dynamic Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF3D00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-frontend" vertex="1">
-                    <mxGeometry x="60" y="80" width="120" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="edge4" value="" style="endArrow=block;endFill=1;html=1;" parent="group-frontend" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="120" y="130" as="sourcePoint"/>
-                        <mxPoint x="120" y="150" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="edge2" value="Structures with&#xa;Pydantic &amp; Stores" style="endArrow=block;endFill=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="group-backend" target="group-db" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="edge3" value="Delivers Data" style="endArrow=block;endFill=1;html=1;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="400" y="450" as="sourcePoint"/>
-                        <mxPoint x="280" y="450" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-            </root>
-        </mxGraphModel>
-    </diagram>
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-05-16T15:20:00.000Z" agent="Gemini CLI" version="14.7.6">
+  <diagram id="context-diagram" name="System Context Diagram">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="context-title" value="System Context Diagram" style="text;html=1;strokeColor=#666666;fillColor=#FF6B00;fontColor=#ffffff;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="0" width="1100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Subgraph: External Service APIs (Light Red Theme) -->
+        <mxCell id="group-ext-service" value="External Service APIs" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=30;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="200" height="120" as="geometry" />
+        </mxCell>
+        <!-- Adjacent: Rose (#C2185B) -->
+        <mxCell id="node-heavy" value="Heavy API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C2185B;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-ext-service">
+          <mxGeometry x="40" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: External Content Platforms (Push/Pull) (Deep Red Theme) -->
+        <mxCell id="group-ext-content" value="External Content Platforms" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=30;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="200" height="170" as="geometry" />
+        </mxCell>
+        <!-- Adjacent: Vibrant Red (#D32F2F) -->
+        <mxCell id="node-github" value="Github API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D32F2F;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-ext-content">
+          <mxGeometry x="40" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+        <!-- Adjacent: Deep Maroon (#B71C1C) -->
+        <mxCell id="node-linkedin" value="LinkedIn API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B71C1C;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-ext-content">
+          <mxGeometry x="40" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Python Async Worker (Blue Theme) -->
+        <mxCell id="group-backend" value="FAST API / Python Async Worker" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="220" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="node-python" value="Asynchronous&#xa;Python Script" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-backend">
+          <mxGeometry x="50" y="125" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Database (Green Theme) -->
+        <mxCell id="group-db" value="Database" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=30;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="40" width="200" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="node-postgres" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00C853;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-db">
+          <mxGeometry x="60" y="60" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="node-tina" value="TinaCMS / Blogg" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00BFA5;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-db">
+          <mxGeometry x="60" y="210" width="80" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Nuxt / TS Web App (Primary Orange: #FF6B00) -->
+        <mxCell id="group-frontend" value="Nuxt / TS Web App" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FF6B00;strokeColor=#333333;startSize=30;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="900" y="40" width="240" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="node-nuxt" value="Client (Nuxt)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-frontend">
+          <mxGeometry x="60" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node-dynamic" value="Dynamic Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF3D00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-frontend">
+          <mxGeometry x="60" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="edge1a" value="Fetch" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="group-ext-service" target="group-backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1b" value="Sync (Push/Pull)" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="group-ext-content" target="group-backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="Stores" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="group-backend" target="group-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="Delivers Data" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="group-db" target="group-frontend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="" style="endArrow=block;endFill=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="group-frontend" source="node-dynamic" target="node-nuxt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="Markdown/Git" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=0;" edge="1" parent="1" source="node-tina" target="node-nuxt">
+          <mxGeometry x="-0.7059" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="860" y="245" />
+              <mxPoint x="860" y="175" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>
