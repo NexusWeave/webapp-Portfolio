@@ -1,3 +1,10 @@
+## [1.18.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.2...v1.18.3) (2026-05-16)
+
+
+### Bug Fixes
+
+* **frontend:** ensure images and icons load correctly across all routes ([c5961d2](https://github.com/NexusWeave/webapp-Portfolio/commit/c5961d2ab8d225dbd0dce101962c698a42ba8a46))
+
 ## [1.18.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.1...v1.18.2) (2026-05-08)
 
 
