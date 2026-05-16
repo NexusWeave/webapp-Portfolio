@@ -10,31 +10,31 @@
                 <mxCell id="group-ext-service" value="External Service APIs" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=30;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="50" width="200" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="node-heavy" value="Heavy API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C2185B;strokeColor=#333333;fontStyle=1" parent="group-ext-service" vertex="1">
+                <mxCell id="node-heavy" value="Heavy API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C2185B;strokeColor=#333333;fontStyle=1;fontColor=#FFFFFF;" parent="group-ext-service" vertex="1">
                     <mxGeometry x="40" y="50" width="120" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="node-github" value="Github API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D32F2F;strokeColor=#333333;fontStyle=1" parent="group-ext-service" vertex="1">
+                <mxCell id="node-github" value="Github API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D32F2F;strokeColor=#333333;fontStyle=1;fontColor=#FFFFFF;" parent="group-ext-service" vertex="1">
                     <mxGeometry x="40" y="110" width="120" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="group-ext-content" value="External Content Platforms" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#B85450;startSize=30;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="250" width="200" height="110" as="geometry"/>
                 </mxCell>
-                <mxCell id="node-linkedin" value="LinkedIn API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B71C1C;strokeColor=#333333;fontStyle=1" parent="group-ext-content" vertex="1">
+                <mxCell id="node-linkedin" value="LinkedIn API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B71C1C;strokeColor=#333333;fontStyle=1;fontColor=#FFFFFF;" parent="group-ext-content" vertex="1">
                     <mxGeometry x="40" y="50" width="120" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="group-backend" value="FAST API / Python Async Worker" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="390" y="50" width="220" height="310" as="geometry"/>
                 </mxCell>
-                <mxCell id="node-python" value="Asynchronous&#xa;Python Script" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2979FF;strokeColor=#333333;fontStyle=1" parent="group-backend" vertex="1">
+                <mxCell id="node-python" value="Asynchronous&#xa;Python Script" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2979FF;strokeColor=#333333;fontStyle=1;fontColor=#FFFFFF;" parent="group-backend" vertex="1">
                     <mxGeometry x="50" y="125" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="group-db" value="Database" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=30;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="410" y="430" width="200" height="310" as="geometry"/>
                 </mxCell>
-                <mxCell id="node-postgres" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00C853;strokeColor=#333333;fontStyle=1" parent="group-db" vertex="1">
+                <mxCell id="node-postgres" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00C853;strokeColor=#333333;fontStyle=1;fontColor=#FFFFFF;" parent="group-db" vertex="1">
                     <mxGeometry x="60" y="60" width="80" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="node-tina" value="TinaCMS / Blogg" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00BFA5;strokeColor=#333333;fontStyle=1" parent="group-db" vertex="1">
+                <mxCell id="node-tina" value="TinaCMS / Blogg" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#00BFA5;strokeColor=#333333;fontStyle=1;fontColor=#FFFFFF;" parent="group-db" vertex="1">
                     <mxGeometry x="60" y="210" width="80" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="group-frontend" value="Nuxt / TS Web App" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FF3D00;strokeColor=#FF6B00;startSize=30;fontStyle=1;" parent="1" vertex="1">
@@ -43,7 +43,7 @@
                 <mxCell id="node-nuxt" value="Client (Nuxt)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" parent="group-frontend" vertex="1">
                     <mxGeometry x="60" y="150" width="120" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="node-dynamic" value="Dynamic Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF3D00;strokeColor=#333333;fontStyle=1" parent="group-frontend" vertex="1">
+                <mxCell id="node-dynamic" value="Dynamic Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF3D00;strokeColor=#333333;fontStyle=1;fontColor=#FFFFFF;" parent="group-frontend" vertex="1">
                     <mxGeometry x="60" y="40" width="120" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="edge4" value="" style="endArrow=block;endFill=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#FF6B00;" parent="group-frontend" source="node-dynamic" target="node-nuxt" edge="1">
