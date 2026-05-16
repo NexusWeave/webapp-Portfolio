@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-05-16T14:00:00.000Z" agent="Gemini CLI" version="14.7.6">
+  <diagram id="context-diagram" name="System Context Diagram">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Subgraph: External Sources (Red) -->
+        <mxCell id="group-ext" value="External Sources" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=30;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="node-github" value="Github API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="group-ext">
+          <mxGeometry x="40" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node-heavy" value="Heavy API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="group-ext">
+          <mxGeometry x="40" y="120" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Python Async Worker (Blue) -->
+        <mxCell id="group-backend" value="Python Async Worker" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="node-python" value="Asynchronous&#xa;Python Script" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="group-backend">
+          <mxGeometry x="40" y="75" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Database (Green) -->
+        <mxCell id="group-db" value="Database" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=30;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="node-postgres" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="group-db">
+          <mxGeometry x="60" y="60" width="80" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Subgraph: Nuxt / TS Web App (Orange) -->
+        <mxCell id="group-frontend" value="Nuxt / TS Web App" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;startSize=30;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="40" width="240" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="node-nuxt" value="Client (Nuxt)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#ffffff;strokeColor=#333333;fontStyle=1" vertex="1" parent="group-frontend">
+          <mxGeometry x="60" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node-dynamic" value="Dynamic Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="group-frontend">
+          <mxGeometry x="60" y="130" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="node-tina" value="TinaCMS / Blogg" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="group-frontend">
+          <mxGeometry x="80" y="200" width="80" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="edge1" value="Asynchronous Fetching /&#xa;Structures with Pydantic" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="group-ext" target="group-backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="Structures with&#xa;Pydantic &amp; Stores" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="group-backend" target="group-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="Delivers Data" style="endArrow=block;endFill=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.357;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="group-db" target="group-frontend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="" style="endArrow=block;endFill=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="group-frontend" source="node-dynamic" target="node-nuxt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="Markdown/Git" style="endArrow=block;endFill=1;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=0;" edge="1" parent="group-frontend" source="node-tina" target="node-nuxt">
+          <mxGeometry x="-0.4286" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="40" y="230" />
+              <mxPoint x="40" y="110" />
+              <mxPoint x="120" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
