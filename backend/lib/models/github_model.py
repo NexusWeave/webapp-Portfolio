@@ -29,6 +29,13 @@ class LanguageAssociationModel(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
+class CollaboratorModel(BaseModel):
+    name: str = Field(..., description = "Collaborator Name", json_schema_extra = {"example":"username"})
+    collab_id: str = Field(..., description = "Collaborator ID", json_schema_extra = {"example":"123456"})
+    repo_id: int = Field(..., description = "Repository ID", json_schema_extra = {"example":123456})
+
+    model_config = ConfigDict(from_attributes = True)
+
 class RepositoryModel(BaseModel):
     
     #   Initialize methods and database
@@ -51,6 +58,7 @@ class RepositoryModel(BaseModel):
     
 
     lang_assosiations: List[LanguageAssociationModel] = Field(..., exclude= True)
+    collaborator_records: List[CollaboratorModel] = Field(..., alias = "collaborators", exclude= True)
 
     @computed_field
     def languages(self) -> List[Dict[str, str | int | Dict[str, str] | object]]:
@@ -62,6 +70,10 @@ class RepositoryModel(BaseModel):
             if assec.language.id == assec.lang_id and self.id == assec.repo_id:
                 languages.append( { "bytes": assec.code_bytes, "label": assec.language.language,  })
         return languages
+    
+    @computed_field
+    def collaborators(self) -> List[str]:
+        return [collab.name for collab in self.collaborator_records]
     
     @computed_field
     def anchor(self) -> List[Dict[str, str | object]]:

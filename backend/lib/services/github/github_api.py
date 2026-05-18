@@ -53,25 +53,30 @@ class GithubAPI(AsyncAPIClientConfig):
 
             
             languages_tasks: List[Coroutine[Any, Any, List[Dict[str, Any]]]] = []
+            collaborators_tasks: List[Coroutine[Any, Any, List[Dict[str, str]]]] = []
+
             for res in validated_data:
                 name = res['name']
                 owner = res['owner']['login']
                 languages_tasks.append(self.fetch_languages(owner, name))
+                collaborators_tasks.append(self.fetch_collaborators(owner, name))
 
             languages: List[List[Dict[str, Any]]] = []
+            collaborators: List[List[Dict[str, str]]] = []
+
             try:
-                languages = await gather(*languages_tasks)
+                languages, collaborators = await gather(gather(*languages_tasks), gather(*collaborators_tasks))
 
             except Exception as e:
-                LOG.error(f"Error fetching languages for repositories: {e.__class__.__name__} - {str(e)}")
+                LOG.error(f"Error fetching languages or collaborators: {e.__class__.__name__} - {str(e)}")
                 raise e
 
-            for data, lang in zip(validated_data, languages):
+            for data, lang, collab in zip(validated_data, languages, collaborators):
                 utils = GithubUtils()
                 mapped_repo: Dict[str, str | object | List[str] | object] = {}
 
                 try:
-                    mapped_repo = await utils.map_repository(data, lang)
+                    mapped_repo = await utils.map_repository(data, lang, collab)
 
                 except Exception as e: 
                     LOG.error(f"Raised {e.__class__.__name__} - {str(e)}") 
@@ -114,6 +119,17 @@ class GithubAPI(AsyncAPIClientConfig):
 
             languages.append({"language": lang, "bytes": value})
         return languages
+
+    async def fetch_collaborators(self, owner:str, name: str) -> List[Dict[str, str]]:
+        path = urljoin(self.API_URL, f"repos/{owner}/{name}/contributors")
+        
+        response: httpx.Response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
+        contributors: List[Dict[str, Any]] = response.json()
+        
+        collaborators: List[Dict[str, str]] = []
+        for contributor in contributors:
+             collaborators.append({"name": contributor['login'], "collab_id": str(contributor['id'])})
+        return collaborators
 
     async def analyze_repository(self,trees_url: str) -> List[Dict[str, str | object | List[str]]]:
         """ Analyzes the repository data to determine its characteristics. """

@@ -33,6 +33,7 @@ class RepositoryModel(BASE):
     is_collaborator = Column(Boolean, default = 0, nullable = False)
 
     lang_assosiations = relationship("LanguageAssosiationModel", back_populates = "repository", cascade = "all, delete-orphan")
+    collaborators = relationship("CollaboratorModel", back_populates = "repository", cascade = "all, delete-orphan")
 
 class LanguageAssosiationModel(BASE):
 
@@ -45,6 +46,17 @@ class LanguageAssosiationModel(BASE):
 
     language = relationship("LanguageModel", back_populates = "assosiations")
     repository = relationship("RepositoryModel", back_populates = "lang_assosiations")
+
+class CollaboratorModel(BASE):
+
+    __tablename__: str = "collaborators"
+
+    id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
+    repo_id = Column(BigInteger, ForeignKey('repositories.repo_id'), nullable = False)
+    name = Column(String, unique = True, index = True, nullable = False)
+    collab_id = Column(String, unique = True, index = True, nullable = False)
+
+    repository = relationship("RepositoryModel", back_populates = "collaborators")
     
 class LanguageModel(BASE):
 

@@ -4,7 +4,7 @@ from typing import Dict, Any, List, Sequence, Optional, Tuple
 
 #   Internal Libraries
 from lib.utils.logger_config import DatabaseWatcher
-from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel
+from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel, CollaboratorModel
 
 #   Third Party Libraries
 from sqlalchemy import select, Result
@@ -33,12 +33,16 @@ class GithubDatabaseHandler():
                 case 'youtube_url': video_url = url['href']
                 case _: continue
             
-        LANGUAGE_ASSOCIATION: List[str] = []
+        LANGUAGE_ASSOCIATION: List[LanguageAssosiationModel] = []
 
         for i in repository['lang']:
             LANG_NAME = str(i['language']).lower()
             LANGUAGE: LanguageModel = LanguageModel(language = LANG_NAME)
             LANGUAGE_ASSOCIATION.append(LanguageAssosiationModel(language = LANGUAGE, code_bytes = i['bytes']))
+
+        COLLABORATORS: List[CollaboratorModel] = []
+        for c in repository.get('collaborators', []):
+            COLLABORATORS.append(CollaboratorModel(name = c['name'], collab_id = c['collab_id']))
 
         repository.pop('anchor', None)
         repository.pop('collaborators', None)
@@ -46,7 +50,7 @@ class GithubDatabaseHandler():
 
         dictionary: Dict[str, Any] = {**repository,
             'youtube_url': video_url, 'demo_url': preview_url, 'repo_url': repo_url,
-            'lang_assosiations': LANGUAGE_ASSOCIATION,'last_check': datetime.now()}
+            'lang_assosiations': LANGUAGE_ASSOCIATION, 'collaborators': COLLABORATORS, 'last_check': datetime.now()}
         
         if 'updated_at' in dictionary: dictionary['updated_at'] = date_parser(dictionary['updated_at'])
         if 'created_at' in dictionary: dictionary['created_at'] = date_parser(dictionary['created_at'])
@@ -84,6 +88,13 @@ class GithubDatabaseHandler():
             #LOG.debug(f"Language changes detected for label: {dictionary['label']}")
             return True
 
+        # Check for collaborator changes
+        new_collabs = {c.collab_id: c.name for c in dictionary.get('collaborators', [])}
+        exist_collabs = {c.collab_id: c.name for c in exist.collaborators}
+
+        if new_collabs != exist_collabs:
+            return True
+
         #LOG.debug(f"No Changes for label: {dictionary['label']} - Skipping update.")
         return False
 
@@ -96,12 +107,14 @@ class GithubDatabaseHandler():
     async def _create_repositories(self, repository: Dict[str, Any]) -> None:
         temp_repo = repository.copy()
         temp_repo.pop('lang', None)
+        temp_repo.pop('collaborators', None)
+        
         #LOG.debug(f"Creating new repository record for label: {repository['label']} with data: {temp_repo}")
         repo_model = RepositoryModel( **temp_repo)
 
         self.session.add(repo_model)
 
-        LANGUAGE_ASSOCIATIONS: List[str] = repository['lang']
+        LANGUAGE_ASSOCIATIONS: List[Dict[str, Any]] = repository['lang']
 
         for i in LANGUAGE_ASSOCIATIONS:
             CODE_BYTES : int = i['bytes']       #type:ignore
@@ -109,10 +122,15 @@ class GithubDatabaseHandler():
             LANG_OBJ: LanguageModel = await self.new_language_record(LANG_NAME)
             self.new_association_record(repo_model, LANG_OBJ, CODE_BYTES)
 
+        COLLABORATORS: List[Dict[str, str]] = repository.get('collaborators', [])
+        for c in COLLABORATORS:
+            collab_obj = CollaboratorModel(repository = repo_model, name = c['name'], collab_id = c['collab_id'])
+            self.session.add(collab_obj)
+
         #LOG.debug(f"Successfully created new repository record for label: {repository['label']}")
 
     async def _apply_repositories_updates(self, dictionary: Dict[str, Any], DUPLICATION: RepositoryModel) -> None:
-        EXCCLUDE_FIELDS = ['repo_id', 'created_at', 'lang_assosiations']
+        EXCCLUDE_FIELDS = ['repo_id', 'created_at', 'lang_assosiations', 'collaborators']
         updated_data = {k: v for k, v in dictionary.items() if k not in EXCCLUDE_FIELDS}
 
         for key, value in updated_data.items():
@@ -151,6 +169,23 @@ class GithubDatabaseHandler():
                 for assoc in assocs:
                     await self.session.delete(assoc)
 
+        # Sync collaborators
+        new_collabs = {c.collab_id: c.name for c in dictionary.get('collaborators', [])}
+        exist_collabs = {c.collab_id: c for c in DUPLICATION.collaborators}
+
+        for collab_id, name in new_collabs.items():
+            if collab_id in exist_collabs:
+                if exist_collabs[collab_id].name != name:
+                    exist_collabs[collab_id].name = name
+                    self.session.add(exist_collabs[collab_id])
+            else:
+                collab_obj = CollaboratorModel(repository = DUPLICATION, name = name, collab_id = collab_id)
+                self.session.add(collab_obj)
+
+        for collab_id, collab in exist_collabs.items():
+            if collab_id not in new_collabs:
+                await self.session.delete(collab)
+
         self.session.add(DUPLICATION)
         LOG.debug(f"Repository {DUPLICATION.label} was successfully updated in the database.")
 
@@ -172,7 +207,8 @@ class GithubDatabaseHandler():
         repo_ids = [repo['repo_id'] for repo in repository]
         QUERY = (select(RepositoryModel)
                  .options(selectinload(RepositoryModel.lang_assosiations)
-                          .selectinload(LanguageAssosiationModel.language))
+                          .selectinload(LanguageAssosiationModel.language),
+                          selectinload(RepositoryModel.collaborators))
                  .where(RepositoryModel.repo_id.in_(repo_ids)))
         
         DB_RESULTS = await self.session.execute(QUERY)
@@ -212,7 +248,11 @@ class GithubDatabaseHandler():
 
     async def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
 
-        QUERY = (select(RepositoryModel).options(selectinload(RepositoryModel.lang_assosiations).selectinload(LanguageAssosiationModel.language)).where(RepositoryModel.is_secret == False).order_by(RepositoryModel.updated_at.desc()))
+        QUERY = (select(RepositoryModel)
+                 .options(selectinload(RepositoryModel.lang_assosiations).selectinload(LanguageAssosiationModel.language),
+                          selectinload(RepositoryModel.collaborators))
+                 .where(RepositoryModel.is_secret == False)
+                 .order_by(RepositoryModel.updated_at.desc()))
 
         result = await self.session.execute(QUERY)
         return result.scalars().all()
