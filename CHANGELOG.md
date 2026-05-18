@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.19.0...v1.20.0) (2026-05-18)
+
+
+### Features
+
+* improve language activity display and strengthen GitHub synchronization resilience ([a77f766](https://github.com/NexusWeave/webapp-Portfolio/commit/a77f76696e63d30eec84d6f068e5857f762dacfb))
+
 # [1.19.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.4...v1.19.0) (2026-05-18)
 
 
