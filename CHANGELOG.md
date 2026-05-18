@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.20.0...v1.21.0) (2026-05-18)
+
+
+### Features
+
+* implement strict owner filtering and batched sync with rate limit protection ([ffc4ebb](https://github.com/NexusWeave/webapp-Portfolio/commit/ffc4ebbb0b278a26b677723c034b800c8779a2f1))
+
 # [1.20.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.19.0...v1.20.0) (2026-05-18)
 
 
