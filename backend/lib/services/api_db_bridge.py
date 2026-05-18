@@ -29,10 +29,14 @@ class ApiDatabaseBridge:
 
         try:
             async with DB_CONTEXT.SessionLocal() as session:
-                repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL = URL, KEY = TOKEN).fetch_data(ENDPOINT, params=params)
+                GITHUB_HANDLER: GithubDatabaseHandler = GithubDatabaseHandler(session = session)
+                
+                # Fetch existing repo IDs and timestamps for optimization
+                existing_timestamps = await GITHUB_HANDLER.get_existing_timestamps()
+                
+                repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL = URL, KEY = TOKEN).fetch_data(ENDPOINT, params=params, existing_timestamps=existing_timestamps)
                 if isinstance(repositories, NotFoundError): raise NotFoundError(404, "No repositories found from GitHub API.")
 
-                GITHUB_HANDLER: GithubDatabaseHandler = GithubDatabaseHandler(session = session)
                 await GITHUB_HANDLER.upsert_repositories(repository = repositories)
 
         except NotFoundError as e:

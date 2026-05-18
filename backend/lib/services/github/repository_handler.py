@@ -59,11 +59,12 @@ class GithubDatabaseHandler():
 
     @staticmethod
     def has_data_changes(exist:RepositoryModel, dictionary: Dict[str, Any]) -> bool:
+        # If full sync was skipped, only check basic metadata
+        needs_full_sync = dictionary.get('needs_full_sync', True)
 
         FIELDS_TO_CHECK = [
             'owner', 'label','repo_url', 'description',
-            'is_private', 'demo_url', 'repo_url', 'is_backend',
-            'is_frontend', 'is_fullstack', 'is_collaborator']
+            'is_private', 'demo_url', 'repo_url']
 
         for field in FIELDS_TO_CHECK:
             if field == 'description' and dictionary.get(field) == 'No description provided.' : continue
@@ -73,29 +74,34 @@ class GithubDatabaseHandler():
                 #LOG.debug(f"Changes detected for label: {dictionary['label']}, field: {field}")
                 return True
         
-        # Check for language changes
-        new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
-        
-        # Detect duplicates in existing associations
-        exist_langs = {}
-        for assoc in exist.lang_assosiations:
-            lang_name = assoc.language.language
-            if lang_name in exist_langs:
-                return True # Found duplicate, force update for cleanup
-            exist_langs[lang_name] = assoc.code_bytes
+        if needs_full_sync:
+            # Check for language changes
+            new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
+            
+            # Detect duplicates in existing associations
+            exist_langs = {}
+            for assoc in exist.lang_assosiations:
+                lang_name = assoc.language.language
+                if lang_name in exist_langs:
+                    return True # Found duplicate, force update for cleanup
+                exist_langs[lang_name] = assoc.code_bytes
 
-        if new_langs != exist_langs:
-            #LOG.debug(f"Language changes detected for label: {dictionary['label']}")
-            return True
+            if new_langs != exist_langs:
+                #LOG.debug(f"Language changes detected for label: {dictionary['label']}")
+                return True
 
-        # Check for collaborator changes
-        new_collabs = {c.collab_id: c.name for c in dictionary.get('collaborators', [])}
-        exist_collabs = {c.collab_id: c.name for c in exist.collaborators}
+            # Check for collaborator changes
+            new_collabs = {c.collab_id: c.name for c in dictionary.get('collaborators', [])}
+            exist_collabs = {c.collab_id: c.name for c in exist.collaborators}
 
-        if new_collabs != exist_collabs:
-            return True
+            if new_collabs != exist_collabs:
+                return True
 
-        #LOG.debug(f"No Changes for label: {dictionary['label']} - Skipping update.")
+            # Check stack flags
+            for flag in ['is_backend', 'is_frontend', 'is_fullstack']:
+                if getattr(exist, flag) != dictionary.get(flag):
+                    return True
+
         return False
 
     def new_association_record(self, repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -> None:
@@ -108,6 +114,7 @@ class GithubDatabaseHandler():
         temp_repo = repository.copy()
         temp_repo.pop('lang', None)
         temp_repo.pop('collaborators', None)
+        temp_repo.pop('needs_full_sync', None)
         
         #LOG.debug(f"Creating new repository record for label: {repository['label']} with data: {temp_repo}")
         repo_model = RepositoryModel( **temp_repo)
@@ -130,61 +137,69 @@ class GithubDatabaseHandler():
         #LOG.debug(f"Successfully created new repository record for label: {repository['label']}")
 
     async def _apply_repositories_updates(self, dictionary: Dict[str, Any], DUPLICATION: RepositoryModel) -> None:
-        EXCCLUDE_FIELDS = ['repo_id', 'created_at', 'lang_assosiations', 'collaborators']
+        needs_full_sync = dictionary.get('needs_full_sync', True)
+        
+        EXCCLUDE_FIELDS = ['repo_id', 'created_at', 'lang_assosiations', 'collaborators', 'needs_full_sync']
+        
+        # If we skipped full sync, don't overwrite stack flags with default False values
+        if not needs_full_sync:
+            EXCCLUDE_FIELDS.extend(['is_backend', 'is_frontend', 'is_fullstack'])
+            
         updated_data = {k: v for k, v in dictionary.items() if k not in EXCCLUDE_FIELDS}
 
         for key, value in updated_data.items():
             if hasattr(DUPLICATION, key):
                 setattr(DUPLICATION, key, value)
         
-        # Sync languages
-        new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
-        
-        # Group existing associations by language to handle duplicates
-        exist_assoc_groups: Dict[str, List[LanguageAssosiationModel]] = {}
-        for assoc in DUPLICATION.lang_assosiations:
-            lang_name = assoc.language.language
-            if lang_name not in exist_assoc_groups:
-                exist_assoc_groups[lang_name] = []
-            exist_assoc_groups[lang_name].append(assoc)
+        if needs_full_sync:
+            # Sync languages
+            new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
+            
+            # Group existing associations by language to handle duplicates
+            exist_assoc_groups: Dict[str, List[LanguageAssosiationModel]] = {}
+            for assoc in DUPLICATION.lang_assosiations:
+                lang_name = assoc.language.language
+                if lang_name not in exist_assoc_groups:
+                    exist_assoc_groups[lang_name] = []
+                exist_assoc_groups[lang_name].append(assoc)
 
-        for lang_name, code_bytes in new_langs.items():
-            if lang_name in exist_assoc_groups:
-                # Update the first association and delete the rest
-                primary_assoc = exist_assoc_groups[lang_name][0]
-                if primary_assoc.code_bytes != code_bytes:
-                    primary_assoc.code_bytes = code_bytes
-                    self.session.add(primary_assoc)
-                
-                # Delete duplicates
-                for duplicate in exist_assoc_groups[lang_name][1:]:
-                    await self.session.delete(duplicate)
-            else:
-                lang_obj = await self.new_language_record(lang_name)
-                self.new_association_record(DUPLICATION, lang_obj, code_bytes)
+            for lang_name, code_bytes in new_langs.items():
+                if lang_name in exist_assoc_groups:
+                    # Update the first association and delete the rest
+                    primary_assoc = exist_assoc_groups[lang_name][0]
+                    if primary_assoc.code_bytes != code_bytes:
+                        primary_assoc.code_bytes = code_bytes
+                        self.session.add(primary_assoc)
+                    
+                    # Delete duplicates
+                    for duplicate in exist_assoc_groups[lang_name][1:]:
+                        await self.session.delete(duplicate)
+                else:
+                    lang_obj = await self.new_language_record(lang_name)
+                    self.new_association_record(DUPLICATION, lang_obj, code_bytes)
 
-        # Remove languages no longer present in the payload
-        for lang_name, assocs in exist_assoc_groups.items():
-            if lang_name not in new_langs:
-                for assoc in assocs:
-                    await self.session.delete(assoc)
+            # Remove languages no longer present in the payload
+            for lang_name, assocs in exist_assoc_groups.items():
+                if lang_name not in new_langs:
+                    for assoc in assocs:
+                        await self.session.delete(assoc)
 
-        # Sync collaborators
-        new_collabs = {c.collab_id: c.name for c in dictionary.get('collaborators', [])}
-        exist_collabs = {c.collab_id: c for c in DUPLICATION.collaborators}
+            # Sync collaborators
+            new_collabs = {c.collab_id: c.name for c in dictionary.get('collaborators', [])}
+            exist_collabs = {c.collab_id: c for c in DUPLICATION.collaborators}
 
-        for collab_id, name in new_collabs.items():
-            if collab_id in exist_collabs:
-                if exist_collabs[collab_id].name != name:
-                    exist_collabs[collab_id].name = name
-                    self.session.add(exist_collabs[collab_id])
-            else:
-                collab_obj = CollaboratorModel(repository = DUPLICATION, name = name, collab_id = collab_id)
-                self.session.add(collab_obj)
+            for collab_id, name in new_collabs.items():
+                if collab_id in exist_collabs:
+                    if exist_collabs[collab_id].name != name:
+                        exist_collabs[collab_id].name = name
+                        self.session.add(exist_collabs[collab_id])
+                else:
+                    collab_obj = CollaboratorModel(repository = DUPLICATION, name = name, collab_id = collab_id)
+                    self.session.add(collab_obj)
 
-        for collab_id, collab in exist_collabs.items():
-            if collab_id not in new_collabs:
-                await self.session.delete(collab)
+            for collab_id, collab in exist_collabs.items():
+                if collab_id not in new_collabs:
+                    await self.session.delete(collab)
 
         self.session.add(DUPLICATION)
         LOG.debug(f"Repository {DUPLICATION.label} was successfully updated in the database.")
@@ -271,3 +286,9 @@ class GithubDatabaseHandler():
 
         result = await self.session.execute(QUERY)
         return result.scalars().all()
+
+    async def get_existing_timestamps(self) -> Dict[str, datetime]:
+        """ Returns a mapping of repo_id to its last updated_at timestamp. """
+        QUERY = select(RepositoryModel.repo_id, RepositoryModel.updated_at)
+        result = await self.session.execute(QUERY)
+        return {str(row[0]): row[1] for row in result.all() if row[1] is not None}

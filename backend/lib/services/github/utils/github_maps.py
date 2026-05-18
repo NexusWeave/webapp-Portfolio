@@ -15,7 +15,7 @@ LOG.file_handler()
 class GithubUtils:
 
     @staticmethod
-    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str | object]]] = None) -> Dict[str, str | object | List[str] | object]:
+    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str | object]]] = None, skip_analysis: bool = False) -> Dict[str, str | object | List[str] | object]:
         """ Maps the repository data to a structured format. """
         is_private: bool = True if data['private'] else False
         is_collaborator: bool = True if data['owner']['login'] != 'krigjo25' else False
@@ -39,12 +39,20 @@ class GithubUtils:
 
         repoObject['is_private'] = is_private
 
-        track_stack = await GithubUtils.track_project_stack(str(data['default_branch']), str(data['trees_url']), n=1)
+        if not skip_analysis:
+            track_stack = await GithubUtils.track_project_stack(str(data['default_branch']), str(data['trees_url']), n=1)
 
-        repoObject['is_backend'] = track_stack.get('is_backend', False)
-        repoObject['is_frontend'] = track_stack.get('is_frontend', False)
-        repoObject['is_fullstack'] = track_stack.get('is_fullstack', False)
+            repoObject['is_backend'] = track_stack.get('is_backend', False)
+            repoObject['is_frontend'] = track_stack.get('is_frontend', False)
+            repoObject['is_fullstack'] = track_stack.get('is_fullstack', False)
+        else:
+            # Default values if analysis is skipped (will be handled by upsert logic if repo exists)
+            repoObject['is_backend'] = False
+            repoObject['is_frontend'] = False
+            repoObject['is_fullstack'] = False
+            
         repoObject['is_collaborator'] = is_collaborator
+        repoObject['needs_full_sync'] = not skip_analysis
 
         return repoObject
 

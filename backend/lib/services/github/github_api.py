@@ -28,12 +28,13 @@ class GithubAPI(AsyncAPIClientConfig):
         super().__init__(URL=URL, KEY=KEY)
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': f"{self.API_KEY}"}
 
-    async def fetch_data(self, endpoint:str, params: Optional[Dict[str, str | int]] = None) -> List[Dict[str, Any]] | NotFoundError:
+    async def fetch_data(self, endpoint:str, params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
         """
             Fetching the repositories
             API : https://api.github.com/users/repos
         """
         start = time.perf_counter()
+        existing_timestamps = existing_timestamps or {}
 
         path = urljoin(self.API_URL, endpoint)
 
@@ -47,6 +48,8 @@ class GithubAPI(AsyncAPIClientConfig):
         repo: List[Dict[str, str | object | List[str] | object]] = []
         excluded_repositories: List[str] = ['me50', 'code50', 'cs50', 'martininn', 'Husseinabdulameer11']
 
+        date_parser = lambda d: datetime.fromisoformat(d.replace('Z', '+00:00')).replace(tzinfo=None)
+
         while True:
             raw_json = response.json()
             
@@ -58,40 +61,37 @@ class GithubAPI(AsyncAPIClientConfig):
                 # raise Exception(f"Unexpected API response format from {endpoint}")
                 return [] # Returnerer tom liste i stedet for å krasje
 
-            validated_data = [data for data in raw_json if data['size'] != 0  and not any(word in str(data['owner']['login']).lower() for word in excluded_repositories)]
-
-            
-            languages_tasks: List[Coroutine[Any, Any, List[Dict[str, Any]]]] = []
-            collaborators_tasks: List[Coroutine[Any, Any, List[Dict[str, str]]]] = []
+            validated_data = [data for data in raw_json if data['size'] != 0  
+                              and str(data['owner']['login']).lower() == 'krigjo25'
+                              and not any(word in str(data['name']).lower() for word in excluded_repositories)]
 
             for res in validated_data:
+                # Behandle ett og ett prosjekt med en liten pause for å unngå Rate Limit
+                import asyncio
+                await asyncio.sleep(1.5) # 1.5 sekund pause mellom hvert prosjekt
+
                 name = res['name']
                 owner = res['owner']['login']
-                languages_tasks.append(self.fetch_languages(owner, name))
-                collaborators_tasks.append(self.fetch_collaborators(owner, name))
+                repo_id = str(res['id'])
+                
+                api_updated_at = date_parser(res['updated_at'])
+                db_updated_at = existing_timestamps.get(repo_id)
+                
+                needs_update = db_updated_at is None or api_updated_at > db_updated_at
 
-            languages: List[List[Dict[str, Any]]] = []
-            collaborators: List[List[Dict[str, str]]] = []
-
-            try:
-                languages, collaborators = await gather(gather(*languages_tasks), gather(*collaborators_tasks))
-
-            except Exception as e:
-                LOG.error(f"Error fetching languages or collaborators: {e.__class__.__name__} - {str(e)}")
-                raise e
-
-            for data, lang, collab in zip(validated_data, languages, collaborators):
+                lang = []
+                collab = []
+                if needs_update:
+                    LOG.info(f"Fetching details for updated/new repo: {name}")
+                    lang = await self.fetch_languages(owner, name)
+                    collab = await self.fetch_collaborators(owner, name)
+                
                 utils = GithubUtils()
-                mapped_repo: Dict[str, str | object | List[str] | object] = {}
-
                 try:
-                    mapped_repo = await utils.map_repository(data, lang, collab)
-
-                except Exception as e: 
-                    LOG.error(f"Raised {e.__class__.__name__} - {str(e)}") 
-                    raise e
-
-                repo.append(mapped_repo)
+                    mapped_repo = await utils.map_repository(res, lang, collab, skip_analysis=not needs_update)
+                    repo.append(mapped_repo)
+                except Exception as e:
+                    LOG.error(f"Error mapping {name}: {str(e)}")
 
             _next_page_ = getattr(response, 'links', {})
             
