@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.4...v1.19.0) (2026-05-18)
+
+
+### Features
+
+* **backend:** ✨ re-introduce collaborator model and feature ([ae0ee69](https://github.com/NexusWeave/webapp-Portfolio/commit/ae0ee693e6b00e721aa8c54bbc1bb3c43c68bee5))
+
 ## [1.18.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.3...v1.18.4) (2026-05-18)
 
 
