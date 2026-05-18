@@ -42,9 +42,14 @@ class GithubDatabaseHandler():
 
         repository.pop('anchor', None)
         repository.pop('collaborators', None)
+        date_parser = lambda d: datetime.fromisoformat(d.replace('Z', '+00:00')).replace(tzinfo=None) if isinstance(d, str) else d
+
         dictionary: Dict[str, Any] = {**repository,
             'youtube_url': video_url, 'demo_url': preview_url, 'repo_url': repo_url,
             'lang_assosiations': LANGUAGE_ASSOCIATION,'last_check': datetime.now()}
+        
+        if 'updated_at' in dictionary: dictionary['updated_at'] = date_parser(dictionary['updated_at'])
+        if 'created_at' in dictionary: dictionary['created_at'] = date_parser(dictionary['created_at'])
 
         return dictionary
 
@@ -66,7 +71,14 @@ class GithubDatabaseHandler():
         
         # Check for language changes
         new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
-        exist_langs = {assoc.language.language: assoc.code_bytes for assoc in exist.lang_assosiations}
+        
+        # Detect duplicates in existing associations
+        exist_langs = {}
+        for assoc in exist.lang_assosiations:
+            lang_name = assoc.language.language
+            if lang_name in exist_langs:
+                return True # Found duplicate, force update for cleanup
+            exist_langs[lang_name] = assoc.code_bytes
 
         if new_langs != exist_langs:
             #LOG.debug(f"Language changes detected for label: {dictionary['label']}")
@@ -109,20 +121,35 @@ class GithubDatabaseHandler():
         
         # Sync languages
         new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
-        exist_assoc = {assoc.language.language: assoc for assoc in DUPLICATION.lang_assosiations}
+        
+        # Group existing associations by language to handle duplicates
+        exist_assoc_groups: Dict[str, List[LanguageAssosiationModel]] = {}
+        for assoc in DUPLICATION.lang_assosiations:
+            lang_name = assoc.language.language
+            if lang_name not in exist_assoc_groups:
+                exist_assoc_groups[lang_name] = []
+            exist_assoc_groups[lang_name].append(assoc)
 
         for lang_name, code_bytes in new_langs.items():
-            if lang_name in exist_assoc:
-                if exist_assoc[lang_name].code_bytes != code_bytes:
-                    exist_assoc[lang_name].code_bytes = code_bytes
-                    self.session.add(exist_assoc[lang_name])
+            if lang_name in exist_assoc_groups:
+                # Update the first association and delete the rest
+                primary_assoc = exist_assoc_groups[lang_name][0]
+                if primary_assoc.code_bytes != code_bytes:
+                    primary_assoc.code_bytes = code_bytes
+                    self.session.add(primary_assoc)
+                
+                # Delete duplicates
+                for duplicate in exist_assoc_groups[lang_name][1:]:
+                    await self.session.delete(duplicate)
             else:
                 lang_obj = await self.new_language_record(lang_name)
                 self.new_association_record(DUPLICATION, lang_obj, code_bytes)
 
-        for lang_name, assoc in exist_assoc.items():
+        # Remove languages no longer present in the payload
+        for lang_name, assocs in exist_assoc_groups.items():
             if lang_name not in new_langs:
-                await self.session.delete(assoc)
+                for assoc in assocs:
+                    await self.session.delete(assoc)
 
         self.session.add(DUPLICATION)
         LOG.debug(f"Repository {DUPLICATION.label} was successfully updated in the database.")
