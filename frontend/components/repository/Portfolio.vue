@@ -94,21 +94,17 @@
 
     //  --- Lifecycle Hooks
 
-    const { increment, formattedLanguages, resetBytes } = useLanguageStore();
+    const { updateFromRepositories, resetBytes } = useLanguageStore();
 
     watch(() => repo.value, (newVal) => 
     {
-    if (newVal && newVal.length > 0  && formattedLanguages.length === 0) {
-        newVal.forEach((item) => { const data = item.languages; if (data && data.length > 0) data.forEach((lang: LanguageData) => increment(lang.label, lang.bytes)); });
+    if (newVal && newVal.length > 0) {
+        updateFromRepositories(newVal);
     }
 }, { immediate: true, deep: true });
     onMounted(() => {
         resetBytes();
-        if (repo.value) repo.value.forEach((item: GithubData) => {
-            const languages = item.languages;
-
-            if (languages && languages.length > 0) languages.forEach((lang: LanguageData) => increment(lang.label, lang.bytes));
-        });
+        if (repo.value) updateFromRepositories(repo.value);
                 
         refresh() });
 

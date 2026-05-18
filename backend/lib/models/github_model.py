@@ -66,9 +66,7 @@ class RepositoryModel(BaseModel):
         languages: List[Dict[str, str | int | Dict[str, str] | object]]= []
 
         for assec in self.lang_assosiations:
-            
-            if assec.language.id == assec.lang_id and self.id == assec.repo_id:
-                languages.append( { "bytes": assec.code_bytes, "label": assec.language.language,  })
+            languages.append( { "bytes": assec.code_bytes, "label": assec.language.language,  })
         return languages
     
     @computed_field

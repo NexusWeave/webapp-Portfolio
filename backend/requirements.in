@@ -1,6 +1,6 @@
 httpx
 uvicorn
-fastAPI
+fastAPI[standard]
 asyncpg
 aiofiles
 pydantic

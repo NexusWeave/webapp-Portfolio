@@ -48,7 +48,16 @@ class GithubAPI(AsyncAPIClientConfig):
         excluded_repositories: List[str] = ['me50', 'code50', 'cs50', 'martininn', 'Husseinabdulameer11']
 
         while True:
-            raw_json: List[Dict[str, Any]] = response.json()
+            raw_json = response.json()
+            
+            if not isinstance(raw_json, list):
+                LOG.error(f"Expected list from GitHub API, but got {type(raw_json).__name__}: {raw_json}")
+                # Kommentert ut for å unngå 500-feil når API-et tuller
+                # if isinstance(raw_json, dict) and 'message' in raw_json:
+                #    raise Exception(f"GitHub API Error: {raw_json['message']}")
+                # raise Exception(f"Unexpected API response format from {endpoint}")
+                return [] # Returnerer tom liste i stedet for å krasje
+
             validated_data = [data for data in raw_json if data['size'] != 0  and not any(word in str(data['owner']['login']).lower() for word in excluded_repositories)]
 
             
@@ -105,10 +114,14 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
         
         response: httpx.Response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
+        languages_data = response.json()
+        
+        if not isinstance(languages_data, dict):
+            LOG.error(f"Expected dict for languages from {path}, but got {type(languages_data).__name__}")
+            return []
+
         languages: List[Dict[str, List[str] | str | object]] = []
-        json: Dict[str, str] = response.json()
-    
-        for lang, value in json.items():
+        for lang, value in languages_data.items():
 
             match(str(lang).lower()):
                 case "c#": lang = "cs"
@@ -124,14 +137,19 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/contributors")
         
         response: httpx.Response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
-        contributors: List[Dict[str, Any]] = response.json()
+        contributors_data = response.json()
         
+        if not isinstance(contributors_data, list):
+            LOG.error(f"Expected list for collaborators from {path}, but got {type(contributors_data).__name__}")
+            return []
+            
         collaborators: List[Dict[str, str]] = []
-        for contributor in contributors:
-             collaborators.append({"name": contributor['login'], "collab_id": str(contributor['id'])})
+        for contributor in contributors_data:
+             if isinstance(contributor, dict) and 'login' in contributor:
+                collaborators.append({"name": contributor['login'], "collab_id": str(contributor['id'])})
         return collaborators
 
-    async def analyze_repository(self,trees_url: str) -> List[Dict[str, str | object | List[str]]]:
+    async def analyze_repository(self,trees_url: str) -> Dict[str, Any]:
         """ Analyzes the repository data to determine its characteristics. """
         response: httpx.Response
         try:
@@ -141,5 +159,9 @@ class GithubAPI(AsyncAPIClientConfig):
             LOG.error(f"Error analyzing repository: {e.__class__.__name__} - {str(e)}\n")
             raise e
         
-        analysis: List[Dict[str, str | object | List[str]]] = response.json()
+        analysis = response.json()
+        if not isinstance(analysis, dict):
+            LOG.error(f"Expected dict for repository analysis, but got {type(analysis).__name__}")
+            return {"tree": []}
+            
         return analysis

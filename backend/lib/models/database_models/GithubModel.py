@@ -41,7 +41,7 @@ class LanguageAssosiationModel(BASE):
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
     lang_id = Column(Integer, ForeignKey('languages.id'), nullable = False)
-    repo_id = Column(Integer, ForeignKey('repositories.repo_id'), nullable = False)
+    repo_id = Column(BigInteger, ForeignKey('repositories.repo_id'), nullable = False)
     code_bytes = Column(Integer, nullable = False)
 
     language = relationship("LanguageModel", back_populates = "assosiations")

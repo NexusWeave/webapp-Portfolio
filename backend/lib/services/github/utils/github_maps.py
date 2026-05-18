@@ -67,10 +67,21 @@ class GithubUtils:
 
         github = GithubAPI(URL=URL, KEY=TOKEN)
         tree_path = tree_path.replace("{/sha}", f"/{branch}?recursive={n}")
-        repo_tree:Dict[str, Any] = await github.analyze_repository(tree_path)
-        tree: List[Dict[str, Any]] = repo_tree['tree']
+        
+        LOG.info(f"Analyzing repository stack: {tree_path}")
+        try:
+            repo_tree:Dict[str, Any] = await github.analyze_repository(tree_path)
+            if not isinstance(repo_tree, dict) or 'tree' not in repo_tree:
+                 LOG.error(f"Unexpected tree format for {tree_path}")
+                 return {}
+            tree: List[Dict[str, Any]] = repo_tree['tree']
+        except Exception as e:
+            LOG.error(f"Failed to fetch tree for {tree_path}: {str(e)}")
+            return {}
+        
         if not tree:
-            raise ValueError(f"No tree data found for repository {branch}/{tree_path}.")
+            LOG.warn(f"No tree data found for repository at {tree_path}.")
+            return {}
 
         frontend_extensions:List[str] = [
             '.html', '.htm', '.css', '.scss', '.sass', '.less', 

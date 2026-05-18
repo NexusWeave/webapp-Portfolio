@@ -208,17 +208,19 @@ class GithubDatabaseHandler():
         QUERY = (select(RepositoryModel)
                  .options(selectinload(RepositoryModel.lang_assosiations)
                           .selectinload(LanguageAssosiationModel.language),
-                          selectinload(RepositoryModel.collaborators))
-                 .where(RepositoryModel.repo_id.in_(repo_ids)))
+                          selectinload(RepositoryModel.collaborators)))
         
         DB_RESULTS = await self.session.execute(QUERY)
+        EXISTING_REPOS_LIST = DB_RESULTS.scalars().all()
+        EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in EXISTING_REPOS_LIST}
 
-        EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in DB_RESULTS.scalars().all()}
+        processed_ids = set()
 
         for i in range(len(repository)):
             dictionary = GithubDatabaseHandler.format_payload(repository[i])
             
             repo_id: str = str(repository[i]['repo_id']).strip()
+            processed_ids.add(repo_id)
             DUPLICATION = EXISTING_REPOS.get(repo_id)
 
             if DUPLICATION:
@@ -239,6 +241,19 @@ class GithubDatabaseHandler():
 
                 await self._create_repositories(repository[i])
                 #LOG.debug(f"Successfully inserted new repository with label: **{repository[i]['label']}**")
+        
+        # Delete repositories that are no longer in the GitHub payload
+        # ONLY delete if we actually received repositories from the API to avoid 
+        # wiping the database on API errors or temporary connectivity issues.
+        if repository:
+            current_api_ids = {str(rid) for rid in repo_ids}
+            for existing_id, repo_obj in EXISTING_REPOS.items():
+                if existing_id not in current_api_ids:
+                    LOG.info(f"Deleting stale repository: {repo_obj.label} (ID: {existing_id})")
+                    await self.session.delete(repo_obj)
+        else:
+            LOG.warn("No repositories received from API. Skipping cleanup phase to prevent accidental data loss.")
+
         try:
             await self.session.commit()
 
