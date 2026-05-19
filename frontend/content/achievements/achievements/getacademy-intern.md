@@ -6,6 +6,8 @@ org_link: 'https://getacademy.no/'
 title: Utvikler
 location: 'Larvik, Vestfold, Norge | Remote'
 loc_link: 'https://maps.app.goo.gl/Ry3kFAGXNM6PATS26'
+references: Referanse fra GetAcademy
+ref_link: 'https://drive.google.com/file/d/1Q3bN5Hw7g4cePjKOEBn8912de2pW5scT/view?usp=drive_link'
 techStack:
   - VUE
   - CS
