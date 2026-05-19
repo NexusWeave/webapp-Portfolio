@@ -38,7 +38,12 @@
     });
 
     /// --- Computed Flags
-    const isExternal = () => { const dataProps = data.value; if (!dataProps?.href) return false; const external_links = ['https://', 'http://', 'mailto:', 'tel:']; return external_links.some(link => dataProps.href.includes(link)); };
+    const isExternal = () => { 
+        const dataProps = data.value; 
+        if (!dataProps?.href) return false; 
+        const path = dataProps.href.toLowerCase();
+        return path.startsWith('http') || path.startsWith('www');
+    };
 
     const isDisabled = () => { const dataProps = data.value; if (!dataProps?.isDisabled) return false; return dataProps.isDisabled  };
 
