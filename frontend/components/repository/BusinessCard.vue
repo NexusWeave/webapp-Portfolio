@@ -16,7 +16,7 @@
                     <span>
                         Bidragsytere: 
                         <template v-for="(collab, i) in contributors" :key="i">
-                            <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}`, type: ['github', 'external'] }" />
+                            <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}` }" />
                             <span v-if="i < contributors.length - 2">, </span>
                             <span v-else-if="i === contributors.length - 2"> & </span>
                         </template>
@@ -72,8 +72,12 @@
 
     const contributors = computed(() => {
         if (!props.data?.collaborators) return [];
-        // Filtrer ut eieren fra bidragsyter-listen for å unngå dobbeltvisning
-        return props.data.collaborators.filter(c => c?.name?.toLowerCase() !== props.data?.owner?.toLowerCase());
+        // Filtrer ut eieren og boter fra bidragsyter-listen
+        return props.data.collaborators.filter(c => {
+            const name = c?.name?.toLowerCase() || '';
+            const owner = props.data?.owner?.toLowerCase() || '';
+            return name !== owner && !name.includes('[bot]');
+        });
     });
 
     //  --- Debugging Logic
