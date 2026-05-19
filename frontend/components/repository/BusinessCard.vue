@@ -17,7 +17,7 @@
                         Bidragsytere: 
                         <template v-for="(collab, i) in contributors" :key="i">
                             <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}` }" />
-                            <span v-if="i < contributors.length - 1">, </span>
+                            <span v-if="i < contributors.length - 1">,</span>
                         </template>
                     </span>
                 </p>
