@@ -26,9 +26,15 @@ export function mapRepoData(data: RepositoryData): GithubData[]
         
         const date = setDateFormat({date: item.created_at, updated: null});
         
+        const forbiddenWords = ['webapp', 'nexus', 'database', 'mariadb', 'py', 'django', 'cms', 'flask', 'vupy', 'console'];
+        const cleanedLabel = item.label
+            .split(/[-_]/)
+            .filter((part: string) => !forbiddenWords.includes(part.toLowerCase()))
+            .join(' ');
+
         return {
             id: String(item.id),
-            label: item.label,
+            label: cleanedLabel || item.label,
             date : date as { date: string },
             media: media,
             anchor: item.anchor || [],
