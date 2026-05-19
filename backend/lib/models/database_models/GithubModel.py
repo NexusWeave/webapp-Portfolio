@@ -1,6 +1,6 @@
 #   Third-Party Dependencies
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, Boolean, BigInteger
+from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, Boolean, BigInteger, UniqueConstraint
 
 #   Internal Dependencies
 from lib.settings.database_config import BASE
@@ -16,6 +16,7 @@ class RepositoryModel(BASE):
     label = Column(String,  index = True, nullable = False)
     description = Column(String, nullable = True)
     owner = Column(String, nullable = False)
+    owner_url = Column(String, nullable = True)
     is_private = Column(Boolean, default = 0, nullable = False)
 
     demo_url = Column(String, unique = True, index = True, nullable = True)
@@ -33,7 +34,7 @@ class RepositoryModel(BASE):
     is_collaborator = Column(Boolean, default = 0, nullable = False)
 
     lang_assosiations = relationship("LanguageAssosiationModel", back_populates = "repository", cascade = "all, delete-orphan")
-    collaborators = relationship("CollaboratorModel", back_populates = "repository", cascade = "all, delete-orphan")
+    collaborator_associations = relationship("RepoCollaboratorAssociationModel", back_populates = "repository", cascade = "all, delete-orphan")
 
 class LanguageAssosiationModel(BASE):
 
@@ -47,16 +48,27 @@ class LanguageAssosiationModel(BASE):
     language = relationship("LanguageModel", back_populates = "assosiations")
     repository = relationship("RepositoryModel", back_populates = "lang_assosiations")
 
+class RepoCollaboratorAssociationModel(BASE):
+
+    __tablename__: str = "repo_collaborator_association"
+
+    id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
+    repo_id = Column(BigInteger, ForeignKey('repositories.repo_id'), nullable = False)
+    collab_id = Column(Integer, ForeignKey('collaborators.id'), nullable = False)
+
+    collaborator = relationship("CollaboratorModel", back_populates = "repo_associations")
+    repository = relationship("RepositoryModel", back_populates = "collaborator_associations")
+
 class CollaboratorModel(BASE):
 
     __tablename__: str = "collaborators"
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
-    repo_id = Column(BigInteger, ForeignKey('repositories.repo_id'), nullable = False)
-    name = Column(String, unique = True, index = True, nullable = False)
-    collab_id = Column(String, unique = True, index = True, nullable = False)
+    github_id = Column(String, unique = True, index = True, nullable = False)
+    name = Column(String, index = True, nullable = False)
+    profile_url = Column(String, nullable = True)
 
-    repository = relationship("RepositoryModel", back_populates = "collaborators")
+    repo_associations = relationship("RepoCollaboratorAssociationModel", back_populates = "collaborator", cascade = "all, delete-orphan")
     
 class LanguageModel(BASE):
 

@@ -1,5 +1,5 @@
 #   Standard Library
-from datetime import datetime
+import datetime
 from typing import Dict, Any, List, Sequence, Optional, Tuple
 
 #   Internal Libraries
@@ -40,17 +40,25 @@ class GithubDatabaseHandler():
             LANGUAGE: LanguageModel = LanguageModel(language = LANG_NAME)
             LANGUAGE_ASSOCIATION.append(LanguageAssosiationModel(language = LANGUAGE, code_bytes = i['bytes']))
 
-        COLLABORATORS: List[CollaboratorModel] = []
+        # Prepare Collaborators (Many-to-Many data)
+        COLLABORATORS_DATA: List[Dict[str, Any]] = []
+        seen_collabs = set()
         for c in repository.get('collaborators', []):
-            COLLABORATORS.append(CollaboratorModel(name = c['name'], collab_id = c['collab_id']))
+            c_name = c['name']
+            if c_name not in seen_collabs:
+                COLLABORATORS_DATA.append({
+                    "github_id": str(c['collab_id']),
+                    "name": c_name,
+                    "profile_url": c.get('html_url')
+                })
+                seen_collabs.add(c_name)
 
         repository.pop('anchor', None)
-        repository.pop('collaborators', None)
-        date_parser = lambda d: datetime.fromisoformat(d.replace('Z', '+00:00')).replace(tzinfo=None) if isinstance(d, str) else d
+        date_parser = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00')) if isinstance(d, str) else d
 
         dictionary: Dict[str, Any] = {**repository,
             'youtube_url': video_url, 'demo_url': preview_url, 'repo_url': repo_url,
-            'lang_assosiations': LANGUAGE_ASSOCIATION, 'collaborators': COLLABORATORS, 'last_check': datetime.now()}
+            'lang_assosiations': LANGUAGE_ASSOCIATION, 'collaborators_data': COLLABORATORS_DATA, 'last_check': datetime.datetime.now(datetime.timezone.utc)}
         
         if 'updated_at' in dictionary: dictionary['updated_at'] = date_parser(dictionary['updated_at'])
         if 'created_at' in dictionary: dictionary['created_at'] = date_parser(dictionary['created_at'])
@@ -63,7 +71,7 @@ class GithubDatabaseHandler():
         needs_full_sync = dictionary.get('needs_full_sync', True)
 
         FIELDS_TO_CHECK = [
-            'owner', 'label','repo_url', 'description',
+            'owner', 'owner_url', 'label', 'repo_url', 'description',
             'is_private', 'demo_url', 'repo_url']
 
         for field in FIELDS_TO_CHECK:
@@ -111,28 +119,47 @@ class GithubDatabaseHandler():
         #LOG.debug(f"Initializing new association record for repository: {repo.repo_id}")
 
     async def _create_repositories(self, repository: Dict[str, Any]) -> None:
+        """ Creates a new repository record in the database. """
         temp_repo = repository.copy()
         temp_repo.pop('lang', None)
         temp_repo.pop('collaborators', None)
+        temp_repo.pop('collaborators_data', None)
         temp_repo.pop('needs_full_sync', None)
         
-        #LOG.debug(f"Creating new repository record for label: {repository['label']} with data: {temp_repo}")
         repo_model = RepositoryModel( **temp_repo)
-
         self.session.add(repo_model)
 
-        LANGUAGE_ASSOCIATIONS: List[Dict[str, Any]] = repository['lang']
-
-        for i in LANGUAGE_ASSOCIATIONS:
+        for i in repository.get('lang', []):
             CODE_BYTES : int = i['bytes']       #type:ignore
             LANG_NAME : str = i['language']     #type:ignore
             LANG_OBJ: LanguageModel = await self.new_language_record(LANG_NAME)
             self.new_association_record(repo_model, LANG_OBJ, CODE_BYTES)
 
-        COLLABORATORS: List[Dict[str, str]] = repository.get('collaborators', [])
-        for c in COLLABORATORS:
-            collab_obj = CollaboratorModel(repository = repo_model, name = c['name'], collab_id = c['collab_id'])
-            self.session.add(collab_obj)
+        # Handle Collaborators (Many-to-Many)
+        for c in repository.get('collaborators_data', []):
+            # Check if collaborator exists globally
+            collab_query = select(CollaboratorModel).where(CollaboratorModel.github_id == c['github_id'])
+            collab_result = await self.session.execute(collab_query)
+            collab_obj = collab_result.scalar_one_or_none()
+
+            if not collab_obj:
+                collab_obj = CollaboratorModel(
+                    github_id = c['github_id'],
+                    name = c['name'],
+                    profile_url = c['profile_url']
+                )
+                self.session.add(collab_obj)
+                await self.session.flush() # Get the ID
+            else:
+                # Update info if changed
+                if collab_obj.name != c['name'] or collab_obj.profile_url != c['profile_url']:
+                    collab_obj.name = c['name']
+                    collab_obj.profile_url = c['profile_url']
+                    self.session.add(collab_obj)
+
+            # Create association
+            assoc = RepoCollaboratorAssociationModel(repository = repo_model, collaborator = collab_obj)
+            self.session.add(assoc)
 
         #LOG.debug(f"Successfully created new repository record for label: {repository['label']}")
 
@@ -184,22 +211,40 @@ class GithubDatabaseHandler():
                     for assoc in assocs:
                         await self.session.delete(assoc)
 
-            # Sync collaborators
-            new_collabs = {c.collab_id: c.name for c in dictionary.get('collaborators', [])}
-            exist_collabs = {c.collab_id: c for c in DUPLICATION.collaborators}
+            # Sync collaborators (Many-to-Many)
+            new_collabs_data = dictionary.get('collaborators_data', [])
+            
+            # Map existing associations by collaborator github_id
+            exist_assoc_map = {assoc.collaborator.github_id: assoc for assoc in DUPLICATION.collaborator_associations}
+            new_collab_ids = {c['github_id'] for c in new_collabs_data}
 
-            for collab_id, name in new_collabs.items():
-                if collab_id in exist_collabs:
-                    if exist_collabs[collab_id].name != name:
-                        exist_collabs[collab_id].name = name
-                        self.session.add(exist_collabs[collab_id])
-                else:
-                    collab_obj = CollaboratorModel(repository = DUPLICATION, name = name, collab_id = collab_id)
+            for c in new_collabs_data:
+                gid = c['github_id']
+                # Ensure collaborator exists globally
+                collab_query = select(CollaboratorModel).where(CollaboratorModel.github_id == gid)
+                collab_result = await self.session.execute(collab_query)
+                collab_obj = collab_result.scalar_one_or_none()
+
+                if not collab_obj:
+                    collab_obj = CollaboratorModel(github_id = gid, name = c['name'], profile_url = c['profile_url'])
                     self.session.add(collab_obj)
+                    await self.session.flush()
+                else:
+                    # Update global info if changed
+                    if collab_obj.name != c['name'] or collab_obj.profile_url != c['profile_url']:
+                        collab_obj.name = c['name']
+                        collab_obj.profile_url = c['profile_url']
+                        self.session.add(collab_obj)
 
-            for collab_id, collab in exist_collabs.items():
-                if collab_id not in new_collabs:
-                    await self.session.delete(collab)
+                if gid not in exist_assoc_map:
+                    # Create new association
+                    new_assoc = RepoCollaboratorAssociationModel(repository = DUPLICATION, collaborator = collab_obj)
+                    self.session.add(new_assoc)
+
+            # Remove associations for collaborators no longer present
+            for gid, assoc in exist_assoc_map.items():
+                if gid not in new_collab_ids:
+                    await self.session.delete(assoc)
 
         self.session.add(DUPLICATION)
         LOG.debug(f"Repository {DUPLICATION.label} was successfully updated in the database.")
@@ -249,7 +294,7 @@ class GithubDatabaseHandler():
                 repository[i].update(
                     {
                         'demo_url': dictionary['demo_url'], 'repo_url': dictionary['repo_url'],
-                        'youtube_url': dictionary['youtube_url'], 'last_check': datetime.now(),
+                        'youtube_url': dictionary['youtube_url'], 'last_check': datetime.datetime.now(datetime.timezone.utc),
                         'is_backend': dictionary['is_backend'], 'is_frontend': dictionary['is_frontend'],
                         'is_fullstack': dictionary['is_fullstack'], 'is_collaborator': dictionary['is_collaborator']
                     })
@@ -273,21 +318,24 @@ class GithubDatabaseHandler():
             await self.session.commit()
 
         except Exception as e:
-            LOG.critical(f"An {e.__class__} occured during commiting the session: {e}. Rolling back to previous state.")
-            await self.session.rollback()
+            LOG.critical(f"An {e.__class__} occured during commiting the session: {e}. Attempting to rollback.")
+            try:
+                await self.session.rollback()
+            except Exception as rollback_error:
+                LOG.error(f"Rollback failed: {rollback_error}")
 
     async def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
 
         QUERY = (select(RepositoryModel)
                  .options(selectinload(RepositoryModel.lang_assosiations).selectinload(LanguageAssosiationModel.language),
-                          selectinload(RepositoryModel.collaborators))
+                          selectinload(RepositoryModel.collaborator_associations).selectinload(RepoCollaboratorAssociationModel.collaborator))
                  .where(RepositoryModel.is_secret == False)
                  .order_by(RepositoryModel.updated_at.desc()))
 
         result = await self.session.execute(QUERY)
         return result.scalars().all()
 
-    async def get_existing_timestamps(self) -> Dict[str, datetime]:
+    async def get_existing_timestamps(self) -> Dict[str, datetime.datetime]:
         """ Returns a mapping of repo_id to its last updated_at timestamp. """
         QUERY = select(RepositoryModel.repo_id, RepositoryModel.updated_at)
         result = await self.session.execute(QUERY)
