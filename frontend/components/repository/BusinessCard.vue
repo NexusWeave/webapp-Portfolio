@@ -12,7 +12,7 @@
                 <p v-if="data?.owner && data?.owner_url">Eier: <a :href="data.owner_url" target="_blank">@{{ data.owner }}</a></p>
                 <template v-if="otherContributors?.length > 0">
                     <p v-for="collab in otherContributors" :key="collab.name" class="collab-name">
-                        <span>Bidragsyter: <a :href="collab.profile_url" target="_blank">@{{ collab.name }}</a></span>
+                        <span>Bidragsytere: <a :href="collab.profile_url" target="_blank">@{{ collab.name }}</a></span>
                     </p>
                 </template>
             </section>

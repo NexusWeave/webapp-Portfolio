@@ -16,7 +16,7 @@ LOG.file_handler()
 
 class GithubDatabaseHandler():
 
-    __VERSION__ = 'v1.0.1'
+    __VERSION__ = 'v1.1.0'
     def __init__(self, session: AsyncSession): self.session = session
 
     @staticmethod
@@ -64,28 +64,19 @@ class GithubDatabaseHandler():
                 LOG.debug(f"Metadata change detected for {exist.label}: field {field}")
                 return True
 
-        # Check for collaborator changes (Many-to-Many) - Always checked as they are now always fetched
+        # Check for collaborator changes (Many-to-Many)
         new_collabs_data = dictionary.get('collaborators_data', [])
         new_collab_ids = {c['github_id'] for c in new_collabs_data}
-
         exist_collab_ids = {assoc.collaborator.github_id for assoc in exist.collaborator_associations}
 
         if new_collab_ids != exist_collab_ids:
-            LOG.debug(f"Collaborator change detected for {exist.label}: {len(exist_collab_ids)} -> {len(new_collab_ids)} collabs")
+            LOG.debug(f"Collaborator change detected for {exist.label}")
             return True
 
         if needs_full_sync:
             # Check for language changes
             new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
-
-            # Detect duplicates or changes in existing associations
-            exist_langs = {}
-            for assoc in exist.lang_assosiations:
-                lang_name = assoc.language.language
-                if lang_name in exist_langs:
-                    LOG.debug(f"Duplicate language association detected for {exist.label}: {lang_name}. Forcing update.")
-                    return True 
-                exist_langs[lang_name] = assoc.code_bytes
+            exist_langs = {assoc.language.language: assoc.code_bytes for assoc in exist.lang_assosiations}
 
             if new_langs != exist_langs:
                 LOG.debug(f"Language data change detected for {exist.label}.")
@@ -99,145 +90,8 @@ class GithubDatabaseHandler():
 
         return False
 
-    def new_association_record(self, repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -> None:
-        """ Creates a new language association record. """
-        association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
-        self.session.add(association_obj)
-
-    async def _create_repositories(self, repository: Dict[str, Any]) -> None:
-        """ Creates a new repository record and its associations in the database. """
-        temp_repo = repository.copy()
-        # Clean up fields that don't belong to RepositoryModel columns
-        temp_repo.pop('lang', None)
-        temp_repo.pop('anchor', None)
-        temp_repo.pop('collaborators', None)
-        temp_repo.pop('collaborators_data', None)
-        temp_repo.pop('lang_assosiations', None)
-        temp_repo.pop('needs_full_sync', None)
-        temp_repo.pop('last_check', None)
-
-        repo_model = RepositoryModel( **temp_repo)
-        self.session.add(repo_model)
-
-        # Handle Languages
-        for i in repository.get('lang', []):
-            CODE_BYTES : int = i['bytes']       
-            LANG_NAME : str = i['language']     
-            LANG_OBJ: LanguageModel = await self.new_language_record(LANG_NAME)
-            self.new_association_record(repo_model, LANG_OBJ, CODE_BYTES)
-
-        # Handle Collaborators (Many-to-Many)
-        for c in repository.get('collaborators_data', []):
-            collab_query = select(CollaboratorModel).where(CollaboratorModel.github_id == c['github_id'])
-            collab_result = await self.session.execute(collab_query)
-            collab_obj = collab_result.scalar_one_or_none()
-
-            if not collab_obj:
-                collab_obj = CollaboratorModel(github_id = c['github_id'], name = c['name'], profile_url = c['profile_url'])
-                self.session.add(collab_obj)
-                await self.session.flush() 
-            else:
-                if collab_obj.name != c['name'] or collab_obj.profile_url != c['profile_url']:
-                    collab_obj.name = c['name']
-                    collab_obj.profile_url = c['profile_url']
-                    self.session.add(collab_obj)
-
-            assoc = RepoCollaboratorAssociationModel(repository = repo_model, collaborator = collab_obj)
-            self.session.add(assoc)
-
-        LOG.info(f"Successfully created new repository: {repository['label']}")
-
-    async def _apply_repositories_updates(self, dictionary: Dict[str, Any], DUPLICATION: RepositoryModel) -> None:
-        """ Updates an existing repository and its associations. """
-        needs_full_sync = dictionary.get('needs_full_sync', True)
-
-        EXCLUDE_FIELDS = ['repo_id', 'created_at', 'lang_assosiations', 'collaborators', 'collaborators_data', 'lang', 'needs_full_sync']
-
-        if not needs_full_sync:
-            EXCLUDE_FIELDS.extend(['is_backend', 'is_frontend', 'is_fullstack'])
-
-        updated_data = {k: v for k, v in dictionary.items() if k not in EXCLUDE_FIELDS}
-
-        for key, value in updated_data.items():
-            if hasattr(DUPLICATION, key):
-                setattr(DUPLICATION, key, value)
-
-        if needs_full_sync:
-            # Sync languages
-            new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
-
-            exist_assoc_groups: Dict[str, List[LanguageAssosiationModel]] = {}
-            for assoc in DUPLICATION.lang_assosiations:
-                lang_name = assoc.language.language
-                if lang_name not in exist_assoc_groups:
-                    exist_assoc_groups[lang_name] = []
-                exist_assoc_groups[lang_name].append(assoc)
-
-            for lang_name, code_bytes in new_langs.items():
-                if lang_name in exist_assoc_groups:
-                    primary_assoc = exist_assoc_groups[lang_name][0]
-                    if primary_assoc.code_bytes != code_bytes:
-                        primary_assoc.code_bytes = code_bytes
-                        self.session.add(primary_assoc)
-                    for duplicate in exist_assoc_groups[lang_name][1:]:
-                        await self.session.delete(duplicate)
-                else:
-                    lang_obj = await self.new_language_record(lang_name)
-                    self.new_association_record(DUPLICATION, lang_obj, code_bytes)
-
-            for lang_name, assocs in exist_assoc_groups.items():
-                if lang_name not in new_langs:
-                    for assoc in assocs:
-                        await self.session.delete(assoc)
-
-        # Sync collaborators (Many-to-Many) - Always checked as they are now always fetched
-        new_collabs_data = dictionary.get('collaborators_data', [])
-
-        exist_assoc_map = {assoc.collaborator.github_id: assoc for assoc in DUPLICATION.collaborator_associations}
-        new_collab_ids = {c['github_id'] for c in new_collabs_data}
-
-        for c in new_collabs_data:
-            gid = c['github_id']
-            collab_query = select(CollaboratorModel).where(CollaboratorModel.github_id == gid)
-            collab_result = await self.session.execute(collab_query)
-            collab_obj = collab_result.scalar_one_or_none()
-
-            if not collab_obj:
-                collab_obj = CollaboratorModel(github_id = gid, name = c['name'], profile_url = c['profile_url'])
-                self.session.add(collab_obj)
-                await self.session.flush()
-            else:
-                if collab_obj.name != c['name'] or collab_obj.profile_url != c['profile_url']:
-                    collab_obj.name = c['name']
-                    collab_obj.profile_url = c['profile_url']
-                    self.session.add(collab_obj)
-
-            if gid not in exist_assoc_map:
-                new_assoc = RepoCollaboratorAssociationModel(repository = DUPLICATION, collaborator = collab_obj)
-                self.session.add(new_assoc)
-
-        for gid, assoc in exist_assoc_map.items():
-            if gid not in new_collab_ids:
-                await self.session.delete(assoc)
-
-        self.session.add(DUPLICATION)
-        LOG.info(f"Updated repository: {DUPLICATION.label} (Needs full sync: {needs_full_sync})")
-
-    async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
-        """ Fetches or creates a language record. """
-        LANG_NAME = LANG_NAME.lower()
-        lang_obj: Result[Tuple[LanguageModel]] = await self.session.scalar(select(LanguageModel).where(LanguageModel.language == LANG_NAME))
-
-        if not lang_obj:
-            lang_obj = LanguageModel(language = LANG_NAME)
-            self.session.add(lang_obj)
-            LOG.debug(f"Initializing new language record: {LANG_NAME}")
-
-        return lang_obj
-
     async def upsert_repositories(self, repository: List[Dict[str, Any]]) -> None:
         """ Entry point for syncing repositories from the API payload. """
-        repo_ids = [repo['repo_id'] for repo in repository]
         LOG.info(f"Starting upsert process for {len(repository)} repositories.")
 
         QUERY = (select(RepositoryModel)
@@ -250,37 +104,12 @@ class GithubDatabaseHandler():
         EXISTING_REPOS_LIST = DB_RESULTS.scalars().all()
         EXISTING_REPOS = {str(repo.repo_id).strip(): repo for repo in EXISTING_REPOS_LIST}
 
-        for i in range(len(repository)):
-            dictionary = GithubDatabaseHandler.format_payload(repository[i])
+        for repo_data in repository:
+            await self._sync_repository(repo_data, EXISTING_REPOS)
 
-            repo_id: str = str(repository[i]['repo_id']).strip()
-            DUPLICATION = EXISTING_REPOS.get(repo_id)
-
-            if DUPLICATION:
-                if GithubDatabaseHandler.has_data_changes(DUPLICATION, dictionary): 
-                    await self._apply_repositories_updates(dictionary, DUPLICATION)
-                else:
-                    LOG.debug(f"No changes detected for {DUPLICATION.label}. Skipping update.")
-            else:
-                repository[i].update({
-                    'demo_url': dictionary.get('demo_url'),
-                    'repo_url': dictionary.get('repo_url'),
-                    'youtube_url': dictionary.get('youtube_url'),
-                    'last_check': dictionary.get('last_check'),
-                    'is_backend': dictionary.get('is_backend', False),
-                    'is_frontend': dictionary.get('is_frontend', False),
-                    'is_fullstack': dictionary.get('is_fullstack', False),
-                    'is_collaborator': dictionary.get('is_collaborator', False),
-                    'collaborators_data': dictionary.get('collaborators_data', [])
-                })
-                await self._create_repositories(repository[i])
-
-        if repository:
-            current_api_ids = {str(rid) for rid in repo_ids}
-            for existing_id, repo_obj in EXISTING_REPOS.items():
-                if existing_id not in current_api_ids:
-                    LOG.info(f"Deleting stale repository: {repo_obj.label} (ID: {existing_id})")
-                    await self.session.delete(repo_obj)
+        # Cleanup stale repositories
+        current_api_ids = {str(repo['repo_id']) for repo in repository}
+        await self._cleanup_stale_repos(current_api_ids, EXISTING_REPOS)
 
         try:
             await self.session.commit()
@@ -289,6 +118,154 @@ class GithubDatabaseHandler():
             LOG.critical(f"Commit failed: {e}. Attempting rollback.")
             await self.session.rollback()
 
+    async def _sync_repository(self, repo_data: Dict[str, Any], existing_repos: Dict[str, RepositoryModel]) -> None:
+        """ Synchronizes a single repository from API data to the database. """
+        dictionary = self.format_payload(repo_data)
+        repo_id = str(repo_data['repo_id']).strip()
+        existing_repo = existing_repos.get(repo_id)
+
+        if existing_repo:
+            if self.has_data_changes(existing_repo, dictionary): 
+                await self._apply_repositories_updates(dictionary, existing_repo)
+            else:
+                LOG.debug(f"No changes detected for {existing_repo.label}. Skipping update.")
+        else:
+            # Update data with formatted fields before creation
+            repo_data.update({
+                'demo_url': dictionary.get('demo_url'),
+                'repo_url': dictionary.get('repo_url'),
+                'youtube_url': dictionary.get('youtube_url'),
+                'is_backend': dictionary.get('is_backend', False),
+                'is_frontend': dictionary.get('is_frontend', False),
+                'is_fullstack': dictionary.get('is_fullstack', False),
+                'is_collaborator': dictionary.get('is_collaborator', False),
+                'collaborators_data': dictionary.get('collaborators_data', [])
+            })
+            await self._create_repositories(repo_data)
+
+    async def _cleanup_stale_repos(self, current_ids: Set[str], existing_repos: Dict[str, RepositoryModel]) -> None:
+        """ Deletes repositories from the DB that are no longer in the API payload. """
+        for existing_id, repo_obj in existing_repos.items():
+            if existing_id not in current_ids:
+                LOG.info(f"Deleting stale repository: {repo_obj.label} (ID: {existing_id})")
+                await self.session.delete(repo_obj)
+
+    async def _create_repositories(self, repository: Dict[str, Any]) -> None:
+        """ Creates a new repository record and its associations in the database. """
+        temp_repo = repository.copy()
+        # Clean up fields that don't belong to RepositoryModel columns
+        fields_to_pop = ['lang', 'anchor', 'collaborators', 'collaborators_data', 'lang_assosiations', 'needs_full_sync', 'last_check']
+        for field in fields_to_pop: temp_repo.pop(field, None)
+
+        repo_model = RepositoryModel( **temp_repo)
+        self.session.add(repo_model)
+
+        # Handle Languages
+        for i in repository.get('lang', []):
+            LANG_OBJ: LanguageModel = await self.new_language_record(i['language'])
+            self.new_association_record(repo_model, LANG_OBJ, i['bytes'])
+
+        # Handle Collaborators
+        for c in repository.get('collaborators_data', []):
+            collab_obj = await self._get_or_create_collaborator(c)
+            assoc = RepoCollaboratorAssociationModel(repository = repo_model, collaborator = collab_obj)
+            self.session.add(assoc)
+
+        LOG.info(f"Successfully created new repository: {repository['label']}")
+
+    async def _apply_repositories_updates(self, dictionary: Dict[str, Any], DUPLICATION: RepositoryModel) -> None:
+        """ Updates an existing repository and its associations. """
+        needs_full_sync = dictionary.get('needs_full_sync', True)
+        EXCLUDE_FIELDS = ['repo_id', 'created_at', 'lang_assosiations', 'collaborators', 'collaborators_data', 'lang', 'needs_full_sync']
+        
+        if not needs_full_sync:
+            EXCLUDE_FIELDS.extend(['is_backend', 'is_frontend', 'is_fullstack'])
+
+        for key, value in dictionary.items():
+            if key not in EXCLUDE_FIELDS and hasattr(DUPLICATION, key):
+                setattr(DUPLICATION, key, value)
+
+        if needs_full_sync:
+            await self._sync_languages(DUPLICATION, dictionary.get('lang_assosiations', []))
+
+        # Always sync collaborators
+        await self._sync_collaborators(DUPLICATION, dictionary.get('collaborators_data', []))
+
+        self.session.add(DUPLICATION)
+        LOG.info(f"Updated repository: {DUPLICATION.label} (Full sync: {needs_full_sync})")
+
+    async def _sync_languages(self, repo: RepositoryModel, new_langs_payload: List[LanguageAssosiationModel]) -> None:
+        """ Synchronizes language associations for a repository. """
+        new_langs = {assoc.language.language: assoc.code_bytes for assoc in new_langs_payload}
+        exist_assoc_groups: Dict[str, List[LanguageAssosiationModel]] = {}
+        
+        for assoc in repo.lang_assosiations:
+            lang_name = assoc.language.language
+            exist_assoc_groups.setdefault(lang_name, []).append(assoc)
+
+        for lang_name, code_bytes in new_langs.items():
+            if lang_name in exist_assoc_groups:
+                primary_assoc = exist_assoc_groups[lang_name][0]
+                if primary_assoc.code_bytes != code_bytes:
+                    primary_assoc.code_bytes = code_bytes
+                    self.session.add(primary_assoc)
+                # Cleanup duplicates
+                for duplicate in exist_assoc_groups[lang_name][1:]:
+                    await self.session.delete(duplicate)
+            else:
+                lang_obj = await self.new_language_record(lang_name)
+                self.new_association_record(repo, lang_obj, code_bytes)
+
+        for lang_name, assocs in exist_assoc_groups.items():
+            if lang_name not in new_langs:
+                for assoc in assocs: await self.session.delete(assoc)
+
+    async def _sync_collaborators(self, repo: RepositoryModel, new_collabs_data: List[Dict[str, Any]]) -> None:
+        """ Synchronizes collaborator associations for a repository. """
+        exist_assoc_map = {assoc.collaborator.github_id: assoc for assoc in repo.collaborator_associations}
+        new_collab_ids = {c['github_id'] for c in new_collabs_data}
+
+        for c in new_collabs_data:
+            collab_obj = await self._get_or_create_collaborator(c)
+            if c['github_id'] not in exist_assoc_map:
+                assoc = RepoCollaboratorAssociationModel(repository = repo, collaborator = collab_obj)
+                self.session.add(assoc)
+
+        for gid, assoc in exist_assoc_map.items():
+            if gid not in new_collab_ids:
+                await self.session.delete(assoc)
+
+    async def _get_or_create_collaborator(self, collab_data: Dict[str, Any]) -> CollaboratorModel:
+        """ Fetches or creates/updates a collaborator record. """
+        gid = collab_data['github_id']
+        collab_obj = await self.session.scalar(select(CollaboratorModel).where(CollaboratorModel.github_id == gid))
+
+        if not collab_obj:
+            collab_obj = CollaboratorModel(github_id = gid, name = collab_data['name'], profile_url = collab_data['profile_url'])
+            self.session.add(collab_obj)
+            await self.session.flush()
+        else:
+            if collab_obj.name != collab_data['name'] or collab_obj.profile_url != collab_data['profile_url']:
+                collab_obj.name = collab_data['name']
+                collab_obj.profile_url = collab_data['profile_url']
+                self.session.add(collab_obj)
+        return collab_obj
+
+    async def new_language_record(self, LANG_NAME: str) -> LanguageModel:
+        """ Fetches or creates a language record. """
+        LANG_NAME = LANG_NAME.lower()
+        lang_obj = await self.session.scalar(select(LanguageModel).where(LanguageModel.language == LANG_NAME))
+
+        if not lang_obj:
+            lang_obj = LanguageModel(language = LANG_NAME)
+            self.session.add(lang_obj)
+            LOG.debug(f"Initializing new language record: {LANG_NAME}")
+        return lang_obj
+
+    def new_association_record(self, repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -> None:
+        """ Creates a new language association record. """
+        association_obj = LanguageAssosiationModel(repository = repo, language = lang, code_bytes = code_bytes)
+        self.session.add(association_obj)
 
     async def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
         """ Fetches all non-secret repositories with their associations. """
@@ -327,17 +304,12 @@ class GithubDatabaseHandler():
     @staticmethod
     def prepear_urls(urls: List[Dict[str, Any]]) -> Dict[str, str | None]:
         """ Extracts specific URLs from the anchor list. """
-        repo_url: Optional[str] = None
-        video_url: Optional[str] = None
-        preview_url: Optional[str] = None
-
+        repo_url, video_url, preview_url = None, None, None
         for url in urls:
             match url['name']:
                 case 'github': repo_url = url['href']
                 case 'webapp': preview_url = url['href']
                 case 'youtube_url': video_url = url['href']
-                case _: continue
-
         return {'youtube_url': video_url, 'demo_url': preview_url, 'repo_url': repo_url}
 
     @staticmethod
@@ -345,10 +317,8 @@ class GithubDatabaseHandler():
         """ Prepares language associations and bundles other metadata. """
         NOW = datetime.datetime.now(datetime.timezone.utc)
         LANGUAGE_ASSOCIATION: List[LanguageAssosiationModel] = []
-
         for i in languages:
             LANG_NAME = str(i['language']).lower()
             LANGUAGE: LanguageModel = LanguageModel(language = LANG_NAME)
             LANGUAGE_ASSOCIATION.append(LanguageAssosiationModel(language = LANGUAGE, code_bytes = i['bytes']))
-
         return {'lang_assosiations': LANGUAGE_ASSOCIATION, 'collaborators_data': COLLABORATORS_DATA, 'last_check': NOW}
