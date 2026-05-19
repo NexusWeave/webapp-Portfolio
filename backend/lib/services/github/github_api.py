@@ -157,21 +157,26 @@ class GithubAPI(AsyncAPIClientConfig):
     async def fetch_collaborators(self, owner:str, name: str) -> List[Dict[str, str]]:
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/contributors")
         
-        response: httpx.Response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
-        contributors_data = response.json()
-        
-        if not isinstance(contributors_data, list):
-            LOG.error(f"Expected list for collaborators from {path}, but got {type(contributors_data).__name__}")
-            return []
-            
         collaborators: List[Dict[str, str]] = []
-        for contributor in contributors_data:
-             if isinstance(contributor, dict) and 'login' in contributor:
-                collaborators.append({
-                    "name": contributor['login'], 
-                    "collab_id": str(contributor['id']),
-                    "html_url": contributor.get('html_url', f"https://github.com/{contributor['login']}")
-                })
+        while path:
+            response: httpx.Response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
+            contributors_data = response.json()
+            
+            if not isinstance(contributors_data, list):
+                LOG.error(f"Expected list for collaborators from {path}, but got {type(contributors_data).__name__}")
+                break
+                
+            for contributor in contributors_data:
+                 if isinstance(contributor, dict) and 'login' in contributor:
+                    collaborators.append({
+                        "name": contributor['login'], 
+                        "collab_id": str(contributor['id']),
+                        "html_url": contributor.get('html_url', f"https://github.com/{contributor['login']}")
+                    })
+            
+            _next_page_ = getattr(response, 'links', {})
+            path = _next_page_.get('next', {}).get('url') if 'next' in _next_page_ else None
+
         return collaborators
 
     async def analyze_repository(self,trees_url: str) -> Dict[str, Any]:

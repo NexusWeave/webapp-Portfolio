@@ -190,35 +190,35 @@ class GithubDatabaseHandler():
                     for assoc in assocs:
                         await self.session.delete(assoc)
 
-            # Sync collaborators (Many-to-Many)
-            new_collabs_data = dictionary.get('collaborators_data', [])
+        # Sync collaborators (Many-to-Many) - Always checked as they are now always fetched
+        new_collabs_data = dictionary.get('collaborators_data', [])
 
-            exist_assoc_map = {assoc.collaborator.github_id: assoc for assoc in DUPLICATION.collaborator_associations}
-            new_collab_ids = {c['github_id'] for c in new_collabs_data}
+        exist_assoc_map = {assoc.collaborator.github_id: assoc for assoc in DUPLICATION.collaborator_associations}
+        new_collab_ids = {c['github_id'] for c in new_collabs_data}
 
-            for c in new_collabs_data:
-                gid = c['github_id']
-                collab_query = select(CollaboratorModel).where(CollaboratorModel.github_id == gid)
-                collab_result = await self.session.execute(collab_query)
-                collab_obj = collab_result.scalar_one_or_none()
+        for c in new_collabs_data:
+            gid = c['github_id']
+            collab_query = select(CollaboratorModel).where(CollaboratorModel.github_id == gid)
+            collab_result = await self.session.execute(collab_query)
+            collab_obj = collab_result.scalar_one_or_none()
 
-                if not collab_obj:
-                    collab_obj = CollaboratorModel(github_id = gid, name = c['name'], profile_url = c['profile_url'])
+            if not collab_obj:
+                collab_obj = CollaboratorModel(github_id = gid, name = c['name'], profile_url = c['profile_url'])
+                self.session.add(collab_obj)
+                await self.session.flush()
+            else:
+                if collab_obj.name != c['name'] or collab_obj.profile_url != c['profile_url']:
+                    collab_obj.name = c['name']
+                    collab_obj.profile_url = c['profile_url']
                     self.session.add(collab_obj)
-                    await self.session.flush()
-                else:
-                    if collab_obj.name != c['name'] or collab_obj.profile_url != c['profile_url']:
-                        collab_obj.name = c['name']
-                        collab_obj.profile_url = c['profile_url']
-                        self.session.add(collab_obj)
 
-                if gid not in exist_assoc_map:
-                    new_assoc = RepoCollaboratorAssociationModel(repository = DUPLICATION, collaborator = collab_obj)
-                    self.session.add(new_assoc)
+            if gid not in exist_assoc_map:
+                new_assoc = RepoCollaboratorAssociationModel(repository = DUPLICATION, collaborator = collab_obj)
+                self.session.add(new_assoc)
 
-            for gid, assoc in exist_assoc_map.items():
-                if gid not in new_collab_ids:
-                    await self.session.delete(assoc)
+        for gid, assoc in exist_assoc_map.items():
+            if gid not in new_collab_ids:
+                await self.session.delete(assoc)
 
         self.session.add(DUPLICATION)
         LOG.info(f"Updated repository: {DUPLICATION.label} (Needs full sync: {needs_full_sync})")
