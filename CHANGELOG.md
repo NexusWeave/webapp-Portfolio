@@ -1,3 +1,16 @@
+# [1.22.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.21.0...v1.22.0) (2026-05-19)
+
+
+### Bug Fixes
+
+* **sync:** resolve datetime comparison and connection timeout issues ([6c32959](https://github.com/NexusWeave/webapp-Portfolio/commit/6c32959a51329f8e9167c73656fe51db4f6a7268))
+
+
+### Features
+
+* **github:** support organization repositories and contributions ([ad880f9](https://github.com/NexusWeave/webapp-Portfolio/commit/ad880f9ecefd570983ad806252f9b568a104b1f9))
+* **ui:** display interactive contributor credits and dynamic filters ([9cda825](https://github.com/NexusWeave/webapp-Portfolio/commit/9cda825cd7a1937e17d7eabf1ee6f367d0ee036b))
+
 # [1.21.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.20.0...v1.21.0) (2026-05-18)
 
 
