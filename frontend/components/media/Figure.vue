@@ -1,10 +1,10 @@
 <template>
-    <figure :class="cls[0]" v-if="data.src || data.srcset">
+    <figure :class="cls" v-if="data.src || data.srcset">
         <img v-if="isSvg && data"
             loading="lazy"    
             :src="data.src" 
             :alt="data.alt" 
-            :class="cls[0]"
+            :class="cls"
             :width="data.width"
             :height="data.height"
         />
@@ -13,7 +13,7 @@
             loading="lazy"    
             :src="data.src" 
             :alt="data.alt" 
-            :class="cls[0]"
+            :class="cls"
             :sizes="size"
             :height="height"
             :modifiers="({ar : aspectRatio} as any) "

@@ -13,25 +13,37 @@ class LanguageModel(BaseModel):
     @model_validator(mode='before')
     @classmethod
     def map_from_db(cls, data: Any) -> Any:
+        # Check if it's a SQLAlchemy object with language and code_bytes
         if hasattr(data, 'language') and hasattr(data, 'code_bytes'):
+            lang_val = data.language
+            # If data.language is an object with its own 'language' attribute
+            if hasattr(lang_val, 'language'):
+                label = lang_val.language
+            else:
+                label = str(lang_val)
+            
             return {
-                "label": data.language.language,
+                "label": label,
                 "bytes": data.code_bytes
             }
-        # Fallback for dicts (e.g. from API)
+        
+        # Fallback for dicts (e.g. from API or manual creation)
         if isinstance(data, dict):
             return {
-                "label": data.get("language", data.get("label")),
-                "bytes": data.get("bytes")
+                "label": data.get("label") or data.get("language") or data.get("name"),
+                "bytes": data.get("bytes") or data.get("code_bytes") or 0
             }
+        
         return data
+
+    model_config = ConfigDict(from_attributes = True)
 
 class RepositoryModel(BaseModel):
     label: str = Field(..., description = "Repository Name", json_schema_extra = {"example":"my-repo"})
     owner: str = Field(..., description = "Repository Owner", json_schema_extra = {"example":"username"})
     owner_url: Optional[str] = Field(None, description = "Owner Profile URL", json_schema_extra = {"example":"https://github.com/username"})
     created_at: datetime.datetime = Field(..., description = "Creation Timestamp", json_schema_extra = {"example":f"{datetime.datetime.now()}"})
-    id: int = Field(..., alias = "repo_id", description = "Unique Repository ID", json_schema_extra = {"example":"1234567890"})
+    id: int = Field(..., validation_alias = "repo_id", description = "Unique Repository ID", json_schema_extra = {"example":"1234567890"})
     description: Optional[str] = Field(None, description = "Repository Description", json_schema_extra = {"example":"This is my repository."})
     
     repo_url: str = Field(..., description = "Repository URL", json_schema_extra = {"example":"https://github.com/username/my-repo"}, exclude = True)
@@ -47,7 +59,7 @@ class RepositoryModel(BaseModel):
     is_fullstack: bool = Field(False, description = "Fullstack Repository", json_schema_extra = {"example":False}, exclude=True)
     is_collaborator: bool = Field(False, description = "Collaborator Repository", json_schema_extra = {"example":False}, exclude=True)
     
-    languages: List[LanguageModel] = Field(..., alias="lang_assosiations")
+    languages: List[LanguageModel] = Field(..., validation_alias="lang_assosiations")
     collaborator_associations: List[Any] = Field(..., exclude=True)
 
     @computed_field
@@ -81,7 +93,7 @@ class RepositoryModel(BaseModel):
 
     @computed_field
     @property
-    def anchor(self) -> List[Dict[str, str]]:
+    def anchor(self) -> List[Dict[str, Any]]:
         anchors = []
         if self.repo_url:
             anchors.append({"name": "github", "href": self.repo_url, "type": ["github", "external"]})

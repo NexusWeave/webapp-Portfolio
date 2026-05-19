@@ -59,19 +59,20 @@
     const filteredRepo = computed(() => {
         if (!repo.value) return [];
         if (type.value === '0') return repo.value;
-        return repo.value.filter((item: any) => item.flags[type.value] === true);
+        return repo.value.filter((item: any) => item?.flags?.[type.value] === true);
     });
 
     const paginationData = computed(() => {
         const n: number = 9;
         const start = (currentPage.value - num) * n;
         const end = start + n;
-        return filteredRepo.value.slice(start, end) ?? [];
+        return filteredRepo.value?.slice(start, end) ?? [];
     });
 
     watch(filteredRepo, (newVal) => {
         const n: number = 9;
-        totalPages.value = Math.ceil(newVal.length / n);
+        const length = newVal?.length || 0;
+        totalPages.value = Math.ceil(length / n);
         if (currentPage.value > totalPages.value) {
             currentPage.value = Math.max(1, totalPages.value);
         }
@@ -86,9 +87,10 @@
         const activeCategories = categories.filter(cat => 
             repo.value?.some((item: any) => {
                 if (cat === 'collaborator') {
-                    return item.flags.collaborator === true || (item.collaborators && item.collaborators.length > 1);
+                    const hasCollabs = (item?.collaborators?.length || 0) > 1;
+                    return item?.flags?.collaborator === true || hasCollabs;
                 }
-                return item.flags[cat] === true;
+                return item?.flags?.[cat] === true;
             })
         );
         return activeCategories.length > 1;
@@ -111,12 +113,13 @@
 
         // Spesialhåndtering for samarbeidsprosjekter (sjekker både flag og faktisk innhold)
         if (filterType === 'collaborator') {
-            return repo.value.some((item: any) => 
-                item.flags.collaborator === true || (item.collaborators && item.collaborators.length > 1)
-            );
+            return repo.value.some((item: any) => {
+                const hasCollabs = (item?.collaborators?.length || 0) > 1;
+                return item?.flags?.collaborator === true || hasCollabs;
+            });
         }
 
-        return repo.value.some((item: any) => item.flags[filterType] === true);
+        return repo.value.some((item: any) => item?.flags?.[filterType] === true);
     }
 
     const buttons = computed<ButtonItem[]>(() => [ 

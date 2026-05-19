@@ -33,19 +33,82 @@
         @include mix.font-style("Roboto")
 
 .business-card
+    &.grid-layout
+        display: grid
+        grid-template-areas: "header" "content" "nav" "footer"
+        grid-template-rows: auto 1fr auto auto
+        gap: 0.25rem
+        padding: 0.75rem
+
+        .card-header
+            grid-area: header
+            display: flex
+            justify-content: space-between
+            align-items: center
+            inline-size: 100%
+            padding: 1.5rem 0
+            margin: 0
+            min-block-size: 0
+            
+            figure
+                margin: 0
+                figcaption
+                    display: none
+
+            .tech-img, .tech-figure
+                inline-size: 2.2em !important
+                block-size: 2.2em !important
+                object-fit: contain !important
+                margin: 0 !important
+
+            .date-container
+                margin: 0
+                display: block
+                text-align: right
+                margin-left: auto
+
+        .card-content
+            grid-area: content
+            padding: 0
+            h3
+                margin: 0
+                padding: 0.5rem 0
+            p
+                margin-block: 0.25rem
+            
+        .card-nav
+            grid-area: nav
+            padding-block: 0.25rem
+            
+        .card-footer
+            grid-area: footer
+            padding-block-start: 0.25rem
+            h4
+                margin-block-end: 0.25rem
+                font-size: 0.9em
+            
+            .tech-img, .tech-figure
+                inline-size: 2em !important
+                block-size: 2em !important
+                object-fit: contain !important
+                margin: 0 !important
+
+            figure
+                margin: 0
+                figcaption
+                    display: none
+
     p
         font-size: 1em
         text-align: center
+        margin: 0.25rem 0
 
     img 
-        inline-size: 2.2em
         border-radius: 0
 
     section
         margin-block-end: 0em
 
-    section:first-child
-        block-size: 3em
     .card-content
         .icon
             padding: 0
@@ -59,12 +122,12 @@
 
     .tech-container
         img
-            inline-size: 2em
-            block-size: 2em
+            inline-size: 1.5em
+            block-size: 1.5em
             object-fit: contain
 
     inline-size: 23em
-    max-block-size: 20em
+    max-block-size: 23em
     border: 1px solid black
     //@include mix.link-styles()
     @include mix.card-shadow-box()
