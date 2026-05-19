@@ -10,13 +10,13 @@
             
             <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
                 <p v-if="data?.owner && data?.owner_url" class="collab-name">
-                    <span>Eier: <NavigationAnchor :data="{ href: data.owner_url, label: `@${data.owner}`, type: ['github', 'external'] }" /></span>
+                    <span>Eier: <NavigationAnchor :data="{ href: data.owner_url, label: `@${data.owner}` }" /></span>
                 </p>
                 <p v-if="contributors?.length > 0" class="collab-name">
                     <span>
                         Bidragsytere: 
                         <template v-for="(collab, i) in contributors" :key="i">
-                            <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}`, type: ['github', 'external'] }" />
+                            <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}` }" />
                             <span v-if="i < contributors.length - 1">, </span>
                         </template>
                     </span>
