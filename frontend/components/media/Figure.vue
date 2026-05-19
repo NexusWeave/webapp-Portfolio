@@ -1,7 +1,15 @@
 <template>
     <figure :class="cls[0]" v-if="data.src || data.srcset">
-        <NuxtImg v-if="isImage && data"
-            :format="isSvg ? undefined : 'webp'"
+        <img v-if="isSvg && data"
+            loading="lazy"    
+            :src="data.src" 
+            :alt="data.alt" 
+            :class="cls[0]"
+            :width="data.width"
+            :height="data.height"
+        />
+        <NuxtImg v-else-if="isImage && data"
+            :format="'webp'"
             loading="lazy"    
             :src="data.src" 
             :alt="data.alt" 
@@ -43,8 +51,13 @@
      } )
 
     //  --- Flag logic
-    const isSvg = computed(() => data.value.type.includes('svg'));
+    const isSvg = computed(() => {
+        if (!data.value || !data.value.type) return false;
+        return data.value.type.includes('svg');
+    });
+    
     const isImage = computed(() => {
+        if (!data.value || !data.value.type) return false;
         const types = ['image/', 'jpg', 'jpeg', 'png', 'svg', 'webp'];
         return types.some(t => data.value.type.includes(t));
     });
