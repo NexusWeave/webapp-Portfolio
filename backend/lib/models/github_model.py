@@ -98,9 +98,9 @@ class RepositoryModel(BaseModel):
         if self.repo_url:
             anchors.append({"name": "github", "href": self.repo_url, "type": ["github", "external"]})
         if self.demo_url:
-            anchors.append({"name": "webapp", "href": self.demo_url, "type": ["webapp", "external"]})
+            anchors.append({"name": "webapp", "href": self.demo_url, "type": ["globe", "external"]})
         if self.youtube_url:
-            anchors.append({"name": "youtube", "href": self.youtube_url, "type": ["youtube", "external"]})
+            anchors.append({"name": "youtube", "href": self.youtube_url, "type": ["ytube", "external"]})
         return anchors
 
     model_config = ConfigDict(from_attributes = True)
