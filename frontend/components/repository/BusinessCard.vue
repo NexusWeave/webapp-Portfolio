@@ -16,8 +16,9 @@
                     <span>
                         Bidragsytere: 
                         <template v-for="(collab, i) in contributors" :key="i">
-                            <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}` }" />
-                            <span v-if="i < contributors.length - 1">,</span>
+                            <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}`, type: ['github', 'external'] }" />
+                            <span v-if="i < contributors.length - 2">, </span>
+                            <span v-else-if="i === contributors.length - 2"> & </span>
                         </template>
                     </span>
                 </p>
