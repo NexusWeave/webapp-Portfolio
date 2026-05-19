@@ -12,11 +12,15 @@
                 <p v-if="data?.owner && data?.owner_url" class="collab-name">
                     <span>Eier: <NavigationAnchor :data="{ href: data.owner_url, label: `@${data.owner}`, type: ['github', 'external'] }" /></span>
                 </p>
-                <template v-if="otherContributors?.length > 0">
-                    <p v-for="collab in otherContributors" :key="collab.name" class="collab-name">
-                        <span>Bidragsytere: <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}`, type: ['github', 'external'] }" /></span>
-                    </p>
-                </template>
+                <p v-if="contributors?.length > 0" class="collab-name">
+                    <span>
+                        Bidragsytere: 
+                        <template v-for="(collab, i) in contributors" :key="i">
+                            <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}`, type: ['github', 'external'] }" />
+                            <span v-if="i < contributors.length - 1">, </span>
+                        </template>
+                    </span>
+                </p>
             </section>
 
             <p class="description">{{ truncatedDescription }}</p>
@@ -65,7 +69,7 @@
         return (props.data.flags?.collaborator) || hasMultipleContributors;
     });
 
-    const otherContributors = computed(() => {
+    const contributors = computed(() => {
         if (!props.data?.collaborators) return [];
         // Filtrer ut eieren fra bidragsyter-listen for å unngå dobbeltvisning
         return props.data.collaborators.filter(c => c?.name?.toLowerCase() !== props.data?.owner?.toLowerCase());
