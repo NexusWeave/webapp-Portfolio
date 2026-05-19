@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.22.0...v1.22.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* **backend:** add pagination for contributors and ensure collaborator sync ([d339ce4](https://github.com/NexusWeave/webapp-Portfolio/commit/d339ce4603229c3b59ce38817cf34d827b453b8d))
+
 # [1.22.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.21.0...v1.22.0) (2026-05-19)
 
 
