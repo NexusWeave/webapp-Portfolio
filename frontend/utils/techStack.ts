@@ -1,37 +1,21 @@
-const python =
-[
-    "PYTHON","FLASK", "DJANGO", "PY-CORD", "PANDAS", "NUMPY",
-    "MATPLOTLIB", "REFLEX", "FASTAPI"
-]
+const c = ["c", "cp", "C++"]
+const styling = ["css", "bootstrap"]
+const cs = ["cs", "dotnet", "aspnet", "entity framework"]
+const markup = ["markdown", "latex", "html", "liquid", "nunjucks"]
+const workFlow = ["tinacms", "sass", "agile", "git", "decapcms", "cms"]
+const internal = ["webapp", "nexus", "vupy", "console", "codealong", "fiveem"]
+const javascript = ["vue", "nuxt", "typescript", "react", "javascript", "js", "ts"]
+const rationalDB = ["mssql", "mysql", "sqlite", "postgresql", "mariadb", "sql", "database"]
+const python = ["python", "flask", "django", "py-cord", "pandas", "numpy", "matplotlib", "reflex", "fastapi", "jupyter", "cython", "py"]
+const misc = ["batchfile", "dockerfile", "fortran", "hack", "jinja", "makefile", "meson", "go", "lua", "php", "powershell", "roff", "scratch", "shell", "smarty"]
 
-const c = ['C', 'C++']
-const cs = 
-[
-    'CS', 'DOTNET', 'ASPNET', 'ENTITY FRAMEWORK'
-]
 
-const javascript = [ "VUE", "NUXT", "TYPESCRIPT", "REACT", "JAVASCRIPT" ]
-const workFlow =
-[
-    'DECAPCMS', 'TinaCMS', 'SASS', 'AGILE', 'GIT'
-]
 
-const rationalDB =
-[
-    "MSSQL", "MYSQL", "SQLITE", "POSTGRESQL", "MARIADB"
-]
+export const techStack: string[] = [...c, ...cs, ...python, ...markup, ...styling, ...workFlow, ...javascript, ...rationalDB]
+export const validIcons: string[] = [...techStack, ...misc]
+export const forbiddenWords: string[] = [...validIcons, ...internal]
 
-const styling = [
-    'CSS', 'BOOTSTRAP'
-]
-const markup =
-[
-    "MARKDOWN", "LATEX", "HTML"
-]
-
-export const techStack:string[] = [ ...c, ...cs, ...python, ...markup, ...styling, ...workFlow, ...javascript, ...rationalDB ]
-
-export const techStackMap:Array<{ name: string, codes: string[] }> = 
+export const techStackMap: Array<{ name: string, codes: string[] }> = 
 [
     { name: 'CS', codes: cs },
     { name: 'C/C++', codes: c },

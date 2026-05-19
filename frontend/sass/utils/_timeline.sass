@@ -7,16 +7,16 @@
             &::-webkit-slider-runnable-track,
             &::-moz-range-track
                 cursor: pointer
-                block-size: .9em
-                border-radius: 1em
+                block-size: 1rem
+                border-radius: 1rem
                 -webkit-appearance: none
                 background: color.$sea-green
 
             &::-webkit-slider-thumb,
             &::-moz-range-thumb
                 cursor: pointer
-                block-size: .9em
-                border-radius: 1em
+                block-size: 1rem
+                border-radius: 1rem
                 -webkit-appearance: none
                 background: color.$sea-green
 
@@ -32,16 +32,16 @@
             &::-webkit-slider-runnable-track,
             &::-moz-range-track
                 cursor: pointer
-                block-size: .9em
-                border-radius: 1em
+                block-size: 1rem
+                border-radius: 1rem
                 -webkit-appearance: none
                 background: color.$sea-green
 
             &::-webkit-slider-thumb,
             &::-moz-range-thumb
                 cursor: pointer
-                block-size: .9em
-                border-radius: 1em
+                block-size: 1rem
+                border-radius: 1rem
                 -webkit-appearance: none
                 background: color.$sea-green
 
@@ -50,13 +50,24 @@
         visibility: visible !important
 
         .tech-container
+            > section
+                gap: 1rem
+                display: grid !important
+                grid-template-columns: repeat(6, auto)
+                
+                justify-content: center
+                align-items: center
+            
+            img
+                object-fit: contain
+
             p
                 span
                     span
                         @include mix.circle-border()
-                    margin-inline: .3em
+                    margin-inline: .3rem
 
-                margin:.5em
+                margin:.5rem
 
     .timeline-content
 
@@ -67,15 +78,15 @@
             text-align: left
 
         &:nth-of-type(odd)
-            margin-block-end: 1em
+            margin-block-end: 1rem
 
         section
-            margin: .5em
+            margin: .5rem
 
         .section
             
-            margin-inline: 1em
-            max-inline-size: 20em
+            margin-inline: 1rem
+            max-inline-size: 20rem
             
             &:nth-of-type(odd)
                 border-right: 1.5px groove rgba(0, 0, 0, .2)
@@ -84,16 +95,16 @@
         .timeline-description
             .timeline-list
                 .timeline-item
-                    margin-block: .5em
-                    font-size: 1.1em
+                    margin-block: .5rem
+                    font-size: 1.1rem
 
-        margin: 1em
-        padding: 1em
-        border-radius: .5em
+        margin: 1rem
+        padding: 1rem
+        border-radius: .5rem
         max-inline-size: 100%
         box-shadow: 0 2px 4px rgba(64, 64, 64, .5)
         @include mix.transitions(opacity, 3s, ease-out, 10s, allow-discrete)
 
-    padding: 1em
-    margin-block: 2.5em
-    border-radius: .5em
+    padding: 1rem
+    margin-block: 2.5rem
+    border-radius: .5rem
