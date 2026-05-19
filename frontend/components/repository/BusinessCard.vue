@@ -9,10 +9,12 @@
             <h3> {{ data?.label || 'Ukjent' }} </h3>
             
             <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
-                <p v-if="data?.owner && data?.owner_url">Eier: <a :href="data.owner_url" target="_blank">@{{ data.owner }}</a></p>
+                <p v-if="data?.owner && data?.owner_url" class="collab-name">
+                    <span>Eier: <NavigationAnchor :data="{ href: data.owner_url, label: `@${data.owner}`, type: ['github', 'external'] }" /></span>
+                </p>
                 <template v-if="otherContributors?.length > 0">
                     <p v-for="collab in otherContributors" :key="collab.name" class="collab-name">
-                        <span>Bidragsytere: <a :href="collab.profile_url" target="_blank">@{{ collab.name }}</a></span>
+                        <span>Bidragsytere: <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}`, type: ['github', 'external'] }" /></span>
                     </p>
                 </template>
             </section>

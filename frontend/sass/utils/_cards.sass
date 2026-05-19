@@ -136,9 +136,29 @@
     inline-size: 23em
     max-block-size: 23em
     border: 1px solid black
-    //@include mix.link-styles()
+    @include mix.link-styles(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
     @include mix.card-shadow-box()
     @include mix.list-inline-reset()
     
+    .credits
+        font-size: 0.9em
+        margin-block: 0.5rem
+        
+        .collab-name
+            margin: 0.1rem 0.25rem
+            span
+                display: inline-flex
+                align-items: center
+                gap: 0.25rem
+                
+                a
+                    display: inline-flex
+                    align-items: center
+                    gap: 0.2rem
+                    
+                    .icon
+                        font-size: 1.1em
+                        margin: 0
+
     @include mix.background-image(9em, "/media/images/cards/portfolio-card.svg")
     
