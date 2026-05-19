@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.23.0...v1.23.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* **frontend:** add missing color import in _cards.sass ([5f7bad6](https://github.com/NexusWeave/webapp-Portfolio/commit/5f7bad68ad30254704cb3a86be41bcf4d0710717))
+
 # [1.23.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.22.1...v1.23.0) (2026-05-19)
 
 
