@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.22.1...v1.23.0) (2026-05-19)
+
+
+### Features
+
+* **backend:** hide github links for private repositories ([259ad60](https://github.com/NexusWeave/webapp-Portfolio/commit/259ad60b6b8491ad240b5cd87bab68f7143d940c))
+
 ## [1.22.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.22.0...v1.22.1) (2026-05-19)
 
 
