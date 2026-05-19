@@ -10,10 +10,8 @@ interface RepositoryBase
     owner_url?: string;
     description: string;
     flags?: Record<string, boolean>;
-    stack?: Record<string, boolean>;
     collaborators?: { name: string; profile_url: string; }[];
     languages?: GithubRepoLanguage[];
-    lang_assosiations?: GithubRepoLanguage[];
 }
 
 
@@ -23,6 +21,14 @@ export interface LanguageData { label?: string; language?: string; bytes?: numbe
 export interface RepositoryData extends Array<RepositoryItem> {}
 export interface ProgressProps { data: ProgressItem; cls?: string[]; }
 export interface GithubRepoLanguage extends LanguageData { img?: FigureItem[];}
-export interface GithubData extends Omit<RepositoryBase, 'flags' | 'stack' | 'lang_assosiations'> { id: string; label: string; date: DateItem; flags: Record<string, boolean>; anchor: AnchorItem[]; name: string; languages: GithubRepoLanguage[]; }
+export interface GithubData extends Omit<RepositoryBase, 'flags' | 'collaborators' | 'languages'> { 
+    id: string; 
+    label: string; 
+    date: { date: string }; 
+    flags: Record<string, boolean>; 
+    anchor: AnchorItem[]; 
+    languages: GithubRepoLanguage[];
+    collaborators: { name: string; profile_url: string; }[];
+}
 export interface RepoProps { data: GithubData; cls?: Array<string | string[] | Array<string | string[]>>; }
-export interface RepositoryItem extends RepositoryBase { id?: number; repo_id?: number; created_at: string; anchor?: AnchorItem[]; date?: any; }
+export interface RepositoryItem extends RepositoryBase { id?: number; repo_id?: number; created_at: string; anchor?: AnchorItem[]; date?: { date: string }; }
