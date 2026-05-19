@@ -36,15 +36,18 @@ export const useLanguageStore = defineStore('tech-language', () => {
     return Object.entries(object).map(([language, x]) => {
       const bytesPerKB: number = 1024;
       const kb: number = x / bytesPerKB;
+      const mb: number = kb / 1024;
+
+      const isMB = kb > 999;
 
       return { 
-        type: 'KB', 
-        bytes: Number(kb.toFixed(2)), 
+        type: isMB ? 'MB' : 'KB', 
+        bytes: isMB ? Number(mb.toFixed(2)) : Number(kb.toFixed(2)), 
         label: formatLanguageName(language),
         original: kb,
         percentage: totalBytes > 0 ? (x / totalBytes) * 100 : 0
       }
-    }).filter((item) => item.bytes >= 10)
+    }).filter((item) => item.original >= 100)
   });
 
 

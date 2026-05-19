@@ -7,15 +7,16 @@ interface RepositoryBase
 {
     name: string;
     owner: string;
+    owner_url?: string;
     description: string;
     anchor: AnchorItem[];
-    collaborators?: string[];
+    collaborators?: { name: string; profile_url: string; }[];
     flags: Record<string, boolean>;
     languages?: GithubRepoLanguage[];
 }
 
 
-interface ProgressItem extends LanguageData { type: string; percentage: number; }
+interface ProgressItem extends LanguageData { type: string; percentage: number; original?: number; }
 
 export interface LanguageData { label: string; bytes: number; }
 export interface RepositoryData extends Array<RepositoryItem> {}

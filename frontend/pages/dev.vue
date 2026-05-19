@@ -6,7 +6,7 @@
                 <section class="dev-skill flex-column-justify-center-align-center" >
                     <h2> Min Kode Aktivitet</h2>
                     <span> Aktivteten er basert på min GitHub-aktivitet og oppdateres fortløpende for å reflektere min nåværende engasjement og bidrag til ulike prosjekter. </span>
-                    <span> Aktiviteten er målt antall KB</span>
+                    <span> Aktiviteten er målt i KB og MB</span>
                     <span> </span>
                     <section class="flex-wrap-row-justify-space-evenly">
                         <UtilsProgress v-for="(data, i) in formattedLanguages" :key="i"  :data="data" :cls="[data.label.toLowerCase()]" :max="maxProgress" />
@@ -61,7 +61,7 @@
 
     const maxProgress = computed(() => {
         if (formattedLanguages.value.length === 0) return 10240;
-        return Math.max(...formattedLanguages.value.map(l => l.bytes));
+        return Math.max(...formattedLanguages.value.map(l => l.original || l.bytes));
     });
 
     onMounted(() => { if (repo.value) updateFromRepositories(repo.value); });

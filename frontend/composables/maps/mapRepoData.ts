@@ -27,6 +27,7 @@ export function mapRepoData(data: RepositoryData): GithubData[]
             id: item.repo_id,
             flags: item.flags,
             owner: item.owner,
+            owner_url: item.owner_url,
             languages: languages,
             description: item.description,
             collaborators: item.collaborators ?? [],
