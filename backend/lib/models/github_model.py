@@ -1,14 +1,30 @@
 #   Standard Dependencies
 import __future__, datetime
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 
 #   Third Party Dependencies
-from pydantic import BaseModel, Field, ConfigDict, computed_field
+from pydantic import BaseModel, Field, ConfigDict, computed_field, model_validator
 
 
 class LanguageModel(BaseModel):
-    label: str = Field(..., alias="language")
-    bytes: int = Field(..., alias="bytes")
+    label: str
+    bytes: int
+
+    @model_validator(mode='before')
+    @classmethod
+    def map_from_db(cls, data: Any) -> Any:
+        if hasattr(data, 'language') and hasattr(data, 'code_bytes'):
+            return {
+                "label": data.language.language,
+                "bytes": data.code_bytes
+            }
+        # Fallback for dicts (e.g. from API)
+        if isinstance(data, dict):
+            return {
+                "label": data.get("language", data.get("label")),
+                "bytes": data.get("bytes")
+            }
+        return data
 
 class RepositoryModel(BaseModel):
     label: str = Field(..., description = "Repository Name", json_schema_extra = {"example":"my-repo"})
@@ -19,19 +35,20 @@ class RepositoryModel(BaseModel):
     description: Optional[str] = Field(None, description = "Repository Description", json_schema_extra = {"example":"This is my repository."})
     
     repo_url: str = Field(..., description = "Repository URL", json_schema_extra = {"example":"https://github.com/username/my-repo"}, exclude = True)
+    demo_url: Optional[str] = Field(None, description = "Demo URL", json_schema_extra = {"example":"https://demo.url"}, exclude = True)
     youtube_url: Optional[str] = Field(None, description = "YouTube URL", json_schema_extra = {"example":"https://youtube.com/my-repo"}, exclude= True)
     updated_at: Optional[datetime.datetime] = Field(None, description = "Last Update Timestamp", json_schema_extra = {"example":f"{datetime.datetime.now()}"},exclude= True)
 
     is_private: bool = Field(..., description = "Private Repository", json_schema_extra = {"example":False}, exclude= True)
     is_secret: bool = Field(..., description = "Secret Repository", json_schema_extra = {"example":False}, exclude= True)
     
-    is_backend: bool = Field(False, description = "Backend Repository", json_schema_extra = {"example":False})
-    is_frontend: bool = Field(False, description = "Frontend Repository", json_schema_extra = {"example":False})
-    is_fullstack: bool = Field(False, description = "Fullstack Repository", json_schema_extra = {"example":False})
-    is_collaborator: bool = Field(False, description = "Collaborator Repository", json_schema_extra = {"example":False})
+    is_backend: bool = Field(False, description = "Backend Repository", json_schema_extra = {"example":False}, exclude=True)
+    is_frontend: bool = Field(False, description = "Frontend Repository", json_schema_extra = {"example":False}, exclude=True)
+    is_fullstack: bool = Field(False, description = "Fullstack Repository", json_schema_extra = {"example":False}, exclude=True)
+    is_collaborator: bool = Field(False, description = "Collaborator Repository", json_schema_extra = {"example":False}, exclude=True)
     
     languages: List[LanguageModel] = Field(..., alias="lang_assosiations")
-    collaborator_associations: List[object] = Field(..., exclude=True)
+    collaborator_associations: List[Any] = Field(..., exclude=True)
 
     @computed_field
     @property
@@ -46,7 +63,7 @@ class RepositoryModel(BaseModel):
 
     @computed_field
     @property
-    def stack(self) -> Dict[str, bool]:
+    def flags(self) -> Dict[str, bool]:
         list_of_dict = []
         if self.is_backend: list_of_dict.append({"backend": self.is_backend})
         if self.is_frontend: list_of_dict.append({"frontend": self.is_frontend})
@@ -55,5 +72,23 @@ class RepositoryModel(BaseModel):
 
         if not list_of_dict: list_of_dict.append({'misc': True})
         return {k: v for d in list_of_dict for k, v in d.items()}
+
+    @computed_field
+    @property
+    def date(self) -> Dict[str, str]:
+        # Frontend expects data.date.date
+        return {"date": self.created_at.strftime("%Y-%m-%d")}
+
+    @computed_field
+    @property
+    def anchor(self) -> List[Dict[str, str]]:
+        anchors = []
+        if self.repo_url:
+            anchors.append({"name": "github", "href": self.repo_url, "type": ["github", "external"]})
+        if self.demo_url:
+            anchors.append({"name": "webapp", "href": self.demo_url, "type": ["webapp", "external"]})
+        if self.youtube_url:
+            anchors.append({"name": "youtube", "href": self.youtube_url, "type": ["youtube", "external"]})
+        return anchors
 
     model_config = ConfigDict(from_attributes = True)

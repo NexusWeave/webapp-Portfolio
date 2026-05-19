@@ -64,6 +64,16 @@ class GithubDatabaseHandler():
                 LOG.debug(f"Metadata change detected for {exist.label}: field {field}")
                 return True
 
+        # Check for collaborator changes (Many-to-Many) - Always checked as they are now always fetched
+        new_collabs_data = dictionary.get('collaborators_data', [])
+        new_collab_ids = {c['github_id'] for c in new_collabs_data}
+
+        exist_collab_ids = {assoc.collaborator.github_id for assoc in exist.collaborator_associations}
+
+        if new_collab_ids != exist_collab_ids:
+            LOG.debug(f"Collaborator change detected for {exist.label}: {len(exist_collab_ids)} -> {len(new_collab_ids)} collabs")
+            return True
+
         if needs_full_sync:
             # Check for language changes
             new_langs = {assoc.language.language: assoc.code_bytes for assoc in dictionary.get('lang_assosiations', [])}
@@ -79,16 +89,6 @@ class GithubDatabaseHandler():
 
             if new_langs != exist_langs:
                 LOG.debug(f"Language data change detected for {exist.label}.")
-                return True
-
-            # Check for collaborator changes (Many-to-Many)
-            new_collabs_data = dictionary.get('collaborators_data', [])
-            new_collab_ids = {c['github_id'] for c in new_collabs_data}
-
-            exist_collab_ids = {assoc.collaborator.github_id for assoc in exist.collaborator_associations}
-
-            if new_collab_ids != exist_collab_ids:
-                LOG.debug(f"Collaborator change detected for {exist.label}: {len(exist_collab_ids)} -> {len(new_collab_ids)} collabs")
                 return True
 
             # Check stack flags
@@ -109,6 +109,7 @@ class GithubDatabaseHandler():
         temp_repo = repository.copy()
         # Clean up fields that don't belong to RepositoryModel columns
         temp_repo.pop('lang', None)
+        temp_repo.pop('anchor', None)
         temp_repo.pop('collaborators', None)
         temp_repo.pop('collaborators_data', None)
         temp_repo.pop('lang_assosiations', None)
@@ -287,6 +288,7 @@ class GithubDatabaseHandler():
         except Exception as e:
             LOG.critical(f"Commit failed: {e}. Attempting rollback.")
             await self.session.rollback()
+
 
     async def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
         """ Fetches all non-secret repositories with their associations. """

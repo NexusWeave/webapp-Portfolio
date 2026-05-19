@@ -25,7 +25,8 @@ class GithubAPI(AsyncAPIClientConfig):
 
     def __init__(self, URL:str, KEY:str):
         super().__init__(URL=URL, KEY=KEY)
-        self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': f"{self.API_KEY}"}
+        auth_token = self.API_KEY if self.API_KEY.startswith(('token ', 'Bearer ')) else f"token {self.API_KEY}"
+        self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': auth_token}
 
     async def fetch_data(self, endpoint:str, params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime.datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
         """
@@ -46,6 +47,8 @@ class GithubAPI(AsyncAPIClientConfig):
 
         repo: List[Dict[str, str | object | List[str] | object]] = []
         excluded_repositories: List[str] = ['me50', 'code50', 'cs50', 'martininn', 'Husseinabdulameer11']
+
+
 
         date_parser = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
 
@@ -76,15 +79,16 @@ class GithubAPI(AsyncAPIClientConfig):
                 except TypeError:
                     needs_update = True
 
+                # Always fetch collaborators to ensure they are up to date
+                import asyncio
+                await asyncio.sleep(0.5)
+                LOG.info(f"Fetching collaborators for repo: {name}")
+                collab = await self.fetch_collaborators(owner, name)
+
                 lang = []
-                collab = []
                 if needs_update:
                     # Behandle ett og ett oppdatert/nytt prosjekt med en pause for å unngå Rate Limit
-                    import asyncio
-                    await asyncio.sleep(0.5)
-                    
                     LOG.info(f"Fetching details for updated/new repo: {name}")
-                    collab = await self.fetch_collaborators(owner, name)
                     
                     # Verify contribution for non-owned repositories
                     is_owner = str(owner).lower() == 'krigjo25'
@@ -95,6 +99,13 @@ class GithubAPI(AsyncAPIClientConfig):
                         continue
                         
                     lang = await self.fetch_languages(owner, name)
+                else:
+                    # Even if not fully updating, we should still verify contribution if it's not our repo
+                    is_owner = str(owner).lower() == 'krigjo25'
+                    is_contributor = any(str(c.get('name', '')).lower() == 'krigjo25' for c in collab)
+                    if not is_owner and not is_contributor:
+                        LOG.debug(f"Skipping repo {name} as krigjo25 is not a contributor.")
+                        continue
                 
                 utils = GithubUtils()
                 try:
