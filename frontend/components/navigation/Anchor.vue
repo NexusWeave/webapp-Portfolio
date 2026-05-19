@@ -41,8 +41,9 @@
     const isExternal = () => { 
         const dataProps = data.value; 
         if (!dataProps?.href) return false; 
+        const protocols: string[] = ['http', 'https', 'www'];
         const path = dataProps.href.toLowerCase();
-        return path.startsWith('http') || path.startsWith('www');
+        return protocols.some( p => path.startsWith(p));
     };
 
     const isDisabled = () => { const dataProps = data.value; if (!dataProps?.isDisabled) return false; return dataProps.isDisabled  };
