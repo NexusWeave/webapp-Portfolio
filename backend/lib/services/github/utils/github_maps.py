@@ -26,11 +26,21 @@ class GithubUtils:
         date_parser: Callable[[str],object] = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
         anchor_obj : List[Dict[str, str | object ]] = [ { 'name': 'github', 'id': uuid.uuid4().hex, 'href': data['html_url'], 'type': ['github','external'] }]
 
-        repoObject: Dict[str, str | object] = {}
+        repoObject = {}
         
         repoObject['lang'] = languages
         repoObject['anchor'] = anchor_obj
-        repoObject['label'] = data['name']
+        
+        # Refactor repository name: remove 'webapp-sosnet-' and '-cms'
+        raw_name = data['name']
+        if 'webapp-sosnet-' in raw_name:
+            # webapp-sosnet-NAME-cms -> NAME
+            # webapp-sosnet-NAME -> NAME
+            processed_name = raw_name.replace('webapp-sosnet-', '').replace('-cms', '')
+            repoObject['label'] = processed_name
+        else:
+            repoObject['label'] = raw_name
+
         repoObject['repo_id'] = data['id']
         repoObject['owner'] = str(data['owner']['login'])
         repoObject['owner_url'] = data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
