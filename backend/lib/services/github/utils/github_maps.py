@@ -31,13 +31,19 @@ class GithubUtils:
         repoObject['lang'] = languages
         repoObject['anchor'] = anchor_obj
         
-        # Refactor repository name: remove 'webapp-sosnet-' and '-cms'
+        # Refactor repository name: remove 'webapp-' prefix and technology suffix
         raw_name = data['name']
-        if 'webapp-sosnet-' in raw_name:
-            # webapp-sosnet-NAME-cms -> NAME
-            # webapp-sosnet-NAME -> NAME
-            processed_name = raw_name.replace('webapp-sosnet-', '').replace('-cms', '')
-            repoObject['label'] = processed_name
+        if raw_name.startswith('webapp-'):
+            parts = raw_name.split('-')
+            if len(parts) >= 3:
+                # Remove 'webapp-' and the last part (technology)
+                processed_name = "-".join(parts[1:-1])
+                repoObject['label'] = processed_name
+            elif len(parts) == 2:
+                # webapp-NAME -> NAME
+                repoObject['label'] = parts[1]
+            else:
+                repoObject['label'] = raw_name
         else:
             repoObject['label'] = raw_name
 
