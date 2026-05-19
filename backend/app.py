@@ -1,6 +1,5 @@
 #   Standard Libraries
-import os, __future__, uvicorn
-from datetime import datetime
+import os, __future__, uvicorn, datetime
 from typing import Dict, Optional, List, Sequence, Any, Union
 
 #   Third-Party Libraries
@@ -46,7 +45,7 @@ except ValueError as ve:
 app = FastAPI(title = ENVIRONMENT.API_NAME, version = ENVIRONMENT.API_VERSION, lifespan = CONFIG.app_initialization)
 
 CONFIG.middleware_initialization(app, ENVIRONMENT.CORS_ORIGINS)
-LOG.info(f"\'{ENVIRONMENT.__class__.__name__}\' - \'{ENVIRONMENT.API_VERSION}\' loaded \'{ENVIRONMENT.ENVIRONMENT}\'- Environment successfully.") 
+LOG.info(f"'{ENVIRONMENT.__class__.__name__}' - '{ENVIRONMENT.API_VERSION}' loaded '{ENVIRONMENT.ENVIRONMENT}'- Environment successfully.") 
 
 #   Registering Enpoint Services
 VERSION: str = ENVIRONMENT.API_VERSION
@@ -89,9 +88,9 @@ async def get_heavy_data() ->None:
     pass
 
 @app.get(f"{PATH}/announcement/today", response_model=AnnouncementModel, tags=["Announcements"], summary="Get Today's Announcement", description="Fetches today's announcement based on predefined holidays and special occasions.")
-async def get_todays_announcement() -> Dict[str, int | datetime | str]:
+async def get_todays_announcement() -> Dict[str, int | datetime.datetime | str]:
     service: AnnouncementsService = AnnouncementsService()
-    today: datetime = datetime.today()
+    today: datetime.datetime = datetime.datetime.today()
 
     try:
         message: Optional[str] = service.get_celebration_days(today)
@@ -103,7 +102,7 @@ async def get_todays_announcement() -> Dict[str, int | datetime | str]:
         LOG.warn(f"Announcement not found: {e.__class__.__name__} - {e.message}")
         return {"announcement_id": 0, "date": today, "message": e.message}
     
-    response: Dict[str, int | datetime | str] = {"announcement_id": 1, "date": today, "message": message}
+    response: Dict[str, int | datetime.datetime | str] = {"announcement_id": 1, "date": today, "message": message}
 
     return response
 
@@ -123,8 +122,10 @@ async def handle_repositories(request: Request) -> Dict[str, str]:
         await ApiDatabaseBridge.repositories_sync(request, ENVIRONMENT.GITHUB_REST, ENVIRONMENT.GITHUB_PARAMS, ENVIRONMENT.PERSONAL_GITHUB_REST_API, ENVIRONMENT.GITHUB_TOKEN)
 
     except Exception as e:
-        LOG.critical(f"handle_repositories_endpoint : failed with error\n {e.__class__.__name__} - {e}")
-        if ENVIRONMENT.ENVIRONMENT == 'development': return {"code": "500","message": f"{e}"}
+        import traceback
+        error_details = traceback.format_exc()
+        LOG.critical(f"handle_repositories_endpoint : failed with error\n {e.__class__.__name__} - {e}\nTraceback:\n{error_details}")
+        if ENVIRONMENT.ENVIRONMENT == 'development': return {"code": "500","message": f"{e}", "traceback": error_details}
         else : return {"code": "400","message": f"Endpoint was not found"}
 
     return {"message": "All Repositories has been successfully synced with database."}

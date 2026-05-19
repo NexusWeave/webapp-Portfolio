@@ -18,7 +18,10 @@ class GithubUtils:
     async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str | object]]] = None, skip_analysis: bool = False) -> Dict[str, str | object | List[str] | object]:
         """ Maps the repository data to a structured format. """
         is_private: bool = True if data['private'] else False
-        is_collaborator: bool = True if data['owner']['login'] != 'krigjo25' else False
+        
+        # Samarbeid defineres som prosjekter eid av andre, ELLER prosjekter med mer enn én bidragsyter
+        num_collabs = len(collaborators) if collaborators else 0
+        is_collaborator: bool = True if (str(data['owner']['login']).lower() != 'krigjo25' or num_collabs > 1) else False
 
         date_parser: Callable[[str],object] = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
         anchor_obj : List[Dict[str, str | object ]] = [ { 'name': 'github', 'id': uuid.uuid4().hex, 'href': data['html_url'], 'type': ['github','external'] }]
@@ -30,8 +33,9 @@ class GithubUtils:
         repoObject['label'] = data['name']
         repoObject['repo_id'] = data['id']
         repoObject['owner'] = str(data['owner']['login'])
-        repoObject['updated_at'] = date_parser(data['updated_at']).replace(tzinfo=None)
-        repoObject['created_at'] = date_parser(data['created_at']).replace(tzinfo=None)
+        repoObject['owner_url'] = data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
+        repoObject['updated_at'] = date_parser(data['updated_at'])
+        repoObject['created_at'] = date_parser(data['created_at'])
         repoObject['collaborators'] = collaborators if collaborators else []
         repoObject['description'] = data['description'] if data['description'] else "No description provided."
 

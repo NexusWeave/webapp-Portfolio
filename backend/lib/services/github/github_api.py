@@ -1,8 +1,7 @@
 #   Standard Libraries
-import time
-from asyncio import gather
+import time, datetime
 from urllib.parse import urljoin
-from typing import Coroutine, Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional
 
 #   Third-Party Libraries
 import httpx
@@ -28,7 +27,7 @@ class GithubAPI(AsyncAPIClientConfig):
         super().__init__(URL=URL, KEY=KEY)
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': f"{self.API_KEY}"}
 
-    async def fetch_data(self, endpoint:str, params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
+    async def fetch_data(self, endpoint:str, params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime.datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
         """
             Fetching the repositories
             API : https://api.github.com/users/repos
@@ -48,7 +47,7 @@ class GithubAPI(AsyncAPIClientConfig):
         repo: List[Dict[str, str | object | List[str] | object]] = []
         excluded_repositories: List[str] = ['me50', 'code50', 'cs50', 'martininn', 'Husseinabdulameer11']
 
-        date_parser = lambda d: datetime.fromisoformat(d.replace('Z', '+00:00')).replace(tzinfo=None)
+        date_parser = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
 
         while True:
             raw_json = response.json()
@@ -62,14 +61,9 @@ class GithubAPI(AsyncAPIClientConfig):
                 return [] # Returnerer tom liste i stedet for å krasje
 
             validated_data = [data for data in raw_json if data['size'] != 0  
-                              and str(data['owner']['login']).lower() == 'krigjo25'
-                              and not any(word in str(data['name']).lower() for word in excluded_repositories)]
+                              and not any(word.lower() in str(data['name']).lower() or word.lower() in str(data['owner']['login']).lower() for word in excluded_repositories)]
 
             for res in validated_data:
-                # Behandle ett og ett prosjekt med en liten pause for å unngå Rate Limit
-                import asyncio
-                await asyncio.sleep(1.5) # 1.5 sekund pause mellom hvert prosjekt
-
                 name = res['name']
                 owner = res['owner']['login']
                 repo_id = str(res['id'])
@@ -77,14 +71,34 @@ class GithubAPI(AsyncAPIClientConfig):
                 api_updated_at = date_parser(res['updated_at'])
                 db_updated_at = existing_timestamps.get(repo_id)
                 
-                needs_update = db_updated_at is None or api_updated_at > db_updated_at
+                # More aggressive normalization for comparison
+                api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
+                db_comp = db_updated_at.replace(tzinfo=None) if db_updated_at and hasattr(db_updated_at, 'replace') else db_updated_at
+
+                try:
+                    needs_update = db_updated_at is None or api_comp > db_comp
+                except TypeError:
+                    needs_update = True
 
                 lang = []
                 collab = []
                 if needs_update:
+                    # Behandle ett og ett oppdatert/nytt prosjekt med en pause for å unngå Rate Limit
+                    import asyncio
+                    await asyncio.sleep(0.5)
+                    
                     LOG.info(f"Fetching details for updated/new repo: {name}")
-                    lang = await self.fetch_languages(owner, name)
                     collab = await self.fetch_collaborators(owner, name)
+                    
+                    # Verify contribution for non-owned repositories
+                    is_owner = str(owner).lower() == 'krigjo25'
+                    is_contributor = any(str(c.get('name', '')).lower() == 'krigjo25' for c in collab)
+                    
+                    if not is_owner and not is_contributor:
+                        LOG.debug(f"Skipping repo {name} as krigjo25 is not a contributor.")
+                        continue
+                        
+                    lang = await self.fetch_languages(owner, name)
                 
                 utils = GithubUtils()
                 try:
@@ -146,7 +160,11 @@ class GithubAPI(AsyncAPIClientConfig):
         collaborators: List[Dict[str, str]] = []
         for contributor in contributors_data:
              if isinstance(contributor, dict) and 'login' in contributor:
-                collaborators.append({"name": contributor['login'], "collab_id": str(contributor['id'])})
+                collaborators.append({
+                    "name": contributor['login'], 
+                    "collab_id": str(contributor['id']),
+                    "html_url": contributor.get('html_url', f"https://github.com/{contributor['login']}")
+                })
         return collaborators
 
     async def analyze_repository(self,trees_url: str) -> Dict[str, Any]:
