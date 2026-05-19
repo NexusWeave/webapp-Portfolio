@@ -95,7 +95,7 @@ class RepositoryModel(BaseModel):
     @property
     def anchor(self) -> List[Dict[str, Any]]:
         anchors = []
-        if self.repo_url:
+        if self.repo_url and not self.is_private:
             anchors.append({"name": "github", "href": self.repo_url, "type": ["github", "external"]})
         if self.demo_url:
             anchors.append({"name": "webapp", "href": self.demo_url, "type": ["globe", "external"]})
