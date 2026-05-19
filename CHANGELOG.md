@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.23.1...v1.23.2) (2026-05-19)
+
+
+### Bug Fixes
+
+* **frontend:** correct logical reversal and syntax in isExternal ([fb1d990](https://github.com/NexusWeave/webapp-Portfolio/commit/fb1d99004d3e1eb3e2dc351beb6dc97092d57ae6))
+
 ## [1.23.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.23.0...v1.23.1) (2026-05-19)
 
 
