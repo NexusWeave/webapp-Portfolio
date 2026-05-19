@@ -38,7 +38,7 @@ class RepositoryModel(BASE):
 
 class LanguageAssosiationModel(BASE):
 
-    __tablename__: str = "language_repository_association"
+    __tablename__: str = "language_assosiation"
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
     lang_id = Column(Integer, ForeignKey('languages.id'), nullable = False)
@@ -50,7 +50,7 @@ class LanguageAssosiationModel(BASE):
 
 class RepoCollaboratorAssociationModel(BASE):
 
-    __tablename__: str = "repo_collaborator_association"
+    __tablename__: str = "collaboration_assosiation"
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
     repo_id = Column(BigInteger, ForeignKey('repositories.repo_id'), nullable = False)

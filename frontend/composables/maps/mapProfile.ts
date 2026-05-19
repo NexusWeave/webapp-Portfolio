@@ -12,6 +12,9 @@ export const mapProfile = (data: any) => {
             coop: item.coop,
             title: item.title ?? '',
             summary: item.summary,
+            stem: item.stem,
+            path: item.path,
+            id: item.id,
         }
     });
 };

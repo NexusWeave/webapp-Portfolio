@@ -54,11 +54,7 @@ class GithubAPI(AsyncAPIClientConfig):
             
             if not isinstance(raw_json, list):
                 LOG.error(f"Expected list from GitHub API, but got {type(raw_json).__name__}: {raw_json}")
-                # Kommentert ut for å unngå 500-feil når API-et tuller
-                # if isinstance(raw_json, dict) and 'message' in raw_json:
-                #    raise Exception(f"GitHub API Error: {raw_json['message']}")
-                # raise Exception(f"Unexpected API response format from {endpoint}")
-                return [] # Returnerer tom liste i stedet for å krasje
+                return []
 
             validated_data = [data for data in raw_json if data['size'] != 0  
                               and not any(word.lower() in str(data['name']).lower() or word.lower() in str(data['owner']['login']).lower() for word in excluded_repositories)]
@@ -177,7 +173,7 @@ class GithubAPI(AsyncAPIClientConfig):
             LOG.error(f"Error analyzing repository: {e.__class__.__name__} - {str(e)}\n")
             raise e
         
-        analysis = response.json()
+        analysis: Dict[str, Any] = response.json()
         if not isinstance(analysis, dict):
             LOG.error(f"Expected dict for repository analysis, but got {type(analysis).__name__}")
             return {"tree": []}

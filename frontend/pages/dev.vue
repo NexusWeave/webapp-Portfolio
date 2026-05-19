@@ -51,8 +51,16 @@
 
     //  --- Conent logic
     const devPath = 'profileInfo';
-    const devCache = 'profileCache';
-    const biography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(devPath, devCache, mapProfile);
+    const devCache = 'devProfileCache';
+    const rawBiography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(devPath, devCache, mapProfile);
+    const biography = computed(() => {
+        if (!rawBiography.value) return [];
+        return rawBiography.value.filter(item => 
+            item.stem === 'dev-profile' || 
+            item.path?.includes('dev-profile') || 
+            item.id?.includes('dev-profile')
+        );
+    });
 
     //  --- Progress Bar Logic
     const { updateFromRepositories } = useLanguageStore();

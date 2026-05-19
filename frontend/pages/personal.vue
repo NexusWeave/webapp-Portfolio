@@ -1,17 +1,5 @@
 <template>
     <section class="flex-column">
-        <article class="article-wrapper">
-            <h2> Mine Personlige Logger </h2>
-            <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
-                <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
-                    <span> {{ currentPage }} / {{ totalPages }}</span>
-                <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
-            </section>
-
-            <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
-                <section v-for="post in paginitionData" :key="post.id" class="blog-content"> <ArticleHead :article="post" /> </section>
-            </section>
-        </article>
         <section class="flex-column-justify-center-align-center">
             <Suspense>
                 <template #default>
@@ -47,13 +35,20 @@
 
     //  --- Content fetching logic
     const profilePath = 'profileInfo';
-    const profileCache = 'profileCache';
-    const biography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(profilePath, profileCache, mapProfile);
+    const profileCache = 'personalProfileCache';
+    const rawBiography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(profilePath, profileCache, mapProfile);
+    const biography = computed(() => {
+        if (!rawBiography.value) return [];
+        return rawBiography.value.filter(item => 
+            item.stem === 'personal-profile' || 
+            item.path?.includes('personal-profile') || 
+            item.id?.includes('personal-profile')
+        );
+    });
 
     const personalPostPath = 'personalPosts';
-    const personalPostCache = 'personalCache';
+    const personalPostCache = 'personalPostCache';
     const personalPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(personalPostPath, personalPostCache, mapBlogData);
-    
     
     //  --- Pagination Logic
     const num:number = 3;

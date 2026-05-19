@@ -1,6 +1,6 @@
 
 //  --- Import & types logic
-import { computed } from 'vue';
+import { ref, computed, type Ref } from 'vue';
 import { useRouter } from '#app';
 import type { RouterItem } from '~/types/navigation';
 
@@ -11,15 +11,19 @@ import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/c
 type CMSArticleCollectionItem = AcademicCollectionItem | AchievementsCollectionItem;
 
 //  --- Data Fetching Logic
-export async function fetchCollection<T, R>(path:any, cacheKey:string, mapper: (data:T[]) => R): Promise<Ref<R>>
+export async function fetchCollection<T, R>(path:any, cacheKey:string, mapper: (data:T[]) => R, queryModifier?: (query: any) => any): Promise<Ref<R>>
 {
-    const {data, error} = await useAsyncData(cacheKey, () =>  {return queryCollection(path).all();});
+    const {data, error} = await useAsyncData(cacheKey, () =>  {
+        let query = queryCollection(path);
+        if (queryModifier) query = queryModifier(query);
+        return query.all();
+    });
     
     // --- Debugging
-    // console.log("FetchCollection - Path:", path);
-    // console.log("FetchCollection - Data:", data.value);
-    if (error.value) console.log("FetchCollection - Error:", error.value);
-    return (data.value ? ref(mapper(data.value)) : ref([])) as Ref<R>;
+    // console.log(`FetchCollection [${path}] - Data:`, data.value);
+    if (error.value) console.log(`FetchCollection [${path}] - Error:`, error.value);
+
+    return computed(() => (data.value ? mapper(data.value as T[]) : [] as any)) as Ref<R>;
 }
 
 //  --- Data Processing Logic
