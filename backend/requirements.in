@@ -1,7 +1,8 @@
 httpx
 uvicorn
-fastAPI
+fastAPI[standard]
 asyncpg
+aiosqlite
 aiofiles
 pydantic
 pip-tools

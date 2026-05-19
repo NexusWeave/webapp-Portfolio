@@ -1,16 +1,27 @@
-import asyncio
+import asyncio, os
 from logging.config import fileConfig
 
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
+from dotenv import load_dotenv
 
 from alembic import context
 
 from lib.models.database_models.GithubModel import RepositoryModel
+
+load_dotenv()
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+def get_url():
+    user = os.getenv("PG_USER")
+    password = os.getenv("PG_PASSWORD")
+    host = os.getenv("PG_HOST")
+    database = os.getenv("PG_DATABASE")
+    return f"postgresql+asyncpg://{user}:{password}@{host}/{database}?ssl=require"
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -41,7 +52,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = get_url()
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -65,9 +76,11 @@ async def run_async_migrations() -> None:
     and associate a connection with the context.
 
     """
+    section = config.get_section(config.config_ini_section, {})
+    section["sqlalchemy.url"] = get_url()
 
     connectable = async_engine_from_config(
-        config.get_section(config.config_ini_section, {}),
+        section,
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )

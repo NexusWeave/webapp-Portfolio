@@ -4,7 +4,7 @@ from typing import List
 from datetime import datetime, UTC
 
 # Third-Party Libraries
-import pytest,httpx
+import pytest, httpx
 from dotenv import load_dotenv
 from httpx import ASGITransport
 from sqlalchemy.future import select
@@ -12,7 +12,7 @@ from sqlalchemy.future import select
 
 #   Internal Libraries
 from lib.services.github.github_api import GithubAPI
-from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel
+from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel, CollaboratorModel
 
 from app import app
 load_dotenv()
@@ -45,7 +45,7 @@ class TestIntegrationAPIs:
         ENDPOINT = "user/repos"
 
         try:
-            GAPI = GithubAPI(KEY = GITHUB_TOKEN)
+            GAPI = GithubAPI(URL="https://api.github.com", KEY = GITHUB_TOKEN)
 
             data = await GAPI.fetch_data(endpoint = ENDPOINT)
 
@@ -53,7 +53,7 @@ class TestIntegrationAPIs:
             assert isinstance(data, List)
 
             
-            assert 'date' in data[0]
+            assert 'updated_at' in data[0]
             assert 'lang' in data[0]
             assert 'owner' in data[0]
             assert 'label' in data[0]
@@ -89,45 +89,43 @@ class TestDatabaseIntegration:
         db_session.add_all([python_lang, js_lang])
         await db_session.commit()
 
-        js_assosiation = LanugageRepositoryAssosiationModel( language = js_lang, code_bytes=67890)
-        python_assosiation = LanugageRepositoryAssosiationModel( language = python_lang, code_bytes=12345)
+        js_assosiation = LanguageAssosiationModel( language = js_lang, code_bytes=67890)
+        python_assosiation = LanguageAssosiationModel( language = python_lang, code_bytes=12345)
         
         #   Creating a test RepositoryModel instance
         test_data = RepositoryModel(
-                repo_id="test-repo-12345", 
+                repo_id=123456789, 
                 label="my-test-repo",
                 owner="dev_user", 
-                date=datetime.now(UTC),
+                created_at=datetime.now(UTC),
                 description="En beskrivelse for integrasjonstesten.",
                 repo_url="https://github.com/dev_user/test-repo",
                 collaborators=[collab_one, collab_two],
-                assosiations=[python_assosiation, js_assosiation],
+                lang_assosiations=[python_assosiation, js_assosiation],
             )
         
         db_session.add(test_data)
         await db_session.commit()
 
-        result = await db_session.execute(select(RepositoryModel).where(RepositoryModel.repo_id == "test-repo-12345"))
+        result = await db_session.execute(select(RepositoryModel).where(RepositoryModel.repo_id == 123456789))
         retrieved_item = result.scalars().first()
         
         # Bruker repo_id for sjekk av sletting senere
-        REPO_ID = "test-repo-12345"
+        REPO_ID = 123456789
 
         assert retrieved_item is not None, "Fant ikke elementet etter lagring"
         assert retrieved_item.owner == "dev_user"
         assert retrieved_item.label == "my-test-repo"
-        # FIKS: Sjekker bytes feltet
-        assert retrieved_item.bytes == 12345 + 67890
-        # FIKS: Sjekker collaborators relasjonen
+        
+        # Sjekker collaborators relasjonen
         assert len(retrieved_item.collaborators) == 2
-        # FIKS: Bruker det korrekte relasjonsnavnet 'assosiations'
-        assert len(retrieved_item.assosiations) == 2
+        # Sjekker lang_assosiations relasjonen
+        assert len(retrieved_item.lang_assosiations) == 2
         assert "En beskrivelse" in retrieved_item.description
 
-        # FIKS: Bruker korrekte kolonne- og relasjonsnavn (language.language og code_bytes)
         found_data = {
             assoc.language.language: assoc.code_bytes 
-            for assoc in retrieved_item.assosiations
+            for assoc in retrieved_item.lang_assosiations
         }
         assert found_data["Python"] == 12345
         assert found_data["JavaScript"] == 67890
@@ -162,7 +160,7 @@ class TestDatabaseIntegration:
         assert len(collaborators_gone.scalars().all()) == 0, "CollaboratorModel-objektene skulle vært slettet via cascade"
         
         # 8. VERIFISER AT ASSOSIASJONS-OBJEKTENE BLE SLETTET
-        associations_gone = await db_session.execute(select(LanugageRepositoryAssosiationModel))
+        associations_gone = await db_session.execute(select(LanguageAssosiationModel))
         assert len(associations_gone.scalars().all()) == 0, "Assosiasjons-objektene skulle vært slettet"
 
     @pytest.mark.asyncio

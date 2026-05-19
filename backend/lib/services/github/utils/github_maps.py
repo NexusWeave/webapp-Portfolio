@@ -15,23 +15,43 @@ LOG.file_handler()
 class GithubUtils:
 
     @staticmethod
-    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str | object]]] = None) -> Dict[str, str | object | List[str] | object]:
+    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str | object]]] = None, skip_analysis: bool = False) -> Dict[str, str | object | List[str] | object]:
         """ Maps the repository data to a structured format. """
         is_private: bool = True if data['private'] else False
-        is_collaborator: bool = True if data['owner']['login'] != 'krigjo25' else False
+        
+        # Samarbeid defineres som prosjekter eid av andre, ELLER prosjekter med mer enn én bidragsyter
+        num_collabs = len(collaborators) if collaborators else 0
+        is_collaborator: bool = True if (str(data['owner']['login']).lower() != 'krigjo25' or num_collabs > 1) else False
 
         date_parser: Callable[[str],object] = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
         anchor_obj : List[Dict[str, str | object ]] = [ { 'name': 'github', 'id': uuid.uuid4().hex, 'href': data['html_url'], 'type': ['github','external'] }]
 
-        repoObject: Dict[str, str | object] = {}
+        repoObject = {}
         
         repoObject['lang'] = languages
         repoObject['anchor'] = anchor_obj
-        repoObject['label'] = data['name']
+        
+        # Refactor repository name: remove 'webapp-' prefix and technology suffix
+        raw_name = data['name']
+        if raw_name.startswith('webapp-'):
+            parts = raw_name.split('-')
+            if len(parts) >= 3:
+                # Remove 'webapp-' and the last part (technology)
+                processed_name = "-".join(parts[1:-1])
+                repoObject['label'] = processed_name
+            elif len(parts) == 2:
+                # webapp-NAME -> NAME
+                repoObject['label'] = parts[1]
+            else:
+                repoObject['label'] = raw_name
+        else:
+            repoObject['label'] = raw_name
+
         repoObject['repo_id'] = data['id']
         repoObject['owner'] = str(data['owner']['login'])
-        repoObject['updated_at'] = date_parser(data['updated_at']).replace(tzinfo=None)
-        repoObject['created_at'] = date_parser(data['created_at']).replace(tzinfo=None)
+        repoObject['owner_url'] = data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
+        repoObject['updated_at'] = date_parser(data['updated_at'])
+        repoObject['created_at'] = date_parser(data['created_at'])
         repoObject['collaborators'] = collaborators if collaborators else []
         repoObject['description'] = data['description'] if data['description'] else "No description provided."
 
@@ -39,12 +59,20 @@ class GithubUtils:
 
         repoObject['is_private'] = is_private
 
-        track_stack = await GithubUtils.track_project_stack(str(data['default_branch']), str(data['trees_url']), n=1)
+        if not skip_analysis:
+            track_stack = await GithubUtils.track_project_stack(str(data['default_branch']), str(data['trees_url']), n=1)
 
-        repoObject['is_backend'] = track_stack.get('is_backend', False)
-        repoObject['is_frontend'] = track_stack.get('is_frontend', False)
-        repoObject['is_fullstack'] = track_stack.get('is_fullstack', False)
+            repoObject['is_backend'] = track_stack.get('is_backend', False)
+            repoObject['is_frontend'] = track_stack.get('is_frontend', False)
+            repoObject['is_fullstack'] = track_stack.get('is_fullstack', False)
+        else:
+            # Default values if analysis is skipped (will be handled by upsert logic if repo exists)
+            repoObject['is_backend'] = False
+            repoObject['is_frontend'] = False
+            repoObject['is_fullstack'] = False
+            
         repoObject['is_collaborator'] = is_collaborator
+        repoObject['needs_full_sync'] = not skip_analysis
 
         return repoObject
 
@@ -67,10 +95,21 @@ class GithubUtils:
 
         github = GithubAPI(URL=URL, KEY=TOKEN)
         tree_path = tree_path.replace("{/sha}", f"/{branch}?recursive={n}")
-        repo_tree:Dict[str, Any] = await github.analyze_repository(tree_path)
-        tree: List[Dict[str, Any]] = repo_tree['tree']
+        
+        LOG.info(f"Analyzing repository stack: {tree_path}")
+        try:
+            repo_tree:Dict[str, Any] = await github.analyze_repository(tree_path)
+            if not isinstance(repo_tree, dict) or 'tree' not in repo_tree:
+                 LOG.error(f"Unexpected tree format for {tree_path}")
+                 return {}
+            tree: List[Dict[str, Any]] = repo_tree['tree']
+        except Exception as e:
+            LOG.error(f"Failed to fetch tree for {tree_path}: {str(e)}")
+            return {}
+        
         if not tree:
-            raise ValueError(f"No tree data found for repository {branch}/{tree_path}.")
+            LOG.warn(f"No tree data found for repository at {tree_path}.")
+            return {}
 
         frontend_extensions:List[str] = [
             '.html', '.htm', '.css', '.scss', '.sass', '.less', 

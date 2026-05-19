@@ -2,7 +2,7 @@
     <section class="flex-column-align-items-center">
         <h3>{{ data.label }}</h3>
         <span>(<b>{{ data.bytes }} {{ data.type }}</b>)</span>
-        <progress :value="data.bytes" :class="cls" :max="num"></progress>
+        <progress :value="data.original || data.bytes" :class="cls" :max="num"></progress>
     </section>
 
 </template>
@@ -12,11 +12,11 @@
     import type { ProgressProps } from '@/types/props';
 
     //  Props Logic
-    const props = defineProps<ProgressProps>();
+    const props = defineProps<ProgressProps & { max?: number }>();
     const data = computed(() => props.data);
     const cls = computed(() => props.cls || []);
 
-    const num = 1024 * 10;
+    const num = computed(() => props.max || 1024 * 10);
 
     //  Debugging Logic
     //console.log('Tech:', cls.value);

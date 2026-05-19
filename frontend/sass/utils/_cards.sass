@@ -1,9 +1,10 @@
 // Card styles, with clear separation of concerns
 @use '../mix/mixins' as mix
+@use '../colors/colors' as color
 
 .card-container
     p
-        font-size: 1em
+        font-size: 1rem
         text-align: justify
         
     h3, h4
@@ -15,13 +16,13 @@
         ul
             li
                 cursor: default
-                padding-inline: 1em
-                border-radius: .5em
+                padding-inline: 1rem
+                border-radius: .5rem
                 border: 1px solid black
         
         
-    max-inline-size: 24em
-    border-radius: .5em
+    max-inline-size: 24rem
+    border-radius: .5rem
     border: 1px solid black
 
     //@include mix.link-styles()
@@ -29,46 +30,136 @@
     
 .timeline-card
     h3
-        margin-inline: 1em
+        margin-inline: 1rem
         @include mix.font-style("Roboto")
 
 .business-card
+    &.grid-layout
+        .card-header
+            figure
+                figcaption
+                    display: none
+
+                margin: 0
+
+            margin: 0
+            padding: 0
+            display: flex
+            inline-size: 100%
+            min-block-size: 0
+            grid-area: header
+            align-items: center
+            justify-content: space-between
+
+            .tech-img, .tech-figure
+                inline-size: 2.2rem !important
+                block-size: 2.2rem !important
+                object-fit: contain !important
+                margin: 0 !important
+
+            .date-container
+                margin: 0
+                display: block
+                text-align: right
+                margin-left: auto
+
+        .card-content
+            h3
+                margin: 0
+                padding: 0.5rem 0
+            p
+                margin-block: 0.25rem
+
+            padding: 0
+            grid-area: content
+            
+        .card-nav
+            grid-area: nav
+            padding-block: 0.25rem
+            
+        .card-footer
+            h4
+                font-size: 0.9rem
+                margin-block-end: 0.25rem
+            
+            .tech-img, .tech-figure
+                margin: 0 !important
+                inline-size: 2rem !important
+                block-size: 2rem !important
+                object-fit: contain !important
+
+            figure
+                figcaption
+                    display: none
+
+                margin: 0
+
+            grid-area: footer
+            padding: 0
+            margin: 0
+
+        gap: 0.25rem
+        display: grid
+        padding: 0.75rem
+        align-content: center
+        grid-template-rows: auto auto auto 1fr
+        grid-template-areas: "header" "content" "nav" "footer"
+        
+
     p
-        font-size: 1em
+        font-size: 1rem
         text-align: center
+        margin: 0.25rem 0
 
     img 
-        inline-size: 2.2em
         border-radius: 0
 
     section
-        margin-block-end: 0em
+        margin-block-end: 0rem
 
-    section:first-child
-        block-size: 3em
     .card-content
         .icon
             padding: 0
-            font-size: 2em
+            font-size: 2rem
 
         h3
             span.icon
                 padding: 0
-                font-size: 1em
+                font-size: 1rem
             inline-size: 100%
 
     .tech-container
         img
-            inline-size: 2em
-            block-size: 2em
+            inline-size: 1.5rem
+            block-size: 1.5rem
             object-fit: contain
 
-    inline-size: 23em
-    max-block-size: 20em
+    inline-size: 23rem
+    max-block-size: 23rem
     border: 1px solid black
-    //@include mix.link-styles()
+    @include mix.link-styles(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
     @include mix.card-shadow-box()
     @include mix.list-inline-reset()
     
-    @include mix.background-image(9em, "/media/images/cards/portfolio-card.svg")
+    .credits
+        font-size: 0.9rem
+        margin-block: 0.5rem
+        
+        .collab-name
+            margin: 0.1rem 0.25rem
+            span
+                display: inline-flex
+                align-items: center
+                flex-wrap: wrap
+                
+                a
+                    display: inline-flex
+                    align-items: center
+                    gap: 0.2rem
+                    
+                    .icon
+                        font-size: 1.1rem
+                        margin: 0
+
+    @include mix.background-image(9rem, "/media/images/cards/portfolio-card.svg")
     

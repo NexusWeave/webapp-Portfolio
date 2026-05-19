@@ -12,7 +12,7 @@ from sqlalchemy.future import select
 
 #   Internal Libraries
 from lib.services.heavy.heavy_api import HeavyAPI
-from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanugageRepositoryAssosiationModel, CollaboratorModel
+from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel, CollaboratorModel
 
 from app import app
 load_dotenv()

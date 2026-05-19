@@ -6,10 +6,10 @@
                 <section class="dev-skill flex-column-justify-center-align-center" >
                     <h2> Min Kode Aktivitet</h2>
                     <span> Aktivteten er basert på min GitHub-aktivitet og oppdateres fortløpende for å reflektere min nåværende engasjement og bidrag til ulike prosjekter. </span>
-                    <span> Aktiviteten er målt antall KB</span>
+                    <span> Aktiviteten er målt i KB og MB</span>
                     <span> </span>
                     <section class="flex-wrap-row-justify-space-evenly">
-                        <UtilsProgress v-for="(data, i) in formattedLanguages" :key="i"  :data="data" :cls="[data.label.toLowerCase()]" />
+                        <UtilsProgress v-for="(data, i) in formattedLanguages" :key="i"  :data="data" :cls="[data.label.toLowerCase()]" :max="maxProgress" />
                     </section>
                 </section>
             </template>
@@ -40,21 +40,40 @@
     definePageMeta( { order: 2, label: 'Teknisk Profil', description: "En detaljert side om Kristoffers tekniske kompetanse. Viser sanntids GitHub-aktivitet og biografi med fokus på teknisk utvikling og teknologier." });
 
     //  --- Import & types logic
-    import { fetchCollection } from '#imports';
+    import { fetchCollection, fetchRepositories } from '#imports';
     import { mapProfile } from '~/composables/maps/mapProfile';
     import { useLanguageStore } from '@/stores/languageBytesStore';
 
+    import type { RepositoryData } from '~/types/props';
     // @ts-ignore - TypeScript error: Cannot find module '@nuxt/content' or its corresponding type declarations.
     import type { ProfileInformationCollectionItem } from '@nuxt/content';
 
 
     //  --- Conent logic
     const devPath = 'profileInfo';
-    const devCache = 'profileCache';
-    const biography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(devPath, devCache, mapProfile);
+    const devCache = 'devProfileCache';
+    const rawBiography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(devPath, devCache, mapProfile);
+    const biography = computed(() => {
+        if (!rawBiography.value) return [];
+        return rawBiography.value.filter(item => 
+            item.stem === 'dev-profile' || 
+            item.path?.includes('dev-profile') || 
+            item.id?.includes('dev-profile')
+        );
+    });
 
     //  --- Progress Bar Logic
+    const { updateFromRepositories } = useLanguageStore();
     const { formattedLanguages } = storeToRefs(useLanguageStore());
+    const { repo } = await fetchRepositories<RepositoryData>('github');
+
+    const maxProgress = computed(() => {
+        if (formattedLanguages.value.length === 0) return 10240;
+        return Math.max(...formattedLanguages.value.map(l => l.original || l.bytes));
+    });
+
+    onMounted(() => { if (repo.value) updateFromRepositories(repo.value); });
+    watch(() => repo.value, (newVal) => { if (newVal) updateFromRepositories(newVal); });
 
     //  --- Debugging Logic ---
     //console.log(dev.value);

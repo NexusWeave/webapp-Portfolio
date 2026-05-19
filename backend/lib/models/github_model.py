@@ -1,88 +1,82 @@
 #   Standard Dependencies
-import __future__, uuid
-from datetime import datetime
-from typing import Dict, List, Optional
+import __future__, datetime
+from typing import Dict, List, Optional, Any
 
 #   Third Party Dependencies
-from pydantic import BaseModel, Field, ConfigDict, computed_field
+from pydantic import BaseModel, Field, ConfigDict, computed_field, model_validator
 
-
-class LanguageImage(BaseModel):
-    id : int
-    alt: str
-    src: str
-    type: str = "svg"
 
 class LanguageModel(BaseModel):
-    id: int = Field(..., description = "Language ID", json_schema_extra = {"example":1})
-    language: str = Field(..., description = "Language Name", json_schema_extra = {"example":"Python"})
+    label: str
+    bytes: int
+
+    @model_validator(mode='before')
+    @classmethod
+    def map_from_db(cls, data: Any) -> Any:
+        # Check if it's a SQLAlchemy object with language and code_bytes
+        if hasattr(data, 'language') and hasattr(data, 'code_bytes'):
+            lang_val = data.language
+            # If data.language is an object with its own 'language' attribute
+            if hasattr(lang_val, 'language'):
+                label = lang_val.language
+            else:
+                label = str(lang_val)
+            
+            return {
+                "label": label,
+                "bytes": data.code_bytes
+            }
+        
+        # Fallback for dicts (e.g. from API or manual creation)
+        if isinstance(data, dict):
+            return {
+                "label": data.get("label") or data.get("language") or data.get("name"),
+                "bytes": data.get("bytes") or data.get("code_bytes") or 0
+            }
+        
+        return data
 
     model_config = ConfigDict(from_attributes = True)
 
-class LanguageAssociationModel(BaseModel):
-    lang_id: int = Field(..., description = "Language ID", json_schema_extra = {"example":1})
-    code_bytes: int = Field(..., description = "Code Bytes", json_schema_extra = {"example":2048})
-    repo_id: int = Field(..., description = "Repository ID", json_schema_extra = {"example":"123456"})
-
-    #   Relationships
-    language: LanguageModel
-
-    model_config = ConfigDict(from_attributes=True)
-
 class RepositoryModel(BaseModel):
-    
-    #   Initialize methods and database
     label: str = Field(..., description = "Repository Name", json_schema_extra = {"example":"my-repo"})
     owner: str = Field(..., description = "Repository Owner", json_schema_extra = {"example":"username"})
-    created_at: datetime = Field(..., description = "Creation Timestamp", json_schema_extra = {"example":f"{datetime.now()}"})
-    id: int = Field(..., alias = "repo_id", description = "Unique Repository ID", json_schema_extra = {"example":"1234567890"})
+    owner_url: Optional[str] = Field(None, description = "Owner Profile URL", json_schema_extra = {"example":"https://github.com/username"})
+    created_at: datetime.datetime = Field(..., description = "Creation Timestamp", json_schema_extra = {"example":f"{datetime.datetime.now()}"})
+    id: int = Field(..., validation_alias = "repo_id", description = "Unique Repository ID", json_schema_extra = {"example":"1234567890"})
     description: Optional[str] = Field(None, description = "Repository Description", json_schema_extra = {"example":"This is my repository."})
-    demo_url: Optional[str] = Field(None, description = "Demo URL", json_schema_extra = {"example":"https://demo.krigjo25.com"}, exclude= True)    
+    
     repo_url: str = Field(..., description = "Repository URL", json_schema_extra = {"example":"https://github.com/username/my-repo"}, exclude = True)
+    demo_url: Optional[str] = Field(None, description = "Demo URL", json_schema_extra = {"example":"https://demo.url"}, exclude = True)
     youtube_url: Optional[str] = Field(None, description = "YouTube URL", json_schema_extra = {"example":"https://youtube.com/my-repo"}, exclude= True)
-    updated_at: Optional[datetime] = Field(None, description = "Last Update Timestamp", json_schema_extra = {"example":f"{datetime.now()}"},exclude= True)
+    updated_at: Optional[datetime.datetime] = Field(None, description = "Last Update Timestamp", json_schema_extra = {"example":f"{datetime.datetime.now()}"},exclude= True)
 
     is_private: bool = Field(..., description = "Private Repository", json_schema_extra = {"example":False}, exclude= True)
-    is_secret : bool = Field(..., description = "Is Secret Repository", json_schema_extra = {"example":False}, exclude= True)
-    is_backend: bool = Field(..., description = "Is Backend Repository", json_schema_extra = {"example":False}, exclude= True)
-    is_frontend: bool = Field(..., description = "Is Frontend Repository", json_schema_extra = {"example":False}, exclude= True)
-    is_fullstack: bool = Field(..., description = "Is Fullstack Repository", json_schema_extra = {"example":True}, exclude= True)
-    is_collaborator: bool = Field(..., description = "Is Collaborator Repository", json_schema_extra = {"example":False}, exclude= True)
+    is_secret: bool = Field(..., description = "Secret Repository", json_schema_extra = {"example":False}, exclude= True)
     
-
-    lang_assosiations: List[LanguageAssociationModel] = Field(..., exclude= True)
-
-    @computed_field
-    def languages(self) -> List[Dict[str, str | int | Dict[str, str] | object]]:
-        
-        languages: List[Dict[str, str | int | Dict[str, str] | object]]= []
-
-        for assec in self.lang_assosiations:
-            
-            if assec.language.id == assec.lang_id and self.id == assec.repo_id:
-                languages.append( { "bytes": assec.code_bytes, "label": assec.language.language,  })
-        return languages
+    is_backend: bool = Field(False, description = "Backend Repository", json_schema_extra = {"example":False}, exclude=True)
+    is_frontend: bool = Field(False, description = "Frontend Repository", json_schema_extra = {"example":False}, exclude=True)
+    is_fullstack: bool = Field(False, description = "Fullstack Repository", json_schema_extra = {"example":False}, exclude=True)
+    is_collaborator: bool = Field(False, description = "Collaborator Repository", json_schema_extra = {"example":False}, exclude=True)
     
-    @computed_field
-    def anchor(self) -> List[Dict[str, str | object]]:
-
-        ANCHOR: List[Dict[str, str | object]] = []
-
-        if self.is_private == 0:
-            ANCHOR.append( { 'name': 'github', 'id': uuid.uuid4().hex, 'href': self.repo_url } )
-        if self.demo_url: ANCHOR.append({ 'name': 'globe', 'id': uuid.uuid4().hex, 'href': self.demo_url })
-        if self.youtube_url: ANCHOR.append( { 'name': 'ytube', 'id': uuid.uuid4().hex, 'href': self.youtube_url })
-
-        return ANCHOR
+    languages: List[LanguageModel] = Field(..., validation_alias="lang_assosiations")
+    collaborator_associations: List[Any] = Field(..., exclude=True)
 
     @computed_field
-    def name(self) -> str:
-        label: str = self.label
-        return label
+    @property
+    def collaborators(self) -> List[Dict[str, str]]:
+        return [
+            {
+                "name": assoc.collaborator.name,
+                "profile_url": assoc.collaborator.profile_url
+            }
+            for assoc in self.collaborator_associations
+        ]
 
     @computed_field
+    @property
     def flags(self) -> Dict[str, bool]:
-        list_of_dict: List[Dict[str, bool]] = []
+        list_of_dict = []
         if self.is_backend: list_of_dict.append({"backend": self.is_backend})
         if self.is_frontend: list_of_dict.append({"frontend": self.is_frontend})
         if self.is_fullstack: list_of_dict.append({"fullstack": self.is_fullstack})
@@ -90,5 +84,23 @@ class RepositoryModel(BaseModel):
 
         if not list_of_dict: list_of_dict.append({'misc': True})
         return {k: v for d in list_of_dict for k, v in d.items()}
+
+    @computed_field
+    @property
+    def date(self) -> Dict[str, str]:
+        # Frontend expects data.date.date
+        return {"date": self.created_at.strftime("%Y-%m-%d")}
+
+    @computed_field
+    @property
+    def anchor(self) -> List[Dict[str, Any]]:
+        anchors = []
+        if self.repo_url and not self.is_private:
+            anchors.append({"name": "github", "href": self.repo_url, "type": ["github", "external"]})
+        if self.demo_url:
+            anchors.append({"name": "webapp", "href": self.demo_url, "type": ["globe", "external"]})
+        if self.youtube_url:
+            anchors.append({"name": "youtube", "href": self.youtube_url, "type": ["ytube", "external"]})
+        return anchors
 
     model_config = ConfigDict(from_attributes = True)

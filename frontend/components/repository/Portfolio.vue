@@ -3,14 +3,18 @@
         <h2>Tekniske Prosjekter</h2>
         
         <section v-if="hasProjects" class="flex-wrap-column">
-            <p>Filtrer prosjekter etter type:</p>
-        
-            <section class="flex-wrap-row-justify-center">
-                <NavigationButton v-for="(btn, i) in buttons" :key="i" :data="btn" :class="btn?.cls"/>
-            </section>
+            <template v-if="hasMultipleCategories">
+                <p>Filtrer prosjekter etter type:</p>
+            
+                <section class="flex-wrap-row-justify-center">
+                    <template v-for="(btn, i) in buttons" :key="i">
+                        <NavigationButton v-if="shouldShowButton(btn)" :data="btn" :class="btn?.cls"/>
+                    </template>
+                </section>
+            </template>
 
-            <section class="flex-wrap-row-justify-space-evenly" v-if="totalPages > num">
-                <NavigationButton v-if="currentPage > num" :data="prevPage" :class="['button', 'pagination-btn']"/>
+            <section v-if="totalPages > 1" class="flex-wrap-row-justify-space-evenly">
+                <NavigationButton v-if="currentPage > 1" :data="prevPage" :class="['button', 'pagination-btn']"/>
                 <span>Side {{ currentPage }} / {{ totalPages }}</span>
                 <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :class="['button', 'pagination-btn']"/>
             </section>
@@ -52,27 +56,45 @@
     const currentPage = ref<number>(num);
     const type: Ref<string> = ref<string>('0');
 
-    const paginationData =  computed(() =>
-    {
-        if (!repo.value) return;
-
-        const n: number = 9;
-
-        const start = (currentPage.value - num) * n;
-        const end = start + n;
-
-        totalPages.value = Math.ceil(repo.value.length / n);
-
-        if (type.value != '0') { 
-            const data = repo.value.filter((item: any) => item.flags[type.value] === true);
-            currentPage.value = 1;
-            totalPages.value = Math.ceil(data.length / n);
-            return data.slice(start, end) ?? null; }
-        return  repo.value.slice(start, end) ?? null;
+    const filteredRepo = computed(() => {
+        if (!repo.value) return [];
+        if (type.value === '0') return repo.value;
+        return repo.value.filter((item: any) => item?.flags?.[type.value] === true);
     });
 
+    const paginationData = computed(() => {
+        const n: number = 9;
+        const start = (currentPage.value - num) * n;
+        const end = start + n;
+        return filteredRepo.value?.slice(start, end) ?? [];
+    });
+
+    watch(filteredRepo, (newVal) => {
+        const n: number = 9;
+        const length = newVal?.length || 0;
+        totalPages.value = Math.ceil(length / n);
+        if (currentPage.value > totalPages.value) {
+            currentPage.value = Math.max(1, totalPages.value);
+        }
+    }, { immediate: true });
+
     //  --- Flags & Computed Logic
-    const hasProjects = computed(() => !!paginationData.value && paginationData.value.length > 0);
+    const hasProjects = computed(() => !!repo.value && repo.value.length > 0);
+    const hasMultipleCategories = computed(() => {
+        if (!repo.value) return false;
+        // Sjekk kategorier (ekskludert misc og reset)
+        const categories = ['backend', 'frontend', 'fullstack', 'collaborator'];
+        const activeCategories = categories.filter(cat => 
+            repo.value?.some((item: any) => {
+                if (cat === 'collaborator') {
+                    const hasCollabs = (item?.collaborators?.length || 0) > 1;
+                    return item?.flags?.collaborator === true || hasCollabs;
+                }
+                return item?.flags?.[cat] === true;
+            })
+        );
+        return activeCategories.length > 1;
+    });
 
     //  --- Watchers
     watch(() => currentPage.value, (newValue) => { currentPage.value = newValue; });
@@ -80,6 +102,26 @@
     //  --- Navigation Logic
     const nextPage = computed<ButtonItem>(() => ({label: 'Neste', action: () => changePage(currentPage.value + num) }));
     const prevPage = computed<ButtonItem>(() => ({ label: 'Forrige', action: () => changePage(currentPage.value - num) }));
+    
+    function shouldShowButton(btn: ButtonItem) {
+        if (!repo.value || !btn.cls) return false;
+        if (btn.label === 'reset' || btn.label === 'Diverse') return true;
+        
+        // Finn hvilken flag-nøkkel knappen representerer basert på class
+        const filterType = btn.cls.find(c => ['backend', 'frontend', 'fullstack', 'collaborator', 'misc'].includes(c));
+        if (!filterType) return true;
+
+        // Spesialhåndtering for samarbeidsprosjekter (sjekker både flag og faktisk innhold)
+        if (filterType === 'collaborator') {
+            return repo.value.some((item: any) => {
+                const hasCollabs = (item?.collaborators?.length || 0) > 1;
+                return item?.flags?.collaborator === true || hasCollabs;
+            });
+        }
+
+        return repo.value.some((item: any) => item?.flags?.[filterType] === true);
+    }
+
     const buttons = computed<ButtonItem[]>(() => [ 
         { label: 'Diverse', cls: ['button', 'filter-btn', 'misc'], action: () => type.value = 'misc' }, 
         { label: 'Backend', cls: ['button', 'filter-btn', 'backend'], action: () => type.value = 'backend' }, 
@@ -94,21 +136,17 @@
 
     //  --- Lifecycle Hooks
 
-    const { increment, formattedLanguages, resetBytes } = useLanguageStore();
+    const { updateFromRepositories, resetBytes } = useLanguageStore();
 
     watch(() => repo.value, (newVal) => 
     {
-    if (newVal && newVal.length > 0  && formattedLanguages.length === 0) {
-        newVal.forEach((item) => { const data = item.languages; if (data && data.length > 0) data.forEach((lang: LanguageData) => increment(lang.label, lang.bytes)); });
+    if (newVal && newVal.length > 0) {
+        updateFromRepositories(newVal);
     }
 }, { immediate: true, deep: true });
     onMounted(() => {
         resetBytes();
-        if (repo.value) repo.value.forEach((item: GithubData) => {
-            const languages = item.languages;
-
-            if (languages && languages.length > 0) languages.forEach((lang: LanguageData) => increment(lang.label, lang.bytes));
-        });
+        if (repo.value) updateFromRepositories(repo.value);
                 
         refresh() });
 

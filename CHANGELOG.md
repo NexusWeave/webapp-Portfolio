@@ -1,3 +1,79 @@
+## [1.23.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.23.1...v1.23.2) (2026-05-19)
+
+
+### Bug Fixes
+
+* **frontend:** correct logical reversal and syntax in isExternal ([fb1d990](https://github.com/NexusWeave/webapp-Portfolio/commit/fb1d99004d3e1eb3e2dc351beb6dc97092d57ae6))
+
+## [1.23.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.23.0...v1.23.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* **frontend:** add missing color import in _cards.sass ([5f7bad6](https://github.com/NexusWeave/webapp-Portfolio/commit/5f7bad68ad30254704cb3a86be41bcf4d0710717))
+
+# [1.23.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.22.1...v1.23.0) (2026-05-19)
+
+
+### Features
+
+* **backend:** hide github links for private repositories ([259ad60](https://github.com/NexusWeave/webapp-Portfolio/commit/259ad60b6b8491ad240b5cd87bab68f7143d940c))
+
+## [1.22.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.22.0...v1.22.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* **backend:** add pagination for contributors and ensure collaborator sync ([d339ce4](https://github.com/NexusWeave/webapp-Portfolio/commit/d339ce4603229c3b59ce38817cf34d827b453b8d))
+
+# [1.22.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.21.0...v1.22.0) (2026-05-19)
+
+
+### Bug Fixes
+
+* **sync:** resolve datetime comparison and connection timeout issues ([6c32959](https://github.com/NexusWeave/webapp-Portfolio/commit/6c32959a51329f8e9167c73656fe51db4f6a7268))
+
+
+### Features
+
+* **github:** support organization repositories and contributions ([ad880f9](https://github.com/NexusWeave/webapp-Portfolio/commit/ad880f9ecefd570983ad806252f9b568a104b1f9))
+* **ui:** display interactive contributor credits and dynamic filters ([9cda825](https://github.com/NexusWeave/webapp-Portfolio/commit/9cda825cd7a1937e17d7eabf1ee6f367d0ee036b))
+
+# [1.21.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.20.0...v1.21.0) (2026-05-18)
+
+
+### Features
+
+* implement strict owner filtering and batched sync with rate limit protection ([ffc4ebb](https://github.com/NexusWeave/webapp-Portfolio/commit/ffc4ebbb0b278a26b677723c034b800c8779a2f1))
+
+# [1.20.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.19.0...v1.20.0) (2026-05-18)
+
+
+### Features
+
+* improve language activity display and strengthen GitHub synchronization resilience ([a77f766](https://github.com/NexusWeave/webapp-Portfolio/commit/a77f76696e63d30eec84d6f068e5857f762dacfb))
+
+# [1.19.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.4...v1.19.0) (2026-05-18)
+
+
+### Features
+
+* **backend:** ✨ re-introduce collaborator model and feature ([ae0ee69](https://github.com/NexusWeave/webapp-Portfolio/commit/ae0ee693e6b00e721aa8c54bbc1bb3c43c68bee5))
+
+## [1.18.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.3...v1.18.4) (2026-05-18)
+
+
+### Bug Fixes
+
+* **backend:** 🐛 refine language bytes update logic and fix datetime parsing ([e3dc73a](https://github.com/NexusWeave/webapp-Portfolio/commit/e3dc73a89d1b4986cb587b0b1dca39272c6cdc17))
+
+## [1.18.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.2...v1.18.3) (2026-05-16)
+
+
+### Bug Fixes
+
+* **frontend:** ensure images and icons load correctly across all routes ([c5961d2](https://github.com/NexusWeave/webapp-Portfolio/commit/c5961d2ab8d225dbd0dce101962c698a42ba8a46))
+
 ## [1.18.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.18.1...v1.18.2) (2026-05-08)
 
 
