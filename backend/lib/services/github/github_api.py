@@ -169,6 +169,13 @@ class GithubAPI(AsyncAPIClientConfig):
                 
             for contributor in contributors_data:
                  if isinstance(contributor, dict) and 'login' in contributor:
+                    # Filter out bots
+                    login = contributor['login'].lower()
+                    if (contributor.get('type') != 'User' or 
+                        '[bot]' in login or 
+                        login in ['semantic-release-bot', 'copilot', 'tinacms']):
+                        continue
+
                     collaborators.append({
                         "name": contributor['login'], 
                         "collab_id": str(contributor['id']),
