@@ -13,14 +13,7 @@
                     <span>Eier: <NavigationAnchor :data="{ href: data.owner_url, label: `@${data.owner}` }" /></span>
                 </p>
                 <p v-if="contributors?.length > 0" class="collab-name">
-                    <span>
-                        Bidragsytere: 
-                        <template v-for="(collab, i) in contributors" :key="i">
-                            <NavigationAnchor :data="{ href: collab.profile_url, label: `@${collab.name}` }" />
-                            <span v-if="i < contributors.length - 2">, </span>
-                            <span v-else-if="i === contributors.length - 2"> & </span>
-                        </template>
-                    </span>
+                    <span>Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
                 </p>
             </section>
 
@@ -78,6 +71,20 @@
             const owner = props.data?.owner?.toLowerCase() || '';
             return name !== owner && !name.includes('[bot]');
         });
+    });
+
+    const contributorParts = computed(() => {
+        const parts: any[] = [];
+        const items = contributors.value;
+        items.forEach((collab, i) => {
+            parts.push({ type: 'collab', data: collab });
+            if (i < items.length - 2) {
+                parts.push({ type: 'separator', value: ', ' });
+            } else if (i === items.length - 2) {
+                parts.push({ type: 'separator', value: ' & ' });
+            }
+        });
+        return parts;
     });
 
     //  --- Debugging Logic
