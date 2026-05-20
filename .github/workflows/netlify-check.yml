@@ -1,0 +1,38 @@
+name: Netlify Build Check
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  check-netlify-build:
+    name: Verify Netlify Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: frontend/package.json
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci || npm install
+
+      - name: Verify Build and Generate
+        run: |
+          cd frontend
+          npm run build
+          npm run generate
+        env:
+          TINA_BRANCH: ${{ secrets.TINA_BRANCH }}
+          TINA_TOKEN:  ${{ secrets.TINA_TOKEN }}
+          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
+          NODE_ENV: production
