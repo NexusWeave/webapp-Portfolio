@@ -1,6 +1,6 @@
 {
   "name": "webapp-portofolioy",
-  "version": "1.23.2",
+  "version": "1.24.0",
   "type": "module",
   "private": true,
   "scripts": {

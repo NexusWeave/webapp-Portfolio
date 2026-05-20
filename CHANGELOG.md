@@ -1,3 +1,16 @@
+# [1.24.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.23.2...v1.24.0) (2026-05-20)
+
+
+### Bug Fixes
+
+* **frontend:** adjust contributor rendering in BusinessCard using computed parts to prevent trailing or misplaced separators. ([7202c52](https://github.com/NexusWeave/webapp-Portfolio/commit/7202c525472b7b3d5cd5d3ebe307844d16182be5))
+
+
+### Features
+
+* **backend:** filter out bot accounts from GitHub API contributors list to ensure only human contributors are stored. ([1705a02](https://github.com/NexusWeave/webapp-Portfolio/commit/1705a022ffd8344465f36c99396560590ea16eb5))
+* introduce Dependabot to automate dependency updates for GitHub Actions, frontend, and backend packages, reducing manual maintenance and ensuring timely security patches. ([1b45898](https://github.com/NexusWeave/webapp-Portfolio/commit/1b45898482b1a877d96ce49d9f66236fe0853879))
+
 ## [1.23.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.23.1...v1.23.2) (2026-05-19)
 
 
