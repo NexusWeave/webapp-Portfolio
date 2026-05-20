@@ -56,6 +56,8 @@ class RepoCollaboratorAssociationModel(BASE):
     repo_id = Column(BigInteger, ForeignKey('repositories.repo_id'), nullable = False)
     collab_id = Column(Integer, ForeignKey('collaborators.id'), nullable = False)
 
+    __table_args__ = (UniqueConstraint('repo_id', 'collab_id', name='_repo_collab_uc'),)
+
     collaborator = relationship("CollaboratorModel", back_populates = "repo_associations")
     repository = relationship("RepositoryModel", back_populates = "collaborator_associations")
 
