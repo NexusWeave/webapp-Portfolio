@@ -6,6 +6,8 @@
 #
 aiofiles==25.1.0
     # via -r requirements.in
+aiosqlite==0.22.1
+    # via -r requirements.in
 annotated-doc==0.0.4
     # via
     #   fastapi
@@ -42,14 +44,18 @@ email-validator==2.3.0
     # via
     #   fastapi
     #   pydantic
-fastapi[standard]==0.135.1
-    # via -r requirements.in
+fastapi[standard]==0.136.1
+    # via
+    #   -r requirements.in
+    #   fastapi
 fastapi-cli[standard]==0.0.24
     # via fastapi
 fastapi-cloud-cli==0.17.1
     # via fastapi-cli
 fastar==0.11.0
-    # via fastapi-cloud-cli
+    # via
+    #   fastapi
+    #   fastapi-cloud-cli
 greenlet==3.3.2
     # via sqlalchemy
 h11==0.16.0
