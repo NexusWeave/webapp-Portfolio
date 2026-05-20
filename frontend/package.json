@@ -31,7 +31,7 @@
   "devDependencies": {
     "@nuxtjs/sitemap": "^8.0.15",
     "@pinia/nuxt": "^0.11.3",
-    "@tinacms/cli": "^2.1.11",
+    "@tinacms/cli": "^2.3.1",
     "@types/node": "^25.5.0",
     "bootstrap-icons": "^1.13.1",
     "netlify-cli": "^24.4.1",
