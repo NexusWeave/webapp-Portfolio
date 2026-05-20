@@ -2,8 +2,6 @@
 
 section
     .dev-bar
-        max-inline-size: 24rem
-
         .dev-skill
             h3
                 text-align: center
@@ -14,14 +12,16 @@ section
                 margin-block: 0rem
 
             progress
-                border-radius: 1rem
                 overflow: hidden
                 appearance: none
+                border-radius: 1rem
                 -moz-appearance: none
                 -webkit-appearance: none
 
-            margin-block: 1rem
             inline-size: 100%
+            margin-block: 1rem
             @include mix.tech-generator($boolean: false, $element:'progress')
+
+        max-inline-size: 24rem
 
     margin-block-end: 2rem
