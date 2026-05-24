@@ -23,8 +23,8 @@ async def setup_database(engine):
 
     yield
 
-    async with engine.begin() as conn:
-        await conn.run_sync(BASE.metadata.drop_all)
+    # async with engine.begin() as conn:
+    #     await conn.run_sync(BASE.metadata.drop_all)
     
 @pytest.fixture(scope="function"
                 )
