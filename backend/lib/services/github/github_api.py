@@ -55,8 +55,7 @@ class GithubAPI(AsyncAPIClientConfig):
                 LOG.error(f"Expected list from GitHub API, but got {type(raw_json).__name__}: {raw_json}")
                 return []
 
-            # Filter valid and non-excluded repositories
-            validated_data = [data for data in raw_json if data['size'] != 0  
+            validated_data: List[Dict[str, Any]] = [data for data in raw_json if data['size'] != 0  
                               and not any(word.lower() in str(data['name']).lower() or word.lower() in str(data['owner']['login']).lower() for word in excluded_repositories)]
 
             for res in validated_data:
@@ -82,12 +81,11 @@ class GithubAPI(AsyncAPIClientConfig):
     async def _process_repository_item(self, item: Dict[str, Any], existing_timestamps: Dict[str, datetime.datetime]) -> Optional[Dict[str, Any]]:
         """ Processes a single repository item from the API response. """
         name = item['name']
-        owner = item['owner']['login']
         repo_id = str(item['id'])
-        
+        owner = item['owner']['login']
+
         needs_update = self._should_update_repo(item, existing_timestamps.get(repo_id))
 
-        # Always fetch collaborators to ensure they are up to date and for contribution verification
         import asyncio
         await asyncio.sleep(0.5)
         LOG.info(f"Fetching collaborators for repo: {name}")
@@ -110,29 +108,6 @@ class GithubAPI(AsyncAPIClientConfig):
         except Exception as e:
             LOG.error(f"Error mapping {name}: {str(e)}")
             return None
-
-    def _should_update_repo(self, item: Dict[str, Any], db_updated_at: Optional[datetime.datetime]) -> bool:
-        """ Determines if a repository needs a full update based on API and DB timestamps. """
-        if db_updated_at is None: return True
-        
-        date_parser = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
-        api_updated_at = date_parser(item['updated_at'])
-        
-        # Aggressive normalization for comparison (naive comparison)
-        api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
-        db_comp = db_updated_at.replace(tzinfo=None) if hasattr(db_updated_at, 'replace') else db_updated_at
-
-        try:
-            return api_comp > db_comp
-        except TypeError:
-            return True
-
-    def _verify_contribution(self, owner: str, collaborators: List[Dict[str, str]]) -> bool:
-        """ Verifies if the target user (krigjo25) is either the owner or a contributor. """
-        target_user = 'krigjo25'
-        is_owner = str(owner).lower() == target_user
-        is_contributor = any(str(c.get('name', '')).lower() == target_user for c in collaborators)
-        return is_owner or is_contributor
 
     async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, Any]]:
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
@@ -169,7 +144,7 @@ class GithubAPI(AsyncAPIClientConfig):
                 
             for contributor in contributors_data:
                  if isinstance(contributor, dict) and 'login' in contributor:
-                    # Filter out bots
+
                     login = contributor['login'].lower()
                     if (contributor.get('type') != 'User' or 
                         '[bot]' in login or 
@@ -202,3 +177,28 @@ class GithubAPI(AsyncAPIClientConfig):
             return {"tree": []}
             
         return analysis
+
+    @staticmethod
+    def _should_update_repo( item: Dict[str, Any], db_updated_at: Optional[datetime.datetime]) -> bool:
+        """ Determines if a repository needs a full update based on API and DB timestamps. """
+        if db_updated_at is None: return True
+        
+        date_parser = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
+        api_updated_at = date_parser(item['updated_at'])
+        
+        # Aggressive normalization for comparison (naive comparison)
+        api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
+        db_comp = db_updated_at.replace(tzinfo=None) if hasattr(db_updated_at, 'replace') else db_updated_at
+
+        try:
+            return api_comp > db_comp
+        except TypeError:
+            return True
+
+    @staticmethod
+    def _verify_contribution( owner: str, collaborators: List[Dict[str, str]]) -> bool:
+        """ Verifies if the target user (krigjo25) is either the owner or a contributor. """
+        target_user = 'krigjo25'
+        is_owner = str(owner).lower() == target_user
+        is_contributor = any(str(c.get('name', '')).lower() == target_user for c in collaborators)
+        return is_owner or is_contributor
