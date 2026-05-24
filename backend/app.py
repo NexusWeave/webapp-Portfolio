@@ -8,9 +8,9 @@ from fastapi import FastAPI, Request
 from fastapi.routing import APIRoute
 
 #   Internal Libraries
-from lib.services.scanner.scanner_api import Scanner
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
+from lib.services.scanner.scanner_api import Scanner
 from lib.utils.exception_handler import NotFoundError
 from lib.utils.health_check import check_specializt_api, check_github_database_repositories
 

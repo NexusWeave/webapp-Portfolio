@@ -102,7 +102,7 @@
         display: grid
         padding: 0.75rem
         align-content: center
-        grid-template-rows: auto auto auto 1fr
+        grid-template-rows: 1fr 1fr 1fr 1fr
         grid-template-areas: "header" "content" "nav" "footer"
         
 
@@ -135,7 +135,7 @@
             object-fit: contain
 
     inline-size: 23rem
-    max-block-size: 23rem
+    max-block-size: 29rem
     border: 1px solid black
     @include mix.link-styles(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
     @include mix.card-shadow-box()

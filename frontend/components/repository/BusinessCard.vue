@@ -5,18 +5,9 @@
             <div v-else></div>
             <span class="date-container"> <b> <time v-if="data?.date?.date" :datetime="data.date.date"> {{ data.date.date }} </time> </b> </span>
         </header>
+        <main class="card-content">
         <section class="card-content flex-column-items-center">
             <h3> {{ data?.label || 'Ukjent' }} </h3>
-            
-            <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
-                <p v-if="data?.owner && data?.owner_url" class="collab-name">
-                    <span>Eier: <NavigationAnchor :data="{ href: data.owner_url, label: `@${data.owner}` }" /></span>
-                </p>
-                <p v-if="contributors?.length > 0" class="collab-name">
-                    <span>Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
-                </p>
-            </section>
-
             <p class="description">{{ truncatedDescription }}</p>
         </section>
 
@@ -24,6 +15,15 @@
             <NavigationNavMenu v-if="hasAnchor && data?.anchor" :cls="['portofolio-nav']" :data="data.anchor" />
         </nav>
 
+        <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
+            <p v-if="data?.owner && data?.owner_url" class="collab-name">
+                <span>Eier: <NavigationAnchor :data="{ href: data.owner_url, label: `@${data.owner}` }" /></span>
+                </p>
+            <p v-if="contributors?.length > 0" class="collab-name">
+                <span>Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
+            </p>
+        </section>
+        </main>
         <footer v-if="hasTechnology && data?.media" class="card-footer">
             <h4>Andre teknologi(er) : </h4>
             <section class="flex-wrap-row-justify-space-evenly">
