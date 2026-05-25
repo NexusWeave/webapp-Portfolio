@@ -34,7 +34,7 @@
     "@tinacms/cli": "^2.3.1",
     "@types/node": "^25.5.0",
     "bootstrap-icons": "^1.13.1",
-    "netlify-cli": "^24.4.1",
+    "netlify-cli": "^26.0.2",
     "patch-package": "^8.0.1",
     "pinia": "^3.0.4",
     "postinstall-postinstall": "^2.1.0",
