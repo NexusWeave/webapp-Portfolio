@@ -45,9 +45,7 @@ email-validator==2.3.0
     #   fastapi
     #   pydantic
 fastapi[standard]==0.136.1
-    # via
-    #   -r requirements.in
-    #   fastapi
+    # via -r requirements.in
 fastapi-cli[standard]==0.0.24
     # via fastapi
 fastapi-cloud-cli==0.17.1
@@ -101,14 +99,14 @@ pluggy==1.6.0
     #   pytest-cov
 py-cpuinfo==9.0.0
     # via pytest-benchmark
-pydantic[email]==2.12.5
+pydantic[email]==2.13.4
     # via
     #   -r requirements.in
     #   fastapi
     #   fastapi-cloud-cli
     #   pydantic-extra-types
     #   pydantic-settings
-pydantic-core==2.41.5
+pydantic-core==2.46.4
     # via
     #   -r requirements.in
     #   pydantic
