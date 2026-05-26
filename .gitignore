@@ -50,6 +50,7 @@ backend/.venv/*
 
 
 #   test files
+backend/.db
 backend/*.ini
 backend/tests/assets
 backend/.pytest_cache
@@ -71,3 +72,4 @@ __pycache__/
 .pytest_cache/
 .benchmarks/
 .logs/
+backend/.coverage
