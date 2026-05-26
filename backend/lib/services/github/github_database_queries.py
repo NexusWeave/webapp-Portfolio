@@ -4,6 +4,7 @@ from typing import Dict, Sequence, Set
 
 # Internal Libraries
 from lib.utils.logger_config import DatabaseWatcher
+from lib.services.base_service import DatabaseQueries
 from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel, RepoCollaboratorAssociationModel
 
 # Third Party Libraries
@@ -14,11 +15,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 LOG = DatabaseWatcher(name="Github-DAO-Layer")
 LOG.file_handler()
 
-class GithubDatabaseQueries:
+    
+class GithubDatabaseQueries(DatabaseQueries):
     """ Data Access Object for fetching and querying Github repository data. """
 
     def __init__(self, session: AsyncSession):
-        self.session = session
+        super().__init__(session)
 
     async def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
         """ Fetches all non-secret repositories with their associations. """

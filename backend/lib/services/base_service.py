@@ -3,9 +3,11 @@ import __future__
 
 # Third-Party Libraries
 from fastapi import APIRouter
+from sqlalchemy.ext.asyncio import AsyncSession
 
 # Internal Libraries
 from lib.settings.env_config import Config
+
 
 class BaseService:
     """
@@ -32,3 +34,7 @@ class BaseService:
         Example: self.router.add_api_route(f"{self.PATH}/endpoint", self.method, ...)
         """
         raise NotImplementedError("Subclasses must implement _setup_routes() to register their endpoints.")
+
+class DatabaseQueries:
+    def __init__(self, session: AsyncSession):
+        self.session = session

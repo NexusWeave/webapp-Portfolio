@@ -3,10 +3,17 @@ import __future__
 from typing import Dict, Any
 
 #   Third-Party Libraries
+from sqlalchemy import select
+from fastapi import Request
 
 #   Internal Libraries
+
 from lib.utils.logger_config import AppWatcher
 from lib.services.scanner.scanner_api import Scanner
+from lib.services.base_service import DatabaseQueries
+
+from lib.models.database_models.GithubModel import RepositoryModel
+
 
 # Initialize the logger
 LOG = AppWatcher(dir="logs", name='Health-Check')
@@ -28,11 +35,26 @@ class HealthChecks():
         self.SPECIALIST_LINKS = ENVIRONMENT.SPECIALIST_LINKS
         pass
 
-    async def check_database(self) -> Dict[str, str]:
+    async def check_database(self, request: Request) -> Dict[str, str]:
         """ Checks the availability of the database. """
-        
-        dictionary:Dict[str, str] = { "Name": '', "API version": '' }
-        dictionary['status'] = "NOT OK"
+
+        async with request.app.state.db.SessionLocal() as ctx:
+            records = None
+
+            dictionary:Dict[str, str] = { "Name": '', "API version": '' }
+
+            try :
+                QUERY = select(RepositoryModel).limit(1)
+                result = await ctx.execute(QUERY)
+                records = result.scalars().first()
+
+            except Exception as e:
+                LOG.error(f"Database check failed: {e.__class__.__name__} - {str(e)}")
+                dictionary["status"] = "NOT OK"
+                return dictionary
+
+            if records is not None: dictionary['status'] = "Connected to database"
+            else: dictionary['status'] = "Connected, but empty"
 
         return dictionary
 
@@ -43,7 +65,7 @@ class HealthChecks():
         return dictionary
 
 
-    async def check_specializt_api(self) -> Dict[str, str]:
+    async def check_scanner(self) -> Dict[str, str]:
 
         if not self.SPECIALIST_LINKS:
             return {"Name": "Scanner", "API version": "unknown", "status": "NOT CONFIGURED"}
