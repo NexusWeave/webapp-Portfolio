@@ -19,3 +19,4 @@ pytest-asyncio
 pytest-metadata
 pytest-benchmark
 simplified-logging
+lxml

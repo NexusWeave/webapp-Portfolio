@@ -45,9 +45,7 @@ email-validator==2.3.0
     #   fastapi
     #   pydantic
 fastapi[standard]==0.136.1
-    # via
-    #   -r requirements.in
-    #   fastapi
+    # via -r requirements.in
 fastapi-cli[standard]==0.0.24
     # via fastapi
 fastapi-cloud-cli==0.17.1
@@ -82,6 +80,8 @@ jinja2==3.1.6
     # via
     #   fastapi
     #   pytest-html
+lxml==6.1.1
+    # via -r requirements.in
 markdown-it-py==4.2.0
     # via rich
 markupsafe==3.0.3
