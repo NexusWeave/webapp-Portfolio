@@ -1,6 +1,6 @@
 #   Standard Libraries
-import os, __future__, uvicorn, datetime
-from typing import Dict, Optional, List,  Any, Union
+import os, __future__, uvicorn
+from typing import Dict, List,  Any, Union
 
 #   Third-Party Libraries
 from dotenv import load_dotenv
@@ -10,18 +10,9 @@ from fastapi import FastAPI, Request
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
 from lib.utils.exception_handler import NotFoundError
-
-from lib.models.announcement_model import AnnouncementModel
-
 from lib.services.scanner.scanner_api import Scanner
 from lib.services.health.health_route import HealthService
 from lib.services.github.github_router import GithubService
-from lib.services.announcements.announcements import AnnouncementsService
-
-
-
-
-NESTED_DICTS = Union[str, Dict[str, Any], bool, int]
 
 #   Initialize Enviorment variables
 load_dotenv()
