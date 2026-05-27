@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from lib.utils.logger_config import ServiceWatcher
 load_dotenv()
 
-LOG = ServiceWatcher(dir="logs", name='Github-Utils')
+LOG = ServiceWatcher(name='Github-Utils')
 LOG.file_handler()
 
 class GithubUtils:
