@@ -1,11 +1,11 @@
 # Standard Library
 import datetime
-from typing import Dict, Sequence, Set
+from typing import Dict, Sequence
 
 # Internal Libraries
 from lib.utils.logger_config import DatabaseWatcher
 from lib.services.base_service import DatabaseQueries
-from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel, RepoCollaboratorAssociationModel
+from lib.models.database_models.GithubModel import RepositoryModel,  LanguageAssosiationModel, RepoCollaboratorAssociationModel
 
 # Third Party Libraries
 from sqlalchemy import select
