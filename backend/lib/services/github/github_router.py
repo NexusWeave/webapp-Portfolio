@@ -18,7 +18,7 @@ from lib.services.github.repository_handler import GithubDatabaseHandler
 
 from lib.settings.database_config import ASynchronousDatabaseConfig
 
-LOG = AppWatcher(dir="logs", name='Router')
+LOG = AppWatcher(name='Router')
 LOG.file_handler()
 
 from lib.services.base_service import BaseService
