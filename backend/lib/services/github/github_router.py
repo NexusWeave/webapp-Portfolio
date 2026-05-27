@@ -3,13 +3,9 @@ import __future__
 from typing import Dict, List, Sequence
 
 #   Third-Party Libraries
-
-from fastapi import  Request, APIRouter
-from fastapi.routing import APIRoute
-
+from fastapi import  Request
 
 #   Internal Libraries
-from lib.settings.env_config import Config
 from lib.utils.logger_config import AppWatcher
 from lib.models.github_model import RepositoryModel
 from lib.utils.logger_config import AppWatcher
