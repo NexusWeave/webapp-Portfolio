@@ -15,7 +15,7 @@ LOG.file_handler()
 class GithubUtils:
 
     @staticmethod
-    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str | object]]] = None, skip_analysis: bool = False) -> Dict[str, str | object | List[str] | object]:
+    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str ]]] = None, skip_analysis: bool = False) -> Dict[str, str | object | List[str] | object]:
         """ Maps the repository data to a structured format. """
         is_private: bool = True if data['private'] else False
         

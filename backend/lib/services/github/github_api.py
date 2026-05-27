@@ -13,7 +13,7 @@ from lib.settings.api_config import AsyncAPIClientConfig
 from lib.services.github.utils.github_maps import GithubUtils
 
 #   Initialize Logger
-LOG = APIWatcher(dir="logs", name='Github-API')
+LOG = APIWatcher(name='Github-API')
 LOG.file_handler()
 
 class GithubAPI(AsyncAPIClientConfig):
@@ -21,7 +21,7 @@ class GithubAPI(AsyncAPIClientConfig):
     """ Github API Configuration
         API : https://api.github.com/
     """
-    __VERSION__ = 'v1.3.0'
+    __VERSION__ = 'v1.3.1'
 
     def __init__(self, URL:str, KEY:str):
         super().__init__(URL=URL, KEY=KEY)
@@ -49,14 +49,9 @@ class GithubAPI(AsyncAPIClientConfig):
         excluded_repositories: List[str] = ['me50', 'code50', 'cs50', 'martininn', 'Husseinabdulameer11']
 
         while True:
-            raw_json = response.json()
-            
-            if not isinstance(raw_json, list):
-                LOG.error(f"Expected list from GitHub API, but got {type(raw_json).__name__}: {raw_json}")
-                return []
-
+            raw_json: List[Dict[str, Any]] = response.json()
             validated_data: List[Dict[str, Any]] = [data for data in raw_json if data['size'] != 0  
-                              and not any(word.lower() in str(data['name']).lower() or word.lower() in str(data['owner']['login']).lower() for word in excluded_repositories)]
+            and not any(word.lower() in str(data['name']).lower() or word.lower() in str(data['owner']['login']).lower() for word in excluded_repositories)]
 
             for res in validated_data:
                 processed_repo = await self._process_repository_item(res, existing_timestamps)
@@ -89,10 +84,10 @@ class GithubAPI(AsyncAPIClientConfig):
         import asyncio
         await asyncio.sleep(0.5)
         LOG.info(f"Fetching collaborators for repo: {name}")
-        collaborators = await self.fetch_collaborators(owner, name)
+        collaborators: List[Dict[str, str]]= await self.fetch_collaborators(owner, name)
 
         # Contribution verification
-        is_contributor = self._verify_contribution(owner, collaborators)
+        is_contributor = self._verify_contribution(owner, collaborators, 'krigjo25')
         if not is_contributor:
             LOG.debug(f"Skipping repo {name} as krigjo25 is not a contributor.")
             return None
@@ -111,21 +106,17 @@ class GithubAPI(AsyncAPIClientConfig):
 
     async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, Any]]:
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
-        
         response: httpx.Response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
-        languages_data = response.json()
-        
-        if not isinstance(languages_data, dict):
-            LOG.error(f"Expected dict for languages from {path}, but got {type(languages_data).__name__}")
-            return []
 
         languages: List[Dict[str, Any]] = []
+        languages_data: Dict[str, str] = response.json()
+
         for lang, value in languages_data.items():
             match(str(lang).lower()):
                 case "c#": lang = "cs"
                 case "c++": lang = "cp"
                 case "jupyter notebook":lang = "jupyter"
-                case _:lang = lang
+                case _: lang = lang
 
             languages.append({"language": lang, "bytes": value})
         return languages
@@ -165,16 +156,15 @@ class GithubAPI(AsyncAPIClientConfig):
     async def analyze_repository(self,trees_url: str) -> Dict[str, Any]:
         """ Analyzes the repository data to determine its characteristics. """
         response: httpx.Response
+
         try:
             response = await self.wait_in_queue(self.api_call(trees_url, head=self.HEADER))
+
         except Exception as e:
             LOG.error(f"Error analyzing repository: {e.__class__.__name__} - {str(e)}\n")
             raise e
         
         analysis: Dict[str, Any] = response.json()
-        if not isinstance(analysis, dict):
-            LOG.error(f"Expected dict for repository analysis, but got {type(analysis).__name__}")
-            return {"tree": []}
             
         return analysis
 
@@ -183,22 +173,21 @@ class GithubAPI(AsyncAPIClientConfig):
         """ Determines if a repository needs a full update based on API and DB timestamps. """
         if db_updated_at is None: return True
         
-        date_parser = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
+        def date_parser(d:str) -> datetime.datetime:
+            return datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
+
         api_updated_at = date_parser(item['updated_at'])
         
         # Aggressive normalization for comparison (naive comparison)
         api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
         db_comp = db_updated_at.replace(tzinfo=None) if hasattr(db_updated_at, 'replace') else db_updated_at
 
-        try:
-            return api_comp > db_comp
-        except TypeError:
-            return True
+        try: return api_comp > db_comp
+        except TypeError: return True
 
     @staticmethod
-    def _verify_contribution( owner: str, collaborators: List[Dict[str, str]]) -> bool:
+    def _verify_contribution( owner: str, collaborators: List[Dict[str, str]], target_user: str) -> bool:
         """ Verifies if the target user (krigjo25) is either the owner or a contributor. """
-        target_user = 'krigjo25'
         is_owner = str(owner).lower() == target_user
         is_contributor = any(str(c.get('name', '')).lower() == target_user for c in collaborators)
         return is_owner or is_contributor
