@@ -1,0 +1,370 @@
+<mxfile host="65bd71144e">
+    <diagram id="async-backend-diagram" name="API Classes &amp; Flow">
+        <mxGraphModel dx="1164" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4200" pageHeight="2000" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- ========================================== -->
+                <!-- API CLIENT HIERARCHY GROUP                 -->
+                <!-- ========================================== -->
+                <mxCell id="group-clients" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;API Client Hierarchy&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="20" width="1400" height="850" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="WebAPIModel" value="&lt;b&gt;WebAPIModel&lt;/b&gt;&lt;br&gt;&lt;i&gt;&amp;lt;&amp;lt;Abstract&amp;gt;&amp;gt;&lt;/i&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#37474F;strokeColor=#263238;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-clients">
+                    <mxGeometry x="530" y="50" width="340" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="WebAPIModel-attrs" value="+ GET, PUT, POST, PATCH, DELETE: str&lt;br&gt;+ conflict, notFound, badRequest: List[int]&lt;br&gt;+ timeout, unauthorized: List[int]&lt;br&gt;+ success, server_error: List[int]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="WebAPIModel">
+                    <mxGeometry y="40" width="340" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="WebAPIModel-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="WebAPIModel">
+                    <mxGeometry y="130" width="340" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="WebAPIModel-methods" value="+ &lt;i&gt;api_call(endpoint: str, head: Dict) -&amp;gt; Dict | object&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="WebAPIModel">
+                    <mxGeometry y="138" width="340" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="AsyncAPIClientConfig" value="&lt;b&gt;AsyncAPIClientConfig&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#1565C0;strokeColor=#0D47A1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-clients">
+                    <mxGeometry x="490" y="270" width="420" height="268" as="geometry"/>
+                </mxCell>
+                <mxCell id="AsyncAPIClientConfig-attrs" value="+ __VERSION__: str = &quot;v1.1.0&quot;&lt;br&gt;+ API_URL: str&lt;br&gt;+ API_KEY: str&lt;br&gt;+ VERSION: Optional[str]&lt;br&gt;+ QUEUE: int = 5&lt;br&gt;+ SEM: Semaphore" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="AsyncAPIClientConfig">
+                    <mxGeometry y="30" width="420" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="AsyncAPIClientConfig-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="AsyncAPIClientConfig">
+                    <mxGeometry y="140" width="420" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="AsyncAPIClientConfig-methods" value="+ __init__(URL: str, KEY: str, version: Optional[str])&lt;br&gt;+ api_call(endpoint: Optional[str], head: Dict, params: Optional[Dict]) -&amp;gt; httpx.Response&lt;br&gt;+ calculate_n(endpoint: str, header: Dict[str, str])&lt;br&gt;+ wait_in_queue(coro: Coroutine) -&amp;gt; Any&lt;br&gt;+ &lt;u&gt;timeout_config(standard: float)&lt;/u&gt; -&amp;gt; httpx.Timeout" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="AsyncAPIClientConfig">
+                    <mxGeometry y="148" width="420" height="120" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="GithubAPI" value="&lt;b&gt;GithubAPI&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#2979FF;strokeColor=#1565C0;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-clients">
+                    <mxGeometry x="40" y="580" width="540" height="238" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubAPI-attrs" value="+ __VERSION__: str = &quot;v1.3.1&quot;&lt;br&gt;+ HEADER: Dict[str, str]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="GithubAPI">
+                    <mxGeometry y="30" width="540" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubAPI-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="GithubAPI">
+                    <mxGeometry y="70" width="540" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubAPI-methods" value="+ __init__(URL: str, KEY: str)&lt;br&gt;+ fetch_data(endpoint: str, params: Optional[Dict], existing_timestamps: Optional[Dict]) -&amp;gt; List[Dict]&lt;br&gt;- _process_repository_item(item: Dict, existing_timestamps: Dict) -&amp;gt; Optional[Dict]&lt;br&gt;+ fetch_languages(owner: str, name: str) -&amp;gt; List[Dict]&lt;br&gt;+ fetch_collaborators(owner: str, name: str) -&amp;gt; List[Dict]&lt;br&gt;+ analyze_repository(trees_url: str) -&amp;gt; Dict&lt;br&gt;- &lt;u&gt;_should_update_repo(item: Dict, db_updated_at: Optional[datetime])&lt;/u&gt; -&amp;gt; bool&lt;br&gt;- &lt;u&gt;_verify_contribution(owner: str, collaborators: List[Dict], target_user: str)&lt;/u&gt; -&amp;gt; bool" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="GithubAPI">
+                    <mxGeometry y="78" width="540" height="160" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="HeavyAPI" value="&lt;b&gt;HeavyAPI&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#C2185B;strokeColor=#880E4F;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-clients">
+                    <mxGeometry x="620" y="580" width="340" height="158" as="geometry"/>
+                </mxCell>
+                <mxCell id="HeavyAPI-attrs" value="+ VERSION: str&lt;br&gt;+ HEAD: Dict[str, str]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="HeavyAPI">
+                    <mxGeometry y="30" width="340" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="HeavyAPI-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="HeavyAPI">
+                    <mxGeometry y="70" width="340" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="HeavyAPI-methods" value="+ __init__(URL: str, KEY: str, version: str)&lt;br&gt;+ fetch_data(endpoint: str) -&amp;gt; List[Dict]&lt;br&gt;+ map_sessions()" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="HeavyAPI">
+                    <mxGeometry y="78" width="340" height="80" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="Scanner" value="&lt;b&gt;Scanner&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#00BFA5;strokeColor=#00897B;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-clients">
+                    <mxGeometry x="1000" y="580" width="380" height="218" as="geometry"/>
+                </mxCell>
+                <mxCell id="Scanner-attrs" value="+ __VERSION__: str = &quot;v1.0.0&quot;&lt;br&gt;+ URL: str&lt;br&gt;+ KEY: str&lt;br&gt;+ HEADER: Dict[str, str]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="Scanner">
+                    <mxGeometry y="30" width="380" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="Scanner-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="Scanner">
+                    <mxGeometry y="110" width="380" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="Scanner-methods" value="+ __init__(URL: str, KEY: Optional[str], version: Optional[str])&lt;br&gt;+ check_status() -&amp;gt; bool&lt;br&gt;+ fetch_web_rules(site_map: str) -&amp;gt; List[str]&lt;br&gt;+ extract_information() -&amp;gt; List[Dict]&lt;br&gt;+ scrape_information(url: str) -&amp;gt; Dict&lt;br&gt;+ &lt;u&gt;strip_web_elements(content: str)&lt;/u&gt; -&amp;gt; str" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="Scanner">
+                    <mxGeometry y="118" width="380" height="100" as="geometry"/>
+                </mxCell>
+
+                <!-- Edges for API Clients -->
+                <mxCell id="edge1" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;strokeColor=#333333;strokeWidth=2;" edge="1" parent="group-clients" source="AsyncAPIClientConfig" target="WebAPIModel">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;entryX=0.25;entryY=1;strokeColor=#333333;strokeWidth=2;" edge="1" parent="group-clients" source="GithubAPI" target="AsyncAPIClientConfig">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="310" y="550"/>
+                            <mxPoint x="595" y="550"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge3" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;strokeColor=#333333;strokeWidth=2;" edge="1" parent="group-clients" source="HeavyAPI" target="AsyncAPIClientConfig">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="790" y="550"/>
+                            <mxPoint x="700" y="550"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge4" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;entryX=0.85;entryY=1;strokeColor=#333333;strokeWidth=2;" edge="1" parent="group-clients" source="Scanner" target="AsyncAPIClientConfig">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1190" y="550"/>
+                            <mxPoint x="847" y="550"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- ========================================== -->
+                <!-- DATABASE AND SYNC MANAGERS                 -->
+                <!-- ========================================== -->
+                <mxCell id="group-managers" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;Database &amp;amp; Sync Managers&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;startSize=30;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="20" width="1800" height="850" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="GithubDatabaseHandler" value="&lt;b&gt;GithubDatabaseHandler&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#512DA8;strokeColor=#311B92;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-managers">
+                    <mxGeometry x="40" y="60" width="500" height="278" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubDatabaseHandler-attrs" value="+ __VERSION__: str = &quot;v1.1.0&quot;&lt;br&gt;+ session: AsyncSession&lt;br&gt;+ language_manager: LanguageSyncManager&lt;br&gt;+ collaborator_manager: CollaboratorSyncManager&lt;br&gt;+ queries: GithubDatabaseQueries" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="GithubDatabaseHandler">
+                    <mxGeometry y="30" width="500" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubDatabaseHandler-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="GithubDatabaseHandler">
+                    <mxGeometry y="120" width="500" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubDatabaseHandler-methods" value="+ __init__(session: AsyncSession)&lt;br&gt;+ &lt;u&gt;has_data_changes(exist: RepositoryModel, dictionary: Dict)&lt;/u&gt; -&amp;gt; bool&lt;br&gt;+ fetch_all_repositories() -&amp;gt; Sequence[RepositoryModel]&lt;br&gt;+ get_existing_timestamps() -&amp;gt; Dict[str, datetime]&lt;br&gt;+ upsert_repositories(repository: List[Dict]) -&amp;gt; None&lt;br&gt;- _sync_repository(repo_data: Dict, existing_repos: Dict) -&amp;gt; None&lt;br&gt;- _create_repositories(repository: Dict) -&amp;gt; None&lt;br&gt;- _apply_repositories_updates(dictionary: Dict, DUPLICATION: RepositoryModel) -&amp;gt; None&lt;br&gt;- _cleanup_stale_repos(current_ids: Set, existing_repos: Dict) -&amp;gt; None" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="GithubDatabaseHandler">
+                    <mxGeometry y="128" width="500" height="150" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="CollaboratorSyncManager" value="&lt;b&gt;CollaboratorSyncManager&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#7B1FA2;strokeColor=#4A148C;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-managers">
+                    <mxGeometry x="580" y="60" width="560" height="138" as="geometry"/>
+                </mxCell>
+                <mxCell id="CollaboratorSyncManager-attrs" value="+ session: AsyncSession" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="CollaboratorSyncManager">
+                    <mxGeometry y="30" width="560" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="CollaboratorSyncManager-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="CollaboratorSyncManager">
+                    <mxGeometry y="60" width="560" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="CollaboratorSyncManager-methods" value="+ __init__(session: AsyncSession)&lt;br&gt;+ sync_collaborators(repo: RepositoryModel, new_collabs_data: List[Dict]) -&amp;gt; None&lt;br&gt;- _get_or_create_collaborator(collab_data: Dict) -&amp;gt; CollaboratorModel" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="CollaboratorSyncManager">
+                    <mxGeometry y="68" width="560" height="70" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="LanguageSyncManager" value="&lt;b&gt;LanguageSyncManager&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#689F38;strokeColor=#33691E;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-managers">
+                    <mxGeometry x="1180" y="60" width="560" height="158" as="geometry"/>
+                </mxCell>
+                <mxCell id="LanguageSyncManager-attrs" value="+ session: AsyncSession" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="LanguageSyncManager">
+                    <mxGeometry y="30" width="560" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="LanguageSyncManager-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="LanguageSyncManager">
+                    <mxGeometry y="60" width="560" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="LanguageSyncManager-methods" value="+ __init__(session: AsyncSession)&lt;br&gt;+ sync_languages(repo: RepositoryModel, new_langs_payload: List[LanguageAssosiationModel]) -&amp;gt; None&lt;br&gt;+ new_language_record(LANG_NAME: str) -&amp;gt; LanguageModel&lt;br&gt;+ new_association_record(repo: RepositoryModel, lang: LanguageModel, code_bytes: int) -&amp;gt; None" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="LanguageSyncManager">
+                    <mxGeometry y="68" width="560" height="90" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="GithubPayloadFormatter" value="&lt;b&gt;GithubPayloadFormatter&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#1976D2;strokeColor=#0D47A1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-managers">
+                    <mxGeometry x="580" y="240" width="560" height="138" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubPayloadFormatter-methods" value="+ &lt;u&gt;format_payload(repository: Dict) -&amp;gt; Dict&lt;/u&gt;&lt;br&gt;+ &lt;u&gt;prepear_collaborators(collaborators: List[Dict]) -&amp;gt; List[Dict]&lt;/u&gt;&lt;br&gt;+ &lt;u&gt;prepear_urls(urls: List[Dict]) -&amp;gt; Dict&lt;/u&gt;&lt;br&gt;+ &lt;u&gt;prepear_language_assosiations(languages: List[Dict], COLLABORATORS_DATA: List[Dict]) -&amp;gt; Dict&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="GithubPayloadFormatter">
+                    <mxGeometry y="30" width="560" height="108" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="ApiDatabaseBridge" value="&lt;b&gt;ApiDatabaseBridge&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#0288D1;strokeColor=#01579B;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-managers">
+                    <mxGeometry x="1180" y="260" width="560" height="88" as="geometry"/>
+                </mxCell>
+                <mxCell id="ApiDatabaseBridge-methods" value="+ &lt;u&gt;repositories_sync(request: Request, URL: str, params: Dict, ENDPOINT: str, TOKEN: str) -&amp;gt; None&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="ApiDatabaseBridge">
+                    <mxGeometry y="30" width="560" height="58" as="geometry"/>
+                </mxCell>
+
+                <!-- GithubDatabaseQueries -->
+                <mxCell id="GithubDatabaseQueries" value="&lt;b&gt;GithubDatabaseQueries&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#0288D1;strokeColor=#01579B;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-managers">
+                    <mxGeometry x="40" y="380" width="500" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubDatabaseQueries-methods" value="+ __init__(session: AsyncSession)&lt;br&gt;+ fetch_all_repositories() -&amp;gt; Sequence[RepositoryModel]&lt;br&gt;+ get_existing_timestamps() -&amp;gt; Dict[str, datetime.datetime]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="GithubDatabaseQueries">
+                    <mxGeometry y="30" width="500" height="78" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="SchedulerService" value="&lt;b&gt;SchedulerService&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#009688;strokeColor=#00695C;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-managers">
+                    <mxGeometry x="580" y="420" width="560" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="SchedulerService-methods" value="+ &lt;u&gt;schedule_github() -&amp;gt; None&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="SchedulerService">
+                    <mxGeometry y="30" width="560" height="38" as="geometry"/>
+                </mxCell>
+
+
+                <!-- ========================================== -->
+                <!-- ROUTER & BASE SERVICES GROUP                 -->
+                <!-- ========================================== -->
+                <mxCell id="group-routers" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;Router &amp;amp; Base Services&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;startSize=30;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="920" width="1400" height="420" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="BaseService" value="&lt;b&gt;BaseService&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#FF8F00;strokeColor=#E65100;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-routers">
+                    <mxGeometry x="40" y="60" width="400" height="158" as="geometry"/>
+                </mxCell>
+                <mxCell id="BaseService-attrs" value="+ PATH: str&lt;br&gt;+ ENVIRONMENT: Config&lt;br&gt;+ NAME: str&lt;br&gt;+ VERSION: str&lt;br&gt;+ router: APIRouter&lt;br&gt;+ routes: List" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="BaseService">
+                    <mxGeometry y="30" width="400" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="BaseService-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="BaseService">
+                    <mxGeometry y="130" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="BaseService-methods" value="+ __init__(PATH: str, ENVIRONMENT: Config)&lt;br&gt;+ _setup_routes() -&amp;gt; None" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="BaseService">
+                    <mxGeometry y="138" width="400" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- DatabaseQueries Base -->
+                <mxCell id="DatabaseQueries" value="&lt;b&gt;DatabaseQueries&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#3399FF;strokeColor=#1565C0;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-routers">
+                    <mxGeometry x="40" y="240" width="400" height="88" as="geometry"/>
+                </mxCell>
+                <mxCell id="DatabaseQueries-attrs" value="+ session: AsyncSession" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="DatabaseQueries">
+                    <mxGeometry y="30" width="400" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="DatabaseQueries-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="DatabaseQueries">
+                    <mxGeometry y="60" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="DatabaseQueries-methods" value="+ __init__(session: AsyncSession)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="DatabaseQueries">
+                    <mxGeometry y="68" width="400" height="20" as="geometry"/>
+                </mxCell>
+
+                <!-- Inheritance edge for DatabaseQueries to GithubDatabaseQueries -->
+                <mxCell id="edge-db-queries" style="endArrow=block;endFill=0;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;strokeColor=#333333;strokeWidth=2;" edge="1" parent="1" source="GithubDatabaseQueries" target="DatabaseQueries">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1440" y="454"/>
+                            <mxPoint x="1440" y="1204"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="GithubService" value="&lt;b&gt;GithubService&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#1976D2;strokeColor=#0D47A1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-routers">
+                    <mxGeometry x="480" y="60" width="400" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubService-methods" value="+ _setup_routes() -&amp;gt; None&lt;br&gt;+ fetch_repositories(request: Request) -&amp;gt; Sequence | Dict&lt;br&gt;+ handle_repositories(request: Request) -&amp;gt; Dict" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="GithubService">
+                    <mxGeometry y="30" width="400" height="78" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="HealthService" value="&lt;b&gt;HealthService&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#388E3C;strokeColor=#1B5E20;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-routers">
+                    <mxGeometry x="920" y="60" width="400" height="128" as="geometry"/>
+                </mxCell>
+                <mxCell id="HealthService-methods" value="+ _setup_routes() -&amp;gt; None&lt;br&gt;- _health_check_chart(request: Request) -&amp;gt; Dict&lt;br&gt;- _build_base_status(total_routes: int) -&amp;gt; Dict&lt;br&gt;+ health_check(request: Request) -&amp;gt; Dict" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="HealthService">
+                    <mxGeometry y="30" width="400" height="98" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge-gh-service" style="endArrow=block;endFill=0;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.25;strokeColor=#333333;strokeWidth=2;" edge="1" parent="group-routers" source="GithubService" target="BaseService">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-hl-service" style="endArrow=block;endFill=0;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.75;strokeColor=#333333;strokeWidth=2;" edge="1" parent="group-routers" source="HealthService" target="BaseService">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="880" y="124"/>
+                            <mxPoint x="880" y="168"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="HealthChecks" value="&lt;b&gt;HealthChecks&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#689F38;strokeColor=#33691E;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-routers">
+                    <mxGeometry x="480" y="240" width="400" height="158" as="geometry"/>
+                </mxCell>
+                <mxCell id="HealthChecks-attrs" value="+ GITHUB_REST, GITHUB_TOKEN: str&lt;br&gt;+ GITHUB_PER_PAGE, PERSONAL_GITHUB_REST_API: str&lt;br&gt;+ DB: str&lt;br&gt;+ SPECIALIST_LINKS: List" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="HealthChecks">
+                    <mxGeometry y="30" width="400" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="HealthChecks-line" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=#FFFFFF;" vertex="1" parent="HealthChecks">
+                    <mxGeometry y="100" width="400" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="HealthChecks-methods" value="+ __init__(ENVIRONMENT: Any)&lt;br&gt;+ check_database(request: Request) -&amp;gt; Dict&lt;br&gt;+ check_github_service() -&amp;gt; Dict&lt;br&gt;+ check_scanner() -&amp;gt; Dict" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="HealthChecks">
+                    <mxGeometry y="108" width="400" height="50" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="AnnouncementsService" value="&lt;b&gt;AnnouncementsService&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#E64A19;strokeColor=#BF360C;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-routers">
+                    <mxGeometry x="920" y="240" width="400" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="AnnouncementsService-methods" value="+ &lt;u&gt;get_celebration_days(date: datetime)&lt;/u&gt; -&amp;gt; str | None" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="AnnouncementsService">
+                    <mxGeometry y="30" width="400" height="38" as="geometry"/>
+                </mxCell>
+
+                <!-- ========================================== -->
+                <!-- UTILITY SERVICES GROUP                     -->
+                <!-- ========================================== -->
+                <mxCell id="group-utils" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;Utility Services&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=30;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="920" width="1000" height="420" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="GithubUtils" value="&lt;b&gt;GithubUtils&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#009688;strokeColor=#00695C;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-utils">
+                    <mxGeometry x="40" y="60" width="900" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="GithubUtils-methods" value="+ &lt;u&gt;map_repository(data: Dict, languages: List, collaborators: Optional[List], skip_analysis: bool) -&amp;gt; Dict&lt;/u&gt;&lt;br&gt;+ &lt;u&gt;replace_prefix_tech_suffix(name: str) -&amp;gt; str&lt;/u&gt;&lt;br&gt;+ &lt;u&gt;track_project_stack(branch: str, tree_path: str, n: int) -&amp;gt; Dict&lt;/u&gt;&lt;br&gt;+ &lt;u&gt;check_backend_frontend(file: str, extensions: List[str]) -&amp;gt; bool&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="GithubUtils">
+                    <mxGeometry y="30" width="900" height="78" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="OsUtils" value="&lt;b&gt;OsUtils&lt;/b&gt;" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#795548;strokeColor=#4E342E;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="group-utils">
+                    <mxGeometry x="40" y="200" width="900" height="128" as="geometry"/>
+                </mxCell>
+                <mxCell id="OsUtils-methods" value="+ __init__()&lt;br&gt;+ find_file(file: str) -&amp;gt; List[str]&lt;br&gt;+ &lt;u&gt;combine_path(path: Path, marker: str) -&amp;gt; Path&lt;/u&gt;&lt;br&gt;+ find_directory(dir: str) -&amp;gt; Path&lt;br&gt;+ &lt;u&gt;find_project_root() -&amp;gt; Path&lt;/u&gt;&lt;br&gt;+ create_directory(dir_path: str, dir: str) -&amp;gt; None" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=13;fontColor=#FFFFFF;" vertex="1" parent="OsUtils">
+                    <mxGeometry y="30" width="900" height="98" as="geometry"/>
+                </mxCell>
+
+                <!-- ========================================== -->
+                <!-- SEQUENCE FLOW                              -->
+                <!-- ========================================== -->
+                <mxCell id="sequence-group" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;Sequence Flow (API to Database Sync)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;startSize=30;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="1380" width="1000" height="600" as="geometry"/>
+                </mxCell>
+                
+                <!-- Actors / Nodes -->
+                <mxCell id="fe" value="&lt;b&gt;Frontend&lt;/b&gt;&lt;br&gt;(Client)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF6B00;fontColor=#FFFFFF;strokeColor=#333333;fontSize=13;" vertex="1" parent="sequence-group">
+                    <mxGeometry x="60" y="60" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="ep" value="&lt;b&gt;Endpoint&lt;/b&gt;&lt;br&gt;(GithubService)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2979FF;fontColor=#FFFFFF;strokeColor=#333333;fontSize=13;" vertex="1" parent="sequence-group">
+                    <mxGeometry x="260" y="60" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="is" value="&lt;b&gt;Data Handler&lt;/b&gt;&lt;br&gt;(ApiDatabaseBridge &amp;amp; GithubDBHandler)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#512DA8;fontColor=#FFFFFF;strokeColor=#333333;fontSize=13;" vertex="1" parent="sequence-group">
+                    <mxGeometry x="480" y="60" width="180" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="es" value="&lt;b&gt;External API&lt;/b&gt;&lt;br&gt;(GithubAPI)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;fontColor=#FFFFFF;strokeColor=#333333;fontSize=13;" vertex="1" parent="sequence-group">
+                    <mxGeometry x="720" y="60" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="db-s" value="&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;(PostgreSQL)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#3399FF;fontColor=#FFFFFF;strokeColor=#333333;fontSize=13;" vertex="1" parent="sequence-group">
+                    <mxGeometry x="880" y="60" width="100" height="50" as="geometry"/>
+                </mxCell>
+
+                <!-- Lifelines -->
+                <mxCell id="line-fe" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=2;strokeColor=#666666;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="sequence-group" target="fe">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="130" y="550" as="sourcePoint"/></mxGeometry>
+                </mxCell>
+                <mxCell id="line-ep" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=2;strokeColor=#666666;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="sequence-group" target="ep">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="340" y="550" as="sourcePoint"/></mxGeometry>
+                </mxCell>
+                <mxCell id="line-is" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=2;strokeColor=#666666;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="sequence-group" target="is">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="570" y="550" as="sourcePoint"/></mxGeometry>
+                </mxCell>
+                <mxCell id="line-es" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=2;strokeColor=#666666;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="sequence-group" target="es">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="780" y="550" as="sourcePoint"/></mxGeometry>
+                </mxCell>
+                <mxCell id="line-db" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=2;strokeColor=#666666;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="sequence-group" target="db-s">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"><mxPoint x="930" y="550" as="sourcePoint"/></mxGeometry>
+                </mxCell>
+
+                <!-- Messages -->
+                <mxCell id="msg1" value="GET /api/v1/handleRepositories" style="endArrow=classic;html=1;strokeColor=#333333;fontSize=13;fontColor=#000000;" edge="1" parent="sequence-group">
+                    <mxGeometry relative="1" as="geometry"><mxPoint x="130" y="150" as="sourcePoint"/><mxPoint x="340" y="150" as="targetPoint"/></mxGeometry>
+                </mxCell>
+                
+                <mxCell id="msg2" value="repositories_sync()" style="endArrow=classic;html=1;strokeColor=#333333;fontSize=13;fontColor=#000000;" edge="1" parent="sequence-group">
+                    <mxGeometry relative="1" as="geometry"><mxPoint x="340" y="190" as="sourcePoint"/><mxPoint x="570" y="190" as="targetPoint"/></mxGeometry>
+                </mxCell>
+                
+                <mxCell id="msg3" value="fetch_data()" style="endArrow=classic;html=1;strokeColor=#333333;fontSize=13;fontColor=#000000;" edge="1" parent="sequence-group">
+                    <mxGeometry relative="1" as="geometry"><mxPoint x="570" y="230" as="sourcePoint"/><mxPoint x="780" y="230" as="targetPoint"/></mxGeometry>
+                </mxCell>
+                <mxCell id="msg3-ret" value="List[Dict]" style="endArrow=open;dashed=1;html=1;endFill=0;strokeColor=#333333;fontSize=13;fontColor=#000000;" edge="1" parent="sequence-group">
+                    <mxGeometry relative="1" as="geometry"><mxPoint x="780" y="270" as="sourcePoint"/><mxPoint x="570" y="270" as="targetPoint"/></mxGeometry>
+                </mxCell>
+                
+                <mxCell id="msg4" value="upsert_repositories()" style="endArrow=classic;html=1;strokeColor=#333333;fontSize=13;fontColor=#000000;" edge="1" parent="sequence-group">
+                    <mxGeometry relative="1" as="geometry"><mxPoint x="570" y="320" as="sourcePoint"/><mxPoint x="930" y="320" as="targetPoint"/></mxGeometry>
+                </mxCell>
+                <mxCell id="msg4-ret" value="Session Commit" style="endArrow=open;dashed=1;html=1;endFill=0;strokeColor=#333333;fontSize=13;fontColor=#000000;" edge="1" parent="sequence-group">
+                    <mxGeometry relative="1" as="geometry"><mxPoint x="930" y="360" as="sourcePoint"/><mxPoint x="570" y="360" as="targetPoint"/></mxGeometry>
+                </mxCell>
+                
+                <mxCell id="msg6" value="Return JSON Status" style="endArrow=open;dashed=1;html=1;endFill=0;strokeColor=#333333;fontSize=13;fontColor=#000000;" edge="1" parent="sequence-group">
+                    <mxGeometry relative="1" as="geometry"><mxPoint x="570" y="490" as="sourcePoint"/><mxPoint x="340" y="490" as="targetPoint"/></mxGeometry>
+                </mxCell>
+                <mxCell id="msg7" value="Return JSON" style="endArrow=open;dashed=1;html=1;endFill=0;strokeColor=#333333;fontSize=13;fontColor=#000000;" edge="1" parent="sequence-group">
+                    <mxGeometry relative="1" as="geometry"><mxPoint x="340" y="530" as="sourcePoint"/><mxPoint x="130" y="530" as="targetPoint"/></mxGeometry>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

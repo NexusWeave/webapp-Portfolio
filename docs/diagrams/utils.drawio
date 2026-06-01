@@ -1,0 +1,67 @@
+<mxfile host="65bd71144e">
+    <diagram id="utils-diagram" name="Utility Tools">
+        <mxGraphModel dx="1164" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- Logger Class -->
+                <mxCell id="logger" value="Logger" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="40" width="240" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="logger-methods" value="+ __init__(name, dir)&lt;br&gt;+ setup_handler(handler)&lt;br&gt;+ file_handler()&lt;br&gt;+ console_handler()&lt;br&gt;+ info(msg), warn(msg)&lt;br&gt;+ error(msg), debug(msg)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="logger">
+                    <mxGeometry y="26" width="240" height="174" as="geometry"/>
+                </mxCell>
+
+                <!-- Watchers -->
+                <mxCell id="appwatcher" value="AppWatcher" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="300" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="apiwatcher" value="APIWatcher" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="430" y="300" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="dbwatcher" value="DatabaseWatcher" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="300" width="120" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- OSUtils -->
+                <mxCell id="osutils" value="OSUtils" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="40" width="220" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="osutils-methods" value="+ find_file()&lt;br&gt;+ combine_path()&lt;br&gt;+ find_directory()&lt;br&gt;+ @staticmethod find_project_root()&lt;br&gt;+ @staticmethod create_directory()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="osutils">
+                    <mxGeometry y="26" width="220" height="134" as="geometry"/>
+                </mxCell>
+
+                <!-- UtilsTools -->
+                <mxCell id="utilstools" value="UtilsTools" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="700" y="40" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="utilstools-methods" value="+ @staticmethod announcements(now)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="utilstools">
+                    <mxGeometry y="26" width="220" height="34" as="geometry"/>
+                </mxCell>
+
+                <!-- Inheritance Edges -->
+                <mxCell id="edge1" value="" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeColor=#333333;" edge="1" parent="1" source="appwatcher" target="logger">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="250" y="270"/>
+                            <mxPoint x="420" y="270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge2" value="" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#333333;" edge="1" parent="1" source="apiwatcher" target="logger">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge3" value="" style="endArrow=block;endFill=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeColor=#333333;" edge="1" parent="1" source="dbwatcher" target="logger">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                         <Array as="points">
+                            <mxPoint x="720" y="270"/>
+                            <mxPoint x="540" y="270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
