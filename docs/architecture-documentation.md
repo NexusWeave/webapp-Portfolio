@@ -20,7 +20,6 @@ The documentation library includes:
 - Workspace architectural tree
 - Backend service documentation
 - Frontend architecture and context diagrams
-- Design prototypes
 
 ## Architecture Documents
 - **Root Architecture:** `docs/architecture.md`

@@ -14,7 +14,7 @@ Portfolio is a full-stack biography and project showcase application with a Nuxt
 ## Repository Layout
 - `frontend/`: Nuxt application, content, Tina config, and UI components
 - `backend/`: FastAPI app, services, models, database configuration, and tests
-- `docs/`: Top-level architecture docs and prototype assets
+- `docs/`: Top-level architecture docs
 - `docker-compose.yml`: Local multi-service orchestration
 
 ## Installation and Running
@@ -52,7 +52,6 @@ Default ports:
 - Architecture Documentation index: [docs/architecture-documentation.md](./docs/architecture-documentation.md)
 - Frontend architecture: [frontend/docs/architecture.md](./frontend/docs/architecture.md)
 - Backend architecture: [backend/docs/architecture.md](./backend/docs/architecture.md)
-- Prototype entry point: [docs/prototype/index.html](./docs/prototype/index.html)
 
 ## Release Notes
 Project release history is tracked in [CHANGELOG.md](./CHANGELOG.md).

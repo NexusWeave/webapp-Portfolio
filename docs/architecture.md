@@ -25,7 +25,6 @@ webapp-Portfolio/
 ├── docs/
 │   ├── architecture.md
 │   ├── architecture-documentation.md
-│   ├── prototype/
 │   └── system-architecture.drawio
 └── frontend/
     ├── app.vue

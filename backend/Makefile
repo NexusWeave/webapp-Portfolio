@@ -1,4 +1,4 @@
-.PHONY: test coverage html-report clean
+I.PHONY: test coverage html-report clean
 
 ci-pipeline: clean
 test-reports: # Running tests with coverage and generating HTML report # Not working propperly
