@@ -9,6 +9,17 @@ The frontend delivers a fast, accessible, and content-driven portfolio experienc
 | [TypeScript](https://www.typescriptlang.org) | Static typing across all components, composables, and utilities | TypeScript across the entire frontend reduces runtime errors and lowers long-term maintenance cost. |
 | [SASS](https://sass-lang.com) | Structured, maintainable styling | Variables, mixins, and modular partials eliminate duplicated CSS, making visual changes faster and less error-prone across the entire app. |
 
+## Available Commands
+
+| Command | Description | Source |
+|---|---|---|
+| `npm run dev` | Start development server (TinaCMS + Nuxt) | `package.json` |
+| `npm run build` | Build for production | `package.json` |
+| `npm run generate` | Generate static site | `package.json` |
+| `npm run serve` | Build and preview production build | `package.json` |
+| `npm run deploy` | Build and deploy to Netlify | `package.json` |
+| `npm run clean` | Clean up build artifacts and cache | `package.json` |
+
 ## Documentation
 | Resource | Path |
 |---|---|
@@ -28,18 +39,6 @@ Start the development server on `http://localhost:3000`:
 
 ```bash
 npm run dev
-```
-
-Build for production:
-
-```bash
-npm run build
-```
-
-Serve the production build locally:
-
-```bash
-npm run serve
 ```
 
 See the [Nuxt deployment documentation](https://nuxt.com/docs/getting-started/deployment) for hosting options.
