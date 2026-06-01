@@ -17,64 +17,55 @@ class GithubUtils:
     @staticmethod
     async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str ]]] = None, skip_analysis: bool = False) -> Dict[str, str | object | List[str] | object]:
         """ Maps the repository data to a structured format. """
-        is_private: bool = True if data['private'] else False
-        
-        # Samarbeid defineres som prosjekter eid av andre, ELLER prosjekter med mer enn én bidragsyter
         num_collabs = len(collaborators) if collaborators else 0
-        is_collaborator: bool = True if (str(data['owner']['login']).lower() != 'krigjo25' or num_collabs > 1) else False
-
         date_parser: Callable[[str],object] = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
         anchor_obj : List[Dict[str, str | object ]] = [ { 'name': 'github', 'id': uuid.uuid4().hex, 'href': data['html_url'], 'type': ['github','external'] }]
 
-        repoObject = {}
-        
+        repoObject: Dict[str, str | object | List[str] | object]= {}
         repoObject['lang'] = languages
         repoObject['anchor'] = anchor_obj
-        
-        # Refactor repository name: remove 'webapp-' prefix and technology suffix
-        raw_name = data['name']
-        if raw_name.startswith('webapp-'):
-            parts = raw_name.split('-')
-            if len(parts) >= 3:
-                # Remove 'webapp-' and the last part (technology)
-                processed_name = "-".join(parts[1:-1])
-                repoObject['label'] = processed_name
-            elif len(parts) == 2:
-                # webapp-NAME -> NAME
-                repoObject['label'] = parts[1]
-            else:
-                repoObject['label'] = raw_name
-        else:
-            repoObject['label'] = raw_name
-
         repoObject['repo_id'] = data['id']
         repoObject['owner'] = str(data['owner']['login'])
-        repoObject['owner_url'] = data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
         repoObject['updated_at'] = date_parser(data['updated_at'])
         repoObject['created_at'] = date_parser(data['created_at'])
+        repoObject['is_private'] = True if data['private'] else False
         repoObject['collaborators'] = collaborators if collaborators else []
+        repoObject['label'] = GithubUtils.replace_prefix_tech_suffix (data['name'])
+        repoObject['owner_url'] = data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
         repoObject['description'] = data['description'] if data['description'] else "No description provided."
+        repoObject['is_collaborator'] = True if (str(data['owner']['login']).lower() != 'krigjo25' or num_collabs > 1) else False
 
         if data['homepage']: repoObject['anchor'].append({ 'name': 'webapp', 'id': uuid.uuid4().hex, 'href': data['homepage']})
 
-        repoObject['is_private'] = is_private
+        stack: Dict[str, bool] = {}
+        if not skip_analysis: 
+            stack = await GithubUtils.track_project_stack(str(data['default_branch']), str(data['trees_url']), n=1)
 
-        if not skip_analysis:
-            track_stack = await GithubUtils.track_project_stack(str(data['default_branch']), str(data['trees_url']), n=1)
-
-            repoObject['is_backend'] = track_stack.get('is_backend', False)
-            repoObject['is_frontend'] = track_stack.get('is_frontend', False)
-            repoObject['is_fullstack'] = track_stack.get('is_fullstack', False)
-        else:
-            # Default values if analysis is skipped (will be handled by upsert logic if repo exists)
-            repoObject['is_backend'] = False
-            repoObject['is_frontend'] = False
-            repoObject['is_fullstack'] = False
-            
-        repoObject['is_collaborator'] = is_collaborator
         repoObject['needs_full_sync'] = not skip_analysis
+        repoObject['is_backend'] = stack.get('is_backend', False)
+        repoObject['is_frontend'] = stack.get('is_frontend', False)
+        repoObject['is_fullstack'] = stack.get('is_fullstack', False)
+        
 
         return repoObject
+
+    @staticmethod
+    def replace_prefix_tech_suffix(name: str): 
+
+        list_of_forbidden_names = ['webapp', 'console', 'fiveem']
+
+        for i in list_of_forbidden_names:
+            if name.startswith(i):
+                parts = name.split('-')
+                if len(parts) >= 3:
+                    # Remove 'webapp-' and the last part (technology)
+                    processed_name = "-".join(parts[1:-1])
+                    name = processed_name
+                elif len(parts) == 2:
+                    # webapp-NAME -> NAME
+                    name = parts[1]
+            
+            return name
 
     @staticmethod
     async def track_project_stack(branch:str, tree_path:str, n:int = 1) -> Dict[str, bool]:

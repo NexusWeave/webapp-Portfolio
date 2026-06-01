@@ -125,28 +125,16 @@ class GithubAPI(AsyncAPIClientConfig):
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/contributors")
         
         collaborators: List[Dict[str, str]] = []
+
         while path:
             response: httpx.Response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
-            contributors_data = response.json()
-            
-            if not isinstance(contributors_data, list):
-                LOG.error(f"Expected list for collaborators from {path}, but got {type(contributors_data).__name__}")
-                break
+            contributors_data: List[Dict[str, str]]= response.json()
                 
             for contributor in contributors_data:
-                 if isinstance(contributor, dict) and 'login' in contributor:
 
-                    login = contributor['login'].lower()
-                    if (contributor.get('type') != 'User' or 
-                        '[bot]' in login or 
-                        login in ['semantic-release-bot', 'copilot', 'tinacms']):
-                        continue
-
-                    collaborators.append({
-                        "name": contributor['login'], 
-                        "collab_id": str(contributor['id']),
-                        "html_url": contributor.get('html_url', f"https://github.com/{contributor['login']}")
-                    })
+                login = contributor['login'].lower()
+                if (contributor.get('type') != 'User' or  login in ['[bot]','semantic-release-bot', 'copilot', 'tinacms']): continue
+                collaborators.append({ "name": contributor['login'],  "collab_id": str(contributor['id']), "html_url": contributor.get('html_url', f"https://github.com/{contributor['login']}") })
             
             _next_page_ = getattr(response, 'links', {})
             path = _next_page_.get('next', {}).get('url') if 'next' in _next_page_ else None
