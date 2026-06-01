@@ -19,7 +19,7 @@ status: |
 
   Jeg er fornøyd med innsatsen i dag.
 sources: ''
-  ---
+---
 
 Dokumentasjonen hadde begynt å bli litt utdatert, og det var vanskelig å få et raskt blikk på hvordan systemet hadde blitt bygget opp.
 
