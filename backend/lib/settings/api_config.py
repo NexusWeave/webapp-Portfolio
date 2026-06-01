@@ -27,8 +27,8 @@ class AsyncAPIClientConfig(WebAPIModel):
     def __init__(self, URL:str, KEY: str, version: Optional[str] = None):
         self.API_URL = URL
         self.API_KEY = KEY
-        self.VERSION = version
         self.QUEUE: int = 5
+        self.VERSION = version
         self.SEM = Semaphore(self.QUEUE)
 
     async def api_call(self, endpoint: Optional[str], head: Dict[str, str], params: Optional[Dict[str, str | int]] = None) ->  httpx.Response:
