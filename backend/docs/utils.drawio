@@ -1,0 +1,76 @@
+<mxfile host="65bd71144e">
+    <diagram name="Utility Tools" id="diagram-utils">
+        <mxGraphModel dx="1150" dy="406" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="logger" value="Logger (v1.0.0)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="300" width="280" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="logger-methods" value="+ __init__(name, dir, level)&#xa;+ file_handler(), console_handler()&#xa;+ info(msg), warn(msg)&#xa;+ error(msg), debug(msg)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;" parent="logger" vertex="1">
+                    <mxGeometry y="30" width="280" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="appwatcher" value="AppWatcher (v1.0.0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry y="600" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="apiwatcher" value="APIWatcher (v1.0.0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="600" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="dbwatcher" value="DatabaseWatcher (v1.0.0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="600" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="servicewatcher" value="ServiceWatcher (v1.0.0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="600" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="configwatcher" value="ConfigWatcher (v1.0.0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="690" y="600" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="exceptionhandler" value="ExceptionHandler (Base)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="300" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="exception-methods" value="+ __init__(code, message)&#xa;+ status_code&#xa;+ message" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;" parent="exceptionhandler" vertex="1">
+                    <mxGeometry y="30" width="300" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="operationalerror" value="OperationalError" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="250" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="notfounderror" value="NotFoundError" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="250" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="timeouterror" value="TimeOutError" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="250" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="mathinterpreter" value="MathInterPreter (v1.0.0)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLastChild=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="30" width="300" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="math-methods" value="+ Addition(x,y), Subtraction(x,y)&#xa;+ Multiplication(x,y), Division(x,y)&#xa;+ Exponentiation(x,y)&#xa;+ Energy(m), SpeedCalculation(d,t)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;" parent="mathinterpreter" vertex="1">
+                    <mxGeometry y="30" width="300" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-app" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="appwatcher" target="logger" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-api" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="apiwatcher" target="logger" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-db" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="dbwatcher" target="logger" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-service" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="servicewatcher" target="logger" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-config" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="configwatcher" target="logger" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-op" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="operationalerror" target="exceptionhandler" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-nf" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="notfounderror" target="exceptionhandler" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-to" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="timeouterror" target="exceptionhandler" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -17,24 +17,40 @@ Portfolio is a full-stack biography and project showcase application with a Nuxt
 - `docs/`: Top-level architecture docs and prototype assets
 - `docker-compose.yml`: Local multi-service orchestration
 
-## Run With Docker
-From the repository root:
+## Installation and Running
 
+### Prerequisites
+- [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- [Python 3.14+](https://www.python.org/)
+
+### Option 1: Docker (Recommended)
+From the repository root, run the entire stack:
 ```bash
 docker compose up --build
 ```
 
-Default ports:
+### Option 2: Local Development
+#### Backend
+1. Navigate to `backend/`.
+2. Create and activate a virtual environment: `python -m venv venv && source venv/bin/activate`.
+3. Install dependencies: `pip install -r requirements.txt`.
+4. Run the server: `uvicorn app:app --reload`.
 
+#### Frontend
+1. Navigate to `frontend/`.
+2. Install dependencies: `npm install`.
+3. Run the development server: `npm run dev`.
+4. Clean build artifacts: `npm run clean`.
+
+Default ports:
 - Frontend: `http://localhost:3002`
 - Backend: `http://localhost:8080`
 
-The compose setup reads variables from `.env` at repository root.
-
 ## Documentation
 - Top-level architecture: [docs/architecture.md](./docs/architecture.md)
-- Frontend architecture: [frontend/docs/ARCHITECTURE.md](./frontend/docs/ARCHITECTURE.md)
-- Frontend context diagram: [frontend/docs/context-diagram.md](./frontend/docs/context-diagram.md)
+- Architecture Documentation index: [docs/architecture-documentation.md](./docs/architecture-documentation.md)
+- Frontend architecture: [frontend/docs/architecture.md](./frontend/docs/architecture.md)
 - Backend architecture: [backend/docs/architecture.md](./backend/docs/architecture.md)
 - Prototype entry point: [docs/prototype/index.html](./docs/prototype/index.html)
 
