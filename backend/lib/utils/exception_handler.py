@@ -1,5 +1,4 @@
-#   Error handler
-
+# Standard libraries
 from typing import Optional
 
 
