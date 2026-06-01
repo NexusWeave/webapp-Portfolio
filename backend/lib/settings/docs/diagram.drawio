@@ -1,0 +1,129 @@
+<mxfile host="65bd71144e">
+    <diagram name="API Clients" id="diagram-api-clients">
+        <mxGraphModel dx="1208" dy="426" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="class-asyncapiclientconfig" value="&lt;i&gt;AsyncAPIClientConfig&lt;/i&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#333333;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="40" width="320" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="attr-api-url" value="+ API_URL" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-asyncapiclientconfig" vertex="1">
+                    <mxGeometry y="30" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="attr-api-key" value="+ API_KEY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-asyncapiclientconfig" vertex="1">
+                    <mxGeometry y="60" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-apicall" value="+ api_call(endpoint, head)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-asyncapiclientconfig" vertex="1">
+                    <mxGeometry y="90" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-waitinqueue" value="+ wait_in_queue(coro)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-asyncapiclientconfig" vertex="1">
+                    <mxGeometry y="120" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="class-githubapi" value="GithubAPI" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#333333;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="240" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="attr-github-version" value="+ __VERSION__" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-githubapi" vertex="1">
+                    <mxGeometry y="30" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-fetchdata-github" value="+ fetch_data(endpoint, params, existing_timestamps)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-githubapi" vertex="1">
+                    <mxGeometry y="60" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-fetchlanguages" value="+ fetch_languages(owner, name)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-githubapi" vertex="1">
+                    <mxGeometry y="90" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-fetchcollaborators" value="+ fetch_collaborators(owner, name)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-githubapi" vertex="1">
+                    <mxGeometry y="120" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-analyzerepo" value="+ analyze_repository(trees_url)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-githubapi" vertex="1">
+                    <mxGeometry y="150" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="class-heavyapi" value="HeavyAPI" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#C2185B;fontColor=#ffffff;strokeColor=#333333;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="240" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-fetchdata-heavy" value="+ fetch_data(endpoint)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-heavyapi" vertex="1">
+                    <mxGeometry y="30" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="class-scanner" value="Scanner" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#333333;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="760" y="240" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="attr-scanner-version" value="+ __VERSION__" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-scanner" vertex="1">
+                    <mxGeometry y="30" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-checkstatus" value="+ check_status()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-scanner" vertex="1">
+                    <mxGeometry y="60" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-fetchwebrules" value="+ fetch_web_rules()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-scanner" vertex="1">
+                    <mxGeometry y="90" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-extractinfo" value="+ extract_information()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-scanner" vertex="1">
+                    <mxGeometry y="120" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-scrapeinfo" value="+ scrape_information(url)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-scanner" vertex="1">
+                    <mxGeometry y="150" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="rel-github-async" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="class-githubapi" target="class-asyncapiclientconfig" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="rel-heavy-async" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="class-heavyapi" target="class-asyncapiclientconfig" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="rel-scanner-async" value="" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;strokeWidth=1;" parent="1" source="class-scanner" target="class-asyncapiclientconfig" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Services" id="diagram-services">
+        <mxGraphModel dx="1208" dy="426" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="100"/>
+                <mxCell id="101" parent="100"/>
+                <mxCell id="ext-githubapi" value="GithubAPI&lt;br&gt;&lt;i&gt;(from API Clients)&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" parent="101" vertex="1">
+                    <mxGeometry x="40" y="240" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ext-scanner" value="Scanner&lt;br&gt;&lt;i&gt;(from API Clients)&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" parent="101" vertex="1">
+                    <mxGeometry x="760" y="240" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="class-apidatabasebridge" value="ApiDatabaseBridge" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#2979FF;fontColor=#ffffff;strokeColor=#333333;strokeWidth=2;" parent="101" vertex="1">
+                    <mxGeometry x="40" y="40" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-repossync" value="+ repositories_sync(request, URL, params, ENDPOINT, TOKEN)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-apidatabasebridge" vertex="1">
+                    <mxGeometry y="30" width="320" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="class-schedulerservice" value="SchedulerService" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#C2185B;fontColor=#ffffff;strokeColor=#333333;strokeWidth=2;" parent="101" vertex="1">
+                    <mxGeometry x="400" y="40" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-schedulegithub" value="+ schedule_github()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-schedulerservice" vertex="1">
+                    <mxGeometry y="30" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="class-healthchecks" value="HealthChecks" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#C2185B;fontColor=#ffffff;strokeColor=#333333;strokeWidth=2;" parent="101" vertex="1">
+                    <mxGeometry x="760" y="40" width="320" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-checkdb" value="+ check_database(request)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-healthchecks" vertex="1">
+                    <mxGeometry y="30" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-checkgithub" value="+ check_github_service()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-healthchecks" vertex="1">
+                    <mxGeometry y="60" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-checkscanner" value="+ check_scanner()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-healthchecks" vertex="1">
+                    <mxGeometry y="90" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="class-announcementsservice" value="AnnouncementsService" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#C2185B;fontColor=#ffffff;strokeColor=#333333;strokeWidth=2;" parent="101" vertex="1">
+                    <mxGeometry x="400" y="240" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="method-getcelebrationdays" value="+ get_celebration_days(date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="class-announcementsservice" vertex="1">
+                    <mxGeometry y="30" width="320" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="rel-scheduler-apibridge" value="" style="endArrow=classic;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" parent="101" source="class-schedulerservice" target="class-apidatabasebridge" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="rel-apibridge-github" value="" style="endArrow=classic;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" parent="101" source="class-apidatabasebridge" target="ext-githubapi" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="rel-health-scanner" value="" style="endArrow=classic;dashed=1;html=1;strokeColor=#000000;strokeWidth=1;" parent="101" source="class-healthchecks" target="ext-scanner" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
