@@ -16,7 +16,7 @@
         </nav>
 
         <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
-            <p v-if="data?.contribution_ratio" class="collab-name">
+            <p v-if="data?.contribution_ratio !== undefined" class="collab-name">
                 <span>Bidrag: <b>{{ data.contribution_ratio }}%</b></span>
             </p>
             <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
@@ -61,16 +61,15 @@
 
     const isCollaboration = computed(() => {
         if (!props.data) return false;
-        // Definerer samarbeid som prosjekter eid av andre, ELLER prosjekter med mer enn én bidragsyter
-        const hasMultipleContributors = (props.data.collaborators?.length || 0) > 1;
-        return (props.data.flags?.collaborator) || hasMultipleContributors;
+        // Bruk 'collaborator' flagget fra backenden, som er true hvis det er flere bidragsytere eller eid av andre
+        return !!props.data.flags?.collaborator || !!props.data.is_fork;
     });
 
     const displayOwner = computed(() => {
         const owner = data.value?.owner;
         const ownerUrl = data.value?.owner_url;
         
-        // Bruk data direkte fra backenden for å identifisere forks og originale eiere
+        // Hvis det er en fork, bruk den originale eieren fra backenden
         if (data.value?.is_fork && data.value?.parent_owner) {
             return { 
                 name: data.value.parent_owner, 
