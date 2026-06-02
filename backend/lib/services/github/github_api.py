@@ -171,7 +171,14 @@ class GithubAPI(AsyncAPIClientConfig):
             LOG.warn(f"Skipping repository item due to missing fields: {item}")
             return None
 
-        needs_update = True #self._should_update_repo(item, existing_timestamps.get(repo_id))
+        needs_update = self._should_update_repo(item, existing_timestamps.get(repo_id))
+
+        # If it's a fork, we need full details to get the 'parent' (original owner)
+        if item.get('fork'):
+            LOG.info(f"Fork detected for {name}. Fetching full details to identify original owner.")
+            details = await self.fetch_repo_details(owner, name)
+            if details:
+                item.update(details)
 
         import asyncio
         await asyncio.sleep(0.5)
@@ -204,6 +211,19 @@ class GithubAPI(AsyncAPIClientConfig):
         except Exception as e:
             LOG.error(f"Error mapping {name}: {str(e)}")
             return None
+
+    async def fetch_repo_details(self, owner: str, name: str) -> Dict[str, Any]:
+        path = urljoin(self.API_URL, f"repos/{owner}/{name}")
+        try:
+            response = await self.wait_in_queue(self.api_call(path, head=self.HEADER))
+            if response.status_code == 200:
+                return response.json()
+            else:
+                LOG.error(f"Failed to fetch details for {owner}/{name}: {response.status_code}")
+                return {}
+        except Exception as e:
+            LOG.error(f"Error fetching repo details for {owner}/{name}: {str(e)}")
+            return {}
 
     async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, Any]]:
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
