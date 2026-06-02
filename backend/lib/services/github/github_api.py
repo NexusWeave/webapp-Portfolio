@@ -21,12 +21,54 @@ class GithubAPI(AsyncAPIClientConfig):
     """ Github API Configuration
         API : https://api.github.com/
     """
-    __VERSION__ = 'v1.3.2'
+    __VERSION__ = 'v1.3.3'
 
     def __init__(self, URL:str, KEY:str):
         super().__init__(URL=URL, KEY=KEY)
         auth_token = self.API_KEY if self.API_KEY.startswith(('token ', 'Bearer ')) else f"token {self.API_KEY}"
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': auth_token}
+
+    async def fetch_contribution_ratio(self, owner: str, repo: str, target_user: str) -> float:
+        """ Fetches the contribution ratio (additions) for a specific user in a repository. """
+        path = urljoin(self.API_URL, f"repos/{owner}/{repo}/stats/contributors")
+        target_user = target_user.lower()
+        
+        # GitHub stats API might return 202 if data is being generated.
+        for _ in range(3):
+            try:
+                response = await self.wait_in_queue(self.api_call(path, head=self.HEADER))
+                
+                if response.status_code == 200:
+                    stats = response.json()
+                    if not stats or not isinstance(stats, list):
+                        return 0.0
+                        
+                    total_additions = 0
+                    user_additions = 0
+                    
+                    for contributor in stats:
+                        # 'a' represents additions in GitHub's stats API
+                        cont_additions = sum(week.get('a', 0) for week in contributor.get('weeks', []))
+                        total_additions += cont_additions
+                        
+                        if contributor.get('author', {}).get('login', '').lower() == target_user:
+                            user_additions = cont_additions
+                    
+                    return user_additions / total_additions if total_additions > 0 else 0.0
+                    
+                elif response.status_code == 202:
+                    LOG.debug(f"GitHub is calculating stats for {repo}. Waiting...")
+                    import asyncio
+                    await asyncio.sleep(1.5)
+                    continue
+                else:
+                    LOG.warn(f"Unexpected status code {response.status_code} fetching stats for {repo}")
+                    break
+            except Exception as e:
+                LOG.error(f"Error fetching contribution ratio for {repo}: {str(e)}")
+                break
+                
+        return 0.0
 
     async def fetch_data(self, endpoint:str, contributor: str = "", params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime.datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
         """
@@ -138,7 +180,18 @@ class GithubAPI(AsyncAPIClientConfig):
         languages = []
         if needs_update:
             LOG.info(f"Fetching details for updated/new repo: {name}")
-            languages = await self.fetch_languages(owner, name)
+            
+            # Fetch contribution ratio to weigh languages
+            ratio = await self.fetch_contribution_ratio(owner, name, contributor)
+            LOG.info(f"Contribution ratio for {contributor} in {name}: {ratio:.2%}")
+            
+            raw_languages = await self.fetch_languages(owner, name)
+            
+            # Apply weighting to language bytes
+            languages = []
+            for lang in raw_languages:
+                lang['bytes'] = int(lang['bytes'] * ratio)
+                languages.append(lang)
         
         utils = GithubUtils()
         try:
