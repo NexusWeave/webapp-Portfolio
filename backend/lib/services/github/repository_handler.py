@@ -36,7 +36,7 @@ class GithubDatabaseHandler:
 
         FIELDS_TO_CHECK = [
             'owner', 'owner_url', 'label', 'repo_url', 'description',
-            'is_private', 'demo_url', 'repo_url', 'parent_owner', 'contribution_ratio']
+            'is_private', 'demo_url', 'repo_url']
 
         for field in FIELDS_TO_CHECK:
             if field == 'description' and dictionary.get(field) == 'No description provided.' : continue

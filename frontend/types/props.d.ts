@@ -30,6 +30,8 @@ export interface GithubData extends Omit<RepositoryBase, 'flags' | 'collaborator
     languages: GithubRepoLanguage[];
     collaborators: { name: string; profile_url: string; }[];
     contribution_ratio?: number;
+    is_fork?: boolean;
+    parent_owner?: string;
 }
 export interface RepoProps { data: GithubData; cls?: Array<string | string[] | Array<string | string[]>>; }
 export interface RepositoryItem extends RepositoryBase { id?: number; repo_id?: number; created_at: string; anchor?: AnchorItem[]; date?: { date: string }; }
