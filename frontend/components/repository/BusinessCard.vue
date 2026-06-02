@@ -66,16 +66,15 @@
     const displayOwner = computed(() => {
         const owner = data.value?.owner;
         const ownerUrl = data.value?.owner_url;
-        const collaborators = data.value?.collaborators || [];
         
-        // Hvis eieren er "meg" (krigjo25) og det er andre bidragsytere, 
-        // anta at den første bidragsyteren som ikke er meg er den opprinnelige eieren (typisk for forks/samarbeid)
-        if (owner?.toLowerCase() === 'krigjo25' && collaborators.length > 0) {
-            const originalOwner = collaborators.find(c => c.name.toLowerCase() !== 'krigjo25');
-            if (originalOwner) {
-                return { name: originalOwner.name, url: originalOwner.profile_url };
-            }
+        // Bruk data direkte fra backenden for å identifisere forks og originale eiere
+        if (data.value?.is_fork && data.value?.parent_owner) {
+            return { 
+                name: data.value.parent_owner, 
+                url: `https://github.com/${data.value.parent_owner}` 
+            };
         }
+        
         return { name: owner, url: ownerUrl };
     });
 
