@@ -9,7 +9,7 @@ export const mapBlogData = (data: DevPostsCollectionItem[]): PostItem[] => {
         const today = new Date();
         
         return data.map((item, index) => {
-            const id = item.id.split('/')
+            const id = item.id.split('/').filter(p => !!p);
             const date:DateItem = {date: item.date};
             const isPublished = new Date(item.date) <= today;
             const path = id.pop()?.replace('.md', '').toLowerCase();
@@ -21,17 +21,18 @@ export const mapBlogData = (data: DevPostsCollectionItem[]): PostItem[] => {
                         const listOfAvailableTags = ['project', 'support', 'os', 'devops', 'rd', 'mentalt-vedlikehold' ];
                         const index:number = id.findIndex(p => listOfAvailableTags.includes(p.toLowerCase()));
 
-                        if (!id[index]) return { name: misc, cls: ['misc'], type: ['tag', 'dir'], href: `${dir}/tags/misc`, path: 'misc', label: 'Misc' };
+                        if (index === -1 || !id[index]) return { name: misc, cls: ['misc'], type: ['tag', 'dir'], href: `${dir}/tags/misc`, path: 'misc', label: 'Misc' };
 
-                        const folder:string = id[index].toLowerCase() ?? misc;
+                        const folder:string = id[index].toLowerCase();
+                        const originalFolder:string = id[index];
 
-                        const label: string = listOfAvailableTags.includes(folder) ? folder == 'project' || folder == 'support' ? `${id[index + 1]}` : folder : misc;
+                        const label: string = folder === 'project' || folder === 'support' ? `${id[index + 1]}` : originalFolder;
                         const name: string = label ? label.toLowerCase() : misc;
                         
                         return {
                             name: name, cls: [name], type: ['tag', 'dir'],
-                            href: `${dir}/tags/${name}`,  path: id.pop()?.toLowerCase(),
-                            label: `${label && !listOfAvailableTags.includes(name) ? name.charAt(0).toUpperCase() + name.slice(1)?.replace(/-/g, ' ') : label}`,
+                            href: `${dir}/tags/${name}`,  path: name,
+                            label: `${!listOfAvailableTags.includes(name) ? label.charAt(0).toUpperCase() + label.slice(1)?.replace(/-/g, ' ') : label}`,
                             labels: [name , 'blog-post']
                         };
                     })();

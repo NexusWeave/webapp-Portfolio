@@ -2,9 +2,11 @@
     <Suspense>
         <template # default>
             <section :class="!!data.cta && !!data.img? ['article-section','flex-column']:  !!data.cta ? ['grid-container-cta']: !!data.media ? ['grid-container-image', 'article-section']: ['grid-container-content','article-section']"> 
+
+                <section v-if="data.info" :class="['article-content']"> <MDC :value ="data.info" /> </section>
                 <section v-if="data.status" :class="['article-content']"> <MDC :value ="data.status" /> </section>
                 <section class="article-content flex-column" v-if ="data.body">
-                    <h4> Utfordring & Løsning</h4>
+                    <h4>Utfordring & Løsning</h4>
                     <ContentRenderer :value ="data.body"/>
                     <MDC v-if="data.sources" :value ="data.sources" />
                 </section>

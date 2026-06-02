@@ -38,8 +38,7 @@ export default defineContentConfig({
   collections: 
   {
     'reference': defineCollection( { type: 'data', schema: referencesCollection, source: 'references/*.md' }),
-    'devPosts': defineCollection( { type: 'page', schema: blogCollection, source: 'posts/technical/**/*.md', }),
-    'personalPosts': defineCollection( { type: 'page', schema: blogCollection, source: 'posts/personal/**/*.md' } ),
+    'devPosts': defineCollection( { type: 'page', schema: blogCollection, source: 'posts/**/*.md', }),
     'academic': defineCollection( { type: 'data', schema: achievementsCollection, source: 'achievements/academic/*.md' }),
     'profileInfo': defineCollection( { type: 'page', schema: profileInformationCollection, source: 'profiles/*.md' }),
     'achievements': defineCollection( { type: 'page', schema: achievementsCollection, source: 'achievements/achievements/*.md' }),

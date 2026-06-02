@@ -1,6 +1,6 @@
 <template>
     <section class="flex-wrap-column repo-container">
-        <h2>Tekniske Prosjekter</h2>
+        <h2>Erfaringen min fra Utviklings prosjekter</h2>
         
         <section v-if="hasProjects" class="flex-wrap-column">
             <template v-if="hasMultipleCategories">
