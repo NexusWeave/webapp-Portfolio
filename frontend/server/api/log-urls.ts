@@ -41,12 +41,8 @@ export default defineEventHandler(async (event) => {
     const rawDevPosts = await fetchCollection(event, devPostPath) as DevPostsCollectionItem[]
     const devPosts = mapBlogData(rawDevPosts)
 
-    const personalPostPath = 'personalPosts';
-    const rawPersonalPosts = await fetchCollection(event, personalPostPath) as DevPostsCollectionItem[]
-    const personalPosts = mapBlogData(rawPersonalPosts)
 
-
-    const mappedPosts = [...devPosts, ...personalPosts]
+    const mappedPosts = [...devPosts]
     return mappedPosts.map(post => ({
         loc: `${post.anchor[0]?.href}`,
         lastmod: post.date,

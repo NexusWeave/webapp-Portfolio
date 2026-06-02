@@ -16,12 +16,15 @@
 5. [Services](#-services)
 6. [Models](#-models)
 7. [Testing](#-testing)
+8. [Utilities](#-utilities)
+9. [Deployment](#-deployment)
+10. [Configuration](#-configuration)
 
 ---
 
 ## 🎯 Overview
 
-The backend application is built with **FastAPI** (primary) and **Flask** (legacy) with focus on:
+The backend application is built with **FastAPI** with focus on:
 
 - ✅ **RESTful API** design
 - ✅ **Type safety** with Pydantic models
@@ -35,7 +38,7 @@ The backend application is built with **FastAPI** (primary) and **Flask** (legac
 ## 📁 Project Structure
 
 ```
-fastAPI/
+backend/
 ├── 📄 app.py                   # Main FastAPI application
 ├── 📄 requirements.txt         # Python dependencies
 ├── 📄 pyproject.toml          # Project configuration
@@ -43,34 +46,30 @@ fastAPI/
 ├── 📄 CHANGELOG.md            # Change log
 │
 ├── 📁 lib/                    # Core libraries
+│   ├── 📁 database/           # Database engine and providers
+│   │   ├── db_engine.py
+│   │   └── db_providers.py
+│   │
 │   ├── 📁 models/             # Data models
-│   │   ├── announcement_model.py
 │   │   ├── github_model.py
-│   │   ├── heavy_model.py
-│   │   ├── web_config.py
 │   │   └── database_models/   # SQLAlchemy models
 │   │       └── GithubModel.py
 │   │
 │   ├── 📁 services/           # Business logic
-│   │   ├── announcements.py
 │   │   ├── api_db_bridge.py
-│   │   ├── db_handler.py
-│   │   ├── github_api.py
-│   │   ├── heavy_api.py
+│   │   ├── base_service.py
 │   │   ├── scheduler_service.py
-│   │   ├── database/          # Database resources
-│   │   │   ├── databases.py
-│   │   │   └── resources.py
-│   │   └── utils/             # Service utilities
-│   │       └── services_utils.py
+│   │   ├── github/             # GitHub service (API, handler, managers)
+│   │   │   ├── github_api.py
+│   │   │   ├── github_router.py
+│   │   │   └── repository_handler.py
+│   │   └── health/             # Health check service
 │   │
 │   ├── 📁 settings/           # Configuration
 │   │   ├── api_config.py
 │   │   ├── app_config.py
 │   │   ├── database_config.py
-│   │   ├── env_config.py
-│   │   ├── schedule_config.py
-│   │   └── __init__.py
+│   │   └── env_config.py
 │   │
 │   └── 📁 utils/              # Utilities
 │       ├── logger_config.py
@@ -82,8 +81,7 @@ fastAPI/
     ├── Makefile
     ├── test_integration.py
     ├── test_performance.py
-    ├── test_responses.py
-    └── reports/
+    └── test_responses.py
 ```
 
 ---
@@ -99,25 +97,6 @@ fastAPI/
 
 - **Current Version:** `v1`
 - **Base Path:** `/api/v1`
-
----
-
-### Announcements API
-
-#### `GET /api/v1/announcement/today`
-
-Fetch today's announcement based on special occasions and holidays.
-
-**Response:**
-```json
-{
-  "announcement_id": 1,
-  "date": "2026-02-07T10:30:00Z",
-  "message": "🎂 Happy Birthday @krigjo25 🎁"
-}
-```
-
-**Status Code:** `200 OK` or `404 Not Found`
 
 ---
 
@@ -192,41 +171,48 @@ API health status.
 
 ### Neon Postgres
 
-The backend uses **Neon Postgres** as the primary database with **SQLAlchemy ORM** for database interactions.
+The backend uses **Neon Postgres** as the primary database with **SQLAlchemy ORM** for database interactions. The connection is managed asynchronously using `asyncpg`.
 
 **Features:**
 - Serverless Postgres database
 - Automatic scaling
-- Connection pooling via PgBouncer
-- Branching for development/testing
+- Asynchronous database engine with `sqlalchemy.ext.asyncio`
+- Connection pooling and SSL management
 
-**Configuration:** `lib/services/database/resources.py`
+**Configuration:** `lib/database/db_engine.py`
+
+The database engine is initialized using environment variables with the `PG_` prefix:
 
 ```python
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.pool import NullPool
-
-# Database URL (from Neon)
-# Format: postgresql://user:password@host/dbname
-DATABASE_URL = "postgresql+psycopg2://user:password@ep-xxx.neon.tech/portfolio"
-
-# Engine setup with connection pooling
-engine = create_engine(
-    DATABASE_URL,
-    poolclass=NullPool,  # Recommended for serverless
-    echo=False
-)
-
-SessionLocal = sessionmaker(bind=engine)
+async def initialize_postgress_engine() -> PostgresProvider:
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    
+    # Builds URL from PG_USER, PG_HOST, PG_PASSWORD, PG_DATABASE, etc.
+    PATH = connection_pool("postgresql+asyncpg", "PG")
+    
+    ASYNC_ENGINE = create_async_engine(
+        PATH, 
+        echo=False,  
+        pool_pre_ping=True, 
+        connect_args={
+            "ssl": ctx, 
+            "prepared_statement_cache_size": 0, 
+            "statement_cache_size": 0
+        }
+    )
+    # ...
 ```
 
-**Connection String:**
-
-Set the `DATABASE_URL` environment variable with Neon connection string:
+**Required Environment Variables:**
 
 ```env
-DATABASE_URL=postgresql+psycopg2://user:password@ep-xxx.neon.tech/portfolio
+PG_USER=your_user
+PG_HOST=your_host
+PG_PASSWORD=your_password
+PG_DATABASE=your_database
+PG_SSL_MODE=require
 ```
 
 ---
@@ -280,69 +266,29 @@ class LanguageAssociationModel(BaseModel):
 
 ### Database Handler
 
-**File:** `lib/services/db_handler.py`
+**File:** `lib/services/github/repository_handler.py`
 
 Implements the `GithubDatabaseHandler` class for database operations:
 
 ```python
 class GithubDatabaseHandler:
-    def __init__(self, session: Session):
+    def __init__(self, session: AsyncSession):
         self.session = session
     
-    @staticmethod
-    def format_payload(repository: Dict[str, Any]) -> Dict[str, Any]:
-        """Format GitHub API payload for database storage."""
-    
-    def fetch_all_repositories(self) -> List[RepositoryModel]:
+    async def fetch_all_repositories(self) -> Sequence[RepositoryModel]:
         """Fetch all repositories from database."""
+        
+    async def upsert_repositories(self, repository: List[Dict[str, Any]]) -> None:
+        """Entry point for syncing repositories from the API payload."""
 ```
 
 ---
 
 ## 🔧 Services
 
-### Announcements Service (`lib/services/announcements.py`)
-
-Handles announcements based on special days and occasions.
-
-```python
-class AnnouncementsService:
-    """Service for managing announcements."""
-    
-    @staticmethod
-    def get_celebration_days(date: datetime) -> str | None:
-        """Get announcement message for celebration days."""
-        # Implements match-case for various holidays:
-        # - Valentines Day (February 10-14)
-        # - Birthday (February 25)
-        # - Independence Day Norway (May 10-17)
-        # - Halloween (October 20+)
-        # - Christmas (December 11-25)
-        # - New Year (December 30+ / January 1-9)
-```
-
----
-
-### Database Handler (`lib/services/db_handler.py`)
+### Database Handler (`lib/services/github/repository_handler.py`)
 
 Handles all database communication with GitHub repositories.
-
-```python
-class GithubDatabaseHandler:
-    """Handler for GitHub database operations."""
-    
-    def __init__(self, session: Session):
-        self.session = session
-    
-    @staticmethod
-    def format_payload(repository: Dict[str, Any]) -> Dict[str, Any]:
-        """Format GitHub API response for database storage."""
-        # Formats URLs for repository, demo, and YouTube
-        # Handles language associations
-    
-    def fetch_all_repositories(self) -> List[RepositoryModel]:
-        """Fetch all repositories from database."""
-```
 
 ---
 
@@ -350,28 +296,11 @@ class GithubDatabaseHandler:
 
 Bridges GitHub API with the database for synchronization.
 
-```python
-class ApiDatabaseBridge:
-    """Bridge between API calls and database operations."""
-    
-    @staticmethod
-    async def repositories_sync(endpoint: str) -> None:
-        """Sync repositories from GitHub API to database."""
-        # Fetches data from GitHub API endpoint
-        # Formats and stores in Postgres database
-```
-
 ---
 
-### GitHub API Service (`lib/services/github_api.py`)
+### GitHub API Service (`lib/services/github/github_api.py`)
 
 Integration with GitHub API.
-
----
-
-### Heavy API Service (`lib/services/heavy_api.py`)
-
-Service for heavy API operations or calculations.
 
 ---
 
@@ -384,27 +313,6 @@ Schedules periodic tasks for background execution.
 ## 📦 Models
 
 All models use **Pydantic** for validation and serialization.
-
----
-
-### Announcement Model (`lib/models/announcement_model.py`)
-
-```python
-class AnnouncementModel(BaseModel):
-    """Model for announcements."""
-    announcement_id: int = Field(..., description="Unique Announcement ID")
-    date: datetime = Field(..., description="Announcement Date")
-    message: str = Field(..., description="Announcement Message")
-    
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "announcement_id": 1,
-                "date": "2026-02-07T10:30:00Z",
-                "message": "🎂 Happy Birthday @krigjo25 🎁"
-            }
-        }
-```
 
 ---
 
@@ -452,18 +360,6 @@ class RepositoryModel(BaseModel):
     def languages(self) -> List[Dict]:
         """Computed field for language information."""
 ```
-
----
-
-### Heavy Model (`lib/models/heavy_model.py`)
-
-Model for heavy data loads or complex operations.
-
----
-
-### Web Config Model (`lib/models/web_config.py`)
-
-Model for web configuration.
 
 ---
 
@@ -555,12 +451,6 @@ class NotFoundError(Exception):
 
 ---
 
-### Service Utils (`lib/services/utils/services_utils.py`)
-
-Helper functions for services.
-
----
-
 ## 🚀 Deployment
 
 ### Requirements (`requirements.txt`)
@@ -594,22 +484,29 @@ pytest tests/ --cov=lib --cov-report=html
 
 ### Environment Variables
 
-Create a `.env` file in the `fastAPI/` folder:
+Create a `.env` file in the `backend/` folder:
 
 ```env
-ENV=development
-DATABASE_URL=postgresql+psycopg2://user:password@ep-xxx.neon.tech/portfolio
+ENVIRONMENT=development
+PORT=8080
+
+# Github REST API
+GITHUB_REST=https://api.github.com/
 GITHUB_TOKEN=your_github_token
-PERSONAL_GITHUB_REST_API=https://api.github.com/users/your-username
-ORG_GITHUB_REST_API=https://api.github.com/orgs/your-org
-REPOS=/repos
-PORT=8000
+GITHUB_ENDPOINT=users/your-username/repos
+
+# Database (Postgres)
+PG_USER=your_user
+PG_HOST=your_host
+PG_PASSWORD=your_password
+PG_DATABASE=your_database
+PG_SSL_MODE=require
 ```
 
 **Neon Connection:**
-- Get connection string from Neon dashboard
-- Use `postgresql+psycopg2` driver for best compatibility
-- Connection pooling handled automatically
+- Get connection details from Neon dashboard.
+- The application uses `postgresql+asyncpg` for asynchronous database operations.
+- Connection pooling and SSL are handled in `lib/database/db_engine.py`.
 
 ---
 
@@ -627,24 +524,15 @@ See `Dockerfile` in the root folder for containerization.
 - **`app_config.py`** - Application environment configuration
 - **`database_config.py`** - Database configuration
 - **`env_config.py`** - Environment variables
-- **`schedule_config.py`** - Scheduler configuration
 
 ---
 
 ## 📊 Project Statistics
 
-```
-Directories: 9
-Primary Directories:
-  - lib/         (Core business logic)
-  - tests/       (Test suite)
-  - __pycache__/ (Python cache)
-```
-
 **Main Python Modules:**
-- Models: 4 files
-- Services: 8 files
-- Settings: 5 files
+- Models: 1 primary (GitHub) + Database Models
+- Services: 4 primary (API Bridge, Scheduler, GitHub, Health)
+- Settings: 4 files
 - Utils: 2 files
 - Tests: 6 files
 
@@ -654,7 +542,6 @@ Primary Directories:
 
 - [Main Architecture](../ARCHITECTURE.md)
 - [Frontend Architecture](../frontend/FRONTEND-ARCHITECTURE.md)
-- [API Documentation](../documentations/model/apis.md)
 - [Backend README](./README.md)
 - [Backend Changelog](./CHANGELOG.md)
 
@@ -667,5 +554,4 @@ Primary Directories:
 - All API responses are validated with **Pydantic models**
 - Logging is centralized via `AppWatcher` and `DatabaseWatcher`
 - Exception handling is standardized with custom exceptions
-- Postgres migration from SQLite completed
 - Connection pooling optimized for serverless environment

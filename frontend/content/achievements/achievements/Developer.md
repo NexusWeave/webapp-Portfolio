@@ -1,11 +1,11 @@
 ---
+title: Konsulent
 created: 2025-04-20T19:23:01.240Z
 end: 2026-05-08T00:00:00.000Z
 organization: SosEnt Norge
 org_link: 'https://sosent.no'
-title: Konsulent
 location: Remote
-loc_link: 'https://maps.app.goo.gl/Ry3kFAGXNM6PATS26'
+loc_link: ''
 techStack:
   - TinaCMS
   - SASS

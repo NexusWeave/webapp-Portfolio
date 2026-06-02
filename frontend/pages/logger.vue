@@ -64,14 +64,14 @@
     const label = ref('blog-post');
     const currentPage: Ref<number> = ref(1);
 
-    const current =  computed(() => {return blogPagination(rawPosts.value.filter(post => !post.isArchived), num, n);});
+    const current =  computed(() => {return blogPagination(rawPosts.value.filter(post => !post.isArchived), 1, rawPosts.value.length);});
     const archived =  computed(() => {currentPage.value; return blogPagination(rawPosts.value.filter(post => post.isArchived), currentPage.value, n);});
 
     const postsByTag = computed(() => {
         if (!rawPosts.value || rawPosts.value.length === 0) return [];
         if (!label.value || label.value === 'blog-post') return [];
 
-        return blogPagination(rawPosts.value.filter(post => post.tags.some(t => t.labels?.includes(label.value))), currentPage.value, rawPosts.value.length - num, label.value);
+        return blogPagination(rawPosts.value.filter(post => post.tags.some(t => t.labels?.includes(label.value))), 1, rawPosts.value.length, label.value);
     });
     const totalPages = ref(Math.ceil((rawPosts.value.length) / n) - 1 || 0);
     const prevPage = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });

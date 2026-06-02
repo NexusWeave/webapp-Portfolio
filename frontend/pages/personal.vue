@@ -46,22 +46,7 @@
         );
     });
 
-    const personalPostPath = 'personalPosts';
-    const personalPostCache = 'personalPostCache';
-    const personalPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(personalPostPath, personalPostCache, mapBlogData);
-    
-    //  --- Pagination Logic
-    const num:number = 3;
-    const paginitionData = computed(() => {currentPage.value; return blogPagination(personalPosts.value, currentPage.value, num)});
-    const nextPage = computed<ButtonItem>(() => { return{ label: 'Neste', cls: ['button', 'pagination-btn'], action: () => currentPage.value ++ }});
-    const prevPage = computed<ButtonItem>(() => { return{ label: 'Forrige', cls: ['button', 'pagination-btn'], action: () => currentPage.value -- }});
-    
-    const currentPage = ref<number>(1);
-    const totalPages = computed<number>(() => { if (personalPosts.value) return Math.ceil(personalPosts.value.length / num); return 0; });
-
     //  --- Debugging tools
     //console.log("Biography Data:", biography.value);
-    //console.log("Personal Posts:", personalPosts.value);
-    //console.log("Pagination Data:", paginitionData.value);
     
 </script>

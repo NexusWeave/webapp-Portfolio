@@ -24,10 +24,6 @@
     const devCache = 'devCache';
     const devPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPath, devCache, mapBlogData);
 
-    const personalPath = 'personalPosts';
-    const personalCache = 'personalCache';
-    const personalPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(personalPath, personalCache, mapBlogData);
-    
     const posts = computed<PostItem >(() => 
     {
         
@@ -38,7 +34,7 @@
             return collection.find(blog => String(blog.path) === currentSlug) || {} as PostItem;
         };
 
-        return findBlog(devPosts.value) ?? findBlog(personalPosts.value);
+        return findBlog(devPosts.value);
 
     });
 

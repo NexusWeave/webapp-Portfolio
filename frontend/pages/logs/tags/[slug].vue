@@ -46,40 +46,35 @@
     const router = useRouter();
     const slug = computed(() => route.params.slug as string);
     const displaySlug = computed(() => slug.value.charAt(0).toUpperCase() + slug.value.slice(1).replace(/-/g, ' '));
+//  --- Dev Data Logic
+const devPostPath = 'devPosts';
+const devPostCache = 'devPostCache';
+const rawDevPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPostPath, devPostCache, mapBlogData);
 
-    //  --- Content logic
-    const devPostPath = 'devPosts';
-    const devPostCache = 'devPostCache';
-    const rawDevPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPostPath, devPostCache, mapBlogData);
+const rawPosts = computed(() => {
+    return rawDevPosts.value;
+});
 
-    const personalPostPath = 'personalPosts';
-    const personalPostCache = 'personalPostCache';
-    const rawPersonalPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(personalPostPath, personalPostCache, mapBlogData);
+//  --- Pagination logic
+const n = 3;
+const num:number = 1;
+const label = ref(String(slug));
+const currentPage: Ref<number> = ref(1);
 
-    const rawPosts = computed(() => {
-        const all = [...rawDevPosts.value, ...rawPersonalPosts.value];
-        return all.filter(post => post.tags.some(t => t.name.toLowerCase() === slug.value.toLowerCase()));
-    });
+const current =  computed(() => {return blogPagination(rawPosts.value.filter(post => !post.isArchived), num, n);});
+const archived =  computed(() => {currentPage.value; return blogPagination(rawPosts.value.filter(post => post.isArchived), currentPage.value, n);});
 
-    //  --- Pagination logic
-    const n = 3;
-    const num:number = 1;
-    const currentPage: Ref<number> = ref(1);
+const totalPages = computed(() => Math.ceil((rawPosts.value.length) / n) - 1 || 0);
+const prevPage = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
+const nextPage = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
 
-    const current =  computed(() => {return blogPagination(rawPosts.value.filter(post => !post.isArchived), num, n);});
-    const archived =  computed(() => {currentPage.value; return blogPagination(rawPosts.value.filter(post => post.isArchived), currentPage.value, n);});
-
-    const totalPages = computed(() => Math.ceil((rawPosts.value.length) / n) - 1 || 0);
-    const prevPage = computed<ButtonItem>(() => { return { label: 'Forrige',  action: (): number => currentPage.value -- }; });
-    const nextPage = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
-
-    //  --- Tag filtering logic
-    const tags = computed(() => {
-        // We fetch tags from all posts to allow switching between tags
-        const allPosts = [...rawDevPosts.value, ...rawPersonalPosts.value];
-        const data = allPosts.flatMap(post => post.tags).filter((tag, index, self) => index === self.findIndex(t => t.name === tag.name))
-        return data.map(tag => { return { ...tag, action: () => router.push(`/logs/tags/${tag.name.toLowerCase()}`) } });
-    });
+//  --- Tag filtering logic
+const tags = computed(() => {
+    // We fetch tags from all posts to allow switching between tags
+    const allPosts = rawDevPosts.value;
+    const data = allPosts.flatMap(post => post.tags).filter((tag, index, self) => index === self.findIndex(t => t.name === tag.name))
+    return data.map(tag => { return { ...tag, action: () => label.value = tag.name.toLowerCase() } });
+});
 
     const resetButton: ButtonItem = { label: 'Tilbakestill', action: () => router.push('/logger')};
 
