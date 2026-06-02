@@ -29,6 +29,11 @@ class GithubUtils:
         repoObject['updated_at'] = date_parser(data['updated_at'])
         repoObject['created_at'] = date_parser(data['created_at'])
         repoObject['is_private'] = True if data['private'] else False
+        repoObject['is_fork'] = True if data.get('fork') else False
+        
+        parent_info = data.get('parent', {})
+        repoObject['parent_owner'] = parent_info.get('owner', {}).get('login') if isinstance(parent_info, dict) else None
+        
         repoObject['collaborators'] = collaborators if collaborators else []
         repoObject['label'] = GithubUtils.replace_prefix_tech_suffix (data['name'])
         repoObject['owner_url'] = data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")

@@ -233,6 +233,8 @@ class RepositoryModel(BaseModel):
     youtube_url: Optional[str]                # YouTube demo URL
     updated_at: Optional[datetime]            # Last update
     description: Optional[str]                # Description
+    is_fork: bool                              # Fork indicator
+    parent_owner: Optional[str]               # Original owner if fork
     lang_associations: List[LanguageAssociationModel]  # Languages
     
     @computed_field

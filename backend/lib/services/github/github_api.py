@@ -171,7 +171,7 @@ class GithubAPI(AsyncAPIClientConfig):
             LOG.warn(f"Skipping repository item due to missing fields: {item}")
             return None
 
-        needs_update = self._should_update_repo(item, existing_timestamps.get(repo_id))
+        needs_update = True #self._should_update_repo(item, existing_timestamps.get(repo_id))
 
         import asyncio
         await asyncio.sleep(0.5)
