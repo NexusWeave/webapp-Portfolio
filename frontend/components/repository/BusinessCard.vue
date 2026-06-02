@@ -83,11 +83,22 @@
         if (!props.data?.collaborators) return [];
         const ownerName = displayOwner.value.name?.toLowerCase() || '';
         
-        // Filtrer ut den viste eieren, meg selv (hvis jeg ikke er eier), og boter fra bidragsyter-listen
-        return props.data.collaborators.filter(c => {
+        // Filtrer ut den viste eieren og boter. Inkluderer 'krigjo25' hvis han ikke er eier.
+        const filtered = props.data.collaborators.filter(c => {
             const name = c?.name?.toLowerCase() || '';
-            return name !== ownerName && name !== 'krigjo25' && !name.includes('[bot]');
-        }).slice(0, 5); // Vis kun de 5 første
+            return name !== ownerName && !name.includes('[bot]');
+        });
+
+        return filtered.slice(0, 5); 
+    });
+
+    const hasMoreContributors = computed(() => {
+        const ownerName = displayOwner.value.name?.toLowerCase() || '';
+        const filtered = props.data.collaborators?.filter(c => {
+            const name = c?.name?.toLowerCase() || '';
+            return name !== ownerName && !name.includes('[bot]');
+        }) || [];
+        return filtered.length > 5;
     });
 
     const contributorParts = computed(() => {
@@ -101,6 +112,11 @@
                 parts.push({ type: 'separator', value: ' & ' });
             }
         });
+
+        if (hasMoreContributors.value) {
+            parts.push({ type: 'separator', value: '...' });
+        }
+
         return parts;
     });
 
