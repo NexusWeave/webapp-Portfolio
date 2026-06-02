@@ -18,11 +18,14 @@ LOG = AppWatcher(dir="logs", name='Health-Check')
 LOG.file_handler()
 
 class HealthChecks():
+
+    __VERSION__ = 'v1.3.2'
+
     def __init__(self, ENVIRONMENT: Any):
         self.GITHUB_REST = ENVIRONMENT.GITHUB_REST
         self.GITHUB_TOKEN = ENVIRONMENT.GITHUB_TOKEN
         self.GITHUB_PER_PAGE = "/repos?per_page=1"
-        self.PERSONAL_GITHUB_REST_API = ENVIRONMENT.PERSONAL_GITHUB_REST_API
+        self.GITHUB_ENDPOINT = ENVIRONMENT.GITHUB_ENDPOINT
 
         self.DB = ENVIRONMENT.PG_DATABASE
         self.SPECIALIST_LINKS = ENVIRONMENT.SPECIALIST_LINKS

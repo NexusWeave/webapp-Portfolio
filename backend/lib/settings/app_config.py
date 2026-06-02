@@ -44,7 +44,8 @@ class AppConfig:
             FastAPI Startup Eventer
         """
         try: 
-            app.state.db = await initialize_postgress_engine()
+            config = self.environment_initialization()
+            app.state.db = await initialize_postgress_engine(url=config.DATABASE_URL)
 
             async with app.state.db.engine.begin() as conn: 
                 await conn.run_sync(BASE.metadata.create_all)
