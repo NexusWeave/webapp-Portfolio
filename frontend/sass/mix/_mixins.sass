@@ -16,10 +16,10 @@
         $block-size: map.get(Devices.$devices, $breakpoint, 'block-size')
         $inline-size: map.get(Devices.$devices, $breakpoint, 'inline-size')
 
-        @media screen and ($inline-size <= width <= $inline-size + 50px ) and (min-height: $block-size) and (orientation: portrait)
+        @media screen and ($inline-size <= width <= $inline-size + 3.125rem ) and (min-height: $block-size) and (orientation: portrait)
             @content
 
-        @media screen and ($block-size <= height <= $block-size + 50px) and (min-width: $inline-size) and (orientation: landscape)
+        @media screen and ($block-size <= height <= $block-size + 3.125rem) and (min-width: $inline-size) and (orientation: landscape)
             @content
 
     @else if $size != null and $breakpoint == null
@@ -31,7 +31,12 @@
 @mixin card-shadow-box()
     margin: 1rem
     padding: 1rem
-    box-shadow: 4px 4px 20px 4px rgba(0, 0, 0, 0.1)
+    box-shadow: 0.25rem 0.25rem 1.25rem 0.25rem rgba(0, 0, 0, 0.1)
+
+@mixin card-base($radius: .5rem, $border: 0.0625rem solid black)
+    border-radius: $radius
+    border: $border
+    @include card-shadow-box()
 
 @mixin list-inline-reset()
     ul 
@@ -40,6 +45,13 @@
             display: inline
 
         padding: 0
+
+@mixin nav-list-reset()
+    ul
+        padding: 0
+        list-style: none
+        inline-size: 100%
+        border-radius: .5rem
 
 @mixin background-style($bg-color, $color)
     color: $color

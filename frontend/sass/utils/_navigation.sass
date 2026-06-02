@@ -3,15 +3,16 @@
 @use '../colors/colors' as color
 
 nav.router-nav
+    @include mix.nav-list-reset()
     ul
         li
             a
                 &:hover
                     color: color.$logo-red !important
-                    transform: translateY(-2px)
+                    transform: translateY(-0.125rem)
 
                 &:active
-                    transform: translateY(1px)
+                    transform: translateY(0.0625rem)
                     opacity: 1
 
                 font-size: 0.9rem
@@ -19,11 +20,6 @@ nav.router-nav
                 @include btn.button-neumorphism()
 
             @include mix.link-styles(color.$dark-grey, color.$logo-red, color.$soft-white, color.$dark-grey)
-
-        padding:0
-        list-style: none
-        inline-size: 100%
-        border-radius: .5rem
 
 nav.logo-nav
     ul
@@ -51,6 +47,7 @@ nav.logo-nav
         list-style: none
 
 nav.anchor-nav, nav.portofolio-nav
+    @include mix.nav-list-reset()
     ul
         li
             a
@@ -80,12 +77,8 @@ nav.anchor-nav, nav.portofolio-nav
                 > span:not(.icon)
                     display: none
 
-        padding:0
-        list-style: none
-        inline-size: 100%
-        border-radius: .5rem
-
 nav.some-nav
+    @include mix.nav-list-reset()
     ul
         li
             a
@@ -100,9 +93,7 @@ nav.some-nav
                 text-decoration: none !important
                 @include btn.button-neumorphism()
                 
-        padding: 0
         margin: auto
         display: flex
         flex-wrap: wrap
-        list-style: none
         justify-content: center

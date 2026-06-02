@@ -4,75 +4,75 @@
 @use './breakpoints' as device
 
 // Ericsson Portrait
-@media only screen and (device.$sony-ericsson-u-width <= width <= 499px) and (device.$sony-ericsson-u-height <= height <= 900px) and (orientation: portrait)
+@media only screen and (device.$sony-ericsson-u-width <= width <= 31.1875rem) and (device.$sony-ericsson-u-height <= height <= 56.25rem) and (orientation: portrait)
 
     main
         section.info
             .carosel
                 div.btn-container
-                    bottom: 34vh !important
+                    bottom: 19.125rem !important
                 
                 .caption
                     font-size: 1rem !important
 
                 .relative
-                    bottom: 5.9vh !important
+                    bottom: 3.3188rem !important
         
         section#tech-repo
             .pp
-                block-size: 27vh !important
-                inline-size: 57vw !important
-                background-size: 22vw !important
+                block-size: 15.1875rem !important
+                inline-size: 51.3rem !important
+                background-size: 19.8rem !important
             
                 .tech-container
                     .relative
-                        top: 1vh !important
-                        left: 4vw !important
+                        top: 0.5625rem !important
+                        left: 3.6rem !important
 
                     .img-wrapper
-                        inline-size: 52vw !important
+                        inline-size: 46.8rem !important
 
                         .img-svg
-                            block-size: 4vh !important
+                            block-size: 2.25rem !important
                 p
-                    inline-size: 39vw !important
+                    inline-size: 35.1rem !important
 
 // Ericsson Lanscape
-@media only screen and (device.$sony-ericsson-u-height <= width <= 899px) and (min-height: device.$sony-ericsson-u-width) and (orientation: landscape)
+@media only screen and (device.$sony-ericsson-u-height <= width <= 56.1875rem) and (min-height: device.$sony-ericsson-u-width) and (orientation: landscape)
 
     main
         section.info
             .carosel
-                block-size: 58vh
-                inline-size: 31vw !important
+                block-size: 32.625rem
+                inline-size: 27.9rem !important
 
                 .caption
-                    bottom: 10.6vh !important
+                    bottom: 5.9625rem !important
 
                 div.btn-container
-                    bottom: 42vh !important
+                    bottom: 23.625rem !important
 
                     .img-btn
                         font-size: 2.5rem
 
             section.bio-container
-                inline-size: 53vw !important
+                inline-size: 47.7rem !important
 
         section#tech-repo
             .pp
-                block-size: 36vh !important
-                inline-size: 37vw !important
-                background-size: 13vw !important
+                block-size: 20.25rem !important
+                inline-size: 33.3rem !important
+                background-size: 11.7rem !important
             
                 .tech-container
                     .relative
-                        top: 2vh !important
-                        left: 2vw !important
+                        top: 1.125rem !important
+                        left: 1.8rem !important
 
                     .img-wrapper
-                        inline-size: 34vw !important
+                        inline-size: 30.6rem !important
 
                         .img-svg
-                            block-size: 5vh !important
+                            block-size: 2.8125rem !important
                 p
-                    inline-size: 33vw !important
+                    inline-size: 29.7rem !important

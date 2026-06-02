@@ -3,6 +3,7 @@
 @use '../colors/colors' as color
 
 .card-container
+    @include mix.card-base()
     p
         font-size: 1rem
         text-align: justify
@@ -18,15 +19,12 @@
                 cursor: default
                 padding-inline: 1rem
                 border-radius: .5rem
-                border: 1px solid black
+                border: 0.0625rem solid black
         
         
     max-inline-size: 24rem
-    border-radius: .5rem
-    border: 1px solid black
 
     //@include mix.link-styles()
-    @include mix.card-shadow-box()
     
 .timeline-card
     h3
@@ -34,6 +32,7 @@
         @include mix.font-style("Roboto")
 
 .business-card
+    @include mix.card-base()
     &.grid-layout
         .card-header
             figure
@@ -136,9 +135,7 @@
 
     inline-size: 23rem
     max-block-size: 29rem
-    border: 1px solid black
     @include mix.link-styles(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
-    @include mix.card-shadow-box()
     @include mix.list-inline-reset()
     
     .credits
@@ -163,4 +160,3 @@
                         font-size: 1.1rem
 
     @include mix.background-image(9rem, "/media/images/cards/portfolio-card.svg")
-    

@@ -3,7 +3,7 @@
 @use './breakpoints' as device
 
 //  Portrait
-@media only screen and (device.$google-pixel-width <= width <= 429px) and (min-height: device.$google-pixel-height) and (orientation: portrait)
+@media only screen and (device.$google-pixel-width <= width <= 26.8125rem) and (min-height: device.$google-pixel-height) and (orientation: portrait)
 
     header a
         font-size: 0.57rem 
@@ -12,10 +12,10 @@
         section.info
 
             .carosel
-                inline-size: 63vw !important
+                inline-size: 56.7rem !important
 
                 div.btn-container
-                    bottom: 21vh !important
+                    bottom: 11.8125rem !important
 
                     button.img-btn
                         font-size: 2rem !important
@@ -23,10 +23,10 @@
                     font-size: .9rem !important
 
                 .relative
-                    bottom : 5vh !important
+                    bottom : 2.8125rem !important
 
 // Landscape
-@media only screen and (device.$google-pixel-height <= width <= 1000px) and (min-height: device.$google-pixel-width) and (orientation: landscape)
+@media only screen and (device.$google-pixel-height <= width <= 62.5rem) and (min-height: device.$google-pixel-width) and (orientation: landscape)
 
     header a
         font-size: 0.57rem 
@@ -35,28 +35,28 @@
         section.info
 
             .carosel
-                block-size: 82vh !important
-                inline-size: 35vw !important
+                block-size: 46.125rem !important
+                inline-size: 31.5rem !important
 
                 div.btn-container
-                    bottom: 56vh !important
+                    bottom: 31.5rem !important
 
             section.bio-container
-                    inline-size: 50vw !important
+                    inline-size: 45rem !important
 
         section#tech-repo
             .pp
-                background-size: 11vw !important
+                background-size: 9.9rem !important
 
-@media only screen and (device.$google-nh-width <= width <= 1100px) and (min-height: device.$google-nh-height) and (orientation: landscape)
+@media only screen and (device.$google-nh-width <= width <= 68.75rem) and (min-height: device.$google-nh-height) and (orientation: landscape)
     main
         section.info
             .carosel
                 .caption
-                    bottom: 8.4vh !important
+                    bottom: 4.725rem !important
 
                 div.btn-container
-                    bottom: 41vh !important
+                    bottom: 23.0625rem !important
 
                     button.img-btn
                         font-size: 2rem !important
@@ -67,36 +67,36 @@
 
         section#tech-repo
             .pp
-                block-size: 29vh !important
+                block-size: 16.3125rem !important
 
                 .tech-container
                     .img-wrapper
-                        inline-size: 25vw !important
+                        inline-size: 22.5rem !important
                     
                         .img-svg
-                            block-size: 5vh !important
+                            block-size: 2.8125rem !important
 
-@media only screen and (device.$google-nhm-width <= width <= 852px) and (min-height: device.$google-nhm-height) and (orientation: landscape)
+@media only screen and (device.$google-nhm-width <= width <= 53.25rem) and (min-height: device.$google-nhm-height) and (orientation: landscape)
     main
         section.info
             .carosel
-                block-size: 44vh !important
+                block-size: 24.75rem !important
                 .caption
-                    bottom: 6.4vh !important
+                    bottom: 3.6rem !important
 
                 div.btn-container
-                    bottom: 35vh !important
+                    bottom: 19.6875rem !important
 
                     button.img-btn
                         font-size: 2.5rem !important
 
         section#tech-repo
             .pp
-                block-size: 20vh !important
+                block-size: 11.25rem !important
 
                 .tech-container
                     .img-wrapper
-                        inline-size: 25vw !important
+                        inline-size: 22.5rem !important
                     
                         .img-svg
-                            block-size: 5vh !important
+                            block-size: 2.8125rem !important

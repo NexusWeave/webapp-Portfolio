@@ -14,14 +14,12 @@ article
                 margin: 0.2rem
                 font-size: 0.85rem
     nav
+        @include mix.list-inline-reset()
         ul
             li
-                margin: 0.5rem
-                display: inline
                 a
                     color: color.$dark-grey
                     text-decoration: none
-            padding: 0
 
     section
         margin: 0 auto
@@ -49,7 +47,7 @@ article
         block-size: 32rem
         margin: 2rem .5rem
         max-inline-size: 29rem
-        box-shadow: 0 0 10px rgba(color.$dark-grey, 0.2)
+        box-shadow: 0 0 0.625rem rgba(color.$dark-grey, 0.2)
 
     .blog-header, .ingress-header
         p.article-metadata
@@ -65,7 +63,7 @@ article
         code
             z-index: -1
             font-style: italic
-            border-radius: 4px
+            border-radius: 0.25rem
             color: color.$white
             position: relative
             padding: 0.2rem 0.4rem
@@ -74,7 +72,7 @@ article
 
         pre
             padding: 1rem
-            border-radius: 4px
+            border-radius: 0.25rem
             background-color: color.$dark-grey
 
     .article-content, .ingress-header
@@ -96,7 +94,7 @@ article
             cursor: help            
             position: relative
             text-decoration: none !important
-            border-bottom: 1px dotted rgb(255, 69, 0)!important
+            border-bottom: 0.0625rem dotted rgb(255, 69, 0)!important
 
     @include mix.text-wrap-safe()
 
@@ -133,4 +131,3 @@ article.profile-bar
 
         .slogan-wrapper
             inline-size: 17rem
-   
