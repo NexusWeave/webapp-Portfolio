@@ -49,7 +49,7 @@ class AsyncAPIClientConfig(WebAPIModel):
                 req: httpx.Response = await cli.get(url = path, headers=head, params=params)
 
                 match req.status_code:
-                    case 200: return req
+                    case 200 | 202: return req
                     case 404: raise HTTPError(f"{req.status_code} - {req.text}")
                     case 408 | 504: raise TimeOutError(req.status_code, req.text)
                     case 401 | 403: raise ConnectionError(f"{req.status_code} - {req.text}")

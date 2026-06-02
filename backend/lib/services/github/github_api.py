@@ -34,13 +34,15 @@ class GithubAPI(AsyncAPIClientConfig):
         target_user = target_user.lower()
         
         # GitHub stats API might return 202 if data is being generated.
-        for _ in range(3):
+        # We increase retries and sleep time to be more resilient.
+        for attempt in range(5):
             try:
                 response = await self.wait_in_queue(self.api_call(path, head=self.HEADER))
                 
                 if response.status_code == 200:
                     stats = response.json()
                     if not stats or not isinstance(stats, list):
+                        LOG.warn(f"Empty or invalid stats for {repo}. Defaulting ratio to 0.0")
                         return 0.0
                         
                     total_additions = 0
@@ -54,12 +56,14 @@ class GithubAPI(AsyncAPIClientConfig):
                         if contributor.get('author', {}).get('login', '').lower() == target_user:
                             user_additions = cont_additions
                     
-                    return user_additions / total_additions if total_additions > 0 else 0.0
+                    ratio = user_additions / total_additions if total_additions > 0 else 0.0
+                    return ratio
                     
                 elif response.status_code == 202:
-                    LOG.debug(f"GitHub is calculating stats for {repo}. Waiting...")
+                    wait_time = 2.0 * (attempt + 1)
+                    LOG.debug(f"GitHub is calculating stats for {repo} (Attempt {attempt+1}/5). Waiting {wait_time}s...")
                     import asyncio
-                    await asyncio.sleep(1.5)
+                    await asyncio.sleep(wait_time)
                     continue
                 else:
                     LOG.warn(f"Unexpected status code {response.status_code} fetching stats for {repo}")
@@ -68,6 +72,7 @@ class GithubAPI(AsyncAPIClientConfig):
                 LOG.error(f"Error fetching contribution ratio for {repo}: {str(e)}")
                 break
                 
+        LOG.warn(f"Failed to fetch contribution ratio for {repo} after multiple attempts. Defaulting to 0.0")
         return 0.0
 
     async def fetch_data(self, endpoint:str, contributor: str = "", params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime.datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
@@ -275,23 +280,24 @@ class GithubAPI(AsyncAPIClientConfig):
     @staticmethod
     def _should_update_repo( item: Dict[str, Any], db_updated_at: Optional[datetime.datetime]) -> bool:
         """ Determines if a repository needs a full update based on API and DB timestamps. """
-        if db_updated_at is None: return True
-        
-        def date_parser(d:str) -> datetime.datetime:
-            return datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
-
-        updated_at_str = item.get('updated_at')
-        if not updated_at_str:
-            return True
-            
-        api_updated_at = date_parser(updated_at_str)
-        
-        # Aggressive normalization for comparison (naive comparison)
-        api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
-        db_comp = db_updated_at.replace(tzinfo=None) if hasattr(db_updated_at, 'replace') else db_updated_at
-
-        try: return api_comp > db_comp
-        except TypeError: return True
+        return True # Temporarily forced to True for full weighted statistics re-sync.
+        # if db_updated_at is None: return True
+        # 
+        # def date_parser(d:str) -> datetime.datetime:
+        #     return datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
+        # 
+        # updated_at_str = item.get('updated_at')
+        # if not updated_at_str:
+        #     return True
+        #     
+        # api_updated_at = date_parser(updated_at_str)
+        # 
+        # # Aggressive normalization for comparison (naive comparison)
+        # api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
+        # db_comp = db_updated_at.replace(tzinfo=None) if hasattr(db_updated_at, 'replace') else db_updated_at
+        # 
+        # try: return api_comp > db_comp
+        # except TypeError: return True
 
     @staticmethod
     def _verify_contribution( owner: str, collaborators: List[Dict[str, str]], target_user: str) -> bool:
