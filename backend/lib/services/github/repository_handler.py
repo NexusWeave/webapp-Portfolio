@@ -36,13 +36,13 @@ class GithubDatabaseHandler:
 
         FIELDS_TO_CHECK = [
             'owner', 'owner_url', 'label', 'repo_url', 'description',
-            'is_private', 'demo_url', 'repo_url', 'parent_owner']
+            'is_private', 'demo_url', 'repo_url', 'parent_owner', 'contribution_ratio']
 
         for field in FIELDS_TO_CHECK:
             if field == 'description' and dictionary.get(field) == 'No description provided.' : continue
             API_VALUE, DB_VALUE = dictionary.get(field), getattr(exist, field, None)
 
-            if DB_VALUE != API_VALUE: 
+            if API_VALUE is not None and DB_VALUE != API_VALUE: 
                 LOG.debug(f"Metadata change detected for {exist.label}: field {field}")
                 return True
 
@@ -130,6 +130,7 @@ class GithubDatabaseHandler:
                 'is_fullstack': dictionary.get('is_fullstack', False),
                 'is_collaborator': dictionary.get('is_collaborator', False),
                 'is_fork': dictionary.get('is_fork', False),
+                'contribution_ratio': dictionary.get('contribution_ratio', 100),
                 'parent_owner': dictionary.get('parent_owner'),
                 'collaborators_data': dictionary.get('collaborators_data', [])
             })

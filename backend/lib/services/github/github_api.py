@@ -184,6 +184,7 @@ class GithubAPI(AsyncAPIClientConfig):
             return None
 
         languages = []
+        ratio = None
         if needs_update:
             LOG.info(f"Fetching details for updated/new repo: {name}")
             
@@ -199,7 +200,7 @@ class GithubAPI(AsyncAPIClientConfig):
         
         utils = GithubUtils()
         try:
-            return await utils.map_repository(item, languages, collaborators, skip_analysis=not needs_update)
+            return await utils.map_repository(item, languages, collaborators, skip_analysis=not needs_update, contribution_ratio=ratio)
         except Exception as e:
             LOG.error(f"Error mapping {name}: {str(e)}")
             return None

@@ -15,7 +15,7 @@ LOG.file_handler()
 class GithubUtils:
 
     @staticmethod
-    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str ]]] = None, skip_analysis: bool = False) -> Dict[str, str | object | List[str] | object]:
+    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str ]]] = None, skip_analysis: bool = False, contribution_ratio: Optional[float] = None) -> Dict[str, str | object | List[str] | object]:
         """ Maps the repository data to a structured format. """
         num_collabs = len(collaborators) if collaborators else 0
         date_parser: Callable[[str],object] = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
@@ -30,6 +30,9 @@ class GithubUtils:
         repoObject['created_at'] = date_parser(data['created_at'])
         repoObject['is_private'] = True if data['private'] else False
         repoObject['is_fork'] = True if data.get('fork') else False
+        
+        if contribution_ratio is not None:
+            repoObject['contribution_ratio'] = int(contribution_ratio * 100)
         
         parent_info = data.get('parent', {})
         repoObject['parent_owner'] = parent_info.get('owner', {}).get('login') if isinstance(parent_info, dict) else None

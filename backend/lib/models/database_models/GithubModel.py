@@ -34,6 +34,7 @@ class RepositoryModel(BASE):
     is_frontend = Column(Boolean, default = 0, nullable = False)
     is_fullstack = Column(Boolean, default = 0, nullable = False)
     is_collaborator = Column(Boolean, default = 0, nullable = False)
+    contribution_ratio = Column(Integer, default = 100, nullable = False)
 
     lang_assosiations = relationship("LanguageAssosiationModel", back_populates = "repository", cascade = "all, delete-orphan")
     collaborator_associations = relationship("RepoCollaboratorAssociationModel", back_populates = "repository", cascade = "all, delete-orphan")

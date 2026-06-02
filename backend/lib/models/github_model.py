@@ -60,6 +60,7 @@ class RepositoryModel(BaseModel):
     is_frontend: bool = Field(False, description = "Frontend Repository", json_schema_extra = {"example":False}, exclude=True)
     is_fullstack: bool = Field(False, description = "Fullstack Repository", json_schema_extra = {"example":False}, exclude=True)
     is_collaborator: bool = Field(False, description = "Collaborator Repository", json_schema_extra = {"example":False}, exclude=True)
+    contribution_ratio: int = Field(100, description = "Contribution Percentage", json_schema_extra = {"example":100})
     
     languages: List[LanguageModel] = Field(..., validation_alias="lang_assosiations")
     collaborator_associations: List[Any] = Field(..., exclude=True)
