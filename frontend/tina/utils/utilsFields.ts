@@ -1,6 +1,6 @@
 
 import { techStack } from "../../utils/techStack";
-import { createField, createListOfFields, createCollection } from "./fields";
+import { createField, createListOfFields } from "./fields";
 
 import type { TinaField} from "tinacms";
 
@@ -38,4 +38,12 @@ export const referenceFields: TinaField[] =
 [
     ...commonFields,
     createField("link", "Link for the document", "e.g /media/document.pdf or https://example.com",  { isRequired: true }),
+];
+
+export const profileFields: TinaField[] = 
+[
+    ...commonFields,
+    createField("date", "Date", "Published", {isType:'datetime', isRequired: true, ui: { dateFormat: 'DD-MM-YY'}}),
+    createField("summary", "Introduksjons tekst", "", { isRequired: true, isType: "rich-text" }),
+    createField("coop", "Smidige erfaringer", "", { isRequired: true, isType: "rich-text" }),
 ];
