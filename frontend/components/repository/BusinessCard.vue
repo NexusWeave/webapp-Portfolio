@@ -16,8 +16,8 @@
         </nav>
 
         <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
-            <p v-if="data?.owner && data?.owner_url" class="collab-name">
-                <span>Eier: <NavigationAnchor :data="{ href: data.owner_url, label: `@${data.owner}` }" /></span>
+            <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
+                <span>Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
                 </p>
             <p v-if="contributors?.length > 0" class="collab-name">
                 <span>Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
@@ -63,14 +63,31 @@
         return (props.data.flags?.collaborator) || hasMultipleContributors;
     });
 
+    const displayOwner = computed(() => {
+        const owner = data.value?.owner;
+        const ownerUrl = data.value?.owner_url;
+        const collaborators = data.value?.collaborators || [];
+        
+        // Hvis eieren er "meg" (krigjo25) og det er andre bidragsytere, 
+        // anta at den første bidragsyteren som ikke er meg er den opprinnelige eieren (typisk for forks/samarbeid)
+        if (owner?.toLowerCase() === 'krigjo25' && collaborators.length > 0) {
+            const originalOwner = collaborators.find(c => c.name.toLowerCase() !== 'krigjo25');
+            if (originalOwner) {
+                return { name: originalOwner.name, url: originalOwner.profile_url };
+            }
+        }
+        return { name: owner, url: ownerUrl };
+    });
+
     const contributors = computed(() => {
         if (!props.data?.collaborators) return [];
-        // Filtrer ut eieren og boter fra bidragsyter-listen
+        const ownerName = displayOwner.value.name?.toLowerCase() || '';
+        
+        // Filtrer ut den viste eieren, meg selv (hvis jeg ikke er eier), og boter fra bidragsyter-listen
         return props.data.collaborators.filter(c => {
             const name = c?.name?.toLowerCase() || '';
-            const owner = props.data?.owner?.toLowerCase() || '';
-            return name !== owner && !name.includes('[bot]');
-        });
+            return name !== ownerName && name !== 'krigjo25' && !name.includes('[bot]');
+        }).slice(0, 5); // Vis kun de 5 første
     });
 
     const contributorParts = computed(() => {
