@@ -25,7 +25,13 @@ class GithubUtils:
         repoObject['lang'] = languages
         repoObject['anchor'] = anchor_obj
         repoObject['repo_id'] = data['id']
-        repoObject['owner'] = str(data['owner']['login'])
+        # Use parent owner for forks, otherwise fallback to repo owner
+        parent_info = data.get('parent', {})
+        parent_owner = parent_info.get('owner', {}).get('login') if isinstance(parent_info, dict) else None
+        
+        repoObject['owner'] = parent_owner if (data.get('fork') and parent_owner) else str(data['owner']['login'])
+        repoObject['owner_url'] = parent_info.get('owner', {}).get('html_url') if (data.get('fork') and parent_owner) else data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
+
         repoObject['updated_at'] = date_parser(data['updated_at'])
         repoObject['created_at'] = date_parser(data['created_at'])
         repoObject['is_private'] = True if data['private'] else False
@@ -34,14 +40,12 @@ class GithubUtils:
         if contribution_ratio is not None:
             repoObject['contribution_ratio'] = int(contribution_ratio * 100)
         
-        parent_info = data.get('parent', {})
-        repoObject['parent_owner'] = parent_info.get('owner', {}).get('login') if isinstance(parent_info, dict) else None
+        repoObject['parent_owner'] = parent_owner
         
         repoObject['collaborators'] = collaborators if collaborators else []
         repoObject['label'] = GithubUtils.replace_prefix_tech_suffix (data['name'])
-        repoObject['owner_url'] = data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
         repoObject['description'] = data['description'] if data['description'] else "No description provided."
-        repoObject['is_collaborator'] = True if (str(data['owner']['login']).lower() != 'krigjo25' or num_collabs > 1) else False
+        repoObject['is_collaborator'] = True if (str(repoObject['owner']).lower() != 'krigjo25' or num_collabs > 1) else False
 
         if data['homepage']: repoObject['anchor'].append({ 'name': 'webapp', 'id': uuid.uuid4().hex, 'href': data['homepage']})
 

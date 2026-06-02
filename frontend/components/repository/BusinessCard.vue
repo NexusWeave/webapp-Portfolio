@@ -66,18 +66,7 @@
     });
 
     const displayOwner = computed(() => {
-        const owner = data.value?.owner;
-        const ownerUrl = data.value?.owner_url;
-        
-        // Hvis det er en fork, bruk den originale eieren fra backenden
-        if (data.value?.is_fork && data.value?.parent_owner) {
-            return { 
-                name: data.value.parent_owner, 
-                url: `https://github.com/${data.value.parent_owner}` 
-            };
-        }
-        
-        return { name: owner, url: ownerUrl };
+        return { name: data.value?.owner, url: data.value?.owner_url };
     });
 
     const contributors = computed(() => {
