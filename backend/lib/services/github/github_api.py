@@ -21,20 +21,26 @@ class GithubAPI(AsyncAPIClientConfig):
     """ Github API Configuration
         API : https://api.github.com/
     """
-    __VERSION__ = 'v1.3.3'
+    __VERSION__ = 'v1.3.6'
 
     def __init__(self, URL:str, KEY:str):
         super().__init__(URL=URL, KEY=KEY)
         auth_token = self.API_KEY if self.API_KEY.startswith(('token ', 'Bearer ')) else f"token {self.API_KEY}"
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': auth_token}
 
-    async def fetch_contribution_ratio(self, owner: str, repo: str, target_user: str) -> float:
-        """ Fetches the contribution ratio (additions) for a specific user in a repository. """
-        path = urljoin(self.API_URL, f"repos/{owner}/{repo}/stats/contributors")
+    async def fetch_contribution_ratio(self, owner: str, repo: str, target_user: str, collaborators: List[Dict[str, str]] = None) -> float:
+        """ Fetches the contribution ratio for a user, with optimization for solo projects. """
         target_user = target_user.lower()
+        collaborators = collaborators or []
         
-        # GitHub stats API might return 202 if data is being generated.
-        # We increase retries and sleep time to be more resilient.
+        collab_names = [c.get('name', '').lower() for c in collaborators]
+
+        if target_user in collab_names and len(collab_names) == 1:
+            LOG.debug(f"Solo project detected for {repo}. Assigning 100% contribution.")
+            return 1.0
+
+        path = urljoin(self.API_URL, f"repos/{owner}/{repo}/stats/contributors")
+        
         for attempt in range(5):
             try:
                 response = await self.wait_in_queue(self.api_call(path, head=self.HEADER))
@@ -42,44 +48,43 @@ class GithubAPI(AsyncAPIClientConfig):
                 if response.status_code == 200:
                     stats = response.json()
                     if not stats or not isinstance(stats, list):
-                        LOG.warn(f"Empty or invalid stats for {repo}. Defaulting ratio to 0.0")
-                        return 0.0
+                        break
                         
                     total_additions = 0
                     user_additions = 0
                     
                     for contributor in stats:
-                        # 'a' represents additions in GitHub's stats API
                         cont_additions = sum(week.get('a', 0) for week in contributor.get('weeks', []))
                         total_additions += cont_additions
                         
                         if contributor.get('author', {}).get('login', '').lower() == target_user:
                             user_additions = cont_additions
                     
-                    ratio = user_additions / total_additions if total_additions > 0 else 0.0
-                    return ratio
+                    if total_additions > 0:
+                        return user_additions / total_additions
+                    
+                    break
                     
                 elif response.status_code == 202:
-                    wait_time = 2.0 * (attempt + 1)
+                    wait_time = (attempt + 1) * 2.0
                     LOG.debug(f"GitHub is calculating stats for {repo} (Attempt {attempt+1}/5). Waiting {wait_time}s...")
                     import asyncio
                     await asyncio.sleep(wait_time)
                     continue
                 else:
-                    LOG.warn(f"Unexpected status code {response.status_code} fetching stats for {repo}")
                     break
             except Exception as e:
                 LOG.error(f"Error fetching contribution ratio for {repo}: {str(e)}")
                 break
                 
-        LOG.warn(f"Failed to fetch contribution ratio for {repo} after multiple attempts. Defaulting to 0.0")
+        if owner.lower() == target_user or target_user in collab_names:
+            LOG.warn(f"Stats unavailable for {repo}. User is a verified contributor. Defaulting to 100%.")
+            return 1.0
+
+        LOG.warn(f"Failed to fetch stats for collaborative repo {repo}. Defaulting to 0%.")
         return 0.0
 
     async def fetch_data(self, endpoint:str, contributor: str = "", params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime.datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
-        """
-            Fetching the repositories
-            API : https://api.github.com/users/repos
-        """
         start = time.perf_counter()
         existing_timestamps = existing_timestamps or {}
 
@@ -98,7 +103,6 @@ class GithubAPI(AsyncAPIClientConfig):
         while True:
             response_data = response.json()
             
-            # Ensure we are working with a list of items
             if isinstance(response_data, list):
                 raw_json = response_data
             elif isinstance(response_data, dict):
@@ -123,7 +127,6 @@ class GithubAPI(AsyncAPIClientConfig):
                 if not owner_login:
                     continue
                 
-                # Filter by size and excluded repositories
                 if size == 0:
                     continue
                 
@@ -159,7 +162,6 @@ class GithubAPI(AsyncAPIClientConfig):
         return repo_list
 
     async def _process_repository_item(self, item: Dict[str, Any], contributor: str, existing_timestamps: Dict[str, datetime.datetime]) -> Optional[Dict[str, Any]]:
-        """ Processes a single repository item from the API response. """
         name = item.get('name')
         repo_id = str(item.get('id', ''))
         owner_info = item.get('owner', {})
@@ -176,7 +178,6 @@ class GithubAPI(AsyncAPIClientConfig):
         LOG.info(f"Fetching collaborators for repo: {name}")
         collaborators = await self.fetch_collaborators(owner, name)
 
-        # Contribution verification
         is_contributor = self._verify_contribution(owner, collaborators, contributor)
         if not is_contributor:
             LOG.debug(f"Skipping repo {name} as {contributor} is not a contributor.")
@@ -186,13 +187,11 @@ class GithubAPI(AsyncAPIClientConfig):
         if needs_update:
             LOG.info(f"Fetching details for updated/new repo: {name}")
             
-            # Fetch contribution ratio to weigh languages
-            ratio = await self.fetch_contribution_ratio(owner, name, contributor)
+            ratio = await self.fetch_contribution_ratio(owner, name, contributor, collaborators)
             LOG.info(f"Contribution ratio for {contributor} in {name}: {ratio:.2%}")
             
             raw_languages = await self.fetch_languages(owner, name)
             
-            # Apply weighting to language bytes
             languages = []
             for lang in raw_languages:
                 lang['bytes'] = int(lang['bytes'] * ratio)
@@ -240,7 +239,6 @@ class GithubAPI(AsyncAPIClientConfig):
                 LOG.error(f"Error fetching collaborators for {owner}/{name}: {str(e)}")
                 break
                 
-            # Ensure contributors_data is a list
             if not isinstance(contributors_data, list):
                 LOG.warn(f"Unexpected contributors format for {owner}/{name}: {type(contributors_data)}")
                 break
@@ -269,7 +267,6 @@ class GithubAPI(AsyncAPIClientConfig):
         return collaborators
 
     async def analyze_repository(self,trees_url: str) -> Dict[str, Any]:
-        """ Analyzes the repository data to determine its characteristics. """
         try:
             response = await self.wait_in_queue(self.api_call(trees_url, head=self.HEADER))
             return response.json()
@@ -279,29 +276,25 @@ class GithubAPI(AsyncAPIClientConfig):
 
     @staticmethod
     def _should_update_repo( item: Dict[str, Any], db_updated_at: Optional[datetime.datetime]) -> bool:
-        """ Determines if a repository needs a full update based on API and DB timestamps. """
-        return True # Temporarily forced to True for full weighted statistics re-sync.
-        # if db_updated_at is None: return True
-        # 
-        # def date_parser(d:str) -> datetime.datetime:
-        #     return datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
-        # 
-        # updated_at_str = item.get('updated_at')
-        # if not updated_at_str:
-        #     return True
-        #     
-        # api_updated_at = date_parser(updated_at_str)
-        # 
-        # # Aggressive normalization for comparison (naive comparison)
-        # api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
-        # db_comp = db_updated_at.replace(tzinfo=None) if hasattr(db_updated_at, 'replace') else db_updated_at
-        # 
-        # try: return api_comp > db_comp
-        # except TypeError: return True
+        if db_updated_at is None: return True
+        
+        def date_parser(d:str) -> datetime.datetime:
+            return datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
+
+        updated_at_str = item.get('updated_at')
+        if not updated_at_str:
+            return True
+            
+        api_updated_at = date_parser(updated_at_str)
+        
+        api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
+        db_comp = db_updated_at.replace(tzinfo=None) if hasattr(db_updated_at, 'replace') else db_updated_at
+
+        try: return api_comp > db_comp
+        except TypeError: return True
 
     @staticmethod
     def _verify_contribution( owner: str, collaborators: List[Dict[str, str]], target_user: str) -> bool:
-        """ Verifies if the target user (krigjo25) is either the owner or a contributor. """
         target_user = str(target_user).lower()
         is_owner = str(owner).lower() == target_user
         is_contributor = any(str(c.get('name', '')).lower() == target_user for c in collaborators)
