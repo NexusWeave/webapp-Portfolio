@@ -12,7 +12,7 @@ from sqlalchemy.future import select
 
 #   Internal Libraries
 from lib.services.github.github_api import GithubAPI
-from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel, CollaboratorModel
+from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel, CollaboratorModel, RepoCollaboratorAssociationModel
 
 from app import app
 load_dotenv()
@@ -82,8 +82,8 @@ class TestDatabaseIntegration:
         js_lang = LanguageModel(language="JavaScript")
         
         # FIKS: Initialiser CollaboratorModel-objekter
-        collab_one = CollaboratorModel(name="collab1", collab_id="id-c1")
-        collab_two = CollaboratorModel(name="collab2", collab_id="id-c2")
+        collab_one = CollaboratorModel(name="collab1", github_id="id-c1")
+        collab_two = CollaboratorModel(name="collab2", github_id="id-c2")
 
         # FIKS: Legg KUN til LanguageModel i session, da CollaboratorModel har NOT NULL constraint på repo_id
         db_session.add_all([python_lang, js_lang])
@@ -100,7 +100,10 @@ class TestDatabaseIntegration:
                 created_at=datetime.now(UTC),
                 description="En beskrivelse for integrasjonstesten.",
                 repo_url="https://github.com/dev_user/test-repo",
-                collaborators=[collab_one, collab_two],
+                collaborator_associations=[
+                    RepoCollaboratorAssociationModel(collaborator=collab_one),
+                    RepoCollaboratorAssociationModel(collaborator=collab_two)
+                ],
                 lang_assosiations=[python_assosiation, js_assosiation],
             )
         
@@ -118,7 +121,7 @@ class TestDatabaseIntegration:
         assert retrieved_item.label == "my-test-repo"
         
         # Sjekker collaborators relasjonen
-        assert len(retrieved_item.collaborators) == 2
+        assert len(retrieved_item.collaborator_associations) == 2
         # Sjekker lang_assosiations relasjonen
         assert len(retrieved_item.lang_assosiations) == 2
         assert "En beskrivelse" in retrieved_item.description
@@ -153,15 +156,18 @@ class TestDatabaseIntegration:
         )
         assert len(languages_remaining.scalars().all()) == 2, "LanguageModel-objektene ble slettet, men skulle vært beholdt"
         
-        # FIKS: VERIFISER AT COLLABORATOR-DATAENE BLE SLETTET (pga. cascade)
-        collaborators_gone = await db_session.execute(
+        # VERIFISER AT COLLABORATOR-DATAENE FORTATT EKSISTERER (Mange-til-Mange)
+        collaborators_remaining = await db_session.execute(
             select(CollaboratorModel).where(CollaboratorModel.id.in_([collab1_id, collab2_id]))
         )
-        assert len(collaborators_gone.scalars().all()) == 0, "CollaboratorModel-objektene skulle vært slettet via cascade"
+        assert len(collaborators_remaining.scalars().all()) == 2, "CollaboratorModel-objektene skal fortsatt eksistere"
         
         # 8. VERIFISER AT ASSOSIASJONS-OBJEKTENE BLE SLETTET
-        associations_gone = await db_session.execute(select(LanguageAssosiationModel))
-        assert len(associations_gone.scalars().all()) == 0, "Assosiasjons-objektene skulle vært slettet"
+        lang_associations_gone = await db_session.execute(select(LanguageAssosiationModel))
+        assert len(lang_associations_gone.scalars().all()) == 0, "Språk-assosiasjons-objektene skulle vært slettet"
+
+        collab_associations_gone = await db_session.execute(select(RepoCollaboratorAssociationModel))
+        assert len(collab_associations_gone.scalars().all()) == 0, "Kollaboratør-assosiasjons-objektene skulle vært slettet"
 
     @pytest.mark.asyncio
     async def test_clean_database(self, db_session, client):

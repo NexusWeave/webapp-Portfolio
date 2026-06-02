@@ -64,8 +64,8 @@ class GithubUtils:
                 elif len(parts) == 2:
                     # webapp-NAME -> NAME
                     name = parts[1]
-            
-            return name
+        
+        return name
 
     @staticmethod
     async def track_project_stack(branch:str, tree_path:str, n:int = 1) -> Dict[str, bool]:

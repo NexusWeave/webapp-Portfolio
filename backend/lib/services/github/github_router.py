@@ -1,6 +1,6 @@
 #   Standard Libraries
 import __future__
-from typing import Dict, List, Sequence
+from typing import Dict, List, Sequence, Any
 
 #   Third-Party Libraries
 from fastapi import  Request
@@ -21,6 +21,18 @@ from lib.services.base_service import BaseService
 
 class GithubService(BaseService):
 
+    def __init__(self, PATH: str, ENVIRONMENT: Any) -> None:
+        super().__init__(PATH, ENVIRONMENT)
+        self._setup_routes()
+
+        self.GITHUB_REST = ENVIRONMENT.GITHUB_REST
+        self.GITHUB_TOKEN = ENVIRONMENT.GITHUB_TOKEN
+        self.GITHUB_PARAMS = ENVIRONMENT.GITHUB_PARAMS
+        self.GITHUB_CONTRIBUTOR = ENVIRONMENT.CONTRIBUTOR
+        self.GITHUB_ENDPOINT = ENVIRONMENT.GITHUB_ENDPOINT
+        
+        
+
     def _setup_routes(self) -> None:
         self.router.add_api_route(f"{self.PATH}/repositories", self.fetch_repositories, response_model = List[RepositoryModel], summary="Get GitHub Repository Information",  tags=["GitHub"], name='Fetch Repositories')
         self.router.add_api_route(f"{self.PATH}/handleRepositories", self.handle_repositories, tags=["github", "repositories"], summary="Upserts the Database", description="Upserts the Database", name= 'Synchronize Repositories')
@@ -38,10 +50,11 @@ class GithubService(BaseService):
         try:
             await ApiDatabaseBridge.repositories_sync(
                 request, 
-                self.ENVIRONMENT.GITHUB_REST, 
-                self.ENVIRONMENT.GITHUB_PARAMS, 
-                self.ENVIRONMENT.PERSONAL_GITHUB_REST_API, 
-                self.ENVIRONMENT.GITHUB_TOKEN
+                token = self.ENVIRONMENT.GITHUB_TOKEN,
+                contributor = self.GITHUB_CONTRIBUTOR,
+                url = self.ENVIRONMENT.GITHUB_REST,
+                endpoint = self.ENVIRONMENT.GITHUB_ENDPOINT,
+                params = self.ENVIRONMENT.GITHUB_PARAMS, 
             )
 
         except Exception as e:

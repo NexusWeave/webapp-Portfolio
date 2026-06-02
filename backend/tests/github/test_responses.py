@@ -2,7 +2,7 @@
 import pytest, os
 
 from unittest.mock import patch
-from ....backend.lib.services.github.github_api import GithubAPI
+from lib.services.github.github_api import GithubAPI
 
 class TestResponsesAPI:
 

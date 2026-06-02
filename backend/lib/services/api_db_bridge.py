@@ -24,24 +24,22 @@ LOG.file_handler()
 class ApiDatabaseBridge:
 
     @staticmethod
-    async def repositories_sync(request:Request, URL: str, params: Dict[str, str | int], ENDPOINT: str, TOKEN: str):
+    async def repositories_sync(request:Request, url: str, params: Dict[str, str | int], endpoint: str, token: str, contributor: str):
         DB_CONTEXT: ASynchronousDatabaseConfig = request.app.state.db
         existing_timestamps = {}
 
         try:
             # Phase 1: Fetch existing state and close connection quickly
             async with DB_CONTEXT.SessionLocal() as session:
-                GITHUB_HANDLER = GithubDatabaseHandler(session = session)
-                existing_timestamps = await GITHUB_HANDLER.get_existing_timestamps()
-            
+                existing_timestamps = await GithubDatabaseHandler(session = session).get_existing_timestamps()
+
             # Phase 2: Long-running external API calls (No DB connection held)
-            repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL = URL, KEY = TOKEN).fetch_data(ENDPOINT, params=params, existing_timestamps=existing_timestamps)
+            repositories: List[Dict[str, Any]] | NotFoundError = await GithubAPI(URL = url, KEY = token).fetch_data(endpoint, contributor = contributor, params=params, existing_timestamps=existing_timestamps)
             if isinstance(repositories, NotFoundError): raise NotFoundError(404, "No repositories found from GitHub API.")
 
             # Phase 3: Save results in a fresh connection
             async with DB_CONTEXT.SessionLocal() as session:
-                GITHUB_HANDLER = GithubDatabaseHandler(session = session)
-                await GITHUB_HANDLER.upsert_repositories(repository = repositories)
+                await GithubDatabaseHandler(session = session).upsert_repositories(repository = repositories)
 
         except NotFoundError as e:
             LOG.error(f"Error fetching GitHub data: {e.__class__.__name__} - {e.message}")

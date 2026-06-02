@@ -21,9 +21,12 @@ class Config(BaseSettings):
     # Github REST API
     GITHUB_TREE: str = ""
     GITHUB_REST: str = ""
+    CONTRIBUTOR: str = ""
     GITHUB_TOKEN: str = ""
-    PERSONAL_GITHUB_REST_API: str = ""
+    GITHUB_ENDPOINT: str = ""
     GITHUB_PARAMS: Dict[str, str | int] = {}
+    
+
 
     # Heavy Workout API
     HEAVY_V: str = ""
@@ -42,7 +45,7 @@ class Config(BaseSettings):
     PG_SSL_MODE: str = ""
     PG_DATABASE : str = ""
     PG_CHANNEL_BINDING: str = ""
-    model_config = SettingsConfigDict(env_file="/.env", env_file_encoding="utf-8", extra="ignore")
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
 
 class ProdConfig(Config):
