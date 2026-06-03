@@ -3,12 +3,15 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    # Dette feltet tvinger GitHub til å gi jobben skrivetilgang
+
     permissions:
       contents: write
       issues: write
@@ -19,7 +22,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
-          fetch-depth: 0 # Viktig: Henter hele historikken for å beregne versjon
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v6

@@ -2,9 +2,9 @@ name: Netlify Build Check
 
 on:
   push:
-    branches: [ '**' ]
+    branches: [ 'main' ]
   pull_request:
-    branches: [ '**' ]
+    branches: [ 'main' ]
 
 jobs:
   check-netlify-build:
@@ -32,7 +32,7 @@ jobs:
           npm run build
           npm run generate
         env:
-          TINA_BRANCH: ${{ secrets.TINA_BRANCH }}
+          TINA_BRANCH: ${{ github.ref_name }}
           TINA_TOKEN:  ${{ secrets.TINA_TOKEN }}
           NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           NODE_ENV: production

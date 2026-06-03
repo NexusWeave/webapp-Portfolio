@@ -2,9 +2,9 @@ name: Google Cloud Build Check
 
 on:
   push:
-    branches: [ '**' ]
+    branches: [ 'main' ]
   pull_request:
-    branches: [ '**' ]
+    branches: [ 'main' ]
 
 jobs:
   check-gcp-build:

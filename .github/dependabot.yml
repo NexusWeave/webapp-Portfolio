@@ -4,22 +4,22 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   # Automatically update npm dependencies at the repository root
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   # Automatically update npm dependencies in the frontend Nuxt project
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
-  # Automatically update pip dependencies in the backend python project
+  # Automatically update pip dependencies in the backend python project using requirements.in
   - package-ecosystem: "pip"
     directory: "/backend"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
