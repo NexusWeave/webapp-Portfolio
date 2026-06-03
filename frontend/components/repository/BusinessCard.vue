@@ -5,6 +5,7 @@
             <div v-else></div>
             <span class="date-container"> <b> <time v-if="data?.date?.date" :datetime="data.date.date"> {{ data.date.date }} </time> </b> </span>
         </header>
+
         <main class="card-content">
         <section class="card-content flex-column-items-center">
             <h3> {{ data?.label || 'Ukjent' }} </h3>
@@ -14,8 +15,9 @@
         <nav class="card-nav flex-wrap-row-justify-center">
             <NavigationNavMenu v-if="hasAnchor && data?.anchor" :cls="['portofolio-nav']" :data="data.anchor" />
         </nav>
-
-        <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
+        </main>
+        <footer v-if="hasTechnology && data?.media" class="card-footer">
+            <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
             <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
                 <span>Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
                 </p>
@@ -23,8 +25,6 @@
                 <span>Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
             </p>
         </section>
-        </main>
-        <footer v-if="hasTechnology && data?.media" class="card-footer">
             <h4>Andre teknologi(er) : </h4>
             <section class="flex-wrap-row-justify-space-evenly">
                 <template v-for="(media, i) in data.media" :key="i">
