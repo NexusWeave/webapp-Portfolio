@@ -28,14 +28,15 @@ class GithubAPI(AsyncAPIClientConfig):
         auth_token = self.API_KEY if self.API_KEY.startswith(('token ', 'Bearer ')) else f"token {self.API_KEY}"
         self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': auth_token}
 
-    async def fetch_contribution_ratio(self, owner: str, repo: str, target_user: str, collaborators: List[Dict[str, str]] = None) -> float:
+    async def fetch_contribution_ratio(self, owner: str, repo: str, target_user: str, collaborators: List[Dict[str, str]] = None, is_fork_repo: bool = False) -> float:
         """ Fetches the contribution ratio for a user, with optimization for solo projects. """
         target_user = target_user.lower()
         collaborators = collaborators or []
         
         collab_names = [c.get('name', '').lower() for c in collaborators]
 
-        if target_user in collab_names and len(collab_names) == 1:
+        # Optimization: If it's not a fork and there's only one collaborator (the user), it's 100%
+        if not is_fork_repo and target_user in collab_names and len(collab_names) == 1:
             LOG.debug(f"Solo project detected for {repo}. Assigning 100% contribution.")
             return 1.0
 
@@ -50,18 +51,20 @@ class GithubAPI(AsyncAPIClientConfig):
                     if not stats or not isinstance(stats, list):
                         break
                         
-                    total_additions = 0
-                    user_additions = 0
+                    total_touched = 0
+                    user_touched = 0
                     
                     for contributor in stats:
                         cont_additions = sum(week.get('a', 0) for week in contributor.get('weeks', []))
-                        total_additions += cont_additions
+                        cont_deletions = sum(week.get('d', 0) for week in contributor.get('weeks', []))
+                        cont_touched = cont_additions + cont_deletions
+                        total_touched += cont_touched
                         
                         if contributor.get('author', {}).get('login', '').lower() == target_user:
-                            user_additions = cont_additions
+                            user_touched = cont_touched
                     
-                    if total_additions > 0:
-                        return user_additions / total_additions
+                    if total_touched > 0:
+                        return user_touched / total_touched
                     
                     break
                     
@@ -77,11 +80,17 @@ class GithubAPI(AsyncAPIClientConfig):
                 LOG.error(f"Error fetching contribution ratio for {repo}: {str(e)}")
                 break
                 
+        # Fallback logic
         if owner.lower() == target_user or target_user in collab_names:
-            LOG.warn(f"Stats unavailable for {repo}. User is a verified contributor. Defaulting to 100%.")
+            # If it's a collaborative project or a fork, we can't safely default to 100%
+            if len(collab_names) > 1 or is_fork_repo:
+                LOG.warn(f"Stats unavailable for {repo} (Collab/Fork). Defaulting to 0% to avoid overestimation.")
+                return 0.0
+            
+            LOG.warn(f"Stats unavailable for solo repo {repo}. Defaulting to 100%.")
             return 1.0
 
-        LOG.warn(f"Failed to fetch stats for collaborative repo {repo}. Defaulting to 0%.")
+        LOG.warn(f"Failed to fetch stats for {repo}. Defaulting to 0%.")
         return 0.0
 
     async def fetch_data(self, endpoint:str, contributor: str = "", params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime.datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
@@ -171,7 +180,7 @@ class GithubAPI(AsyncAPIClientConfig):
             LOG.warn(f"Skipping repository item due to missing fields: {item}")
             return None
 
-        needs_update = self._should_update_repo(item, existing_timestamps.get(repo_id))
+        needs_update = True #self._should_update_repo(item, existing_timestamps.get(repo_id))
 
         # If it's a fork, we need full details to get the 'parent' (original owner)
         if item.get('fork'):
@@ -195,15 +204,10 @@ class GithubAPI(AsyncAPIClientConfig):
         if needs_update:
             LOG.info(f"Fetching details for updated/new repo: {name}")
             
-            ratio = await self.fetch_contribution_ratio(owner, name, contributor, collaborators)
+            ratio = await self.fetch_contribution_ratio(owner, name, contributor, collaborators, is_fork_repo=item.get('fork', False))
             LOG.info(f"Contribution ratio for {contributor} in {name}: {ratio:.2%}")
             
-            raw_languages = await self.fetch_languages(owner, name)
-            
-            languages = []
-            for lang in raw_languages:
-                lang['bytes'] = int(lang['bytes'] * ratio)
-                languages.append(lang)
+            languages = await self.fetch_languages(owner, name)
         
         utils = GithubUtils()
         try:

@@ -53,16 +53,23 @@ class RepositoryModel(BaseModel):
 
     is_private: bool = Field(..., description = "Private Repository", json_schema_extra = {"example":False}, exclude= True)
     is_secret: bool = Field(..., description = "Secret Repository", json_schema_extra = {"example":False}, exclude= True)
-    parent_owner: Optional[str] = Field(None, description = "Original Owner Name", json_schema_extra = {"example":"original-owner"})
 
     is_backend: bool = Field(False, description = "Backend Repository", json_schema_extra = {"example":False}, exclude=True)
     is_frontend: bool = Field(False, description = "Frontend Repository", json_schema_extra = {"example":False}, exclude=True)
     is_fullstack: bool = Field(False, description = "Fullstack Repository", json_schema_extra = {"example":False}, exclude=True)
     is_collaborator: bool = Field(False, description = "Collaborator Repository", json_schema_extra = {"example":False}, exclude=True)
-    contribution_ratio: int = Field(100, description = "Contribution Ratio", json_schema_extra = {"example":100})
+    contribution_ratio: int = Field(100, description = "Contribution Ratio", json_schema_extra = {"example":100}, exclude=True)
 
     languages: List[LanguageModel] = Field(..., validation_alias="lang_assosiations")
     collaborator_associations: List[Any] = Field(..., exclude=True)
+
+    @model_validator(mode='after')
+    def scale_language_bytes(self) -> 'RepositoryModel':
+        """ Scales the language bytes by the contribution ratio. """
+        ratio = self.contribution_ratio / 100.0
+        for lang in self.languages:
+            lang.bytes = int(lang.bytes * ratio)
+        return self
 
     @computed_field
     @property
