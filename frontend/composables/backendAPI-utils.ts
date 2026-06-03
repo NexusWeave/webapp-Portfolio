@@ -11,7 +11,7 @@ export async function fetchRepositories<T>(cacheKey: string): Promise<{repo: Com
     const {public: env} = useRuntimeConfig();
 
     const version = "/api/v1"
-    const endpoint = '/repository';
+    const endpoint = '/repositories';
     const path = `${env.GCLOUD}${version}${endpoint}`;
 
     const {data, error, refresh} = await useFetch<RepositoryData>(path, { key: cacheKey, headers: { 'Content-Type': 'application/json' } });
