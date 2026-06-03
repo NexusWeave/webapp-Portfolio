@@ -28,7 +28,6 @@ class RepositoryModel(BASE):
     created_at = Column(DateTime(timezone = True), nullable = False)
 
     is_secret = Column(Boolean, default = 0, nullable = False)
-    parent_owner = Column(String, nullable = True)
     is_backend = Column(Boolean, default = 0, nullable = False)
     is_frontend = Column(Boolean, default = 0, nullable = False)
     is_fullstack = Column(Boolean, default = 0, nullable = False)

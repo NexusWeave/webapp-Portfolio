@@ -36,7 +36,7 @@ class GithubDatabaseHandler:
 
         FIELDS_TO_CHECK = [
             'owner', 'owner_url', 'label', 'repo_url', 'description',
-            'is_private', 'demo_url', 'repo_url', 'contribution_ratio', 'parent_owner']
+            'is_private', 'demo_url', 'repo_url', 'contribution_ratio']
 
         for field in FIELDS_TO_CHECK:
             if field == 'description' and dictionary.get(field) == 'No description provided.' : continue
@@ -130,7 +130,6 @@ class GithubDatabaseHandler:
                 'is_fullstack': dictionary.get('is_fullstack', False),
                 'is_collaborator': dictionary.get('is_collaborator', False),
                 'contribution_ratio': dictionary.get('contribution_ratio', 100),
-                'parent_owner': dictionary.get('parent_owner'),
                 'collaborators_data': dictionary.get('collaborators_data', [])
             })
             await self._create_repositories(repo_data)

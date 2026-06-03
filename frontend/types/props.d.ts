@@ -23,10 +23,10 @@ export interface ProgressProps { data: ProgressItem; cls?: string[]; }
 export interface GithubRepoLanguage extends LanguageData { img?: FigureItem[];}
 export interface GithubData extends Omit<RepositoryBase, 'flags' | 'collaborators' | 'languages'> { 
     id: string; 
-    label: string; 
-    anchor: AnchorItem[]; 
-    parent_owner?: string;
+    label: string;
+    anchor: AnchorItem[];
     date: { date: string };
+
     contribution_ratio?: number;
     flags: Record<string, boolean>;
     languages: GithubRepoLanguage[];

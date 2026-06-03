@@ -232,7 +232,6 @@ class RepositoryModel(BaseModel):
     demo_url: Optional[str]                   # Demo URL
     youtube_url: Optional[str]                # YouTube demo URL
     description: Optional[str]                # Description
-    parent_owner: Optional[str]
     updated_at: Optional[datetime]            # Last update
     lang_associations: List[LanguageAssociationModel]  # Languages
     

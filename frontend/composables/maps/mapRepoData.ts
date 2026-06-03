@@ -49,7 +49,6 @@ export function mapRepoData(data: RepositoryData): GithubData[]
             languages: languages,
             description: item.description,
             collaborators: item.collaborators || [],
-            parent_owner: item.parent_owner,
             contribution_ratio: item.contribution_ratio,
         }
     });

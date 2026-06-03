@@ -39,8 +39,6 @@ class GithubUtils:
         if contribution_ratio is not None:
             repoObject['contribution_ratio'] = int(contribution_ratio * 100)
         
-        repoObject['parent_owner'] = parent_owner
-        
         repoObject['collaborators'] = collaborators if collaborators else []
         repoObject['label'] = GithubUtils.replace_prefix_tech_suffix (data['name'])
         repoObject['description'] = data['description'] if data['description'] else "No description provided."
