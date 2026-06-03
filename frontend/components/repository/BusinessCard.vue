@@ -16,9 +16,6 @@
         </nav>
 
         <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
-            <p v-if="data?.contribution_ratio !== undefined" class="collab-name">
-                <span>Bidrag: <b>{{ data.contribution_ratio }}%</b></span>
-            </p>
             <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
                 <span>Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
                 </p>
