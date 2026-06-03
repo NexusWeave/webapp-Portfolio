@@ -5,7 +5,7 @@
             <template #default>
                 <section class="dev-skill flex-column-justify-center-align-center" >
                     <h2> Min Kode Aktivitet</h2>
-                    <span> Aktivteten er basert på min GitHub-aktivitet og oppdateres fortløpende for å reflektere min nåværende engasjement og bidrag til ulike prosjekter. </span>
+                    <span> Aktivteten er basert på mine bidrag og oppdateres fortløpende for å reflektere min nåværende engasjement og bidrag til ulike teknologier. </span>
                     <span> Aktiviteten er målt i KB og MB</span>
                     <span> </span>
                     <section class="flex-wrap-row-justify-space-evenly">

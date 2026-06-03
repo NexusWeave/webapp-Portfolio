@@ -62,7 +62,7 @@
     const isCollaboration = computed(() => {
         if (!props.data) return false;
         // Bruk 'collaborator' flagget fra backenden, som er true hvis det er flere bidragsytere eller eid av andre
-        return !!props.data.flags?.collaborator || !!props.data.is_fork;
+        return !!props.data.flags?.collaborator;
     });
 
     const displayOwner = computed(() => {

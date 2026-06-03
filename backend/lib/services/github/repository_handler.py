@@ -129,7 +129,6 @@ class GithubDatabaseHandler:
                 'is_frontend': dictionary.get('is_frontend', False),
                 'is_fullstack': dictionary.get('is_fullstack', False),
                 'is_collaborator': dictionary.get('is_collaborator', False),
-                'is_fork': dictionary.get('is_fork', False),
                 'contribution_ratio': dictionary.get('contribution_ratio', 100),
                 'parent_owner': dictionary.get('parent_owner'),
                 'collaborators_data': dictionary.get('collaborators_data', [])

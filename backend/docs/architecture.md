@@ -223,18 +223,17 @@ PG_SSL_MODE=require
 
 ```python
 class RepositoryModel(BaseModel):
+    id: int                                    # Repository ID
     label: str                                  # Repository name
     owner: str                                  # Repository owner
+    repo_url: str                              # GitHub URL
     is_private: bool                           # Private indicator
     created_at: datetime                       # Creation timestamp
-    id: int                                    # Repository ID
     demo_url: Optional[str]                   # Demo URL
-    repo_url: str                              # GitHub URL
     youtube_url: Optional[str]                # YouTube demo URL
-    updated_at: Optional[datetime]            # Last update
     description: Optional[str]                # Description
-    is_fork: bool                              # Fork indicator
-    parent_owner: Optional[str]               # Original owner if fork
+    parent_owner: Optional[str]
+    updated_at: Optional[datetime]            # Last update
     lang_associations: List[LanguageAssociationModel]  # Languages
     
     @computed_field

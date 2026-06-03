@@ -29,13 +29,12 @@ class GithubUtils:
         parent_info = data.get('parent', {})
         parent_owner = parent_info.get('owner', {}).get('login') if isinstance(parent_info, dict) else None
         
-        repoObject['owner'] = parent_owner if (data.get('fork') and parent_owner) else str(data['owner']['login'])
+        repoObject['owner'] = parent_owner if (parent_owner) else str(data['owner']['login'])
         repoObject['owner_url'] = parent_info.get('owner', {}).get('html_url') if (data.get('fork') and parent_owner) else data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
 
         repoObject['updated_at'] = date_parser(data['updated_at'])
         repoObject['created_at'] = date_parser(data['created_at'])
         repoObject['is_private'] = True if data['private'] else False
-        repoObject['is_fork'] = True if data.get('fork') else False
         
         if contribution_ratio is not None:
             repoObject['contribution_ratio'] = int(contribution_ratio * 100)
