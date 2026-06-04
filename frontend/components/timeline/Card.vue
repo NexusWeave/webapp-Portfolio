@@ -1,6 +1,6 @@
 <template>
     <section v-show="!!data.isVisible"
-        :class="['timeline-card-wrapper', {'timeline-active': !!data.isVisible }, 'flex-column', 'flex-justify-center']">
+        :class="['timeline-card-wrapper', {'timeline-active': !!data.isVisible, 'flex-active': !!data.isVisible }, 'flex-column-justify-center']">
         <div class="timeline-pointer"></div>
         <section class="timeline-card-content flex-column">
             

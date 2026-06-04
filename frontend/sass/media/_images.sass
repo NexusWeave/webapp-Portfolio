@@ -1,4 +1,6 @@
 
+@use '../mix/mixins' as mix
+
 nav.logo-nav
     ul
         li
@@ -7,43 +9,42 @@ nav.logo-nav
                     max-inline-size: none
 
                     img
-                        inline-size: 7rem
+                        @include mix.logical-size($inline: 7rem)
                         object-fit: contain
 
 article.profile-bar
     figure
         picture
             img, source
-                border-radius: 100%
+                @include mix.radius(100%)
         max-inline-size: 8rem
 
 .business-card
     figure
         
         picture, img
-            border-radius: 0
-            inline-size: 100%
+            @include mix.radius(0)
+            @include mix.logical-size($inline: 100%)
             object-fit: contain
             
 
         picture
             img, source
-                border-radius: 0
-                inline-size: 100%
+                @include mix.radius(0)
+                @include mix.logical-size($inline: 100%)
                 object-fit: contain
 
-        inline-size: 3rem
+        @include mix.logical-size($inline: 3rem)
 
     .card-content
         figure
-            inline-size: 2rem
+            @include mix.logical-size($inline: 2rem)
 
     &.grid-layout
         .tech-img, .tech-figure
-            margin: 0 !important
-            block-size: 2.2rem !important
+            @include mix.margin(0 !important)
+            @include mix.logical-size($inline: 2.2rem !important, $block: 2.2rem !important)
             object-fit: contain !important
-            inline-size: 2.2rem !important
 
         .card-header
             figure
@@ -52,30 +53,27 @@ article.profile-bar
 
 .timeline-active
     figure
-        margin: 0
+        @include mix.margin(0)
         max-inline-size: 2rem
         img, source
-            inline-size: 100%
-            block-size: auto
+            @include mix.logical-size($inline: 100%, $block: auto)
             object-fit: contain
 
 figure
     figcaption
-        font-size: 0.7rem
+        @include mix.font($size: 0.7rem, $style: italic)
         text-align: center
-        margin-top: 0.5rem
-        font-style: italic
+        @include mix.margin($block-start: 0.5rem)
 
     picture
         img, source
-            block-size: auto
-            border-radius: 100%
+            @include mix.logical-size($block: auto)
+            @include mix.radius(100%)
 
     img, picture
-        block-size: auto
-        inline-size: 100%
-        border-radius: .5rem
+        @include mix.logical-size($inline: 100%, $block: auto)
+        @include mix.radius(.5rem)
 
-    margin: 0
-    padding: 0
+    @include mix.margin(0)
+    @include mix.padding(0)
     max-inline-size: 28rem

@@ -3,13 +3,9 @@
 
 .repo-container
     .icon
-        font-size: 1.5rem
+        @include mix.font($size: 1.5rem)
 
 .icon
-    font-size: 1.5rem
-    @include mix.flex('inline-flex')
-    align-items: center
-    justify-content: center
-    padding-inline: 0
-    font-family: "Bootstrap-icons"
+    @include mix.font($size: 1.5rem, $family: "Bootstrap-icons")
+    @include mix.padding($inline: 0)
     gap: .4rem

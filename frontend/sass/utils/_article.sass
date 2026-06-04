@@ -5,15 +5,15 @@
 article
     header
         @include mix.logical-center()
-        margin-block: 0
+        @include mix.margin($block: 0)
         .article-metadata
             span.meta-date
-                margin-inline-end: 1rem
+                @include mix.margin($inline: 0 1rem)
             a
                 display: inline-block
                 text-decoration: none
-                margin: 0.2rem
-                font-size: 0.85rem
+                @include mix.margin(0.2rem, 0.2rem)
+                @include mix.font($size: 0.85rem)
     nav
         @include mix.list-inline-reset()
         ul
@@ -24,68 +24,62 @@ article
 
     section
         @include mix.logical-center()
-        margin-block: 0
+        @include mix.margin($block: 0)
         max-inline-size: 100%
 
     .pagination-container, .blog-section
-        margin-block: 2rem
-        margin-inline: 0
+        @include mix.margin($block: 2rem, $inline: 0)
         max-inline-size: 100%
 
     .article-wrapper
         @include mix.logical-center()
-        margin-block: 0
+        @include mix.margin($block: 0)
         max-inline-size: 100%
 
     .article-content
         @include mix.logical-center()
-        margin-block: 2rem
+        @include mix.margin($block: 2rem)
 
         div
             h4
-                margin-block: 1rem
+                @include mix.margin($block: 1rem)
 
     .ingress-header
-        block-size: auto
+        @include mix.logical-size($block: auto)
 
     .blog-header
-        block-size: 32rem
-        margin-block: 2rem
-        margin-inline: 0.5rem
+        @include mix.logical-size($block: 32rem)
+        @include mix.margin($block: 2rem, $inline: 0.5rem)
         max-inline-size: 29rem
-        box-shadow: 0 0 0.625rem rgba(color.$dark-grey, 0.2)
+        @include mix.shadow(0 0 0.625rem rgba(color.$dark-grey, 0.2))
 
     .blog-header, .ingress-header
         p.article-metadata
             span
-                margin: auto
+                @include mix.margin(auto)
 
         p
-            font-size: 1.1rem
-            padding-block: 0.5rem
-            padding-inline: 1rem
+            @include mix.font($size: 1.1rem)
+            @include mix.padding($block: 0.5rem, $inline: 1rem)
 
-        padding-inline: 0.5rem
-        padding-block: 0
+        @include mix.padding($inline: 0.5rem, $block: 0)
     .article-content, .blog-header, .ingress-header
         code
             z-index: -1
-            font-style: italic
-            border-radius: 0.25rem
+            @include mix.radius(0.25rem)
             color: color.$white
             position: relative
-            padding-block: 0.2rem
-            padding-inline: 0.4rem
+            @include mix.padding($block: 0.2rem, $inline: 0.4rem)
             background-color: color.$dark-grey
-            font-family: 'Courier New', Courier, monospace
+            @include mix.font($family: ('Courier New', Courier, monospace), $style: italic)
 
         pre
-            padding: 1rem
-            border-radius: 0.25rem
+            @include mix.padding(1rem, 1rem)
+            @include mix.radius(0.25rem)
             background-color: color.$dark-grey
 
     .article-content, .ingress-header
-        font-size: 1.5rem
+        @include mix.font($size: 1.5rem)
         max-inline-size: 44rem
 
     .article-content, .bio-content, .ingress-content
@@ -95,8 +89,7 @@ article
                 color: inherit
                 text-decoration: none
 
-            margin-block: auto
-            margin-inline: 0
+            @include mix.margin($block: auto, $inline: 0)
             text-align: left
         
         abbr
@@ -110,34 +103,34 @@ article
 
 article.bio
     h2
-        font-size: 2.5rem
+        @include mix.font($size: 2.5rem)
     p
         text-align: justify
         max-inline-size: 50rem
         @include mix.logical-center()
-        margin-block: 0.5rem
+        @include mix.margin($block: 0.5rem)
 
     ul
         li
-            margin-block: 0.5rem
+            @include mix.margin($block: 0.5rem)
         @include mix.logical-center()
         max-inline-size: 47rem
     div
         @include mix.logical-center()
-        margin-block: 3rem
+        @include mix.margin($block: 3rem)
         max-inline-size: 50rem
 
 article.profile-bar
 
     section
-        margin-block: auto
-        margin-inline: 0.25rem
+        @include mix.margin($block: auto, $inline: 0.25rem)
         max-inline-size: 18rem
+
 
     section.profile-content
         p
             h2
-                margin: 0
+                @include mix.margin(0, 0)
                 @include mix.logical-size($inline: 8rem)
                 text-align: left
                 display: inline-block

@@ -2,8 +2,8 @@ $flex:( 'display': flex )
 $inline-flex:( 'display': inline-flex )
 
 $flex-column:(
-    'flex-wrap': nowrap,
     'display': flex,
+    'flex-wrap': nowrap,
     'flex-direction': column
 )
 
@@ -14,15 +14,15 @@ $inline-flex-column:(
 )
 
 $flex-row:(
-    'flex-wrap': nowrap,
     'display': flex,
+    'flex-wrap': nowrap,
     'flex-direction': row
 )
 
 $inline-flex-row:(
     'flex-wrap': nowrap,
+    'flex-direction': row,
     'display': inline-flex,
-    'flex-direction': row
 )
 
 $flex-wrap-column:(
@@ -51,13 +51,13 @@ $flex-wrap-reversed-row:(
 
 $flexbox:(
     'flex': $flex,
-    'inline-flex': $inline-flex,
     'flex-row': $flex-row,
-    'inline-flex-row': $inline-flex-row,
     'flex-column': $flex-column,
-    'inline-flex-column': $inline-flex-column,
+    'inline-flex': $inline-flex,
     'flex-wrap-row': $flex-wrap-row,
+    'inline-flex-row': $inline-flex-row,
     'flex-wrap-column': $flex-wrap-column,
+    'inline-flex-column': $inline-flex-column,
     'flex-wrap-reversed-row': $flex-wrap-reversed-row,
     'flex-wrap-reversed-column': $flex-wrap-reversed-column,
 )

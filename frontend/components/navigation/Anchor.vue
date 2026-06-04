@@ -11,7 +11,7 @@
         :rel="isExternal() ? 'noopener noreferrer' : undefined"
     >
         <span v-if="isImage()"> <MediaFigure :data="media" :cls="cls" /> </span>
-        <span v-else-if="isIcon()" class="icon">
+        <span v-else-if="isIcon()" class="icon inline-flex-center">
             <template v-if="data.label"> {{ data.label }} </template>
             <MediaIcon :cls="data.type"/>
         </span>

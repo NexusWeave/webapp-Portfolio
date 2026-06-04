@@ -1,13 +1,14 @@
+@use '../mix/mixins' as mix
+
 // Base container for the whole section
 .repo-container
     .filter-btn
-        margin: .5rem
+        @include mix.margin($block: .5rem, $inline: .5rem)
 
     .project-wrapper
         max-inline-size: 75rem
 
     p
-        margin: auto
-    block-size: 100%
-    inline-size: 100%
-
+        @include mix.margin($block: auto, $inline: auto)
+    
+    @include mix.logical-size($inline: 100%, $block: 100%)

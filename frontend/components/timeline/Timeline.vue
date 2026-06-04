@@ -1,11 +1,11 @@
 <template>
-        <section :class="[...cls, 'timeline-explorer-wrapper', 'flex-column']">
+        <section :class="[...cls, 'timeline-explorer-wrapper', 'flex-column-align-items-center']">
             <h2 class="timeline-title">{{ props.title }}</h2>
 
             <section class="timeline-track-container">
-                <section class="timeline-track-wrapper flex-row flex-row-align-items-center">
+                <section class="timeline-track-wrapper flex-row-align-items-center">
                     <div class="timeline-track"></div>
-                    <div class="timeline-dots flex-row flex-justify-space-between">
+                    <div class="timeline-dots flex-justify-space-between">
                         <div v-for="item in data" :key="'dot-'+item.id" 
                              :class="['timeline-dot', { 'active': item.isVisible }]">
                         </div>
@@ -14,7 +14,7 @@
                 </section>
             </section>
 
-            <section :class="['timeline-content-wrapper', 'flex-row', 'flex-justify-center']">
+            <section :class="['timeline-content-wrapper', 'flex-justify-center']">
                 <TimelineCard v-for="item in data" :key="item.id"
                     :data="item"
                     :isVisible="item.isVisible"
@@ -30,13 +30,13 @@
     import type { TimelineItem, TimelineProps } from '~/types/timeline';
 
     //  --- Props & reactive logic
-    const props = withDefaults(defineProps<TimelineProps>(), { cls: () => ['component-blue', 'timeline-container', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'] });
+    const props = withDefaults(defineProps<TimelineProps>(), { cls: () => ['component-blue', 'timeline-container', 'component-w-g-b'] });
 
     const cls = computed(() => 
     {
         const parentCls = Array.isArray(props.cls) ? props.cls : []; 
         const replacementCls = parentCls.length > 0 ? parentCls[0] : 'component-blue';
-        const defaultCls = ['component-blue', 'timeline-container', 'flex-wrap-row-justify-space-evenly'];
+        const defaultCls = ['component-blue', 'timeline-container'];
 
         const modDefault = defaultCls.map((c) =>
         {

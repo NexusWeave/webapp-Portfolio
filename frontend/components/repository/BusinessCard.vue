@@ -1,6 +1,6 @@
 <template>
     <section class="business-card grid-layout">
-        <header class="card-header flex-wrap-row-justify-space-between">
+        <header class="card-header flex-wrap-row-align-items-center-justify-space-between">
             <MediaFigure v-if="hasLanguages && data?.media" :data="data.media[num]" :cls="['tech-figure', 'tech-img']" />
             <div v-else></div>
             <span class="date-container"> <b> <time v-if="data?.date?.date" :datetime="data.date.date"> {{ data.date.date }} </time> </b> </span>
@@ -19,10 +19,10 @@
         <footer v-if="hasTechnology && data?.media" class="card-footer">
             <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
             <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
-                <span>Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
+                <span class="flex-wrap-row-align-items-center">Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
                 </p>
             <p v-if="contributors?.length > 0" class="collab-name">
-                <span>Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
+                <span class="flex-wrap-row-align-items-center">Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
             </p>
         </section>
             <h4>Andre teknologi(er) : </h4>

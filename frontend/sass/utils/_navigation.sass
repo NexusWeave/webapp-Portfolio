@@ -15,8 +15,8 @@ nav.router-nav
                     transform: translateY(0.0625rem)
                     opacity: 1
 
-                font-size: 0.9rem
-                margin: 0.1rem 0.25rem
+                @include mix.font($size: 0.9rem)
+                @include mix.margin($block: 0.1rem, $inline: 0.25rem)
                 @include btn.button-neumorphism()
 
             @include mix.link-styles(color.$dark-grey, color.$logo-red, color.$soft-white, color.$dark-grey)
@@ -25,25 +25,24 @@ nav.logo-nav
     ul
         li
             a
-                margin: 0
-                padding: 0
-                border: none
+                @include mix.margin(0)
+                @include mix.padding(0)
+                @include mix.border(none)
                 display: block
-                box-shadow: none
-                border-radius: 0
-                block-size: auto
-                inline-size: auto
+                @include mix.shadow(none)
+                @include mix.radius(0)
+                @include mix.logical-size($inline: auto, $block: auto)
                 text-decoration: none
                 background-color: transparent
                 
                 &:hover
                     transform: none
-                    box-shadow: none
+                    @include mix.shadow(none)
                     background-color: transparent
 
         
-        margin: 0
-        padding: 0
+        @include mix.margin(0)
+        @include mix.padding(0)
         list-style: none
 
 nav.anchor-nav, nav.portofolio-nav
@@ -51,26 +50,20 @@ nav.anchor-nav, nav.portofolio-nav
     ul
         li
             a
-                padding: 0
-                margin: 0.15rem
-                font-size: 1rem
-                border-radius: 50%
+                @include mix.padding(0)
+                @include mix.margin($block: 0, $inline: 0.15rem)
+                @include mix.font($size: 1rem)
+                @include mix.radius(50%)
                 @include mix.logical-size(2.2rem, 2.2rem)
-                align-items: center
-                @include mix.flex('inline-flex')
-                justify-content: center
                 text-decoration: none !important
                 @include btn.button-neumorphism()
                 
                 .icon
-                    margin: 0
-                    font-size: 1.5rem
-                    align-items: center
-                    @include mix.flex('inline-flex')
-                    justify-content: center
+                    @include mix.margin(0)
+                    @include mix.font($size: 1.5rem)
 
                     span, .bi, [type="icon"]
-                        font-size: 1rem
+                        @include mix.font($size: 1rem)
                         display: inline-block
 
                 > span:not(.icon)
@@ -81,17 +74,11 @@ nav.some-nav
     ul
         li
             a
-                padding: 0
-                margin: 0.25rem
+                @include mix.padding(0)
+                @include mix.margin($block: 0, $inline: 0.25rem)
                 @include mix.logical-size(2rem, 2rem)
-                @include mix.flex()
-                border-radius: 50%
-                align-items: center
-                justify-content: center
+                @include mix.radius(50%)
                 text-decoration: none !important
                 @include btn.button-neumorphism()
                 
         @include mix.logical-center()
-        @include mix.flex()
-        flex-wrap: wrap
-        justify-content: center

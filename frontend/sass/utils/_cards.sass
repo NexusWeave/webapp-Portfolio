@@ -5,11 +5,11 @@
 .card-container
     @include mix.card-base()
     p
-        font-size: 1rem
+        @include mix.font($size: 1rem)
         text-align: justify
         
     h3, h4
-        @include mix.font-style("Nunito")
+        @include mix.font($font: "Nunito")
 
     .tech
         @include mix.list-inline-reset()
@@ -17,9 +17,9 @@
         ul
             li
                 cursor: default
-                padding-inline: 1rem
-                border-radius: .5rem
-                border: 0.0625rem solid black
+                @include mix.padding($inline: 1rem)
+                @include mix.radius(.5rem)
+                @include mix.border(0.0625rem solid black)
         
         
     max-inline-size: 24rem
@@ -28,8 +28,8 @@
     
 .timeline-card
     h3
-        margin-inline: 1rem
-        @include mix.font-style("Roboto")
+        @include mix.margin($inline: 1rem)
+        @include mix.font($font: "Roboto")
 
 .business-card
     @include mix.card-base()
@@ -39,49 +39,45 @@
                 figcaption
                     display: none
 
-                margin: 0
+                @include mix.margin(0)
 
-            margin: 0
-            padding: 0
-            @include mix.flex()
+            @include mix.margin(0)
+            @include mix.padding(0)
             @include mix.logical-size($inline: 100%)
             min-block-size: 0
             grid-area: header
-            align-items: center
-            justify-content: space-between
 
             .tech-img, .tech-figure
                 @include mix.logical-size(2.2rem !important, 2.2rem !important)
                 object-fit: contain !important
-                margin: 0 !important
+                @include mix.margin(0 !important)
 
             .date-container
-                margin: 0
+                @include mix.margin($block: 0, $inline-start: auto)
                 display: block
                 text-align: right
-                margin-inline-start: auto
 
         .card-content
             h3
-                margin: 0
-                padding-block: 0.5rem
+                @include mix.margin(0)
+                @include mix.padding($block: 0.5rem)
             p
-                margin-block: 0.25rem
+                @include mix.margin($block: 0.25rem)
 
-            padding: 0
+            @include mix.padding(0)
             grid-area: content
             
         .card-nav
             grid-area: nav
-            padding-block: 0.25rem
+            @include mix.padding($block: 0.25rem)
             
         .card-footer
             h4
-                font-size: 0.9rem
-                margin-block-end: 0.25rem
+                @include mix.font($size: 0.9rem)
+                @include mix.margin($block: 0 0.25rem)
             
             .tech-img, .tech-figure
-                margin: 0 !important
+                @include mix.margin(0 !important)
                 @include mix.logical-size(2rem !important, 2rem !important)
                 object-fit: contain !important
 
@@ -89,41 +85,39 @@
                 figcaption
                     display: none
 
-                margin: 0
+                @include mix.margin(0)
 
             grid-area: footer
-            padding: 0
-            margin: 0
+            @include mix.padding(0)
+            @include mix.margin(0)
 
-        gap: 0.25rem
         display: grid
-        padding: 0.75rem
+        @include mix.padding(0.75rem)
         align-content: center
         grid-template-rows: 1fr 1fr 1fr 1fr
         grid-template-areas: "header" "content" "nav" "footer"
         
 
     p
-        font-size: 1rem
+        @include mix.font($size: 1rem)
         text-align: center
-        margin-block: 0.25rem
-        margin-inline: 0
+        @include mix.margin($block: 0.25rem, $inline: 0)
 
     img 
-        border-radius: 0
+        @include mix.radius(0)
 
     section
-        margin-block-end: 0rem
+        @include mix.margin($block: 0 0rem)
 
     .card-content
         .icon
-            padding: 0
-            font-size: 2rem
+            @include mix.padding(0)
+            @include mix.font($size: 2rem)
 
         h3
             span.icon
-                padding: 0
-                font-size: 1rem
+                @include mix.padding(0)
+                @include mix.font($size: 1rem)
             @include mix.logical-size($inline: 100%)
 
     .tech-container
@@ -137,25 +131,19 @@
     @include mix.list-inline-reset()
     
     .credits
-        font-size: 0.9rem
-        margin-block: 0.5rem
+        @include mix.font($size: 0.9rem)
+        @include mix.margin($block: 0.5rem)
         
         .collab-name
-            margin-block: 0.1rem
-            margin-inline: 0.25rem
+            @include mix.margin($block: 0.1rem, $inline: 0.25rem)
             span
-                flex-wrap: wrap
-                align-items: center
-                @include mix.flex('inline-flex')
-
                 a
-                    margin: 0
+                    @include mix.margin(0)
                     gap: 0.2rem
-                    align-items: center
-                    @include mix.flex('inline-flex')
 
                     .icon
-                        margin: 0
-                        font-size: 1.1rem
+                        @include mix.margin(0)
+                        @include mix.font($size: 1.1rem)
+
 
     @include mix.background-image(9rem, "/media/images/cards/portfolio-card.svg")
