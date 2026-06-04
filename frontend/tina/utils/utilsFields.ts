@@ -6,23 +6,28 @@ import type { TinaField} from "tinacms";
 
 const commonFields: TinaField[] = 
 [
-    createField("title", "title", "Title of the document", { isTitle: true, isRequired: true }),
+    createField("title", "Title", "Title of the document e.g company name", { isTitle: true, isRequired: true }),
     createField("body", "Main Content", "document content", { isBody: true, isRequired: true, isType: "rich-text" })
 ]
 
-export const academicFields: TinaField[] = 
-
+const subjectFields: TinaField[] =
 [
     ...commonFields,
     createField("created", "Date", "Start Dato", {isType:'datetime', isRequired: true, ui: { dateFormat: 'MM-YY'}}),
     createField("end", "Date", "End Date", {isType:'datetime',  ui: { dateFormat: 'MM-YY'}}),
-    createField("organization", "Name of the Organization", "Name of the Company / School ", { isRequired: true }),
+    createField("ref_link", "Reference link", "A link to the reference (if any) (e.g. https://example.com)"),
+    createListOfFields("techStack", "Technologies", "Used technologies", techStack, {isOptions: true })
+]
+export const timelineFields: TinaField[] = 
+[
+    ...commonFields,
     createField("org_link", "A link to the organization", "e.g. https://example.com"),
+    createListOfFields("subjects", "Subjects / Title", "", subjectFields ),
     createField("location", "Location of school", "(city, county, country) of the School"),
     createField("loc_link", "Location link", "a google maps link to the location (if possible)"),
-    createField("references", "References", "A title of a reference (if any) (e.g. \"Doe, J. (2020). Title of the paper.\")"),
-    createField("ref_link", "Reference link", "A link to the reference (if any) (e.g. https://example.com)"),
+    
     createListOfFields("techStack", "Technologies", "Used technologies", techStack, {isOptions: true }),
+    
     ];
 
 export const blogFields: TinaField[] =  

@@ -1,5 +1,5 @@
 import { defineConfig} from "tinacms";
-import { academicCollection, blogCollection, referenceCollection, profileCollection } from "./collections/collections";
+import { timelineCollection, blogCollection, referenceCollection, profileCollection } from "./collections/collections";
 
 const branch = process.env.TINA_BRANCH || "main";
 
@@ -16,7 +16,7 @@ export default defineConfig({
     collections: [
       blogCollection,
       profileCollection,
-      academicCollection,
+      timelineCollection,
       referenceCollection
     ],
   },
