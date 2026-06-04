@@ -4,7 +4,8 @@
 
 article
     header
-        margin: 0 auto
+        margin-inline: auto
+        margin-block: 0
         .article-metadata
             span.meta-date
                 margin-inline-end: 1rem
@@ -22,19 +23,23 @@ article
                     text-decoration: none
 
     section
-        margin: 0 auto
+        margin-inline: auto
+        margin-block: 0
         max-inline-size: 100%
 
     .pagination-container, .blog-section
-        margin: 2rem 0
+        margin-block: 2rem
+        margin-inline: 0
         max-inline-size: 100%
 
     .article-wrapper
-        margin: 0 auto
+        margin-inline: auto
+        margin-block: 0
         max-inline-size: 100%
 
     .article-content
-        margin: 2rem auto
+        margin-inline: auto
+        margin-block: 2rem
 
         div
             h4
@@ -45,7 +50,8 @@ article
 
     .blog-header
         block-size: 32rem
-        margin: 2rem .5rem
+        margin-block: 2rem
+        margin-inline: 0.5rem
         max-inline-size: 29rem
         box-shadow: 0 0 0.625rem rgba(color.$dark-grey, 0.2)
 
@@ -56,9 +62,11 @@ article
 
         p
             font-size: 1.1rem
-            padding: .5rem 1rem
+            padding-block: 0.5rem
+            padding-inline: 1rem
 
-        padding: 0 .5rem
+        padding-inline: 0.5rem
+        padding-block: 0
     .article-content, .blog-header, .ingress-header
         code
             z-index: -1
@@ -66,7 +74,8 @@ article
             border-radius: 0.25rem
             color: color.$white
             position: relative
-            padding: 0.2rem 0.4rem
+            padding-block: 0.2rem
+            padding-inline: 0.4rem
             background-color: color.$dark-grey
             font-family: 'Courier New', Courier, monospace
 
@@ -86,7 +95,8 @@ article
                 color: inherit
                 text-decoration: none
 
-            margin: auto 0
+            margin-block: auto
+            margin-inline: 0
             text-align: left
         
         abbr
@@ -94,7 +104,7 @@ article
             cursor: help            
             position: relative
             text-decoration: none !important
-            border-bottom: 0.0625rem dotted rgb(255, 69, 0)!important
+            border-block-end: 0.0625rem dotted rgb(255, 69, 0)!important
 
     @include mix.text-wrap-safe()
 
@@ -104,21 +114,24 @@ article.bio
     p
         text-align: justify
         max-inline-size: 50rem
-        margin: 0.5rem auto
+        margin-inline: auto
+        margin-block: 0.5rem
 
     ul
         li
-            margin-block: .5rem
+            margin-block: 0.5rem
         margin-inline: auto
         max-inline-size: 47rem
     div
-        margin: 3rem auto
+        margin-inline: auto
+        margin-block: 3rem
         max-inline-size: 50rem
 
 article.profile-bar
 
     section
-        margin: auto 0.25rem
+        margin-block: auto
+        margin-inline: 0.25rem
         max-inline-size: 18rem
 
     section.profile-content

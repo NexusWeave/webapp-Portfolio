@@ -2,113 +2,110 @@
 @use '../colors/colors' as color
 
 .timeline-explorer-wrapper
-    align-items: center
-    inline-size: 100%
-    max-inline-size: 60rem
-    margin-inline: auto
-    margin-block: 2rem
     padding: 1rem
+    inline-size: 100%
+    margin-block: 2rem
+    align-items: center
+    margin-inline: auto
+    max-inline-size: 60rem
 
     .timeline-title
-        color: color.$deep-midnight-blue
-        margin-block-end: 3rem
         font-weight: 800
         font-size: 1.8rem
+        margin-block-end: 3rem
+        color: color.$deep-midnight-blue
 
     .timeline-track-container
         position: relative
         inline-size: 100%
-        margin-block-end: 4rem
+        margin-block-end: 0
         padding-block: 2rem
 
         .timeline-track-wrapper
-            position: relative
-            inline-size: 90%
-            margin-inline: auto
             block-size: 2rem
+            inline-size: 90%
+            position: relative
+            margin-inline: auto
             align-items: center
 
             .timeline-track
-                position: absolute
-                inset-inline: 0
-                block-size: 0.25rem
-                background: color.$sea-green
-                border-radius: 0.125rem
                 z-index: 0
+                inset-inline: 0
+                position: absolute
+                block-size: 0.25rem
+                border-radius: 0.125rem
+                background: color.$sea-green
 
             .timeline-dots
-                position: absolute
-                inset-inline: 0
                 z-index: 1
+                inset-inline: 0
+                position: absolute
                 pointer-events: none
 
                 .timeline-dot
-                    inline-size: 0.75rem
+                    border-radius: 50%
                     block-size: 0.75rem
+                    inline-size: 0.75rem
+                    transition: all 0.3s ease
                     background: color.$off-white
                     border: 0.125rem solid color.$sea-green
-                    border-radius: 50%
-                    transition: all 0.3s ease
 
                     &.active
+                        transform: scale(1.3)
                         background: color.$deep-midnight-blue
                         border-color: color.$deep-midnight-blue
-                        transform: scale(1.3)
 
-            // Stylize the Range Input (The Needle)
             .timeline-item
+                z-index: 2
                 position: absolute
                 inset-inline: -0.625rem
-                z-index: 2
 
                 .timeline-filter-title
                     display: none
                 
                 input[type="range"]
-                    -webkit-appearance: none
-                    appearance: none
-                    background: transparent
-                    inline-size: 100%
                     cursor: pointer
+                    appearance: none
+                    inline-size: 100%
+                    background: transparent
+                    -webkit-appearance: none
 
                     &:focus
                         outline: none
 
-                    // Thumb (The Needle) - Hidden but interactive
                     &::-webkit-slider-thumb
-                        -webkit-appearance: none
-                        block-size: 1.875rem
-                        inline-size: 0.9375rem // Slightly wider for easier interaction
-                        background: transparent
-                        cursor: pointer
                         opacity: 0
-                        margin-block-start: -0.125rem 
-
-                    &::-moz-range-thumb
+                        cursor: pointer
                         block-size: 1.875rem
                         inline-size: 0.9375rem
                         background: transparent
-                        cursor: pointer
+                        -webkit-appearance: none
+                        margin-block-start: -0.125rem 
+
+                    &::-moz-range-thumb
                         opacity: 0
                         border: none
-
-                    // Hide default track
-                    &::-webkit-slider-runnable-track
+                        cursor: pointer
+                        block-size: 1.875rem
+                        inline-size: 0.9375rem
                         background: transparent
-                    &::-moz-range-track
+
+                    &::-webkit-slider-runnable-track, &::-moz-range-track
                         background: transparent
 
     .timeline-content-wrapper
         inline-size: 100%
         min-block-size: 20rem
+        margin-block-start: 0
 
     .timeline-card-wrapper
+        opacity: 0
+        display: none
+        visibility: hidden
         position: relative
         inline-size: 100%
+        margin-block-start: 0
         max-inline-size: 45rem
-        opacity: 0
-        visibility: hidden
-        display: none
         transform: translateY(1.25rem)
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1)
 
@@ -119,24 +116,24 @@
             transform: translateY(0) !important
 
         .timeline-pointer
+            z-index: 5
+            block-size: 0
+            inline-size: 0
             position: absolute
-            inset-block-start: -0.9375rem
             inset-inline-start: 50%
             transform: translateX(-50%)
-            inline-size: 0
-            block-size: 0
+            inset-block-start: -0.9375rem
             border-inline: 0.9375rem solid transparent
             border-block-end: 0.9375rem solid color.$off-white
             filter: drop-shadow(0 -0.125rem 0.125rem rgba(0,0,0,0.05))
-            z-index: 5
 
         .timeline-card-content
-            background: color.$off-white
             padding: 2.5rem
-            border-radius: 1rem
-            box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.08)
             inline-size: 100%
+            border-radius: 1rem
+            background: color.$off-white
             border: 0.0625rem solid rgba(0,0,0,0.03)
+            box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.08)
 
             .timeline-card-header
                 margin-block-end: 2rem
@@ -147,27 +144,26 @@
                     gap: 1rem
 
                 .timeline-main-title
-                    color: color.$deep-midnight-blue
-                    font-weight: 800
-                    font-size: 1.6rem
                     margin: 0
+                    font-weight: 800
                     line-height: 1.2
+                    font-size: 1.6rem
+                    color: color.$deep-midnight-blue
             
                 .timeline-location
                     gap: 0.5rem
-                    color: color.$sea-green
                     font-weight: 600
                     font-size: 0.95rem
+                    color: color.$sea-green
                     
                     .location-icon
                         font-size: 1.1rem
 
             .timeline-body-content
-                margin-block-end: 2.5rem
+                font-size: 1.05rem
                 line-height: 1.6
                 color: color.$dark-grey
-                font-size: 1.05rem
-                
+                margin-block-end: 2.5rem
                 p
                     margin-block-end: 1rem
                 
@@ -220,6 +216,7 @@
                         opacity: 0.8
 
                 .subject-content
+                    min-inline-size: 28rem
                     gap: 0.8rem
 
                     .subject-header
