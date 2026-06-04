@@ -27,19 +27,18 @@ export async function fetchCollection<T, R>(path:any, cacheKey:string, mapper: (
 }
 
 //  --- Data Processing Logic
-export function sortbyDate<T extends CMSArticleCollectionItem>(data: T[], sort: string =''): T[]
-{
-    return data.sort((a, b) =>
-        {
-            const A = new Date(a.created).getTime();
-            const B = new Date(b.created).getTime();
+export function sortbyDate<T extends { created?: any }>(data: T[], sort: string = ''): T[] {
+    if (!data) return [];
+    return [...data].sort((a, b) => {
+        const A = a.created ? new Date(a.created).getTime() : 0;
+        const B = b.created ? new Date(b.created).getTime() : 0;
 
-            switch(sort)
-            {
-                case 'ascending': return A - B; // Sort ascending
-                default: return B - A; // Default to descending
-            }
-        });
+        switch (sort) {
+            case 'ascending': return A - B; // Sort ascending
+            case 'descending': return B - A; // Sort descending
+            default: return B - A; // Default to descending
+        }
+    });
 }
 
 export function setDateFormat(data:DateItem) : DateItem | undefined
@@ -47,7 +46,7 @@ export function setDateFormat(data:DateItem) : DateItem | undefined
     const time = new Intl.DateTimeFormat('nb-NO', { hour: '2-digit', minute: '2-digit' });
     const date = new Intl.DateTimeFormat('nb-NO', { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
     if (!data.date) return undefined;
-    const dateData:DateItem = { delimiter : 'dot', date: data.date ?? ' ' ? date.format(new Date(data.date)) : null,
+    const dateData:DateItem = { current: data.date, delimiter : 'dot', date: data.date ?? ' ' ? date.format(new Date(data.date)) : null,
         time: data.date ? time.format(new Date(data.date)) : null, text : data.updated ? `Oppdatert` : `Publisert`, 
         updated: data.updated ? date.format(new Date(data.updated)) : null };
     return dateData;

@@ -11,18 +11,19 @@
     <section :class="['flex-wrap-row-justify-space-evenly']">
 
         <Timeline v-if="academicData.length > 0"
-            title="Akademisk Tidslinje"
+            title="Karriere & Utdanning"
             :data="academicData"
             :cls = "['component-blue', 'timeline-container',
-            'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
+            'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
 
         <Timeline v-if="achievementData.length > 0"
             title="Prestasjonstidslinje"
             :data="achievementData"
             :cls = "['component-slate', 'timeline-container',
-            'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
+            'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
         />
+
     </section>
     <RepositoryPortfolio /> 
 </template>
@@ -39,7 +40,6 @@
     import { mapTimeline } from '@/composables/maps/mapTimeline';
     import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
-    import type { ButtonItem } from '~/types/navigation';
     import type { DevPostsCollectionItem, AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
 
 
@@ -47,7 +47,6 @@
     //  --- Component logic
     const academicData = await fetchCollection<AcademicCollectionItem, ReturnType<typeof mapTimeline>>('academic', 'academic-info', mapTimeline);
     const achievementData = await fetchCollection<AchievementsCollectionItem, ReturnType<typeof mapTimeline>>('achievements', 'achievements-info', mapTimeline);
-
 
         //  --- Conent logic
     const devPostPath = 'devPosts';
