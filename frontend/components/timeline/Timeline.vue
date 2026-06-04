@@ -1,19 +1,24 @@
 <template>
-        <section :class="[cls[0], cls[1]]">
-            <section :class="[cls[2], cls[3]]">
-                <TimelineFilter :data="filter" :cls="[['flex-column-align-items-center', 'timeline-item'], 'timeline-input-label', 'timeline-input']" @toggleVisibility="toggleVisibility" />
+        <section :class="[...cls, 'timeline-explorer-wrapper', 'flex-column']">
+            <h2 class="timeline-title">{{ props.title }}</h2>
+
+            <section class="timeline-track-container">
+                <section class="timeline-track-wrapper flex-row flex-row-align-items-center">
+                    <div class="timeline-track"></div>
+                    <div class="timeline-dots flex-row flex-justify-space-between">
+                        <div v-for="item in data" :key="'dot-'+item.id" 
+                             :class="['timeline-dot', { 'active': item.isVisible }]">
+                        </div>
+                    </div>
+                    <TimelineFilter :data="filter" :cls="[['timeline-item'], 'timeline-filter-title', 'timeline-input']" @toggleVisibility="toggleVisibility" />
+                </section>
             </section>
-            <section :class="cls[3]">
-                <DatesYear v-for="item in data" :key="item.id"
-                    :data="item.date.created"
-                    :isVisible="!!item.isVisible"
-                />
-            </section>
-            <section :class="['timeline-content', cls[4]]">
+
+            <section :class="['timeline-content-wrapper', 'flex-row', 'flex-justify-center']">
                 <TimelineCard v-for="item in data" :key="item.id"
                     :data="item"
                     :isVisible="item.isVisible"
-                    :cls="[cls[4], 'timeline-card', 'timeline-active', cls[5], cls[6]]"
+                    :cls="['timeline-card', { 'timeline-active': item.isVisible }]"
                 />
             </section>
         </section>
@@ -25,13 +30,13 @@
     import type { TimelineItem, TimelineProps } from '~/types/timeline';
 
     //  --- Props & reactive logic
-    const props = withDefaults(defineProps<TimelineProps>(), { cls: () => ['component-blue', 'timeline-container', 'timeline-line', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'] });
+    const props = withDefaults(defineProps<TimelineProps>(), { cls: () => ['component-blue', 'timeline-container', 'flex-wrap-row-justify-space-evenly', 'component-w-g-b'] });
 
     const cls = computed(() => 
     {
         const parentCls = Array.isArray(props.cls) ? props.cls : []; 
         const replacementCls = parentCls.length > 0 ? parentCls[0] : 'component-blue';
-        const defaultCls = ['component-blue', 'timeline-container', 'timeline-line', 'flex-wrap-row-justify-space-evenly'];
+        const defaultCls = ['component-blue', 'timeline-container', 'flex-wrap-row-justify-space-evenly'];
 
         const modDefault = defaultCls.map((c) =>
         {
@@ -48,6 +53,12 @@
     });
 
    const data = ref<TimelineItem[]>(props.data);
+   
+   // Initialize visibility: if no item is visible, make the first one visible
+   if (data.value.length > 0 && !data.value.some(item => item.isVisible)) {
+       data.value[0].isVisible = true;
+   }
+
    const rangeValue = ref('0');
 
     const filter = computed(() => (

@@ -3,7 +3,7 @@
         v-if="data"
         :class="cls"
         :href="data.href"
-        :aria-label="data.label || fallbackLabel"
+        :aria-label="data.label"
         :aria-disabled="!!isDisabled()"
         :download="isDownload() ? '' : null"
         :data-external-link="!!isExternal()"
@@ -15,7 +15,7 @@
             <template v-if="data.label"> {{ data.label }} </template>
             <MediaIcon :cls="data.type"/>
         </span>
-        <span v-else> {{ data.label || fallbackLabel }} </span>
+        <span v-else> {{ data.label }} </span>
     </a>
 </template>
 
@@ -32,10 +32,6 @@
     const data = computed(() => props.data);
     const media = computed(() => data.value?.media?? null);
 
-    const fallbackLabel = computed(() => {
-        const path = data.value?.href || media.value?.src;
-        return path ? path.split('/').pop()?.replace('.md', '') : "Media plassholder";
-    });
 
     /// --- Computed Flags
     const isExternal = () => { 
@@ -75,5 +71,5 @@
 
     //  --- Debug logic
     //console.log("Anchor component loaded with data: ", img.value, isImage());
-    //console.log("Link component loaded with data: ", data.value);
+    console.log("Link component loaded with data: ", data.value);
 </script>

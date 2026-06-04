@@ -1,31 +1,38 @@
 <template>
-    <figure :class="cls" v-if="data.src || data.srcset">
-        <img v-if="isSvg && data"
-            loading="lazy"    
-            :src="data.src" 
-            :alt="data.alt" 
-            :class="cls"
-            :width="data.width"
-            :height="data.height"
-        />
-        <NuxtImg v-else-if="isImage && data"
-            :format="'webp'"
-            loading="lazy"    
-            :src="data.src" 
-            :alt="data.alt" 
-            :class="cls"
-            :sizes="size"
-            :height="height"
-            :modifiers="({ar : aspectRatio} as any) "
-        />
-        <figcaption>{{ data.caption ?? data.alt }}</figcaption>
+    <figure :class="cls" v-if="data.src || data.srcset || data.type === 'text' || hasError">
+        <div v-if="data.type === 'text' || hasError" class="tech-text-fallback">
+            {{ data.label || data.alt.replace('A visual representation of ', '') }}
+        </div>
+        <template v-else>
+            <img v-if="isSvg && data"
+                loading="lazy"    
+                :src="data.src" 
+                :alt="data.alt" 
+                :class="cls"
+                :width="data.width"
+                :height="data.height"
+                @error="hasError = true"
+            />
+            <NuxtImg v-else-if="isImage && data"
+                :format="'webp'"
+                loading="lazy"    
+                :src="data.src" 
+                :alt="data.alt" 
+                :class="cls"
+                :sizes="size"
+                :height="height"
+                :modifiers="({ar : aspectRatio} as any) "
+                @error="hasError = true"
+            />
+        </template>
+        <figcaption v-if="!hasError && data.type !== 'text'">{{ data.caption ?? data.alt }}</figcaption>
     </figure>
 </template>
 
 <script setup lang="ts">
 
     //  Importing dependencies & types
-    import { computed } from 'vue';
+    import { computed, ref } from 'vue';
 
     import type { FigureProps, FigureItem } from '@/types/media';
 
@@ -33,6 +40,7 @@
     const props = withDefaults(defineProps<FigureProps>(), { data: () => ({} as FigureItem), cls: () => (['figure', 'figure-img']) });
 
     const cls = computed(() => props.cls);
+    const hasError = ref(false);
 
     const data = computed<FigureItem>(() => {
         const rawData = props.data as FigureItem;

@@ -2,7 +2,7 @@
     <span :class="[cls[0]]">
         <span v-if="!!dateObject.text">{{ dateObject.text }}</span>
         <span v-if="dateObject.delimiter" :class="dateObject.delimiter"> <i :class="cls[cls.length - 1]" :aria-label="dateObject.type"></i> </span>
-        <time :datetime="dateObject.current || dateObject.current"> {{ dateObject.current || dateObject.current }} </time>
+        <time :datetime="dateObject.current"> {{ dateObject.date }} </time>
         <MediaIcon :cls="['calendar']"/>
     </span>
 </template>

@@ -1,6 +1,6 @@
 //  Types for the project
 import type { DateObject } from "./date";
-import type { Anchor} from "./navigation";
+import type { AnchorItem} from "./navigation";
 
 export interface TimelineItem
 {
@@ -8,11 +8,9 @@ export interface TimelineItem
     body?: object;
     date: DateObject;
     isVisible: boolean;
-    techStack?: TechStack[];
-    location: ReferencePoint;
-    reference: ReferencePoint;
-    title?: string | undefined;
-    organization: ReferencePoint;
+    title?: AnchorItem;
+    subjects: Subject[];
+    location: AnchorItem;
     description?: string | undefined;
 
     range?:
@@ -24,8 +22,11 @@ export interface TimelineItem
     }
 }
 
+
+import type { FigureItem } from "./media";
+
 export interface TechStack { category: string; label: string; }
-export interface ReferencePoint { name: string; anchor: Anchor; }
 export interface FilterProps { cls?: Array<any>; data: Record<string, any>; }
+export interface Subject {title: AnchorItem; date: DateObject; techStack?: FigureItem[]; body?: string;}
 export interface TimelineCardProps { cls?: Array<any>; data: TimelineItem; isVisible?: boolean; }
 export interface TimelineProps { title: string; range?: number; cls?: Array<any>; data: TimelineItem[]; }

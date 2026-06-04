@@ -1,55 +1,81 @@
 <template>
-    <section v-if="!!data.isVisible"
-        :class="[{'timeline-active': !!data.isVisible }, 'flex-column-justify-center']">
+    <section v-show="!!data.isVisible"
+        :class="['timeline-card-wrapper', {'timeline-active': !!data.isVisible }, 'flex-column', 'flex-justify-center']">
+        <div class="timeline-pointer"></div>
+        <section class="timeline-card-content flex-column">
+            
+            <header class="timeline-card-header flex-column">
+                <div class="header-main flex-row flex-justify-space-between flex-wrap-row-align-items-start">
+                    <h3 v-if="!!data.title?.href" class="timeline-main-title"> 
+                        <NavigationAnchor :data="data.title" /> 
+                    </h3>
+                    <h3 v-else class="timeline-main-title"> {{ data.title?.label }} </h3>
+                    
+                    <div class="timeline-location flex-row flex-row-align-items-center">
+                         <span class="location-icon">📍</span>
+                         <NavigationAnchor v-if="!!data.location?.href" :data="data.location" />
+                         <span v-else>{{ data.location?.label }}</span>
+                    </div>
+                </div>
+            </header>
 
-        <section class="flex-wrap-row-align-items-center-justify-space-between">
-            <section class="section">
-                <h3 v-if="!!data.organization.anchor"> <NavigationAnchor :data="data.organization.anchor" /> </h3>
-                <h3 v-else>{{ data.organization.name }}</h3>
-                <h4 v-if="!!data.title"> {{ data.title }}</h4>
-
-                <section v-if="!!data.date"
-                    :class="cls[1]">
-                    <section class="flex-wrap-row-align-items-center-justify-center">
-                        <MediaIcon :cls="['icon', 'calendar']" :label="'school year'"/>
-                        <DatesYear v-if="!!data.date.created"
-                            :data="data.date.created"
-                            :isVisible="!!data.isVisible"
-                        />
-                        {{!!data.date.end ? ' - ' : ' - Pågående'}}
-                        <DatesYear v-if="!!data.date.end"
-                            :data="data.date.end"
-                            :isVisible="!!data.isVisible"
-                        />
-                        
-                    </section>
-                </section>
-                <section v-if="!!data.techStack && data.techStack.length > 0"
-                    :class="['tech-container']">
-                    <h4>Teknologi(er) : </h4>
-                    <section :class="['flex-wrap-row-justify-space-evenly']"> 
-                        <template v-for="(tech, i) in data.techStack" :key="i">
-                            <MediaFigure  v-if="tech"  :data="tech"  :cls="['tech-figure', 'tech-img']"  />
-                        </template>
-                    </section>
-                </section>
-
-                <section :class="cls[2]">
-                    <h3 v-if="!!data.location.anchor.href"> <NavigationAnchor :data="data.location.anchor" /> </h3>
-                    <h3 v-else> {{ data.location.name }} </h3>
-                    <h3 v-if="!!data.reference.anchor"> <NavigationAnchor  :data="data.reference.anchor" /> </h3>
-                </section>
+            <section v-if="data.body" class="timeline-body-content">
+                <ContentRenderer :value="data.body" />
             </section>
-            <section class="section"> <ContentRenderer v-if="data.body" :value="data.body" /> </section>
-        </section>
 
+            <section class="timeline-subjects-list flex-column">
+                <div v-for="sub, i in data.subjects" :key="i" 
+                     :class="['subject-item', { 'subject-expandable': !!sub.body, 'subject-expanded': expandedSubjects.includes(i) }]">
+                    
+                    <div class="subject-grid-container" @click="sub.body ? toggleSubject(i) : null">
+                        <div class="subject-date flex-column">
+                            <template v-if="sub.date">
+                                <DatesYear v-if="sub.date.created" :data="sub.date.created.current" :isVisible="!!data.isVisible" />
+                                <span class="date-dash"> - </span>
+                                <DatesYear v-if="sub.date.end" :data="sub.date.end.current" :isVisible="!!data.isVisible" />
+                                <span v-else class="ongoing">Pågående</span>
+                            </template>
+                        </div>
+                        
+                        <div class="subject-content flex-column">
+                            <div class="subject-header flex-row flex-justify-space-between flex-row-align-items-center">
+                                <h4 v-if="!!sub.title.href" class="subject-title"> 
+                                    <NavigationAnchor :data="sub.title" /> 
+                                </h4>
+                                <h4 v-else class="subject-title">{{ sub.title.label }}</h4>
+                                
+                                <span v-if="sub.body" class="expand-icon">
+                                    {{ expandedSubjects.includes(i) ? '−' : '+' }}
+                                </span>
+                            </div>
+
+                            <div v-if="!!sub.techStack && sub.techStack.length > 0" class="tech-container flex-column">
+                                <div class="tech-icons flex-row flex-wrap-row"> 
+                                    <template v-for="(tech, j) in sub.techStack" :key="j">
+                                        <MediaFigure v-if="tech" :data="tech" :cls="['tech-figure', 'tech-img']" />
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <transition name="expand">
+                        <div v-if="sub.body && expandedSubjects.includes(i)" class="subject-details">
+                            <div class="details-content">
+                                <MDC :value="sub.body" />
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+            </section>
+        </section>
     </section>
 </template>
 
 <script lang="ts" setup >
     
     //  --- Import & Props -setup logic
-    import { computed } from 'vue';
+    import { computed, ref } from 'vue';
     import type { TimelineCardProps } from '~/types/timeline';
 
     const props = withDefaults(defineProps<TimelineCardProps>(), { cls: () => [], isVisible: () => false });
@@ -57,6 +83,18 @@
     const cls = computed(() => props.cls);
     const data = computed(() => props.data);
     const emits = defineEmits(['toggleVisibility']);
+
+    //  --- Expansion Logic
+    const expandedSubjects = ref<number[]>([]);
+
+    function toggleSubject(index: number) {
+        const pos = expandedSubjects.value.indexOf(index);
+        if (pos > -1) {
+            expandedSubjects.value.splice(pos, 1);
+        } else {
+            expandedSubjects.value.push(index);
+        }
+    }
 
     //  --- Debug / log logic
     //console.log("Timeline Card data:", data.value);
