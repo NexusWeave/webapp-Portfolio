@@ -7,6 +7,12 @@
 @forward '../flexbox/flexbox-reversed-row'
 @forward '../flexbox/row-align-justify-mix/flexbox-wrap-row-align-justify'
 
+.flex
+    @include mix.flexbox-generator('flex')
+
+.flex
+    @include mix.flexbox-generator('flex')
+
 .flex-justify-space-between
     justify-content: space-between
     @include mix.flexbox-generator('flex-row')
