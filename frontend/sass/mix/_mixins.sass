@@ -75,6 +75,21 @@
 
     font-family: $font, $family
 
+@mixin font($size: null, $weight: null, $font: null, $family: null, $style: null)
+    @if $font != null
+        @include font-style($font, $family)
+    @else if $family != null
+        font-family: $family
+
+    @if $size != null
+        font-size: $size
+
+    @if $weight != null
+        font-weight: $weight
+
+    @if $style != null
+        font-style: $style
+
 @mixin link-styles($link-color, $link-hover-color, $link-active-color, $link-visited-color)
 
     a
@@ -144,14 +159,6 @@
     display: inline-block
     margin-inline-end: .5rem
 
-@mixin flex($type: 'flex')
-    @if $type == 'flex'
-        display: flex
-    @else if $type == 'inline-flex'
-        display: inline-flex
-    @else
-        display: flex // fallback
-
 @mixin absolute-inset($inset: 0)
     position: absolute
     inset: $inset
@@ -164,6 +171,43 @@
         inline-size: $inline
     @if $block != null
         block-size: $block
+
+@mixin margin($block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null)
+    @if $block != null
+        margin-block: $block
+    @if $inline != null
+        margin-inline: $inline
+    @if $block-start != null
+        margin-block-start: $block-start
+    @if $block-end != null
+        margin-block-end: $block-end
+    @if $inline-start != null
+        margin-inline-start: $inline-start
+    @if $inline-end != null
+        margin-inline-end: $inline-end
+
+@mixin padding($block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null)
+    @if $block != null
+        padding-block: $block
+    @if $inline != null
+        padding-inline: $inline
+    @if $block-start != null
+        padding-block-start: $block-start
+    @if $block-end != null
+        padding-block-end: $block-end
+    @if $inline-start != null
+        padding-inline-start: $inline-start
+    @if $inline-end != null
+        padding-inline-end: $inline-end
+
+@mixin radius($radius)
+    border-radius: $radius
+
+@mixin border($style)
+    border: $style
+
+@mixin shadow($value)
+    box-shadow: $value
 
 @mixin text-wrap-safe()
     p, h1, h2, h3, h4, h5, h6, figcaption, a, li
