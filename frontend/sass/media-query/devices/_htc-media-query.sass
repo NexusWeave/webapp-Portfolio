@@ -1,6 +1,7 @@
 //  HTC Devices Media Query
 
 //  Importing dependencies
+@use '../../mix/mixins' as mix
 @use './breakpoints' as device
 
 
@@ -10,7 +11,7 @@
         section.info
             .carosel
                 .caption
-                    font-size: 1rem !important
+                    @include mix.font(1rem !important)
 
                 .relative
                     bottom: 5.2875rem !important
@@ -26,20 +27,20 @@
                         left: 2.7rem !important
 
                     .img-wrapper
-                        inline-size: 76.5rem !important
+                        @include mix.logical-size(76.5rem !important)
 
                         .img-svg
-                            block-size: 3.375rem !important
+                            @include mix.logical-size(null, 3.375rem !important)
 
 @media only screen and (device.$htc-one-width <= width <= 24.9375rem) and (min-height: device.$htc-one-height) and (orientation: portrait)
     header
         .slogan-wrapper
-            font-size: .496rem !important
+            @include mix.font(.496rem !important)
     main
         section.info
             .carosel
                 .caption
-                    font-size: 1rem !important
+                    @include mix.font(1rem !important)
 
                 .relative
                     bottom: 4.3875rem !important
@@ -55,22 +56,22 @@
                         top: 1.125rem !important
 
                     .img-wrapper
-                        block-size: 2.8125rem !important
+                        @include mix.logical-size(null, 2.8125rem !important)
 
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size(null, 2.25rem !important)
 
 @media only screen and (device.$htc-sensation-width <= width <= 37.5rem) and (min-height: device.$htc-sensation-height) and (orientation: portrait)
     header
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
     main
         section.info
             .carosel
-                block-size: 36.5625rem
+                @include mix.logical-size(null, 36.5625rem)
 
                 .caption
-                    font-size: 1rem
+                    @include mix.font(1rem)
 
                 .relative
                     bottom: 2.8687rem !important
@@ -79,12 +80,11 @@
                     bottom: 20.25rem !important
 
         section.bio-container
-            inline-size: 40.5rem
+            @include mix.logical-size(40.5rem)
 
         section#tech-repo
             .pp
-                block-size: 9rem !important
-                inline-size: 58.5rem !important
+                @include mix.logical-size(58.5rem !important, 9rem !important)
                 background-size: 21.6rem !important
 
                 .tech-container
@@ -92,29 +92,28 @@
                         top: 0.5625rem !important
 
                     .img-wrapper
-                        block-size: 2.25rem !important
-                        inline-size: 53.1rem !important
+                        @include mix.logical-size(53.1rem !important, 2.25rem !important)
                         
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size(null, 1.6875rem !important)
                 p
-                    inline-size: 44.1rem !important
+                    @include mix.logical-size(44.1rem !important)
                     margin-inline-start: 7.2rem !important
 
 //  Landscape
 @media only screen and (device.$htc-desire-height <= width <= 34.375rem) and (min-height: device.$htc-desire-width) and (orientation: landscape)
     header
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
 
     main
         section.info
             .carosel
-                inline-size: 42.3rem !important
+                @include mix.logical-size(42.3rem !important)
 
                 .caption
-                    font-size: 0.8rem !important
+                    @include mix.font(0.8rem !important)
                     
                 .relative
                     bottom: 7.0312rem !important
@@ -124,9 +123,8 @@
 
         section#tech-repo
             .pp
-                margin-inline: 1rem
-                block-size: 27.5625rem !important
-                inline-size: 36rem !important
+                @include mix.margin(null, 1rem)
+                @include mix.logical-size(36rem !important, 27.5625rem !important)
                 background-size: 14.4rem !important
 
                 .tech-container
@@ -134,32 +132,32 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        inline-size: 33.3rem !important
+                        @include mix.logical-size(33.3rem !important)
 
                         .img-svg
-                            block-size: 3.9375rem !important
+                            @include mix.logical-size(null, 3.9375rem !important)
                 h3
                     margin-inline-start: 1.8rem !important
                 p
-                    margin-inline: 1rem !important
-                    inline-size: 28.8rem !important
+                    @include mix.margin(null, 1rem !important)
+                    @include mix.logical-size(28.8rem !important)
                     margin-inline-start: 3.6rem !important
 
 @media only screen and (min-width: device.$htc-one-height) and (min-height: device.$htc-one-width) and (orientation: landscape)
     header
         img
-            inline-size: 13.5rem !important
+            @include mix.logical-size(13.5rem !important)
 
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
 
     main
         section.info
             .carosel
-                inline-size: 56.7rem !important
+                @include mix.logical-size(56.7rem !important)
 
                 .caption
-                    font-size: 1rem
+                    @include mix.font(1rem)
 
                 .relative
                     bottom: 7.7062rem !important
@@ -169,13 +167,12 @@
         
         section#spec-container
             .spec-class
-                inline-size: 40.5rem
+                @include mix.logical-size(40.5rem)
 
         section#tech-repo
             .pp
-                margin-inline: 1rem
-                block-size: 23.0625rem !important
-                inline-size: 36rem !important
+                @include mix.margin(null, 1rem)
+                @include mix.logical-size(36rem !important, 23.0625rem !important)
                 background-size: 14.4rem !important
 
                 .tech-container
@@ -184,20 +181,20 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        inline-size: 33.3rem !important
+                        @include mix.logical-size(33.3rem !important)
                 p
                     
-                    inline-size: 34.2rem !important
+                    @include mix.logical-size(34.2rem !important)
                     margin-inline-start: 2.7rem !important
 
 @media only screen and (min-width: device.$htc-sensation-height) and (min-height: device.$htc-sensation-width) and (max-height: 39.9375rem) and (orientation: landscape)
     header
         .slogan-wrapper
-            font-size: .9rem !important
+            @include mix.font(.9rem !important)
     main
         section.info
             .carosel
-                inline-size: 28.8rem !important
+                @include mix.logical-size(28.8rem !important)
 
                 .caption
                     bottom: 5.2313rem !important
@@ -206,16 +203,15 @@
                     bottom: 24.1875rem !important
 
                     .img-btn
-                        font-size: 2.5rem !important
+                        @include mix.font(2.5rem !important)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size(40.5rem !important)
 
         section#tech-repo
             .pp
-                block-size: 18.5625rem !important
-                inline-size: 33.3rem !important
+                @include mix.logical-size(33.3rem !important, 18.5625rem !important)
                 background-size: 12.6rem !important
 
                 .tech-container
@@ -224,11 +220,11 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        inline-size: 30.6rem !important
+                        @include mix.logical-size(30.6rem !important)
 
                         .img-svg
-                            block-size: 2.8125rem !important
+                            @include mix.logical-size(null, 2.8125rem !important)
                 p
-                    font-size: 1rem !important
-                    inline-size: 19.8rem !important
+                    @include mix.font(1rem !important)
+                    @include mix.logical-size(19.8rem !important)
                     margin-inline-start: 8.1rem !important

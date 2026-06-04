@@ -1,6 +1,7 @@
 //  Sony Devices Media Queries
 
 //  Importing dependencies
+@use '../../mix/mixins' as mix
 @use './breakpoints' as device
 
 // Ericsson Portrait
@@ -13,15 +14,14 @@
                     bottom: 19.125rem !important
                 
                 .caption
-                    font-size: 1rem !important
+                    @include mix.font($size: 1rem !important)
 
                 .relative
                     bottom: 3.3188rem !important
         
         section#tech-repo
             .pp
-                block-size: 15.1875rem !important
-                inline-size: 51.3rem !important
+                @include mix.logical-size($inline: 51.3rem !important, $block: 15.1875rem !important)
                 background-size: 19.8rem !important
             
                 .tech-container
@@ -30,12 +30,12 @@
                         left: 3.6rem !important
 
                     .img-wrapper
-                        inline-size: 46.8rem !important
+                        @include mix.logical-size($inline: 46.8rem !important)
 
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size($block: 2.25rem !important)
                 p
-                    inline-size: 35.1rem !important
+                    @include mix.logical-size($inline: 35.1rem !important)
 
 // Ericsson Lanscape
 @media only screen and (device.$sony-ericsson-u-height <= width <= 56.1875rem) and (min-height: device.$sony-ericsson-u-width) and (orientation: landscape)
@@ -43,8 +43,7 @@
     main
         section.info
             .carosel
-                block-size: 32.625rem
-                inline-size: 27.9rem !important
+                @include mix.logical-size($inline: 27.9rem !important, $block: 32.625rem)
 
                 .caption
                     bottom: 5.9625rem !important
@@ -53,15 +52,14 @@
                     bottom: 23.625rem !important
 
                     .img-btn
-                        font-size: 2.5rem
+                        @include mix.font($size: 2.5rem)
 
             section.bio-container
-                inline-size: 47.7rem !important
+                @include mix.logical-size($inline: 47.7rem !important)
 
         section#tech-repo
             .pp
-                block-size: 20.25rem !important
-                inline-size: 33.3rem !important
+                @include mix.logical-size($inline: 33.3rem !important, $block: 20.25rem !important)
                 background-size: 11.7rem !important
             
                 .tech-container
@@ -70,9 +68,9 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        inline-size: 30.6rem !important
+                        @include mix.logical-size($inline: 30.6rem !important)
 
                         .img-svg
-                            block-size: 2.8125rem !important
+                            @include mix.logical-size($block: 2.8125rem !important)
                 p
-                    inline-size: 29.7rem !important
+                    @include mix.logical-size($inline: 29.7rem !important)

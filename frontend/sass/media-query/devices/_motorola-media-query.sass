@@ -1,13 +1,14 @@
 //  Motorola Media Queries
 
 //  Breakpoints
+@use '../../mix/mixins' as mix
 @use './breakpoints' as device
 
 //  Portraits
 @media only screen and (device.$motorola-mobility-milestone-width <= width <= 21.4375rem) and (min-height: device.$motorola-mobility-milestone-height) and (orientation: portrait)
     header
         .slogan-wrapper
-            font-size: 0.398rem !important
+            @include mix.font($size: 0.398rem !important)
 
     main
         section.info
@@ -21,39 +22,37 @@
 
         section#tech-repo
             .pp
-                block-size: 16.875rem !important
-                inline-size: 72rem !important
+                @include mix.logical-size(72rem !important, 16.875rem !important)
                 background-size: 28.8rem !important
 
                 .tech-container
 
                     .img-wrapper
-                        block-size: 3.375rem !important
-                        inline-size: 66.6rem !important
+                        @include mix.logical-size(66.6rem !important, 3.375rem !important)
 
                         .img-svg
-                            block-size: 2.8125rem !important
+                            @include mix.logical-size(null, 2.8125rem !important)
 
                 p
-                    font-size: 1rem !important
-                    inline-size: 63.9rem !important
+                    @include mix.font($size: 1rem !important)
+                    @include mix.logical-size(63.9rem !important)
                     margin-inline-start: 6.3rem !important
 
 //  Landscape
 @media only screen and (device.$motorola-mobility-milestone-height <= width <= 39.9375rem) and (min-height: device.$motorola-mobility-milestone-width) and (orientation: landscape)
     header
         img
-            inline-size: 13.5rem !important
+            @include mix.logical-size(13.5rem !important)
         .slogan-wrapper 
-            font-size: 0.7rem !important
+            @include mix.font($size: 0.7rem !important)
 
     main
         section.info
             .carosel
-                inline-size:  45rem !important
+                @include mix.logical-size(45rem !important)
 
                 .caption
-                    font-size: 1rem
+                    @include mix.font($size: 1rem)
 
                 .relative
                     bottom: 8.775rem !important
@@ -63,9 +62,8 @@
 
         section#tech-repo
             .pp
-                margin-inline: 1rem 
-                block-size: 28.125rem !important
-                inline-size: 36.9rem !important
+                @include mix.margin(null, 1rem)
+                @include mix.logical-size(36.9rem !important, 28.125rem !important)
                 background-size: 14.4rem !important
 
                 .tech-container
@@ -74,8 +72,8 @@
                         left: 2.7rem !important
 
                     .img-wrapper
-                        inline-size: 32.4rem !important
+                        @include mix.logical-size(32.4rem !important)
 
                 p
-                    inline-size: 32.4rem !important
+                    @include mix.logical-size(32.4rem !important)
                     margin-inline-start: 2.7rem !important

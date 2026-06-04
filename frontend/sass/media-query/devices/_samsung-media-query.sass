@@ -1,6 +1,7 @@
 //  Samsung Devices Media Queries
 
 //  Importing dependencies
+@use '../../mix/mixins' as mix
 @use './breakpoints' as device
 
 //  Portrait Media Queries
@@ -8,7 +9,7 @@
 
     header
         .slogan-wrapper
-            font-size: .6rem !important
+            @include mix.font($size: .6rem !important)
 
     main
         section.info
@@ -18,10 +19,10 @@
                     bottom: 22.5rem
                 
                     button.img-btn
-                        font-size: 2.5rem
+                        @include mix.font($size: 2.5rem)
 
                 .caption
-                    font-size: 1rem
+                    @include mix.font($size: 1rem)
                 
                 .relative
                     bottom: 4.1063rem
@@ -33,18 +34,17 @@
                         top: 1.125rem
                         left: 2.7rem
                     .img-wrapper
-                        block-size: 2.8125rem !important
-                        inline-size: 75.6rem !important
+                        @include mix.logical-size($inline: 75.6rem !important, $block: 2.8125rem !important)
 
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size($block: 2.25rem !important)
                 p
-                    inline-size: 63rem
+                    @include mix.logical-size($inline: 63rem)
 
 @media only screen and (device.$samsung-gcz5-width <= width <= 22.4375rem) and (min-height: device.$samsung-gcz5-height) and (orientation: portrait)
     header
         .slogan-wrapper
-            font-size: 0.5rem !important
+            @include mix.font($size: 0.5rem !important)
 
     main
         section.info
@@ -63,22 +63,20 @@
                         top: 0.5625rem !important
 
                     .img-wrapper
-                        block-size: 1.6875rem !important
-                        inline-size: 72rem !important
+                        @include mix.logical-size($inline: 72rem !important, $block: 1.6875rem !important)
                     
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size($block: 2.25rem !important)
 
 @media only screen and (device.$samsung-gfz5-width <= width <=  44.9375rem) and (min-height: device.$samsung-gfz5-height) and (orientation: portrait)
     header
         .slogan-wrapper
-            font-size: 0.5rem !important
+            @include mix.font($size: 0.5rem !important)
 
     main
         section.info
             .carosel
-                block-size: 23.625rem 
-                inline-size: 31.5rem !important
+                @include mix.logical-size($inline: 31.5rem !important, $block: 23.625rem)
 
                 div.btn-container
                     bottom: 17.4375rem !important
@@ -86,16 +84,15 @@
                 .caption
                     bottom: 3.375rem !important
             section.bio-container
-                inline-size: 36rem !important
+                @include mix.logical-size($inline: 36rem !important)
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size($inline: 40.5rem !important)
 
         section#tech-repo
             .pp
-                margin-inline: 1rem
-                block-size: 11.8125rem
-                inline-size: 38.7rem !important
+                @include mix.margin($inline: 1rem)
+                @include mix.logical-size($inline: 38.7rem !important, $block: 11.8125rem)
                 background-size: 18rem !important
 
                 .tech-container
@@ -103,22 +100,21 @@
                         top: 0.5625rem !important
 
                     .img-wrapper
-                        block-size: 2.25rem !important
-                        inline-size: 34.2rem !important
+                        @include mix.logical-size($inline: 34.2rem !important, $block: 2.25rem !important)
                     
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size($block: 2.25rem !important)
                 p
-                    inline-size: 27.9rem !important
+                    @include mix.logical-size($inline: 27.9rem !important)
                     margin-inline-start: 9.9rem !important
 
 @media only screen and (device.$samsung-gs8-width <= width <= 23.375rem) and (min-height: device.$samsung-gs8-height) and (orientation: portrait)
     header
         img
-            inline-size: 13.5rem !important
+            @include mix.logical-size($inline: 13.5rem !important)
 
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font($size: .7rem !important)
 
     main
         section.info
@@ -144,25 +140,24 @@
                         top: 0.5625rem !important
 
                     .img-wrapper
-                        block-size: 2.25rem !important
+                        @include mix.logical-size($block: 2.25rem !important)
                     
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size($block: 2.25rem !important)
 
 //  Landscape Media Queries
 @media only screen and (device.$samsung-tab-height <= width <= 45.9375rem) and (min-height: device.$samsung-tab-width) and (orientation: landscape)
     header
         img
-            inline-size: 13.5rem !important
+            @include mix.logical-size($inline: 13.5rem !important)
 
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font($size: .7rem !important)
 
     main
         section.info
             .carosel
-                block-size: 41.625rem !important
-                inline-size: 36rem !important
+                @include mix.logical-size($inline: 36rem !important, $block: 41.625rem !important)
 
                 div.btn-container
                     bottom: 29.25rem !important
@@ -172,30 +167,30 @@
                     bottom: 6.975rem !important
 
             section.bio-container
-                inline-size: 45rem !important
+                @include mix.logical-size($inline: 45rem !important)
         section#tech-repo
             .pp
                 .tech-container
                     .img-wrapper
-                        block-size: 3.9375rem !important
+                        @include mix.logical-size($block: 3.9375rem !important)
 
                         .img-svg
-                            block-size: 3.375rem !important
+                            @include mix.logical-size($block: 3.375rem !important)
                 p
-                    inline-size: 27.9rem !important
+                    @include mix.logical-size($inline: 27.9rem !important)
 
 @media only screen and (device.$samsung-gs8-height <= width <= 51.75rem) and (min-height: device.$samsung-gs8-width) and (orientation: landscape)
     header
         img
-            inline-size: 13.5rem !important
+            @include mix.logical-size($inline: 13.5rem !important)
 
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font($size: .7rem !important)
 
     main
         section.info
             .carosel
-                inline-size: 31.5rem !important
+                @include mix.logical-size($inline: 31.5rem !important)
 
                 div.btn-container
                     bottom: 30.9375rem !important
@@ -204,25 +199,24 @@
                     bottom: 7.7625rem !important
             
             section.bio-container
-                inline-size: 45rem !important
+                @include mix.logical-size($inline: 45rem !important)
         
         section#tech-repo
             .pp
                 background-size: 11.7rem !important
             
                 p
-                    inline-size: 32.4rem !important
+                    @include mix.logical-size($inline: 32.4rem !important)
 
 @media only screen and (device.$samsung-gcz5-height <= width <= 55.9375rem) and (min-height: device.$samsung-gcz5-width) and (orientation: landscape)
     header
         .slogan-wrapper
-            font-size: 0.5rem !important
+            @include mix.font($size: 0.5rem !important)
 
     main
         section.info
             .carosel
-                block-size: 53.4375rem !important
-                inline-size: 31.5rem !important
+                @include mix.logical-size($inline: 31.5rem !important, $block: 53.4375rem !important)
 
                 div.btn-container
                     bottom: 36.5625rem !important
@@ -231,17 +225,16 @@
                     bottom: 8.2687rem !important
 
             section.bio-container
-                inline-size: 45rem !important
+                @include mix.logical-size($inline: 45rem !important)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem 
+                @include mix.logical-size($inline: 40.5rem)
 
         section#tech-repo
             .pp
-                margin-inline: 1rem
-                block-size: 25.3125rem !important
-                inline-size: 25.2rem !important
+                @include mix.margin($inline: 1rem)
+                @include mix.logical-size($inline: 25.2rem !important, $block: 25.3125rem !important)
                 background-size: 9.9rem !important
 
                 .tech-container
@@ -250,25 +243,23 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 4.5rem !important
-                        inline-size: 20.7rem !important
+                        @include mix.logical-size($inline: 20.7rem !important, $block: 4.5rem !important)
                     
                         .img-svg
-                            block-size: 3.9375rem !important
+                            @include mix.logical-size($block: 3.9375rem !important)
                 p
-                    inline-size: 20.7rem !important
+                    @include mix.logical-size($inline: 20.7rem !important)
                     margin-inline-start: 2.7rem !important
 
 @media only screen and (device.$samsung-gfz5-height <= width <= 53.3125rem) and (min-height: device.$samsung-gfz5-width) and (orientation: landscape)
     header
         .slogan-wrapper
-            font-size: 0.5rem !important
+            @include mix.font($size: 0.5rem !important)
 
     main
         section.info
             .carosel
-                block-size: 25.3125rem !important
-                inline-size: 31.5rem !important
+                @include mix.logical-size($inline: 31.5rem !important, $block: 25.3125rem !important)
 
                 div.btn-container
                     bottom: 20.8125rem !important
@@ -277,39 +268,36 @@
                     bottom: 4.1063rem !important
 
             section.bio-container
-                inline-size: 45rem         
+                @include mix.logical-size($inline: 45rem)         
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size($inline: 40.5rem !important)
 
         section#tech-repo
             .pp
-                block-size: 11.25rem !important
-                inline-size: 38.7rem !important
+                @include mix.logical-size($inline: 38.7rem !important, $block: 11.25rem !important)
 
                 .tech-container
                     .relative
                         top: 0.5625rem !important
 
                     .img-wrapper
-                        block-size: 2.25rem !important
-                        inline-size: 36rem !important
+                        @include mix.logical-size($inline: 36rem !important, $block: 2.25rem !important)
                     
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size($block: 2.25rem !important)
                 p
-                    inline-size: 36rem !important
+                    @include mix.logical-size($inline: 36rem !important)
 
 @media only screen and (device.$samsung-ga5171-height <= width <= 57.8125rem) and (min-height: device.$samsung-ga5171-width) and (orientation: landscape)
     header
         .slogan-wrapper
-            font-size: 0.5rem !important
+            @include mix.font($size: 0.5rem !important)
 
     main
         section.info
             .carosel
-                block-size: 46.125rem !important
-                inline-size: 31.5rem !important
+                @include mix.logical-size($inline: 31.5rem !important, $block: 46.125rem !important)
 
                 div.btn-container
                     bottom: 30.375rem !important
@@ -318,16 +306,15 @@
                     bottom: 6.8062rem !important
 
             section.bio-container
-                inline-size: 45rem
+                @include mix.logical-size($inline: 45rem)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size($inline: 40.5rem !important)
 
         section#tech-repo
             .pp
-                block-size: 22.5rem !important
-                inline-size: 25.2rem !important
+                @include mix.logical-size($inline: 25.2rem !important, $block: 22.5rem !important)
                 background-size: 9.9rem !important
 
                 .tech-container
@@ -335,11 +322,10 @@
                         top: 1.125rem !important
 
                     .img-wrapper
-                        block-size: 4.5rem !important
-                        inline-size: 22.5rem !important
+                        @include mix.logical-size($inline: 22.5rem !important, $block: 4.5rem !important)
                     
                         .img-svg
-                            block-size: 3.375rem !important
+                            @include mix.logical-size($block: 3.375rem !important)
                 p
-                    inline-size: 20.7rem !important
+                    @include mix.logical-size($inline: 20.7rem !important)
                     margin-inline-start: 2.7rem !important

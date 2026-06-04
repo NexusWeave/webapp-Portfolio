@@ -1,4 +1,5 @@
 //  Display Media Queries
+@use '../../mix/mixins' as mix
 @use './breakpoints' as device
 
 //  Portrait
@@ -6,8 +7,7 @@
     main
         section.info
             .carosel
-                block-size: 1.6875rem !important
-                inline-size: 20.7rem !important
+                @include mix.logical-size(20.7rem !important, 1.6875rem !important)
 
                 .relative
                     bottom: 1.0125rem !important 
@@ -17,8 +17,7 @@
 
         section#tech-repo
             .pp
-                block-size: 5.0625rem !important
-                inline-size: 27rem !important
+                @include mix.logical-size(27rem !important, 5.0625rem !important)
                 background-size: 10.8rem !important
 
                 .tech-container
@@ -27,21 +26,19 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 1.125rem !important
-                        inline-size: 24.3rem !important
+                        @include mix.logical-size(24.3rem !important, 1.125rem !important)
                         
 
                         .img-svg
-                            block-size: 1.125rem !important 
+                            @include mix.logical-size(null, 1.125rem !important) 
                 p
-                    inline-size: 18.9rem !important
+                    @include mix.logical-size(18.9rem !important)
 
 @media only screen and (min-width: device.$display-hd-1080p-height) and (min-height : device.$display-hd-1080p-width) and (orientation: portrait)
     main
         section.info
             .carosel
-                block-size: 14.0625rem !important
-                inline-size: 20.7rem !important
+                @include mix.logical-size(20.7rem !important, 14.0625rem !important)
                 margin-inline-end: 0 !important
 
                 .relative
@@ -52,8 +49,7 @@
 
         section#tech-repo
             .pp
-                block-size: 10.6875rem !important
-                inline-size: 22.5rem !important
+                @include mix.logical-size(22.5rem !important, 10.6875rem !important)
 
                 .tech-container
                     .relative
@@ -61,20 +57,18 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 1.125rem !important
-                        inline-size: 20.7rem !important
+                        @include mix.logical-size(20.7rem !important, 1.125rem !important)
 
                         .img-svg
-                            block-size: 1.125rem !important
+                            @include mix.logical-size(null, 1.125rem !important)
                 p
-                    inline-size: 17.1rem !important
+                    @include mix.logical-size(17.1rem !important)
 
 @media only screen and (min-width: device.$display-hd-1080i-width) and (min-height : device.$display-hd-1080i-height) and (orientation: portrait)
     main
         section.info
             .carosel
-                block-size: 7.875rem !important
-                inline-size: 29.7rem !important
+                @include mix.logical-size(29.7rem !important, 7.875rem !important)
                 margin-inline-end: 0 !important
 
                 .relative
@@ -86,12 +80,11 @@
         section.bio-container
             nav.bio-bar
                 button.bio-btn
-                    font-size: 1.138rem !important
+                    @include mix.font(1.138rem !important)
 
         section#tech-repo
             .pp
-                block-size: 7.3125rem !important
-                inline-size: 26.1rem !important
+                @include mix.logical-size(26.1rem !important, 7.3125rem !important)
                 background-size: 11.7rem !important
 
                 .tech-container
@@ -100,20 +93,19 @@
                         left: 0.9rem !important
 
                     .img-wrapper
-                        block-size: 1.6875rem !important
-                        inline-size: 19.8rem !important
+                        @include mix.logical-size(19.8rem !important, 1.6875rem !important)
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size(null, 1.6875rem !important)
                 p
-                    inline-size: 22.5rem !important
+                    @include mix.logical-size(22.5rem !important)
                     margin-inline-start: 3.6rem !important
 
 @media only screen and (device.$display-hd-720p-width <= width <= 85.3125rem) and (min-height : device.$display-hd-720p-height) and (orientation: portrait)
     main
         section.info
             .carosel
-                inline-size: 45rem !important
+                @include mix.logical-size(45rem !important)
                 margin-inline-end: 0 !important
 
                 .relative
@@ -123,17 +115,16 @@
                     bottom: 11.8125rem !important
 
                     button.img-btn
-                        font-size: 3rem !important
+                        @include mix.font(3rem !important)
 
         section.bio-container
             nav.bio-bar
                 button.bio-btn
-                    font-size: 2rem !important
+                    @include mix.font(2rem !important)
 
         section#tech-repo
             .pp
-                block-size: 7.3125rem !important
-                inline-size: 38.7rem !important
+                @include mix.logical-size(38.7rem !important, 7.3125rem !important)
                 background-size: 17.1rem !important
 
                 .tech-container
@@ -142,27 +133,25 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 1.6875rem !important
-                        inline-size: 36.9rem !important
+                        @include mix.logical-size(36.9rem !important, 1.6875rem !important)
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size(null, 1.6875rem !important)
                 p
-                    inline-size: 33.3rem !important
+                    @include mix.logical-size(33.3rem !important)
                     margin-inline-start: 3.6rem !important
 
 @media only screen and (device.$display-asus-zbc-width <= width <=  63.9375rem) and (min-height: device.$display-asus-zbc-height) and (orientation: portrait)
     header
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
         img
-            inline-size: 13.5rem !important
+            @include mix.logical-size(13.5rem !important)
 
     main
         section.info
             .carosel
-                block-size: 14.0625rem
-                inline-size: 31.5rem !important
+                @include mix.logical-size(31.5rem !important, 14.0625rem)
 
                 .relative
                     bottom: 2.25rem !important
@@ -171,16 +160,15 @@
                     bottom: 9.5625rem !important
 
             section.bio-container
-                    inline-size: 45rem !important
+                    @include mix.logical-size(45rem !important)
             
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size(40.5rem !important)
 
         section#tech-repo
             .pp
-                block-size: 7.875rem !important
-                inline-size: 38.7rem !important
+                @include mix.logical-size(38.7rem !important, 7.875rem !important)
                 background-size: 15.3rem !important
 
                 .tech-container
@@ -189,26 +177,24 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 1.125rem !important
-                        inline-size: 34.2rem !important
+                        @include mix.logical-size(34.2rem !important, 1.125rem !important)
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size(null, 1.6875rem !important)
                 p
-                    inline-size: 22.5rem !important
+                    @include mix.logical-size(22.5rem !important)
 
 @media only screen and (min-width: device.$display-asus-zbf-height) and (min-height: device.$display-asus-zbf-width) and (orientation: portrait)
     header
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
         img
-            inline-size: 9.9rem !important
+            @include mix.logical-size(9.9rem !important)
 
     main
         section.info
             .carosel
-                block-size: 15.1875rem !important
-                inline-size: 31.5rem !important
+                @include mix.logical-size(31.5rem !important, 15.1875rem !important)
 
                 .relative
                     bottom: 1.6312rem !important
@@ -217,19 +203,18 @@
                     bottom: 10.125rem !important
 
             section.bio-container
-                inline-size: 45rem !important
+                @include mix.logical-size(45rem !important)
 
                 button.bio-btn
-                    font-size: 1rem !important
+                    @include mix.font(1rem !important)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size(40.5rem !important)
 
         section#tech-repo
             .pp
-                block-size: 6.1875rem !important
-                inline-size: 25.2rem !important
+                @include mix.logical-size(25.2rem !important, 6.1875rem !important)
                 background-size: 9.9rem !important
 
                 .tech-container
@@ -238,13 +223,12 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 1.125rem !important
-                        inline-size: 22.5rem !important
+                        @include mix.logical-size(22.5rem !important, 1.125rem !important)
 
                         .img-svg
-                            block-size: 1.125rem !important
+                            @include mix.logical-size(null, 1.125rem !important)
                 p
-                    inline-size: 20.7rem !important
+                    @include mix.logical-size(20.7rem !important)
                     margin-inline-start: 3.6rem !important
 
 
@@ -252,17 +236,16 @@
 @media only screen and (min-width: device.$display-hd-1080p-width) and (min-height : device.$display-hd-1080p-height) and (orientation: landscape)
     header
         img
-            inline-size: 7.2rem !important
+            @include mix.logical-size(7.2rem !important)
 
         .slogan-wrapper
-            font-size: .6.3rem !important
+            @include mix.font(.6.3rem !important)
     main
         section.info
             margin-block-end: 9.5625rem !important
 
             .carosel
-                block-size: 30.9375rem !important
-                inline-size: 23.4rem !important
+                @include mix.logical-size(23.4rem !important, 30.9375rem !important)
                 margin-inline-end: 0 !important
 
                 .relative
@@ -272,25 +255,24 @@
                     bottom: 19.6875rem !important
 
                     button.img-btn
-                        font-size: 3rem !important
+                        @include mix.font(3rem !important)
 
             section.bio-container
-                inline-size: 45rem
+                @include mix.logical-size(45rem)
 
                 p 
                     text-align: justify
 
         section.spec-wrapper
             .spec-class
-                inline-size: 30.6rem
+                @include mix.logical-size(30.6rem)
 
                 p
                     text-align: justify
 
         section#tech-repo
             .pp
-                block-size: 10.125rem !important
-                inline-size: 20.7rem !important
+                @include mix.logical-size(20.7rem !important, 10.125rem !important)
                 background-size: 6.3rem !important
 
                 .tech-container
@@ -299,24 +281,22 @@
                         left: 0.9rem !important
 
                     .img-wrapper
-                        block-size: 1.125rem !important
-                        inline-size: 18.9rem !important
+                        @include mix.logical-size(18.9rem !important, 1.125rem !important)
 
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size(null, 2.25rem !important)
                 p
-                    inline-size: 14.4rem !important
+                    @include mix.logical-size(14.4rem !important)
                     margin-inline-start: 3.6rem !important
 
             nav#tech-bar
-                inline-size: 42.3rem !important
+                @include mix.logical-size(42.3rem !important)
 
 @media only screen and (min-width: device.$display-hd-1080i-height) and (min-height : device.$display-hd-1080i-width) and (orientation: landscape)
     main
         section.info
             .carosel
-                block-size: 24.75rem !important
-                inline-size: 29.7rem !important
+                @include mix.logical-size(29.7rem !important, 24.75rem !important)
                 margin-inline-end: 0 !important
 
                 .relative
@@ -327,8 +307,7 @@
 
         section#tech-repo
             .pp
-                block-size: 8.4375rem !important
-                inline-size: 22.5rem !important
+                @include mix.logical-size(22.5rem !important, 8.4375rem !important)
                 background-size: 8.1rem !important
 
                 .tech-container
@@ -337,19 +316,18 @@
                         left: 0.9rem !important
 
                     .img-wrapper
-                        block-size: 1.6875rem !important
-                        inline-size: 19.8rem !important
+                        @include mix.logical-size(19.8rem !important, 1.6875rem !important)
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size(null, 1.6875rem !important)
                 p
-                    inline-size: 17.1rem !important
+                    @include mix.logical-size(17.1rem !important)
 
 @media only screen and (min-width: device.$display-hd-720p-height) and (min-height : device.$display-hd-720p-width) and (orientation: landscape)
     main
         section.info
             .carosel
-                block-size: 28.125rem !important
+                @include mix.logical-size(null, 28.125rem !important)
                 margin-inline-end: 0 !important
 
                 .relative
@@ -359,21 +337,20 @@
                     bottom: 23.625rem !important
 
                     button.img-btn
-                        font-size: 2.5rem !important
+                        @include mix.font(2.5rem !important)
 
             section.bio-container
                 nav.bio-bar
                     button.bio-btn
-                        font-size: 1.37rem !important
+                        @include mix.font(1.37rem !important)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 43.2rem !important
+                @include mix.logical-size(43.2rem !important)
 
         section#tech-repo
             .pp
-                block-size: 11.8125rem !important
-                inline-size: 26.1rem !important
+                @include mix.logical-size(26.1rem !important, 11.8125rem !important)
                 background-size: 8.1rem !important
 
                 .tech-container
@@ -382,26 +359,24 @@
                         left: 0.9rem !important
 
                     .img-wrapper
-                        block-size: 1.6875rem !important
-                        inline-size: 23.4rem !important
+                        @include mix.logical-size(23.4rem !important, 1.6875rem !important)
 
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size(null, 2.25rem !important)
                 p
-                    inline-size: 20.7rem !important
+                    @include mix.logical-size(20.7rem !important)
 
 @media only screen and (device.$display-asus-zbc-height <= width <= 81.25rem)and (device.$display-asus-zbc-width <= height <= 63.9375rem) and (orientation: landscape)
     header
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
         img
-            inline-size: 9.9rem !important
+            @include mix.logical-size(9.9rem !important)
 
     main
         section.info
             .carosel
-                block-size: 30.375rem !important
-                inline-size: 31.5rem !important
+                @include mix.logical-size(31.5rem !important, 30.375rem !important)
 
                 .relative
                     bottom: 3.3188rem !important
@@ -411,12 +386,11 @@
 
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size(40.5rem !important)
 
         section#tech-repo
             .pp
-                block-size: 9rem !important
-                inline-size: 25.2rem !important
+                @include mix.logical-size(25.2rem !important, 9rem !important)
                 background-size: 8.1rem !important
 
                 .tech-container
@@ -425,28 +399,26 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 1.125rem !important
-                        inline-size: 22.5rem !important
+                        @include mix.logical-size(22.5rem !important, 1.125rem !important)
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size(null, 1.6875rem !important)
                 p
-                    inline-size: 20.7rem !important
+                    @include mix.logical-size(20.7rem !important)
                     margin-inline-start: 3.6rem !important
 
 @media only screen and (min-width: device.$display-asus-zbf-width) and (min-height: device.$display-asus-zbf-height) and (orientation: landscape)
     header
         .slogan-wrapper
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
 
         img
-            inline-size: 13.5rem !important
+            @include mix.logical-size(13.5rem !important)
 
     main
         section.info
             .carosel
-                block-size: 19.125rem !important
-                inline-size: 22.5rem !important
+                @include mix.logical-size(22.5rem !important, 19.125rem !important)
 
                 .relative
                     bottom: 2.1938rem !important
@@ -455,16 +427,15 @@
                     bottom: 13.5rem !important
 
                     button.img-btn
-                        font-size: 3rem !important
+                        @include mix.font(3rem !important)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size(40.5rem !important)
 
         section#tech-repo
             .pp
-                block-size: 9rem !important
-                inline-size: 25.2rem !important
+                @include mix.logical-size(25.2rem !important, 9rem !important)
                 background-size: 9.9rem !important
 
                 .tech-container
@@ -473,11 +444,10 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 2.8125rem !important
-                        inline-size: 22.5rem !important
+                        @include mix.logical-size(22.5rem !important, 2.8125rem !important)
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size(null, 1.6875rem !important)
                 p
-                    inline-size: 17.1rem !important
+                    @include mix.logical-size(17.1rem !important)
                     margin-inline-start: 3.6rem !important

@@ -1,31 +1,31 @@
 // Sharp Media Queries
 // Issues with mq
 //  Import dependencies
+@use '../../mix/mixins' as mix
 @use './breakpoints' as device
 
 
 @media only screen and (min-width: device.$sharp-941sh-width) and (min-height: device.$sharp-941sh-height) and (orientation: portrait)
     header 
         .slogan-wrapper 
-            font-size: .7rem !important
+            @include mix.font($size: .7rem !important)
 
     main
         section.info
             .carosel
                 .caption
-                    font-size: 1rem
+                    @include mix.font($size: 1rem)
 
                 .relative
                     bottom: 2.7563rem !important
 
             div.btn-container
                 bottom: 16.875rem !important
-                inline-size: 100% !important
+                @include mix.logical-size($inline: 100% !important)
 
         section#tech-repo
             .pp
-                block-size: 7.875rem !important
-                inline-size: 58.5rem !important
+                @include mix.logical-size($inline: 58.5rem !important, $block: 7.875rem !important)
                 background-size: 22.5rem !important
 
                 .tech-container
@@ -34,30 +34,29 @@
                         top: 0.5625rem !important
 
                 .img-wrapper
-                    block-size: 1.6875rem !important
-                    inline-size: 54rem !important
+                    @include mix.logical-size($inline: 54rem !important, $block: 1.6875rem !important)
 
                     .img-svg
-                        block-size: 2.25rem !important
+                        @include mix.logical-size($block: 2.25rem !important)
                 p
-                    inline-size: 50.4rem !important
+                    @include mix.logical-size($inline: 50.4rem !important)
                     margin-inline-start: 5.4rem !important
 
 @media only screen and (min-width: device.$sharp-is03-width) and (min-height: device.$sharp-is03-height) and (orientation: portrait)
     header 
         img
-            inline-size: 9.9rem !important
+            @include mix.logical-size($inline: 9.9rem !important)
 
         .slogan-wrapper 
-            font-size: .7rem !important
+            @include mix.font($size: .7rem !important)
 
     main
         section.info
             .carosel
-                inline-size: 31.5rem !important
+                @include mix.logical-size($inline: 31.5rem !important)
 
                 .caption
-                    font-size: 1rem
+                    @include mix.font($size: 1rem)
 
                 .relative
                     bottom: 2.925rem !important
@@ -66,17 +65,16 @@
                     bottom: 10.6875rem !important
             
             div.bio-container
-                inline-size: 45rem
+                @include mix.logical-size($inline: 45rem)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size($inline: 40.5rem !important)
         
         section#tech-repo
             .pp
-                margin-inline: 1rem
-                block-size: 12.375rem !important
-                inline-size: 38.7rem !important
+                @include mix.margin($inline: 1rem)
+                @include mix.logical-size($inline: 38.7rem !important, $block: 12.375rem !important)
                 background-size: 18rem !important
 
                 .tech-container
@@ -85,50 +83,47 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 2.8125rem !important
-                        inline-size: 34.2rem !important
+                        @include mix.logical-size($inline: 34.2rem !important, $block: 2.8125rem !important)
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size($block: 1.6875rem !important)
                 p
-                    inline-size: 31.5rem !important
+                    @include mix.logical-size($inline: 31.5rem !important)
                     margin-inline-start: 3.6rem !important
 
 
 @media only screen and (device.$sharp-941sh-height <= width <= 69.5625rem) and (device.$sharp-941sh-width <= height <= 37.4375rem) and (orientation: landscape)
     header
         img
-            inline-size: 9.9rem !important
+            @include mix.logical-size($inline: 9.9rem !important)
 
         .slogan-wrapper 
-            font-size: .7rem !important
+            @include mix.font($size: .7rem !important)
 
     main
         section.info
             .carosel
-                block-size: 43.875rem !important
-                inline-size: 31.5rem !important
+                @include mix.logical-size($inline: 31.5rem !important, $block: 43.875rem !important)
 
                 .caption
                     bottom: 5.7938rem !important
 
                 div.btn-container
                     bottom: 28.6875rem !important
-                    inline-size: 100% !important
+                    @include mix.logical-size($inline: 100% !important)
                 
                     button.img-btn
-                        font-size: 2.5rem !important
+                        @include mix.font($size: 2.5rem !important)
             section.bio-container
-                inline-size: 45rem
+                @include mix.logical-size($inline: 45rem)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 42.3rem !important
+                @include mix.logical-size($inline: 42.3rem !important)
 
         section#tech-repo
             .pp
-                block-size: 16.875rem !important
-                inline-size: 31.5rem !important
+                @include mix.logical-size($inline: 31.5rem !important, $block: 16.875rem !important)
                 background-size: 10.8rem !important
 
                 .tech-container
@@ -137,28 +132,26 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 2.8125rem !important
-                        inline-size: 28.8rem !important
+                        @include mix.logical-size($inline: 28.8rem !important, $block: 2.8125rem !important)
 
                         .img-svg
-                            block-size: 2.8125rem !important
+                            @include mix.logical-size($block: 2.8125rem !important)
                 p
-                    inline-size: 24.3rem !important
+                    @include mix.logical-size($inline: 24.3rem !important)
                     margin-inline-start: 3.6rem !important
 
 @media only screen and (min-width: device.$sharp-is03-height) and (min-height: device.$sharp-is03-width) and (orientation: landscape)
     header
         img
-            inline-size: 9.9rem !important
+            @include mix.logical-size($inline: 9.9rem !important)
 
         .slogan-wrapper 
-            font-size: .7rem !important
+            @include mix.font($size: .7rem !important)
 
     main
         section.info
             .carosel
-                block-size: 14.625rem !important
-                inline-size: 45rem !important
+                @include mix.logical-size($inline: 45rem !important, $block: 14.625rem !important)
 
                 .caption
                     bottom: 4.5rem !important
@@ -167,16 +160,15 @@
                     bottom: 25.3125rem !important
 
                 button.img-btn
-                    font-size: 2.5rem !important
+                    @include mix.font($size: 2.5rem !important)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 40.5rem !important
+                @include mix.logical-size($inline: 40.5rem !important)
         
         section#tech-repo
             .pp
-                block-size: 11.25rem !important
-                inline-size: 25.2rem !important
+                @include mix.logical-size($inline: 25.2rem !important, $block: 11.25rem !important)
                 background-size: 9rem !important
 
                 .tech-container
@@ -185,11 +177,10 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 1.6875rem !important
-                        inline-size: 23.4rem !important
+                        @include mix.logical-size($inline: 23.4rem !important, $block: 1.6875rem !important)
 
                         .img-svg
-                            block-size: 2.25rem !important
+                            @include mix.logical-size($block: 2.25rem !important)
                 p
-                    inline-size: 20.7rem !important
+                    @include mix.logical-size($inline: 20.7rem !important)
                     margin-inline-start: 3.6rem !important

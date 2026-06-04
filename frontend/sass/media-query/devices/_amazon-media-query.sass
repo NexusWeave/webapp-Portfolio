@@ -1,32 +1,31 @@
 //  Amazon Media Query
+@use '../../mix/mixins' as mix
 @use './breakpoints' as device
 
 //  Portrait
 @media only screen and (device.$amazon-kindle-fire-width <= width <= 49.9375rem) and (min-height: device.$amazon-kindle-fire-height) and (orientation: portrait)
     header
         img
-            inline-size: 13.5rem !important
+            @include mix.logical-size(13.5rem !important)
 
         .slogan-wrapper 
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
 
     main
         section.bio-container
             .carosel
-                block-size: 100% !important
-                inline-size: 45rem !important
-                margin-inline: 1.8rem
+                @include mix.logical-size(45rem !important, 100% !important)
+                @include mix.margin(null, 1.8rem)
 
             
         section.spec-wrapper
             .spec-class
-                inline-size: 36rem !important
+                @include mix.logical-size(36rem !important)
 
         section#tech-repo
             .pp
-                margin-inline: 1rem
-                block-size: 8.4375rem !important
-                inline-size: 37.8rem !important
+                @include mix.margin(null, 1rem)
+                @include mix.logical-size(37.8rem !important, 8.4375rem !important)
                 background-size: 15.3rem !important
 
                 .tech-container
@@ -35,91 +34,89 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        inline-size: 33.3rem !important
+                        @include mix.logical-size(33.3rem !important)
 
                         .img-svg
-                            block-size: 1.6875rem !important
+                            @include mix.logical-size(null, 1.6875rem !important)
                 
                 p
-                    inline-size: 32.4rem !important
+                    @include mix.logical-size(32.4rem !important)
                     margin-inline-start: 4.5rem !important
 
 @media only screen and (device.$amazon-kindle-fire-hd-width <= width <= 53.25rem) and (min-height: device.$amazon-kindle-fire-hd-height) and (orientation: portrait)
 
     header
         .slogan-wrapper 
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
 
     main
         section.bio-container
             .carosel
-                inline-size: 25rem !important
+                @include mix.logical-size(25rem !important)
 
                 div.btn-container button.img-btn
-                    font-size: 2.5rem
+                    @include mix.font(2.5rem)
 
         section#tech-repo
             .pp
                 
-                block-size: 8.4375rem !important
+                @include mix.logical-size(null, 8.4375rem !important)
 
                 p
-                    inline-size: 33.3rem !important
+                    @include mix.logical-size(33.3rem !important)
                     margin-inline-start: 4.5rem !important
 
 //  Landscape
 @media only screen and (device.$amazon-kindle-fire-height <= width <= 69.5625rem) and (device.$amazon-kindle-fire-width <= height <= 49.9375rem) and (orientation: landscape)
     header
         img
-            inline-size: 9.9rem !important
+            @include mix.logical-size(9.9rem !important)
 
         .slogan-wrapper 
-            font-size: .7rem !important
+            @include mix.font(.7rem !important)
 
     main
         section.bio-container
             .carosel
-                inline-size: 25rem
+                @include mix.logical-size(25rem)
 
         section.spec-container
             .spec-class
-                inline-size: 42.3rem !important
+                @include mix.logical-size(42.3rem !important)
 
         section#tech-repo
             .pp
-                block-size: 16.3125rem !important
-                inline-size: 26.1rem !important
+                @include mix.logical-size(26.1rem !important, 16.3125rem !important)
                 background-size: 12.6rem !important
 
                 .tech-container
                     .relative
                         top: 1.125rem !important
                     .img-wrapper
-                        inline-size: 23.4rem !important
+                        @include mix.logical-size(23.4rem !important)
 
                         .img-svg
-                            block-size: 3.375rem !important
+                            @include mix.logical-size(null, 3.375rem !important)
                 p
-                    inline-size: 20.7rem !important
+                    @include mix.logical-size(20.7rem !important)
                     margin-inline-start: 3.6rem !important
 
 @media only screen and (device.$amazon-kindle-fire-hd-height <= width <= 81.25rem) and (device.$amazon-kindle-fire-hd-width <= height <= 63.9375rem) and (orientation: landscape)
 
     main
         div.btn-container button.img-btn
-            font-size: 3rem
+            @include mix.font(3rem)
 
             .bio-btn
-                font-size: 1rem !important
+                @include mix.font(1rem !important)
 
         section.spec-wrapper
             .spec-class
-                inline-size: 42.3rem !important
+                @include mix.logical-size(42.3rem !important)
 
         section#tech-repo
             .pp
-                block-size: 11.25rem !important
-                inline-size: 26.1rem !important
+                @include mix.logical-size(26.1rem !important, 11.25rem !important)
                 background-size: 10.8rem !important
 
                 .tech-container
@@ -128,12 +125,11 @@
                         left: 1.8rem !important
 
                     .img-wrapper
-                        block-size: 2.25rem !important
-                        inline-size: 23.4rem !important
+                        @include mix.logical-size(23.4rem !important, 2.25rem !important)
 
                         .img-svg
-                            block-size: 2.8125rem !important
+                            @include mix.logical-size(null, 2.8125rem !important)
 
                 p
-                    inline-size: 18.9rem !important
+                    @include mix.logical-size(18.9rem !important)
                     margin-inline-start: 5.4rem !important
