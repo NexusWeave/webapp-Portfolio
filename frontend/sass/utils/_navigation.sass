@@ -55,10 +55,9 @@ nav.anchor-nav, nav.portofolio-nav
                 margin: 0.15rem
                 font-size: 1rem
                 border-radius: 50%
-                block-size: 2.2rem
-                inline-size: 2.2rem
+                @include mix.logical-size(2.2rem, 2.2rem)
                 align-items: center
-                display: inline-flex
+                @include mix.flex('inline-flex')
                 justify-content: center
                 text-decoration: none !important
                 @include btn.button-neumorphism()
@@ -67,7 +66,7 @@ nav.anchor-nav, nav.portofolio-nav
                     margin: 0
                     font-size: 1.5rem
                     align-items: center
-                    display: inline-flex
+                    @include mix.flex('inline-flex')
                     justify-content: center
 
                     span, .bi, [type="icon"]
@@ -84,16 +83,15 @@ nav.some-nav
             a
                 padding: 0
                 margin: 0.25rem
-                block-size:  2rem
-                inline-size:  2rem
-                display: flex
+                @include mix.logical-size(2rem, 2rem)
+                @include mix.flex()
                 border-radius: 50%
                 align-items: center
                 justify-content: center
                 text-decoration: none !important
                 @include btn.button-neumorphism()
                 
-        margin: auto
-        display: flex
+        @include mix.logical-center()
+        @include mix.flex()
         flex-wrap: wrap
         justify-content: center

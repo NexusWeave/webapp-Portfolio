@@ -144,8 +144,28 @@
     display: inline-block
     margin-inline-end: .5rem
 
-@mixin text-wrap-safe()
+@mixin flex($type: 'flex')
+    @if $type == 'flex'
+        display: flex
+    @else if $type == 'inline-flex'
+        display: inline-flex
+    @else
+        display: flex // fallback
 
+@mixin absolute-inset($inset: 0)
+    position: absolute
+    inset: $inset
+
+@mixin logical-center()
+    margin-inline: auto
+
+@mixin logical-size($inline: null, $block: null)
+    @if $inline != null
+        inline-size: $inline
+    @if $block != null
+        block-size: $block
+
+@mixin text-wrap-safe()
     p, h1, h2, h3, h4, h5, h6, figcaption, a, li
         hyphens: auto
         min-inline-size: 0

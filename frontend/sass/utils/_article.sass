@@ -4,7 +4,7 @@
 
 article
     header
-        margin-inline: auto
+        @include mix.logical-center()
         margin-block: 0
         .article-metadata
             span.meta-date
@@ -23,7 +23,7 @@ article
                     text-decoration: none
 
     section
-        margin-inline: auto
+        @include mix.logical-center()
         margin-block: 0
         max-inline-size: 100%
 
@@ -33,12 +33,12 @@ article
         max-inline-size: 100%
 
     .article-wrapper
-        margin-inline: auto
+        @include mix.logical-center()
         margin-block: 0
         max-inline-size: 100%
 
     .article-content
-        margin-inline: auto
+        @include mix.logical-center()
         margin-block: 2rem
 
         div
@@ -114,16 +114,16 @@ article.bio
     p
         text-align: justify
         max-inline-size: 50rem
-        margin-inline: auto
+        @include mix.logical-center()
         margin-block: 0.5rem
 
     ul
         li
             margin-block: 0.5rem
-        margin-inline: auto
+        @include mix.logical-center()
         max-inline-size: 47rem
     div
-        margin-inline: auto
+        @include mix.logical-center()
         margin-block: 3rem
         max-inline-size: 50rem
 
@@ -138,9 +138,9 @@ article.profile-bar
         p
             h2
                 margin: 0
-                inline-size: 8rem
+                @include mix.logical-size($inline: 8rem)
                 text-align: left
                 display: inline-block
 
         .slogan-wrapper
-            inline-size: 17rem
+            @include mix.logical-size($inline: 17rem)

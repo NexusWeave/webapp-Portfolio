@@ -3,10 +3,10 @@
 
 .timeline-explorer-wrapper
     padding: 1rem
-    inline-size: 100%
+    @include mix.logical-size($inline: 100%)
     margin-block: 2rem
     align-items: center
-    margin-inline: auto
+    @include mix.logical-center()
     max-inline-size: 60rem
 
     .timeline-title
@@ -17,22 +17,21 @@
 
     .timeline-track-container
         position: relative
-        inline-size: 100%
+        @include mix.logical-size($inline: 100%)
         margin-block-end: 0
         padding-block: 2rem
 
         .timeline-track-wrapper
-            block-size: 2rem
-            inline-size: 90%
+            @include mix.logical-size($inline: 90%, $block: 2rem)
             position: relative
-            margin-inline: auto
+            @include mix.logical-center()
             align-items: center
 
             .timeline-track
                 z-index: 0
                 inset-inline: 0
                 position: absolute
-                block-size: 0.25rem
+                @include mix.logical-size($block: 0.25rem)
                 border-radius: 0.125rem
                 background: color.$sea-green
 
@@ -44,8 +43,7 @@
 
                 .timeline-dot
                     border-radius: 50%
-                    block-size: 0.75rem
-                    inline-size: 0.75rem
+                    @include mix.logical-size(0.75rem, 0.75rem)
                     transition: all 0.3s ease
                     background: color.$off-white
                     border: 0.125rem solid color.$sea-green
@@ -66,7 +64,7 @@
                 input[type="range"]
                     cursor: pointer
                     appearance: none
-                    inline-size: 100%
+                    @include mix.logical-size($inline: 100%)
                     background: transparent
                     -webkit-appearance: none
 
@@ -76,8 +74,7 @@
                     &::-webkit-slider-thumb
                         opacity: 0
                         cursor: pointer
-                        block-size: 1.875rem
-                        inline-size: 0.9375rem
+                        @include mix.logical-size(0.9375rem, 1.875rem)
                         background: transparent
                         -webkit-appearance: none
                         margin-block-start: -0.125rem 
@@ -86,15 +83,14 @@
                         opacity: 0
                         border: none
                         cursor: pointer
-                        block-size: 1.875rem
-                        inline-size: 0.9375rem
+                        @include mix.logical-size(0.9375rem, 1.875rem)
                         background: transparent
 
                     &::-webkit-slider-runnable-track, &::-moz-range-track
                         background: transparent
 
     .timeline-content-wrapper
-        inline-size: 100%
+        @include mix.logical-size($inline: 100%)
         min-block-size: 20rem
         margin-block-start: 0
 
@@ -103,7 +99,7 @@
         display: none
         visibility: hidden
         position: relative
-        inline-size: 100%
+        @include mix.logical-size($inline: 100%)
         margin-block-start: 0
         max-inline-size: 45rem
         transform: translateY(1.25rem)
@@ -112,13 +108,12 @@
         &.timeline-active
             opacity: 1 !important
             visibility: visible !important
-            display: flex !important
+            @include mix.flex()
             transform: translateY(0) !important
 
         .timeline-pointer
             z-index: 5
-            block-size: 0
-            inline-size: 0
+            @include mix.logical-size(0, 0)
             position: absolute
             inset-inline-start: 50%
             transform: translateX(-50%)
@@ -129,7 +124,7 @@
 
         .timeline-card-content
             padding: 2.5rem
-            inline-size: 100%
+            @include mix.logical-size($inline: 100%)
             border-radius: 1rem
             background: color.$off-white
             border: 0.0625rem solid rgba(0,0,0,0.03)
@@ -220,7 +215,7 @@
                     gap: 0.8rem
 
                     .subject-header
-                        inline-size: 100%
+                        @include mix.logical-size($inline: 100%)
                         gap: 1.5rem
 
                     .subject-title
@@ -258,11 +253,9 @@
                     gap: 0.8rem
                 
                 .tech-figure
-                    inline-size: 2rem
-                    block-size: 2rem
+                    @include mix.logical-size(2rem, 2rem)
                     img
-                        inline-size: 100%
-                        block-size: 100%
+                        @include mix.logical-size(100%, 100%)
                         object-fit: contain
 
                     .tech-text-fallback
@@ -312,4 +305,4 @@
                     gap: 0.5rem
 
             .timeline-track-wrapper
-                inline-size: 95%
+                @include mix.logical-size($inline: 95%)
