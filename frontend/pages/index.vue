@@ -9,18 +9,10 @@
     </article>
 
     <section class="flex-wrap-row-items-center-justify-evenly">
-
         <Timeline v-if="academicData.length > 0"
             title="Karriere & Utdanning"
             :data="academicData"
             :cls = "['component-blue', 'timeline-container',
-            'flex-wrap-row-justify-evenly', 'component-w-g-b']"
-        />
-
-        <Timeline v-if="achievementData.length > 0"
-            title="Prestasjonstidslinje"
-            :data="achievementData"
-            :cls = "['component-slate', 'timeline-container',
             'flex-wrap-row-justify-evenly', 'component-w-g-b']"
         />
 
@@ -47,7 +39,6 @@
 
     //  --- Component logic
     const academicData = await fetchCollection<AcademicCollectionItem, ReturnType<typeof mapTimeline>>('academic', 'academic-info', mapTimeline);
-    const achievementData = await fetchCollection<TimelineCollectionItem, ReturnType<typeof mapTimeline>>('timeline', 'achievements-info', mapTimeline);
 
         //  --- Conent logic
     const devPostPath = 'devPosts';
