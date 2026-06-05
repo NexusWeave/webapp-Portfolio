@@ -68,7 +68,7 @@ export const useLanguageStore = defineStore('tech-language', () => {
     repos.forEach((repo) => {
       if (repo.languages) {
         repo.languages.forEach((lang) => {
-          increment(lang.label, lang.bytes);
+        if (lang.label && lang.bytes) increment(lang.label, lang.bytes);
         });
       }
     });
@@ -81,11 +81,11 @@ export const useLanguageStore = defineStore('tech-language', () => {
 
 
   return {
-    resetBytes,
-    languages,
     increment,
-    updateFromRepositories,
+    languages,
+    resetBytes,
     allLanguages,
-    formattedLanguages
+    formattedLanguages,
+    updateFromRepositories
   }
 })

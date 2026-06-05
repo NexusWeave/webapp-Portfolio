@@ -48,8 +48,8 @@ export function mapTimeline(data: AcademicCollectionItem[]): TimelineItem[] {
             return {
                 title: { label: sub.title, href: sub.ref_link || undefined },
                 date: {
-                    created: setDateFormat({ date: sub.created }),
-                    end: sub.end ? setDateFormat({ date: sub.end }) : null
+                    created: setDateFormat({ date: sub.created as string }),
+                    end: sub.end ? setDateFormat({ date: sub.end as string }) : null
                 } as any,
                 techStack: mapIcons(subTech),
                 body: sub.body || undefined,
@@ -61,8 +61,8 @@ export function mapTimeline(data: AcademicCollectionItem[]): TimelineItem[] {
             id: AUTOINCREMENT++,
             body: doc.body || undefined, 
             date: {
-                created: setDateFormat({ date: doc.created }),
-                end: doc.end ? setDateFormat({ date: doc.end }) : null
+                created: setDateFormat({ date: doc.created as string }),
+                end: doc.end ? setDateFormat({ date: doc.end as string }) : null
             } as any,
             techStack: mapIcons(techStack),
             isVisible: (AUTOINCREMENT - 1) === 0,

@@ -1,15 +1,17 @@
 <template>
-    <section class="flex-wrap-row-justify-space-evenly">
+    <section class="flex-wrap-row flex-center">
         <section class="dev-bar" v-if="formattedLanguages.length > 0">
             <Suspense>
             <template #default>
-                <section class="dev-skill flex-column-justify-center-align-center" >
+                <section class="dev-skill flex-col flex-center" >
                     <h2> Min Kode Aktivitet</h2>
                     <span> Aktivteten er basert på mine bidrag og oppdateres fortløpende for å reflektere min nåværende engasjement og bidrag til ulike teknologier. </span>
                     <span> Aktiviteten er målt i KB og MB</span>
                     <span> </span>
-                    <section class="flex-wrap-row-justify-space-evenly">
-                        <UtilsProgress v-for="(data, i) in formattedLanguages" :key="i"  :data="data" :cls="[data.label.toLowerCase()]" :max="maxProgress" />
+                    <section class="flex-wrap-row flex-center">
+                        <div v-for="(data, i) in formattedLanguages" :key="i" class="col-3">
+                            <UtilsProgress :data="data" :cls="[data.label.toLowerCase()]" :max="maxProgress" />
+                        </div>
                     </section>
                 </section>
             </template>
@@ -17,7 +19,7 @@
         </Suspense>
         </section>
         
-        <section class="flex-column-justify-center-align-center">
+        <section class="flex-col flex-center">
             <Suspense>
                 <template #default>
                     <article v-for="(item, index) in biography" :key="index" class="bio">
@@ -55,7 +57,7 @@
     const rawBiography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(devPath, devCache, mapProfile);
     const biography = computed(() => {
         if (!rawBiography.value) return [];
-        return rawBiography.value.filter(item => 
+        return rawBiography.value.filter((item: any) => 
             item.stem === 'dev-profile' || 
             item.path?.includes('dev-profile') || 
             item.id?.includes('dev-profile')

@@ -1,32 +1,31 @@
 <template>
     <section class="business-card grid-layout">
-        <header class="card-header flex-wrap-row-align-items-center-justify-space-between">
+        <header class="card-header flex-wrap-row-justify-between">
             <MediaFigure v-if="hasLanguages && data?.media" :data="data.media[num]" :cls="['tech-figure', 'tech-img']" />
-            <div v-else></div>
             <span class="date-container"> <b> <time v-if="data?.date?.date" :datetime="data.date.date"> {{ data.date.date }} </time> </b> </span>
         </header>
 
         <main class="card-content">
-        <section class="card-content flex-column-items-center">
+        <section class="card-content flex-col flex-center">
             <h3> {{ data?.label || 'Ukjent' }} </h3>
             <p class="description">{{ truncatedDescription }}</p>
         </section>
 
-        <nav class="card-nav flex-wrap-row-justify-center">
+        <nav class="card-nav flex-wrap-row flex-center">
             <NavigationNavMenu v-if="hasAnchor && data?.anchor" :cls="['portofolio-nav']" :data="data.anchor" />
         </nav>
         </main>
         <footer v-if="hasTechnology && data?.media" class="card-footer">
-            <section v-if="isCollaboration" class="credits flex-wrap-row-justify-center">
+            <section v-if="isCollaboration" class="credits flex-wrap-row flex-center">
             <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
-                <span class="flex-wrap-row-align-items-center">Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
+                <span class="flex-wrap-row flex-center">Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
                 </p>
             <p v-if="contributors?.length > 0" class="collab-name">
-                <span class="flex-wrap-row-align-items-center">Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
+                <span class="flex-wrap-row flex-center">Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
             </p>
         </section>
             <h4>Andre teknologi(er) : </h4>
-            <section class="flex-wrap-row-justify-space-evenly">
+            <section class="flex-wrap-row flex-center">
                 <template v-for="(media, i) in data.media" :key="i">
                     <MediaFigure v-if="i > num" :data="media" :cls="['tech-figure', 'tech-img']" />
                 </template>

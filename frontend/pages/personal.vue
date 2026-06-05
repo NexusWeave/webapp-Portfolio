@@ -1,6 +1,6 @@
 <template>
-    <section class="flex-column">
-        <section class="flex-column-justify-center-align-center">
+    <section class="flex-col">
+        <section class="flex-col flex-center">
             <Suspense>
                 <template #default>
                     <article v-for="(item, index) in biography" :key="index" class="bio">
@@ -39,7 +39,7 @@
     const rawBiography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(profilePath, profileCache, mapProfile);
     const biography = computed(() => {
         if (!rawBiography.value) return [];
-        return rawBiography.value.filter(item => 
+        return rawBiography.value.filter((item: any) => 
             item.stem === 'personal-profile' || 
             item.path?.includes('personal-profile') || 
             item.id?.includes('personal-profile')

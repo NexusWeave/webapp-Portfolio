@@ -1,27 +1,27 @@
 <template>
-    <article class="article-wrapper flex-column">
+    <article class="article-wrapper flex-col">
         <h2> Siste tekniske logger </h2>
-        <section class="blog-section flex-wrap-row-align-items-center-justify-space-evenly">
+        <section class="blog-section flex-wrap-row-items-center-justify-evenly">
             <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
                 <ArticleHead :article="post" />
             </section>
         </section>
     </article>
 
-    <section :class="['flex-wrap-row-justify-space-evenly']">
+    <section class="flex-wrap-row-items-center-justify-evenly">
 
         <Timeline v-if="academicData.length > 0"
             title="Karriere & Utdanning"
             :data="academicData"
             :cls = "['component-blue', 'timeline-container',
-            'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
+            'flex-wrap-row-justify-evenly', 'component-w-g-b']"
         />
 
         <Timeline v-if="achievementData.length > 0"
             title="Prestasjonstidslinje"
             :data="achievementData"
             :cls = "['component-slate', 'timeline-container',
-            'flex-wrap-row-justify-space-evenly', 'component-w-g-b']"
+            'flex-wrap-row-justify-evenly', 'component-w-g-b']"
         />
 
     </section>
@@ -40,21 +40,21 @@
     import { mapTimeline } from '@/composables/maps/mapTimeline';
     import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
-    import type { DevPostsCollectionItem, AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
+    //@ts-ignore - TypeScript error: Cannot find module '@nuxt/content' or its corresponding type declarations.
+    import type { DevPostsCollectionItem, AcademicCollectionItem, TimelineCollectionItem } from '@nuxt/content';
 
 
 
     //  --- Component logic
     const academicData = await fetchCollection<AcademicCollectionItem, ReturnType<typeof mapTimeline>>('academic', 'academic-info', mapTimeline);
-    const achievementData = await fetchCollection<AchievementsCollectionItem, ReturnType<typeof mapTimeline>>('achievements', 'achievements-info', mapTimeline);
+    const achievementData = await fetchCollection<TimelineCollectionItem, ReturnType<typeof mapTimeline>>('timeline', 'achievements-info', mapTimeline);
 
         //  --- Conent logic
     const devPostPath = 'devPosts';
     const devPostCache = 'devPostCache';
     const rawPosts = await fetchCollection<DevPostsCollectionItem, ReturnType<typeof mapBlogData>>(devPostPath, devPostCache, mapBlogData);
     
-    const n = 2; // Number of posts per page
-    const currentPage: Ref<number> = ref(1);
+    const n = 2;
     const mappedPosts =  computed(() => {return blogPagination(rawPosts.value, 1, n)});
 
     //  --- Debugging Logic

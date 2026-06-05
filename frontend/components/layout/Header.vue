@@ -1,14 +1,14 @@
 <template>
-    <section class="flex-wrap-row-align-items-center-justify-space-around">
+    <section class="flex-wrap-row-items-center-justify-around">
         <section>
             <NavigationNavMenu :data="[logo.anchor]" :cls="['logo-nav']" />
         </section>
-        <section class="flex-wrap-row-align-items-center-justify-center">
+        <section class="flex-wrap-row-items-center-justify-center">
             <NavigationNavMenu :data="dynamicMenu"/>
             <NavigationNavMenu :data="anchorMenu"/>
         </section>
-        <article class="profile-bar flex-wrap-row-align-items-center profile">
-            <section class="flex-column-align-items-center">
+        <article class="profile-bar flex-wrap-row-items-center profile">
+            <section class="flex-col-align-center">
                 <MediaFigure :data="media" />
                 <clientOnly>
                     <template #default>
@@ -19,13 +19,13 @@
                 <cite> <NavigationAnchor :data="reference[index]?.anchor" /> </cite>
                 
             </section>
-            <section class="profile-content flex-column">
+            <section class="profile-content flex-col">
                 <h2>Kristoffer Gjøsund</h2>
                 <section class="slogan-wrapper">
                     <h3 class="flex-wrap-row-justify-center slogan"> <span v-for="text in logo.title" :key="text">{{ text }} </span> </h3>
                     <p> Forener min akademiske reise fra bygg, helse og IT. Til å skape løsninger gjennom samarbeid. For meg er utfordringer en felles reise </p>
                 </section>
-                <section class="flex-column-align-items-center some">
+                <section class="flex-col-align-center some">
                     <h3>Sosial media Linker / Kontakt</h3>
                     <NavigationNavMenu :data="SocialMedia" :cls="['some-nav']"/>
                 </section>

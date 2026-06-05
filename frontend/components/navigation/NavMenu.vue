@@ -27,14 +27,14 @@
     const isAnchor = computed(() => !hasRouterLink.value);
 
     const ulCls = computed(() => {
-        if (cls.value.includes('some-nav')) return ['flex-wrap-row-justify-center'];
+        if (cls.value.includes('some-nav')) return ['flex-wrap-row', 'flex-row-justify-center'];
         if (cls.value.includes('anchor-nav') || cls.value.includes('portofolio-nav')) return ['flex-row'];
-        return ['flex-align-items-flex-end-justify-center'];
+        return ['flex-row-items-flex-end-justify-center'];
     });
 
     const anchorCls = computed(() => {
-        if (cls.value.includes('anchor-nav') || cls.value.includes('portofolio-nav')) return ['inline-flex-center'];
-        if (cls.value.includes('some-nav')) return ['flex-row-align-items-center', 'flex-justify-center'];
+        if (cls.value.includes('anchor-nav') || cls.value.includes('portofolio-nav')) return ['flex-center'];
+        if (cls.value.includes('some-nav')) return ['flex-row-items-center', 'flex-row-justify-center'];
         return [];
     });
 

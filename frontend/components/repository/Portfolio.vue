@@ -1,25 +1,25 @@
 <template>
-    <section class="flex-wrap-column repo-container">
+    <section class="flex-col repo-container">
         <h2>Erfaringen min fra Utviklings prosjekter</h2>
         
-        <section v-if="hasProjects" class="flex-wrap-column">
+        <section v-if="hasProjects" class="flex-col">
             <template v-if="hasMultipleCategories">
                 <p>Filtrer prosjekter etter type:</p>
             
-                <section class="flex-wrap-row-justify-center">
+                <section class="flex-wrap-row-items-center-justify-center">
                     <template v-for="(btn, i) in buttons" :key="i">
                         <NavigationButton v-if="shouldShowButton(btn)" :data="btn" :class="btn?.cls"/>
                     </template>
                 </section>
             </template>
 
-            <section v-if="totalPages > 1" class="flex-wrap-row-justify-space-evenly">
+            <section v-if="totalPages > 1" class="flex-wrap-row-items-center-justify-evenly">
                 <NavigationButton v-if="currentPage > 1" :data="prevPage" :class="['button', 'pagination-btn']"/>
                 <span>Side {{ currentPage }} / {{ totalPages }}</span>
                 <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :class="['button', 'pagination-btn']"/>
             </section>
 
-            <section class="flex-wrap-row-align-items-center-justify-space-around ">
+            <section class="flex-wrap-row-items-center-justify-around">
                 <section class="flex-wrap-row-justify-center project-wrapper">
                     <RepositoryBusinessCard v-for="repo in paginationData" :key="repo.id" :data="repo" />
                 </section>
@@ -27,7 +27,7 @@
 
         </section>
 
-        <section class="flex-wrap-column" v-if="!hasProjects">
+        <section class="flex-col" v-if="!hasProjects">
         <p>Github prosjekter er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="errorLink"/> for mer informasjon.</p>
         <p>for å se min generelle GitHub-aktivitet og historikk. Jeg jobber med å oppdatere og strukturere mine nyeste kodeeksempler.</p>
     </section>

@@ -1,5 +1,5 @@
 <template>
-    <section class="flex-column-align-items-center">
+    <section class="flex-col flex-center">
         <h3>{{ data.label }}</h3>
         <span>(<b>{{ data.bytes }} {{ data.type }}</b>)</span>
         <progress :value="data.original || data.bytes" :class="cls" :max="num"></progress>

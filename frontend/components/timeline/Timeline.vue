@@ -1,11 +1,11 @@
 <template>
-        <section :class="[...cls, 'timeline-explorer-wrapper', 'flex-column-align-items-center']">
+        <section :class="[...cls, 'timeline-explorer-wrapper', 'flex-col-items-center']">
             <h2 class="timeline-title">{{ props.title }}</h2>
 
             <section class="timeline-track-container">
-                <section class="timeline-track-wrapper flex-row-align-items-center">
+                <section class="timeline-track-wrapper flex-row-items-center">
                     <div class="timeline-track"></div>
-                    <div class="timeline-dots flex-justify-space-between">
+                    <div class="timeline-dots flex-row-justify-between">
                         <div v-for="item in data" :key="'dot-'+item.id" 
                              :class="['timeline-dot', { 'active': item.isVisible }]">
                         </div>
@@ -14,7 +14,7 @@
                 </section>
             </section>
 
-            <section :class="['timeline-content-wrapper', 'flex-justify-center']">
+            <section :class="['timeline-content-wrapper', 'flex-row-justify-center']">
                 <TimelineCard v-for="item in data" :key="item.id"
                     :data="item"
                     :isVisible="item.isVisible"
