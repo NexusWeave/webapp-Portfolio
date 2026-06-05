@@ -3,7 +3,7 @@
 @use './breakpoints' as device
 
 //  Portrait
-@media only screen and (min-width: device.$apple-cd-width) and (min-height: device.$apple-cd-height) and (orientation: portrait)
+@include mix.device-media('apple-cd', portrait)
     main
         section.info
             .carosel
@@ -34,7 +34,7 @@
                 p
                     @include mix.logical-size(18.9rem !important)
 
-@media only screen and (min-width: device.$display-hd-1080p-height) and (min-height : device.$display-hd-1080p-width) and (orientation: portrait)
+@include mix.device-media('display-hd-1080p', portrait)
     main
         section.info
             .carosel
@@ -64,7 +64,7 @@
                 p
                     @include mix.logical-size(17.1rem !important)
 
-@media only screen and (min-width: device.$display-hd-1080i-width) and (min-height : device.$display-hd-1080i-height) and (orientation: portrait)
+@include mix.device-media('display-hd-1080i', portrait)
     main
         section.info
             .carosel
@@ -101,7 +101,7 @@
                     @include mix.logical-size(22.5rem !important)
                     margin-inline-start: 3.6rem !important
 
-@media only screen and (device.$display-hd-720p-width <= width <= 85.3125rem) and (min-height : device.$display-hd-720p-height) and (orientation: portrait)
+@include mix.device-media('display-hd-720p', portrait)
     main
         section.info
             .carosel
@@ -141,7 +141,7 @@
                     @include mix.logical-size(33.3rem !important)
                     margin-inline-start: 3.6rem !important
 
-@media only screen and (device.$display-asus-zbc-width <= width <=  63.9375rem) and (min-height: device.$display-asus-zbc-height) and (orientation: portrait)
+@include mix.device-media('display-asus-zbc', portrait)
     header
         .slogan-wrapper
             @include mix.font(.7rem !important)
@@ -184,7 +184,7 @@
                 p
                     @include mix.logical-size(22.5rem !important)
 
-@media only screen and (min-width: device.$display-asus-zbf-height) and (min-height: device.$display-asus-zbf-width) and (orientation: portrait)
+@include mix.device-media('display-asus-zbf', portrait)
     header
         .slogan-wrapper
             @include mix.font(.7rem !important)
@@ -233,7 +233,7 @@
 
 
 //  Landscape
-@media only screen and (min-width: device.$display-hd-1080p-width) and (min-height : device.$display-hd-1080p-height) and (orientation: landscape)
+@include mix.device-media('display-hd-1080p', landscape)
     header
         img
             @include mix.logical-size(7.2rem !important)
@@ -292,7 +292,7 @@
             nav#tech-bar
                 @include mix.logical-size(42.3rem !important)
 
-@media only screen and (min-width: device.$display-hd-1080i-height) and (min-height : device.$display-hd-1080i-width) and (orientation: landscape)
+@include mix.device-media('display-hd-1080i', landscape)
     main
         section.info
             .carosel
@@ -323,7 +323,7 @@
                 p
                     @include mix.logical-size(17.1rem !important)
 
-@media only screen and (min-width: device.$display-hd-720p-height) and (min-height : device.$display-hd-720p-width) and (orientation: landscape)
+@include mix.device-media('display-hd-720p', landscape)
     main
         section.info
             .carosel
@@ -366,7 +366,7 @@
                 p
                     @include mix.logical-size(20.7rem !important)
 
-@media only screen and (device.$display-asus-zbc-height <= width <= 81.25rem)and (device.$display-asus-zbc-width <= height <= 63.9375rem) and (orientation: landscape)
+@include mix.device-media('display-asus-zbc', landscape)
     header
         .slogan-wrapper
             @include mix.font(.7rem !important)
@@ -407,7 +407,7 @@
                     @include mix.logical-size(20.7rem !important)
                     margin-inline-start: 3.6rem !important
 
-@media only screen and (min-width: device.$display-asus-zbf-width) and (min-height: device.$display-asus-zbf-height) and (orientation: landscape)
+@include mix.device-media('display-asus-zbf', landscape)
     header
         .slogan-wrapper
             @include mix.font(.7rem !important)

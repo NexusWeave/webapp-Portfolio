@@ -5,7 +5,7 @@
 @use './breakpoints' as device
 
 
-@media only screen and (min-width: device.$sharp-941sh-width) and (min-height: device.$sharp-941sh-height) and (orientation: portrait)
+@include mix.device-media('sharp-941sh', portrait)
     header 
         .slogan-wrapper 
             @include mix.font($size: .7rem !important)
@@ -42,7 +42,7 @@
                     @include mix.logical-size($inline: 50.4rem !important)
                     margin-inline-start: 5.4rem !important
 
-@media only screen and (min-width: device.$sharp-is03-width) and (min-height: device.$sharp-is03-height) and (orientation: portrait)
+@include mix.device-media('sharp-is03', portrait)
     header 
         img
             @include mix.logical-size($inline: 9.9rem !important)
@@ -92,7 +92,7 @@
                     margin-inline-start: 3.6rem !important
 
 
-@media only screen and (device.$sharp-941sh-height <= width <= 69.5625rem) and (device.$sharp-941sh-width <= height <= 37.4375rem) and (orientation: landscape)
+@include mix.device-media('sharp-941sh', landscape)
     header
         img
             @include mix.logical-size($inline: 9.9rem !important)
@@ -140,7 +140,7 @@
                     @include mix.logical-size($inline: 24.3rem !important)
                     margin-inline-start: 3.6rem !important
 
-@media only screen and (min-width: device.$sharp-is03-height) and (min-height: device.$sharp-is03-width) and (orientation: landscape)
+@include mix.device-media('sharp-is03', landscape)
     header
         img
             @include mix.logical-size($inline: 9.9rem !important)

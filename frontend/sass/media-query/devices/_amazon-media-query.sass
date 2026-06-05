@@ -3,7 +3,7 @@
 @use './breakpoints' as device
 
 //  Portrait
-@media only screen and (device.$amazon-kindle-fire-width <= width <= 49.9375rem) and (min-height: device.$amazon-kindle-fire-height) and (orientation: portrait)
+@include mix.device-media('amazon-kindle-fire', portrait)
     header
         img
             @include mix.logical-size(13.5rem !important)
@@ -43,7 +43,7 @@
                     @include mix.logical-size(32.4rem !important)
                     margin-inline-start: 4.5rem !important
 
-@media only screen and (device.$amazon-kindle-fire-hd-width <= width <= 53.25rem) and (min-height: device.$amazon-kindle-fire-hd-height) and (orientation: portrait)
+@include mix.device-media('amazon-kindle-fire-hd', portrait)
 
     header
         .slogan-wrapper 
@@ -67,7 +67,7 @@
                     margin-inline-start: 4.5rem !important
 
 //  Landscape
-@media only screen and (device.$amazon-kindle-fire-height <= width <= 69.5625rem) and (device.$amazon-kindle-fire-width <= height <= 49.9375rem) and (orientation: landscape)
+@include mix.device-media('amazon-kindle-fire', landscape)
     header
         img
             @include mix.logical-size(9.9rem !important)
@@ -101,7 +101,7 @@
                     @include mix.logical-size(20.7rem !important)
                     margin-inline-start: 3.6rem !important
 
-@media only screen and (device.$amazon-kindle-fire-hd-height <= width <= 81.25rem) and (device.$amazon-kindle-fire-hd-width <= height <= 63.9375rem) and (orientation: landscape)
+@include mix.device-media('amazon-kindle-fire-hd', landscape)
 
     main
         div.btn-container button.img-btn

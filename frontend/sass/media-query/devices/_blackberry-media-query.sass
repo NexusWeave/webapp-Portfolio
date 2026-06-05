@@ -5,7 +5,7 @@
 @use './breakpoints' as device
 
 //  Portrait
-@media only screen and (device.$bberry-width <= width <= 33.6875rem) and (device.$bberry-height <= height <= 53.3125rem) and (orientation: portrait)
+@include mix.device-media('bberry', portrait)
     header
         .slogan-wrapper
             @include mix.font(.7rem !important)
@@ -45,7 +45,7 @@
         form input[type="text"]
             margin-block-end: 1.125rem
 
-@media only screen and (device.$bberry-bt-width <= width <= 33.6875rem)and (device.$bberry-bt-height <= height <= 49.9375rem) and (orientation: portrait)
+@include mix.device-media('bberry-bt', portrait)
 
     header
         .slogan-wrapper
@@ -87,7 +87,7 @@
         form input[type="text"]
             margin-block-end: 1.125rem
 
-@media only screen and (device.$bberry-curve-width <= width <= 23.375rem) and (device.$bberry-curve-height <= height <= 39.9375rem)and (orientation: portrait)
+@include mix.device-media('bberry-curve', portrait)
 
     header
         .slogan-wrapper
@@ -121,7 +121,7 @@
             margin-block-end: 1.125rem
 
 //  Landscape
-@media only screen and (device.$bberry-height <= width <= 828)and (device.$bberry-width <= height <= 37.4375rem) and (orientation: landscape)
+@include mix.device-media('bberry', landscape)
     header
         img
             @include mix.logical-size(9.9rem !important)
@@ -167,7 +167,7 @@
         form input[type="text"]
             margin-block-end: 1.125rem
 
-@media only screen and (device.$bberry-bt-height<= width <= 40rem) and (min-height: device.$bberry-bt-width) and (orientation: landscape)
+@include mix.device-media('bberry-bt', landscape)
 
     header
         img
@@ -225,7 +225,7 @@
         form input[type="text"]
             margin-block-end: 1.125rem
 
-@media only screen and (device.$bberry-curve-height <= width <=  31.25rem) and (min-height: device.$bberry-curve-width) and (orientation: landscape)
+@include mix.device-media('bberry-curve', landscape)
 
     header
         img

@@ -5,7 +5,7 @@
 @use './breakpoints' as device
 
 //  Portrait
-@media only screen and (device.$surface-pro-width <= width <= 63.9375rem) and (min-height: device.$surface-pro-height) and (orientation: portrait)
+@include mix.device-media('surface-pro', portrait)
 
     header
         .slogan-wrapper
@@ -46,7 +46,7 @@
                     @include mix.logical-size(22.5rem !important)
                     margin-inline-start: 4.5rem !important
 
-@media only screen and (min-width: device.$surface-duoc-width) and (device.$surface-duoc-height <= height <= 51.75rem) and (orientation: portrait)
+@include mix.device-media('surface-duoc', portrait)
     header
         .slogan-wrapper
             @include mix.font($size: 0.9rem !important)
@@ -102,7 +102,7 @@
                     @include mix.logical-size(45.9rem !important)
                     margin-inline-start: 9rem !important
 
-@media only screen and (device.$surface-duof-height <= width <=  49.9375rem) and (min-height: device.$surface-duof-width) and (orientation: portrait)
+@include mix.device-media('surface-duof', portrait)
     header
         .slogan-wrapper
             @include mix.font($size: 0.9rem !important)
@@ -147,7 +147,7 @@
 
 
 //  Landscape
-@media only screen and (device.$surface-pro-height <= width <= 99.9375rem) and (min-height: device.$surface-pro-width) and (orientation: landscape)
+@include mix.device-media('surface-pro', landscape)
 
     header
         .slogan-wrapper
@@ -190,7 +190,7 @@
                     @include mix.logical-size(17.1rem !important)
                     margin-inline-start: 4.5rem !important
 
-@media only screen and (device.$surface-duoc-height <= width <= 49.9375rem) and (min-height: device.$surface-duoc-width) and (orientation: landscape)
+@include mix.device-media('surface-duoc', landscape)
 
     header
         img
@@ -242,7 +242,7 @@
                     @include mix.logical-size(27rem !important)
                     margin-inline-start: 4.5rem !important
 
-@media only screen and (device.$surface-duof-width <= width <= 73.6875rem) and (device.$surface-duof-height <= height <= 51.75rem) and (orientation: landscape)
+@include mix.device-media('surface-duof', landscape)
     header
         .slogan-wrapper
             @include mix.font($size: 0.9rem !important)

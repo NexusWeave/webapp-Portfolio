@@ -5,7 +5,7 @@
 @use './breakpoints' as device
 
 // Ericsson Portrait
-@media only screen and (device.$sony-ericsson-u-width <= width <= 31.1875rem) and (device.$sony-ericsson-u-height <= height <= 56.25rem) and (orientation: portrait)
+@include mix.device-media('sony-ericsson-u', portrait)
 
     main
         section.info
@@ -38,7 +38,7 @@
                     @include mix.logical-size($inline: 35.1rem !important)
 
 // Ericsson Lanscape
-@media only screen and (device.$sony-ericsson-u-height <= width <= 56.1875rem) and (min-height: device.$sony-ericsson-u-width) and (orientation: landscape)
+@include mix.device-media('sony-ericsson-u', landscape)
 
     main
         section.info

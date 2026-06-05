@@ -5,7 +5,7 @@
 @use './breakpoints' as device
 
 //  Portrait Media Queries
-@media only screen and (device.$samsung-tab-width <= width <= 25.8125rem) and (min-height: device.$samsung-tab-height) and (orientation: portrait)
+@include mix.device-media('samsung-tab', portrait)
 
     header
         .slogan-wrapper
@@ -41,7 +41,7 @@
                 p
                     @include mix.logical-size($inline: 63rem)
 
-@media only screen and (device.$samsung-gcz5-width <= width <= 22.4375rem) and (min-height: device.$samsung-gcz5-height) and (orientation: portrait)
+@include mix.device-media('samsung-gcz5', portrait)
     header
         .slogan-wrapper
             @include mix.font($size: 0.5rem !important)
@@ -68,7 +68,7 @@
                         .img-svg
                             @include mix.logical-size($block: 2.25rem !important)
 
-@media only screen and (device.$samsung-gfz5-width <= width <=  44.9375rem) and (min-height: device.$samsung-gfz5-height) and (orientation: portrait)
+@include mix.device-media('samsung-gfz5', portrait)
     header
         .slogan-wrapper
             @include mix.font($size: 0.5rem !important)
@@ -108,7 +108,7 @@
                     @include mix.logical-size($inline: 27.9rem !important)
                     margin-inline-start: 9.9rem !important
 
-@media only screen and (device.$samsung-gs8-width <= width <= 23.375rem) and (min-height: device.$samsung-gs8-height) and (orientation: portrait)
+@include mix.device-media('samsung-gs8', portrait)
     header
         img
             @include mix.logical-size($inline: 13.5rem !important)
@@ -126,7 +126,7 @@
                 .caption
                     bottom: 3.825rem !important
 
-@media only screen and (device.$samsung-ga5171-width <= width <= 26.8125rem) and (min-height: device.$samsung-ga5171-height) and (orientation: portrait)
+@include mix.device-media('samsung-ga5171', portrait)
     main
         section.info
             .carosel
@@ -146,7 +146,7 @@
                             @include mix.logical-size($block: 2.25rem !important)
 
 //  Landscape Media Queries
-@media only screen and (device.$samsung-tab-height <= width <= 45.9375rem) and (min-height: device.$samsung-tab-width) and (orientation: landscape)
+@include mix.device-media('samsung-tab', landscape)
     header
         img
             @include mix.logical-size($inline: 13.5rem !important)
@@ -179,7 +179,7 @@
                 p
                     @include mix.logical-size($inline: 27.9rem !important)
 
-@media only screen and (device.$samsung-gs8-height <= width <= 51.75rem) and (min-height: device.$samsung-gs8-width) and (orientation: landscape)
+@include mix.device-media('samsung-gs8', landscape)
     header
         img
             @include mix.logical-size($inline: 13.5rem !important)
@@ -208,7 +208,7 @@
                 p
                     @include mix.logical-size($inline: 32.4rem !important)
 
-@media only screen and (device.$samsung-gcz5-height <= width <= 55.9375rem) and (min-height: device.$samsung-gcz5-width) and (orientation: landscape)
+@include mix.device-media('samsung-gcz5', landscape)
     header
         .slogan-wrapper
             @include mix.font($size: 0.5rem !important)
@@ -251,7 +251,7 @@
                     @include mix.logical-size($inline: 20.7rem !important)
                     margin-inline-start: 2.7rem !important
 
-@media only screen and (device.$samsung-gfz5-height <= width <= 53.3125rem) and (min-height: device.$samsung-gfz5-width) and (orientation: landscape)
+@include mix.device-media('samsung-gfz5', landscape)
     header
         .slogan-wrapper
             @include mix.font($size: 0.5rem !important)
@@ -289,7 +289,7 @@
                 p
                     @include mix.logical-size($inline: 36rem !important)
 
-@media only screen and (device.$samsung-ga5171-height <= width <= 57.8125rem) and (min-height: device.$samsung-ga5171-width) and (orientation: landscape)
+@include mix.device-media('samsung-ga5171', landscape)
     header
         .slogan-wrapper
             @include mix.font($size: 0.5rem !important)

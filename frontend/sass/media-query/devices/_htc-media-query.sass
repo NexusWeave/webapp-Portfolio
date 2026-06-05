@@ -6,7 +6,7 @@
 
 
 //  Portrait
-@media only screen and (device.$htc-desire-width <= width <= 21.4375rem) and (min-height: device.$htc-desire-height) and (orientation: portrait)
+@include mix.device-media('htc-desire', portrait)
     main
         section.info
             .carosel
@@ -32,7 +32,7 @@
                         .img-svg
                             @include mix.logical-size(null, 3.375rem !important)
 
-@media only screen and (device.$htc-one-width <= width <= 24.9375rem) and (min-height: device.$htc-one-height) and (orientation: portrait)
+@include mix.device-media('htc-one', portrait)
     header
         .slogan-wrapper
             @include mix.font(.496rem !important)
@@ -61,7 +61,7 @@
                         .img-svg
                             @include mix.logical-size(null, 2.25rem !important)
 
-@media only screen and (device.$htc-sensation-width <= width <= 37.5rem) and (min-height: device.$htc-sensation-height) and (orientation: portrait)
+@include mix.device-media('htc-sensation', portrait)
     header
         .slogan-wrapper
             @include mix.font(.7rem !important)
@@ -102,7 +102,7 @@
                     margin-inline-start: 7.2rem !important
 
 //  Landscape
-@media only screen and (device.$htc-desire-height <= width <= 34.375rem) and (min-height: device.$htc-desire-width) and (orientation: landscape)
+@include mix.device-media('htc-desire', landscape)
     header
         .slogan-wrapper
             @include mix.font(.7rem !important)
@@ -143,7 +143,7 @@
                     @include mix.logical-size(28.8rem !important)
                     margin-inline-start: 3.6rem !important
 
-@media only screen and (min-width: device.$htc-one-height) and (min-height: device.$htc-one-width) and (orientation: landscape)
+@include mix.device-media('htc-one', landscape)
     header
         img
             @include mix.logical-size(13.5rem !important)
@@ -187,7 +187,7 @@
                     @include mix.logical-size(34.2rem !important)
                     margin-inline-start: 2.7rem !important
 
-@media only screen and (min-width: device.$htc-sensation-height) and (min-height: device.$htc-sensation-width) and (max-height: 39.9375rem) and (orientation: landscape)
+@include mix.device-media('htc-sensation', landscape)
     header
         .slogan-wrapper
             @include mix.font(.9rem !important)

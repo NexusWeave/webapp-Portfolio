@@ -5,7 +5,7 @@
 @use './breakpoints' as device
 
 //  Portraits
-@media only screen and (device.$motorola-mobility-milestone-width <= width <= 21.4375rem) and (min-height: device.$motorola-mobility-milestone-height) and (orientation: portrait)
+@include mix.device-media('motorola-mobility-milestone', portrait)
     header
         .slogan-wrapper
             @include mix.font($size: 0.398rem !important)
@@ -39,7 +39,7 @@
                     margin-inline-start: 6.3rem !important
 
 //  Landscape
-@media only screen and (device.$motorola-mobility-milestone-height <= width <= 39.9375rem) and (min-height: device.$motorola-mobility-milestone-width) and (orientation: landscape)
+@include mix.device-media('motorola-mobility-milestone', landscape)
     header
         img
             @include mix.logical-size(13.5rem !important)

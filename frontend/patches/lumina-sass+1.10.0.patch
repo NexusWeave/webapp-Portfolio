@@ -1,0 +1,16 @@
+diff --git a/node_modules/lumina-sass/src/mix/_media.sass b/node_modules/lumina-sass/src/mix/_media.sass
+index d2257eb..c6fad07 100644
+--- a/node_modules/lumina-sass/src/mix/_media.sass
++++ b/node_modules/lumina-sass/src/mix/_media.sass
+@@ -38,6 +38,11 @@
+ @mixin device-media($device, $orientation: portrait)
+   $data: map.get(bp.$devices, $device)
+ 
++  @if $data == null
++    @each $brand, $brand-map in bp.$devices
++      @if type-of($brand-map) == 'map' and map.has-key($brand-map, $device)
++        $data: map.get($brand-map, $device)
++
+   @if $data == null
+     @error "Device `#{$device}` not found in $devices map."
+ 

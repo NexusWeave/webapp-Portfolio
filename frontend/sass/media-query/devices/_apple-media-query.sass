@@ -5,7 +5,7 @@
 @use './breakpoints' as device
 
 //  Media Queries Portrait
-@media only screen and (device.$iphone-7-width <= width <= 24.3125rem) and (min-height: device.$iphone-7-height) and (orientation: portrait)
+@include mix.device-media('iphone-7', portrait)
     header
         img
             @include mix.logical-size(13.5rem !important)
@@ -78,7 +78,7 @@
                     @include mix.font(1rem !important)
                     margin-inline-start: 11.7rem !important
 
-@media only screen and (device.$iphone-plus-width <= width <= 26.8125rem) and (device.$iphone-plus-height <= height <= 55.9375rem) and (orientation: portrait)
+@include mix.device-media('iphone-plus', portrait)
     header
         img
             @include mix.logical-size(13.5rem !important)
@@ -155,7 +155,7 @@
                         .img-svg
                             @include mix.logical-size(null, 2.25rem !important)
 
-@media only screen and (device.$iphone-xr-width <= width <= 26.8125rem) and (min-height: device.$iphone-xr-height) and (orientation: portrait)
+@include mix.device-media('iphone-xr', portrait)
     header
         img
             @include mix.logical-size(13.5rem !important)
@@ -201,7 +201,7 @@
                     @include mix.font(1rem !important)
                     margin-inline-start: 11.7rem !important
 
-@media only screen and (device.$iphone-pro-width <= width <= 25.875rem) and (device.$iphone-pro-height <= height <= 55.9375rem) and (orientation: portrait)
+@include mix.device-media('iphone-pro', portrait)
     header
         img
             @include mix.logical-size(13.5rem !important)
@@ -275,7 +275,7 @@
                     @include mix.font(1rem !important)
                     margin-inline-start: 11.7rem !important
 
-@media only screen and (device.$iphone-pro-max-width <= width <=  29.9375rem) and (min-height: device.$iphone-pro-max-height) and (orientation: portrait)
+@include mix.device-media('iphone-pro-max', portrait)
     header
         img
             @include mix.logical-size(13.5rem !important)
@@ -354,7 +354,7 @@
                     @include mix.font(1rem !important)
                     margin-inline-start: 11.7rem !important
 
-@media only screen and (device.$Ipad-Pro-width <= width <=  69.5625rem) and (min-height: device.$Ipad-Pro-height) and (orientation: portrait)
+@include mix.device-media('ipad-pro', portrait)
     main
         section.info
             .carosel
@@ -408,7 +408,7 @@
                     @include mix.logical-size(30.6rem !important)
                     margin-inline-start: 5.4rem !important
 
-@media only screen and (device.$Ipad-air-width <= width <= 53.0625rem) and (min-height: device.$Ipad-air-height) and (orientation: portrait)
+@include mix.device-media('ipad-air', portrait)
     header
         img
             @include mix.logical-size(9.9rem !important)
@@ -489,7 +489,7 @@
                     margin-inline-start: 5.4rem !important
 
 //  Media Queries Landscape
-@media only screen and (device.$iphone-7-height <= width <= 45.9375rem) and (min-height: device.$iphone-7-width) and (orientation: landscape)
+@include mix.device-media('iphone-7', landscape)
     header 
         .slogan-wrapper 
             @include mix.font(.7rem !important)
@@ -573,7 +573,7 @@
                         .img-svg
                             @include mix.logical-size(null, 3.9375rem !important)
 
-@media only screen and (device.$iphone-plus-height <= width <= 46.875rem) and (min-height: device.$iphone-plus-width) and (orientation: landscape)
+@include mix.device-media('iphone-plus', landscape)
     header
         img
             @include mix.logical-size(9.9rem !important)
@@ -624,7 +624,7 @@
                     margin-inline-end: 0rem !important
                     margin-inline-start: 6.3rem !important
 
-@media only screen and (device.$iphone-xr-height <= width <= 56.25rem) and (min-height: device.$iphone-xr-width) and (orientation: landscape)
+@include mix.device-media('iphone-xr', landscape)
     header
         img
             @include mix.logical-size(9.9rem !important)
@@ -697,7 +697,7 @@
                     @include mix.logical-size(25.2rem !important)
                     margin-inline-start: 6.3rem !important
 
-@media only screen and (device.$iphone-pro-height <= width <= 53.125rem) and (min-height: device.$iphone-pro-width) and (orientation: landscape)
+@include mix.device-media('iphone-pro', landscape)
     header
         img
             @include mix.logical-size(9.9rem !important)
@@ -774,7 +774,7 @@
                     @include mix.logical-size(28.8rem !important)
                     margin-inline-start: 5.4rem !important
 
-@media only screen and (device.$iphone-pro-max-height <= width <= 59.9375rem) and (min-height: device.$iphone-pro-max-width) and (orientation: landscape)
+@include mix.device-media('iphone-pro-max', landscape)
     header
         img
             @include mix.logical-size(13.5rem !important)
@@ -851,7 +851,7 @@
                     @include mix.logical-size(18.9rem !important)
                     margin-inline-start: 3.6rem !important
 
-@media only screen and (device.$Ipad-air-height <= width <= 75rem) and (min-height: device.$Ipad-air-width) and (orientation: landscape)
+@include mix.device-media('ipad-air', landscape)
     header
         img
             @include mix.logical-size(9.9rem !important)
@@ -929,7 +929,7 @@
                     @include mix.logical-size(18.9rem !important)
                     margin-inline-start: 3.6rem !important
 
-@media only screen and (min-width: device.$Ipad-Pro-height) and (min-height: device.$Ipad-Pro-width) and (orientation: landscape)
+@include mix.device-media('ipad-pro', landscape)
     header
         img
             @include mix.logical-size(9.9rem !important)

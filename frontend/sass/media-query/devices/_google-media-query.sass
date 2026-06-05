@@ -4,7 +4,7 @@
 @use './breakpoints' as device
 
 //  Portrait
-@media only screen and (device.$google-pixel-width <= width <= 26.8125rem) and (min-height: device.$google-pixel-height) and (orientation: portrait)
+@include mix.device-media('google-pixel', portrait)
 
     header a
         @include mix.font(0.57rem )
@@ -27,7 +27,7 @@
                     bottom : 2.8125rem !important
 
 // Landscape
-@media only screen and (device.$google-pixel-height <= width <= 62.5rem) and (min-height: device.$google-pixel-width) and (orientation: landscape)
+@include mix.device-media('google-pixel', landscape)
 
     header a
         @include mix.font(0.57rem )
@@ -48,7 +48,7 @@
             .pp
                 background-size: 9.9rem !important
 
-@media only screen and (device.$google-nh-width <= width <= 68.75rem) and (min-height: device.$google-nh-height) and (orientation: landscape)
+@include mix.device-media('google-nh', landscape)
     main
         section.info
             .carosel
@@ -76,7 +76,7 @@
                         .img-svg
                             @include mix.logical-size(null, 2.8125rem !important)
 
-@media only screen and (device.$google-nhm-width <= width <= 53.25rem) and (min-height: device.$google-nhm-height) and (orientation: landscape)
+@include mix.device-media('google-nhm', landscape)
     main
         section.info
             .carosel
