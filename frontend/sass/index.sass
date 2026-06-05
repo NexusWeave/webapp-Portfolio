@@ -1,6 +1,6 @@
 @use 'lumina-sass' as *
 @use './mix/mixins' as mix
-@use './colors/colors' as color
+@use 'lumina-sass/color' as color
 
 @forward './views/dev'
 @forward './views/portfolio'
@@ -33,11 +33,11 @@ body
     h1, h2, h3, h4, h5, h6
         text-align: center
         @include mix.margin($block: 0.5rem, $inline: auto)
-        color: color.$dark-grey
+        color: color.$text-base-dark-grey
 
     @include mix.text-wrap-safe()
     @include mix.font($font: 'Nunito')
-    @include mix.background-style(color.$off-white, color.$dark-grey)
+    @include mix.background-style(color.$neutral-off-white, color.$text-base-dark-grey)
 
 .col-3
     flex: 0 0 32%

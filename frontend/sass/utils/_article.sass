@@ -1,6 +1,6 @@
 @use '../mix/mixins' as mix
 @use '../mix/button-mixins' as btn
-@use '../colors/colors' as color
+@use 'lumina-sass/color' as color
 
 article
     header
@@ -19,7 +19,7 @@ article
         ul
             li
                 a
-                    color: color.$dark-grey
+                    color: color.$text-base-dark-grey
                     text-decoration: none
 
     section
@@ -51,7 +51,7 @@ article
         @include mix.logical-size($block: 32rem)
         @include mix.margin($block: 2rem, $inline: 0.5rem)
         max-inline-size: 29rem
-        @include mix.shadow(0 0 0.625rem rgba(color.$dark-grey, 0.2))
+        @include mix.shadow(0 0 0.625rem rgba(color.$text-base-dark-grey, 0.2))
 
     .blog-header, .ingress-header
         p.article-metadata
@@ -67,16 +67,16 @@ article
         code
             z-index: -1
             @include mix.radius(0.25rem)
-            color: color.$white
+            color: color.$neutral-white
             position: relative
             @include mix.padding($block: 0.2rem, $inline: 0.4rem)
-            background-color: color.$dark-grey
+            background-color: color.$text-base-dark-grey
             @include mix.font($family: ('Courier New', Courier, monospace), $style: italic)
 
         pre
             @include mix.padding(1rem, 1rem)
             @include mix.radius(0.25rem)
-            background-color: color.$dark-grey
+            background-color: color.$text-base-dark-grey
             border-inline-start: 0.1875rem solid var(--article-theme-color, color.$sea-green)
 
         blockquote

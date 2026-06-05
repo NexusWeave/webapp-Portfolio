@@ -1,25 +1,38 @@
-@use '../colors/colors' as color
+@use 'lumina-sass' as lumina
+@use 'lumina-sass/color' as color
+
+
 $fullstack-tags: (
-    'portfolio': ( background: color.$fullstack-vibrant-orange, hover: rgba(color.$fullstack-vibrant-orange, 0.8) ),
     'intranet': ( background: color.$fullstack-vibrant-orange, hover: rgba(color.$fullstack-vibrant-orange, 0.8) ),
+    'portfolio': ( background: color.$fullstack-vibrant-orange, hover: rgba(color.$fullstack-vibrant-orange, 0.8) ),
     'sosial-innovasjon': ( background: color.$fullstack-vibrant-orange, hover: rgba(color.$fullstack-vibrant-orange, 0.8) ),
 )
 
-$workflow-tags: (
-    'devops': ( background: color.$workflow, hover: rgba(color.$workflow, 0.8) ),
+$workflow-blue-tags: (
     'rd': ( background: color.$rd-lime-green ),
     'misc': ( background: color.$misc-purple ),
-    'mentalt-vedlikehold': ( background: color.$human-emerald-glow),
     'external-equipment': ( background: color.$human-emerald-glow),
+    'mentalt-vedlikehold': ( background: color.$human-emerald-glow),
+    'devops': ( background: lumina.$workflow-blue, hover: rgba(lumina.$workflow-blue, 0.8) ),
 )
 
-$os-tags: (
-    'os': ( background:rgb(255, 0, 127) ),
-    'windows': ( background: rgb(0, 120, 212) ),
-    'macos': ( background: rgb(245, 245, 247) ),
-)
+$os-tags: ( 'os': ( background:rgb(255, 0, 127) ), 'windows': ( background: rgb(0, 120, 212) ), 'macos': ( background: rgb(245, 245, 247) ) )
 
 $backend-tags: ()
 $frontend-tags: ()
 
-$tags: ( 'os': $os-tags, 'backend': $backend-tags, 'workflow': $workflow-tags, 'frontend': $frontend-tags, 'fullstack': $fullstack-tags )
+$tags: (  'os': $os-tags,  'backend': $backend-tags, 'workflow': $workflow-blue-tags, 'frontend': $frontend-tags, 'fullstack': $fullstack-tags )
+
+$tag-theme-colors: (
+    'os': lumina.$windows-blue,
+    'misc': lumina.$misc-purple,
+    'rd': lumina.$rd-lime-green,
+    'macos': lumina.$macos-silver,
+    'linux': lumina.$linux-orange,
+    'devops': lumina.$rd-lime-green,
+    'support': lumina.$windows-blue,
+    'windows': lumina.$windows-blue,
+    'project': lumina.$human-emerald-glow,
+    'mentalt-vedlikehold': lumina.$misc-purple,
+    'fullstack': lumina.$fullstack-vibrant-orange,
+)

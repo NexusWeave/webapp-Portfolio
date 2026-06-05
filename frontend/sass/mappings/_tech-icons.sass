@@ -1,162 +1,121 @@
-@use '../colors/colors' as color
+@use 'lumina-sass' as lumina
 
-$compiled-tech-language:(
+$compiled-orange-tech-language:(
     'c': (
         path:"",
-        color: color.$c-silver,
-        hover: color.$compiled-light
+        color: lumina.$c-silver,
+        hover: lumina.$compiled-light-orange
     ),
     'go': (
         path:"",
-        color: color.$GO-Teal, 
-        hover: color.$compiled-light
+        color: lumina.$go-teal, 
+        hover: lumina.$compiled-light-orange
     ),
     'cp': (
         path:"",
-        color: color.$cplus-blue, 
-        hover: color.$compiled-light
+        color: lumina.$cplus-blue, 
+        hover: lumina.$compiled-light-orange
     ),
     'cs': (
         path:"",
-        color: color.$Microsoft-Green, 
-        hover: color.$compiled-light
+        color: lumina.$microsoft-green, 
+        hover: lumina.$compiled-light-orange
     ),
     'fortran': (
         path:"",
-        color: color.$fortran-purple, 
-        hover: color.$compiled-light
+        color: lumina.$fortran-purple, 
+        hover: lumina.$compiled-light-orange
     ),
 )
 
 $scripting-tech-language:(
     'lua':(
         path:"",
-        color: color.$lua, 
-        hover: color.$scripting-light
+        color: lumina.$lua-blue, 
+        hover: lumina.$scripting-light-yellow
         ),
     'powershell':(
         path:"",
-        color: color.$pshell, 
-        hover: color.$scripting-light
+        color: lumina.$powershell-blue, 
+        hover: lumina.$scripting-light-yellow
         ),
     'shell':(
         path:"",
-        color: color.$shell, 
-        hover: color.$scripting-light
+        color: lumina.$shell-green, 
+        hover: lumina.$scripting-light-yellow
         ),
         )
 
 $interpreted-tech-language:(
     'liquid': (
         path:"",
-        color: color.$Cyan-Blue-Azure, 
-        hover: color.$interpreted-light
+        color: lumina.$cyan-blue-azure, 
+        hover: lumina.$interpreted-light-green
     ),
     'python': (
         path:"",
-        color: color.$Cyan-Blue-Azure, 
-        hover: color.$interpreted-light
+        color: lumina.$cyan-blue-azure, 
+        hover: lumina.$interpreted-light-green
     ),
     'cython': (
         path:"",
-        color: color.$Cyan-Blue-Azure, 
-        hover: color.$interpreted-light
+        color: lumina.$cyan-blue-azure, 
+        hover: lumina.$interpreted-light-green
     ),
     'javascript': (
         path:"",
-        color: color.$javascript-yellow,
-        hover: color.$interpreted-light
+        color: lumina.$javascript-yellow,
+        hover: lumina.$interpreted-light-green
     ),
     'typescript': (
         path:"", 
-        color: color.$TypeScript-blue,
-        hover: color.$interpreted-light
+        color: lumina.$typescript-blue,
+        hover: lumina.$interpreted-light-green
     ),
     'php': (
         path:"",
-        color: color.$Microsoft-purple, 
-        hover: color.$interpreted-light
+        color: lumina.$microsoft-purple, 
+        hover: lumina.$interpreted-light-green
     ),
 )
 
 $database-tech-language:(
-    'rational-db': (
-        path:"",
-        color: color.$db, 
-        hover: color.$db-light
-    ),
-    'nosql-db': (
-        path:"", 
-        color: color.$db, 
-        hover: color.$db-light
-    ),
+    'nosql-db': ( path:"", color: lumina.$db-red,  hover: lumina.$db-light-red ),
+    'rational-db': ( path:"", color: lumina.$db-red, hover: lumina.$db-light-red ),
 )
 
-$workflow-tools:(
-    'workflow': (
-        color: color.$workflow, 
-        hover: color.$workflow-light
-    ),
-    'cms': (
-        color: color.$workflow, 
-        hover: color.$workflow-light
-    ),
-    'sass': (
-        color: color.$workflow,
-        hover: color.$workflow-light
-    ),
-    'meson': (
-        color: color.$jinja-red,
-        hover: color.$workflow-light
-    ),
-    'jinja': (
-        color: color.$jinja-red,
-        hover: color.$workflow-light
-    ),
-    'roff': (
-        color: color.$roff-grey,
-        hover: color.$workflow-light
-    ),
-    'smarty': (
-        color: color.$smarty-orange,
-        hover: color.$workflow-light
-    ),
-    'jp-nb': (
-        color: color.$jupyter-peach,
-        hover: color.$workflow-light
-    ),
-    'default': (
-        color: color.$workflow,
-        hover: color.$workflow-light
-    )
+$workflow-blue-tools:(
+    
+    'roff': ( color: lumina.$roff-grey, hover: lumina.$workflow-light-blue ),
+    'meson': ( color: lumina.$jinja-red, hover: lumina.$workflow-light-blue ),
+    'jinja': ( color: lumina.$jinja-red, hover: lumina.$workflow-light-blue ),
+    'cms': ( color: lumina.$workflow-blue, hover: lumina.$workflow-light-blue ),
+    'sass': ( color: lumina.$workflow-blue, hover: lumina.$workflow-light-blue ),
+    'jp-nb': ( color: lumina.$jupyter-peach, hover: lumina.$workflow-light-blue ),
+    'smarty': ( color: lumina.$smarty-orange, hover: lumina.$workflow-light-blue ),
+    'workflow': ( color: lumina.$workflow-blue, hover: lumina.$workflow-light-blue),
+    'default': ( color: lumina.$workflow-blue, hover: lumina.$workflow-light-blue )
 )
 
 $frontend:(
-    'html': (
-        path:"",
-        color: color.$frontend-sky-blue
-    ),
-    'css': (
-        path:"",
-        color: color.$frontend-sky-blue, 
-        
-    ),
+    'css': ( path:"", color: lumina.$frontend-sky-blue ),
+    'html': ( path:"", color: lumina.$frontend-sky-blue ),
 )
 
 $style:(
     'styling': (
         path:"",
-        color: color.$c-silver, 
-        hover: color.$compiled-light
+        color: lumina.$c-silver, 
+        hover: lumina.$compiled-light-orange
     )
 )
 
 $tech-languages: (
     'style': $style,
     'markup': $frontend,
-    'workflow': $workflow-tools,
-    'compiled': $compiled-tech-language,
+    'workflow': $workflow-blue-tools,
     'database': $database-tech-language,
     'scripting': $scripting-tech-language,
-    'interpreted': $interpreted-tech-language
+    'interpreted': $interpreted-tech-language,
+    'compiled': $compiled-orange-tech-language
 )

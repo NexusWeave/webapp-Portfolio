@@ -1,11 +1,12 @@
 @use 'sass:map' as map
 @use 'sass:list' as list
-@use '../colors/colors' as color
-@use '../mappings/devices-breakpoints' as Devices
-
+@use 'lumina-sass/color' as color
+@forward 'lumina-sass/mixins'
+@use 'lumina-sass' as Devices
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
 
+// TODO: Remove this on the next release for lumina, as the updated mixin will be handled there.
 @mixin media-queries ($size: null, $breakpoint: null)
 
     @if $size == 'prefers-color-scheme'
@@ -66,36 +67,14 @@
     background-repeat: $bg-size
     background-image: url($path)
 
-@mixin font-style($font, $family: null)
 
-    $sans-serif: ('Roboto', 'Work Sans', 'Nunito')
-
-    @if list.index($sans-serif, $font)
-        $family: sans-serif
-
-    font-family: $font, $family
-
-@mixin font($size: null, $weight: null, $font: null, $family: null, $style: null)
-    @if $font != null
-        @include font-style($font, $family)
-    @else if $family != null
-        font-family: $family
-
-    @if $size != null
-        font-size: $size
-
-    @if $weight != null
-        font-weight: $weight
-
-    @if $style != null
-        font-style: $style
 
 @mixin link-styles($link-color, $link-hover-color, $link-active-color, $link-visited-color)
 
     a
         [aria-disabled='true']
             cursor: not-allowed
-            color: color.$dark-grey
+            color: color.$text-base-dark-grey
 
         &[data-external-link='true']
             text-decoration: underline
@@ -209,10 +188,4 @@
 @mixin shadow($value)
     box-shadow: $value
 
-@mixin text-wrap-safe()
-    p, h1, h2, h3, h4, h5, h6, figcaption, a, li
-        hyphens: auto
-        min-inline-size: 0
-        word-wrap: anywhere
-        white-space: pre-wrap
-        overflow-wrap: anywhere
+

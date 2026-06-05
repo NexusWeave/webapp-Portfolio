@@ -1,12 +1,12 @@
 @use 'sass:map' as map
 @use './mixins' as mix
+@use 'lumina-sass' as lumina
 @use './button-mixins' as btn
-@use '../colors/colors' as color
+@use 'lumina-sass/color' as color
 
 @use '../mappings/tags' as tag-map
-@use '../mappings/icons' as icon-map
 @use '../mappings/tech-icons' as tech-map
-@use '../mappings/flexbox' as flexbox-mapping
+
 
 
 @mixin tag-generator()
@@ -18,7 +18,7 @@
             $background-color: map.get($props, background)
             
             @if not $color
-                $color: color.$off-white
+                $color: color.$neutral-off-white
             @if not $hover-color
                 $hover-color: $background-color
     
@@ -35,25 +35,6 @@
                 text-align: center
                 padding: .5rem 1.2rem
                 border-radius: 0.75rem
-
-@mixin icon-generator()
-    @each $category, $maps in icon-map.$icons
-        @each $icon, $props in $maps
-            .#{$icon}
-                &:before
-                    content: map.get($props, icon)
-
-                color: map.get($props, icon-color)
-
-@mixin flexbox-generator($name)
-
-    $props: map.get(flexbox-mapping.$flexbox, $name)
-
-    @if $props
-        @each $property, $value in $props
-            #{$property}: $value
-    @else
-        @error '"#{$name}" not found in flexbox mapping.'
 
 @mixin tech-generator($boolean : false, $element: null)
     @each $category, $maps in tech-map.$tech-languages
@@ -81,9 +62,14 @@
                     @include mix.background-style($bg-color: $color-map, $color:$color-map)
                     //background-color: $color-map
 
+@mixin article-theme-generator()
+    @each $name, $color in tag-map.$tag-theme-colors
+        .#{$name}
+            --article-theme-color: #{$color}
 
 @include tag-generator()
-@include icon-generator()
+@include lumina.icon-generator()
+@include article-theme-generator()
 
 
 .tech-container

@@ -1,5 +1,5 @@
 @use '../mix/mixins' as mix
-@use '../colors/colors' as color
+@use 'lumina-sass/color' as color
 
 .timeline-explorer-wrapper
     @include mix.padding(1rem)
@@ -42,7 +42,7 @@
                     @include mix.radius(50%)
                     @include mix.logical-size(0.75rem, 0.75rem)
                     transition: all 0.3s ease
-                    background: color.$off-white
+                    background: color.$neutral-off-white
                     @include mix.border(0.125rem solid color.$sea-green)
 
                     &.active
@@ -116,14 +116,14 @@
             transform: translateX(-50%)
             inset-block-start: -0.9375rem
             border-inline: 0.9375rem solid transparent
-            border-block-end: 0.9375rem solid color.$off-white
+            border-block-end: 0.9375rem solid color.$neutral-off-white
             filter: drop-shadow(0 -0.125rem 0.125rem rgba(0,0,0,0.05))
 
         .timeline-card-content
             @include mix.padding(2.5rem)
             @include mix.logical-size($inline: 100%)
             @include mix.radius(1rem)
-            background: color.$off-white
+            background: color.$neutral-off-white
             @include mix.border(0.0625rem solid rgba(0,0,0,0.03))
             @include mix.shadow(0 0.625rem 1.875rem rgba(0, 0, 0, 0.08))
 
@@ -152,7 +152,7 @@
             .timeline-body-content
                 @include mix.font($size: 1.05rem)
                 line-height: 1.6
-                color: color.$dark-grey
+                color: color.$text-base-dark-grey
                 @include mix.margin($block: 0 2.5rem)
                 @include mix.padding($inline: 1.5rem)
                 p
@@ -232,12 +232,12 @@
                         
                         &:hover
                             background-color: color.$sea-green
-                            color: color.$white
+                            color: color.$neutral-white
 
             .subject-details
                 margin-inline: 0.5rem
                 @include mix.padding(1rem)
-                background: rgba(color.$soft-white, 0.5)
+                background: rgba(color.$neutral-soft-white, 0.5)
                 @include mix.radius(0.5rem)
                 overflow: hidden
                 inline-size: 36rem
@@ -245,7 +245,7 @@
                 .details-content
                     @include mix.font($size: 0.95rem)
                     line-height: 1.5
-                    color: color.$dark-grey
+                    color: color.$text-base-dark-grey
                     border-inline-start: 0.1875rem solid color.$sea-green
                     padding-inline-start: 1rem
 
@@ -262,7 +262,7 @@
                         object-fit: contain
 
                     .tech-text-fallback
-                        background: color.$white
+                        background: color.$neutral-white
                         @include mix.border(0.0625rem solid color.$sea-green)
                         @include mix.radius(0.25rem)
                         @include mix.font($size: 0.55rem, $weight: 700)

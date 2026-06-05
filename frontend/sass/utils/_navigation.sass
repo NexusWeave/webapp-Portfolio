@@ -1,6 +1,6 @@
 @use '../mix/mixins' as mix
 @use '../mix/button-mixins' as btn
-@use '../colors/colors' as color
+@use 'lumina-sass/color' as color
 
 nav.router-nav
     @include mix.nav-list-reset()
@@ -19,7 +19,7 @@ nav.router-nav
                 @include mix.margin($block: 0.1rem, $inline: 0.25rem)
                 @include btn.button-neumorphism()
 
-            @include mix.link-styles(color.$dark-grey, color.$logo-red, color.$soft-white, color.$dark-grey)
+            @include mix.link-styles(color.$text-base-dark-grey, color.$logo-red, color.$neutral-soft-white, color.$text-base-dark-grey)
 
 nav.logo-nav
     ul
