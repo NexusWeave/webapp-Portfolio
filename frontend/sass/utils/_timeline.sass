@@ -103,6 +103,7 @@
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1)
 
         &.timeline-active
+            display: flex !important
             opacity: 1 !important
             visibility: visible !important
             transform: translateY(0) !important
@@ -214,27 +215,39 @@
                         color: color.$deep-midnight-blue
                         @include mix.font($size: 1.2rem, $weight: 700)
                         @include mix.margin($block: 0, $inline: 0)
+                        flex-grow: 1
+                        text-align: center
 
                     .expand-icon
-                        @include mix.font($size: 1.5rem, $weight: 300)
+                        @include mix.logical-size(2rem, 2rem)
+                        @include mix.radius(50%)
+                        background-color: rgba(color.$sea-green, 0.1)
+                        @include mix.font($size: 1.1rem, $weight: 700)
                         color: color.$sea-green
+                        display: flex
+                        align-items: center
+                        justify-content: center
                         transition: all 0.3s ease
-                        line-height: 1
-                        display: block
                         @include mix.margin($inline: 0 0.5rem)
+                        
+                        &:hover
+                            background-color: color.$sea-green
+                            color: color.$white
 
             .subject-details
-                @include mix.margin($block: 1rem 0)
+                margin-inline: 0.5rem
                 @include mix.padding(1rem)
                 background: rgba(color.$soft-white, 0.5)
                 @include mix.radius(0.5rem)
-                border-inline-start: 0.1875rem solid color.$sea-green
                 overflow: hidden
+                inline-size: 36rem
                 
                 .details-content
                     @include mix.font($size: 0.95rem)
                     line-height: 1.5
                     color: color.$dark-grey
+                    border-inline-start: 0.1875rem solid color.$sea-green
+                    padding-inline-start: 1rem
 
             .tech-container
                 @include mix.margin($block: 0.5rem 0)
@@ -292,6 +305,11 @@
 
                 .header-main
                     gap: 0.5rem
+
+                .subject-item
+                    .subject-details
+                        margin: 1rem 5%
+                        inline-size: auto
 
             .timeline-track-wrapper
                 @include mix.logical-size($inline: 95%)
