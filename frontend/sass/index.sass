@@ -1,3 +1,4 @@
+@use 'lumina-sass' as *
 @use './mix/mixins' as mix
 @use './colors/colors' as color
 
@@ -9,7 +10,6 @@
 @forward './utils/article'
 
 @forward './utils/buttons'
-@forward './utils/flexbox'
 @forward './utils/timeline'
 
 @forward './utils/navigation'
@@ -38,6 +38,10 @@ body
     @include mix.text-wrap-safe()
     @include mix.font($font: 'Nunito')
     @include mix.background-style(color.$off-white, color.$dark-grey)
+
+.col-3
+    flex: 0 0 32%
+    margin: 0.5%
 
 header, main
     @include mix.margin($inline: auto, $block: 0 3rem)
