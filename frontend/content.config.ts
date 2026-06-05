@@ -11,6 +11,7 @@ const achievementsCollection = z.object({
     isVisible: z.boolean().optional(),
     org_link: z.string().optional(),
     body: z.strictObject({}).optional(),
+    end: z.any().optional(),
     location: z.string().optional(),
     loc_link: z.string().optional(),
     references: z.string().optional(),
@@ -21,6 +22,7 @@ const achievementsCollection = z.object({
         created: z.any().optional(),
         end: z.any().optional(),
         techStack: z.array(z.string()).optional(),
+        ref_link: z.string().optional(),
     })).optional(),
     techStack: z.array(z.string()).optional(),
 });

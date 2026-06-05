@@ -34,9 +34,9 @@ export const blogFields: TinaField[] =
 [
     ...commonFields,
     createField("date", "Date", "Published", {isType:'datetime', isRequired: true, ui: { dateFormat: 'DD-MM-YY'}}),
-    createField("ingress", "Ingress", "Ingress", { isRequired: true, type: "rich-text" }),
-    createField("status", "Status", "Dagens Aktiviteter og Status", { type: "rich-text" }),
-    createField("sources", "Sources", "Kilde Henvisning", { type: "rich-text" }),
+    createField("ingress", "Ingress", "Ingress", { isRequired: true, isType: "rich-text" }),
+    createField("status", "Status", "Dagens Aktiviteter og Status", { isType: "rich-text" }),
+    createField("sources", "Sources", "Kilde Henvisning", { isType: "rich-text" }),
     ];
 
 export const referenceFields: TinaField[] = 

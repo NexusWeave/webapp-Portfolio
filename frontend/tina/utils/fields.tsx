@@ -6,22 +6,14 @@ import type { Collection, TinaField, Template } from "tinacms";
 
 export const createTemplate = (name:string, label:string, fields: TinaField[]): Template => ({ name, label, fields });
 export const createPage = (name:string, path:string, label:string, template: Template[]): Collection => ({
-  name,
-  path,
-  label,
+  name, path, label,
   templates: template,
-  ui: {
-    allowedActions: { create: false, delete: false },
-    beforeSubmit: async ({ values }) => {
-      return defaultImageCaptions(values);
-    }
+  ui: { allowedActions: { create: false, delete: false }, beforeSubmit: async ({ values }) => { return defaultImageCaptions(values); }
   }
 });
 
-export const createCollection = (name:string, path:string, label:string, fields:TinaField[], options: Options = {}): Collection => (
-{
-    name, path,  label, fields, ui: options.ui ? options.ui : undefined,
-});
+export const createCollection = (name:string, path:string, label:string, fields:TinaField[], options: Options = {}): Collection => ( 
+{ name, path,  label, fields, ui: options.ui ? options.ui : undefined });
 
 export const createObject = (name: string, label: string, description: string, fields: TinaField[]): TinaField => ({ name, label, type: "object", description: `f.eks ${description}`, fields });
 
@@ -33,24 +25,18 @@ export const createReferences = (name: string, label: string, collections: strin
   description: `Legg til ${label} felt`
   
 });
-/**
- * Creates a standard field for TinaCMS.
- */
-export const createField = ( name: string, label: string, description: string, options: Options = {}
-): TinaField => ({
-    name,
-    label,
+// Creates a standard field for TinaCMS.
+export const createField = ( name: string, label: string, description: string, options: Options = {}): TinaField => ({
+    name, label,
+    ui: options.ui ?? undefined,
     type: options.isType ?? "string",
     isBody: options.isBody ?? false,
     isTitle: options.isTitle ?? false,
     description: description != "" ? `f.eks ${description}` : undefined,
-    required: options.isRequired ?? false,
-    ui: options.ui ?? undefined
+    required: options.isRequired ?? false
 });
 
-/**
- * Creates a list of fields (array of objects or strings) for TinaCMS.
- */
+// Creates a list of fields (array of objects or strings) for TinaCMS.
 export const createListOfFields = (name: string, label: string, description: string, fields: TinaField[] | string[], options: Options = {placeholder: "Tomt Felt",isRequired: false, isType: "object"}): TinaField => {
     let fieldDef: any;
     const type = options.isOptions ? "options" : (options.isType || "object");
@@ -63,21 +49,14 @@ export const createListOfFields = (name: string, label: string, description: str
 
         case "options":
             fieldDef = {
-                name,
-                label,
-                type: "string",
-                description: description !== "" ? `f.eks ${description}` : undefined,
-                options: fields as string[]
+                name, label, type: "string",
+                options: fields as string[],
+                description: description !== "" ? `f.eks ${description}` : undefined
             };
             break;
 
         default:
-            fieldDef = { 
-                name, 
-                label, 
-                description: description !== "" ? `f.eks ${description}` : undefined, 
-                type: type 
-            };
+            fieldDef = { name, label, type: type, description: description !== "" ? `f.eks ${description}` : undefined };
             break;
     }
     
@@ -116,9 +95,7 @@ export const createConditionalField = (name: string, label: string, description:
 
             const dependencyValue = fullPath.split('.').reduce((obj: any, key: string) => obj?.[key], allValues);
 
-            if (dependencyValue && !value) {
-                return `${label} er påkrevd når bilde er valgt.`;
-            }
+            if (dependencyValue && !value) { return `${label} is required when ${options.dependsOn} is set`; }
         },
         component: (props: any) => {
             const { input, form, field } = props;
@@ -150,6 +127,7 @@ export const createConditionalField = (name: string, label: string, description:
     }
 });
 
+// Helpers
 const handleAuthorName = (path: string) => 
 {
     if (!path) return;
@@ -171,9 +149,7 @@ const handleAuthorName = (path: string) =>
 const defaultImageCaptions = (obj: any): any => {
     if (!obj || typeof obj !== "object") return obj;
 
-    if (Array.isArray(obj)) {
-        return obj.map(defaultImageCaptions);
-    }
+    if (Array.isArray(obj)) { return obj.map(defaultImageCaptions); }
 
     const getFilename = (path: string) => {
         if (!path) return "";
@@ -184,20 +160,14 @@ const defaultImageCaptions = (obj: any): any => {
     };
 
     const res: any = {};
-    for (const key of Object.keys(obj)) {
-        res[key] = defaultImageCaptions(obj[key]);
-    }
+    for (const key of Object.keys(obj)) { res[key] = defaultImageCaptions(obj[key]); }
 
     if (typeof res.upload === "string" && res.upload.trim() !== "") {
-        if (!res.caption || typeof res.caption !== "string" || res.caption.trim() === "") {
-            res.caption = getFilename(res.upload);
-        }
+        if (!res.caption || typeof res.caption !== "string" || res.caption.trim() === "") { res.caption = getFilename(res.upload); }
     }
 
     if (typeof res.filePath === "string" && res.filePath.trim() !== "") {
-        if (!res.caption || typeof res.caption !== "string" || res.caption.trim() === "") {
-            res.caption = getFilename(res.filePath);
-        }
+        if (!res.caption || typeof res.caption !== "string" || res.caption.trim() === "") { res.caption = getFilename(res.filePath); }
     }
 
     return res;
