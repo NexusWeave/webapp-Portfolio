@@ -5,10 +5,9 @@ import { useRouter } from '#app';
 import type { RouterItem } from '~/types/navigation';
 
 import type { DateItem } from '~/types/date';
-import type { AcademicCollectionItem, AchievementsCollectionItem } from '@nuxt/content';
+import type { AcademicCollectionItem, TimelineCollectionItem } from '@nuxt/content';
 
-
-type CMSArticleCollectionItem = AcademicCollectionItem | AchievementsCollectionItem;
+type CMSArticleCollectionItem = AcademicCollectionItem | TimelineCollectionItem;
 
 //  --- Data Fetching Logic
 export async function fetchCollection<T, R>(path:any, cacheKey:string, mapper: (data:T[]) => R, queryModifier?: (query: any) => any): Promise<Ref<R>>

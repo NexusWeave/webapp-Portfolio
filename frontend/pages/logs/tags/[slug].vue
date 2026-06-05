@@ -1,5 +1,5 @@
 <template>
-    <section class="flex-wrap-row-justify-center tag-wrapper">
+    <section class="flex-wrap-row flex-center tag-wrapper">
         <section v-if="tags && tags.length > 0">
             <h2> Filtrer etter Merkelapp </h2>
             <NavigationButton v-for="(tag, i) in tags" :key="i" :data="tag" :cls="['button', tag.name, 'tag-btn']"/>
@@ -9,7 +9,7 @@
 
     <template v-if="current && current.length > 0">
         <h2> Siste Tekniske Logger for {{ displaySlug }} </h2>
-        <section class="flex-wrap-row-justify-space-evenly">
+        <section class="flex-wrap-row flex-center">
             <article v-for="post in current">
                 <ArticleHead  v-if="!post.isArchived" :key="post.id" :article="post" />
             </article>
@@ -18,12 +18,12 @@
 
     <template v-if="totalPages && totalPages > 0">
         <h2> Eldre Tekniske Logger for {{ displaySlug }} </h2>
-        <section v-if="totalPages > 1" class="flex-wrap-row-align-items-center-justify-space-evenly pagination-container">
+        <section v-if="totalPages > 1" class="flex-wrap-row flex-center pagination-container">
             <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
                 <span> {{ currentPage }} / {{ totalPages }}</span>
             <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
         </section>
-        <section class="flex-wrap-row-justify-space-evenly" v-if="archived && archived.length > 0">
+        <section class="flex-wrap-row flex-center" v-if="archived && archived.length > 0">
             <article v-for="post in archived">
                 <ArticleHead v-if="post.isArchived" :key="post.id" :article="post" />
             </article>
@@ -76,6 +76,6 @@ const tags = computed(() => {
     return data.map(tag => { return { ...tag, action: () => label.value = tag.name.toLowerCase() } });
 });
 
-    const resetButton: ButtonItem = { label: 'Tilbakestill', action: () => router.push('/logger')};
+    const resetButton: ButtonItem = { label: 'Tilbakestill', action: () => { router.push('/logger') }};
 
 </script>

@@ -1,4 +1,7 @@
-import { DevPostsCollectionItem } from "@nuxt/content";
+import { queryCollection } from "@nuxt/content/server";
+import type { DevPostsCollectionItem } from "@nuxt/content";
+
+
 export async function fetchCollection<T>(event: any, path: any) { return await queryCollection(event, path).all() }
 
 const mapBlogData = (data: DevPostsCollectionItem[]) => {
@@ -21,16 +24,10 @@ const mapBlogData = (data: DevPostsCollectionItem[]) => {
                         else  return index != -1 ? [id[index]]: [];
                     })()
             return {
-                path: path,
-                tags: [tags],
-                title: item.title,
-                id: AUTOINCREMENT++,
-                star: item.star ?? '',
-                body: item.body ?? '',
-                date: date,
-                parade: item.parade ?? '',
-                ingress: item.ingress ?? '',
-                sources: item.sources ?? '',
+                date: date, path: path, tags: [tags],
+                title: item.title, id: AUTOINCREMENT++,
+                body: item.body ?? '', status: item.status ?? '',
+                sources: item.sources ?? '', ingress: item.ingress ?? '',
                 anchor: [{ href: `logs/records/${path}`, label: 'Les mer' }]
             }
         });
