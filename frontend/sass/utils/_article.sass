@@ -77,10 +77,23 @@ article
             @include mix.padding(1rem, 1rem)
             @include mix.radius(0.25rem)
             background-color: color.$dark-grey
+            border-inline-start: 0.1875rem solid var(--article-theme-color, color.$sea-green)
+
+        blockquote
+            border-inline-start: 0.1875rem solid var(--article-theme-color, color.$sea-green)
+            padding-inline-start: 1rem
+            @include mix.margin($block: 1.5rem, $inline: 0)
+            
+        strong, b, q
+            color: var(--article-theme-color, inherit)
 
     .article-content, .ingress-header
         @include mix.font($size: 1.5rem)
         max-inline-size: 44rem
+        
+        ul, ol
+            li::marker
+                color: var(--article-theme-color, color.$sea-green)
 
     .article-content, .bio-content, .ingress-content
         h1,h2,h3,h4,h5,h6
@@ -97,7 +110,7 @@ article
             cursor: help            
             position: relative
             text-decoration: none !important
-            border-block-end: 0.0625rem dotted rgb(255, 69, 0)!important
+            border-block-end: 0.0625rem dotted var(--article-theme-color, rgb(255, 69, 0)) !important
 
     @include mix.text-wrap-safe()
 

@@ -13,7 +13,7 @@ button.primary-btn, .button.primary-btn
     .icon
         @include mix.font($size: 1.5rem)
         @include mix.margin($inline: 0.4rem 0)
-        color: color.$files !important
+        color: var(--article-theme-color, color.$files) !important
         text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2)
         
         *
