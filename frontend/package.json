@@ -4,13 +4,18 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "clean": "make clean",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
+    "pre-release": "npm run test",
+    "test:nuxt": "vitest run tests/nuxt",
+    "test:sass": "vitest run tests/sass",
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
     "serve": "npm run build && nuxt preview",
-    "deploy": "npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'",
-    "clean": "make clean"
+    "test": "vitest run && test:nuxt && test:sass",
+    "deploy": "npm run test && npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
+    
   },
   "dependencies": {
     "@nuxt/content": "^3.14.0",
@@ -31,15 +36,20 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^4.0.3",
     "@nuxtjs/sitemap": "^8.0.15",
     "@pinia/nuxt": "^0.11.3",
     "@tinacms/cli": "^2.3.1",
     "@types/node": "^25.5.0",
+    "@vue/test-utils": "^2.4.11",
     "bootstrap-icons": "^1.13.1",
+    "jsdom": "^29.1.1",
     "netlify-cli": "^26.1.0",
     "patch-package": "^8.0.1",
     "pinia": "^3.0.4",
     "postinstall-postinstall": "^2.1.0",
-    "sass": "^1.100.0"
+    "sass": "^1.100.0",
+    "sass-true": "^10.1.0",
+    "vitest": "^4.1.8"
   }
 }
