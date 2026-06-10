@@ -1,15 +1,16 @@
 name: Build & Deploy to Netlify (Main Branch Only)
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
     branches:
       - main
 
 jobs:
   build-and-deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

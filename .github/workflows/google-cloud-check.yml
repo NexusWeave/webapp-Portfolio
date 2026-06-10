@@ -1,13 +1,15 @@
 name: Google Cloud Build Check
 
 on:
-  push:
-    branches: [ 'main' ]
-  pull_request:
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
     branches: [ 'main' ]
 
 jobs:
   check-gcp-build:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Verify Google Cloud Run Container Build
     runs-on: ubuntu-latest
     steps:
