@@ -2,7 +2,7 @@ name: Netlify Build Check
 
 on:
   workflow_run:
-    workflows: ["Application Tests"]
+    workflows: ["Release"]
     branches: [ 'main' ]
     types:
       - completed
