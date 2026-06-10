@@ -1,15 +1,17 @@
 name: Netlify Build Check
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Application Tests"]
     branches: [ 'main' ]
-  pull_request:
-    branches: [ 'main' ]
+    types:
+      - completed
 
 jobs:
   check-netlify-build:
     name: Verify Netlify Build
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
