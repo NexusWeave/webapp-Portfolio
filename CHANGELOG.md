@@ -1,3 +1,52 @@
+# [1.25.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.24.0...v1.25.0) (2026-06-10)
+
+
+### Bug Fixes
+
+* **backend:** fix exception handler. ([dea01ea](https://github.com/NexusWeave/webapp-Portfolio/commit/dea01ea05c2c94ada29cfb4c8aba6309ada1f4df))
+* **backend:** improve contribution stats reliability and handle API 202 status. ([978c0cd](https://github.com/NexusWeave/webapp-Portfolio/commit/978c0cd695db5aa84cb8eab8cd81be301df99c2c))
+* **backend:** improve GitHub API robustness and update configuration. ([f01675d](https://github.com/NexusWeave/webapp-Portfolio/commit/f01675ddfca0c1d358aff5eb98276c96fef194e6))
+* center timeline details and optimize responsiveness. ([9eee02e](https://github.com/NexusWeave/webapp-Portfolio/commit/9eee02e72f154ed06d2f12c6aa7cf5842ba09a3c))
+* **ci:** disable GPG signing for release workflow. ([3d4ab2d](https://github.com/NexusWeave/webapp-Portfolio/commit/3d4ab2dbe59078bdf27f6100e479bc84b1c06375))
+* correct dead link to records in index page ([f8befc9](https://github.com/NexusWeave/webapp-Portfolio/commit/f8befc9d71c48813750dc23dc054b507b0e7c0ac))
+* correct test script syntax to ensure reliable test execution. ([0985c54](https://github.com/NexusWeave/webapp-Portfolio/commit/0985c54a333ebd3c5579973673fc66a34112efa4))
+* **healthcheck:** stabilize endpoint routing and resolve 500 errors ([bf141fd](https://github.com/NexusWeave/webapp-Portfolio/commit/bf141fdaf5140b570480f3591331edf58255e9b8))
+* **logger:** update default log directory to a visible folder to ensure logs are easily accessible. ([088deaf](https://github.com/NexusWeave/webapp-Portfolio/commit/088deafcf5610b95c332b0e70f2ad40c393b0a6d))
+* **logger:** update default log directory to a visible folder to ensure logs are easily accessible. ([dc178f7](https://github.com/NexusWeave/webapp-Portfolio/commit/dc178f75f6df70f4b85bdb1be246ccffceef14d7))
+* resolve dart-sass memory leak and import typo in test setup. ([48348b6](https://github.com/NexusWeave/webapp-Portfolio/commit/48348b6c090696a52c360cb1f3d506f96bf613d0))
+
+
+### Features
+
+* add <abbr> markup for principle explanations in project log. ([ea73ccf](https://github.com/NexusWeave/webapp-Portfolio/commit/ea73ccff1a568af6cab884b566bd802093156dc5))
+* add direct navigation link to log records on home page. ([c6052f7](https://github.com/NexusWeave/webapp-Portfolio/commit/c6052f7503151650b4ae9499efd6431102372f5b))
+* add root Makefile for project orchestration. ([f27f90d](https://github.com/NexusWeave/webapp-Portfolio/commit/f27f90daf4a8692f906962a1d984918384b2416a))
+* **backend:** add contribution_ratio to change detection. ([3e7c1d6](https://github.com/NexusWeave/webapp-Portfolio/commit/3e7c1d6d1df2a17ff3059aa5ddb81d1854616cfd))
+* **backend:** add is_fork and parent_owner to Pydantic model and docs. ([b42912b](https://github.com/NexusWeave/webapp-Portfolio/commit/b42912bbc5529f4d4d91a2e2b7d6621ab8a05d98))
+* **backend:** add is_fork and parent_owner tracking to database and API. ([51b070c](https://github.com/NexusWeave/webapp-Portfolio/commit/51b070c6e989cea1bcd9b771852e208daa8682f4))
+* **backend:** implement adjusted 30-second retry strategy for contribution stats. ([e12e7dc](https://github.com/NexusWeave/webapp-Portfolio/commit/e12e7dc8a520adb3a6f74f6c5b4b04d21a799513))
+* **backend:** implement weighted language statistics based on contribution ratio. ([a763b14](https://github.com/NexusWeave/webapp-Portfolio/commit/a763b14178700267847e2cdd02f8fa112b02db5b))
+* **backend:** remove is_fork and finalize owner logic. ([009c96a](https://github.com/NexusWeave/webapp-Portfolio/commit/009c96a709d6a8a554c74f7d3cc7d6aee1c84f98))
+* **ci:** add Google Cloud container build check to validate backend compatibility on all commits. ([6cc28c0](https://github.com/NexusWeave/webapp-Portfolio/commit/6cc28c0462693081650299c5afdf29ff91486cae))
+* **ci:** add Netlify build verification check to validate frontend compilation on all commits. ([417027f](https://github.com/NexusWeave/webapp-Portfolio/commit/417027fe2a0b7789407dd97c5b9fabddbe63c3e1))
+* **docs:** create class diagram for backend settings ([334fd56](https://github.com/NexusWeave/webapp-Portfolio/commit/334fd56241c83bc57d2c2bb02a955d463279eab1))
+* enhance UI components and timeline layout ([4f1ec18](https://github.com/NexusWeave/webapp-Portfolio/commit/4f1ec18c16635b08e5717cf4a0a017af671dc7b4))
+* **frontend:** add clean script and update documentation. ([dc0ab2a](https://github.com/NexusWeave/webapp-Portfolio/commit/dc0ab2a829a654fbcfa4e01426316674aaf38cda))
+* **frontend:** include user as contributor on shared projects, limit to 5 with ellipsis, and fix backend update bug. ([f876673](https://github.com/NexusWeave/webapp-Portfolio/commit/f8766736d02fabe2d48986fb6cc7cebab89341a7))
+* **frontend:** limit contributors to 5 and show original owner for forks. ([5ce17fc](https://github.com/NexusWeave/webapp-Portfolio/commit/5ce17fc07c87d40e03468425845ccfdbf4f5c235))
+* **frontend:** simplify collaboration logic using backend flags and fix contribution_ratio display. ([3adf070](https://github.com/NexusWeave/webapp-Portfolio/commit/3adf0701a933f64908adcf5296f0e7cbd5d28c56))
+* **frontend:** update project portfolio title and improve article body sections. ([ddb233f](https://github.com/NexusWeave/webapp-Portfolio/commit/ddb233fd5ddc283996f3a5724330e4b4c1ad304f))
+* **frontend:** use backend fork data for owner display. ([4e3caca](https://github.com/NexusWeave/webapp-Portfolio/commit/4e3caca6e51cf5e5ad244fb1ae61163c16b9a7b8))
+* introduce dynamic tag-based theme variables for articles. ([876683b](https://github.com/NexusWeave/webapp-Portfolio/commit/876683bf6ecc7f8a95d15092575231b12f25f79d))
+* migrate academic and achievement content to unified timeline structure. ([aa88a8d](https://github.com/NexusWeave/webapp-Portfolio/commit/aa88a8db4bf52c7a3b5141c86dc7fa41a5e86748))
+* modernize TinaCMS schema for advanced timeline management. ([1214899](https://github.com/NexusWeave/webapp-Portfolio/commit/1214899e47f8bf49189287154c631e9bd8183f3f))
+* revert change detection fields and complete frontend fork data mapping. ([5f9e0af](https://github.com/NexusWeave/webapp-Portfolio/commit/5f9e0af570f3d7b44708a40bca48eb63c6fba3b0))
+
+
+### Reverts
+
+* **UI:** Reverting changes for "bidrag". ([fb0bb68](https://github.com/NexusWeave/webapp-Portfolio/commit/fb0bb68ac3ed4fc79e8bf8770ed368d1d21d1cb5))
+
 # [1.24.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.23.2...v1.24.0) (2026-05-20)
 
 
