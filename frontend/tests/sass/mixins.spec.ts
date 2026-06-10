@@ -1,3 +1,4 @@
+// @vitest-environment node
 import { describe, it } from 'vitest'
 import { runSass } from 'sass-true'
 import path from 'path'
