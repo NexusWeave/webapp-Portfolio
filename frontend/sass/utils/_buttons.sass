@@ -11,49 +11,49 @@ button.primary-btn, .button.primary-btn
     @include btn.primary-button-neumorphism()
 
     .icon
-        @include mix.font($size: 1.5rem)
-        @include mix.margin($inline: 0.4rem 0)
-        color: var(--article-theme-color, color.$files-yellow) !important
-        text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2)
-        
         *
             color: inherit !important
+
+        @include mix.font($size: 1.5rem)
+        @include mix.margin($inline: 0.4rem 0)
+        text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2)
+        color: var(--article-theme-color, color.$files-yellow) !important
 
 // -- Categorized Filter Buttons (Matching Tag Colors) --
 $filter-categories: ( 'backend': color.$db-red, 'frontend': color.$frontend-sky-blue, 'fullstack': color.$fullstack-vibrant-orange, 'collaborator': color.$sea-green, 'misc': color.$misc-purple )
 
 @each $category, $bg-color in $filter-categories
     .filter-btn.#{$category}
-        @include btn.colored-button-neumorphism($bg-color)
         background-color: $bg-color !important
         color: color.$neutral-white !important
+        @include btn.colored-button-neumorphism($bg-color)
 
 // -- Specific Button Overrides --
 button.timeline-btn
-    @include mix.logical-size(1.2rem, 1.2rem)
-    @include mix.padding(0, 0)
     @include mix.radius(100%)
+    @include mix.padding(0, 0)
+    @include mix.logical-size(1.2rem, 1.2rem)
     @include mix.background-style(color.$text-base-dark-grey, color.$neutral-soft-white)
     @include mix.shadow((0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.2), -0.1875rem -0.1875rem 0.375rem rgba(255, 255, 255, 0.8)))
 
 section.tag-wrapper
     button.tag-btn, .button.tag-btn
-        @include mix.margin(0.5rem, 0.5rem)
-        @include mix.font($size: 1.1rem)
+        color: inherit
+        @include mix.shadow(none)
+        @include mix.border(none)
         // Reset base button styles to allow tag-generator colors to show
         background-color: transparent
-        @include mix.shadow(none)
-        color: inherit
-        @include mix.border(none)
+        @include mix.font($size: 1.1rem)
+        @include mix.margin(0.5rem, 0.5rem)
 
     max-inline-size: 100%
     @include mix.margin($inline: auto, $block: 0)
 
 button.reset-btn, .button.reset-btn
-    @include btn.button-neumorphism(color.$neutral-soft-white, color.$text-base-dark-grey)
-    background-color: color.$neutral-soft-white !important
-    color: color.$text-base-dark-grey !important
     @include mix.font($size: 1.1rem)
-    @include mix.padding(0.5rem, 1.2rem)
     @include mix.margin(0.5rem, 0.5rem)
+    @include mix.padding(0.5rem, 1.2rem)
+    color: color.$text-base-dark-grey !important
+    background-color: color.$neutral-soft-white !important
+    @include btn.button-neumorphism(color.$neutral-soft-white, color.$text-base-dark-grey)
 

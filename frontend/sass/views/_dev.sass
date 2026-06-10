@@ -15,12 +15,12 @@ section
             progress
                 overflow: hidden
                 appearance: none
-                @include mix.radius(1rem)
                 -moz-appearance: none
                 -webkit-appearance: none
+                @include mix.radius(1rem)
 
-            @include mix.logical-size($inline: 100%)
             @include mix.margin($block: 1rem)
+            @include mix.logical-size($inline: 100%)
             @include gen.tech-generator($boolean: false, $element:'progress')
 
         max-inline-size: 24rem

@@ -1,33 +1,12 @@
 @use 'sass:map' as map
 @use 'sass:list' as list
-@use 'lumina-sass/color' as color
-@forward 'lumina-sass/mix'
 @use 'lumina-sass' as Devices
+@use 'lumina-sass/color' as color
+
+@forward 'lumina-sass/mix'
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
 
-// TODO: Remove this on the next release for lumina, as the updated mixin will be handled there.
-@mixin media-queries ($size: null, $breakpoint: null)
-
-    @if $size == 'prefers-color-scheme'
-        @media (prefers-color-scheme: dark)
-            @content
-
-    @if $size == null and $breakpoint != null
-        $block-size: map.get(Devices.$devices, $breakpoint, 'block-size')
-        $inline-size: map.get(Devices.$devices, $breakpoint, 'inline-size')
-
-        @media screen and ($inline-size <= width <= $inline-size + 3.125rem ) and (min-height: $block-size) and (orientation: portrait)
-            @content
-
-        @media screen and ($block-size <= height <= $block-size + 3.125rem) and (min-width: $inline-size) and (orientation: landscape)
-            @content
-
-    @else if $size != null and $breakpoint == null
-        $size: map.get(Devices.$breakpoints, $size)
-
-    @media screen and (min-width: $size)
-        @content
 
 @mixin card-shadow-box()
     margin: 1rem
@@ -66,7 +45,6 @@
     background-size: $size
     background-repeat: $bg-size
     background-image: url($path)
-
 
 
 @mixin link-styles($link-color, $link-hover-color, $link-active-color, $link-visited-color)

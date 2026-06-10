@@ -8,16 +8,16 @@ nav.router-nav
         li
             a
                 &:hover
-                    color: color.$logo-red !important
                     transform: translateY(-0.125rem)
+                    color: color.$logo-red !important
 
                 &:active
-                    transform: translateY(0.0625rem)
                     opacity: 1
+                    transform: translateY(0.0625rem)
 
                 @include mix.font($size: 0.9rem)
-                @include mix.margin($block: 0.1rem, $inline: 0.25rem)
                 @include btn.button-neumorphism()
+                @include mix.margin($block: 0.1rem, $inline: 0.25rem)
 
             @include mix.link-styles(color.$text-base-dark-grey, color.$logo-red, color.$neutral-soft-white, color.$text-base-dark-grey)
 
@@ -25,25 +25,24 @@ nav.logo-nav
     ul
         li
             a
+                display: block
+                text-decoration: none
                 @include mix.margin(0)
+                @include mix.radius(0)
                 @include mix.padding(0)
                 @include mix.border(none)
-                display: block
                 @include mix.shadow(none)
-                @include mix.radius(0)
-                @include mix.logical-size($inline: auto, $block: auto)
-                text-decoration: none
                 background-color: transparent
-                
+                @include mix.logical-size($inline: auto, $block: auto)
+
                 &:hover
                     transform: none
                     @include mix.shadow(none)
                     background-color: transparent
 
-        
+        list-style: none
         @include mix.margin(0)
         @include mix.padding(0)
-        list-style: none
 
 nav.anchor-nav, nav.portofolio-nav
     @include mix.nav-list-reset()
@@ -51,20 +50,20 @@ nav.anchor-nav, nav.portofolio-nav
         li
             a
                 @include mix.padding(0)
-                @include mix.margin($block: 0, $inline: 0.15rem)
-                @include mix.font($size: 1rem)
                 @include mix.radius(50%)
-                @include mix.logical-size(2.2rem, 2.2rem)
+                @include mix.font($size: 1rem)
                 text-decoration: none !important
                 @include btn.button-neumorphism()
-                
+                @include mix.logical-size(2.2rem, 2.2rem)
+                @include mix.margin($block: 0, $inline: 0.15rem)
+
                 .icon
                     @include mix.margin(0)
                     @include mix.font($size: 1.5rem)
 
                     span, .bi, [type="icon"]
-                        @include mix.font($size: 1rem)
                         display: inline-block
+                        @include mix.font($size: 1rem)
 
                 > span:not(.icon)
                     display: none
@@ -75,10 +74,10 @@ nav.some-nav
         li
             a
                 @include mix.padding(0)
-                @include mix.margin($block: 0, $inline: 0.25rem)
-                @include mix.logical-size(2rem, 2rem)
                 @include mix.radius(50%)
                 text-decoration: none !important
                 @include btn.button-neumorphism()
-                
+                @include mix.logical-size(2rem, 2rem)
+                @include mix.margin($block: 0, $inline: 0.25rem)
+
         @include mix.logical-center()

@@ -5,9 +5,9 @@
 .card-container
     @include mix.card-base()
     p
-        @include mix.font($size: 1rem)
         text-align: justify
-        
+        @include mix.font($size: 1rem)
+
     h3, h4
         @include mix.font($font: "Nunito")
 
@@ -17,22 +17,18 @@
         ul
             li
                 cursor: default
-                @include mix.padding($inline: 1rem)
                 @include mix.radius(.5rem)
+                @include mix.padding($inline: 1rem)
                 @include mix.border(0.0625rem solid black)
-        
-        
+
     max-inline-size: 24rem
 
-    //@include mix.link-styles()
-    
 .timeline-card
     h3
         @include mix.margin($inline: 1rem)
         @include mix.font($font: "Roboto")
 
 .business-card
-    @include mix.card-base()
     &.grid-layout
         .card-header
             figure
@@ -41,21 +37,21 @@
 
                 @include mix.margin(0)
 
+            min-block-size: 0
+            grid-area: header
             @include mix.margin(0)
             @include mix.padding(0)
             @include mix.logical-size($inline: 100%)
-            min-block-size: 0
-            grid-area: header
 
             .tech-img, .tech-figure
-                @include mix.logical-size(2.2rem !important, 2.2rem !important)
                 object-fit: contain !important
                 @include mix.margin(0 !important)
+                @include mix.logical-size(2.2rem !important, 2.2rem !important)
 
             .date-container
-                @include mix.margin($block: 0, $inline-start: auto)
                 display: block
                 text-align: right
+                @include mix.margin($block: 0, $inline-start: auto)
 
         .card-content
             h3
@@ -64,8 +60,9 @@
             p
                 @include mix.margin($block: 0.25rem)
 
-            @include mix.padding(0)
             grid-area: content
+            @include mix.padding(0)
+            
             
         .card-nav
             grid-area: nav
@@ -77,9 +74,10 @@
                 @include mix.margin($block: 0 0.25rem)
             
             .tech-img, .tech-figure
+                object-fit: contain !important
                 @include mix.margin(0 !important)
                 @include mix.logical-size(2rem !important, 2rem !important)
-                object-fit: contain !important
+                
 
             figure
                 figcaption
@@ -88,19 +86,18 @@
                 @include mix.margin(0)
 
             grid-area: footer
-            @include mix.padding(0)
             @include mix.margin(0)
+            @include mix.padding(0)
 
         display: grid
-        @include mix.padding(0.75rem)
         align-content: center
+        @include mix.padding(0.75rem)
         grid-template-rows: 1fr 1fr 1fr 1fr
         grid-template-areas: "header" "content" "nav" "footer"
-        
 
     p
-        @include mix.font($size: 1rem)
         text-align: center
+        @include mix.font($size: 1rem)
         @include mix.margin($block: 0.25rem, $inline: 0)
 
     img 
@@ -118,32 +115,34 @@
             span.icon
                 @include mix.padding(0)
                 @include mix.font($size: 1rem)
+
             @include mix.logical-size($inline: 100%)
 
     .tech-container
         img
-            @include mix.logical-size(1.5rem, 1.5rem)
             object-fit: contain
+            @include mix.logical-size(1.5rem, 1.5rem)
 
-    @include mix.logical-size($inline: 23rem)
     max-block-size: 29rem
-    @include mix.link-styles(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
     @include mix.list-inline-reset()
+    @include mix.logical-size($inline: 23rem)
+    @include mix.link-styles(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
     
     .credits
         @include mix.font($size: 0.9rem)
         @include mix.margin($block: 0.5rem)
         
         .collab-name
-            @include mix.margin($block: 0.1rem, $inline: 0.25rem)
             span
                 a
-                    @include mix.margin(0)
                     gap: 0.2rem
+                    @include mix.margin(0)
 
                     .icon
                         @include mix.margin(0)
                         @include mix.font($size: 1.1rem)
 
+            @include mix.margin($block: 0.1rem, $inline: 0.25rem)
 
+    @include mix.card-base()
     @include mix.background-image(9rem, "/media/images/cards/portfolio-card.svg")
