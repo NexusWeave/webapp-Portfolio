@@ -6,7 +6,7 @@
                 <ArticleHead :article="post" />
             </section>
         </section>
-        <NuxtLink to="/logs/records" class="btn btn-primary mt-4">Se alle logger</NuxtLink>
+        <NuxtLink to="/logs" class="btn btn-primary mt-4">Se alle logger</NuxtLink>
     </article>
 
     <section class="flex-wrap-row-items-center-justify-evenly">
