@@ -17,22 +17,22 @@ article.profile-bar
         picture
             img, source
                 @include mix.radius(100%)
+
         max-inline-size: 8rem
 
 .business-card
     figure
-        
+
         picture, img
+            object-fit: contain
             @include mix.radius(0)
             @include mix.logical-size($inline: 100%)
-            object-fit: contain
-            
 
         picture
             img, source
+                object-fit: contain
                 @include mix.radius(0)
                 @include mix.logical-size($inline: 100%)
-                object-fit: contain
 
         @include mix.logical-size($inline: 3rem)
 
@@ -42,9 +42,9 @@ article.profile-bar
 
     &.grid-layout
         .tech-img, .tech-figure
+            object-fit: contain !important
             @include mix.margin(0 !important)
             @include mix.logical-size($inline: 2.2rem !important, $block: 2.2rem !important)
-            object-fit: contain !important
 
         .card-header
             figure
@@ -55,9 +55,10 @@ article.profile-bar
     figure
         @include mix.margin(0)
         max-inline-size: 2rem
+
         img, source
-            @include mix.logical-size($inline: 100%, $block: auto)
             object-fit: contain
+            @include mix.logical-size($inline: 100%, $block: auto)
 
 figure
     figcaption
@@ -67,12 +68,12 @@ figure
 
     picture
         img, source
-            @include mix.logical-size($block: auto)
             @include mix.radius(100%)
+            @include mix.logical-size($block: auto)
 
     img, picture
-        @include mix.logical-size($inline: 100%, $block: auto)
         @include mix.radius(.5rem)
+        @include mix.logical-size($inline: 100%, $block: auto)
 
     @include mix.margin(0)
     @include mix.padding(0)

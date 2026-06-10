@@ -2,6 +2,7 @@
 @use '../mix/button-mixins' as btn
 @use 'lumina-sass/color' as color
 
+$article-btn-theme-color: color.$files-yellow !default
 // -- Base Button Styles --
 button, .button
     @include btn.button-neumorphism()
@@ -17,7 +18,7 @@ button.primary-btn, .button.primary-btn
         @include mix.font($size: 1.5rem)
         @include mix.margin($inline: 0.4rem 0)
         text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2)
-        color: var(--article-theme-color, color.$files-yellow) !important
+        color: $article-btn-theme-color !important
 
 // -- Categorized Filter Buttons (Matching Tag Colors) --
 $filter-categories: ( 'backend': color.$db-red, 'frontend': color.$frontend-sky-blue, 'fullstack': color.$fullstack-vibrant-orange, 'collaborator': color.$sea-green, 'misc': color.$misc-purple )
