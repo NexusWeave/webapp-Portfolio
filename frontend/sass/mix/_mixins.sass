@@ -46,30 +46,6 @@
     background-repeat: $bg-size
     background-image: url($path)
 
-
-@mixin link-styles($link-color, $link-hover-color, $link-active-color, $link-visited-color)
-
-    a
-        [aria-disabled='true']
-            cursor: not-allowed
-            color: color.$text-base-dark-grey
-
-        &[data-external-link='true']
-            text-decoration: underline
-
-        &:hover
-            color: $link-hover-color
-
-        &:active
-            color: $link-active-color
-
-        &:visited
-            color: $link-visited-color
-
-        color: $link-color
-        text-decoration: none
-        transition: 0.3s ease-in-out
-
 @mixin transitions($property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
 
     @if $property == null
