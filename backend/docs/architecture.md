@@ -24,7 +24,7 @@
 
 ## 🎯 Overview
 
-The backend application is built with **FastAPI** with focus on:
+The backend application is built using **FastAPI**. Its core features include:
 
 - ✅ **RESTful API** design
 - ✅ **Type safety** with Pydantic models

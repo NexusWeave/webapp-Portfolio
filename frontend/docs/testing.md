@@ -1,18 +1,18 @@
-# Test Dokumentasjon
+# Test Documentation
 
-Denne applikasjonen bruker et samlet testmiljø for både Nuxt 4/Vue 3-komponenter og Sass-stilsett, kjørt gjennom **Vitest**.
+This application relies on a unified test environment for both Nuxt 4/Vue 3 components and Sass stylesheets. Test execution is handled by **Vitest**.
 
-## Kjøre Tester
+## Running Tests
 
-For å kjøre testene, kan du bruke en av følgende kommandoer i `frontend/`-mappen:
+To execute tests, use one of the following commands in the \`frontend/\` directory:
 
-- `npm run test` - Kjører alle tester (både Nuxt og Sass).
-- `npm run test:nuxt` - Kjører kun tester relatert til Vue og Nuxt under `tests/nuxt/`.
-- `npm run test:sass` - Kjører kun tester relatert til stilsett under `tests/sass/`.
-- `npm run pre-release` - Kjører hele testsuiten og byggeprosessen før lansering.
+- \`npm run test\` - Runs the complete test suite (both Nuxt and Sass).
+- \`npm run test:nuxt\` - Runs only Vue and Nuxt related tests located in \`tests/nuxt/\`.
+- \`npm run test:sass\` - Runs only stylesheet related tests located in \`tests/sass/\`.
+- \`npm run pre-release\` - Executes the complete test suite and the build process prior to release.
 
-## Liste over Nuxt-tester
-* **`app.spec.ts`**: Verifiserer at hovedkomponenten (`app.vue`) til Nuxt-applikasjonen mounter og er tilgjengelig uten feil.
+## Nuxt Test Inventory
+* **\`app.spec.ts\`**: Verifies that the primary component (\`app.vue\`) of the Nuxt application mounts and remains accessible without errors.
 
-## Liste over Sass-tester
-* **`mixins.spec.ts` / `mixins.test.scss`**: Kjører via `sass-true` for å verifisere at mixins (f.eks. `logical-size`) kompilerer til forventet CSS-output med riktige attributter for block og inline size.
+## Sass Test Inventory
+* **\`mixins.spec.ts\` / \`mixins.test.scss\`**: Executes via \`sass-true\` to verify that mixins (e.g., \`logical-size\`) compile to the expected CSS output, ensuring correct attributes for block and inline sizes.

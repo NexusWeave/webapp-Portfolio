@@ -1,7 +1,6 @@
-## Prosjektstruktur
+## Project Structure
 
-Dette treet viser dagens frontend-struktur og utelater mappeinnhold som vanligvis ignoreres (for eksempel `node_modules/`).
-
+This directory tree represents the current frontend architecture. It excludes standard ignored content (such as \`node_modules/\`).
 ```text
 frontend/
 ├── .dockerignore
@@ -58,7 +57,7 @@ frontend/
 ├── sass/
 │   ├── colors/
 │   ├── flexbox/
-│   ├── mappings/
+│   ├── maps/
 │   ├── media-query/
 │   ├── mix/
 │   ├── utils/

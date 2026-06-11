@@ -1,6 +1,5 @@
 # Frontend — Portfolio Web Application
-The frontend delivers a fast, accessible, and content-driven portfolio experience. It is built to present professional work, achievements, and blog posts with minimal friction for both visitors and content editors. The CMS integration means non-technical stakeholders can manage content independently, reducing maintenance overhead and time-to-publish.
-
+The frontend provides a performant, accessible, and content-driven interface. It presents professional work, achievements, and blog posts with minimal friction. The CMS integration allows content to be managed independently, reducing maintenance overhead and time-to-publish without requiring deep technical knowledge.
 ## Tech Stack
 | Technology | Role | Value |
 | ---        | ---  | ---   |

@@ -1,5 +1,5 @@
 # Backend API
-This service is a FastAPI backend for the portfolio platform. It provides repository, announcement, and health-check endpoints, and manages database synchronization logic.
+This service acts as the FastAPI backend for the portfolio platform. It provides endpoints for repository management, announcements, and health checks, and handles database synchronization logic.
 
 ## Current Stack
 - FastAPI + Uvicorn

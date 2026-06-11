@@ -1,5 +1,5 @@
-# Portfolio Webapp
-Portfolio is a full-stack biography and project showcase application with a Nuxt frontend and a FastAPI backend.
+# Portfolio Web Application
+This repository contains a full-stack biography and project showcase application, implemented with a Nuxt frontend and a FastAPI backend.
 
 ## Current Stack
 | Layer | Technology | Notes |

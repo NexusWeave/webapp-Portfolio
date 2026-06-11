@@ -1,6 +1,6 @@
 # Documentation Architecture
 
-> **Project:** Portfolio Webapp Documentation  
+> **Project:** Portfolio Web Application Documentation  
 > **Last Updated:** June 1, 2026
 
 ---
@@ -15,9 +15,9 @@
 
 ## Overview
 
-The documentation library includes:
+The documentation library contains:
 
-- Workspace architectural tree
+- The workspace architectural tree
 - Backend service documentation
 - Frontend architecture and context diagrams
 

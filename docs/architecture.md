@@ -1,5 +1,5 @@
 # Repository Directory Tree
-The tree below reflects the current repository structure and excludes directories listed in `.gitignore`.
+This tree represents the current repository structure. It excludes directories normally listed in `.gitignore`.
 
 ```text
 webapp-Portfolio/
