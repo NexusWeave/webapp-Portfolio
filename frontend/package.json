@@ -14,7 +14,7 @@
     "build": "tinacms build && nuxt build",
     "serve": "npm run build && nuxt preview",
     "test:semantic": "vitest run tests/semantic",
-    "test": "vitest run && test:nuxt && test:sass",
+    "test": "vitest run && npm run test:nuxt && npm run test:sass",
     "deploy": "npm run test && npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
   },
   "dependencies": {

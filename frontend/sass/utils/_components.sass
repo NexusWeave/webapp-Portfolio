@@ -4,6 +4,12 @@
 .component-blue
     @include mix.background-style(color.$deep-midnight-blue, color.$neutral-off-white)
 
+.component-slate
+    @include mix.background-style(color.$text-base-dark-grey, color.$neutral-off-white)
+
+.component-seagreen
+    @include mix.background-style(color.$sea-green, color.$neutral-off-white)
+    @include mix.link-color(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
 
 .component-w-g-b
@@ -12,6 +18,10 @@
     
     a 
         text-decoration: underline
+
+.component-w-g-t
+    @include mix.background-style(color.$neutral-off-white, color.$sea-green)
+    @include mix.link-color(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
 
 .component-blue, .component-seagreen, .component-slate

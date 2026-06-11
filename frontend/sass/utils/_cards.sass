@@ -2,7 +2,26 @@
 @use '../mix/mixins' as mix
 @use 'lumina-sass/color' as color
 
+.card-container
+    @include mix.card-base()
+    p
+        text-align: justify
+        @include mix.font($size: 1rem)
 
+    h3, h4
+        @include mix.font($font: "Nunito")
+
+    .tech
+        @include mix.list-inline-reset()
+
+        ul
+            li
+                cursor: default
+                @include mix.radius(.5rem)
+                @include mix.padding($inline: 1rem)
+                @include mix.border(0.0625rem solid black)
+
+    max-inline-size: 24rem
 
 .timeline-card
     h3
