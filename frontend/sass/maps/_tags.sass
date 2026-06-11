@@ -5,12 +5,11 @@
 @use 'sass:color' as sass-color
 
 $fullstack-tags: (
-    'project': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -10%) ),
+    'project': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -40%) ),
     'lumina-sass': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -30%) ),
-    'intranet': ( background: color.$fullstack-vibrant-orange ),
-    'portfolio': ( background: color.$fullstack-vibrant-orange ),
-    'social-innovation': ( background: sass-color.scale(lumina.$frontend-sky-blue, $lightness: -60%), hover: rgba(lumina.$frontend-sky-blue, 0.8)),
-    
+    'intranet': ( background: sass-color.scale(color.$fullstack-vibrant-orange, $lightness: -40%) ),
+    'portfolio': ( background: sass-color.scale(color.$fullstack-vibrant-orange, $lightness: -40%) ),
+    'social-innovation': ( background: sass-color.scale(lumina.$frontend-sky-blue, $lightness: -75%), hover: rgba(lumina.$frontend-sky-blue, 0.8)),
 )
 
 $workflow-blue-tags: (
