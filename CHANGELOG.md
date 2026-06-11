@@ -1,3 +1,13 @@
+## [1.26.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.26.0...v1.26.1) (2026-06-11)
+
+
+### Bug Fixes
+
+* Darken tag background colors for WCAG contrast compliance. ([060f473](https://github.com/NexusWeave/webapp-Portfolio/commit/060f473c56a3fcf5c4fdb1b5090e59af7a94cb6f))
+* Prevent missing return bug in data preprocessor. ([7740e34](https://github.com/NexusWeave/webapp-Portfolio/commit/7740e3461163e55878e885abe4d626ea583b03a0))
+* resolve test script failing by using npm run. ([3c37ef3](https://github.com/NexusWeave/webapp-Portfolio/commit/3c37ef370a0ddbbf78fd3cde513df62bc6e6f401))
+* Update tag routing and filtering logic. ([9e509f1](https://github.com/NexusWeave/webapp-Portfolio/commit/9e509f1eaf7806150229d7ad4277f8f0dba61d8d))
+
 # [1.26.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.25.0...v1.26.0) (2026-06-11)
 
 
