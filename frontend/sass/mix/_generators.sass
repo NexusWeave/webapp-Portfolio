@@ -3,9 +3,11 @@
 @use 'lumina-sass' as lumina
 @use './button-mixins' as btn
 @use 'lumina-sass/color' as color
+@use 'lumina-sass/func' as func-color
+@use 'lumina-sass/contrast' as contrast
 
-@use '../mappings/tags' as tag-map
-@use '../mappings/tech-icons' as tech-map
+@use '../maps/tags' as tag-map
+@use '../maps/tech-icons' as tech-map
 
 
 
@@ -18,7 +20,10 @@
             $background-color: map.get($props, background)
             
             @if not $color
-                $color: color.$neutral-off-white
+                $color: func-color.best-contrast-color($background-color)
+            
+            @include contrast.assert-contrast($color, $background-color)
+
             @if not $hover-color
                 $hover-color: $background-color
     

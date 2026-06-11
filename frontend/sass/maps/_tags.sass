@@ -5,10 +5,10 @@
 @use 'sass:color' as sass-color
 
 $fullstack-tags: (
-    'project': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -30%) ),
+    'project': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -10%) ),
     'lumina-sass': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -30%) ),
-    'intranet': ( background: sass-color.scale(lumina.$dark-orange, $lightness: -15%), hover: rgba(lumina.$dark-orange, 0.8) ),
-    'portfolio': ( background: sass-color.scale(lumina.$dark-orange, $lightness: -15%), hover: rgba(lumina.$dark-orange, 0.8) ),
+    'intranet': ( background: color.$fullstack-vibrant-orange ),
+    'portfolio': ( background: color.$fullstack-vibrant-orange ),
     'social-innovation': ( background: sass-color.scale(lumina.$frontend-sky-blue, $lightness: -60%), hover: rgba(lumina.$frontend-sky-blue, 0.8)),
     
 )
@@ -31,10 +31,11 @@ $tags: ( 'os': $os-tags,  'backend': $backend-tags, 'workflow': $workflow-blue-t
 
 $tag-theme-colors: (
     'os': lumina.$cplus-blue,
+    
+    'linux': lumina.$logo-red,
+    'macos': lumina.$macos-silver,
     'misc': lumina.$fortran-purple,
     'rd': sass-color.scale(lumina.$microsoft-green, $lightness: -10%),
-    'macos': lumina.$macos-silver,
-    'linux': lumina.$logo-red,
     'devops': sass-color.scale(lumina.$workflow-blue, $lightness: -30%),
     'support': sass-color.scale(lumina.$microsoft-green, $lightness: -10%),
     'windows': lumina.$cplus-blue,
