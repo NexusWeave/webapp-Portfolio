@@ -46,6 +46,36 @@ section.tag-wrapper
         background-color: transparent
         @include mix.font($size: 1.1rem)
         @include mix.margin(0.5rem, 0.5rem)
+        .icon
+            gap: 0.5rem
+
+        &.active
+            font-weight: bold
+            text-decoration: underline
+
+    .tag-groups-container
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 1rem
+        width: 100%
+
+    .root-tags-row
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        gap: 1rem
+
+    .child-tags-row
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        gap: 0.5rem
+        margin-top: 0.5rem
+        padding: 0.5rem
+        background-color: rgba(0,0,0,0.05)
+        border-radius: 8px
+        width: 100%
 
     max-inline-size: 100%
     @include mix.margin($inline: auto, $block: 0)
