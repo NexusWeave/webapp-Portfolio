@@ -1,3 +1,15 @@
+# [1.26.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.25.0...v1.26.0) (2026-06-11)
+
+
+### Bug Fixes
+
+* correct release workflow trigger and condition ([32eed8f](https://github.com/NexusWeave/webapp-Portfolio/commit/32eed8fc606658f52c434346ed4d22754db31d3a))
+
+
+### Features
+
+* Automate tags and migrate sass mixins ([55e6ba9](https://github.com/NexusWeave/webapp-Portfolio/commit/55e6ba98b47f67a97dfba6645f60905d722edb27))
+
 # [1.25.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.24.0...v1.25.0) (2026-06-10)
 
 
