@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
-import { mount } from '@vue/test-utils'
 import App from '../../app.vue'
+import { mount } from '@vue/test-utils'
+import { describe, it, expect } from 'vitest'
 
 describe('Nuxt application', () => {
   it('mounts the app component', () => {

@@ -1,0 +1,43 @@
+@use 'lumina-sass' as lumina
+@use 'lumina-sass/color' as color
+
+
+@use 'sass:color' as sass-color
+
+$fullstack-tags: (
+    'project': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -30%) ),
+    'lumina-sass': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -30%) ),
+    'intranet': ( background: sass-color.scale(lumina.$dark-orange, $lightness: -15%), hover: rgba(lumina.$dark-orange, 0.8) ),
+    'portfolio': ( background: sass-color.scale(lumina.$dark-orange, $lightness: -15%), hover: rgba(lumina.$dark-orange, 0.8) ),
+    'social-innovation': ( background: sass-color.scale(lumina.$frontend-sky-blue, $lightness: -60%), hover: rgba(lumina.$frontend-sky-blue, 0.8)),
+    
+)
+
+$workflow-blue-tags: (
+    
+    'rd': ( background: sass-color.scale(lumina.$microsoft-green, $lightness: -10%) ),
+    'misc': ( background: lumina.$fortran-purple ),
+    'support': ( background: sass-color.scale(lumina.$microsoft-green, $lightness: -10%) ),
+    'external-equipment': ( background: color.$human-emerald-glow),
+    'devops': ( background: sass-color.scale(lumina.$workflow-blue, $lightness: -30%), hover: rgba(lumina.$workflow-blue, 0.8) ),
+)
+
+$os-tags: ( 'os': ( background: lumina.$fortran-purple ), 'windows': ( background: lumina.$cplus-blue ), 'macos': ( background: color.$macos-silver ), 'linux': ( background: lumina.$logo-red ), )
+
+$backend-tags: ()
+$frontend-tags: ()
+
+$tags: ( 'os': $os-tags,  'backend': $backend-tags, 'workflow': $workflow-blue-tags, 'frontend': $frontend-tags, 'fullstack': $fullstack-tags )
+
+$tag-theme-colors: (
+    'os': lumina.$cplus-blue,
+    'misc': lumina.$fortran-purple,
+    'rd': sass-color.scale(lumina.$microsoft-green, $lightness: -10%),
+    'macos': lumina.$macos-silver,
+    'linux': lumina.$logo-red,
+    'devops': sass-color.scale(lumina.$workflow-blue, $lightness: -30%),
+    'support': sass-color.scale(lumina.$microsoft-green, $lightness: -10%),
+    'windows': lumina.$cplus-blue,
+    'project': lumina.$microsoft-purple,
+    'fullstack': sass-color.scale(lumina.$dark-orange, $lightness: -15%),
+)
