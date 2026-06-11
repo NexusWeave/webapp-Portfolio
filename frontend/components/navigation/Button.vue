@@ -1,5 +1,5 @@
 <template>
-    <button :class="cls" :type="btn.btnType ?? 'button'" @click="isActionable()" :disabled="isDisabled">
+    <button :class="cls" :type="btn.btnType ?? 'button'" @click="btn.action ? btn.action($event) : null" :disabled="isDisabled">
 
         <NavigationAnchor v-if="btn.anchor" :data="btn.anchor"/>
         <span v-else-if="isIcon()" class="icon">

@@ -20,7 +20,7 @@ export async function fetchCollection<T, R>(path:any, cacheKey:string, mapper: (
     
     // --- Debugging
     // console.log(`FetchCollection [${path}] - Data:`, data.value);
-    if (error.value) console.log(`FetchCollection [${path}] - Error:`, error.value);
+    if (error.value) // console.log(`FetchCollection [${path}] - Error:`, error.value);
 
     return computed(() => (data.value ? mapper(data.value as T[]) : [] as any)) as Ref<R>;
 }

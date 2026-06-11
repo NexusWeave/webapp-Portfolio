@@ -1,9 +1,24 @@
 <template>
     <section class="flex-wrap-row-justify-center tag-wrapper">
-        <section v-if="tags && tags.length > 0">
+        <section v-if="tagGroups && tagGroups.length > 0" class="tag-hierarchy">
             <h2> Filtrer etter Merkelapp </h2>
-            <NavigationButton v-for="(tag, i) in tags" :key="i" :data="tag" :cls="['button', tag.name, 'tag-btn']"/>
-            <NavigationButton :data="resetButton" :cls="['button', 'reset-btn', 'tag-btn']"/>
+            <div class="tag-groups-container">
+                <div class="root-tags-row">
+                    <NavigationButton 
+                        v-for="group in tagGroups" :key="group.root.name"
+                        :data="{ ...group.root, action: () => handleRootClick(group.root.name) }" 
+                        :cls="['button', group.root.name, 'tag-btn', 'root-tag', openGroup === group.root.name ? 'active' : '']"
+                    />
+                    <NavigationButton :data="resetButton" :cls="['button', 'reset-btn', 'tag-btn']"/>
+                </div>
+                <div class="child-tags-row" v-if="activeGroupChildren.length > 0">
+                    <NavigationButton 
+                        v-for="child in activeGroupChildren" :key="child.name" 
+                        :data="{ ...child, action: () => handleChildClick(child.name) }" 
+                        :cls="['button', child.name, 'tag-btn', 'child-tag', label === child.name.toLowerCase() ? 'active' : '']"
+                    />
+                </div>
+            </div>
         </section>
     </section>
 
@@ -78,12 +93,54 @@
     const nextPage = computed<ButtonItem>(() =>  { return {label: 'Neste', action: ():number => { if (typeof currentPage.value === 'number') return currentPage.value++; else return 0;}};});
 
     //  --- Tag filtering logic
-    const tags = computed(() => {
-        const data = rawPosts.value.flatMap(post => post.tags).filter((tag, index, self) => index === self.findIndex(t => t.name === tag.name))
-        return data.map(tag => { return { ...tag, action: () => label.value = tag.name.toLowerCase() } });
+    const openGroup = ref<string | null>(null);
+
+    const handleRootClick = (groupName: string) => {
+        if (openGroup.value === groupName) {
+            openGroup.value = null;
+            label.value = 'blog-post';
+        } else {
+            openGroup.value = groupName;
+            label.value = groupName.toLowerCase();
+        }
+    };
+
+    const handleChildClick = (childName: string) => {
+        label.value = childName.toLowerCase();
+        openGroup.value = null;
+    };
+
+    const tagGroups = computed(() => {
+        const groups: Record<string, { root: any, children: any[] }> = {};
+        rawPosts.value.forEach(post => {
+            if (post.tags && post.tags.length > 0) {
+                const rootTag = post.tags[0];
+                const rootName = rootTag.name;
+                if (!groups[rootName]) {
+                    groups[rootName] = { 
+                        root: { ...rootTag }, 
+                        children: [] 
+                    };
+                }
+                
+                for (let i = 1; i < post.tags.length; i++) {
+                    const childTag = post.tags[i];
+                    if (!groups[rootName].children.find(c => c.name === childTag.name)) {
+                        groups[rootName].children.push({ ...childTag });
+                    }
+                }
+            }
+        });
+        return Object.values(groups);
     });
 
-    const resetButton: ButtonItem = { label: 'Tilbakestill', action: () => label.value = 'blog-post'};
+    const activeGroupChildren = computed(() => {
+        if (!openGroup.value) return [];
+        const group = tagGroups.value.find(g => g.root.name === openGroup.value);
+        return group ? group.children : [];
+    });
+
+    const resetButton: ButtonItem = { label: 'Tilbakestill', action: () => { label.value = 'blog-post'; openGroup.value = null; } };
 
     // --- Watchers
     watch(label, (newValue) => { label.value = newValue; });

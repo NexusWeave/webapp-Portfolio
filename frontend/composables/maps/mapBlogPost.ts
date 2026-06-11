@@ -10,34 +10,22 @@ const generatePostTags = (id: string[], dir: string): PostTag[] => {
 
     if (index === -1 || !id[index]) return [miscTag];
 
-    const folder:string = id[index].toLowerCase();
-
-    if (folder === 'support') {
-        const result: PostTag[] = [];
-        for (let i = index; i < id.length; i++) {
-            const currentLabel = id[i];
-            if (!currentLabel) continue;
-            const name = currentLabel.toLowerCase();
-            result.push({
-                name: name, cls: [name], type: ['tag', 'dir'],
-                href: `${dir}/tags/${name}`, path: name,
-                label: !listOfAvailableTags.includes(name) ? currentLabel.charAt(0).toUpperCase() + currentLabel.slice(1).replace(/-/g, ' ') : currentLabel,
-                labels: [name, 'blog-post']
-            });
-        }
-        return result.length > 0 ? result : [miscTag];
-    } else {
-        const originalFolder:string = id[index];
-        const label: string = folder === 'project' ? `${id[index + 1]}` : originalFolder;
-        const name: string = label ? label.toLowerCase() : misc;
-        
-        return [{
+    const result: PostTag[] = [];
+    
+    // Generate a tag for every folder level from the matched root folder
+    for (let i = index; i < id.length; i++) {
+        const currentLabel = id[i];
+        if (!currentLabel) continue;
+        const name = currentLabel.toLowerCase();
+        result.push({
             name: name, cls: [name], type: ['tag', 'dir'],
-            href: `${dir}/tags/${name}`,  path: name,
-            label: `${!listOfAvailableTags.includes(name) ? label.charAt(0).toUpperCase() + label.slice(1)?.replace(/-/g, ' ') : label}`,
-            labels: [name , 'blog-post']
-        }];
+            href: `${dir}/tags/${name}`, path: name,
+            label: !listOfAvailableTags.includes(name) ? currentLabel.charAt(0).toUpperCase() + currentLabel.slice(1).replace(/-/g, ' ') : currentLabel,
+            labels: [name, 'blog-post']
+        });
     }
+    
+    return result.length > 0 ? result : [miscTag];
 };
 
 export const mapBlogData = (data: DevPostsCollectionItem[]): PostItem[] => {

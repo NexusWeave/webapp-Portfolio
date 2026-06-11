@@ -55,8 +55,21 @@ article
 
     .blog-header, .ingress-header
         p.article-metadata
+            gap: 0.5rem
             span
-                @include mix.margin(auto)
+                @include mix.margin(0)
+            
+            span.meta-date
+                @include mix.margin($inline: 0 0.7rem)
+                
+    .blog-header, .ingress-header
+        p.article-metadata
+            .tag-btn
+                @include mix.font($size: 0.825rem)
+                color: color.$neutral-white !important
+                
+                &, & > *
+                    color: color.$neutral-white !important
 
         p
             @include mix.font($size: 1.1rem)

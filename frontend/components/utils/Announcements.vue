@@ -13,5 +13,5 @@ import { FetchApiResponse} from '../../assets/js/utils/apiHandler.js';
 const announce = reactive({ data: null, default : "Certified Specializations / Diplomas" });
 
 // ---  Lifecycle hook
-onMounted( async () => { try { const response = await FetchApiResponse(import.meta.env.VITE_Announcements_local);  announce.data = response.data || null; } catch (error){console.error("Error fetching announcements :", error);} });
+onMounted( async () => { try { const response = await FetchApiResponse(import.meta.env.VITE_Announcements_local);  announce.data = response.data || null; } catch (error){// console.error("Error fetching announcements :", error);} });
 </script>
