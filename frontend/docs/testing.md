@@ -9,6 +9,7 @@ To execute tests, use one of the following commands in the \`frontend/\` directo
 - \`npm run test\` - Runs the complete test suite (both Nuxt and Sass).
 - \`npm run test:nuxt\` - Runs only Vue and Nuxt related tests located in \`tests/nuxt/\`.
 - \`npm run test:sass\` - Runs only stylesheet related tests located in \`tests/sass/\`.
+- \`npm run test:semantic\` - Runs only the semantic HTML validation tests located in \`tests/semantic/\`.
 - \`npm run pre-release\` - Executes the complete test suite and the build process prior to release.
 
 ## Nuxt Test Inventory
