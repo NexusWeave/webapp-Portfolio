@@ -1,0 +1,58 @@
+// Built-in dependencies
+@use 'sass:map' as map
+@use 'sass:list' as list
+
+// Third-party dependencies
+@use 'lumina-sass' as Devices
+@use 'lumina-sass/color' as color
+
+@forward 'lumina-sass/mix'
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
+
+@mixin card-shadow-box()
+    margin: 1rem
+    padding: 1rem
+    box-shadow: 0.25rem 0.25rem 1.25rem 0.25rem rgba(0, 0, 0, 0.1)
+
+@mixin card-base($radius: .5rem, $border: 0.0625rem solid black)
+    border-radius: $radius
+    border: $border
+    @include card-shadow-box()
+
+@mixin transitions($property: null, $duration: null, $timing-function: null, $delay: null, $behavior: null)
+
+    @if $property == null
+        $property: all
+    
+    @if $timing-function == null
+        $timing-function: ease-in-out
+
+    @if $duration == null
+        $duration: 0.3s
+
+    @if $delay == null
+        $delay: 0s
+
+    @if $behavior == null
+        $behavior: normal
+
+    transition: $property $duration $timing-function $delay $behavior
+
+@mixin circle-border()
+    block-size: 1rem
+    inline-size: 1rem
+    border-radius: 50%
+    display: inline-block
+    margin-inline-end: .5rem
+
+@mixin radius($radius)
+    border-radius: $radius
+
+@mixin border($style)
+    border: $style
+
+@mixin shadow($value)
+    box-shadow: $value
+
+

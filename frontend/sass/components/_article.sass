@@ -1,8 +1,11 @@
-@use '../mix/mixins' as mix
+// Third-party dependencies
 @use 'lumina-sass/color' as color
 
+// Internal dependencies
+@use '../utilities/utilities' as mix
+@use '../utilities/button-helpers' as btn
+
 $article-theme-color: color.$sea-green !default
-@use '../mix/button-mixins' as btn
 
 article
     header

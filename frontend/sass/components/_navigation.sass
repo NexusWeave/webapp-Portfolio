@@ -1,6 +1,9 @@
-@use '../mix/mixins' as mix
-@use '../mix/button-mixins' as btn
+// Third-party dependencies
 @use 'lumina-sass/color' as color
+
+// Internal dependencies
+@use '../utilities/utilities' as mix
+@use '../utilities/button-helpers' as btn
 
 nav.router-nav
     @include mix.nav-list-reset()

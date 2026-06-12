@@ -1,6 +1,10 @@
-// Card styles, with clear separation of concerns
-@use '../mix/mixins' as mix
+// Third-party dependencies
 @use 'lumina-sass/color' as color
+
+// Internal dependencies
+@use '../utilities/utilities' as mix
+
+// Card styles, with clear separation of concerns
 
 .card-container
     @include mix.card-base()
@@ -145,4 +149,4 @@
             @include mix.margin($block: 0.1rem, $inline: 0.25rem)
 
     @include mix.card-base()
-    @include mix.background-image(9rem, "/media/images/cards/portfolio-card.svg")
+    @include mix.background-image("/assets/images/cards/portfolio-card.svg", 9rem)

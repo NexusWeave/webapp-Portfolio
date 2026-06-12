@@ -1,5 +1,15 @@
-@use '../mix/mixins' as mix
+// Third-party dependencies
 @use 'lumina-sass/color' as color
+
+// Internal dependencies
+@use '../utilities/utilities' as mix
+@use 'lumina-sass/mix' as lumina-mix
+
+.alert-warning
+    @include lumina-mix.alert(color.$warning, 'warning')
+
+.alert-info
+    @include lumina-mix.alert(color.$info, 'info')
 
 .component-blue
     @include mix.background-color(color.$deep-midnight-blue, color.$neutral-off-white)

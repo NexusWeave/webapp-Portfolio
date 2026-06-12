@@ -1,24 +1,23 @@
+// Third-party dependencies
 @use 'lumina-sass' as *
-@use './mix/mixins' as mix
 @use 'lumina-sass/color' as color
 
-@forward './views/dev'
-@forward './views/portfolio'
+// Internal dependencies
+@use './utilities/utilities' as mix
 
-@forward './utils/cards'
-@forward './utils/icons'
-@forward './utils/article'
+@forward './pages/dev'
+@forward './assets/images'
+@forward './pages/portfolio'
+@forward './components/cards'
+@forward './components/icons'
+@forward './components/article'
+@forward './components/buttons'
+@forward './components/timeline'
+@forward './components/elements'
+@forward './components/navigation'
+@forward './utilities/generators'
+@forward './components/grid-container'
 
-@forward './utils/buttons'
-@forward './utils/timeline'
-
-@forward './utils/navigation'
-@forward './utils/components'
-@forward './utils/grid-container'
-
-@forward './mix/generators'
-
-@forward './media/images'
 
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap')
@@ -35,8 +34,7 @@ body
         @include mix.margin($block: 0.5rem, $inline: auto)
 
     @include mix.text-wrap-safe()
-    @include mix.font($font: 'Nunito')
-    @include mix.background-color(color.$neutral-off-white, color.$text-base-dark-grey)
+    @include apply-theme-colors(color.$neutral-off-white, color.$text-base-dark-grey, 'Nunito')
 
 .col-3
     margin: 0.5%

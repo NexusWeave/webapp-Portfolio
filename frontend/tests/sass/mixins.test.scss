@@ -1,5 +1,5 @@
 @use 'sass-true' as *;
-@use '../../sass/mix/_mixins.sass' as mixins;
+@use '../../sass/utilities/_utilities.sass' as mixins;
 
 @include test-module('Mixins') {
   @include test('logical-size mixin outputs inline and block sizes') {

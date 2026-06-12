@@ -1,15 +1,18 @@
+// Built-in dependencies
 @use 'sass:map' as map
-@use './mixins' as mix
-@use 'lumina-sass' as lumina
-@use './button-mixins' as btn
 @use 'sass:color' as sass-color
+
+// Third-party dependencies
+@use 'lumina-sass' as lumina
+@use 'lumina-sass/mix' as mix
 @use 'lumina-sass/color' as color
 @use 'lumina-sass/func' as func-color
 @use 'lumina-sass/contrast' as contrast
 
-@use '../maps/tags' as tag-map
-@use '../maps/tech-icons' as tech-map
-
+// Internal dependencies
+@use './button-helpers' as btn
+@use '../settings/tags' as tag-map
+@use '../settings/tech-icons' as tech-map
 
 @mixin tag-generator()
     @each $category, $maps in tag-map.$tags
@@ -61,7 +64,6 @@
             @else
                 .#{$tech}
                     @include mix.background-color($bg-color: $color-map, $text-color: $color-map)
-                    //background-color: $color-map
 
 @mixin article-theme-generator()
     @each $name, $color in tag-map.$tag-theme-colors
@@ -69,7 +71,7 @@
             --article-theme-color: #{$color}
 
 @include tag-generator()
-@include lumina.icon-generator()
+@include lumina.gen-icons()
 @include article-theme-generator()
 
 

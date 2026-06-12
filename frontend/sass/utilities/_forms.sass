@@ -1,0 +1,33 @@
+// Built-in dependencies
+@use 'sass:map' as map
+@use 'sass:list' as list
+
+// Third-party dependencies
+@use 'lumina-sass' as Devices
+@use 'lumina-sass/color' as color
+
+@forward 'lumina-sass/mix'
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
+
+
+@mixin input-styles($background-color)
+    input[type="range"]
+        &::-webkit-slider-runnable-track,
+        &::-moz-range-track
+            cursor: pointer
+            block-size: .9rem
+            border-radius: 1rem
+            -webkit-appearance: none
+            background: $background-color
+
+        &::-webkit-slider-thumb,
+        &::-moz-range-thumb
+            cursor: pointer
+            block-size: .9rem
+            border-radius: 1rem
+            -webkit-appearance: none
+            background: $background-color
+
+        inline-size: 100%
+
