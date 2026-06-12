@@ -6,13 +6,13 @@
 @use 'lumina-sass/mix' as lumina-mix
 
 .alert-warning
-    @include lumina-mix.alert(color.$warning, $icon: 'warning', $inline-size: 100%)
+    @include lumina-mix.alert(color.$warning, $icon: 'warning', $inline-size: 35rem)
     @include lumina-mix.gen-flexbox('flex-row')
     align-items: flex-start
     text-align: left
 
 .alert-info
-    @include lumina-mix.alert(color.$info, $icon: 'info', $inline-size: 100%)
+    @include lumina-mix.alert(color.$info, $icon: 'info', $inline-size: 35rem)
     @include lumina-mix.gen-flexbox('flex-row')
     align-items: flex-start
     text-align: left

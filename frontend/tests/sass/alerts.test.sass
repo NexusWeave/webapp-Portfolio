@@ -8,7 +8,7 @@
     @include assert
       @include output
         .alert-info
-          @include lumina-mix.alert(color.$info, $icon: 'info', $inline-size: 100%)
+          @include lumina-mix.alert(color.$info, $icon: 'info', $inline-size: 35rem)
           @include lumina-mix.gen-flexbox('flex-row')
           align-items: flex-start
           text-align: left
@@ -22,7 +22,7 @@
           padding: 1.5rem
           align-items: center
           border-radius: 0.5rem
-          inline-size: 100%
+          inline-size: 35rem
           @include mixins.border(0.0625rem solid rgba(0, 0, 0, 0.1))
           @include lumina-mix.font($weight: 800)
           @include lumina-mix.gen-flexbox('flex-col')
@@ -35,7 +35,7 @@
     @include assert
       @include output
         .alert-warning
-          @include lumina-mix.alert(color.$warning, $icon: 'warning', $inline-size: 100%)
+          @include lumina-mix.alert(color.$warning, $icon: 'warning', $inline-size: 35rem)
           @include lumina-mix.gen-flexbox('flex-row')
           align-items: flex-start
           text-align: left
@@ -49,7 +49,7 @@
           padding: 1.5rem
           align-items: center
           border-radius: 0.5rem
-          inline-size: 100%
+          inline-size: 35rem
           @include mixins.border(0.0625rem solid rgba(0, 0, 0, 0.1))
           @include lumina-mix.font($weight: 800)
           @include lumina-mix.gen-flexbox('flex-col')
