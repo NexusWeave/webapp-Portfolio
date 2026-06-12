@@ -12,7 +12,7 @@
                     <NavigationNavMenu v-if="!isPost && !!article.anchor" :data="article.anchor" :class="['nav-bar', 'read-more']"/>
                 </section>
             </template>
-            <template #fallback> <section class="loading">Laster innlegg til logger...</section> </template>
+            <template #fallback> <section class="alert-info"><p>Laster innlegg til logger...</p></section> </template>
         </Suspense>
     </section>
 </template>

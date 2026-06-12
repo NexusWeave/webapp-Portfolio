@@ -19,7 +19,14 @@
             </header>
 
             <section v-if="data.body" class="timeline-body-content">
-                <ContentRenderer :value="data.body" />
+                <Suspense>
+                    <template #default>
+                        <ContentRenderer :value="data.body" />
+                    </template>
+                    <template #fallback>
+                        <section class="alert-info"><p>Laster innhold...</p></section>
+                    </template>
+                </Suspense>
             </section>
 
             <section class="timeline-subjects-list flex-col">
@@ -61,7 +68,14 @@
                     <transition name="expand">
                         <div v-if="sub.body && expandedSubjects.includes(i)" class="subject-details">
                             <div class="details-content">
-                                <MDC :value="sub.body" />
+                                <Suspense>
+                                    <template #default>
+                                        <MDC :value="sub.body" />
+                                    </template>
+                                    <template #fallback>
+                                        <section class="alert-info"><p>Laster beskrivelse...</p></section>
+                                    </template>
+                                </Suspense>
                             </div>
                         </div>
                     </transition>

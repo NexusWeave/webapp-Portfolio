@@ -15,7 +15,7 @@
                     </section>
                 </section>
             </template>
-            <template #fallback> <section class="loading">Kalkulerer Kode aktivitet...</section> </template>
+            <template #fallback> <section class="alert-info"><p>Kalkulerer Kode aktivitet...</p></section> </template>
         </Suspense>
         </section>
         
@@ -30,7 +30,7 @@
                         <MDC v-if="item.coop && index === 0" :value="item.coop" class="bio-content"></MDC>
                     </article>
                 </template>
-                <template #fallback> <section class="loading">Laster biografi...</section> </template>
+                <template #fallback> <section class="alert-info"><p>Laster biografi...</p></section> </template>
             </Suspense>
         </section>
     </section>

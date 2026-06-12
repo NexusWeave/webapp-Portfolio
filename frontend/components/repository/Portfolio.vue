@@ -27,10 +27,9 @@
 
         </section>
 
-        <section class="flex-col" v-if="!hasProjects">
-        <p>Github prosjekter er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="errorLink"/> for mer informasjon.</p>
-        <p>for å se min generelle GitHub-aktivitet og historikk. Jeg jobber med å oppdatere og strukturere mine nyeste kodeeksempler.</p>
-    </section>
+        <div class="alert-info" v-if="!hasProjects">
+            <p>Github prosjekter er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="errorLink"/> for mer informasjon for å se min generelle GitHub-aktivitet og historikk. Jeg jobber med å oppdatere og strukturere mine nyeste kodeeksempler.</p>
+        </div>
     </section>
 </template>
 

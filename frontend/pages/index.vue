@@ -1,21 +1,37 @@
 <template>
     <article class="article-wrapper flex-col">
         <h2> Siste tekniske logger </h2>
-        <section class="blog-section flex-wrap-row-items-center-justify-evenly">
-            <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
-                <ArticleHead :article="post" />
-            </section>
-        </section>
-        <NuxtLink to="/logs" class="btn btn-primary mt-4">Se alle logger</NuxtLink>
+        <Suspense>
+            <template #default>
+                <section class="blog-section flex-wrap-row-items-center-justify-evenly">
+                    <section v-for="post in mappedPosts" :key="post.id" class="blog-content">
+                        <ArticleHead :article="post" />
+                    </section>
+                </section>
+            </template>
+            <template #fallback>
+                <article class="alert-info">
+                    <p>Laster inn logger...</p>
+                </article>
+            </template>
+        </Suspense>
     </article>
 
     <section class="flex-wrap-row-items-center-justify-evenly">
-        <Timeline v-if="academicData.length > 0"
-            title="Karriere & Utdanning"
-            :data="academicData"
-            :cls = "['component-blue', 'timeline-container',
-            'flex-wrap-row-justify-evenly', 'component-w-g-b']"
-        />
+        <Suspense>
+            <template #default>
+                <Timeline v-if="academicData.length > 0"
+                    title="Karriere & Utdanning"
+                    :data="academicData"
+                    :cls="['component-blue', 'timeline-container', 'flex-wrap-row-justify-evenly', 'component-w-g-b']"
+                />
+            </template>
+            <template #fallback>
+                <section class="alert-info">
+                    <p>Laster inn tidslinje...</p>
+                </section>
+            </template>
+        </Suspense>
 
     </section>
     <RepositoryPortfolio /> 
@@ -26,7 +42,7 @@
     definePageMeta( { order: 0, label: 'Portefølje', description: "Hovedsiden som gir en oversikt over Kristoffers prosjekter, akademiske reise og de nyeste tekniske loggene. Fungerer som en inngangsport til hele nettstedet." });
 
     //  --- Import dependencies & Types
-    import { ref, computed } from 'vue';
+    import { computed } from 'vue';
     import { fetchCollection } from '#imports';
     
     import { blogPagination } from '@/composables/pagination';

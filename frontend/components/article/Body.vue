@@ -12,7 +12,7 @@
                 </section>
             </section>
         </template>
-        <template #fallback> <section class="loading">Laster innhold i loggen...</section> </template>
+        <template #fallback> <section class="alert-info"><p>Laster innhold i loggen...</p></section> </template>
     </Suspense>
 </template>
 

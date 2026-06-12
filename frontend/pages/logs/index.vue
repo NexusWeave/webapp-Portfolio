@@ -22,37 +22,48 @@
         </section>
     </section>
 
-    <template v-if="postsByTag && postsByTag.length > 0">
-        <h2> Tekniske Logger filtrert etter {{ label.charAt(0).toUpperCase() + label.slice(1).replace(/-/g, ' ') }} </h2>
-        <section class="flex-wrap-row flex-center" v-if="archived && archived.length > 0">
-            <article v-for="post in postsByTag">
-                <ArticleHead :key="post.id" :article="post" />
-            </article>
-        </section>
-    </template>
+    <Suspense>
+        <template #default>
+            <div>
+                <template v-if="postsByTag && postsByTag.length > 0">
+                    <h2> Tekniske Logger filtrert etter {{ label.charAt(0).toUpperCase() + label.slice(1).replace(/-/g, ' ') }} </h2>
+                    <section class="flex-wrap-row flex-center" v-if="archived && archived.length > 0">
+                        <article v-for="post in postsByTag">
+                            <ArticleHead :key="post.id" :article="post" />
+                        </article>
+                    </section>
+                </template>
 
-    <template v-if="current && current.length > 0 && postsByTag && postsByTag.length === 0">
-        <h2> Siste Tekniske Logger </h2>
-        <section class="flex-wrap-row flex-center">
-            <article v-for="post in current">
-                <ArticleHead  v-if="!post.isArchived" :key="post.id" :article="post" />
-            </article>
-        </section>
-    </template>
+                <template v-if="current && current.length > 0 && postsByTag && postsByTag.length === 0">
+                    <h2> Siste Tekniske Logger </h2>
+                    <section class="flex-wrap-row flex-center">
+                        <article v-for="post in current">
+                            <ArticleHead  v-if="!post.isArchived" :key="post.id" :article="post" />
+                        </article>
+                    </section>
+                </template>
 
-    <template v-if="totalPages && totalPages > 0 && postsByTag && postsByTag.length === 0">
-        <h2> Eldre Tekniske Logger </h2>
-        <section v-if="totalPages > 1" class="flex-wrap-row flex-center pagination-container">
-            <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
-                <span> {{ currentPage }} / {{ totalPages }}</span>
-            <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
-        </section>
-        <section class="flex-wrap-row flex-center" v-if="archived && archived.length > 0">
-            <article v-for="post in archived">
-                <ArticleHead v-if="post.isArchived" :key="post.id" :article="post" />
+                <template v-if="totalPages && totalPages > 0 && postsByTag && postsByTag.length === 0">
+                    <h2> Eldre Tekniske Logger </h2>
+                    <section v-if="totalPages > 1" class="flex-wrap-row flex-center pagination-container">
+                        <NavigationButton v-if="currentPage > 1" :data="prevPage" :cls="['button', 'pagination-btn']"/>
+                            <span> {{ currentPage }} / {{ totalPages }}</span>
+                        <NavigationButton v-if="currentPage < totalPages" :data="nextPage" :cls="['button', 'pagination-btn']"/>
+                    </section>
+                    <section class="flex-wrap-row flex-center" v-if="archived && archived.length > 0">
+                        <article v-for="post in archived">
+                            <ArticleHead v-if="post.isArchived" :key="post.id" :article="post" />
+                        </article>
+                    </section>
+                </template>
+            </div>
+        </template>
+        <template #fallback>
+            <article class="alert-info">
+                <p>Laster inn logger...</p>
             </article>
-        </section>
-    </template>
+        </template>
+    </Suspense>
     
 </template>
 <script lang="ts" setup>
