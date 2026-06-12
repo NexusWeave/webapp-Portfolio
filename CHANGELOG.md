@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.26.1...v1.27.0) (2026-06-12)
+
+
+### Features
+
+* trigger new release ([978ce14](https://github.com/NexusWeave/webapp-Portfolio/commit/978ce140e1246caaf1a631001734fcaee07795e6))
+
 ## [1.26.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.26.0...v1.26.1) (2026-06-11)
 
 
