@@ -10,7 +10,6 @@ status: |
   **Prinsipper** - Arkitektur, Modulisering
 
   #### Dagens Aktiviteter
-
   * Løst kritiske kompileringsfeil i TinaCMS ved å rette opp i absolutte stier og alias-håndtering.
   * Rettet en `ReferenceError` i kjernefunksjonaliteten for sidegenerering i redaktørpanelet.
   * Refaktorert TinaCMS-kolleksjoner og maler til en mer modulær struktur for bedre oversikt.
@@ -20,13 +19,12 @@ status: |
   * Ryddet i prosjektets konfigurasjonsfiler og låst avhengigheter for stabil drift.
 
   #### Motivasjon & Energi - 10 / 10
-
   Veldig tilfredsstillende å se systemet kjøre knirkefritt igjen!
 sources: ''
 ---
 
 Dagen startet med utfordringer i redaktørpanelet (TinaCMS), der build-prosessen feilet på grunn av problemer med filstier og en udefinert variabel i kjerne-logikken. Samtidig var det behov for å rydde opp i stilarkene og type-definisjonene for å sikre at prosjektet forblir oversiktlig og lett å utvide.
-Hovedmålet var å raskt gjenopprette stabiliteten i redaktørpanelet, samtidig som jeg gjennomførte en nødvendig refaktorering av CMS-skjemaene. Jeg ønsket også å forbedre kodestil og typesikkerhet for å redusere risikoen for fremtidige "runtime errors".
+Hensikten var å raskt gjenopprette stabiliteten i redaktørpanelet, samtidig som jeg gjennomførte en nødvendig refaktorering av CMS-skjemaene. Jeg ønsket også å forbedre kodestil og typesikkerhet for å redusere risikoen for fremtidige "runtime errors".
 
 * Jeg identifiserte at TinaCMS sin build-prosess ikke klarte å håndtere "~/"-aliaser for visse hjelpefiler. Ved å konvertere disse til relative stier i alle kolleksjons- og mal-filer, sikret jeg at build-verktøyet fant de nødvendige ressursene uavhengig av miljø.
 * Jeg rettet en kritisk `ReferenceError` i `createPage`-funksjonen, der en variabel var feilstavet. Dette var en direkte årsak til at redaktørpanelet ikke klarte å generere sider basert på malene.

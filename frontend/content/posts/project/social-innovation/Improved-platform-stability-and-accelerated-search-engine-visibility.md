@@ -10,7 +10,6 @@ status: |
   **Prinsipper** - Brukeropplevelse, SEO
 
   #### Dagens Aktiviteter
-
   * Lagt inn støtte for venteskjermer på artikler, gallerier og mediekort. Dette skal fjerne usikkerheten hos brukere med lav nett forbindelse, ved at nettsiden nå viser at innholdet er på vei i stedet for at siden ser tom eller defekt ut.
   * Forbedret logikken for hvordan systemet kobler sammen forfattere og artikler. Dette sikrer at riktig skribent alltid krediteres.
   * Fjernet utdatert og overflødig kode (inkludert ubrukte funksjoner) og forenklet kompliserte beregninger. Dette reduserer risikoen for fremtidige system feil.
@@ -18,14 +17,13 @@ status: |
   * Organisert prosjektfilene på en mer oversiktlig måte, som gjør at utviklere kan jobbe mer effektivt og reduserer tiden det tar å feilsøke i fremtiden.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kan bli.
 sources: ''
 ---
 
 Prosjektet hadde enkelte utfordringer knyttet til hvordan innhold ble presentert for brukerne mens det lastet, samt enkelte svakheter i hvordan forfatterinformasjon og datoer ble koblet sammen. Dette medførte en risiko for en uventet brukeropplevelse og økt tidsbruk ved vedlikehold og videreutvikling.
 
-Målet var å forbedre brukeropplevelsen, fjerne ukorrektheter i visningen og rydde i det digitale grunnlaget. Jeg ønsket å sikre at nettsiden føles rask og stabil for besøkede, samtidig som jeg legger til rette for mer effektiv jobbing i fremtiden.
+Hensikten var å forbedre brukeropplevelsen, fjerne ukorrektheter i visningen og rydde i det digitale grunnlaget. Jeg ønsket å sikre at nettsiden føles rask og stabil for besøkede, samtidig som jeg legger til rette for mer effektiv jobbing i fremtiden.
 
 * Jeg har lagt inn visuelle indikatorer som gir brukeren umiddelbar tilbakemelding mens innholdet hentes, slik at man unngår inntrykket av at siden har fryst.
 * Logikken bak kobling av forfattere og artikler er forbedret for å sikre at riktig informasjon alltid vises på tvers av hele nettstedet.

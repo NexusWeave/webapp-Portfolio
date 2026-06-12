@@ -23,7 +23,7 @@ sources: ''
 
 Systemet som håndterer bedriftens dataflyt og navigasjonslenker, produserte duplikater i de registrerte filene. Dette førte til at informasjonen som ble lagret ikke var unik, dette skapte rot i datagrunnlaget og forstyrret den tiltenkte flyten i systemet. For brukerne ville dette bety en uforutsigbar opplevelse og risiko for feilinformasjon.
 
-Målet var å garantere at hver eneste lenke og underseksjon kun registreres én gang. Oppgaven innebar å finne grunnen til at systemet tillot duplikater, og implementere en funksjonalitet som automatisk sørger for at informasjonen som lastes inn er unik og korrekt strukturert.
+Hensikten var å garantere at hver eneste lenke og underseksjon kun registreres én gang. Oppgaven innebar å finne grunnen til at systemet tillot duplikater, og implementere en funksjonalitet som automatisk sørger for at informasjonen som lastes inn er unik og korrekt strukturert.
 
 * Jeg gjennomførte en systematisk gjennomgang av innholdstjenesten for å finne kilden til feilen.
 * Fant det spesifikke punktet i prosessen der data blir sortert og kontrollert mot brukertilganger.

@@ -10,7 +10,6 @@ status: |
   **Prinsipper** - UU
 
   #### Dagens Aktiviteter
-
   * Fjernet utdaterte notater, midlertidige loggfiler og teknisk rusk for å skape et rent og effektivt utviklingsmiljø.
   * Omorganisert prosjektfilene og plassert skjemakomponenter i en logisk mappestruktur for å redusere tid brukt på leting og øke produksjonstiden.
   * Tilrettelagt det interne arbeidsområdet for å øke den generelle produktiviteten i utviklingsteamet.
@@ -25,21 +24,20 @@ status: |
   * Rettet den tekniske koblingen mellom ledetekster og inntastingsfelt for å forbedre både brukervennlighet og universell utforming.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kan bli, opplevd litt spenning i hode.
 sources: ''
 ---
 
 Medlemsportalen og skjemasystemet hadde en del teknikske etterslep, som gjorde det unødvendig komplisert for utviklere å tilpasse skjemaer til nye behov. Den underliggende koden hadde noen løse tråder som gjorde det vanskelig for utviklere å oppdage feil før de nådde den live nettsiden, noe som utgjorde en risiko for stabiliteten. Koden hadde mindre skjønnhetsfeil, som datoer ikke ble vist riktig i lister hvis informasjon manglet, samt teknisk etterslep fra «*legacy koden*» som lå igjen i systemet. Det fantes også små visuelle uregelmessigheter i ikoner og navigasjonslenker som kunne få nettsiden til å virke ustabil og mindre profesjonell. I tillegg var den interne organiseringen av prosjektfilene ikke optimal, noe som førte til at nye utviklere ville bruke tid på å finne frem til riktige verktøy.
 
-Hovedmålet med arbeidet var å optimalisere det interne arbeidsområde for å øke produktiviteten.
+Hensikten med arbeidet var å optimalisere det interne arbeidsområde for å øke produktiviteten.
 
 * Forenkle brukeropplevelsen i medlemsportalen ved å gjøre navigasjonen og flyten mer intuitivt for brukeren, slik at portalen oppleves som profesjonell og enkel å bruke
 * Optimalisere skjemasystemet ved å transformere skjemaene til et mer fleksibelt og pålitelig system, som enkelt kan tilpasses nye behov for kunden uten omfattende spesial koding.
 * Styrke grunnlaget i applikasjonen ved å forbedre feilsikringen, som forhindrer tekniske feil før de når brukeren ,som gjør at fremtidige vedlikehold og videreutvikling mer vennlig.
 * Finpusse sluttproduktet ved å rette småfeil og fjerne unødvendig rot, som skaper unødvendig støy i systemet.
 
-Handlingen jeg gjorde for å oppnå målet mitt :
+Handlingen jeg gjorde for å oppnå hensikten mitt :
 
 * Fjernet utdatert notater, og midlertidige loggfiler for å skape et rent og effektivt miljø i prosjektet.
 * Samlet styringen av hvordan ikoner vises på ett sted, noe som sikrer visuell konsistens og gjør det enklere å oppdatere designet i fremtiden.

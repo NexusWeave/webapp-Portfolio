@@ -8,22 +8,20 @@ status: |
   **Teknologi** - Drawio, Markdown
   **Verktøy** - Dokumentasjon, Arkitektur
 
-  #### Dagens Aktiviteter:
-
+  #### Dagens Aktiviteter
   * Ryddet opp i arkitekturdokumentasjonen slik at den er lettere å navigere i.
   * Oppdatert system- og verktøy-diagrammer fra Mermaid til Drawio slik at de stemmer med hvordan koden ser ut.
   * Standardisert dokumentasjon av prosjektstrukturen i `README` og `architecture.md`.
   * Fjernet gammel og utdatert dokumentasjon som bare skapte forvirring.
 
-  #### Motivasjon & Energi - 8 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Jeg er fornøyd med innsatsen i dag.
 sources: ''
 ---
 
 Dokumentasjonen hadde begynt å bli litt utdatert, og det var vanskelig å få et raskt blikk på hvordan systemet hadde blitt bygget opp.
 
-Målet var å forbedre strukturen i dokumentasjonen, og flytte over til å bruke Drawio isteden for Mermaid for å oppnå bedre kontroll over oversiktene.
+Hensikten var å forbedre strukturen i dokumentasjonen, og flytte over til å bruke Drawio isteden for Mermaid for å oppnå bedre kontroll over oversiktene.
 
 * Ved å flytte diagrammene fra Mermaid til Drawio, har jeg fått bedre kontroll på kart-oversikten over systemet.
 * Jeg har gått over den interne dokumentasjonen for å sikre at den reflekterer strukturen som er i dag.

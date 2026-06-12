@@ -9,19 +9,17 @@ status: |
   **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
-
   * Uoversiktlig artikkeloversikt som svekket brukeropplevelsen.Valgt løsning: Implementert filtrering basert på eksisterende mappestruktur for maksimal stabilitet
   * Automatisert kategoriseringen for å fjerne manuelt arbeid ved fremtidige publiseringer. Økt profesjonalitet, redusert tidsbruk for leseren og null behov for løpende vedlikehold.
 
-  #### Motivasjon & Energi 7 / 10
+  #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
-
 sources: ''
 ---
 
 Jeg merka at det var litt vrient for folk å finne frem til de artiklene de faktisk ville lese. Alt lå egentlig i en stor haug, og det gjorde hele brukeropplevelsen ganske rotete.
 
-Målet var å få på plass en løsning som sorterer artiklene helt av seg selv. Den største nøtta var å finne ut hvilken metode som var mest stabil over tid: å bruke mappestrukturen eller å drive med manuell tagging.
+Hensikten var å få på plass en løsning som sorterer artiklene helt av seg selv. Den største nøtta var å finne ut hvilken metode som var mest stabil over tid: å bruke mappestrukturen eller å drive med manuell tagging.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

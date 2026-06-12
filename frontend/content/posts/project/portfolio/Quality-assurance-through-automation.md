@@ -13,21 +13,19 @@ status: |
   **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
-
   * Startet arbeidet med å endre hvordan systemet henter og analyserer informasjon for å gjøre porteføljen mer selvgående.
   * Utviklet en funksjon som automatisk henter ut en fullstendig oversikt over alle filer i hvert prosjekt.
   * La til logikk som umiddelbart setter riktig merkelapp på prosjektene basert på filene systemet finner.
   * Kontrollert at den nye metoden fjerner behovet for manuelt vedlikehold og sikrer at all informasjon i porteføljen er korrekt.
 
-  #### Motivasjon og energi - 10 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kan bli
 sources: ''
 ---
 
 For at besøkende på nettsiden min raskt skal kunne finne frem til relevante prosjekter, trengte jeg en tydelig kategorisering av teknologien bak hvert prosjekt, slik at det er lettere for besøkende å finne ut hva jeg kan. Å sortere dette manuelt ville vært en ineffektiv bruk av tid og en løsning som ikke ville tåle fremtidig vekst i antall prosjekter.
 
-Målet var å forbedre denne situasjonen, ved å utvikle et system som automatisk gjenkjenner om et prosjekt er fokusert på det visuelle, logikken bak eller begge deler. Derfor ble min oppgave å modernisere hele dataflyten – fra hvordan informasjonen lagres til hvordan systemet analyserer innholdet i hvert enkelt prosjekt.
+Hensikten var å forbedre denne situasjonen, ved å utvikle et system som automatisk gjenkjenner om et prosjekt er fokusert på det visuelle, logikken bak eller begge deler. Derfor ble min oppgave å modernisere hele dataflyten – fra hvordan informasjonen lagres til hvordan systemet analyserer innholdet i hvert enkelt prosjekt.
 
 * Jeg utviklet en funksjon som automatisk henter ut den komplette filoversikten for hvert prosjekt direkte fra Github.
 * Jeg definerte faste kjennetegn som skiller de ulike teknologitypene fra hverandre.

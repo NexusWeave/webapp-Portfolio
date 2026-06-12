@@ -10,7 +10,6 @@ status: |
   **Prinsipper** - SEO
 
   #### Dagens Aktiviteter
-
   * Samlet styring av menyer og metadata i en dedikert logikk-modul.
   * Rettet kommunikasjonssvikten mellom server og nettleser i tidslinje-, bilde- og prosjektkomponenter.
   * La til menneskevennlige merkelapper for å dele den tekniske loggen inn i kategorier, som forbedrer lesbarhet og filtrering.
@@ -18,14 +17,13 @@ status: |
   * Fjernet unødvendige `debug`-logger og oppdaterte kodedokumentasjon.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kunne bli.
 sources: ''
 ---
 
 Prosjektet slet med en hybridløsning der jeg måtte dulle med navigasjon og SEO-info manuelt overalt. Det ble fort rotete. Samtidig var systemet litt treigt fordi ting skjedde synkront og låste opp ressurser, og det dukka opp feil når ting skulle lastes inn i nettleseren – noe som ga både visuell flimring og stygge advarsler i konsollen.
 
-Målet var å få alt inn i en "Single Source of Truth" for å automatisere både navigasjon og SEO. Jeg skulle også rydde opp i innholdsarkivet og sørge for at alt lasta inn knirkefritt uten layout-skift eller hydrerings-tull.
+Hensikten var å få alt inn i en "Single Source of Truth" for å automatisere både navigasjon og SEO. Jeg skulle også rydde opp i innholdsarkivet og sørge for at alt lasta inn knirkefritt uten layout-skift eller hydrerings-tull.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

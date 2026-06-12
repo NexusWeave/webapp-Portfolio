@@ -10,7 +10,6 @@ status: |
   **Prinsipper** - Responsivt Design, UU, Dataintegritet
 
   #### Dagens Aktiviteter
-
   * Implementerte en fullskjerm transparent hamburger-meny for små enheter for å forbedre mobilnavigasjon.
   * Standardiserte alle brytningspunkter (XS til 5XL) i prosjektet for å følge moderne industristandarder.
   * Refaktorerte Sass-mixins for dynamisk håndtering av medieforespørsler og moderniserte fargefunksjoner.
@@ -21,12 +20,11 @@ status: |
   * Gjennomførte en omfattende "Kristoffer-style" refaktorering for å øke lesbarheten og modulariteten i koden.
 
   #### Motivasjon & Energi - 10 / 10
-
   Utrolig tilfredsstillende å se arkitekturen falle på plass med så rene løsninger!
 sources: ''
 ---
 
-Dagens arbeid fokuserte på å tette tekniske gap i nettsidens visuelle og redaksjonelle struktur. Det eksisterende responsive systemet bar preg av vilkårlige verdier, og redaktørpanelet manglet logikk for å veilede brukerne gjennom universell utforming. Hovedmålet var å transformere disse svakhetene til styrker gjennom en konsekvent anvendelse av moderne utviklingsprinsipper og en ryddig, modulær arkitektur.
+Dagens arbeid fokuserte på å tette tekniske gap i nettsidens visuelle og redaksjonelle struktur. Det eksisterende responsive systemet bar preg av vilkårlige verdier, og redaktørpanelet manglet logikk for å veilede brukerne gjennom universell utforming. Hensikten var å transformere disse svakhetene til styrker gjennom en konsekvent anvendelse av moderne utviklingsprinsipper og en ryddig, modulær arkitektur.
 
 * Jeg startet med å redesigne navigasjonen for små skjermer. Ved å implementere en transparent hamburger-meny som trigger et fullskjerm-overlay, har jeg sikret en moderne brukeropplevelse uten å kompromittere det klassiske desktop-oppsettet. Dette ble støttet av en totalrenovering av prosjektets brytningspunkter, som nå følger etablerte standarder fra 320px til 2560px.
 * For å fremtidssikre CSS-koden, erstattet jeg utdaterte funksjoner med det moderne 'sass:color'-modulen. Jeg refaktorerte også sentrale mixins til å bruke dynamisk nøkkeloppslag i stedet for hardkodede betingelser, noe som gjør det responsive rammeverket langt mer vedlikeholdsvennlig.

@@ -8,8 +8,7 @@ status: |
   **Teknologi** - Python
   **Verktøy** - TypeScript, KI
 
-  #### Dagens Aktiviteter:
-
+  #### Dagens Aktiviteter
   * Oppgradert verktøyet slik at det nå automatisk kjenner igjen og fjerner uinteressant informasjon og "støy" fra nettsider.
   * Innført nye metoder som renser nettsidene for unødvendige elementer før informasjonen blir lagret.
   * Gjort det mulig for verktøyet å hente informasjon fra mange steder samtidig, i stedet for å måtte vente på én og én oppgave.
@@ -18,7 +17,6 @@ status: |
   * Sikret at sluttresultatet består av ferdigvaskede data med høy nøyaktighet, noe som fjerner behovet for manuelt etterarbeid.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kan bli !
 sources: ''
 ---

@@ -24,7 +24,7 @@ sources: ''
 
 Systemet har en Rollebasert tilgangskontroll som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
 
-Oppgaven min var å feilsøke for å finne ut grunnen til at instruksjonslisten og mottakeren i systemet ikke lenger kommuniserte på samme språk. Som en konsekvens av at de to systemene er avhengig av hverandre for at sikkerhets laget skal fungere, var målet mitt å korrigere feilene slik at systemet kunne vertifisere tilganger og sikre en normal oppstart.
+Oppgaven min var å feilsøke for å finne ut grunnen til at instruksjonslisten og mottakeren i systemet ikke lenger kommuniserte på samme språk. Som en konsekvens av at de to systemene er avhengig av hverandre for at sikkerhets laget skal fungere, var hensikten mitt å korrigere feilene slik at systemet kunne vertifisere tilganger og sikre en normal oppstart.
 
 Jeg gjennomførte en systematisk feilsøkingsprosess i sikkerhetstjenesten for å identifisere hvorfor de tilgangsreglene ikke ble akseptert av systemet. Ved dykke ned i koden oppdaget jeg at kilden til utfordringen var en manglende klargjøring av klassen `AccessService` som skulle ta imot dataene.
 

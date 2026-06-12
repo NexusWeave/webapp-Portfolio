@@ -8,6 +8,17 @@ status: |
   **Teknologi** - Nuxt
   **Verktøy** - GitHub Actions, Sass
   **Prinsipper** - Semantikk, UU
+
+  #### Dagens Aktiviteter
+  * La til et verktøy som automatisk sjekker at nettsiden er bygget opp riktig.
+  * Skrev om veiledningene og dokumentasjonen til et enklere og tydeligere språk.
+  * Ryddet opp og endret navn på noen mapper slik at det er lettere å finne frem i koden for nettsidens utseende.
+  * Gjorde designet luftigere ved å øke avstanden mellom tekst og ikoner.
+  * Gjorde det enklere å sortere og filtrere på emneknagger (<abbr title="Nøkkelord for kategorisering">tags</abbr>) på loggsiden.
+  * Fjernet overflødig "støy" som logget i bakgrunnen og ubrukte oppgaver i GitHub Actions.
+
+  #### Motivasjon & Energi - 10 / 10
+  Dagen har vært så fin den kan bli !
 ---
 * La til et verktøy som automatisk sjekker at nettsiden er bygget opp riktig.
 * Skrev om veiledningene og dokumentasjonen til et enklere og tydeligere språk.

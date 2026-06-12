@@ -10,21 +10,19 @@ status: |
   **Prinsipper** - Datakvalitet, Fallbacks, Standardisering
 
   #### Dagens Aktiviteter
-
   * Jeg har skrevet om logikken som styrer artikler, forfattere og arrangementer. Dette betyr at systemet nå automatisk sorterer arrangementer etter dato og kobler riktig forfatter til riktig artikkel, noe som sparer manuelt arbeid og sikrer riktig informasjon.
   * Jeg har lagt inn tekniske sikkerhetsmekanismer (fallbacks) som hindrer at nettsiden oppleves som om den er tom eller krasjer dersom innholdet bruker litt tid på å laste. Dette gir en rask brukeropplevelse uten avbrudd.
   * Jeg har fjernet store mengder utdatert og ubrukt kode. Samtidig har jeg rettet opp i hvordan systemet gjenkjenner medlemskap og partnerskap, slik at kunden kan legge ut sine medlemmer på nettsiden sin.
   * Ved å rydde i systemets kjerne har jeg sørget for at dataene som flyter gjennom nettsiden er mer nøyaktige. Dette gjør det enklere for foreningen å rulle ut nye artikler i fremtiden uten å støte på uventede feil.
 
-  #### Motivasjon & Energi - 9 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli, selv om det har vært litt små irriterende med uforutsigbare feil.
 sources: ''
 ---
 
 Prosjektet tekniske fundament hadde over tid blitt oppdelt. Forskjellige deler av siden brukte ulike metoder for å vise frem innhold, som artikler, forfattere og arrangementer. Dette gjorde siden tyngre å laste, økte risikoen for småfeil i visningen (som feil datoformater), og gjorde det tidkrevende for selv små endringer uten at noe annet ble påvirket.
 
-Målet var å rydde opp i nettsidens logikk for å sikre en mer stabil og profesjonell brukeropplevelse. Oppgaven innebar å standardisere hvordan legoklossene brukes, forenkle logikken bak visning av innhold, og fjerne gammel "gjeld" (ubrukt kode) som bare tok opp plass.
+Hensikten var å rydde opp i nettsidens logikk for å sikre en mer stabil og profesjonell brukeropplevelse. Oppgaven innebar å standardisere hvordan legoklossene brukes, forenkle logikken bak visning av innhold, og fjerne gammel "gjeld" (ubrukt kode) som bare tok opp plass.
 
 Jeg har gjennomført en omfattende forbedring av nettsidens kjerne:
 

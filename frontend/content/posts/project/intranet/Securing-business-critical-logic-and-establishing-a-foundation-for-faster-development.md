@@ -24,7 +24,7 @@ sources: ''
 
 Systemets oppbygning var preget av en sammenvevd struktur der kjernefunksjonaliteten var låst til spesifikke tekniske verktøy og eksterne biblioteker. Dette skapte en teknisk blokkering som gjorde det umulig å utføre automatiserte tester. For bedriften innebar dette økt risiko for feil ved oppdateringer, tregere utviklingstid og manglende innsyn i systemets faktiske helsetilstand.
 
-Hovedmålet var å fjerne de strukturelle hindringene for å muliggjøre kvalitetssikring og testing. Dette krevde en fullstendig omorganisering av hvordan systemet er bygget opp, slik at forretningslogikken blir uavhengig av tekniske detaljer. Oppgaven var tredelt:
+Hensikten var å fjerne de strukturelle hindringene for å muliggjøre kvalitetssikring og testing. Dette krevde en fullstendig omorganisering av hvordan systemet er bygget opp, slik at forretningslogikken blir uavhengig av tekniske detaljer. Oppgaven var tredelt:
 
 * Omstrukturere prosjektet .
 * Klargjøre for automatiserte tester .

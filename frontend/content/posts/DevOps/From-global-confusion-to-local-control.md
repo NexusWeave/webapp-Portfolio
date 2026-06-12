@@ -9,7 +9,6 @@ status: |
   **Verktøy** - CodeVS, TypeScript
 
   #### Dagens Aktiviteter
-
   * Identifiserte at operativsystemet ikke fant det Virtuelt miljøet, noe som hindret tilgang til nødvendige konfigurasjonsfiler og gjorde verktøyene upålitelige.
   * Opprettet en fysisk destinasjon for lokale verktøy ved hjelp av kommandoen `mkdir -p \~/.local/bin` for å sikre at systemet har et fast punkt å lete etter verktøy i.
   * Etablerte en fast struktur som gjør at maskinen automatisk finner og kobler seg til riktig virtuelt miljø uten manuelt arbeid.
@@ -18,14 +17,13 @@ status: |
   * Reduserte tidsbruk og fjernet behovet for manuell intervensjon ved hver oppstart av prosjektet.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kan bli
 sources: ''
 ---
 
 Under oppstarten av arbeidsmiljøet for et prosjekt oppstod det en situasjon der operativ systemet ikke klarte å finne riktig Virtuelt miljø. Dette hindret systemet å lese de nødvendige konfigurasjonsfilene, noe som førte til at utviklingsverktøyet ikke var pålitelig, som det skulle være. Jeg hadde et behov for at maskinen skulle vite nøyaktig hvor den skulle lete for å finne prosjektets virtuelle miljø, uten at jeg manuelt måtte gripe inn.
 
-Målet mitt var å bygge et virtuelt miljø og automatisere rutinen ved å koble opp mot den spesifikke miljøet.
+Hensikten mitt var å bygge et virtuelt miljø og automatisere rutinen ved å koble opp mot den spesifikke miljøet.
 
 * Ved å bruk av kommandoen `mkdir -p ~/.local/bin`, laget jeg  en fysisk destinasjon for lokale verktøy og snarveier. Dette gjorde det mulig for systemet å se og koble seg opp mot korrekt virtuelt miljø. Jeg vertifiserte deretter koblingen med kommando `which python` som forteller brukeren hvilken kode miljø som er aktivt i øyblikket, med dette sikret jeg at alt pekte på den riktige  versjonen slik at jeg kunne installere riktige oppskrifter for hjelpe filer.
 * Ved å automatisere rutinen å koble seg opp mot det virtuelle miljøet, vertifiserte jeg at systemet kunne finne prosjektets python programvare.

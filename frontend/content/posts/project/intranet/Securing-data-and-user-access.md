@@ -27,7 +27,7 @@ sources: |
 
 Bedriften hadde behov for å styrke sikkerheten og kontrollen rundt hvem som har tilgang til sensitivt innhold i systemet våres. Uten et rollebasert  system var det utfordrende å skille studenter fra ansatte på en trygg og oversiktlig måte etter hvert som organisasjonen vokser. Dette skapte risiko for at feil brukere hadde tilgang til skjermet informasjon.
 
-Målet var å samle alle tilgangsregler i en felles oversiktlig fil som **JSON**, slik at sikkerheten er enkel å styre  og  systemet er bygget for å vokse. Dette ville sikre at de fordelte rollene kun får se den informasjonen som er nødvendig for deres spesifikke rolle og ingenting annet. Oppgaven min ble å innføre denne løsningen for rettighetsstyring (**RBAC**), slik bedriften har kontroll på hvem som ser hva.
+Hensikten var å samle alle tilgangsregler i en felles oversiktlig fil som **JSON**, slik at sikkerheten er enkel å styre  og  systemet er bygget for å vokse. Dette ville sikre at de fordelte rollene kun får se den informasjonen som er nødvendig for deres spesifikke rolle og ingenting annet. Oppgaven min ble å innføre denne løsningen for rettighetsstyring (**RBAC**), slik bedriften har kontroll på hvem som ser hva.
 
 For å løse dette på en rask og fremtidsrettet måte, valgte jeg en metode som sørger for at systemet alltid har en rask tilgang til reglene uten å belaste serveren unødvendig, dette kalles for **Singleton-tjeneste**.
 

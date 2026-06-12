@@ -9,13 +9,11 @@ status: |
   **Verktøy** - Docker, TypeScript
 
   #### Dagens Aktiviteter
-
   * Finne årsaken til at systemet viser "falske" disker.
   * Stoppe tunge programmer som kjører uten at de trengs.
   * Endre innstillinger slik at jeg selv bestemmer når verktøyene skal starte.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kan bli.
 sources: |
   Offisiell dokumentasjon : [docs.docker.com](https://docs.docker.com/engine/manage-resources/pruning/)
@@ -23,7 +21,7 @@ sources: |
 
 I mitt nåværende oppsett med operativsystemet, fikk jeg en uventet brukeropplevelse. Systemet viste flere lagringsdisker i oversikten som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». Jeg mistenkte at dette skyldtes Docker, og at disse ble koblet til automatisk ved oppstart uten at jeg hadde bruk for dem.
 
-Målet var å stoppe denne automatiske handlingen for å hindre at maskinen monterte disse falske diskene ved oppstart. Dette ble gjort for at oversikten over lagringsplass ble korrekt og at systemet ikke brukte unødvendige ressurser på tjenester som ikke var i bruk.
+Hensikten var å stoppe denne automatiske handlingen for å hindre at maskinen monterte disse falske diskene ved oppstart. Dette ble gjort for at oversikten over lagringsplass ble korrekt og at systemet ikke brukte unødvendige ressurser på tjenester som ikke var i bruk.
 
 For å løse dette utførte jeg følgende tiltak:
 

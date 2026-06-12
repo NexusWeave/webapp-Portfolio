@@ -10,7 +10,6 @@ status: |
   **Prinsipper** - DAO
 
   #### Dagens Aktiviteter
-
   * Erstattet utdatert databaselogikk med `SQLAlchomy`-biblioteket for å sikre et pålitelig og fremtidsrettet system.
   * Skilte tekniske databaseoppgaver fra systemets logikk, noe som gjør løsningen modulær og reduserer risikoen for følgefeil ved fremtidige endringer.
   * Forenklet malen for håndtering av CRUD basert informasjon, som sikrer lik praksis i hele koden og gjør den enklere for andre utviklere å forstå
@@ -18,15 +17,14 @@ status: |
   * Definerte objektorienterte modeller, dettesørger for at dataene alltid samsvarer med systemets krav, som reduserer logiske feil.
   * Fjernet teknisk etterslet og klargjorde arkitekturen for automatiserte tester, slik at fremtidige oppdateringer kan rulles ut stabilt.
 
-  #### Motivasjon & Energi 10 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
 sources: ''
 ---
 
 Systemets måte å kommunisere med databasen på var utdatert. Selv om det fungerte, var det ikke verken pålitelig eller en optimalt system. Dette gjorde det vanskelig å vedlikeholde koden, og koden var ikke optimalisert for en fremtidige funksjonaliteter, 
 
-Målet mitt var å bygge om dette systemet ved hjelp av biblioteket `SQLAlchemy`. Oppgaven handlet om å standardisere hvordan data lagres og hentes, slik at systemet er pålitelig, og klargjør tjenesten for framtidig vekst.
+Hensikten mitt var å bygge om dette systemet ved hjelp av biblioteket `SQLAlchemy`. Oppgaven handlet om å standardisere hvordan data lagres og hentes, slik at systemet er pålitelig, og klargjør tjenesten for framtidig vekst.
 
 * Jeg separerte de tekniske databaseoppgavene fra selve forretningslogikken. Dette betyr at om vi endrer på databasen, påvirker det ikke resten av systemet.
 * Med hjelp av `Pydandic`-modeller har jeg  laget en felles mal for hvordan jeg legger til, leser eller sletter informasjon, som sikrer lik praksis i hele løsningen.

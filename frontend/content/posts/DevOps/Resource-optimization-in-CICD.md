@@ -9,7 +9,6 @@ status: |
   **Verktøy** - GitHub Actions, TypeScript
 
   #### Dagens Aktiviteter
-
   * Gjennomgang av GitHubs kvote på 2000 bygge-minutter og hvordan jeg kan unngå å gå tom.
   * Avsløring av "10x-fellen" – hvorfor jeg velger Linux fremfor Mac for å få 10 ganger mer arbeid for pengene.
   * Hvordan vi sparer tid ved å la maskinene hvile helt til koden er klar for produksjon.
@@ -17,14 +16,13 @@ status: |
   * Oppsummering av hvordan jeg kutter utviklingstid.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen har vært så fin, som det har vært mulig
 sources: ''
 ---
 
 Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører rutiner, ved en produksjons klar programvare.I GitHub har man en fast månedlig kvote på **2000 gratis bygge minutter** for både offentlige og private prosjekter.
 
-##### Oversikt over Githubs Multiplikator.
+#
 
 | **Operativsystem** | **Multiplikator** | **Forbruk per minutt** |
 | ------------------ | ----------------- | ---------------------- |

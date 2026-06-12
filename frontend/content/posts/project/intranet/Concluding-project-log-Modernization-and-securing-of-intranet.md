@@ -20,7 +20,7 @@ sources: ''
 
 Dette prosjektet har handlet om å profesjonalisere bedriftens intranett. Ved å rydde opp i **ustabil kildekode** og innføre moderne sikkerhetsstandarder, har vi gått fra en sårbar løsning til en plattform som er klargjort for fremtidig vekst og effektiv drift.
 
-##### Systemgjenoppretting og Universell Tilgang
+#
 
 Etter en automatisk flytting av kodespråk (fra **PHP** til **C#** via **KI**) krasjet intranettet for utviklere med plattformen **Mac** eller **Linux**. Dette skapte full stans i videreutviklingen.
 
@@ -30,7 +30,7 @@ Min oppgave var å finne feilen og sørge for at systemet fungerte uavhengig av 
 
 Vi fjernet tekniske skiller mellom ansatte og studenter, ved å fjernet risikoen for fremtidige krasj ved systembytter.
 
-##### Fra Åpent til Sikkert (Rollebasert tilgang)
+#
 
 Systemet manglet kontroll på hvem som så hva. Sensitiv intern informasjon og navigasjonslenker var synlig for alle, inkludert studenter. Dette utgjorde en sikkerhetsrisiko og skapte et uoversiktlig arbeidsmiljø.
 
@@ -40,16 +40,16 @@ Jeg flyttet sikkerhetskontrollen fra brukeren til systemets backend. Jeg la til 
 
 Vi følger nå internasjonale standarder for personvern *«minst priviligum»*. Dette har fjernet teknisk støy for brukerne og tettet sikkerhetshull før de kunne bli utnyttet.
 
-##### Redusere teknisk etterslep
+#
 
 Systemet var bygget som en helhet hvor alt hang sammen med alt. Små endringer kunne føre til uforutsette feil, og det var umulig å utføre automatisert **testing** for å sjekke om systemet faktisk var friskt.
-Målet mitt var å strukturere Rydde i systemarkitekturen for å gjøre det enklere, tryggere og billigere å vedlikeholde over tid.
+Hensikten mitt var å strukturere Rydde i systemarkitekturen for å gjøre det enklere, tryggere og billigere å vedlikeholde over tid.
 
 * Jeg separerte bedriftens regler fra den tekniske motoren ved bruk av *«DIP-prinsippet»*. Jeg fjernet over 50 linjer med overflødig kode og innførte det objektivt målesystemet <abbr title="Et Verktøy som måler systemets kvalitet i prosent">**Coverlet** dette forenkler prosessen med å identifisere systemets kvalitet.
 
 Vi har redusert det tekniske etterslepet. Vi kan nå koble på nye datakilder eller oppgradere teknologien i fremtiden uten å måtte bygge om alt på nytt. Dette sparer bedriften for tid i fremtidig vedlikehold.
 
-##### Erfaring og Hoved resultatet
+#
 
 Gjennom denne innsatsen har vi i dag en stabil plattform som flyter raskt uavhengig av brukerens utstyr. Vi har tettet sikkerhetshull ved å innføre prinsippet om *minste privilegium*, som beskytter bedriftens data i alle ledd. Den nye modulære arkitekturen har redusert vedlikeholds behovet betydelig og transformert vår utviklingskultur fra å styre etter antakelser til å styre etter objektive fakta. Resultatet er en trygg produksjonslinje som leverer kvalitet uten uforutsette avbrudd.
 

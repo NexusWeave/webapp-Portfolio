@@ -22,7 +22,7 @@ sources: ''
 
 Bedriftens sentrale programvareoppsett opplevde tekniske konflikter som hindret systemet i å bli ferdigstilt og tatt i bruk. Ulike deler av systemet snakket forbi hverandre, noe som førte til feilmeldinger og stans i hele produksjonslinjen for programvaren. For organisasjonen betydde dette uforutsigbarhet og risiko for forsinkelser i leveranser.
 
-Hovedmålet var å fjerne de tekniske blokkeringene og sikre at systemet kunne bygges feilfritt hver gang. Dette krevde en dypere analyse av hvordan filene i prosjektet var organisert, for å fjerne duplikater og sikre at alle komponenter fant hverandre i systemstrukturen.
+Hensikten var å fjerne de tekniske blokkeringene og sikre at systemet kunne bygges feilfritt hver gang. Dette krevde en dypere analyse av hvordan filene i prosjektet var organisert, for å fjerne duplikater og sikre at alle komponenter fant hverandre i systemstrukturen.
 
 * Gjennomførte en gjennomgang av hvordan systemet genererer sine egne startfiler for å isolere kilden til de gjentakende feilmeldingene.
 * Identifiserte at en for dyp og uoversiktlig mappestruktur skapte forvirring for systemets interne søkeverktøy.

@@ -8,23 +8,21 @@ status: |
   **Teknologi** - Python
   **Verktøy** - TypeScript, KI
 
-  #### Dagens Aktiviteter:
-
+  #### Dagens Aktiviteter
   * Oppdatert alle systemdefinisjoner med unike merkelapper (labels) for å sikre at hver enkelt "vei" og funksjon i systemet er lett å identifisere.
   * Implementert de nye, unike navnene i systemets oversiktsrapport, noe som gir bedre innsikt i operativ status og ytelse for hver enkelt komponent.
   * Identifisert og fjernet utdaterte sjekkfunksjoner som lå spredt i koden, for å redusere teknisk gjeld.
   * Samlet alt ansvar for tilstandskontroll i én ny, dedikert modul for å forenkle vedlikehold og fremtidig utvidelse.
   * Etablert kontroll på samspillet mellom de ulike delene av systemet, noe som gjør det tryggere og mer oversiktlig å introdusere ny funksjonalitet.
 
-  #### Motivasjon & Energi - 6 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Dagen er helt grei, men litt irriterende når AI-en ikke helt tar tegninga på hva jeg ber om.
 sources: ''
 ---
 
 De forskjellige "veiene" og funksjonene i systemet mitt manglet skikkelige navn, så det ble fort litt kaotisk å vite hva som faktisk var i drift og hvordan de presterte.
 
-Målet var å gi hver del av systemet et tydelig navn så jeg fikk bedre kontroll, og gjøre det lettere å legge til nye ting senere uten at alt kneler.
+Hensikten var å gi hver del av systemet et tydelig navn så jeg fikk bedre kontroll, og gjøre det lettere å legge til nye ting senere uten at alt kneler.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

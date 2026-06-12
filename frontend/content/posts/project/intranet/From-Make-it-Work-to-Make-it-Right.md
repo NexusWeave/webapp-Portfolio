@@ -23,7 +23,7 @@ sources: ''
 
 Prosjektet hadde et preg av et økende vedlikeholdsetterslep som følge av å følge prinsippet om "Make it work, make it right, make it fast" i startfasen. Systemet fungerte, men manglet strukturen som kreves for stabil drift over tid. Oppbyggingen skapte en risiko der små endringer kunne føre til uforutsette feil, noe som kan risikere å bremse fremdriften.
 
-Målet var å transformere systemet fra en sårbar struktur til en fleksibel og moderne arkitektur. Jeg skulle separere ulike ansvarsområder slik at **forretningsregler** og **datalagring** var uavhengige av hverandre, noe som sikrer at fremtidige utvidelser kan gjøres raskere og rimligere.
+Hensikten var å transformere systemet fra en sårbar struktur til en fleksibel og moderne arkitektur. Jeg skulle separere ulike ansvarsområder slik at **forretningsregler** og **datalagring** var uavhengige av hverandre, noe som sikrer at fremtidige utvidelser kan gjøres raskere og rimligere.
 
 For å oppnå dette har jeg gjennomført følgende tiltak:
 

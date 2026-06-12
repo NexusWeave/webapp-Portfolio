@@ -8,23 +8,20 @@ status: |
   **Teknologi** - Python
   **Verktøy** - TypeScript
 
-  #### Dagens Aktiviteter:
-
+  #### Dagens Aktiviteter
   * Opprettet en ny standard for å merke alle viktige deler av systemet med egne numre, slik at det alltid er klart hvilken utgave som er i bruk.
   * Lagt til tydelig merking på selve hovedoppsettet (klienten), slik at man vet nøyaktig hvilke innstillinger som kjører.
   * Innført nummermerking på "scanneren", slik at man alltid vet hvilken logikk som ble brukt da informasjonen ble hentet inn.
   * Samlet full oversikt over alle utgaver av verktøyene, noe som gjør det tryggere og langt enklere å gjøre store forbedringer senere.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kunne bli!
-
 sources: ''
 ---
 
 Jeg hadde ikke helt kontroll på hvilken versjon av logikken som var i sving i de ulike delene av koden, og det gjorde meg litt usikker hver gang jeg skulle oppdatere noe.
 
-Målet var å få på plass en fast standard for å merke de viktigste verktøyene mine, så jeg til enhver tid vet nøyaktig hva som ruller og går.
+Hensikten var å få på plass en fast standard for å merke de viktigste verktøyene mine, så jeg til enhver tid vet nøyaktig hva som ruller og går.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

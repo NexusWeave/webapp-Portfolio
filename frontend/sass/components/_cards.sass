@@ -33,6 +33,11 @@
         @include mix.font($font: "Roboto")
 
 .business-card
+    @include mix.card-base()
+    background-position: top left
+    background-repeat: no-repeat
+    @include mix.background-image("/media/images/cards/portfolio-card.svg", 9rem)
+
     &.grid-layout
         .card-header
             figure
@@ -147,6 +152,3 @@
                         @include mix.font($size: 1.1rem)
 
             @include mix.margin($block: 0.1rem, $inline: 0.25rem)
-
-    @include mix.card-base()
-    @include mix.background-image("/assets/images/cards/portfolio-card.svg", 9rem)

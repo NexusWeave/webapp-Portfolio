@@ -9,22 +9,20 @@ status: |
   **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
-
   * Plassert oversiktskart og diagrammer direkte der arbeidet utføres, slik at informasjonen alltid er relevant og lett tilgjengelig ved endringer.
   * Flyttet spredte oppgaver til ett felles punkt for å sikre mer stabil og forutsigbar kommunikasjon med eksterne tjenester.
   * Samlet funksjoner (som køhåndtering) i en felles overordnet enhet, slik at hele systemet nå følger de samme reglene automatisk.
   * Identifisert og slettet gammel, ubrukt kode og utdatert informasjon for å fjerne rot og forebygge fremtidige misforståelser.
   * Forenklet den indre oppbygningen for å redusere tidsbruk på feilsøking og legge til rette for raskere utrulling av nye funksjoner.
 
-  #### Motivasjon & energi 10 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
 ---
 
 Applikasjonen hadde etter hvert vokst seg til et punkt der dokumentasjonen ikke stemte med virkeligheten lenger. Det førte til at jeg brukte unødvendig mye tid på vedlikehold. Samtidig hadde den indre strukturen blitt litt vel kronglete, noe som gjorde det risikabelt å legge til nye funksjoner uten at noe knakk.
 
-Målet var å rydde opp i systemet for å få en mer stabil drift. Jeg ville forenkle organiseringen, fjerne unødvendig kompleksitet, og sørge for at diagrammer og oversikter faktisk stemte med hvordan koden ser ut i dag. Alt for å kunne jobbe raskere og tryggere.
+Hensikten var å rydde opp i systemet for å få en mer stabil drift. Jeg ville forenkle organiseringen, fjerne unødvendig kompleksitet, og sørge for at diagrammer og oversikter faktisk stemte med hvordan koden ser ut i dag. Alt for å kunne jobbe raskere og tryggere.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

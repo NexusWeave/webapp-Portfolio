@@ -11,7 +11,6 @@ status: |
   **Verktøy** - 11ty, Tina CMS, TypeScript
 
   #### Dagens Aktiviteter
-
   * Jeg har brukt tid på å forstå hvordan `11ty`- rammeverket fungerer.
   * Jeg har studert koding som andre har laget før, for å forstå faget i praksis.
   * Jeg har undersøkt mange ulike `redaktørpaneler`. Jeg sjekket alt fra de billigste til de dyreste løsningene.
@@ -22,7 +21,6 @@ status: |
   * Nå som planleggingen er ferdig, har jeg begynt å faktisk lage nettsiden med den nye kunnskapen min.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen har vært så fin den kunne bli.
 sources: ''
 ---

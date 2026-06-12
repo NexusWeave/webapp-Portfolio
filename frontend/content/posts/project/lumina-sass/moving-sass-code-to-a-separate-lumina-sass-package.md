@@ -20,7 +20,7 @@ status: |
 ---
 Siden stilene brukes over flere prosjekter, var det behov for en sentralisert stil‑løsning for å redusere duplisering og forenkle vedlikeholdet.
 
-Målet var å samle all eksisterende Sass‑kode i en egen npm‑pakke kalt *lumina‑sass*, for å unngå repetisjon av kode, og holde kodebasen ren.
+Hensikten var å samle all eksisterende Sass‑kode i en egen npm‑pakke kalt *lumina‑sass*, for å unngå repetisjon av kode, og holde kodebasen ren.
 
 - Flyttet eksisterende Sass‑filer til en egen npm‑pakke, oppdaterte import‑stier og sikret at andre prosjekter kan bruke pakken uten ekstra konfigurasjon.
 - Opprettet `lumina‑sass`‑mappen med egen `package.json` og publiserings‑script.

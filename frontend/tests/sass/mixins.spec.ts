@@ -7,10 +7,11 @@ import { fileURLToPath, pathToFileURL } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const sassFile = path.join(__dirname, 'mixins.test.scss')
+const sassFiles = ['mixins.test.sass', 'alerts.test.sass'].map(file => path.join(__dirname, file))
 
 describe('Sass Mixins', () => {
-  runSass({ describe, it }, sassFile, {
+  sassFiles.forEach(sassFile => {
+    runSass({ describe, it }, sassFile, {
     importers: [{
       findFileUrl(url) {
         if (url === 'lumina-sass') {
@@ -25,4 +26,5 @@ describe('Sass Mixins', () => {
     }],
     loadPaths: [path.join(__dirname, '../../node_modules')],
   })
+})
 })

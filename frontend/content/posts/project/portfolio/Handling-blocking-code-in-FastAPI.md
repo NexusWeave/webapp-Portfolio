@@ -9,7 +9,6 @@ status: |
   **Verktøy** - Python, Pydantic
 
   #### Dagens Aktiviteter
-
   * Flyttet det siste gjenværende endepunktet fra Flask til FastAPI for å fjerne teknisk etterslep og samle applikasjonen under én moderne ASGI-standard.
   * Konverterte den gamle logikken til Pydantic-modeller. Dette sikrer automatisk validering og høyere datakvalitet ved å stoppe ugyldig informasjon før den behandles.
   * Erstattet utdatert Flask-ruting med FastAPIs-routing `@app.get`.
@@ -17,15 +16,14 @@ status: |
   * Sikret at nettsiden forblir rask for sluttbrukerne ved å hindre at tunge dataoppgaver låser applikasjonens kapasitet til å håndtere andre forespørsler samtidig.
   * Etablert en mer robust plattform som er enklere å vedlikeholde, har lavere driftsrisiko og er klar for betydelig høyere trafikkvekst.
 
-  #### Motivasjon & Energi 10 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli. Det er deilig å endelig være helt over på FastAPI!
 sources: ''
 ---
 
 Etter at jeg starta flyttingen til FastAPI, hang `Announcement`-endepunktet fortsatt igjen i det gamle Flask-oppsettet. Siden Flask bruker WSGI og FastAPI bruker ASGI, ble det krøll når de skulle prøve å snakke sammen, og endepunktet fungerte rett og slett ikke som det skulle lenger.
 
-Målet var å få alt over på FastAPI for å samle applikasjonen under én moderne standard. Utfordringen var å integrere den gamle, synkrone logikken uten at den skulle blokkere for alt det andre som skjer i systemet.
+Hensikten var å få alt over på FastAPI for å samle applikasjonen under én moderne standard. Utfordringen var å integrere den gamle, synkrone logikken uten at den skulle blokkere for alt det andre som skjer i systemet.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

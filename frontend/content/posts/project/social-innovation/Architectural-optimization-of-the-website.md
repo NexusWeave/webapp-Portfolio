@@ -10,7 +10,6 @@ status: |
   **Prinsipper** - SEO, UU
 
   #### Dagens Aktiviteter
-
   * Identifiserte utfordringer i siste lansering og gjennomførte kontrollert tilbakerulling til forrige stabile versjon for å sikre drift.
   * Omgjorde verktøyet for innholdshenting til å håndtere datakartlegging universelt i selve hentefasen.
   * Separert ansvaret mellom byggeprosess og klientlogikk for å minimere belastningen på nettleseren.
@@ -26,13 +25,12 @@ status: |
   * Sikret at nettsiden følger prinsipper for universelle utformingen for brukere med hjelpemidler.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kan bli !
 sources: ''
 ---
 
 Etter at en 2 uker gammel lansering førte uforutsette feil på kundens nettside, ble det nødvendig å rulle tilbake til en tidligere versjon som fungerte. Denne eldre versjonen hadde tekniske etterslep og utfordringer som påvirket brukeropplevelsen, men var stabil. Versjonen hadde mange feilmeldinger i bakgrunnen, og en uoversiktlig kodestruktur som gjorde det tidkrevende å rette de gamle feilene uten å introdusere nye feil.
-Hovedmålet var å raskt stabilisere den eldre versjonen etter tilbakerullingen, samtidig som jeg fjernet noe av det teknisk etterslepet. Ønsket jeg å skape en flytende brukeropplevelse og forbedre det tekniske bilde som forenkler videreutviklingen av nettsiden uten at det tekniske etterslepet forhindrer fremdriften.
+Hensikten var å raskt stabilisere den eldre versjonen etter tilbakerullingen, samtidig som jeg fjernet noe av det teknisk etterslepet. Ønsket jeg å skape en flytende brukeropplevelse og forbedre det tekniske bilde som forenkler videreutviklingen av nettsiden uten at det tekniske etterslepet forhindrer fremdriften.
 
 * Jeg omgjorde verktøyet som henter innholdet til nettsiden for å håndtere kartleggingen av innholdet universelt og direkte. Ved å integrere kartleggingslogikken i selve hentefasen, returneres det en ferdig formatert data til komponentene. Dette separerer ansvaret mellom logikken som kjører i nettleseren og logikken som kjører i byggeprosessen på en ryddig måte og automatiserer kartleggingen og minimaliserer belastningen på nettleseren, for å unngå en uventet oppførsel.
 * Jeg samlet alle navigasjonsrelaterte typedefinisjoner til en felles kilde. Ved å rydde opp i mappestrukturen og forene filene, forenklet jeg prosjektets arkitektur og skapte et felles utgangspunkt for alle navigasjonskomponenter.

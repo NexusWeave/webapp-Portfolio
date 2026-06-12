@@ -9,7 +9,6 @@ status: |
   **Verktøy** - Nuxt Content, Composables
 
   #### Dagens Aktiviteter
-
   * Diagnostiserte og løste build-feil knyttet til aksessering av `route.params` i `definePageMeta` under prerendering.
   * Sentraliserte dynamisk tittel-generering i `preprosessor-utils.ts` for å dekoble rute-logikk fra sideoppsettet.
   * Implementerte en reaktiv "watcher" for SEO-metadata som sikrer umiddelbar oppdatering av sidetitler ved klient-side navigasjon (<abbr title="Single Page Application">SPA</abbr>).
@@ -18,14 +17,13 @@ status: |
   * Rettet en kritisk type-import feil ("module not found") som hindret korrekt type-checking.
 
   #### Motivasjon & Energi - 10 / 10
-
   Ekstremt tilfredsstillende å flytte kompleksitet fra skjøre compiler-makroer til robuste, testbare composables.
 sources: ''
 ---
 
 Applikasjonen opplevde ustabilitet under bygg-prosessen, spesielt ved generering av statiske sider (prerendering). Problemet skyldtes at dynamiske rute-parametre ble forsøkt hentet inne i `definePageMeta`-makroen. Siden denne makroen evalueres av Nuxt-compileren før ruten i det hele tatt eksisterer i nettleseren, resulterte dette i feilmeldinger som "Cannot read properties of undefined". Samtidig var SEO-metadataene statiske, noe som førte til at sidetitler ikke oppdaterte seg korrekt når brukeren navigerte mellom artikler i SPA-modus.
 
-Målet for dagen var å stabilisere bygg-pipelinen ved å skille statiske metadata fra dynamisk <abbr title="Logikk som kjøres mens applikasjonen er aktiv i nettleseren">runtime-logikk</abbr>, samt å automatisere SEO-arbeidet for å redusere manuelt vedlikehold.
+Hensikten for dagen var å stabilisere bygg-pipelinen ved å skille statiske metadata fra dynamisk <abbr title="Logikk som kjøres mens applikasjonen er aktiv i nettleseren">runtime-logikk</abbr>, samt å automatisere SEO-arbeidet for å redusere manuelt vedlikehold.
 
 * **Arkitektonisk refaktorering:** Jeg startet med å flytte all logikk som omhandler oppløsning av dynamiske titler fra `definePageMeta` i de enkelte sidene og inne i `frontend/composables/preprosessor-utils.ts` (via `useNavigation`). 
 * **Reaktiv SEO-håndtering:** Inne i composablen implementerte jeg en `watch` på den aktive ruten. Denne vakten fanger opp endringer i `route.params.slug`, vasker <abbr title="Den delen av en URL som identifiserer en spesifikk side i et menneskevennlig format">sluggen</abbr> (fjerner bindestreker, legger til stor forbokstav) og oppdaterer sidetittelen dynamisk via `useSeoMeta`. Dette sikrer at både brukere og søkemotorer alltid ser korrekt informasjon.

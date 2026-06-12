@@ -21,7 +21,7 @@ status: |
 
 Biblioteket hadde over tid samlet opp en del rot, og trengte en skikkelig opprydding både i hvordan teksten var skrevet og i selve koden. Dokumentasjonen var litt tunglest med for mange filer som lå strødd rundt, og prosjektstrukturen gjorde det unødvendig vanskelig å skjønne hvordan modulene skulle brukes ved integrasjon i nye prosjekter.
 
-Hovedmålet for dagen var å heve kvaliteten på språket i all dokumentasjon, slette mapper som ikke lenger var i bruk, og samtidig lage en helt trygg og sikker måte å teste at alle eksportene fra biblioteket faktisk fungerer i praksis.
+Hensikten for dagen var å heve kvaliteten på språket i all dokumentasjon, slette mapper som ikke lenger var i bruk, og samtidig lage en helt trygg og sikker måte å teste at alle eksportene fra biblioteket faktisk fungerer i praksis.
 
 - Gikk systematisk gjennom og skrev om 19 Markdown-filer til et mye mer naturlig engelsk, samtidig som unødvendige tall i overskriftene ble fjernet for å få på plass en tydelig Single source of truth for all informasjon.
 - Slettet den gamle `modules/`-mappen som bare skapte forvirring, og satte heller opp enklere og mer direkte eksporter i `package.json` for å følge retningslinjene til Clean code.

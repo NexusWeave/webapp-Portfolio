@@ -22,7 +22,7 @@ sources: ''
 ---
 
 Utviklingsmiljøet manglet et system for å måle og visualisere hvor stor del av den digitale løsningen som faktisk ble kontrollert av tester. Dette skapte blindsoner i utviklingsprosessen. Uten objektive data var det umulig å vurdere den faktiske risikoen for feil eller størrelsen på teknisk etterslep, noe som gjorde bedriften sårbar for uforutsette utfordringer i drift.
-Målet var å etablere en automatisert målingsmekanisme som gir full innsikt i systemets kvalitet. Oppgaven innebar å implementere verktøy som genererer konkrete rapporter over testdekning. Disse rapportene skal fungere som et styringsverktøy for ledelsen og utviklerne, slik at ressurser kan målrettes mot de delene av applikasjonen som har høyest risiko.
+Hensikten var å etablere en automatisert målingsmekanisme som gir full innsikt i systemets kvalitet. Oppgaven innebar å implementere verktøy som genererer konkrete rapporter over testdekning. Disse rapportene skal fungere som et styringsverktøy for ledelsen og utviklerne, slik at ressurser kan målrettes mot de delene av applikasjonen som har høyest risiko.
 
 * Gjennomførte en grundig analyse av prosjektoppsettet for å identifisere hvorfor måledata ikke ble generert.
 * Identifiserte og La til  manglende komponenter i systemets instruksjonsfiler som er nødvendige for å kunne lese testresultatene korrekt.

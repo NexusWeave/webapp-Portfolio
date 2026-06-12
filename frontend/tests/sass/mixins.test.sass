@@ -1,0 +1,107 @@
+@use 'sass-true' as *
+@use '../../sass/utilities/_utilities.sass' as mixins
+
+@include test-module('Mixins')
+  @include test('logical-size mixin outputs inline and block sizes')
+    @include assert
+      @include output
+        .test
+          @include mixins.logical-size(100px, 200px)
+      @include expect
+        .test
+          inline-size: 100px
+          block-size: 200px
+
+  @include test('absolute-inset mixin outputs position and inset')
+    @include assert
+      @include output
+        .test
+          @include mixins.absolute-inset(10px)
+      @include expect
+        .test
+          position: absolute
+          inset: 10px
+
+  @include test('logical-center mixin outputs margin-inline: auto')
+    @include assert
+      @include output
+        .test
+          @include mixins.logical-center()
+      @include expect
+        .test
+          margin-inline: auto
+
+  @include test('radius mixin outputs border-radius')
+    @include assert
+      @include output
+        .test
+          @include mixins.radius(10px)
+      @include expect
+        .test
+          border-radius: 10px
+
+  @include test('border mixin outputs border')
+    @include assert
+      @include output
+        .test
+          @include mixins.border(1px solid black)
+      @include expect
+        .test
+          border: 1px solid black
+
+  @include test('margin mixin outputs margin-block and margin-inline')
+    @include assert
+      @include output
+        .test
+          @include mixins.margin($block: 10px, $inline: 20px)
+      @include expect
+        .test
+          margin-block: 10px
+          margin-inline: 20px
+
+  @include test('padding mixin outputs padding-block and padding-inline')
+    @include assert
+      @include output
+        .test
+          @include mixins.padding($block: 10px, $inline: 20px)
+      @include expect
+        .test
+          padding-block: 10px
+          padding-inline: 20px
+
+  @include test('card-shadow-box mixin outputs margin, padding and box-shadow')
+    @include assert
+      @include output
+        .test
+          @include mixins.card-shadow-box()
+      @include expect
+        .test
+          margin: 1rem
+          padding: 1rem
+          box-shadow: 0.25rem 0.25rem 1.25rem 0.25rem rgba(0, 0, 0, 0.1)
+
+  @include test('list-inline-reset mixin resets list styles for inline display')
+    @include assert
+      @include output
+        .test
+          @include mixins.list-inline-reset()
+      @include expect
+        .test
+          ul
+            li
+              margin: 0.5rem
+              display: inline
+            padding: 0
+
+  @include test('nav-list-reset mixin resets list styles for navigation')
+    @include assert
+      @include output
+        .test
+          @include mixins.nav-list-reset()
+      @include expect
+        .test
+          ul
+            padding: 0
+            list-style: none
+            inline-size: 100%
+            border-radius: 0.5rem

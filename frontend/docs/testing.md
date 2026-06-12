@@ -16,4 +16,4 @@ To execute tests, use one of the following commands in the \`frontend/\` directo
 * **\`app.spec.ts\`**: Verifies that the primary component (\`app.vue\`) of the Nuxt application mounts and remains accessible without errors.
 
 ## Sass Test Inventory
-* **\`mixins.spec.ts\` / \`mixins.test.scss\`**: Executes via \`sass-true\` to verify that mixins (e.g., \`logical-size\`) compile to the expected CSS output, ensuring correct attributes for block and inline sizes.
+* **`mixins.spec.ts` / `mixins.test.sass`**: Executes via `sass-true` to verify that mixins (e.g., `logical-size`) compile to the expected CSS output, ensuring correct attributes for block and inline sizes.

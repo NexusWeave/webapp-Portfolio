@@ -9,8 +9,6 @@ sources: ''
 
 ### Eliminering av ulovlig Lazy Loading i SQLAlchemy
 
-#### Rampenisser med asynkrone relasjoner
-
 Under utvikling av API-endepunkter for å hente ut repositories og deres tilhørende språkdata, blir det benyttet av SQLAlchomey sin måte å hente ut databaserekorder. Da Pyndantic-modellen skulle validere og mappe dataene, oppsto utfordringen om `sqlalchemy.exc.MissingGreenlet`.
 
 ```python
@@ -28,8 +26,6 @@ async def select_repositories(self) -> Sequence[RepositoryModel]:
    # Returnere alle databaserekorder
    return repo.scalars().all()
 ```
-
-#### Rampenissen, Lazy Loading
 
 Denne ukorrektheten oppstår som en konsekvens av at Pyndantic forsøkte å hente ut navnet på språket før relasjonen var lastet inn i minnet. I en asynkron sesjon tillater ikke SQLAlchemy slike rampestreker, da dette krever et synkront databasekall som blokkerer den asynkrone event-loopen. Dette resulterer til en krasj fordi driveren mangler kontekst for å utføre operasjon asynkront.
 
@@ -53,8 +49,6 @@ async def select_repositories(self) -> Sequence[RepositoryModel]:
   # Returnere alle databaserekorder
   return repo.scalars().all()
 ```
-
-#### Evaluering & Refleksjon
 
 Statusen på situasjonen er løst, men implementeringen av dypere "Eager Loading" medførte en ny utfordring i presentasjonslaget. Ved å hente ut hele relasjonsstien, ble JSON-objektet i API-responsen mer komplisert med doble definisjoner av språkdata. Dette er en direkte konsekvens av at SQLAlchemy nå henter hele relasjonsstien, som inneholder både LanguageModel-entiteten og dataene som behandles av Pydantic-modellen.
 

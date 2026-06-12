@@ -5,9 +5,10 @@ ingress: |
   Denne loggføringen dokumenterer feilsøking og løsning av kritiske oppstartsutfordringer ved publisering av en FastAPI-applikasjon til Google Cloud. Ved å standardisere miljø-boksen (containeren) og rydde i applikasjonens innstillinger (miljøvariabler), ble systemet transformert fra en ustabil tilstand til en pålitelig og produksjonsklar løsning. Fokus har ligget på å sikre at applikasjonen er selvforsynt med riktige verktøy og instrukser for en feilfri oppstart i skyen.
 status: |
   #### Program informasjon
+
+  #### Motivasjon & Energi - 10 / 10
   **Teknologi** - FastAPI
   **Verktøy** - TypeScript, KI
-
 ---
 
 Applikasjonen krasjet under publisering til Google Cloud med feilmeldingen Container failed to start and listen to port 8080. Lokale publiseringer viser seg å fungere, men umiddelbart feilet skymiljøet ved oppstart. 

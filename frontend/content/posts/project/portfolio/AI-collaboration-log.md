@@ -8,22 +8,20 @@ status: |
   **Teknologi** - FastAPI, Nuxt 4, SQLAlchemy, Sass
   **Verktøy** - Gemini CLI, Git, Shell-integrasjon
 
-  #### Dagens Aktiviteter:
-
+  #### Dagens Aktiviteter
   * Vi forbedret `GithubDatabaseHandler` funksjonaliteten som automatisk synkroniserer språkbytes og tvinger alle språknavn til små bokstaver for å sikre at dataen er korrekt.
   * Identifiserte og rettet skrivefeil i ikon-referanser (nunjucks/liquid) og oppdaterte whitelisten for å sikre feilfrie produjonsbygg under Nuxt-prerendering.
   * Standardiserte ikonstørrelser og oppdaterte layout-begrensninger i porteføljen.
   * Orkestrerte en kontrollert merge mellom `documentation` og `main`.
 
-  #### Motivasjon & Energi - 8 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Dagen har vært skikkelig produktiv. Samarbeidet med AI har tatt unna mye manuelt dritarbeid, og det føles godt å se ting falle på plass. Dagen er så fin den kunne bli.
 sources: ''
 ---
 
 Datamodellene i systemet og det visuelle hang ikke helt sammen, noe som førte til bygg-feil og en litt luggete brukeropplevelse, spesielt når det kom til mapping av ressurser og ikoner.
 
-Målet var å tette dette gapet ved å rydde opp i dataene i backend og flikke litt på frontenden, slik at vi endelig fikk en feilfri produksjonsbygg.
+Hensikten var å tette dette gapet ved å rydde opp i dataene i backend og flikke litt på frontenden, slik at vi endelig fikk en feilfri produksjonsbygg.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

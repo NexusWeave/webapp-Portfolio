@@ -9,7 +9,6 @@ status: |
   **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
-
   * Integrerte TinaCMS for å forenkle styringen av dokumentasjon og innhold.
   * Bekreftet at digitale nøkler og adgangskort fungerte korrekt for å utelukke autentiseringsfeil.
   * Løste utfordringer med at nettsiden ligger i undermapper ved å definere nøyaktige stier for konfigurasjonsfiler hos leverandøren.
@@ -19,16 +18,13 @@ status: |
   * Fjernet feilmeldinger i konsollen og optimaliserte ressurslastingen for en raskere og mer stabil brukeropplevelse.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kan bli !
 sources: ''
 ---
 
-#### Prosjektanalyse
-
 For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt TinaCMS. Utfordringen lå i prosjektets struktur, hvor  nettsiden  lever i en undermappe som Dette skapte synkroniserings utfordringer med Tina Cloud, som i utgangspunktet ikke klarte å lese innholdsgrenen hvor dokumentasjonen og tekstene lagres.
 
-Målet var å etablere en effektiv og feilfri flyt mellom redaktørpanelet og selve kildekoden til nettsiden. Dette krevde oppsettsmetode for hvordan panelet tolker mappestrukturen min. I tillegg måtte jeg sikre at alle filer, bilder og ressurser ble lastet korrekt, selv om de ligger lagret i ulike undermapper i prosjektet.
+Hensikten var å etablere en effektiv og feilfri flyt mellom redaktørpanelet og selve kildekoden til nettsiden. Dette krevde oppsettsmetode for hvordan panelet tolker mappestrukturen min. I tillegg måtte jeg sikre at alle filer, bilder og ressurser ble lastet korrekt, selv om de ligger lagret i ulike undermapper i prosjektet.
 
 Jeg utførte en systematisk feilsøking og rekonfigurering:
 

@@ -9,7 +9,6 @@ status: |
   **Verktøy** - TypeScript
 
   #### Dagens Aktiviteter
-
   * Finne ut hvorfor nyhetene ikke bytter side når man trykker på knappene.
   * Flytte kontrollen for sidebytte til en felles fil. Dette gjør at nettsiden får bedre kontroll og reagerer riktig hver gang noen prøver å bla i arkivet.
   * Legge inn en funksjonalitet som passer på knappene, slik at nye artikler dukker opp med en gang man trykker.
@@ -17,7 +16,6 @@ status: |
   * Ved å rydde opp nå, sørger jeg for at det blir mye enklere og raskere å gjøre endringer på siden senere. Dette sparer utviklere for både tid og hodebry.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen har vært så fin den kunne bli.
 sources: ''
 ---

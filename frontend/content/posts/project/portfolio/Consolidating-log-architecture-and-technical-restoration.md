@@ -10,7 +10,6 @@ status: |
   **Prinsipper** - Arkitektonisk konsolidering, Separation of Concerns
 
   #### Dagens Aktiviteter
-
   * Rettet kritiske syntaksfeil og variabel-shadowing i TinaCMS-utility (`fields.tsx`) for å sikre stabil datahåndtering.
   * Etablert `Options`-grensesnittet for å sikre streng typesikkerhet og standardisering på tvers av innholdsmodeller.
   * Synkronisert filsystemet med ruteskjemaet ved å flytte innhold til `content/posts` og fjerne overflødige undermapper.
@@ -18,15 +17,14 @@ status: |
   * Forbedret brukergrensesnittet ved å flytte visuell avstandslogikk til Sass-stilark for en renere kodebase.
   * Løst pagineringsfeil i loggoversikten som forhindret visse innlegg fra å bli vist korrekt.
 
-  #### Motivasjon & energi 10 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
 ---
 
 Dagens utgangspunkt var et system preget av en voksende teknisk gjeld i innholdsarkitekturen og underliggende ustabilitet i CMS-verktøyene. Ved å ha både `logs` og `posts` som begreper, samt en kunstig inndeling mellom `technical` og `personal`, hadde systemet blitt unødvendig komplisert å vedlikeholde og videreutvikle.
 
-Målet for dagen var å rydde opp i systemets indre struktur for å gjøre det mer stabilt i drift. Jeg ønsket å forenkle hvordan systemet er organisert ved å fjerne unødvendig kompleksitet i mappestrukturen, samtidig som jeg skulle reparere de tekniske verktøyene som driver redaktørpanelet for å sikre en feilfri brukeropplevelse.
+Hensikten for dagen var å rydde opp i systemets indre struktur for å gjøre det mer stabilt i drift. Jeg ønsket å forenkle hvordan systemet er organisert ved å fjerne unødvendig kompleksitet i mappestrukturen, samtidig som jeg skulle reparere de tekniske verktøyene som driver redaktørpanelet for å sikre en feilfri brukeropplevelse.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

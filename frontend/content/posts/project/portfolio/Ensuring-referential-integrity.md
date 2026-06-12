@@ -5,17 +5,17 @@ ingress: |
   I denne runden har jeg dykka ned i integritetsfeil i et asynkront system. Etter å ha opplevd krasj med mange-til-mange-relasjoner, har jeg refakturert hele ID-styringen. Ved å bruke ORM-ens "Unit of Work"-mønster har jeg fått på plass en atomær lagring som faktisk holder vann, og sikra at relasjonene mellom prosjekter og språk lagres i riktig rekkefølge.
 status: |
   #### Program informasjon
+
+  #### Motivasjon & Energi - 10 / 10
   **Teknologi** - Python, SQLAlchemy
   **Verktøy** - PostgreSQL
-
-  #### Motivasjon & Energi - 8 / 10
   Dagen er så fin den kunne bli. Litt hodebry med relasjoner, men løsningen ble bra!
 sources: ''
 ---
 
 Etter at jeg fikk orden på hentingen av repoer og språk-data, dukka det opp en ny utfordring når jeg skulle koble dem sammen i databasen. Systemet krasja rett og slett fordi jeg prøvde å registrere koblingene før selve prosjektene og språkene var ferdig oppretta og hadde fått sine egne ID-er.
 
-Målet var å sikre at alt ble lagret i riktig rekkefølge så vi slapp integritetsbrudd. Det ble som å prøve å skrive en kontrakt mellom to folk som ikke finnes ennå – systemet nekta selvfølgelig å godta det. Jeg trengte en smidigere måte å håndtere disse avhengighetene på.
+Hensikten var å sikre at alt ble lagret i riktig rekkefølge så vi slapp integritetsbrudd. Det ble som å prøve å skrive en kontrakt mellom to folk som ikke finnes ennå – systemet nekta selvfølgelig å godta det. Jeg trengte en smidigere måte å håndtere disse avhengighetene på.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 

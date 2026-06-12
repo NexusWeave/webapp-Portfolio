@@ -9,7 +9,6 @@ status: |
   **Verktøy** - MSI Z270 Gaming Pro hovedkort med ASUS PCIe WiFi-kort, TypeScript
 
   #### Dagens Aktiviteter
-
   * Oppdaget at både Wi-Fi og Bluetooth forsvant fullstendig etter en systemkrasj i Garuda Arch Linux.
   * Forsøkte å starte NetworkManager på nytt og brukte kommandoen nmcli radio all, som rapporterte maskinvaren as "missing".
   * Forsøkte å løse problemet ved å rulle tilbake operativsystemet til en tidligere snapshot for å utelukke feil i driveroppdateringer.
@@ -17,14 +16,13 @@ status: |
   * Gikk inn i maskinens BIOS/UEFI for å sjekke om hovedkortet i det hele tatt registrerte nettverkskortet. Bekreftet at enheten var usynlig på maskinvarenivå.
   * Åpnet kabinettet og remonterte det fysiske ASUS PCIe WiFi-kortet for å sikre god elektrisk kontakt med hovedkortet.
 
-  #### Motivasjon & Energi - 8 / 10
-
+  #### Motivasjon & Energi - 10 / 10
   Ble litt stresset av utfordringen når jeg ikke hadde mulighet til å gjøre jobben min den dagen, men jeg er fornøyd med at det ordnet seg. Dagen er så fin den kunne bli !
 sources: ''
 ---
 
 Etter en uventet systemkrasj i Garuda Linux, oppstod det svikt i nettverksfunksjonaliteten. Utfordringen påvirket både Linux og Windows-partisjonen; verken trådløst nettverk (Wi-Fi) eller Bluetooth var tilgjengelig. Siden maskinen nylig hadde gjennomgått en systemoppdatering før krasjen, var mistanken rettet mot programvarekonflikter eller korrupte drivere.
-Målet var å stabilisere maskinvaren og gjenopprette forbindelsen til internett og Bluetooth-enheter.
+Hensikten var å stabilisere maskinvaren og gjenopprette forbindelsen til internett og Bluetooth-enheter.
 
 Følgende handling gjorde jeg for å fikse maskinen.
 

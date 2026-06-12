@@ -15,14 +15,13 @@ status: |
   * Oppdaterte globale preferanser for å sikre verdi-fokuserte commit-meldinger i fremtiden.
 
   #### Motivasjon & Energi - 10 / 10
-
   Dagen er så fin den kunne bli. Veldig deilig å løse en dyp teknisk feil og samtidig få skikk på standardene i prosjektet.
 sources: ''
 ---
 
 Appen ble plutselig litt ustabil når jeg skulle bygge den, og spytta ut 500-feil i hytt og gevær. Det viste seg at jeg prøvde å aksessere rute-parametre inni `definePageMeta`, noe man ikke kan gjøre siden den evalueres før ruten er helt klar. I tillegg trengte jeg en bedre oversikt over alle sidene i prosjektet etter hvert som det har vokst.
 
-Målet var å få dokumentert alle sidene ordentlig for å gjøre det lettere å vedlikeholde, og selvfølgelig fikse byggfeilen ved å skille mellom det som er statisk og det som er dynamisk SEO-logikk.
+Hensikten var å få dokumentert alle sidene ordentlig for å gjøre det lettere å vedlikeholde, og selvfølgelig fikse byggfeilen ved å skille mellom det som er statisk og det som er dynamisk SEO-logikk.
 
 For å løse dette har jeg gjennomført følgende tiltak:
 
