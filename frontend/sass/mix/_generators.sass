@@ -2,13 +2,13 @@
 @use './mixins' as mix
 @use 'lumina-sass' as lumina
 @use './button-mixins' as btn
+@use 'sass:color' as sass-color
 @use 'lumina-sass/color' as color
 @use 'lumina-sass/func' as func-color
 @use 'lumina-sass/contrast' as contrast
 
 @use '../maps/tags' as tag-map
 @use '../maps/tech-icons' as tech-map
-
 
 
 @mixin tag-generator()
@@ -25,17 +25,12 @@
             @include contrast.assert-contrast($color, $background-color)
 
             @if not $hover-color
-                $hover-color: $background-color
+                $hover-color: sass-color.scale($background-color, $lightness: 40%)
     
             // Using high specificity to ensure tag colors win over base button styles
             button.#{$tag}, .button.#{$tag}, a.#{$tag}
                 @include btn.colored-button-neumorphism($background-color)
-                
-                background-color: $background-color !important
-                color: $color !important
-
-                .icon
-                    @include mix.font($size: .8rem)
+                @include mix.background-color($bg-color: $background-color !important, $text-color: $color !important)
 
                 text-align: center
                 padding: .5rem 1.2rem
@@ -54,17 +49,18 @@
                 .#{$tech}
                     &:before
                         content: $icon
+
                     color: $color-map
 
             @else if $boolean == false and $element == 'progress'
                 progress.#{$tech}
 
                     &::-webkit-progress-value
-                        @include mix.background-style($bg-color: $color-map, $color:$color-map)
+                        @include mix.background-color($bg-color: $color-map, $text-color: $color-map)
 
             @else
                 .#{$tech}
-                    @include mix.background-style($bg-color: $color-map, $color:$color-map)
+                    @include mix.background-color($bg-color: $color-map, $text-color: $color-map)
                     //background-color: $color-map
 
 @mixin article-theme-generator()

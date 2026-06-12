@@ -2,25 +2,25 @@
 @use 'lumina-sass/color' as color
 
 .component-blue
-    @include mix.background-style(color.$deep-midnight-blue, color.$neutral-off-white)
+    @include mix.background-color(color.$deep-midnight-blue, color.$neutral-off-white)
 
 .component-slate
-    @include mix.background-style(color.$text-base-dark-grey, color.$neutral-off-white)
+    @include mix.background-color(color.$text-base-dark-grey, color.$neutral-off-white)
 
 .component-seagreen
-    @include mix.background-style(color.$sea-green, color.$neutral-off-white)
+    @include mix.background-color(color.$sea-green, color.$neutral-off-white)
     @include mix.link-color(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
 
 .component-w-g-b
-    @include mix.background-style(color.$neutral-off-white, color.$deep-midnight-blue)
+    @include mix.background-color(color.$neutral-off-white, color.$deep-midnight-blue)
     @include mix.link-color(color.$light-blue , rgb(60, 156, 221),rgb(147, 200, 236), rgb(27, 101, 152))
     
     a 
         text-decoration: underline
 
 .component-w-g-t
-    @include mix.background-style(color.$neutral-off-white, color.$sea-green)
+    @include mix.background-color(color.$neutral-off-white, color.$sea-green)
     @include mix.link-color(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
 

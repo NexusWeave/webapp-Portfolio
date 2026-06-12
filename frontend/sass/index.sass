@@ -27,8 +27,6 @@
     box-sizing: border-box
     writing-mode: horizontal-tb
     @include mix.margin($block: auto, $inline: auto)
-    
-
 body
     h1, h2, h3, h4, h5, h6
         text-align: center
@@ -38,7 +36,7 @@ body
 
     @include mix.text-wrap-safe()
     @include mix.font($font: 'Nunito')
-    @include mix.background-style(color.$neutral-off-white, color.$text-base-dark-grey)
+    @include mix.background-color(color.$neutral-off-white, color.$text-base-dark-grey)
 
 .col-3
     margin: 0.5%
