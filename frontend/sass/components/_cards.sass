@@ -34,10 +34,7 @@
 
 .business-card
     @include mix.card-base()
-    background-position: top left
-    background-origin: border-box
-    background-repeat: no-repeat
-    @include mix.background-image("/media/images/cards/portfolio-card.svg", 9rem)
+    @include mix.background-image("/media/images/cards/portfolio-card.svg", $size: 9rem, $position: top left, $origin: border-box)
 
     &.grid-layout
         .card-header

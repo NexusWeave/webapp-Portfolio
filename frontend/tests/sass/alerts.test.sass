@@ -9,51 +9,47 @@
       @include output
         .alert-info
           @include lumina-mix.alert(color.$info, $icon: 'info', $inline-size: 35rem)
-          @include lumina-mix.gen-flexbox('flex-row')
-          align-items: flex-start
-          text-align: left
       @include expect
         .alert-info
-          &::before
-            @include lumina-mix.font("bootstrap-icons", $size: 2rem)
-            content: "\f431"
           gap: 1.5rem
           margin: auto
           padding: 1.5rem
-          align-items: center
           border-radius: 0.5rem
           inline-size: 35rem
           @include mixins.border(0.0625rem solid rgba(0, 0, 0, 0.1))
           @include lumina-mix.font($weight: 800)
-          @include lumina-mix.gen-flexbox('flex-col')
           @include lumina-mix.background-color(color.$info)
-          @include lumina-mix.gen-flexbox('flex-row')
-          align-items: flex-start
-          text-align: left
+          display: grid
+          grid-template-columns: auto 1fr
+          align-items: start
+          &::before
+            @include lumina-mix.font("bootstrap-icons", $size: 2rem)
+            content: "\f431"
+          &::before
+            grid-column: 1
+            grid-row: 1
 
   @include test('alert-warning should have correct contrast and icon')
     @include assert
       @include output
         .alert-warning
           @include lumina-mix.alert(color.$warning, $icon: 'warning', $inline-size: 35rem)
-          @include lumina-mix.gen-flexbox('flex-row')
-          align-items: flex-start
-          text-align: left
       @include expect
         .alert-warning
-          &::before
-            @include lumina-mix.font("bootstrap-icons", $size: 2rem)
-            content: "\f33a"
           gap: 1.5rem
           margin: auto
           padding: 1.5rem
-          align-items: center
           border-radius: 0.5rem
           inline-size: 35rem
           @include mixins.border(0.0625rem solid rgba(0, 0, 0, 0.1))
           @include lumina-mix.font($weight: 800)
-          @include lumina-mix.gen-flexbox('flex-col')
           @include lumina-mix.background-color(color.$warning)
-          @include lumina-mix.gen-flexbox('flex-row')
-          align-items: flex-start
-          text-align: left
+          display: grid
+          grid-template-columns: auto 1fr
+          align-items: start
+          &::before
+            @include lumina-mix.font("bootstrap-icons", $size: 2rem)
+            content: "\f33a"
+          &::before
+            grid-column: 1
+            grid-row: 1
