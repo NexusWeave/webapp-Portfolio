@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.27.0...v1.27.1) (2026-06-12)
+
+
+### Bug Fixes
+
+* adjust business card background image positioning and restore alert layout test stability. ([24a43dd](https://github.com/NexusWeave/webapp-Portfolio/commit/24a43dd934ae2a74f68c2d1ff561e297f6efa6a5))
+
 # [1.27.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.26.1...v1.27.0) (2026-06-12)
 
 
