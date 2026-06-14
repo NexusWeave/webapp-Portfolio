@@ -25,6 +25,9 @@
         transform: translateY(-0.1875rem)
         box-shadow: 0.5rem 0.5rem 1rem rgba($shadow-dark, 0.15), -0.5rem -0.5rem 1rem rgba($shadow-light, 0.9)
 
+    &:has(.icon):not(.tag-btn)
+        border-radius: 50% !important
+
     &:active
         transition: all 0.1s ease
         transform: translateY(0.0625rem)
