@@ -15,13 +15,14 @@ export default defineNuxtConfig({
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
   modules: [
-    '@nuxt/content',
-    '@nuxt/eslint',
-    '@nuxt/image',
     '@nuxt/ui',
+    'nuxt-gtag',
+    '@nuxt/fonts',
+    '@nuxt/image',
     '@pinia/nuxt',
-    '@nuxtjs/sitemap',
-    'nuxt-gtag'
+    '@nuxt/eslint',
+    '@nuxt/content',
+    '@nuxtjs/sitemap'
   ],
   experimental: { payloadExtraction: false},
   routeRules: { '/logs/records/**': { prerender: true } },
