@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.28.0...v1.28.1) (2026-06-14)
+
+
+### Bug Fixes
+
+* resolve icon rendering issues by preventing font-family overrides. ([3fb590a](https://github.com/NexusWeave/webapp-Portfolio/commit/3fb590aadd630e971cf608ad65664f66b8d8f134))
+
 # [1.28.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.27.1...v1.28.0) (2026-06-14)
 
 
