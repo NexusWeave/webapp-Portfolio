@@ -1,66 +1,12 @@
 // Internal dependencies
 @use '../utilities/utilities' as mix
 
-nav.logo-nav
-    ul
-        li
-            a
-                figure
-                    max-inline-size: none
-
-                    img
-                        @include mix.logical-size($inline: 7rem)
-                        object-fit: contain
-
-article.profile-bar
-    figure
-        picture
-            img, source
-                @include mix.radius(100%)
-
-        max-inline-size: 8rem
-
-.business-card
-    figure
-
-        picture, img
-            object-fit: contain
-            @include mix.radius(0)
-            @include mix.logical-size($inline: 100%)
-
-        picture
-            img, source
-                object-fit: contain
-                @include mix.radius(0)
-                @include mix.logical-size($inline: 100%)
-
-        @include mix.logical-size($inline: 3rem)
-
-    .card-content
-        figure
-            @include mix.logical-size($inline: 2rem)
-
-    &.grid-layout
-        .tech-img, .tech-figure
-            object-fit: contain !important
-            @include mix.margin(0 !important)
-            @include mix.logical-size($inline: 2.2rem !important, $block: 2.2rem !important)
-
-        .card-header
-            figure
-                figcaption
-                    display: none
-
-.timeline-active
-    figure
-        @include mix.margin(0)
-        max-inline-size: 2rem
-
-        img, source
-            object-fit: contain
-            @include mix.logical-size($inline: 100%, $block: auto)
-
+// --- Global Figure and Image styles ---
 figure
+    @include mix.margin()
+    @include mix.padding(0)
+    max-inline-size: 28rem
+
     figcaption
         @include mix.font($size: 0.7rem, $style: italic)
         text-align: center
@@ -75,6 +21,93 @@ figure
         @include mix.radius(.5rem)
         @include mix.logical-size($inline: 100%, $block: auto)
 
-    @include mix.margin(0)
-    @include mix.padding(0)
-    max-inline-size: 28rem
+// --- Navigation Styles ---
+nav.logo-nav
+    ul
+        li
+            a
+                figure
+                    max-inline-size: none
+
+                    img
+                        @include mix.logical-size($inline: 7rem)
+                        object-fit: contain
+
+// --- Profile Bar Styles ---
+article.profile-bar
+    figure
+        picture
+            img, source
+                @include mix.radius(100%)
+
+        max-inline-size: 8rem
+
+// --- Business Card Styles ---
+.business-card
+    @include mix.background-image("/media/images/cards/portfolio-card.svg", $size: 9rem, $position: top left, $origin: border-box)
+    
+    img 
+        @include mix.radius(0)
+
+    figure
+        @include mix.logical-size($inline: 3rem)
+
+        picture, img
+            object-fit: contain
+            @include mix.radius(0)
+            @include mix.logical-size($inline: 100%)
+
+        picture
+            img, source
+                object-fit: contain
+                @include mix.radius(0)
+                @include mix.logical-size($inline: 100%)
+
+    .card-content
+        figure
+            @include mix.logical-size($inline: 2rem)
+
+    &.grid-layout
+        .tech-img, .tech-figure
+            object-fit: contain !important
+            @include mix.margin(0 !important)
+            @include mix.logical-size($inline: 3.2rem !important, $block: 3.2rem !important)
+
+        .card-header
+            figure
+                figcaption
+                    display: none
+
+        .card-footer
+            .tech-img, .tech-figure
+                object-fit: contain !important
+                @include mix.margin(0 !important)
+                @include mix.logical-size(2rem !important, 2rem !important)
+
+            figure
+                figcaption
+                    display: none
+                @include mix.margin()
+
+    .tech-container
+        img
+            object-fit: contain
+            @include mix.logical-size(1.5rem, 1.5rem)
+
+// --- Timeline Styles ---
+.timeline-active
+    figure
+        @include mix.margin()
+        max-inline-size: 2rem
+
+        img, source
+            object-fit: contain
+            @include mix.logical-size($inline: 100%, $block: auto)
+
+.tech-container
+    .tech-figure
+        @include mix.logical-size(2rem, 2rem)
+        
+        img
+            @include mix.logical-size(100%, 100%)
+            object-fit: contain

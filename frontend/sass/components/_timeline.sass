@@ -258,11 +258,6 @@
                     gap: 0.8rem
                 
                 .tech-figure
-                    
-                    img
-                        @include mix.logical-size(100%, 100%)
-                        object-fit: contain
-
                     .tech-text-fallback
                         line-height: 1.1
                         text-align: center
@@ -276,8 +271,6 @@
                         @include mix.padding(0.125rem)
                         @include mix.font($size: 0.55rem, $weight: 700)
                         @include mix.border(0.0625rem solid color.$sea-green)
-
-                    @include mix.logical-size(2rem, 2rem)
 
             @include mix.margin($block: 0.5rem 0)
 
