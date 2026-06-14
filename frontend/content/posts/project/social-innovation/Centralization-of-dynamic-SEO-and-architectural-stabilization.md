@@ -2,7 +2,7 @@
 date: 2026-05-06T12:45:00.000Z
 title: "Sentralisering av dynamisk SEO og arkitektonisk stabilisering"
 ingress: |
-  Dagens arbeid har fokusert på å eliminere teknisk ustabilitet under bygging (<abbr title="Prosessen med å generere statiske HTML-sider på forhånd for bedre ytelse og SEO">prerendering</abbr>) og automatisere <abbr title="Search Engine Optimization">SEO</abbr>-håndteringen i applikasjonen. Ved å flytte dynamisk tittel-oppløsning fra <abbr title="En funksjon eller instruksjon som prosesseres av kompilatoren fremfor å kjøres som vanlig kode i nettleseren">compiler-makroer</abbr> til en sentralisert reaktiv composable, har jeg løst kritiske feil som oppstod ved aksessering av rute-parametre før instansiering. Resultatet er en robust arkitektur som sikrer korrekt metadata for søkemotorer samtidig som den opprettholder en stabil og forutsigbar bygg-pipeline.
+  Eliminert krasj under statisk sidegenerering (prerendering) i Nuxt 4 ved å flytte dynamisk tittel-oppløsning ut av definePageMeta-makroen. Ved å innføre en sentralisert Nuxt composable (preprosessor-utils.ts) løste vi feil ved aksessering av route.params før instansiering, noe som sikrer stabil pre-rendering og korrekt metadata-oppdatering.
 status: |
   #### Program informasjon
   **Teknologi** - Nuxt 4, Vue 3, TypeScript
@@ -14,7 +14,7 @@ status: |
   * Implementerte en reaktiv "watcher" for SEO-metadata som sikrer umiddelbar oppdatering av sidetitler ved klient-side navigasjon (<abbr title="Single Page Application">SPA</abbr>).
   * Automatiserte generering av SEO-meta-tags for å garantere konsistent synlighet på tvers av hele plattformen.
   * Refaktorerte `Body.vue` og artikkellogikk for å forenkle <abbr title="User Interface">UI</abbr>-koden gjennom reaktiv synlighet.
-  * Rettet en kritisk type-import feil ("module not found") som hindret korrekt type-checking.
+  * Rettet en type-import-feil ("module not found") som hindret korrekt type-checking.
 
   #### Motivasjon & Energi - 10 / 10
   Ekstremt tilfredsstillende å flytte kompleksitet fra skjøre compiler-makroer til robuste, testbare composables.

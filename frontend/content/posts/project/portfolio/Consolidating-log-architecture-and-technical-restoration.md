@@ -10,7 +10,7 @@ status: |
   **Prinsipper** - Arkitektonisk konsolidering, Separation of Concerns
 
   #### Dagens Aktiviteter
-  * Rettet kritiske syntaksfeil og variabel-shadowing i TinaCMS-utility (`fields.tsx`) for å sikre stabil datahåndtering.
+  * Rettet syntaksfeil og variabel-shadowing i TinaCMS-utility (`fields.tsx`) for å sikre stabil datahåndtering.
   * Etablert `Options`-grensesnittet for å sikre streng typesikkerhet og standardisering på tvers av innholdsmodeller.
   * Synkronisert filsystemet med ruteskjemaet ved å flytte innhold til `content/posts` og fjerne overflødige undermapper.
   * Omstrukturert innholdet for bedre ytelse og enklere indeksering i Nuxt Content.

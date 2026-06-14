@@ -14,8 +14,8 @@ status: |
   * Standardiserte alle brytningspunkter (XS til 5XL) i prosjektet for å følge moderne industristandarder.
   * Refaktorerte Sass-mixins for dynamisk håndtering av medieforespørsler og moderniserte fargefunksjoner.
   * Utviklet et gjenbrukbart system for betingede felt i TinaCMS, som automatisk håndterer Alt-tekst og bildebeskrivelser.
-  * Implementerte dynamisk validering som sikrer at kritiske felt er påkrevd kun når de er relevante for innholdet.
-  * Løste kritiske TypeScript-feil i datakartleggingen for å sikre stabil drift og korrekt URL-generering.
+  * Implementerte dynamisk validering som sikrer at nødvendige felt er påkrevd kun når de er relevante for innholdet.
+  * Løste TypeScript-feil i datakartleggingen for å sikre stabil drift og korrekt URL-generering.
   * Optimaliserte visningen av styremedlemmer ved å innføre faste bildeformater og fjerne visningsfeil på mobil.
   * Gjennomførte en omfattende "Kristoffer-style" refaktorering for å øke lesbarheten og modulariteten i koden.
 
@@ -24,12 +24,12 @@ status: |
 sources: ''
 ---
 
-Dagens arbeid fokuserte på å tette tekniske gap i nettsidens visuelle og redaksjonelle struktur. Det eksisterende responsive systemet bar preg av vilkårlige verdier, og redaktørpanelet manglet logikk for å veilede brukerne gjennom universell utforming. Hensikten var å transformere disse svakhetene til styrker gjennom en konsekvent anvendelse av moderne utviklingsprinsipper og en ryddig, modulær arkitektur.
+Dagens arbeid har implementert responsiv mobilnavigasjon med fullskjerm-overlay og standardisert brytningspunktene (xs til 5xl) i Sass. I TinaCMS er det lagt til en intelligent valideringssjekk som automatisk krever alt-tekst og bildetekst kun når et bilde faktisk er lastet opp, for å sikre universell utforming. I tillegg er en feil i navigasjonskomponentens CSS-klasser, som forårsaket visningsfeil på desktop, rettet.
 
 * Jeg startet med å redesigne navigasjonen for små skjermer. Ved å implementere en transparent hamburger-meny som trigger et fullskjerm-overlay, har jeg sikret en moderne brukeropplevelse uten å kompromittere det klassiske desktop-oppsettet. Dette ble støttet av en totalrenovering av prosjektets brytningspunkter, som nå følger etablerte standarder fra 320px til 2560px.
 * For å fremtidssikre CSS-koden, erstattet jeg utdaterte funksjoner med det moderne 'sass:color'-modulen. Jeg refaktorerte også sentrale mixins til å bruke dynamisk nøkkeloppslag i stedet for hardkodede betingelser, noe som gjør det responsive rammeverket langt mer vedlikeholdsvennlig.
 * I redaktørpanelet (TinaCMS) utviklet jeg en intelligent hjelpefunksjon for betingede felt. Denne funksjonen overvåker bildevalg og bringer automatisk frem felt for Alt-tekst og bildetekst når de trengs. Ved å integrere sanntidsvalidering sørget jeg for at disse feltene også blir obligatoriske når bildet er til stede, noe som sikrer at nettsiden alltid etterlever krav til universell utforming.
-* Jeg ryddet opp i en kritisk feil i navigasjonskomponenten der layout-klasser ble feilaktig flatet ut, noe som førte til visningsfeil på desktop. Ved å korrigere denne logikken og samtidig fikse TypeScript-mismatch i artikkelkartleggingen, har jeg stabilisert både frontend-visningen og systemets interne databehandling.
+* Jeg ryddet opp i en feil i navigasjonskomponenten der layout-klasser ble feilaktig flatet ut, noe som førte til visningsfeil på desktop. Ved å korrigere denne logikken og samtidig fikse TypeScript-mismatch i artikkelkartleggingen, har jeg stabilisert både frontend-visningen og systemets interne databehandling.
 * Visuelt optimaliserte jeg "Om oss"-siden ved å tvinge faste størrelsesforhold på styrebilder og fjerne overlapp-feil på mindre telefoner, noe som resulteterte i et langt mer profesjonelt og ryddig uttrykk.
 
 ***

@@ -2,7 +2,7 @@
 date: 2026-05-08T17:06:44Z
 title: Modernisering og stabilisering av redaktørpanelet og stilark
 ingress: |
-  Dagen i dag har fokusert på å løse kritiske feil i redaktørpanelet og forbedre arkitekturen for stilarkene. Ved å rydde opp i hvordan data hentes og struktureres i TinaCMS, samt separere ansvarsområder i CSS-en, har vi nå en mer robust og vedlikeholdbar plattform. Dette sikrer at videre utvikling kan skje uten at uventede feil hindrer fremdriften.
+  Løst filstibindingsfeil i TinaCMS ved å erstatte absolutte baner (~/) med relative stier i kolleksjons- og maldefinisjoner. I tillegg er globale stilark refakturert for å forhindre stilkonflikter, og en ReferenceError i createPage-funksjonen er rettet.
 status: |
   #### Program informasjon
   **Teknologi** - Nuxt.js
@@ -10,7 +10,7 @@ status: |
   **Prinsipper** - Arkitektur, Modulisering
 
   #### Dagens Aktiviteter
-  * Løst kritiske kompileringsfeil i TinaCMS ved å rette opp i absolutte stier og alias-håndtering.
+  * Løst kompileringsfeil i TinaCMS ved å rette opp i absolutte stier og alias-håndtering.
   * Rettet en `ReferenceError` i kjernefunksjonaliteten for sidegenerering i redaktørpanelet.
   * Refaktorert TinaCMS-kolleksjoner og maler til en mer modulær struktur for bedre oversikt.
   * Utforsket og implementert React-basert logikk for tilpasning av redaktørpanelets brukergrensesnitt.
@@ -27,7 +27,7 @@ Dagen startet med utfordringer i redaktørpanelet (TinaCMS), der build-prosessen
 Hensikten var å raskt gjenopprette stabiliteten i redaktørpanelet, samtidig som jeg gjennomførte en nødvendig refaktorering av CMS-skjemaene. Jeg ønsket også å forbedre kodestil og typesikkerhet for å redusere risikoen for fremtidige "runtime errors".
 
 * Jeg identifiserte at TinaCMS sin build-prosess ikke klarte å håndtere "~/"-aliaser for visse hjelpefiler. Ved å konvertere disse til relative stier i alle kolleksjons- og mal-filer, sikret jeg at build-verktøyet fant de nødvendige ressursene uavhengig av miljø.
-* Jeg rettet en kritisk `ReferenceError` i `createPage`-funksjonen, der en variabel var feilstavet. Dette var en direkte årsak til at redaktørpanelet ikke klarte å generere sider basert på malene.
+* Jeg rettet en `ReferenceError` i `createPage`-funksjonen, der en variabel var feilstavet. Dette var en direkte årsak til at redaktørpanelet ikke klarte å generere sider basert på malene.
 * Jeg gjennomførte en omfattende refaktorering av TinaCMS-oppsettet. Ved å splitte opp store filer i mindre, spesialiserte moduler (kolleksjoner, maler og hjelpefunksjoner), har jeg gjort det betydelig enklere å vedlikeholde innholdsmodellen.
 * Siden TinaCMS benytter React for sitt grensesnitt, har jeg begynt å utforske og implementere React-logikk for å tilpasse redaktørpanelet. Dette innebar å redefinere deler av panelet for å skape en mer intuitiv brukeropplevelse for innholdsprodusentene.
 * Jeg flyttet hovedstyling for artikler og komponenter til dedikerte stilark. Ved å skille ut "layout"-logikk fra "presentasjon", unngår vi uønskede bivirkninger (side effects) når vi endrer på designet.

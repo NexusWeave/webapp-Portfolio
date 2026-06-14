@@ -2,7 +2,7 @@
 date: 2026-06-10T13:30:00.000Z
 title: Restaurering av TinaCMS-innlasting og miljøkonfigurasjon
 ingress: |
-  TinaCMS feilet med å laste nødvendige ressurser i admin-panelet, noe som førte til feilmeldingen "Failed loading TinaCMS assets". Dette skjedde både i lokal utvikling og under bygging av prosjektet for produksjon. Utfordringen skyldtes at kritiske miljøvariabler manglet, og at systemet ikke genererte de statiske resursene.
+  TinaCMS feilet med å laste nødvendige ressurser i admin-panelet, noe som førte til feilmeldingen "Failed loading TinaCMS assets". Dette skjedde både i lokal utvikling og under bygging av prosjektet for produksjon. Utfordringen skyldtes at miljøvariabler manglet, og at systemet ikke genererte de statiske resursene.
 status: |
   #### Program informasjon
   **Teknologi** - Nuxt.js, TinaCMS

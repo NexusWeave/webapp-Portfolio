@@ -1,8 +1,8 @@
 ---
 date: 2025-11-27T00:00:00.000Z
-title: Sikring av forretningskritisk logikk og etablering av fundament for raskere utvikling
+title: Sikring av forretningsviktig logikk og etablering av fundament for raskere utvikling
 ingress: |
-  Ved å modernisere systemets grunnmur har vi fjernet blokkeringer som tidligere hindret oss i å videreutvikle løsningene våre effektivt. Gjennom en strategisk omorganisering har vi skilt kjerneoppgaver fra den tekniske teknologien, noe som gir en pålitelig plattform, som reduserer vedlikeholdskostnader. Oppgraderingen gir oss full kontroll over systemets helse og klargjør oss for digital vekst og raskere leveranser.
+  Ved å <abbr title="Å restrukturere eksisterende kode uten å endre dens ytre oppførsel">refaktorere</abbr> <abbr title="Systemets overordnede struktur og organisering av kode">arkitekturen</abbr> til en <abbr title="En arkitektur der koden er delt inn i lag med ulike ansvarsområder">flerlagsmodell</abbr> har vi eliminert tette koblinger. Gjennom <abbr title="Dependency Inversion Principle: Et designprinsipp der høynivåmoduler ikke skal avhenge av lavnivåmoduler, men av abstraksjoner">avhengighetsinversjon</abbr> har vi skilt forretningslogikken fra <abbr title="Koden som håndterer eksterne tjenester som databaser og nettverk">infrastrukturen</abbr>, noe som muliggjør isolerte enhetstester og forenkler fremtidig oppgradering av teknologistakken.
 status: |
   #### Program informasjon
   **Teknologi** - C#

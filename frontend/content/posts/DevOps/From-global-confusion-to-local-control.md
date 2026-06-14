@@ -2,7 +2,7 @@
 date: 2025-12-19T00:00:00.000Z
 title: Automatisert Infrastruktur for Isolerte miljøer (CI/CD) Prosesser
 ingress: |
-  Dagens arbeid har fokusert på å løse kritiske utfordringer med miljøkonfigurasjon i Linux. Ved å etablere en fast struktur for lokale verktøy og automatisere koblingen mot Virtuelt miljøer, har jeg fjernet behovet for manuell intervensjon ved oppstart. Dette sikrer en stabil, selvgående og reproduserbar arbeidsflyt. Resultatet er et mer pålitelig system som prioriterer riktig programvare automatisk, noe som reduserer tid og risiko for feil.
+  Etablert en automatisert struktur for det virtuelle Python-miljøet under Garuda Linux ved å opprette lokale baner i ~/.local/bin. Dette eliminerer behovet for manuell aktivering ved oppstart, sikrer at pakker installeres i riktig kontekst via "which python"-validering, og forenkler utviklingsflyten.
 status: |
   #### Program informasjon
   **OS** - Garuda Drag0nized Linux

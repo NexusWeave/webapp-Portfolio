@@ -20,9 +20,9 @@ status: |
 sources: ''
 ---
 
-Prosjektet manglet en kilde til prosjekt informasjon, noe som vil skape store utfordringer ved utvidelse av teamet. Mangelen på oversikt gjorde opplæringen unødvendig lang, og skapte en betydelig risiko for misforståelser av systemets kjernefunksjonaliteter.
+Prosjektet manglet sentralisert teknisk dokumentasjon og onboarding-retningslinjer, noe som forsinket integrasjonen av nye utviklere. Mangelen på oversikt forlenget opplæringsfasen og økte risikoen for feiltolkning av systemarkitekturen.
 
-Hensikten var å minimere tiden det tar fra en ny medarbeider starter til de kan skape verdi, samt sikre at kritisk kunnskap ikke er låst til enkeltpersoner. Oppgaven var å etablere et intuitivt og tilgjengelig dokumentasjonsbase som kunne minimere opplærings tiden for de nye medarbeiderne.
+Hensikten var å halvere onboardingsfasen for nye utviklere ved å etablere en strukturert kunnskapsbase i prosjektet, slik at arkitekturvalg og utviklingsoppsett er dokumentert uavhengig av enkeltpersoners tilgjengelighet.
 
 * Jeg desinget og la til en strukturert dokumentasjonsbase
 * En oversikt som definerer prosjektets verdi og overordnede mål.

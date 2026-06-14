@@ -2,7 +2,7 @@
 date: 2026-03-13T00:00:00.000Z
 title: Løsning av Deployment-feil i Google Cloud Run
 ingress: |
-  Denne loggføringen dokumenterer feilsøking og løsning av kritiske oppstartsutfordringer ved publisering av en FastAPI-applikasjon til Google Cloud. Ved å standardisere miljø-boksen (containeren) og rydde i applikasjonens innstillinger (miljøvariabler), ble systemet transformert fra en ustabil tilstand til en pålitelig og produksjonsklar løsning. Fokus har ligget på å sikre at applikasjonen er selvforsynt med riktige verktøy og instrukser for en feilfri oppstart i skyen.
+  Denne loggføringen dokumenterer feilsøking og løsning av en oppstartsfeil (port 8080-krasj) under publisering av en FastAPI-applikasjon til Google Cloud Run. Ved å rette port-eksponeringen i Dockerfile og rekonfigurere miljøvariabler, ble applikasjonen stabilisert for skymiljøet.
 status: |
   #### Program informasjon
 
