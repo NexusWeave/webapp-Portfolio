@@ -1,4 +1,5 @@
 // Third-party dependencies
+@use 'sass:color' as sass-color
 @use 'lumina-sass/mix' as mix
 @use 'lumina-sass/color' as color
 
@@ -7,12 +8,9 @@
     cursor: pointer
     text-align: center
     border-radius: 0.75rem
-    align-items: center
-    display: inline-flex
     text-decoration: none
     background-color: $bg
     padding: 0.8rem 1.5rem
-    justify-content: center
     color: $text !important
     @include mix.font($size: 1rem, $weight: bold)
     border: 0.0625rem solid rgba(255, 255, 255, 0.4)
@@ -25,7 +23,7 @@
         transform: translateY(-0.1875rem)
         box-shadow: 0.5rem 0.5rem 1rem rgba($shadow-dark, 0.15), -0.5rem -0.5rem 1rem rgba($shadow-light, 0.9)
 
-    &:has(.icon):not(.tag-btn)
+    &:has(.icon):not(.tag-btn):not(.primary-btn)
         border-radius: 50% !important
 
     &:active
@@ -41,6 +39,7 @@
 
 @mixin primary-button-neumorphism()
     &:hover
+        background-color: sass-color.scale(color.$logo-red, $lightness: -15%) !important
         box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4), -0.375rem -0.375rem 0.875rem rgba(255, 255, 255, 0.3)
 
     &:active

@@ -1,11 +1,14 @@
 // Internal dependencies
 @use '../utilities/utilities' as mix
 
-.inline-flex-center
-    display: inline-flex
+.inline-items-justify-center
     align-items: center
+    justify-content: center
+    @include mix.gen-flexbox('inline-flex')
 
 .icon
-    display: inline-flex
-    align-items: center
+    @include mix.font($line-height: 1)
     gap: 0.5rem
+
+    &::before, &::after, *::before, *::after
+        @include mix.font($size: inherit !important)

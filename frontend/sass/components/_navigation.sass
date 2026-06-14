@@ -62,11 +62,11 @@ nav.anchor-nav, nav.portofolio-nav
 
                 .icon
                     @include mix.margin(0)
-                    @include mix.font($size: 1.5rem)
+                    @include mix.font($size: 1.8rem)
 
                     span, .bi, [type="icon"]
                         display: inline-block
-                        @include mix.font($size: 1rem)
+                        @include mix.font($size: inherit)
 
                 > span:not(.icon)
                     display: none
@@ -84,6 +84,6 @@ nav.some-nav
                 @include mix.margin($block: 0, $inline: 0.25rem)
 
                 .icon
-                    @include mix.font($size: 1.8rem)
+                    @include mix.font($size: 2rem)
 
         @include mix.logical-center()

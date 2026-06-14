@@ -10,6 +10,14 @@ $article-btn-theme-color: color.$files-yellow !default
 button, .button
     @include btn.button-neumorphism()
 
+    &:not(.primary-btn):not(.tag-btn)
+        .icon
+            @include mix.font($size: 1.8rem)
+
+            span, .bi, [type="icon"]
+                display: inline-block
+                @include mix.font($size: inherit)
+
 // -- Primary Button Styles --
 button.primary-btn, .button.primary-btn
     @include btn.primary-button-neumorphism()
