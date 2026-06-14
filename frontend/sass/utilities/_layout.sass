@@ -11,15 +11,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
 
 @mixin absolute-inset($inset: 0)
-    position: absolute
     inset: $inset
+    position: absolute
 
 @mixin logical-center()
     margin-inline: auto
 
 @mixin logical-size($inline: null, $block: null)
+
     @if $inline != null
         inline-size: $inline
+
     @if $block != null
         block-size: $block
 

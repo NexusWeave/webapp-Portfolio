@@ -11,8 +11,10 @@
 
 // Internal dependencies
 @use './button-helpers' as btn
-@use '../settings/tags' as tag-map
-@use '../settings/tech-icons' as tech-map
+@use '../map/icons' as icons-map
+@use '../map/tags' as tag-map
+@use '../map/tech-icons' as tech-map
+
 
 @mixin tag-generator()
     @each $category, $maps in tag-map.$tags
@@ -71,8 +73,10 @@
             --article-theme-color: #{$color}
 
 @include tag-generator()
-@include lumina.gen-icons()
 @include article-theme-generator()
+
+@each $name, $color in icons-map.$project-icons
+    @include lumina.gen-icons($name, $color)
 
 
 .tech-container

@@ -80,7 +80,10 @@ nav.some-nav
                 @include mix.radius(50%)
                 text-decoration: none !important
                 @include btn.button-neumorphism()
-                @include mix.logical-size(2rem, 2rem)
+                @include mix.logical-size(2.5rem, 2.5rem)
                 @include mix.margin($block: 0, $inline: 0.25rem)
+
+                .icon
+                    @include mix.font($size: 1.25rem)
 
         @include mix.logical-center()
