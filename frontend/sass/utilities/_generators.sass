@@ -41,6 +41,8 @@
                 padding: .5rem 1.2rem
                 border-radius: 0.75rem
 
+                @include lumina.gen-icons('dir', $color)
+
 @mixin tech-generator($boolean : false, $element: null)
     @each $category, $maps in tech-map.$tech-languages
         @each $tech, $props in $maps
