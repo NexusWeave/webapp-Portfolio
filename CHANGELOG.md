@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.27.1...v1.28.0) (2026-06-14)
+
+
+### Features
+
+* apply inline-items-justify-center utility class to Vue components. ([0c8575e](https://github.com/NexusWeave/webapp-Portfolio/commit/0c8575eea76f4403763ae9640c17d215b3aca467))
+
 ## [1.27.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.27.0...v1.27.1) (2026-06-12)
 
 
