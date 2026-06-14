@@ -1,8 +1,8 @@
 <template>
-    <button :class="cls" :type="btn.btnType ?? 'button'" @click="btn.action ? btn.action($event) : null" :disabled="isDisabled">
+    <button :class="['inline-items-justify-center', cls]" :type="btn.btnType ?? 'button'" @click="btn.action ? btn.action($event) : null" :disabled="isDisabled">
 
         <NavigationAnchor v-if="btn.anchor" :data="btn.anchor"/>
-        <span v-else-if="isIcon()" class="icon">
+        <span v-else-if="isIcon()" class="icon inline-items-justify-center">
             {{ btn.label }}
             <MediaIcon :cls="btn.type ?? []"/>
         </span>

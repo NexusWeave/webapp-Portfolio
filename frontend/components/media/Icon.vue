@@ -1,5 +1,5 @@
 <template>
-    <span :class="['icon', ...cls, 'inline-flex-center']" :aria-label="`${cls}-icon`" type="icon" :title="`${cls}-icon`"></span> 
+    <span :class="['icon', ...cls, 'inline-items-justify-center']" :aria-label="`${cls}-icon`" type="icon" :title="`${cls}-icon`"></span> 
 </template>
 <script lang="ts" setup>
 

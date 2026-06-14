@@ -50,7 +50,7 @@
                                 </h4>
                                 <h4 v-else class="subject-title">{{ sub.title.label }}</h4>
                                 
-                                <span v-if="sub.body" class="expand-icon">
+                                <span v-if="sub.body" class="expand-icon inline-items-justify-center">
                                     {{ expandedSubjects.includes(i) ? '−' : '+' }}
                                 </span>
                             </div>

@@ -1,7 +1,7 @@
 <template>
     <a
         v-if="data"
-        :class="cls"
+        :class="['inline-items-justify-center', ...cls]"
         :href="data.href"
         :aria-label="data.label"
         :aria-disabled="!!isDisabled()"
@@ -11,7 +11,7 @@
         :rel="isExternal() ? 'noopener noreferrer' : undefined"
     >
         <span v-if="isImage()"> <MediaFigure :data="media" :cls="cls" /> </span>
-        <span v-else-if="isIcon()" class="icon inline-flex-center">
+        <span v-else-if="isIcon()" class="icon inline-items-justify-center">
             <template v-if="data.label"> {{ data.label }} </template>
             <MediaIcon :cls="data.type"/>
         </span>
