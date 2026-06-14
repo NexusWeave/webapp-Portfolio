@@ -57,12 +57,11 @@
 
             grid-area: content
             @include mix.padding(0)
-            
-            
+
         .card-nav
             grid-area: nav
             @include mix.padding($block: 0.25rem)
-            
+   
         .card-footer
             h4
                 @include mix.font($size: 0.9rem)
@@ -75,7 +74,7 @@
         display: grid
         align-content: center
         @include mix.padding(0.75rem)
-        grid-template-rows: 1fr 1fr 1fr
+        grid-template-rows: 2rem 9rem 1fr
         grid-template-areas: "header" "content" "footer"
 
     p
