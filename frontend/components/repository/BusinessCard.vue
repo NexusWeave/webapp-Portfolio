@@ -6,26 +6,27 @@
         </header>
 
         <main class="card-content">
-        <section class="card-content flex-col flex-center">
-            <h3> {{ data?.label || 'Ukjent' }} </h3>
-            <p class="description">{{ truncatedDescription }}</p>
-        </section>
+            <section class="card-content flex-col flex-center">
+                <h3> {{ data?.label || 'Ukjent' }} </h3>
+                <p class="description">{{ truncatedDescription }}</p>
+            </section>
 
-        <nav class="card-nav flex-wrap-row flex-center">
-            <NavigationNavMenu v-if="hasAnchor && data?.anchor" :cls="['portofolio-nav']" :data="data.anchor" />
-        </nav>
+            <nav class="card-nav flex-wrap-row-content-center-justify-evenly">
+                <NavigationNavMenu v-if="hasAnchor && data?.anchor" :cls="['portofolio-nav']" :data="data.anchor" />
+            </nav>
         </main>
+
         <footer v-if="hasTechnology && data?.media" class="card-footer">
-            <section v-if="isCollaboration" class="credits flex-wrap-row flex-center">
-            <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
-                <span class="flex-wrap-row flex-center">Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
+            <section v-if="isCollaboration" class="credits flex-wrap-row-content-center-justify-evenly">
+                <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
+                    <span class="flex-wrap-row flex-center">Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
                 </p>
-            <p v-if="contributors?.length > 0" class="collab-name">
-                <span class="flex-wrap-row flex-center">Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
-            </p>
-        </section>
+                <p v-if="contributors?.length > 0" class="collab-name">
+                    <span class="flex-wrap-row flex-center">Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
+                </p>
+            </section>
             <h4>Andre teknologi(er) : </h4>
-            <section class="flex-wrap-row flex-center">
+            <section class="flex-wrap-row-content-center-justify-evenly">
                 <template v-for="(media, i) in data.media" :key="i">
                     <MediaFigure v-if="i > num" :data="media" :cls="['tech-figure', 'tech-img']" />
                 </template>

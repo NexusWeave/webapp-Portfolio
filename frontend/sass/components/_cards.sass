@@ -34,31 +34,19 @@
 
 .business-card
     @include mix.card-base()
-    @include mix.background-image("/media/images/cards/portfolio-card.svg", $size: 9rem, $position: top left, $origin: border-box)
 
     &.grid-layout
         .card-header
-            figure
-                figcaption
-                    display: none
-
-                @include mix.margin(0)
-
             min-block-size: 0
             grid-area: header
             @include mix.margin(0)
             @include mix.padding(0)
             @include mix.logical-size($inline: 100%)
 
-            .tech-img, .tech-figure
-                object-fit: contain !important
-                @include mix.margin(0 !important)
-                @include mix.logical-size(2.2rem !important, 2.2rem !important)
-
             .date-container
+                margin: 0
                 display: block
                 text-align: right
-                @include mix.margin($block: 0, $inline-start: auto)
 
         .card-content
             h3
@@ -80,18 +68,6 @@
                 @include mix.font($size: 0.9rem)
                 @include mix.margin($block: 0 0.25rem)
             
-            .tech-img, .tech-figure
-                object-fit: contain !important
-                @include mix.margin(0 !important)
-                @include mix.logical-size(2rem !important, 2rem !important)
-                
-
-            figure
-                figcaption
-                    display: none
-
-                @include mix.margin(0)
-
             grid-area: footer
             @include mix.margin(0)
             @include mix.padding(0)
@@ -99,41 +75,33 @@
         display: grid
         align-content: center
         @include mix.padding(0.75rem)
-        grid-template-rows: 1fr 1fr 1fr 1fr
-        grid-template-areas: "header" "content" "nav" "footer"
+        grid-template-rows: 1fr 1fr 1fr
+        grid-template-areas: "header" "content" "footer"
 
     p
         text-align: center
         @include mix.font($size: 1rem)
         @include mix.margin($block: 0.25rem, $inline: 0)
 
-    img 
-        @include mix.radius(0)
-
     section
         @include mix.margin($block: 0 0rem)
 
     .card-content
-        .icon
-            font-size: 2rem
-            @include mix.padding(0)
-
         h3
             span.icon
                 font-size: 1rem
                 @include mix.padding(0)
 
             @include mix.logical-size($inline: 100%)
+            
+        .icon
+            font-size: 2rem
+            @include mix.padding(0)
 
-    .tech-container
-        img
-            object-fit: contain
-            @include mix.logical-size(1.5rem, 1.5rem)
-
-    max-block-size: 29rem
-    @include mix.list-inline-reset()
     inline-size: 100%
+    max-block-size: 29rem
     max-inline-size: 23rem
+    @include mix.list-inline-reset()
     @include mix.link-color(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
     
     .credits
@@ -150,4 +118,4 @@
                         @include mix.margin(0)
                         @include mix.font($size: 1.1rem)
 
-            @include mix.margin($block: 0.1rem, $inline: 0.25rem)
+            @include mix.margin($block: 0.1rem, $inline: auto)

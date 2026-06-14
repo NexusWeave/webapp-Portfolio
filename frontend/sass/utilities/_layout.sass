@@ -26,16 +26,25 @@
         block-size: $block
 
 @mixin margin($block: null, $inline: null, $block-start: null, $block-end: null, $inline-start: null, $inline-end: null)
+
+    @if $block == null && $inline == null && $block-start == null && $block-end == null && $inline-start == null && $inline-end == null
+        margin: 0
+
     @if $block != null
         margin-block: $block
+
     @if $inline != null
         margin-inline: $inline
+
     @if $block-start != null
         margin-block-start: $block-start
+
     @if $block-end != null
         margin-block-end: $block-end
+
     @if $inline-start != null
         margin-inline-start: $inline-start
+
     @if $inline-end != null
         margin-inline-end: $inline-end
 
