@@ -1,8 +1,16 @@
+// @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import { validateSemanticHTML } from './semanticValidator';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { JSDOM } from 'jsdom';
+
+// Polyfill DOMParser in the Node environment using JSDOM
+const { window } = new JSDOM('');
+global.DOMParser = window.DOMParser;
+global.document = window.document;
+global.window = window as unknown as Window & typeof globalThis;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
