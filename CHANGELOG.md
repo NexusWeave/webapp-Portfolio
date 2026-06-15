@@ -1,3 +1,10 @@
+## [1.28.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.28.1...v1.28.2) (2026-06-15)
+
+
+### Bug Fixes
+
+* correct Sass logical operator syntax and test assertions to restore style compiler validation. ([a3951c7](https://github.com/NexusWeave/webapp-Portfolio/commit/a3951c76df48e12ce4735d43191ec29b3e9365c1))
+
 ## [1.28.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.28.0...v1.28.1) (2026-06-14)
 
 
