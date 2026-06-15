@@ -1,0 +1,79 @@
+<mxfile host="65bd71144e">
+    <diagram id="linkedin-automation-architecture" name="LinkedIn Automation Flow">
+        <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <!-- Title -->
+                <mxCell id="title" value="LinkedIn Post Automation MVP Architecture" style="text;html=1;strokeColor=#666666;fillColor=#2979FF;fontColor=#ffffff;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="30" width="770" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Section 1: Option A (Git Pipeline) -->
+                <mxCell id="optA-box" value="Option A: Git-Based CI/CD (No server runtime)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;startSize=30;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="90" width="360" height="440" as="geometry"/>
+                </mxCell>
+                <mxCell id="optA-step1" value="TinaCMS Save&#xa;(Creates Markdown Post)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;fontColor=#ffffff;strokeColor=#E65100;fontStyle=1" vertex="1" parent="optA-box">
+                    <mxGeometry x="30" y="50" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="optA-step2" value="Git Push to GitHub&#xa;(content/posts/*.md)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3F51B5;fontColor=#ffffff;strokeColor=#1A237E;fontStyle=1" vertex="1" parent="optA-box">
+                    <mxGeometry x="30" y="150" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="optA-step3" value="GitHub Action Runs&#xa;(publish_from_git.py)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;fontColor=#ffffff;strokeColor=#1B5E20;fontStyle=1" vertex="1" parent="optA-box">
+                    <mxGeometry x="30" y="250" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="optA-step4" value="Reads Ingress &amp;&#xa;Homepage URL" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#FFF9C4;strokeColor=#FBC02D;" vertex="1" parent="optA-box">
+                    <mxGeometry x="210" y="235" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="optA-connector1" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="optA-box" source="optA-step1" target="optA-step2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="optA-connector2" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="optA-box" source="optA-step2" target="optA-step3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="optA-connector3" value="Parses File" style="endArrow=none;dashed=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryWidth=0;entryHeight=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="optA-box" source="optA-step3" target="optA-step4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Section 2: Option B (FastAPI Service) -->
+                <mxCell id="optB-box" value="Option B: FastAPI Web Service (Realtime API)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;startSize=30;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="90" width="360" height="440" as="geometry"/>
+                </mxCell>
+                <mxCell id="optB-step1" value="TinaCMS beforeSubmit /&#xa;Frontend UI Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;fontColor=#ffffff;strokeColor=#E65100;fontStyle=1" vertex="1" parent="optB-box">
+                    <mxGeometry x="30" y="50" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="optB-step2" value="POST API request to&#xa;/api/v1/linkedin/share" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00bcd4;fontColor=#ffffff;strokeColor=#0097a7;fontStyle=1" vertex="1" parent="optB-box">
+                    <mxGeometry x="30" y="150" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="optB-step3" value="FastAPI Backend app&#xa;(LinkedInService)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#607d8b;fontColor=#ffffff;strokeColor=#37474f;fontStyle=1" vertex="1" parent="optB-box">
+                    <mxGeometry x="30" y="250" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="optB-step4" value="Reads credentials&#xa;from .env configs" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#FFF9C4;strokeColor=#FBC02D;" vertex="1" parent="optB-box">
+                    <mxGeometry x="220" y="235" width="120" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="optB-connector1" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="optB-box" source="optB-step1" target="optB-step2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="optB-connector2" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="optB-box" source="optB-step2" target="optB-step3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="optB-connector3" value="Auth config" style="endArrow=none;dashed=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryWidth=0;entryHeight=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="optB-box" source="optB-step3" target="optB-step4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- LinkedIn API Target -->
+                <mxCell id="linkedin-cloud" value="LinkedIn REST API&#xa;(ugcPosts Endpoint)" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#0277bd;fontColor=#ffffff;strokeColor=#01579b;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="325" y="570" width="200" height="110" as="geometry"/>
+                </mxCell>
+
+                <!-- External Connectors -->
+                <mxCell id="ext-conn-A" value="POST ugcPost (Bearer Token)" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1" source="optA-step3" target="linkedin-cloud">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ext-conn-B" value="POST ugcPost (Bearer Token)" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#00bcd4;strokeWidth=2;" edge="1" parent="1" source="optB-step3" target="linkedin-cloud">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
