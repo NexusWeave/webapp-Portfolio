@@ -3,6 +3,7 @@ import __future__
 from datetime import datetime
 
 class AnnouncementsService(object):
+    __VERSION__ = "v1.0.0"
 
     @staticmethod
     def get_celebration_days(date: datetime) -> str | None:

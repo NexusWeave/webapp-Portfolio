@@ -7,6 +7,7 @@ from lib.settings.database_config import BASE
 
 
 class RepositoryModel(BASE):
+    __VERSION__ = "v1.0.0"
 
     __tablename__: str = "repositories"
 
@@ -38,6 +39,7 @@ class RepositoryModel(BASE):
     collaborator_associations = relationship("RepoCollaboratorAssociationModel", back_populates = "repository", cascade = "all, delete-orphan")
 
 class LanguageAssosiationModel(BASE):
+    __VERSION__ = "v1.0.0"
 
     __tablename__: str = "language_assosiation"
 
@@ -50,6 +52,7 @@ class LanguageAssosiationModel(BASE):
     repository = relationship("RepositoryModel", back_populates = "lang_assosiations")
 
 class RepoCollaboratorAssociationModel(BASE):
+    __VERSION__ = "v1.0.0"
 
     __tablename__: str = "collaboration_assosiation"
 
@@ -63,6 +66,7 @@ class RepoCollaboratorAssociationModel(BASE):
     repository = relationship("RepositoryModel", back_populates = "collaborator_associations")
 
 class CollaboratorModel(BASE):
+    __VERSION__ = "v1.0.0"
 
     __tablename__: str = "collaborators"
 
@@ -74,6 +78,7 @@ class CollaboratorModel(BASE):
     repo_associations = relationship("RepoCollaboratorAssociationModel", back_populates = "collaborator", cascade = "all, delete-orphan")
     
 class LanguageModel(BASE):
+    __VERSION__ = "v1.0.0"
 
     __tablename__: str = "languages"
 

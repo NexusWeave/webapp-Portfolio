@@ -13,6 +13,7 @@ LOG = ServiceWatcher(name='Github-Utils')
 LOG.file_handler()
 
 class GithubUtils:
+    __VERSION__ = "v1.0.0"
 
     @staticmethod
     async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str ]]] = None, skip_analysis: bool = False, contribution_ratio: Optional[float] = None) -> Dict[str, str | object | List[str] | object]:
@@ -28,17 +29,17 @@ class GithubUtils:
         # Use parent owner for forks, otherwise fallback to repo owner
         parent_info = data.get('parent', {})
         parent_owner = parent_info.get('owner', {}).get('login') if isinstance(parent_info, dict) else None
-        
+
         repoObject['owner'] = parent_owner if (parent_owner) else str(data['owner']['login'])
         repoObject['owner_url'] = parent_info.get('owner', {}).get('html_url') if (data.get('fork') and parent_owner) else data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
 
         repoObject['updated_at'] = date_parser(data['updated_at'])
         repoObject['created_at'] = date_parser(data['created_at'])
         repoObject['is_private'] = True if data['private'] else False
-        
+
         if contribution_ratio is not None:
             repoObject['contribution_ratio'] = int(contribution_ratio * 100)
-        
+
         repoObject['collaborators'] = collaborators if collaborators else []
         repoObject['label'] = GithubUtils.replace_prefix_tech_suffix (data['name'])
         repoObject['description'] = data['description'] if data['description'] else "No description provided."
@@ -54,7 +55,7 @@ class GithubUtils:
         repoObject['is_backend'] = stack.get('is_backend', False)
         repoObject['is_frontend'] = stack.get('is_frontend', False)
         repoObject['is_fullstack'] = stack.get('is_fullstack', False)
-        
+
 
         return repoObject
 
@@ -73,7 +74,7 @@ class GithubUtils:
                 elif len(parts) == 2:
                     # webapp-NAME -> NAME
                     name = parts[1]
-        
+
         return name
 
     @staticmethod
@@ -95,7 +96,7 @@ class GithubUtils:
 
         github = GithubAPI(URL=URL, KEY=TOKEN)
         tree_path = tree_path.replace("{/sha}", f"/{branch}?recursive={n}")
-        
+
         LOG.info(f"Analyzing repository stack: {tree_path}")
         try:
             repo_tree:Dict[str, Any] = await github.analyze_repository(tree_path)
@@ -106,7 +107,7 @@ class GithubUtils:
         except Exception as e:
             LOG.error(f"Failed to fetch tree for {tree_path}: {str(e)}")
             return {}
-        
+
         if not tree:
             LOG.warn(f"No tree data found for repository at {tree_path}.")
             return {}
@@ -115,7 +116,7 @@ class GithubUtils:
             '.html', '.htm', '.css', '.scss', '.sass', '.less', 
             '.jsx', '.tsx', '.ts', '.vue', '.svelte'
             ]
-        
+
         backend_extensions:List[str] = [
             '.py', '.cs', '.c', '.h','.cpp', '.hpp', '.go', '.rs',
             '.sql', '.php', '.java', '.csproj', '.sln', '.sql', '.jupyter', '.ipynb'
@@ -139,8 +140,8 @@ class GithubUtils:
     @staticmethod
     def check_backend_frontend(file: str, extensions: List[str]) -> bool:
         file = file.lower()
-        
+
         is_match = any(file.endswith(ext) for ext in extensions)
         if is_match: return True
-        
+
         return False

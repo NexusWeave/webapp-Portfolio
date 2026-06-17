@@ -1,6 +1,7 @@
 #   This class is used to perform the mathematical operations.
 
 class MathInterPreter(object):
+    __VERSION__ = "v1.0.0"
 
     def __init__(self):
         pass

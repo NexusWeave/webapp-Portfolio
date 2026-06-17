@@ -9,6 +9,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 class CollaboratorSyncManager:
+    __VERSION__ = "v1.0.0"
     """ Manages synchronization of collaborators and their associations with repositories. """
     
     def __init__(self, session: AsyncSession):

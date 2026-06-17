@@ -19,6 +19,7 @@ LOG = AppWatcher(dir="logs", name='Scheduler-Service')
 LOG.file_handler()
 
 class SchedulerService:
+    __VERSION__ = "v1.0.0"
 
     @staticmethod
     async def schedule_github():

@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field, ConfigDict, computed_field, model_validat
 
 
 class LanguageModel(BaseModel):
+    __VERSION__ = "v1.0.0"
     label: str
     bytes: int
 
@@ -39,6 +40,7 @@ class LanguageModel(BaseModel):
     model_config = ConfigDict(from_attributes = True)
 
 class RepositoryModel(BaseModel):
+    __VERSION__ = "v1.0.0"
     label: str = Field(..., description = "Repository Name", json_schema_extra = {"example":"my-repo"})
     owner: str = Field(..., description = "Repository Owner", json_schema_extra = {"example":"username"})
     owner_url: Optional[str] = Field(None, description = "Owner Profile URL", json_schema_extra = {"example":"https://github.com/username"})

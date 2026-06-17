@@ -13,6 +13,7 @@ LOG = DatabaseWatcher(name="Language-Sync-Manager")
 LOG.file_handler()
 
 class LanguageSyncManager:
+    __VERSION__ = "v1.0.0"
     """ Manages synchronization of languages and their associations with repositories. """
     
     def __init__(self, session: AsyncSession):

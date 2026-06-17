@@ -6,6 +6,7 @@ from typing import Dict, Any, List, Set
 from lib.models.database_models.GithubModel import LanguageModel, LanguageAssosiationModel
 
 class GithubPayloadFormatter:
+    __VERSION__ = "v1.0.0"
     """ Handles formatting and preparing raw GitHub payload data for database operations. """
 
     @staticmethod

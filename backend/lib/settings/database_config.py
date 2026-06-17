@@ -19,6 +19,7 @@ BASE = declarative_base()
 
 #   Base Database Configuration
 class SynchronousDatabaseConfig:
+    __VERSION__ = "v1.0.0"
     def __init__(self, engine: Engine, session_factory : sessionmaker[Session]):
         self.engine = engine
         self.session_factory = session_factory
@@ -36,6 +37,7 @@ class SynchronousDatabaseConfig:
     def SessionLocal(self) -> sessionmaker[Session]: return self.session_factory
 
 class ASynchronousDatabaseConfig:
+    __VERSION__ = "v1.0.0"
     def __init__(self, engine: AsyncEngine, session_factory : async_sessionmaker[AsyncSession]):
         self.engine = engine
         self.session_factory = session_factory

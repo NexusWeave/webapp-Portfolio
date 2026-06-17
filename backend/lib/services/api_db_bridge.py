@@ -10,8 +10,8 @@ from dotenv import load_dotenv
 from lib.utils.logger_config import AppWatcher
 from lib.services.github.github_api import GithubAPI
 from lib.utils.exception_handler import NotFoundError
-from lib.services.github.repository_handler import GithubDatabaseHandler
 from lib.settings.database_config import ASynchronousDatabaseConfig
+from lib.services.github.repository_handler import GithubDatabaseHandler
 
 
 #   Initialize Enviorment variables
@@ -22,6 +22,7 @@ LOG = AppWatcher(dir="logs", name='API-Database-Bridge')
 LOG.file_handler()
 
 class ApiDatabaseBridge:
+    __VERSION__ = "v1.0.0"
 
     @staticmethod
     async def repositories_sync(request:Request, url: str, params: Dict[str, str | int], endpoint: str, token: str, contributor: str):

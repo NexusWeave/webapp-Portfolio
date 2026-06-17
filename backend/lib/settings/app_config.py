@@ -20,6 +20,7 @@ LOG = AppWatcher(dir="logs", name='FastAPI-App')
 LOG.file_handler()
 
 class AppConfig:
+    __VERSION__ = "v1.0.0"
 
     @staticmethod
     def environment_initialization() -> Config:

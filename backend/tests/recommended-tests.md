@@ -4,6 +4,7 @@
 
 | Test Target | Rationale |
 | :--- | :--- |
+| **API Rate Limiting** | The application should gracefully handle API rate limits by waiting for the reset time and retrying the request, instead of crashing. This test should simulate a rate limit exceeded scenario and verify the correct behavior. |
 | **Scanner/Specialist Resilience** | Scraping logic is fragile. Tests must ensure that a single failed external link doesn't crash the `/specialist` endpoint. |
 | **Health Service Logic** | Verify that the monitoring system correctly reports failures (Database down, API timeout) before relying on it for production alerts. |
 | **Heavy Service Integration** | Ensure external API responses are correctly mapped to internal `HeavyModel` schemas. |

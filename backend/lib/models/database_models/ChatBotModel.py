@@ -6,18 +6,21 @@ from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, Boolean, B
 from lib.settings.database_config import BASE
 
 class AnswersModel(BASE):
+    __VERSION__ = "v1.0.0"
     __tablename__: str = "answers"
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
     response = Column(String, nullable = False)
 
 class CategoriesModel(BASE):
+    __VERSION__ = "v1.0.0"
     __tablename__: str = "categories"
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
     category = Column(String, unique = True, index = True, nullable = False)
 
 class Bot_responseModel(BASE):
+    __VERSION__ = "v1.0.0"
     __tablename__: str = "bot_responses"
 
     id = Column(Integer, primary_key = True, index = True, nullable = False, autoincrement = True)
