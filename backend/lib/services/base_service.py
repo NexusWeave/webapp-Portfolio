@@ -1,4 +1,4 @@
-# Standard Libraries
+# Built-in Libraries
 import __future__
 
 # Third-Party Libraries
@@ -36,5 +36,6 @@ class BaseService:
         raise NotImplementedError("Subclasses must implement _setup_routes() to register their endpoints.")
 
 class DatabaseQueries:
+    __VERSION__ = "v1.0.0"
     def __init__(self, session: AsyncSession):
         self.session = session

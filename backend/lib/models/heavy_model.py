@@ -1,4 +1,4 @@
-#   Standard libraries
+#   Built-in Libraries
 import __future__
 from typing import Dict, List
 from datetime import datetime
@@ -7,6 +7,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 
 class HeavyModel(BaseModel):
+    __VERSION__ = "v1.0.0"
 
     #   Initialize methods and database
     title: str = Field(..., description="Workout Title", json_schema_extra={"example":"Morning Routine"})

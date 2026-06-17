@@ -1,20 +1,21 @@
-# Standard libraries
+# Built-in libraries
 from typing import Optional
 
 
 class ExceptionHandler(Exception):
+    __VERSION__ = "v1.0.0"
     """ Base class for all exceptions """
 
     def __init__(self, code:int, message:Optional[str]) -> None:
         super().__init__(code, message)
         self.status_code = code
         self.message = message if message else "An error occurred"
-        
 
         if message is None:
             self.message = "An error occurred"
 
 class OperationalError(ExceptionHandler):
+    __VERSION__ = "v1.0.0"
     """ Raises when duplicated is not allowed """
 
     error = {
@@ -29,14 +30,16 @@ class OperationalError(ExceptionHandler):
         self.message = message if message else self.error[code]
 
 class NotFoundError(ExceptionHandler):
+    __VERSION__ = "v1.0.0"
     """ Raises when the requested resource is not found """
 
     def __init__(self, code: int, message:Optional[str]) -> None:
         super().__init__(code, message)
         self.status_code = code
         self.message = message if message else "Resource not found"
-        
+
 class TimeOutError(ExceptionHandler):
+    __VERSION__ = "v1.0.0"
     """ Raises when the request times out """
 
     def __init__(self, code: int, message:Optional[str]) -> None:

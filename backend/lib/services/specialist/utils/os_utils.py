@@ -1,7 +1,7 @@
-#   Importing Standard Libraries
+#   Built-in Libraries
 from anyio import Path
-import aiofiles.os as aos, time, os
 from typing import  List
+import aiofiles.os as aos, time, os
 
 from lib.utils.logger_config import APIWatcher
 from lib.utils.exception_handler import NotFoundError
@@ -10,6 +10,7 @@ logger = APIWatcher('OS-Utils', 'logs')
 logger.file_handler()
 
 class OsUtils(object):
+    __VERSION__ = "v1.0.0"
 
     def __init__(self):
         pass

@@ -1,4 +1,4 @@
-# Standard Libraries
+# Built-in Libraries
 import __future__, os
 from typing import List, Optional, Dict
 
@@ -11,6 +11,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 load_dotenv()
 
 class Config(BaseSettings):
+    __VERSION__ = "v1.0.0"
     DEBUG: bool = False
     
     API_VERSION: str = "v1"
@@ -49,11 +50,13 @@ class Config(BaseSettings):
 
 
 class ProdConfig(Config):
+    __VERSION__ = "v1.0.0"
     SECRET_KEY: Optional[str] = os.getenv('SECRET_KEY', None)
     DATABASE_URL: Optional[str] = os.getenv('PROD_DATABASE', None)
     DATABASE_TOKEN: Optional[str] = os.getenv('TURSO_WRITE_TOKEN', None)
 
 class DevelopmentConfig(Config):
+    __VERSION__ = "v1.0.0"
     DEBUG: bool = True
     SECRET_KEY: Optional[str] = os.getenv('SECRET_KEY', None)
     DATABASE_URL: Optional[str] = os.getenv('DEV_DATABASE', None)

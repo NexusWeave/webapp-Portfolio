@@ -1,12 +1,13 @@
-#   Standard libraries
+#   Built-in Libraries
+import datetime
 import __future__
 from typing import Dict
-import datetime
 
 #   Third Party Libraries
 from pydantic import BaseModel, Field
 
 class AnnouncementModel(BaseModel):
+    __VERSION__ = "v1.0.0"
 
     #   Initialize methods and database
     announcement_id: int = Field(..., description="Unique Announcement ID", json_schema_extra={"example":1})

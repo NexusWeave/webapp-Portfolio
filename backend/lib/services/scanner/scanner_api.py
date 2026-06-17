@@ -1,4 +1,4 @@
-# Standard Libraries
+# Built-in Libraries
 from asyncio import gather
 from time import perf_counter
 from urllib.parse import urljoin

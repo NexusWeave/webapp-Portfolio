@@ -1,6 +1,6 @@
-#   Standard Libraries
+#   Built-in Libraries
 import os, __future__, uvicorn
-from typing import Dict, List,  Any, Union
+from typing import Dict, List,  Any
 
 #   Third-Party Libraries
 from dotenv import load_dotenv
@@ -9,7 +9,6 @@ from fastapi import FastAPI, Request
 #   Internal Libraries
 from lib.settings.app_config import AppConfig
 from lib.utils.logger_config import AppWatcher
-from lib.utils.exception_handler import NotFoundError
 from lib.services.scanner.scanner_api import Scanner
 from lib.services.health.health_route import HealthService
 from lib.services.github.github_router import GithubService
