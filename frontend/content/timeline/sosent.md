@@ -10,6 +10,7 @@ subjects:
       Sosial Innovasjon-prosjektet innebar utvikling av en moderne digital infrastruktur for SosEnt Norge. Som Tech Lead og utvikler hadde jeg hovedansvaret for å designe og implementere organisasjonens nye hovednettside og et spesialtilpasset CMS fra grunnen av. Løsningen ble utviklet for å forenkle innholdsstyring og styrke sektorens digitale synlighet. Gjennom min rolle som kundekontakt og vedlikeholder har jeg sikret at plattformen kontinuerlig støtter organisasjonens mål om nettverksbygging og kunnskapsdeling mellom sosiale entreprenører i Norge.
     created: 2025-05-01T07:56:30.964Z
     end: 2026-06-01T07:56:40.706Z
+    ref_link: 'https://drive.google.com/file/d/1vqaTvun25_2q6oqKwcbR642JbVjk431a/view?usp=drive_link'
     techStack:
       - sass
       - git
