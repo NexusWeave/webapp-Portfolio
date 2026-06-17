@@ -1,3 +1,11 @@
+# [1.29.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.28.2...v1.29.0) (2026-06-17)
+
+
+### Features
+
+* Add __VERSION__ to all classes ([02d6bd9](https://github.com/NexusWeave/webapp-Portfolio/commit/02d6bd994315226707488fb7fb01a2317771da7e))
+* Implement rate-limiting for GitHub API ([8f8413c](https://github.com/NexusWeave/webapp-Portfolio/commit/8f8413c473b15102b1691b3d4ca6a7657967e28d))
+
 ## [1.28.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.28.1...v1.28.2) (2026-06-15)
 
 
