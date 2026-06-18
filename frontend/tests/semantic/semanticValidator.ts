@@ -1,6 +1,14 @@
 import type { ValidationResult } from '../../types/test';
 
-export function validateSemanticHTML(html: string): ValidationResult[] {
+function extractTemplate(vueContent: string): string {
+  const match = vueContent.match(/<template[^>]*>([\s\S]*?)<\/template>/);
+  return match ? match[1] : vueContent;
+}
+
+export function validateSemanticHTML(content: string, isVueFile: boolean = false): ValidationResult[] {
+  // Extract HTML if it's a Vue file
+  const html = isVueFile ? extractTemplate(content) : content;
+  
   // Use DOMParser to parse the HTML string in the jsdom environment
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
