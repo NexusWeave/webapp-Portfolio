@@ -9,22 +9,19 @@ This service acts as the FastAPI backend for the portfolio platform. It provides
 
 ## Project Structure
 - `app.py`: FastAPI app bootstrap and route registration
-- `lib/models/`: response and domain models
+- `lib/models/`: Response and domain models
 - `lib/services/`: API integrations and data synchronization services
-- `lib/database/`: database engine and provider setup
-- `lib/settings/`: environment, app, and database configuration
+- `lib/database/`: Database engine and provider setup
+- `lib/settings/`: Environment, app, and database configuration
 - `migration/`: Alembic migration scripts
-- `tests/`: integration, response, and performance test suites
+- `tests/`: Integration, response, and performance test suites
 
 ## Run Locally
-From `backend/`:
+From the `backend/` directory:
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python app.py
-```
+- Create and activate a virtual environment: `python -m venv .venv && source .venv/bin/activate`
+- Install the required dependencies: `pip install -r requirements.txt`
+- Run the server: `python app.py`
 
 Default local port: `8080`.
 
@@ -37,7 +34,7 @@ The API is versioned and mounted at `/api/{version}`.
 - `GET /api/{version}/handleRepositories`
 
 ## Testing
-The backend uses **Pytest** for comprehensive testing of API endpoints, business logic, and database interactions.
+The backend uses **Pytest** to test API endpoints, business logic, and database interactions.
 
 Run all tests:
 ```bash
