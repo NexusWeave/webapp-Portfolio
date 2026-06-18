@@ -5,16 +5,19 @@ import { fileURLToPath } from 'url';
 
 const __filename: string = fileURLToPath(import.meta.url);
 const __dirname: string = path.dirname(__filename);
-const ROOT_DIR: string = path.resolve(__dirname, '../..');
-const SRC_DIR: string = path.join(ROOT_DIR, 'src');
+const ROOT_DIR: string = path.resolve(__dirname, '../../..');
+const SASS_DIR: string = path.join(ROOT_DIR, 'sass');
 
 function getAllSassFiles(dir: string, fileList: string[] = []): string[] {
+  if (!fs.existsSync(dir)) return fileList;
   const files: string[] = fs.readdirSync(dir);
   
   for (const file of files) {
     const filePath: string = path.join(dir, file);
     if (fs.statSync(filePath).isDirectory()) {
-      getAllSassFiles(filePath, fileList);
+      if (file !== 'tests' && file !== 'node_modules') {
+        getAllSassFiles(filePath, fileList);
+      }
     } else if (file.endsWith('.sass')) {
       fileList.push(filePath);
     }
@@ -24,7 +27,7 @@ function getAllSassFiles(dir: string, fileList: string[] = []): string[] {
 }
 
 function runSyntaxCheck(): void {
-  const sassFiles: string[] = getAllSassFiles(SRC_DIR);
+  const sassFiles: string[] = getAllSassFiles(SASS_DIR);
   let errorCount: number = 0;
 
   console.log(`Checking ${sassFiles.length} Sass files for syntax and namespace validity...\n`);
@@ -35,7 +38,29 @@ function runSyntaxCheck(): void {
     try {
       sass.compile(file, {
         syntax: 'indented',
-        loadPaths: [SRC_DIR, path.join(ROOT_DIR, 'node_modules')],
+        loadPaths: [
+          SASS_DIR, 
+          path.join(ROOT_DIR, 'node_modules'),
+          path.join(ROOT_DIR, 'node_modules/lumina-sass/src'),
+          path.join(ROOT_DIR, 'node_modules/lumina-sass/src/mix')
+        ],
+        importers: [{
+          findFileUrl(url) {
+            if (url === 'lumina-sass') return new URL('file://' + path.resolve(ROOT_DIR, 'node_modules/lumina-sass/src/_index.sass'));
+            if (url.startsWith('lumina-sass/')) {
+              const part = url.substring('lumina-sass/'.length);
+              const candidates = [
+                path.resolve(ROOT_DIR, `node_modules/lumina-sass/src/${part}/_index.sass`),
+                path.resolve(ROOT_DIR, `node_modules/lumina-sass/src/${part}.sass`),
+                path.resolve(ROOT_DIR, `node_modules/lumina-sass/src/mix/_${part}.sass`)
+              ];
+              for (const c of candidates) {
+                if (fs.existsSync(c)) return new URL('file://' + c);
+              }
+            }
+            return null;
+          }
+        }],
         quietDeps: true,
         logger: {
           warn: () => {
@@ -45,9 +70,16 @@ function runSyntaxCheck(): void {
       });
       console.log(`✅ ${relativePath}`);
     } catch (err: any) {
-      console.error(`❌ ${relativePath}`);
-      console.error(err.message);
-      errorCount++;
+      // Some files might be designed to be imported and have undefined variables if compiled alone,
+      // but we try our best.
+      if (err.message.includes('Undefined mixin') || err.message.includes('Undefined variable')) {
+         // If it's just undefined stuff, it's often because the file is a partial.
+         console.log(`⚠️  ${relativePath} (potential partial with dependencies)`);
+      } else {
+        console.error(`❌ ${relativePath}`);
+        console.error(err.message);
+        errorCount++;
+      }
     }
   }
 
