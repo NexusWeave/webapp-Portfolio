@@ -40,11 +40,11 @@ export function sortbyDate<T extends { created?: any }>(data: T[], sort: string 
 
 export function setDateFormat(data:DateItem) : DateItem | undefined
 {
-    const time = new Intl.DateTimeFormat('nb-NO', { hour: '2-digit', minute: '2-digit' });
-    const date = new Intl.DateTimeFormat('nb-NO', { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
-    
+    const time = new Intl.DateTimeFormat('nb-NO', { timeZone: 'Europe/Oslo',hour: '2-digit', minute: '2-digit' });
+    const date = new Intl.DateTimeFormat('nb-NO', { timeZone: 'Europe/Oslo', month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
+
     if (!data.date) return undefined;
-    
+
     const dateData:DateItem = { 
         delimiter : 'dot',
         text : data.updated ? 'Oppdatert' : 'Publisert',
@@ -55,6 +55,7 @@ export function setDateFormat(data:DateItem) : DateItem | undefined
 
     return dateData;
 }
+
 
 export const useCarousel = (length:number, interval: number = 5000) => {
     const index = ref(Math.floor(Math.random() * length));
