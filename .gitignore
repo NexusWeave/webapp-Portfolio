@@ -7,6 +7,7 @@
 
 # Editor directories and files
 .idea
+*.css*
 *.suo
 *.logs
 *.ntvs*
@@ -21,6 +22,7 @@
 
 #   frontend related files & folders
 frontend/node_modules
+
 
 # Nuxt dev/build outputs
 frontend/dist
