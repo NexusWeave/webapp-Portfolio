@@ -1,15 +1,19 @@
-@use 'sass-true' as *
-@use 'lumina-sass/color' as color
-@use 'lumina-sass/mix' as lumina-mix
-@use '../../sass/utilities/utilities' as mixins
+// Third-party dependencies
+@use 'pkg:lumina-sass/color' as color
+@use 'pkg:lumina-sass/mix' as lumina-mix
+@use '../../node_modules/sass-true' as true
 
-@include test-module('Alerts')
-  @include test('alert-info should have correct contrast and icon')
-    @include assert
-      @include output
+// Internal dependencies
+@use '../utilities/utilities' as mixins
+
+
+@include true.test-module('Alerts')
+  @include true.test('alert-info should have correct contrast and icon')
+    @include true.assert
+      @include true.output
         .alert-info
           @include lumina-mix.alert(color.$info, $icon: 'info', $inline-size: 35rem)
-      @include expect
+      @include true.expect
         .alert-info
           gap: 1.5rem
           margin: auto
@@ -29,12 +33,12 @@
             grid-column: 1
             grid-row: 1
 
-  @include test('alert-warning should have correct contrast and icon')
-    @include assert
-      @include output
+  @include true.test('alert-warning should have correct contrast and icon')
+    @include true.assert
+      @include true.output
         .alert-warning
           @include lumina-mix.alert(color.$warning, $icon: 'warning', $inline-size: 35rem)
-      @include expect
+      @include true.expect
         .alert-warning
           gap: 1.5rem
           margin: auto

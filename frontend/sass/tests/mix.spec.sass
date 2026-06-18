@@ -1,91 +1,94 @@
-@use 'sass-true' as *
-@use '../../sass/utilities/_utilities.sass' as mixins
+// Third-party dependencies
+@use '../../node_modules/sass-true' as true
 
-@include test-module('Mixins')
-  @include test('logical-size mixin outputs inline and block sizes')
-    @include assert
-      @include output
+// Internal dependencies
+@use '../utilities/_utilities.sass' as mixins
+
+@include true.test-module('Mixins')
+  @include true.test('logical-size mixin outputs inline and block sizes')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.logical-size(100px, 200px)
-      @include expect
+      @include true.expect
         .test
           inline-size: 100px
           block-size: 200px
 
-  @include test('absolute-inset mixin outputs position and inset')
-    @include assert
-      @include output
+  @include true.test('absolute-inset mixin outputs position and inset')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.absolute-inset(10px)
-      @include expect
+      @include true.expect
         .test
           inset: 10px
           position: absolute
 
-  @include test('logical-center mixin outputs margin-inline: auto')
-    @include assert
-      @include output
+  @include true.test('logical-center mixin outputs margin-inline: auto')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.logical-center()
-      @include expect
+      @include true.expect
         .test
           margin-inline: auto
 
-  @include test('radius mixin outputs border-radius')
-    @include assert
-      @include output
+  @include true.test('radius mixin outputs border-radius')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.radius(10px)
-      @include expect
+      @include true.expect
         .test
           border-radius: 10px
 
-  @include test('border mixin outputs border')
-    @include assert
-      @include output
+  @include true.test('border mixin outputs border')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.border(1px solid black)
-      @include expect
+      @include true.expect
         .test
           border: 1px solid black
 
-  @include test('margin mixin outputs margin-block and margin-inline')
-    @include assert
-      @include output
+  @include true.test('margin mixin outputs margin-block and margin-inline')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.margin($block: 10px, $inline: 20px)
-      @include expect
+      @include true.expect
         .test
           margin-block: 10px
           margin-inline: 20px
 
-  @include test('padding mixin outputs padding-block and padding-inline')
-    @include assert
-      @include output
+  @include true.test('padding mixin outputs padding-block and padding-inline')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.padding($block: 10px, $inline: 20px)
-      @include expect
+      @include true.expect
         .test
           padding-block: 10px
           padding-inline: 20px
 
-  @include test('card-shadow-box mixin outputs margin, padding and box-shadow')
-    @include assert
-      @include output
+  @include true.test('card-shadow-box mixin outputs margin, padding and box-shadow')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.card-shadow-box()
-      @include expect
+      @include true.expect
         .test
           margin: 1rem
           padding: 1rem
           box-shadow: 0.25rem 0.25rem 1.25rem 0.25rem rgba(0, 0, 0, 0.1)
 
-  @include test('list-inline-reset mixin resets list styles for inline display')
-    @include assert
-      @include output
+  @include true.test('list-inline-reset mixin resets list styles for inline display')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.list-inline-reset()
-      @include expect
+      @include true.expect
         .test
           ul
             li
@@ -93,12 +96,12 @@
               display: inline
             padding: 0
 
-  @include test('nav-list-reset mixin resets list styles for navigation')
-    @include assert
-      @include output
+  @include true.test('nav-list-reset mixin resets list styles for navigation')
+    @include true.assert
+      @include true.output
         .test
           @include mixins.nav-list-reset()
-      @include expect
+      @include true.expect
         .test
           ul
             padding: 0
