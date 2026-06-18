@@ -9,12 +9,13 @@
     "postinstall": "nuxt prepare",
     "pre-release": "npm run test",
     "test:nuxt": "vitest run tests/nuxt",
-    "test:sass": "vitest run tests/sass",
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
     "serve": "npm run build && nuxt preview",
     "test:semantic": "vitest run tests/semantic",
     "test": "vitest run && npm run test:nuxt && npm run test:sass",
+    "test:dev": "vitest run --reporter=verbose && npm run test:nuxt && npm run test:semantic && npm run test:sass",
+    "test:sass": "sass --load-path=node_modules sass/tests/index.spec.sass sass/tests/index.spec.css && tsx test/ts/dependency-warnings.ts && tsx test/ts/syntax-check.ts",
     "deploy": "npm run test && npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
   },
   "dependencies": {
@@ -26,7 +27,7 @@
     "better-sqlite3": "^12.10.0",
     "bootstrap-icons": "^1.13.1",
     "eslint": "^10.1.0",
-    "lumina-sass": "^3.3.0",
+    "lumina-sass": "^3.3.4",
     "nuxt": "^4.4.2",
     "nuxt-gtag": "^4.1.0",
     "tinacms": "^3.6.3",
