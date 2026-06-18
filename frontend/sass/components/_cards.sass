@@ -1,13 +1,14 @@
 // Third-party dependencies
+@use 'lumina-sass/mix' as mix
 @use 'lumina-sass/color' as color
 
 // Internal dependencies
-@use '../utilities/utilities' as mix
+@use '../utilities/utilities' as utils
 
 // Card styles, with clear separation of concerns
 
 .card-container
-    @include mix.card-base()
+    @include utils.card-base()
     p
         text-align: justify
         @include mix.font($size: 1rem)
@@ -16,32 +17,32 @@
         @include mix.font($font: "Nunito")
 
     .tech
-        @include mix.list-inline-reset()
+        @include utils.list-inline-reset()
 
         ul
             li
                 cursor: default
-                @include mix.radius(.5rem)
-                @include mix.padding($inline: 1rem)
-                @include mix.border(0.0625rem solid black)
+                @include utils.radius(.5rem)
+                @include utils.padding($inline: 1rem)
+                @include utils.border(0.0625rem solid black)
 
     max-inline-size: 24rem
 
 .timeline-card
     h3
-        @include mix.margin($inline: 1rem)
+        @include utils.margin($inline: 1rem)
         @include mix.font($font: "Roboto")
 
 .business-card
-    @include mix.card-base()
+    @include utils.card-base()
 
     &.grid-layout
         .card-header
             min-block-size: 0
             grid-area: header
-            @include mix.margin(0)
-            @include mix.padding(0)
-            @include mix.logical-size($inline: 100%)
+            @include utils.margin(0)
+            @include utils.padding(0)
+            @include utils.logical-size($inline: 100%)
 
             .date-container
                 margin: 0
@@ -50,71 +51,71 @@
 
         .card-content
             h3
-                @include mix.margin(0)
-                @include mix.padding($block: 0.5rem)
+                @include utils.margin(0)
+                @include utils.padding($block: 0.5rem)
             p
-                @include mix.margin($block: 0.25rem)
+                @include utils.margin($block: 0.25rem)
 
             grid-area: content
-            @include mix.padding(0)
+            @include utils.padding(0)
 
         .card-nav
-            @include mix.padding($block: 0.25rem)
+            @include utils.padding($block: 0.25rem)
 
    
         .card-footer
             h4
                 @include mix.font($size: 0.9rem)
-                @include mix.margin($block: 0 0.25rem)
+                @include utils.margin($block: 0 0.25rem)
             
             grid-area: footer
-            @include mix.margin(0)
-            @include mix.padding(0)
+            @include utils.margin(0)
+            @include utils.padding(0)
 
         display: grid
         align-content: center
-        @include mix.padding(0.75rem)
+        @include utils.padding(0.75rem)
         grid-template-rows: 2rem 9rem 1fr
         grid-template-areas: "header" "content" "footer"
 
     p
         text-align: center
         @include mix.font($size: 1rem)
-        @include mix.margin($block: 0.25rem, $inline: 0)
+        @include utils.margin($block: 0.25rem, $inline: 0)
 
     section
-        @include mix.margin($block: 0 0rem)
+        @include utils.margin($block: 0 0rem)
 
     .card-content
         h3
             span.icon
                 font-size: 1rem
-                @include mix.padding(0)
+                @include utils.padding(0)
 
-            @include mix.logical-size($inline: 100%)
+            @include utils.logical-size($inline: 100%)
             
         .icon
             font-size: 2rem
-            @include mix.padding(0)
+            @include utils.padding(0)
 
     inline-size: 100%
     max-block-size: 29rem
     max-inline-size: 23rem
-    @include mix.list-inline-reset()
+    @include utils.list-inline-reset()
     @include mix.link-color(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
     
     .credits
-        @include mix.font($size: 0.9rem)
-        @include mix.margin($block: 0.5rem)
-        
         .collab-name
             span
                 a
                     gap: 0.2rem
-                    @include mix.margin(0)
+                    @include utils.margin(0)
 
                     .icon
-                        @include mix.margin(0)
+                        @include utils.margin(0)
                         @include mix.font($size: 1.1rem)
 
-            @include mix.margin($block: 0.1rem, $inline: auto)
+            @include utils.margin($block: 0.1rem, $inline: auto)
+
+        @include mix.font($size: 0.9rem)
+        @include utils.margin($block: 0.5rem)

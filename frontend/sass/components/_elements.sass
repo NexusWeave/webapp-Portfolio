@@ -1,15 +1,16 @@
 // Third-party dependencies
+@use 'lumina-sass/mix' as mix
 @use 'lumina-sass/color' as color
 
 // Internal dependencies
-@use '../utilities/utilities' as mix
-@use 'lumina-sass/mix' as lumina-mix
+@use '../utilities/utilities' as utils
+
 
 .alert-warning
-    @include lumina-mix.alert(color.$warning, $icon: 'warning', $inline-size: 35rem)
+    @include mix.alert(color.$warning, $icon: 'warning', $inline-size: 35rem)
 
 .alert-info
-    @include lumina-mix.alert(color.$info, $icon: 'info', $inline-size: 35rem)
+    @include mix.alert(color.$info, $icon: 'info', $inline-size: 35rem)
 
 .component-blue
     @include mix.background-color(color.$deep-midnight-blue, color.$neutral-off-white)
@@ -37,5 +38,5 @@
 .component-blue, .component-seagreen, .component-slate
     h2, h3, h4
         color: inherit
-        @include mix.margin(0, 0)
+        @include utils.margin(0, 0)
         @include mix.font($font: 'Roboto')

@@ -1,8 +1,9 @@
 // Third-party dependencies
+@use 'lumina-sass/mix' as mix
 @use 'lumina-sass/color' as color
 
 // Internal dependencies
-@use '../utilities/utilities' as mix
+@use '../utilities/utilities' as utils
 @use '../utilities/button-helpers' as btn
 
 $article-theme-color: color.$sea-green !default
@@ -11,17 +12,17 @@ article
     header
         .article-metadata
             span.meta-date
-                @include mix.margin($inline: 0 1rem)
+                @include utils.margin($inline: 0 1rem)
             a
                 display: inline-block
                 text-decoration: none
-                @include mix.margin(0.2rem, 0.2rem)
+                @include utils.margin(0.2rem, 0.2rem)
                 @include mix.font($size: 0.85rem)
 
-        @include mix.logical-center()
-        @include mix.margin($block: 0)
+        @include utils.logical-center()
+        @include utils.margin($block: 0)
     nav
-        @include mix.list-inline-reset()
+        @include utils.list-inline-reset()
         ul
             li
                 a
@@ -32,38 +33,38 @@ article
         max-inline-size: 100%
 
     section, .article-wrapper, .article-content
-        @include mix.logical-center()
+        @include utils.logical-center()
 
     section, .article-wrapper
-        @include mix.margin($block: 0)
+        @include utils.margin($block: 0)
 
     .pagination-container, .blog-section
-        @include mix.margin($block: 2rem, $inline: 0)
+        @include utils.margin($block: 2rem, $inline: 0)
 
     .article-content
-        @include mix.margin($block: 2rem)
+        @include utils.margin($block: 2rem)
 
         div
             h4
-                @include mix.margin($block: 1rem)
+                @include utils.margin($block: 1rem)
 
     .ingress-header
-        @include mix.logical-size($block: auto)
+        @include utils.logical-size($block: auto)
 
     .blog-header
         max-inline-size: 29rem
-        @include mix.logical-size($block: 32rem)
-        @include mix.margin($block: 2rem, $inline: 0.5rem)
-        @include mix.shadow(0 0 0.625rem rgba(color.$text-base-dark-grey, 0.2))
+        @include utils.logical-size($block: 32rem)
+        @include utils.margin($block: 2rem, $inline: 0.5rem)
+        @include utils.shadow(0 0 0.625rem rgba(color.$text-base-dark-grey, 0.2))
 
     .blog-header, .ingress-header
         p.article-metadata
             gap: 0.5rem
             span
-                @include mix.margin(0)
+                @include utils.margin(0)
             
             span.meta-date
-                @include mix.margin($inline: 0 0.7rem)
+                @include utils.margin($inline: 0 0.7rem)
                 
     .blog-header, .ingress-header
         p.article-metadata
@@ -72,29 +73,29 @@ article
 
         p
             @include mix.font($size: 1.1rem)
-            @include mix.padding($block: 0.5rem, $inline: 1rem)
+            @include utils.padding($block: 0.5rem, $inline: 1rem)
 
-        @include mix.padding($inline: 0.5rem, $block: 0)
+        @include utils.padding($inline: 0.5rem, $block: 0)
 
     .article-content, .blog-header, .ingress-header
         code
             z-index: -1
             position: relative
             color: color.$neutral-white
-            @include mix.radius(0.25rem)
+            @include utils.radius(0.25rem)
             background-color: color.$text-base-dark-grey
-            @include mix.padding($block: 0.2rem, $inline: 0.4rem)
+            @include utils.padding($block: 0.2rem, $inline: 0.4rem)
             @include mix.font($family: ('Courier New', Courier, monospace), $style: italic)
 
         pre
-            @include mix.radius(0.25rem)
-            @include mix.padding(1rem, 1rem)
+            @include utils.radius(0.25rem)
+            @include utils.padding(1rem, 1rem)
             background-color: color.$text-base-dark-grey
             border-inline-start: 0.1875rem solid $article-theme-color
 
         blockquote
             padding-inline-start: 1rem
-            @include mix.margin($block: 1.5rem, $inline: 0)
+            @include utils.margin($block: 1.5rem, $inline: 0)
             border-inline-start: 0.1875rem solid $article-theme-color
             
         strong, b, q
@@ -115,7 +116,7 @@ article
                 color: inherit
                 text-decoration: none
 
-            @include mix.margin($block: auto, $inline: 0)
+            @include utils.margin($block: auto, $inline: 0)
             text-align: left
         
         abbr
@@ -133,34 +134,34 @@ article.bio
     p
         text-align: justify
         max-inline-size: 50rem
-        @include mix.logical-center()
-        @include mix.margin($block: 0.5rem)
+        @include utils.logical-center()
+        @include utils.margin($block: 0.5rem)
 
     ul
         li
-            @include mix.margin($block: 0.5rem)
+            @include utils.margin($block: 0.5rem)
 
         max-inline-size: 47rem
-        @include mix.logical-center()
+        @include utils.logical-center()
 
     div
         max-inline-size: 50rem
-        @include mix.logical-center()
-        @include mix.margin($block: 3rem)
+        @include utils.logical-center()
+        @include utils.margin($block: 3rem)
 
 article.profile-bar
 
     section
         max-inline-size: 18rem
-        @include mix.margin($block: auto, $inline: 0.25rem)
+        @include utils.margin($block: auto, $inline: 0.25rem)
 
     section.profile-content
         p
             h2
                 text-align: left
                 display: inline-block
-                @include mix.margin(0, 0)
-                @include mix.logical-size($inline: 8rem)
+                @include utils.margin(0, 0)
+                @include utils.logical-size($inline: 8rem)
 
         .slogan-wrapper
-            @include mix.logical-size($inline: 17rem)
+            @include utils.logical-size($inline: 17rem)

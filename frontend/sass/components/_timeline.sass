@@ -1,39 +1,40 @@
 // Third-party dependencies
-@use 'lumina-sass/color' as color
+@use 'lumina-sass/mix' as l-mix
+@use 'lumina-sass/color' as l-color
 
 // Internal dependencies
-@use '../utilities/utilities' as mix
+@use '../utilities/utilities' as utils
 
 .timeline-explorer-wrapper
     max-inline-size: 60rem
-    @include mix.padding(1rem)
-    @include mix.logical-center()
-    @include mix.margin($block: 2rem)
-    @include mix.logical-size($inline: 100%)
+    @include utils.padding(1rem)
+    @include utils.logical-center()
+    @include utils.margin($block: 2rem)
+    @include utils.logical-size($inline: 100%)
 
     .timeline-title
-        color: color.$deep-midnight-blue
-        @include mix.margin($block: 0 3rem)
-        @include mix.font($size: 1.8rem, $weight: 800)
+        color: l-color.$deep-midnight-blue
+        @include utils.margin($block: 0 3rem)
+        @include l-mix.font($size: 1.8rem, $weight: 800)
 
     .timeline-track-container
         position: relative
-        @include mix.margin($block: 0)
-        @include mix.padding($block: 2rem)
-        @include mix.logical-size($inline: 100%)
+        @include utils.margin($block: 0)
+        @include utils.padding($block: 2rem)
+        @include utils.logical-size($inline: 100%)
 
         .timeline-track-wrapper
             position: relative
-            @include mix.logical-center()
-            @include mix.logical-size($inline: 90%, $block: 2rem)
+            @include utils.logical-center()
+            @include utils.logical-size($inline: 90%, $block: 2rem)
 
             .timeline-track
                 z-index: 0
                 inset-inline: 0
                 position: absolute
-                background: color.$sea-green
-                @include mix.radius(0.125rem)
-                @include mix.logical-size($block: 0.25rem)
+                background: l-color.$sea-green
+                @include utils.radius(0.125rem)
+                @include utils.logical-size($block: 0.25rem)
 
             .timeline-dots
                 z-index: 1
@@ -42,16 +43,16 @@
                 pointer-events: none
 
                 .timeline-dot
-                    @include mix.radius(50%)
+                    @include utils.radius(50%)
                     transition: all 0.3s ease
-                    background: color.$neutral-off-white
-                    @include mix.logical-size(0.75rem, 0.75rem)
-                    @include mix.border(0.125rem solid color.$sea-green)
+                    background: l-color.$neutral-off-white
+                    @include utils.logical-size(0.75rem, 0.75rem)
+                    @include utils.border(0.125rem solid l-color.$sea-green)
 
                     &.active
                         transform: scale(1.3)
-                        background: color.$deep-midnight-blue
-                        border-color: color.$deep-midnight-blue
+                        background: l-color.$deep-midnight-blue
+                        border-color: l-color.$deep-midnight-blue
 
             .timeline-item
                 z-index: 2
@@ -66,7 +67,7 @@
                     appearance: none
                     background: transparent
                     -webkit-appearance: none
-                    @include mix.logical-size($inline: 100%)
+                    @include utils.logical-size($inline: 100%)
 
                     &:focus
                         outline: none
@@ -76,23 +77,23 @@
                         cursor: pointer
                         background: transparent
                         -webkit-appearance: none
-                        @include mix.margin($block-start: -0.125rem)
-                        @include mix.logical-size(0.9375rem, 1.875rem)
+                        @include utils.margin($block-start: -0.125rem)
+                        @include utils.logical-size(0.9375rem, 1.875rem)
 
                     &::-moz-range-thumb
                         opacity: 0
                         cursor: pointer
                         background: transparent
-                        @include mix.border(none)
-                        @include mix.logical-size(0.9375rem, 1.875rem)
+                        @include utils.border(none)
+                        @include utils.logical-size(0.9375rem, 1.875rem)
 
                     &::-webkit-slider-runnable-track, &::-moz-range-track
                         background: transparent
 
     .timeline-content-wrapper
         min-block-size: 20rem
-        @include mix.margin($block-start: 0)
-        @include mix.logical-size($inline: 100%)
+        @include utils.margin($block-start: 0)
+        @include utils.logical-size($inline: 100%)
 
     .timeline-card-wrapper
         opacity: 0
@@ -101,8 +102,8 @@
         position: relative
         max-inline-size: 45rem
         transform: translateY(1.25rem)
-        @include mix.margin($block-start: 0)
-        @include mix.logical-size($inline: 100%)
+        @include utils.margin($block-start: 0)
+        @include utils.logical-size($inline: 100%)
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1)
 
         &.timeline-active
@@ -118,62 +119,62 @@
             inset-inline-start: 50%
             transform: translateX(-50%)
             inset-block-start: -0.9375rem
-            @include mix.logical-size(0, 0)
+            @include utils.logical-size(0, 0)
             border-inline: 0.9375rem solid transparent
-            border-block-end: 0.9375rem solid color.$neutral-off-white
+            border-block-end: 0.9375rem solid l-color.$neutral-off-white
             filter: drop-shadow(0 -0.125rem 0.125rem rgba(0,0,0,0.05))
 
         .timeline-card-content
-            @include mix.radius(1rem)
-            @include mix.padding(2.5rem)
-            background: color.$neutral-off-white
-            @include mix.logical-size($inline: 100%)
-            @include mix.border(0.0625rem solid rgba(0,0,0,0.03))
-            @include mix.shadow(0 0.625rem 1.875rem rgba(0, 0, 0, 0.08))
+            @include utils.radius(1rem)
+            @include utils.padding(2.5rem)
+            background: l-color.$neutral-off-white
+            @include utils.logical-size($inline: 100%)
+            @include utils.border(0.0625rem solid rgba(0,0,0,0.03))
+            @include utils.shadow(0 0.625rem 1.875rem rgba(0, 0, 0, 0.08))
 
             .timeline-card-header
-                @include mix.margin($block: 0 2rem)
-                @include mix.padding($block: 0 1.5rem, $inline: 1.5rem)
-                border-block-end: 0.125rem solid rgba(color.$sea-green, 0.2)
+                @include utils.margin($block: 0 2rem)
+                @include utils.padding($block: 0 1.5rem, $inline: 1.5rem)
+                border-block-end: 0.125rem solid rgba(l-color.$sea-green, 0.2)
                 
                 .header-main
                     gap: 1rem
 
                 .timeline-main-title
                     line-height: 1.2
-                    color: color.$deep-midnight-blue
-                    @include mix.margin($block: 0, $inline: 0)
-                    @include mix.font($size: 1.6rem, $weight: 800)
+                    color: l-color.$deep-midnight-blue
+                    @include utils.margin($block: 0, $inline: 0)
+                    @include l-mix.font($size: 1.6rem, $weight: 800)
 
                 .timeline-location
                     .location-icon
-                        @include mix.font($size: 1.1rem)
+                        @include l-mix.font($size: 1.1rem)
 
                     gap: 0.5rem
-                    color: color.$sea-green
-                    @include mix.font($size: 0.95rem, $weight: 600)
+                    color: l-color.$sea-green
+                    @include l-mix.font($size: 0.95rem, $weight: 600)
 
             .timeline-body-content
                 line-height: 1.6
-                @include mix.font($size: 1.05rem)
-                color: color.$text-base-dark-grey
-                @include mix.margin($block: 0 2.5rem)
-                @include mix.padding($inline: 1.5rem)
+                @include l-mix.font($size: 1.05rem)
+                color: l-color.$text-base-dark-grey
+                @include utils.margin($block: 0 2.5rem)
+                @include utils.padding($inline: 1.5rem)
                 p
-                    @include mix.margin($block: 0 1rem)
+                    @include utils.margin($block: 0 1rem)
                 
                 strong
-                    color: color.$deep-midnight-blue
+                    color: l-color.$deep-midnight-blue
 
             .timeline-subjects-list
 
                 div
-                    @include mix.margin($inline: 0)
+                    @include utils.margin($inline: 0)
 
                 gap: 1.5rem
 
             .subject-item
-                @include mix.padding($block: 1rem)
+                @include utils.padding($block: 1rem)
                 transition: background-color 0.3s ease
                 border-block-end: 0.0625rem solid rgba(0,0,0,0.05)
 
@@ -182,13 +183,13 @@
 
                 &.subject-expandable
                     &:hover
-                        background-color: rgba(color.$sea-green, 0.03)
+                        background-color: rgba(l-color.$sea-green, 0.03)
 
                     cursor: pointer
 
                 &.subject-expanded
                     .expand-icon
-                        color: color.$logo-red
+                        color: l-color.$logo-red
                         transform: rotate(180deg)
 
                 .subject-grid-container
@@ -199,15 +200,15 @@
 
                 .subject-date
                     gap: 0.2rem
-                    color: color.$sea-green
-                    @include mix.font($size: 0.9rem, $weight: 700)
+                    color: l-color.$sea-green
+                    @include l-mix.font($size: 0.9rem, $weight: 700)
 
                     .date-dash
                         display: none // Hide dash in vertical stack
                     
                     .ongoing
                         opacity: 0.8
-                        @include mix.font($size: 0.8rem, $weight: 500, $style: italic)
+                        @include l-mix.font($size: 0.8rem, $weight: 500, $style: italic)
 
                 .subject-content
                     gap: 0.8rem
@@ -215,42 +216,42 @@
 
                     .subject-header
                         gap: 1.5rem
-                        @include mix.logical-size($inline: 100%)
+                        @include utils.logical-size($inline: 100%)
 
                     .subject-title
                         flex-grow: 1
                         text-align: center
-                        color: color.$deep-midnight-blue
-                        @include mix.margin($block: 0, $inline: 0)
-                        @include mix.font($size: 1.2rem, $weight: 700)
+                        color: l-color.$deep-midnight-blue
+                        @include utils.margin($block: 0, $inline: 0)
+                        @include l-mix.font($size: 1.2rem, $weight: 700)
 
                     .expand-icon
                         &:hover
-                            color: color.$neutral-white
-                            background-color: color.$sea-green
+                            color: l-color.$neutral-white
+                            background-color: l-color.$sea-green
 
-                        color: color.$sea-green
-                        @include mix.radius(50%)
+                        color: l-color.$sea-green
+                        @include utils.radius(50%)
                         transition: all 0.3s ease
-                        @include mix.logical-size(2rem, 2rem)
-                        @include mix.margin($inline: 0 0.5rem)
-                        background-color: rgba(color.$sea-green, 0.1)
-                        @include mix.font($size: 1.1rem, $weight: 700)
+                        @include utils.logical-size(2rem, 2rem)
+                        @include utils.margin($inline: 0 0.5rem)
+                        background-color: rgba(l-color.$sea-green, 0.1)
+                        @include l-mix.font($size: 1.1rem, $weight: 700)
 
             .subject-details
                 .details-content
                     line-height: 1.5
                     padding-inline-start: 1rem
-                    color: color.$text-base-dark-grey
-                    @include mix.font($size: 0.95rem)
-                    border-inline-start: 0.1875rem solid color.$sea-green
+                    color: l-color.$text-base-dark-grey
+                    @include l-mix.font($size: 0.95rem)
+                    border-inline-start: 0.1875rem solid l-color.$sea-green
 
                 overflow: hidden
                 inline-size: 36rem
                 margin-inline: 0.5rem
-                @include mix.padding(1rem)
-                @include mix.radius(0.5rem)
-                background: rgba(color.$neutral-soft-white, 0.5)
+                @include utils.padding(1rem)
+                @include utils.radius(0.5rem)
+                background: rgba(l-color.$neutral-soft-white, 0.5)
 
             .tech-container
                 
@@ -264,15 +265,15 @@
                         word-break: break-word
                         box-sizing: border-box
                         text-transform: uppercase                        
-                        background: color.$neutral-white
-                        color: color.$deep-midnight-blue
+                        background: l-color.$neutral-white
+                        color: l-color.$deep-midnight-blue
 
-                        @include mix.radius(0.25rem)
-                        @include mix.padding(0.125rem)
-                        @include mix.font($size: 0.55rem, $weight: 700)
-                        @include mix.border(0.0625rem solid color.$sea-green)
+                        @include utils.radius(0.25rem)
+                        @include utils.padding(0.125rem)
+                        @include l-mix.font($size: 0.55rem, $weight: 700)
+                        @include utils.border(0.0625rem solid l-color.$sea-green)
 
-            @include mix.margin($block: 0.5rem 0)
+            @include utils.margin($block: 0.5rem 0)
 
     // Animations
     .expand-enter-active, .expand-leave-active
@@ -283,16 +284,16 @@
         opacity: 0
         max-block-size: 0
 
-        @include mix.margin($block: 0)
-        @include mix.padding($block: 0)
+        @include utils.margin($block: 0)
+        @include utils.padding($block: 0)
 
     // Mobile adjustments
-    @include mix.media-queries('sm')
+    @include l-mix.media-queries('sm')
         .timeline-explorer-wrapper
-            @include mix.padding(0.5rem)
+            @include utils.padding(0.5rem)
             
             .timeline-card-content
-                @include mix.padding(1.5rem)
+                @include utils.padding(1.5rem)
 
                 .subject-item
                     .subject-grid-container
@@ -317,4 +318,4 @@
                         inline-size: auto
 
             .timeline-track-wrapper
-                @include mix.logical-size($inline: 95%)
+                @include utils.logical-size($inline: 95%)

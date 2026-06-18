@@ -1,12 +1,13 @@
 // Third-party dependencies
+@use 'lumina-sass/mix' as mix
 @use 'lumina-sass/color' as color
 
 // Internal dependencies
-@use '../utilities/utilities' as mix
+@use '../utilities/utilities' as utils
 @use '../utilities/button-helpers' as btn
 
 $article-btn-theme-color: color.$files-yellow !default
-// -- Base Button Styles --
+
 button, .button
     @include btn.button-neumorphism()
 
@@ -15,8 +16,9 @@ button, .button
             @include mix.font($size: 1.8rem)
 
             span, .bi, [type="icon"]
-                display: inline-block
                 font-size: inherit
+                display: inline-block
+                
 
 // -- Primary Button Styles --
 button.primary-btn, .button.primary-btn
@@ -27,7 +29,7 @@ button.primary-btn, .button.primary-btn
             color: inherit !important
 
         @include mix.font($size: 1.5rem)
-        @include mix.margin($inline: 0.4rem 0)
+        @include utils.margin($inline: 0.4rem 0)
         text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2)
         color: $article-btn-theme-color !important
 
@@ -42,21 +44,21 @@ $filter-categories: ( 'backend': color.$db-red, 'frontend': color.$frontend-sky-
 
 // -- Specific Button Overrides --
 button.timeline-btn
-    @include mix.radius(100%)
-    @include mix.padding(0, 0)
-    @include mix.logical-size(1.2rem, 1.2rem)
+    @include utils.radius(100%)
+    @include utils.padding(0, 0)
+    @include utils.logical-size(1.2rem, 1.2rem)
     @include mix.background-color(color.$text-base-dark-grey, color.$neutral-soft-white)
-    @include mix.shadow((0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.2), -0.1875rem -0.1875rem 0.375rem rgba(255, 255, 255, 0.8)))
+    @include utils.shadow((0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.2), -0.1875rem -0.1875rem 0.375rem rgba(255, 255, 255, 0.8)))
 
 section.tag-wrapper
     button.tag-btn, .button.tag-btn
         color: inherit
-        @include mix.shadow(none)
-        @include mix.border(none)
+        @include utils.shadow(none)
+        @include utils.border(none)
         // Reset base button styles to allow tag-generator colors to show
         background-color: transparent
         @include mix.font($size: 1.1rem)
-        @include mix.margin(0.5rem, 0.5rem)
+        @include utils.margin(0.5rem, 0.5rem)
 
     .tag-groups-container
         display: flex
@@ -83,12 +85,12 @@ section.tag-wrapper
         width: 100%
 
     max-inline-size: 100%
-    @include mix.margin($inline: auto, $block: 0)
+    @include utils.margin($inline: auto, $block: 0)
 
 button.reset-btn, .button.reset-btn
     @include mix.font($size: 1.1rem)
-    @include mix.margin(0.5rem, 0.5rem)
-    @include mix.padding(0.5rem, 1.2rem)
+    @include utils.margin(0.5rem, 0.5rem)
+    @include utils.padding(0.5rem, 1.2rem)
     color: color.$text-base-dark-grey !important
     background-color: color.$neutral-soft-white !important
     @include btn.button-neumorphism(color.$neutral-soft-white, color.$text-base-dark-grey)

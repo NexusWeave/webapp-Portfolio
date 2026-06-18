@@ -1,9 +1,9 @@
 // Third-party dependencies
-@use 'lumina-sass' as *
-@use 'lumina-sass/color' as color
+@use 'lumina-sass/mix' as l-mix
+@use 'lumina-sass/color' as l-color
 
 // Internal dependencies
-@use './utilities/utilities' as mix
+@use './utilities/utilities' as utils
 
 @forward './pages/dev'
 @forward './assets/images'
@@ -25,27 +25,27 @@
 *, *::before, *::after
     box-sizing: border-box
     writing-mode: horizontal-tb
-    @include mix.margin($block: auto, $inline: auto)
+    @include utils.margin($block: auto, $inline: auto)
 body
     h1, h2, h3, h4, h5, h6
         text-align: center
-        color: color.$text-base-dark-grey
+        color: l-color.$text-base-dark-grey
 
-        @include mix.margin($block: 0.5rem, $inline: auto)
+        @include utils.margin($block: 0.5rem, $inline: auto)
 
-    @include mix.text-wrap-safe()
-    @include apply-theme-colors(color.$neutral-off-white, color.$text-base-dark-grey, 'Nunito')
+    @include l-mix.text-wrap-safe()
+    @include l-mix.apply-theme-colors(l-color.$neutral-off-white, l-color.$text-base-dark-grey, 'Nunito')
 
 .col-3
     margin: 0.5%
     flex: 0 0 32%
 
 header, main
-    @include mix.margin($inline: auto, $block: 0 3rem)
+    @include utils.margin($inline: auto, $block: 0 3rem)
 
 main > .card-content
-    @include mix.margin($block: 0)
+    @include utils.margin($block: 0)
 
 footer
-    @include mix.padding(0.9rem)
-    @include mix.margin($inline: auto, $block: 0.9rem)
+    @include utils.padding(0.9rem)
+    @include utils.margin($inline: auto, $block: 0.9rem)
