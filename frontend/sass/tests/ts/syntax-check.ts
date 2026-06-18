@@ -8,6 +8,9 @@ const __dirname: string = path.dirname(__filename);
 const ROOT_DIR: string = path.resolve(__dirname, '../../..');
 const SASS_DIR: string = path.join(ROOT_DIR, 'sass');
 
+/**
+ * Recursively gets all .sass files in a directory, excluding tests and node_modules.
+ */
 function getAllSassFiles(dir: string, fileList: string[] = []): string[] {
   if (!fs.existsSync(dir)) return fileList;
   const files: string[] = fs.readdirSync(dir);
@@ -26,6 +29,12 @@ function getAllSassFiles(dir: string, fileList: string[] = []): string[] {
   return fileList;
 }
 
+/**
+ * Runs a standalone syntax check on each Sass file.
+ * Many files are 'partials' (intended to be imported) and will fail standalone compilation 
+ * if they depend on mixins or variables from other files. We catch these specific errors 
+ * and label them as warnings instead of failures.
+ */
 function runSyntaxCheck(): void {
   const sassFiles: string[] = getAllSassFiles(SASS_DIR);
   let errorCount: number = 0;
@@ -70,12 +79,14 @@ function runSyntaxCheck(): void {
       });
       console.log(`✅ ${relativePath}`);
     } catch (err: any) {
-      // Some files might be designed to be imported and have undefined variables if compiled alone,
-      // but we try our best.
-      if (err.message.includes('Undefined mixin') || err.message.includes('Undefined variable')) {
-         // If it's just undefined stuff, it's often because the file is a partial.
-         console.log(`⚠️  ${relativePath} (potential partial with dependencies)`);
+      const isMissingDependency = err.message.includes('Undefined mixin') || err.message.includes('Undefined variable');
+      
+      if (isMissingDependency) {
+         // This is likely a partial that expects to be imported into a context where these are defined.
+         const details = err.message.split('\n')[0]; // Get the first line of the error (the "what")
+         console.log(`⚠️  ${relativePath} (Partial: ${details})`);
       } else {
+        // This is a legitimate syntax error or a broken import
         console.error(`❌ ${relativePath}`);
         console.error(err.message);
         errorCount++;
@@ -87,7 +98,7 @@ function runSyntaxCheck(): void {
     console.error(`\nFound ${errorCount} syntax/import errors in Sass files.`);
     process.exit(1);
   } else {
-    console.log('\nAll Sass files passed syntax and namespace validation.');
+    console.log('\nAll Sass files passed syntax and namespace validation (ignoring expected partial errors).');
     process.exit(0);
   }
 }
