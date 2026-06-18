@@ -1,3 +1,17 @@
+# [1.30.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.29.0...v1.30.0) (2026-06-18)
+
+
+### Bug Fixes
+
+* Resolved import error & mixin errors. ([4881640](https://github.com/NexusWeave/webapp-Portfolio/commit/48816406b2b7b07e81bcbf41a3006597b9c60f32))
+* standardize frontend timezone to Europe/Oslo and align tests ([ae4d2f9](https://github.com/NexusWeave/webapp-Portfolio/commit/ae4d2f920af89320989d50f68ac7a539a47a82ae))
+* **test:** resolve enoent in syntax-check and refactor dependency-warnings for sass 1.80+ ([cbda197](https://github.com/NexusWeave/webapp-Portfolio/commit/cbda19710b3d0e8405e0ee06bab0e57f8bc9fcab))
+
+
+### Features
+
+* enhance semantic validator to support vue templates ([9b54924](https://github.com/NexusWeave/webapp-Portfolio/commit/9b549246102e53d1a05b54f1c6f7c2162a0923d3))
+
 # [1.29.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.28.2...v1.29.0) (2026-06-17)
 
 
