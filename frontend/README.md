@@ -1,12 +1,13 @@
 # Frontend — Portfolio Web Application
-The frontend provides a performant, accessible, and content-driven interface. It presents professional work, achievements, and blog posts with minimal friction. The CMS integration allows content to be managed independently, reducing maintenance overhead and time-to-publish without requiring deep technical knowledge.
+The frontend provides a fast, accessible, and content-driven interface. It displays professional work, achievements, and blog posts clearly. The CMS integration lets you manage content easily, so you can publish updates without needing deep technical knowledge.
+
 ## Tech Stack
 | Technology | Role | Value |
 | ---        | ---  | ---   |
-| [Nuxt 4](https://nuxt.com) | Full-stack Vue framework (SSR / SSG, routing, composables) | Server-side rendering and static generation improve search visibility and load times. Nuxt's file-based routing and component model accelerate feature delivery. |
-| [TinaCMS](https://tina.io) | Git-backed headless CMS with visual editing | TinaCMS provides a Git-backed visual editor, enabling content updates without developer involvement. |
-| [TypeScript](https://www.typescriptlang.org) | Static typing across all components, composables, and utilities | TypeScript across the entire frontend reduces runtime errors and lowers long-term maintenance cost. |
-| [SASS](https://sass-lang.com) | Structured, maintainable styling | Variables, mixins, and modular partials eliminate duplicated CSS, making visual changes faster and less error-prone across the entire app. |
+| [Nuxt 4](https://nuxt.com) | Full-stack Vue framework (SSR / SSG, routing, composables) | Server-side rendering and static generation improve search visibility and load times. Nuxt's file-based routing and component model help you build features faster. |
+| [TinaCMS](https://tina.io) | Git-backed headless CMS with visual editing | TinaCMS provides a visual editor linked to Git. This allows you to update content without asking a developer for help. |
+| [TypeScript](https://www.typescriptlang.org) | Static typing across all components, composables, and utilities | Using TypeScript everywhere reduces runtime errors and makes the code easier to maintain over time. |
+| [SASS](https://sass-lang.com) | Structured, maintainable styling | Variables, mixins, and modular partials prevent duplicated CSS. This makes changing the design faster and less error-prone. |
 
 ## Available Commands
 
@@ -21,18 +22,18 @@ The frontend provides a performant, accessible, and content-driven interface. It
 | `npm run test` | Run all frontend tests (Vitest + SASS) | `package.json` |
 
 ## Testing
-The frontend employs a dual testing strategy to verify both logic and presentation.
+The frontend uses a dual testing strategy to verify both logic and presentation.
 
-### 1. Component & Logic Testing (Vitest)
-Unit and integration tests for Vue components, Pinia stores, and TypeScript composables.
+### Component and Logic Testing (Vitest)
+Unit and integration tests check Vue components, Pinia stores, and TypeScript composables.
 ```bash
 npm run test:nuxt
 ```
 
-### 2. SASS Validation Suite
-Specialized tools to ensure style integrity and catch compiler deprecations.
+### SASS Validation Suite
+Specialized tools ensure style integrity and catch compiler deprecations.
 - **Spec Tests**: `sass-true` driven tests for mixins.
-- **Syntax Check**: standalone validation of all `.sass` files.
+- **Syntax Check**: Standalone validation of all `.sass` files.
 - **Dependency Warnings**: Monitors for modern SASS deprecations.
 
 Run SASS tests:

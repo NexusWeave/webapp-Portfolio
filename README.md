@@ -1,5 +1,5 @@
 # Portfolio Web Application
-This repository contains a full-stack biography and project showcase application, implemented with a Nuxt frontend and a FastAPI backend.
+This repository contains a full-stack biography and project showcase application. It uses a Nuxt frontend and a FastAPI backend.
 
 ## Current Stack
 | Layer | Technology | Notes |
@@ -24,24 +24,25 @@ This repository contains a full-stack biography and project showcase application
 - [Node.js](https://nodejs.org/) (LTS recommended)
 - [Python 3.14+](https://www.python.org/)
 
-### Option 1: Docker (Recommended)
+### Using Docker (Recommended)
 From the repository root, run the entire stack:
 ```bash
 docker compose up --build
 ```
 
-### Option 2: Local Development
-#### Backend
-1. Navigate to `backend/`.
-2. Create and activate a virtual environment: `python -m venv venv && source venv/bin/activate`.
-3. Install dependencies: `pip install -r requirements.txt`.
-4. Run the server: `uvicorn app:app --reload`.
+### Local Development
 
-#### Frontend
-1. Navigate to `frontend/`.
-2. Install dependencies: `npm install`.
-3. Run the development server: `npm run dev`.
-4. Clean build artifacts: `npm run clean`.
+#### Backend Setup
+- Navigate to the `backend/` directory.
+- Create and activate a virtual environment: `python -m venv venv && source venv/bin/activate`.
+- Install the required dependencies: `pip install -r requirements.txt`.
+- Run the server: `uvicorn app:app --reload`.
+
+#### Frontend Setup
+- Navigate to the `frontend/` directory.
+- Install the necessary dependencies: `npm install`.
+- Run the development server: `npm run dev`.
+- To clean build artifacts, run: `npm run clean`.
 
 Default ports:
 - Frontend: `http://localhost:3002`
@@ -60,4 +61,4 @@ The project uses a comprehensive testing strategy across both layers. Detailed t
 - [Backend Testing (Pytest & Coverage)](./backend/README.md#testing)
 
 ## Release Notes
-Project release history is tracked in [CHANGELOG.md](./CHANGELOG.md).
+Project release history is tracked in the [CHANGELOG.md](./CHANGELOG.md) file.
