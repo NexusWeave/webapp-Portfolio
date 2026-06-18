@@ -37,27 +37,35 @@ The API is versioned and mounted at `/api/{version}`.
 - `GET /api/{version}/handleRepositories`
 
 ## Testing
-From `backend/`:
+The backend uses **Pytest** for comprehensive testing of API endpoints, business logic, and database interactions.
 
+Run all tests:
 ```bash
 pytest -v
 ```
 
-Generate HTML test report:
-
+Generate a self-contained HTML test report:
 ```bash
 pytest --html=tests/reports/pytest_report.html --self-contained-html
 ```
 
-Coverage report:
-
+### Coverage Analysis
+To measure code coverage and generate an HTML report:
 ```bash
 coverage run -m pytest
 coverage html
 ```
+The report will be available in `backend/htmlcov/index.html`.
+
+### Key Test Targets
+- **API Endpoints**: Validating response codes and data structures.
+- **Service Logic**: Ensuring scanners and specialists handle external data gracefully.
+- **Database Migrations**: Verifying schema integrity across updates.
+- **Resilience**: Testing rate limit handling and error recovery.
 
 ## Documentation
 - Backend architecture: [docs/architecture.md](./docs/architecture.md)
+- Testing strategy: [tests/recommended-tests.md](./tests/recommended-tests.md)
 - Service class diagram: [lib/services/docs/services-classDiagram.md](./lib/services/docs/services-classDiagram.md)
 - GitHub service sequence diagram: [lib/services/github/docs/github-sequenceDiagram.md](./lib/services/github/docs/github-sequenceDiagram.md)
 - GitHub service ER diagram: [lib/services/github/docs/github-erDiagram.md](./lib/services/github/docs/github-erDiagram.md)

@@ -53,5 +53,11 @@ Default ports:
 - Frontend architecture: [frontend/docs/architecture.md](./frontend/docs/architecture.md)
 - Backend architecture: [backend/docs/architecture.md](./backend/docs/architecture.md)
 
+## Testing
+The project uses a comprehensive testing strategy across both layers. Detailed testing instructions can be found in their respective directories:
+
+- [Frontend Testing (Vitest & SASS Validation Suite)](./frontend/README.md#testing)
+- [Backend Testing (Pytest & Coverage)](./backend/README.md#testing)
+
 ## Release Notes
 Project release history is tracked in [CHANGELOG.md](./CHANGELOG.md).

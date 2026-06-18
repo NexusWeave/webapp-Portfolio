@@ -18,6 +18,41 @@ The frontend provides a performant, accessible, and content-driven interface. It
 | `npm run serve` | Build and preview production build | `package.json` |
 | `npm run deploy` | Build and deploy to Netlify | `package.json` |
 | `npm run clean` | Clean up build artifacts and cache | `package.json` |
+| `npm run test` | Run all frontend tests (Vitest + SASS) | `package.json` |
+
+## Testing
+The frontend employs a dual testing strategy to verify both logic and presentation.
+
+### 1. Component & Logic Testing (Vitest)
+Unit and integration tests for Vue components, Pinia stores, and TypeScript composables.
+```bash
+npm run test:nuxt
+```
+
+### 2. SASS Validation Suite
+Specialized tools to ensure style integrity and catch compiler deprecations.
+- **Spec Tests**: `sass-true` driven tests for mixins.
+- **Syntax Check**: standalone validation of all `.sass` files.
+- **Dependency Warnings**: Monitors for modern SASS deprecations.
+
+Run SASS tests:
+```bash
+npm run test:sass
+```
+
+#### SASS Test Output Example:
+```text
+Checking for SASS dependency warnings...
+⚠️  SASS Compilation Error: Can't find stylesheet to import.
+💡 This error is likely due to missing context during standalone compilation of a partial.
+✅ PASS: No dependency warnings detected (ignoring build errors for warning check).
+
+Checking 22 Sass files for syntax and namespace validity...
+✅ sass/pages/_dev.sass
+⚠️ sass/assets/_images.sass (Partial: Undefined mixin.)
+...
+All Sass files passed syntax and namespace validation.
+```
 
 ## Documentation
 | Resource | Path |
@@ -25,6 +60,7 @@ The frontend provides a performant, accessible, and content-driven interface. It
 | Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | Context diagram | [docs/context-diagram.md](docs/context-diagram.md) |
 | Changelog | [docs/logs/CHANGELOG.md](docs/logs/CHANGELOG.md) |
+| Testing Strategy | [tests/recommended-tests.md](tests/recommended-tests.md) |
 
 ## Getting Started
 
