@@ -1,13 +1,13 @@
 
-//  --- Import & types logic
 import { ref, computed, type Ref } from 'vue';
-import { useRouter } from '#app';
-import type { RouterItem } from '~/types/navigation';
+import { useRoute, useRouter } from 'vue-router';
 
 import type { DateItem } from '~/types/date';
+import type { RouterItem } from '~/types/navigation';
 import type { AcademicCollectionItem, TimelineCollectionItem } from '@nuxt/content';
 
 type CMSArticleCollectionItem = AcademicCollectionItem | TimelineCollectionItem;
+
 
 //  --- Data Fetching Logic
 export async function fetchCollection<T, R>(path:any, cacheKey:string, mapper: (data:T[]) => R, queryModifier?: (query: any) => any): Promise<Ref<R>>
@@ -33,7 +33,6 @@ export function sortbyDate<T extends { created?: any }>(data: T[], sort: string 
 
         switch (sort) {
             case 'ascending': return A - B; // Sort ascending
-            case 'descending': return B - A; // Sort descending
             default: return B - A; // Default to descending
         }
     });
@@ -43,10 +42,17 @@ export function setDateFormat(data:DateItem) : DateItem | undefined
 {
     const time = new Intl.DateTimeFormat('nb-NO', { hour: '2-digit', minute: '2-digit' });
     const date = new Intl.DateTimeFormat('nb-NO', { month: 'short', day: 'numeric', year: 'numeric', weekday: 'short' });
+    
     if (!data.date) return undefined;
-    const dateData:DateItem = { current: data.date, delimiter : 'dot', date: data.date ?? ' ' ? date.format(new Date(data.date)) : null,
-        time: data.date ? time.format(new Date(data.date)) : null, text : data.updated ? `Oppdatert` : `Publisert`, 
-        updated: data.updated ? date.format(new Date(data.updated)) : null };
+    
+    const dateData:DateItem = { 
+        delimiter : 'dot',
+        text : data.updated ? 'Oppdatert' : 'Publisert',
+        time: data.date ? time.format(new Date(data.date)) : null,
+        date: data.date ?? ' ' ? date.format(new Date(data.date)) : null,
+        updated: data.updated ? date.format(new Date(data.updated)) : null,
+        };
+
     return dateData;
 }
 
@@ -75,12 +81,13 @@ export const useNavigation = () => {
         
         const title = label ? `${name} - ${label}` : name;
 
-        useSeoMeta({
+        useSeoMeta(
+            {
+                title: title, description: description,
+                ogTitle: title, ogImage: image, ogLocale: 'nb_NO', ogType: 'website', ogDescription: description,
+                twitterImage: image, twitterTitle: title, twitterDescription: description, twitterCard: 'summary_large_image', themeColor: '#ffffff'
+            }); }, { immediate: true });
 
-            title: title, description: description,
-            ogTitle: title, ogImage: image, ogLocale: 'nb_NO', ogType: 'website', ogDescription: description,
-            twitterImage: image, twitterTitle: title, twitterDescription: description, twitterCard: 'summary_large_image', themeColor: '#ffffff'
-        }); }, { immediate: true });
         return computed<RouterItem[]>(() => {
         const routes = router.getRoutes();
 
