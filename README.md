@@ -45,7 +45,7 @@ docker compose up --build
 - To clean build artifacts, run: `npm run clean`.
 
 Default ports:
-- Frontend: `http://localhost:3002`
+- Frontend: `http://localhost:3000`
 - Backend: `http://localhost:8080`
 
 ## Documentation

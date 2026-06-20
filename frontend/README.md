@@ -25,14 +25,14 @@ The frontend provides a fast, accessible, and content-driven interface. It displ
 The frontend uses a dual testing strategy to verify both logic and presentation.
 
 ### Component and Logic Testing (Vitest)
-Unit and integration tests check Vue components, Pinia stores, and TypeScript composables.
+Unit and integration tests check Vue components, Pinia stores, and TypeScript composables using [Vitest](https://vitest.dev/) (see [Vite Testing Guide](https://vite.dev/guide/features.html#testing)).
 ```bash
 npm run test:nuxt
 ```
 
 ### SASS Validation Suite
 Specialized tools ensure style integrity and catch compiler deprecations.
-- **Spec Tests**: `sass-true` driven tests for mixins.
+- **Spec Tests**: [Sass True](https://www.oddbird.net/true/) driven tests for mixins.
 - **Syntax Check**: Standalone validation of all `.sass` files.
 - **Dependency Warnings**: Monitors for modern SASS deprecations.
 

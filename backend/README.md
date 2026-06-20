@@ -34,7 +34,7 @@ The API is versioned and mounted at `/api/{version}`.
 - `GET /api/{version}/handleRepositories`
 
 ## Testing
-The backend uses **Pytest** to test API endpoints, business logic, and database interactions.
+The backend uses [Pytest](https://docs.pytest.org/) and Python's built-in [unittest](https://docs.python.org/3/library/unittest.html) framework to test API endpoints, business logic, and database interactions.
 
 Run all tests:
 ```bash
