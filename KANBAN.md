@@ -6,6 +6,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 1. **Test (Priority 1)**: `[TASK-01]`, `[TASK-02]`, `[TASK-03]`
 2. **Fixes (Priority 2)**: `[TASK-04]`, `[TASK-05]`
 3. **New Integrations (Priority 3)**: `[TASK-06]`
+4. **New Features (Priority 4)**: Unconnected services and endpoints (LinkedIn Sharing, Announcements)
 
 ---
 
@@ -175,6 +176,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 The following services or endpoints are present in the `backend/lib/services/` codebase but are **not connected** or registered within the main FastAPI application (`app.py`).
 
+* **Priority**: 4 (New Features)
 * **Integration Tasks**:
   - [ ] **LinkedIn Sharing Service**:
     - [ ] Register `POST /api/v1/linkedin/share` endpoint in `app.py`
