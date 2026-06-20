@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-	<title>HTML5 Logo</title>
-	<path d="M108.4 0h23v22.8h21.2V0h23v69h-23V46h-21v23h-23.2M206 23h-20.3V0h63.7v23H229v46h-23M259.5 0h24.1l14.8 24.3L313.2 0h24.1v69h-23V34.8l-16.1 24.8l-16.1-24.8v34.2h-22.6M348.7 0h23v46.2h32.6V69h-55.6"/>
-	<path fill="#e44d26" d="M107.6 471l-33-370.4h362.8l-33 370.2L255.7 512"/>
-	<path fill="#f16529" d="M256 480.5V131H404.3L376 447"/>
-	<path fill="#ebebeb" d="M142 176.3h114v45.4h-64.2l4.2 46.5h60v45.3H154.4M156.4 336.3H202l3.2 36.3 50.8 13.6v47.4l-93.2-26"/>
-	<path fill="#fff" d="M369.6 176.3H255.8v45.4h109.6M361.3 268.2H255.8v45.4h56l-5.3 59-50.7 13.6v47.2l93-25.8"/>
-</svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 1233 1388" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path d="M0,0l95.833,0l0,95l88.334,0l-0,-95l95.833,0l0,287.5l-95.833,0l-0,-95.833l-87.5,-0l-0,95.833l-96.667,0m406.667,-191.667l-84.584,0l0,-95.833l265.417,0l0,95.833l-85,0l0,191.667l-95.833,0m222.916,-287.5l100.417,0l61.667,101.25l61.666,-101.25l100.417,0l-0,287.5l-95.833,0l-0,-142.5l-67.084,103.333l-67.083,-103.333l-0,142.5l-94.167,0m371.667,-287.5l95.833,0l0,192.5l135.834,0l-0,95l-231.667,0" style="fill-rule:nonzero;"/><path d="M140,315.87l475,-0l0,189.167l-267.5,-0l17.5,193.75l250,-0l0,188.75l-423.333,-0m8.333,95l190,-0l13.333,151.25l211.667,56.666l0,197.5l-388.333,-108.333" style="fill:#e44d26;fill-rule:nonzero;"/><path d="M1088.33,315.87l-474.166,-0l-0,189.167l456.666,-0m-17.083,193.75l-439.583,-0l-0,189.166l233.333,0l-22.083,245.834l-211.25,56.666l-0,196.667l387.5,-107.5" style="fill:#f16529;fill-rule:nonzero;"/></svg>
