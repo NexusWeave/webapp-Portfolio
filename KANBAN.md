@@ -22,12 +22,11 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 ### 📥 To Do Issues
 
 #### [TASK-01] Create Vue Tests
-* **Description**: Create Unit and Integration tests for Vue pages, composables, and Pinia stores.
 * **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Vitest Docs](https://vitest.dev/) | [Vite Testing Guide](https://vite.dev/guide/features.html#testing)
 * **Subtasks**:
   - [ ] **Composables Testing**:
-    - [ ] `sortbyDate` (preprosessor-utils.ts)
-    - [ ] `setDateFormat` (preprosessor-utils.ts)
+    - [ x ] `sortbyDate` (preprosessor-utils.ts)
+    - [ x ] `setDateFormat` (preprosessor-utils.ts)
     - [ ] `fetchCollection` (preprosessor-utils.ts)
     - [ ] `useCarousel` (preprosessor-utils.ts)
     - [ ] `useNavigation` (preprosessor-utils.ts)
