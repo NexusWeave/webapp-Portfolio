@@ -48,7 +48,20 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Description**: Expand testing coverage for SASS mixins (`card-base`, `transitions`, `circle-border`) using `sass-true`.
 * **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Sass True Docs](https://www.oddbird.net/true/)
 * **Subtasks**:
-  - [ ] **Core Mixins**: Cover `card-base`, `transitions`, and `circle-border` mixin styling logic.
+  * sass/utilities/structure.sass:
+    - [ ] `card-shadow-box`
+    - [ ] `card-base`
+    - [ ] `transitions`
+    - [ ] `circle-border`
+    - [ ] `radius`
+    - [ ] `border`
+    - [ ] `shadow`
+  * sass/utilities/layout.sass:
+    - [ ] `absolute-inset`
+    - [ ] `logical-center`
+    - [ ] `logical-size`
+    - [ ] `margin`
+    - [ ] `padding`
   - [ ] **Responsive Breakpoints**: Test responsive design breakpoint functions.
   - [ ] **Theme Utilities**: Verify theme utility functions and color scheme outputs.
   - [ ] **Edge-Case Inputs**: Test that mixins/functions fail or warn correctly under invalid parameters (e.g., mismatched units).
@@ -65,9 +78,12 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Description**: Resolve import order syntax errors in log configs, mock APIs, and write tests for API routing.
 * **Documentation**: [backend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/docs/testing.md) | [backend/README.md#testing](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/README.md#testing) | [Python unittest Docs](https://docs.python.org/3/library/unittest.html) | [Pytest Docs](https://docs.pytest.org/)
 * **Subtasks**:
+  * backend/lib/services/health/health_check.py:
+    - [ ] `check_database`
+    - [ ] `check_github_service`
+    - [ ] `check_scanner`
   - [ ] **API Rate Limiting**: Verify wait times, reset parameters, and retries under simulated rate limit conditions.
   - [ ] **Scanner/Specialist Resilience**: Ensure scraper endpoint is resilient to dead external links.
-  - [ ] **Health Service Logic**: Check correct reporting of system service failures.
   - [ ] **Heavy Service Integration**: Ensure external workout endpoints match database and model mapping schemas.
   - [ ] **Pydantic Model Validation**: Verify schema validation rules on external mock data inputs.
   - [ ] **Database Migration Integrity**: Test that migration configurations stay synced with models in `lib/models/`.
