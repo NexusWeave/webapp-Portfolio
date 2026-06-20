@@ -150,6 +150,9 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [ ] **Data Model & Backend Routing**:
     - [ ] Register workout, session, set, and exercise endpoints in FastAPI `app.py`
     - [ ] Map incoming external API payloads to `HeavyWorkoutModel` schema
+  - [ ] **Database Schema & Migrations**:
+    - [ ] Create database schema `HeavyModel.py` for workouts, exercises, and sets
+    - [ ] Generate and execute Alembic database migration to create the tables
   - [ ] **Frontend Components**:
     - [ ] Fetch and display workout data in portfolio/repository views
     - [ ] Implement loading, error, and empty states for workouts dashboard
