@@ -133,37 +133,39 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 #### [TASK-05] Resolve Health Check
 * **Description**: Enable full diagnostics for external systems (GitHub Rest API, Specialist scanner links, Heavy API).
-* **Required Endpoints / Targets**:
-  - **Database Endpoint (`check_database`)**: Verifies connectivity to the Postgres database.
-  - **GitHub API Service (`check_github_service`)**: Verifies connectivity to `api.github.com` and validates token validity.
-  - **AI Specialist Scanner (`check_scanner`)**: Verifies connectivity and status of the Specialist scanner.
-  - **Heavy Workout API**: Verifies connectivity to the external Heavy API endpoint.
-  - **System Resource Monitoring**: Monitors CPU and Memory usage thresholds.
-  - **Environment Validation**: Validates presence and expiry of critical secrets.
-* **Broken / Missing Checks**:
-  - ❌ **GitHub API Service (`check_github_service`)**: Currently a placeholder returning `"NOT OK"`.
-  - ❌ **AI Specialist Scanner (`check_scanner`)**: Currently only checks the first link from `SPECIALIST_LINKS`. Needs to check all links.
-  - ❌ **Heavy Workout API**: No health check implemented yet.
-  - ❌ **System Resource Monitoring**: Missing entirely.
-  - ❌ **Environment Validation**: Missing entirely.
-* **Action Plan**: Merge modified health checks into the main deployment pipelines and resolve the broken/missing checks listed above.
+* **Subtasks**:
+  - [ ] **Core Diagnostics**:
+    - [ ] `check_database`: Verify connection to Postgres database
+    - [ ] `check_github_service`: Replace `"NOT OK"` placeholder and verify token/api.github.com connection
+    - [ ] `check_scanner`: Check all links in `SPECIALIST_LINKS` (instead of only the first link)
+  - [ ] **Missing Monitors**:
+    - [ ] Heavy Workout API: Implement connectivity checks to the external Heavy API endpoint
+    - [ ] System Resource Monitoring: Implement CPU and Memory usage threshold checks
+    - [ ] Environment Validation: Validate presence and expiry of critical environment secrets
 * **Status**: To Do.
-
+ 
 #### [TASK-06] Add Heavy API Integration
 * **Description**: Fully map and register Heavy Workout API workouts, sessions, sets, and exercise endpoints in the frontend components and backend routes.
+* **Subtasks**:
+  - [ ] **Data Model & Backend Routing**:
+    - [ ] Register workout, session, set, and exercise endpoints in FastAPI `app.py`
+    - [ ] Map incoming external API payloads to `HeavyWorkoutModel` schema
+  - [ ] **Frontend Components**:
+    - [ ] Fetch and display workout data in portfolio/repository views
+    - [ ] Implement loading, error, and empty states for workouts dashboard
 * **Status**: To Do.
 
 ---
 
 ## 🔗 Unconnected Services & Endpoints
 
-The following services or endpoints are present in the `backend/lib/services/` codebase but are **not connected** or registered within the main FastAPI application (`app.py`):
+The following services or endpoints are present in the `backend/lib/services/` codebase but are **not connected** or registered within the main FastAPI application (`app.py`).
 
-1. **LinkedIn Service Endpoint** (`POST /api/v1/linkedin/share`)
-   - *Details*: Outlined in the LinkedIn Automation Service [README.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/services/linkedin/docs/README.md) for sharing blog posts. The service/route modules are currently not implemented or registered.
-2. **Announcements Service** (`AnnouncementsService`)
-   - *Details*: Implemented in [announcements.py](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/services/announcements/announcements.py) to manage holiday and birthday alerts, but lacks any corresponding endpoint or integration in `app.py`.
-3. **Heavy API Service** (`HeavyAPI`)
-   - *Details*: Defined in [heavy_api.py](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/services/heavy/heavy_api.py) for fetching/mapping workout sessions but has no active routes registered in `app.py`.
-
-
+* **Integration Tasks**:
+  - [ ] **LinkedIn Sharing Service**:
+    - [ ] Register `POST /api/v1/linkedin/share` endpoint in `app.py`
+    - [ ] Wire route to `linkedin_service.py`
+  - [ ] **Announcements Service**:
+    - [ ] Register `AnnouncementsService` holiday and birthday alert tasks on FastAPI startup
+  - [ ] **Heavy API Service**:
+    - [ ] Wire `HeavyAPI` workout session fetchers to routes in `app.py` (tied to TASK-06)
