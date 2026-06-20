@@ -29,7 +29,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 ### 📥 To Do Issues
 
 #### [TASK-01] Create Vue Tests
-* **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Vitest Docs](https://vitest.dev/) | [Vite Testing Guide](https://vite.dev/guide/features.html#testing)
+* **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Nuxt Testing Docs](https://nuxt.com/docs/getting-started/testing)
 * **Subtasks**:
   - [ ] **Composables Testing**:
     - [ x ] `sortbyDate` (preprosessor-utils.ts)
@@ -104,7 +104,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 #### [TASK-03] Test TinaCMS Configuration & Schema Audit
 * **Description**: Create automated tests and audit configurations to verify the integrity of the TinaCMS collection schema and custom fields.
-* **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [TinaCMS CLI Reference](https://tina.io/docs/reference/cli/#audit)
+* **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [TinaCMS CLI Reference](https://tina.io/docs/tina-cloud/cli/)
 * **Subtasks**:
   - [ ] **Schema Integrity Audit**:
     - [ ] Run `tinacms schema audit` via CLI build checks to confirm configuration validity

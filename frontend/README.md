@@ -25,7 +25,7 @@ The frontend provides a fast, accessible, and content-driven interface. It displ
 The frontend uses a dual testing strategy to verify both logic and presentation.
 
 ### Component and Logic Testing (Vitest)
-Unit and integration tests check Vue components, Pinia stores, and TypeScript composables using [Vitest](https://vitest.dev/) (see [Vite Testing Guide](https://vite.dev/guide/features.html#testing)).
+Unit and integration tests check Vue components, Pinia stores, and TypeScript composables using [Nuxt Test Utils & Vitest](https://nuxt.com/docs/getting-started/testing).
 ```bash
 npm run test:nuxt
 ```
