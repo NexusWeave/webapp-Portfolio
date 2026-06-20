@@ -3,9 +3,9 @@
 This Kanban board tracks the status and objectives of the Portfolio Web Application project.
 
 ### 🎯 Execution Priority
-1. **Test (Priority 1)**: `[TASK-01]`, `[TASK-02]`, `[TASK-03]`, `[TASK-07]`
-2. **Fixes (Priority 2)**: `[TASK-04]`, `[TASK-05]`
-3. **New Integrations (Priority 3)**: `[TASK-06]`
+1. **Test (Priority 1)**: `[TASK-01]`, `[TASK-02]`, `[TASK-03]`, `[TASK-04]`
+2. **Fixes (Priority 2)**: `[TASK-05]`, `[TASK-06]`
+3. **New Integrations (Priority 3)**: `[TASK-07]`
 4. **New Features (Priority 4)**: Unconnected services and endpoints (LinkedIn Sharing, Announcements)
 
 ---
@@ -14,13 +14,13 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 | 📥 To Do | ⚙️ In Progress | ✅ Completed |
 | :--- | :--- | :--- |
-| | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, API mocks, and CMS parsing.* | |
+| | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, fetchCollection, API mocks, and CMS parsing.* | |
 | **[TASK-02] Create Sass Tests**<br>↳ *Cover card-base, transitions, circle-border mixins, responsive breakpoints, and theme utilities.* | | |
-| **[TASK-03] Update Python Tests**<br>↳ *Verify endpoint outputs, API logic, rate limits, scanner resilience, health checks, schemas, validations, and migrations.* | | |
-| **[TASK-04] Resolve Responsive Design Errors**<br>↳ *Fix layout shifts and CSS grid/flex breaks on mobile views.* | | |
-| **[TASK-05] Resolve Health Check**<br>↳ *Fix github service checks, Specialist check coverage, and Heavy API monitoring.* | | |
-| **[TASK-06] Add Heavy API Integration**<br>↳ *Integrate Heavy API service in frontend and backend endpoints.* | | |
-| **[TASK-07] Test TinaCMS Configuration & Schema Audit**<br>↳ *Audit TinaCMS collections, fields schema validity, and CLI build checks.* | | |
+| **[TASK-03] Test TinaCMS Configuration & Schema Audit**<br>↳ *Audit TinaCMS collections, fields schema validity, and CLI build checks.* | | |
+| **[TASK-04] Update Python Tests**<br>↳ *Verify endpoint outputs, API logic, rate limits, scanner resilience, health checks, schemas, validations, and migrations.* | | |
+| **[TASK-05] Resolve Responsive Design Errors**<br>↳ *Fix layout shifts and CSS grid/flex breaks on mobile views.* | | |
+| **[TASK-06] Resolve Health Check**<br>↳ *Fix github service checks, Specialist check coverage, and Heavy API monitoring.* | | |
+| **[TASK-07] Add Heavy API Integration**<br>↳ *Integrate Heavy API service in frontend and backend endpoints.* | | |
 
 ---
 
@@ -29,7 +29,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 ### 📥 To Do Issues
 
 #### [TASK-01] Create Vue Tests
-* **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Nuxt Test Utils Docs](https://nuxt.com/docs/getting-started/testing)
+* **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Vitest Docs](https://vitest.dev/) | [Vite Testing Guide](https://vite.dev/guide/features.html#testing)
 * **Subtasks**:
   - [ ] **Composables Testing**:
     - [ x ] `sortbyDate` (preprosessor-utils.ts)
@@ -101,8 +101,25 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [_navigation.sass](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/sass/components/_navigation.sass)
 * **Priority**: 1 (Test)
 * **Status**: To Do.
+
+#### [TASK-03] Test TinaCMS Configuration & Schema Audit
+* **Description**: Create automated tests and audit configurations to verify the integrity of the TinaCMS collection schema and custom fields.
+* **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [TinaCMS CLI Reference](https://tina.io/docs/reference/cli/#audit)
+* **Subtasks**:
+  - [ ] **Schema Integrity Audit**:
+    - [ ] Run `tinacms schema audit` via CLI build checks to confirm configuration validity
+    - [ ] Verify `collections.ts` schema exports valid schema shapes for all content collections
+  - [ ] **Custom Fields Validation**:
+    - [ ] Write unit tests for custom schema field helpers in `tina/utils/fields.tsx` and `utilsFields.ts`
+* **Target Files**:
+  - [config.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/tina/config.ts)
+  - [collections.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/tina/collections/collections.ts)
+  - [fields.tsx](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/tina/utils/fields.tsx)
+  - [utilsFields.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/tina/utils/utilsFields.ts)
+* **Priority**: 1 (Test)
+* **Status**: To Do.
  
-#### [TASK-03] Update Python Tests
+#### [TASK-04] Update Python Tests
 * **Description**: Resolve import order syntax errors in log configs, mock APIs, and write tests for API routing.
 * **Documentation**: [backend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/docs/testing.md) | [backend/README.md#testing](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/README.md#testing) | [Python unittest Docs](https://docs.python.org/3/library/unittest.html) | [Pytest Docs](https://docs.pytest.org/)
 * **Subtasks**:
@@ -136,13 +153,13 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Priority**: 1 (Test)
 * **Status**: To Do.
 
-#### [TASK-04] Resolve Responsive Design Errors
+#### [TASK-05] Resolve Responsive Design Errors
 * **Description**: Eliminate visual overflow and layout alignment issues in mobile screen viewports.
 * **Action Plan**: Correct Flexbox utility mappings and media query breakpoints inside SASS files.
 * **Priority**: 2 (Fixes)
 * **Status**: To Do.
 
-#### [TASK-05] Resolve Health Check
+#### [TASK-06] Resolve Health Check
 * **Description**: Enable full diagnostics for external systems (GitHub Rest API, Specialist scanner links, Heavy API).
 * **Subtasks**:
   - [ ] **Core Diagnostics**:
@@ -155,8 +172,8 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
     - [ ] Environment Validation: Validate presence and expiry of critical environment secrets
 * **Priority**: 2 (Fixes)
 * **Status**: To Do.
- 
-#### [TASK-06] Add Heavy API Integration
+  
+#### [TASK-07] Add Heavy API Integration
 * **Description**: Fully map and register Heavy Workout API workouts, sessions, sets, and exercise endpoints in the frontend components and backend routes.
 * **Subtasks**:
   - [ ] **Data Model & Backend Routing**:
@@ -171,23 +188,6 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Priority**: 3 (New Integrations)
 * **Status**: To Do.
 
-#### [TASK-07] Test TinaCMS Configuration & Schema Audit
-* **Description**: Create automated tests and audit configurations to verify the integrity of the TinaCMS collection schema and custom fields.
-* **Documentation**: [TinaCMS Docs](https://tina.io/docs/)
-* **Subtasks**:
-  - [ ] **Schema Integrity Audit**:
-    - [ ] Run `tinacms schema audit` via CLI build checks to confirm configuration validity
-    - [ ] Verify `collections.ts` schema exports valid schema shapes for all content collections
-  - [ ] **Custom Fields Validation**:
-    - [ ] Write unit tests for custom schema field helpers in `tina/utils/fields.tsx` and `utilsFields.ts`
-* **Target Files**:
-  - [config.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/tina/config.ts)
-  - [collections.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/tina/collections/collections.ts)
-  - [fields.tsx](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/tina/utils/fields.tsx)
-  - [utilsFields.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/tina/utils/utilsFields.ts)
-* **Priority**: 1 (Test)
-* **Status**: To Do.
- 
 ---
 
 ## 🔗 Unconnected Services & Endpoints
@@ -202,4 +202,4 @@ The following services or endpoints are present in the `backend/lib/services/` c
   - [ ] **Announcements Service**:
     - [ ] Register `AnnouncementsService` holiday and birthday alert tasks on FastAPI startup
   - [ ] **Heavy API Service**:
-    - [ ] Wire `HeavyAPI` workout session fetchers to routes in `app.py` (tied to TASK-06)
+    - [ ] Wire `HeavyAPI` workout session fetchers to routes in `app.py` (tied to TASK-07)
