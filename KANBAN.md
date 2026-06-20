@@ -8,7 +8,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 | 📥 To Do | ⚙️ In Progress | ✅ Completed |
 | :--- | :--- | :--- |
-| | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, fetchCollection, API mocks, and CMS parsing.* | |
+| | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, API mocks, and CMS parsing.* | |
 | **[TASK-02] Create Sass Tests**<br>↳ *Cover card-base, transitions, circle-border mixins, responsive breakpoints, and theme utilities.* | | |
 | **[TASK-03] Update Python Tests**<br>↳ *Verify endpoint outputs, API logic, rate limits, scanner resilience, health checks, schemas, validations, and migrations.* | | |
 | **[TASK-04] Resolve Responsive Design Errors**<br>↳ *Fix layout shifts and CSS grid/flex breaks on mobile views.* | | |
@@ -25,7 +25,8 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Description**: Create Unit and Integration tests for Vue pages, composables, and Pinia stores.
 * **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Vitest Docs](https://vitest.dev/) | [Vite Testing Guide](https://vite.dev/guide/features.html#testing)
 * **Subtasks**:
-  - [ ] **Composables Testing**: Test `preprosessor-utils.ts` data formatting and mock API calls in `backendAPI-utils.ts` to handle 200, 404, and 500 response codes.
+  * Composable tests:
+    - [ ] **Composables Testing**: Test `preprosessor-utils.ts` data formatting and mock API calls in `backendAPI-utils.ts` to handle 200, 404, and 500 response codes.
     - [ ] **fetchCollection Composable**: Test mock async fetches, mapper transformations, and query modifier integrations.
     - [ ] **useCarousel Composable**: Test slide rotation intervals, bounds wrapping, and single-item edge cases.
     - [ ] **useNavigation Composable**: Test dynamic SEO title generation, invalid route parameter filtering, and menu order sorting.
@@ -47,12 +48,13 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Description**: Expand testing coverage for SASS mixins (`card-base`, `transitions`, `circle-border`) using `sass-true`.
 * **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Sass True Docs](https://www.oddbird.net/true/)
 * **Subtasks**:
-  - [ ] **Core Mixins**: Cover `card-base`, `transitions`, and `circle-border` mixin styling logic.
-  - [ ] **Responsive Breakpoints**: Test responsive design breakpoint functions.
-  - [ ] **Theme Utilities**: Verify theme utility functions and color scheme outputs.
-  - [ ] **Edge-Case Inputs**: Test that mixins/functions fail or warn correctly under invalid parameters (e.g., mismatched units).
-  - [ ] **Accessibility & Color Contrast**: Validate color-math functions for WCAG text contrast ratios.
-  - [ ] **Design Token Mapping**: Verify lookup functions throw errors when requested keys are missing from configuration maps.
+  * Sass tests:
+    - [ ] **Core Mixins**: Cover `card-base`, `transitions`, and `circle-border` mixin styling logic.
+    - [ ] **Responsive Breakpoints**: Test responsive design breakpoint functions.
+    - [ ] **Theme Utilities**: Verify theme utility functions and color scheme outputs.
+    - [ ] **Edge-Case Inputs**: Test that mixins/functions fail or warn correctly under invalid parameters (e.g., mismatched units).
+    - [ ] **Accessibility & Color Contrast**: Validate color-math functions for WCAG text contrast ratios.
+    - [ ] **Design Token Mapping**: Verify lookup functions throw errors when requested keys are missing from configuration maps.
 * **Target Files**:
   - [_utilities.sass](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/sass/utilities/_utilities.sass)
   - [_layout.sass](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/sass/utilities/_layout.sass)
@@ -64,14 +66,15 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Description**: Resolve import order syntax errors in log configs, mock APIs, and write tests for API routing.
 * **Documentation**: [backend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/docs/testing.md) | [backend/README.md#testing](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/README.md#testing) | [Python unittest Docs](https://docs.python.org/3/library/unittest.html) | [Pytest Docs](https://docs.pytest.org/)
 * **Subtasks**:
-  - [ ] **API Rate Limiting**: Verify wait times, reset parameters, and retries under simulated rate limit conditions.
-  - [ ] **Scanner/Specialist Resilience**: Ensure scraper endpoint is resilient to dead external links.
-  - [ ] **Health Service Logic**: Check correct reporting of system service failures.
-  - [ ] **Heavy Service Integration**: Ensure external workout endpoints match database and model mapping schemas.
-  - [ ] **Pydantic Model Validation**: Verify schema validation rules on external mock data inputs.
-  - [ ] **Database Migration Integrity**: Test that migration configurations stay synced with models in `lib/models/`.
-  - [ ] **LinkedIn & Announcements Services**: Write tests for the unconnected LinkedIn and Announcements services (e.g., API route mocks and scheduler execution logic).
-  - [ ] **Database Resilience**: Verify connection recovery and pool retry limits when Postgres temporarily disconnects.
+  * Python tests:
+    - [ ] **API Rate Limiting**: Verify wait times, reset parameters, and retries under simulated rate limit conditions.
+    - [ ] **Scanner/Specialist Resilience**: Ensure scraper endpoint is resilient to dead external links.
+    - [ ] **Health Service Logic**: Check correct reporting of system service failures.
+    - [ ] **Heavy Service Integration**: Ensure external workout endpoints match database and model mapping schemas.
+    - [ ] **Pydantic Model Validation**: Verify schema validation rules on external mock data inputs.
+    - [ ] **Database Migration Integrity**: Test that migration configurations stay synced with models in `lib/models/`.
+    - [ ] **LinkedIn & Announcements Services**: Write tests for the unconnected LinkedIn and Announcements services (e.g., API route mocks and scheduler execution logic).
+    - [ ] **Database Resilience**: Verify connection recovery and pool retry limits when Postgres temporarily disconnects.
 * **Target Files**:
   - [logger_config.py](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/utils/logger_config.py)
   - [app.py](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/app.py)
