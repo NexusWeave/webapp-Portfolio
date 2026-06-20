@@ -2,6 +2,11 @@
 
 This Kanban board tracks the status and objectives of the Portfolio Web Application project.
 
+### 🎯 Execution Priority
+1. **Test (Priority 1)**: `[TASK-01]`, `[TASK-02]`, `[TASK-03]`
+2. **Fixes (Priority 2)**: `[TASK-04]`, `[TASK-05]`
+3. **New Integrations (Priority 3)**: `[TASK-06]`
+
 ---
 
 ## 🗂️ Task Board
@@ -53,6 +58,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [Portfolio.vue (Repository)](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/components/repository/Portfolio.vue)
   - [NavMenu.vue (Navigation)](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/components/navigation/NavMenu.vue)
   - [content.config.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/content.config.ts)
+* **Priority**: 1 (Test)
 * **Status**: In Progress.
  
 #### [TASK-02] Create Sass Tests
@@ -91,6 +97,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [_layout.sass](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/sass/utilities/_layout.sass)
   - [_cards.sass](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/sass/components/_cards.sass)
   - [_navigation.sass](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/sass/components/_navigation.sass)
+* **Priority**: 1 (Test)
 * **Status**: To Do.
  
 #### [TASK-03] Update Python Tests
@@ -124,11 +131,13 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [heavy_api.py](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/services/heavy/heavy_api.py)
   - [heavy_model.py](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/models/heavy_model.py)
   - [github_model.py](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/models/github_model.py)
+* **Priority**: 1 (Test)
 * **Status**: To Do.
 
 #### [TASK-04] Resolve Responsive Design Errors
 * **Description**: Eliminate visual overflow and layout alignment issues in mobile screen viewports.
 * **Action Plan**: Correct Flexbox utility mappings and media query breakpoints inside SASS files.
+* **Priority**: 2 (Fixes)
 * **Status**: To Do.
 
 #### [TASK-05] Resolve Health Check
@@ -142,6 +151,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
     - [ ] Heavy Workout API: Implement connectivity checks to the external Heavy API endpoint
     - [ ] System Resource Monitoring: Implement CPU and Memory usage threshold checks
     - [ ] Environment Validation: Validate presence and expiry of critical environment secrets
+* **Priority**: 2 (Fixes)
 * **Status**: To Do.
  
 #### [TASK-06] Add Heavy API Integration
@@ -156,6 +166,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [ ] **Frontend Components**:
     - [ ] Fetch and display workout data in portfolio/repository views
     - [ ] Implement loading, error, and empty states for workouts dashboard
+* **Priority**: 3 (New Integrations)
 * **Status**: To Do.
 
 ---
