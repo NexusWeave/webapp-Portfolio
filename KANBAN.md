@@ -8,7 +8,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 | 📥 To Do | ⚙️ In Progress | ✅ Completed |
 | :--- | :--- | :--- |
-| | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, API mocks, and CMS parsing.* | |
+| | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, fetchCollection, API mocks, and CMS parsing.* | |
 | **[TASK-02] Create Sass Tests**<br>↳ *Cover card-base, transitions, circle-border mixins, responsive breakpoints, and theme utilities.* | | |
 | **[TASK-03] Update Python Tests**<br>↳ *Verify endpoint outputs, API logic, rate limits, scanner resilience, health checks, schemas, validations, and migrations.* | | |
 | **[TASK-04] Resolve Responsive Design Errors**<br>↳ *Fix layout shifts and CSS grid/flex breaks on mobile views.* | | |
@@ -26,6 +26,9 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Vitest Docs](https://vitest.dev/) | [Vite Testing Guide](https://vite.dev/guide/features.html#testing)
 * **Subtasks**:
   - [ ] **Composables Testing**: Test `preprosessor-utils.ts` data formatting and mock API calls in `backendAPI-utils.ts` to handle 200, 404, and 500 response codes.
+    - [ ] **fetchCollection Composable**: Test mock async fetches, mapper transformations, and query modifier integrations.
+    - [ ] **useCarousel Composable**: Test slide rotation intervals, bounds wrapping, and single-item edge cases.
+    - [ ] **useNavigation Composable**: Test dynamic SEO title generation, invalid route parameter filtering, and menu order sorting.
   - [ ] **State Management Testing**: Verify Pinia `languageBytesStore.ts` store storage, reactivity, and filtering.
   - [ ] **Component Testing**: Test `portfolio/`, `repository/`, and `navigation/` components for active link states and Loading/Error/Empty states.
   - [ ] **Content & CMS Integration**: Verify TinaCMS data parsing from `content/` before passing to view layer.
