@@ -12,7 +12,7 @@
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
     "serve": "npm run build && nuxt preview",
-    "test": "npx vitest run  npm run test:sass",
+    "test": "vitest run && npm run test:sass",
     "test:dev": "vitest run --reporter=verbose && npm run test:sass",
     "test:sass": "sass --pkg-importer=node sass/tests/index.spec.sass sass/tests/output/output.spec.css && npx tsx sass/tests/ts/dependency-warnings.ts && npx tsx sass/tests/ts/syntax-check.ts",
     "deploy": "npm run test && npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
