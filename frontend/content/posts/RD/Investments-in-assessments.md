@@ -2,7 +2,7 @@
 date: 2025-09-09T22:00:00.000Z
 title: 'Investering i Kartlegging.'
 ingress: |
-  Det ble brukt tid på å kartlegge enkle innholdsverktøy som er brukervennlige for ikke-tekniske brukere. Ved å tette eksisterende kunnskapshull ble usikkerheten redusert og oversikten over tilgjengelige løsninger forbedret. Dette sikrer leveranse av gjennomtenkte produkter og redusert ressursbruk i fremtidige prosjekter.
+  Brukte tid på å kartlegge enkle innholdsverktøy som er brukervennlige for ikke-tekniske brukere. Ved å tette eksisterende kunnskapshull ble usikkerheten redusert og oversikten over tilgjengelige løsninger forbedret. Dette sikrer leveranse av gjennomtenkte produkter og redusert ressursbruk i fremtidige prosjekter.
 status: |
   #### Program informasjon
   **OS** - Ikke spesifisert
