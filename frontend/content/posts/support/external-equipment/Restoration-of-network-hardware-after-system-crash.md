@@ -2,36 +2,32 @@
 date: 2026-04-14T06:59:45.401Z
 title: Gjenoppretting av nettverksmaskinvare etter systemkrasj
 ingress: |
-  Denne tekniske loggen dokumenterer feilsøking av et nettverksbrudd i et dual-boot-system etter en krasj i Garuda Linux. Gjennom en metodisk tilnærming, fra programvarebasert tilbakestilling til dypere analyse av BIOS, ble feilkilden identifisert som et fysisk kontaktbrudd i maskinvaren. Ved å remontere PCIe-kortet ble internett og Bluetooth gjenopprettet, noe som viser at man alltid bør sjekke maskinvaren når BIOS-oppstarten svikter.
+  Uventet systemkrasj i Garuda Linux førte til fullstendig svikt i nettverk og Bluetooth på et dual-boot-system. Etter feilsøking i både programvare og BIOS ble feilen sporet til manglende fysisk kontakt med hovedkortet. Ved å remontere PCIe-nettverkskortet ble forbindelsen gjenopprettet i operativsystemene, noe som bekrefter verdien av fysisk inspeksjon.
 status: |
-  #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
+  #### Programinformasjon
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
-  **Verktøy** - MSI Z270 Gaming Pro hovedkort med ASUS PCIe WiFi-kort, TypeScript
+  **Verktøy** - MSI Z270 Gaming Pro hovedkort med ASUS PCIe WiFi-kort, 
+  *Skrevet i samarbeid med AI - Gemini*
 
   #### Dagens Aktiviteter
-  * Oppdaget at både Wi-Fi og Bluetooth forsvant fullstendig etter en systemkrasj i Garuda Arch Linux.
-  * Forsøkte å starte NetworkManager på nytt og brukte kommandoen nmcli radio all, som rapporterte maskinvaren as "missing".
-  * Forsøkte å løse problemet ved å rulle tilbake operativsystemet til en tidligere snapshot for å utelukke feil i driveroppdateringer.
-  * Utførte en "power flush" ved å koble fra strømmen og tømme hovedkortet for reststrøm for å nullstille låst maskinvare.
-  * Gikk inn i maskinens BIOS/UEFI for å sjekke om hovedkortet i det hele tatt registrerte nettverkskortet. Bekreftet at enheten var usynlig på maskinvarenivå.
-  * Åpnet kabinettet og remonterte det fysiske ASUS PCIe WiFi-kortet for å sikre god elektrisk kontakt med hovedkortet.
+  * Registrering av fullstendig bortfall av trådløst nettverk og Bluetooth etter systemkrasj.
+  * Tilbakerulling av operativsystemet til et tidligere snapshot for å utelukke driverfeil.
+  * Utførelse av strømtømming på hovedkortet for å nullstille eventuell låst maskinvare.
+  * Analyse av BIOS for kontroll av om nettverkskortet ble registrert på maskinvarenivå.
+  * Fysisk demontering og remontering av PCIe-kortet for å sikre stabil kontakt.
 
   #### Motivasjon & Energi - 10 / 10
-  Ble litt stresset av utfordringen når jeg ikke hadde mulighet til å gjøre jobben min den dagen, men jeg er fornøyd med at det ordnet seg. Dagen er så fin den kunne bli !
+  Dagen er så fin den kan bli.
 sources: ''
---- 
+---
 
-Etter en uventet systemkrasj i Garuda Linux, oppstod det svikt i nettverksfunksjonaliteten. Utfordringen påvirket både Linux og Windows-partisjonen; verken trådløst nettverk (Wi-Fi) eller Bluetooth var tilgjengelig. Siden maskinen nylig hadde gjennomgått en systemoppdatering før krasjen, var mistanken rettet mot programvarekonflikter eller korrupte drivere.
-Hensikten var å stabilisere maskinvaren og gjenopprette forbindelsen til internett og Bluetooth-enheter.
+Etter en uventet systemkrasj i Garuda Linux oppstod det svikt i nettverksfunksjonaliteten på tvers av både Linux- og Windows-partisjonene. Hverken trådløst nettverk (<abbr title="Wireless Fidelity ">WiFi</abbr>) eller Bluetooth var tilgjengelige på systemene. Ettersom det nylig var utført en systemoppdatering, ble det tatt en antagelse på at feilen skyldtes programvarekonflikter eller korrupte drivere.
 
-Følgende handling gjorde jeg for å fikse maskinen.
+Hensikten var å stabilisere nettverkskortet og gjenopprette forbindelsen til internett og Bluetooth-enheter.
 
-* Siden jeg hadde nettopp gjennomført en system oppgradering før krasjen antok jeg at det var systemet som hadde tullet med nettverkskortet for både windows og Linux systemet, så jeg startet med å rulle tilbake til en tidligere snapshot.
-* Siden krasjen inntraff etter en systemoppgradering, ble det først antatt at oppdateringen hadde forårsaket en konflikt som påvirket nettverkskortet på tvers av operativsystemene. Jeg forsøkte derfor å rulle tilbake Linux-systemet til et tidligere fungerende «snapshot». Dette medførte ingen endring, og nettverket forble utilgjengelig.
-* Da programvare-tilbakestillingen mislyktes, utførte jeg en strømtømming av maskinen. Hensikten var å tvinge nettverkskortet ut av en eventuell låst tilstand. Situasjonen forble uendret etter omstart.
-* for å undersøke maskinen nærmere undersøkte jeg BIOS-innstillingene. Her ble det lagt merke til at nettverkskortet ikke var registrert i oversikten over integrerte komponenter. Dette var et interessant funn som bekreftet at feilen ikke lå i OS konfigurasjon, men at hovedkortet hadde ikke kontakt med nettverkskortet.
-* Jeg åpnet kabinettet for å inspisere ASUS PCIe WiFi-kortet. Jeg koblet komponenten fra hovedkortet, kontrollerte kontaktene, og satte kortet på plass igjen i PCIe-sporet for å sikre kontakt med BIOS.
+* Operativsystemet ble rullet tilbake til et tidligere fungerende snapshot for å fjerne eventuelle driverkonflikter etter systemoppgraderingen.
+* En fullstendig strømtømming av hovedkortet ble utført for å tvinge nettverksenheten ut av en eventuell låst tilstand.
+* Konfigurasjonen i <abbr title="Basic Input/Output System">BIOS</abbr> ble kontrollert, hvor det ble avdekket at nettverkskortet ikke var registrert blant de registrerte maskinvarekomponentene.
+* Maskinkabinettet ble åpnet for inspeksjon, og komponenten <abbr title="Peripheral Component Interconnect Express">PCIe</abbr>-nettverkskortet ble koblet fra og remontert i sporet for å sikre elektrisk kontakt.
 
-Etter at jeg remonterte nettverkskortet ble nettverkskortet umiddelbart gjenkjent i BIOS, og funksjonaliteten ble gjenopprettet i både Windows og Linux.
-Hendelsen viser at systemkrasj eller vibrasjoner over tid kan føre til at komponenter mister kontakt eller havner i en tilstand hvor de ikke lenger registreres av hovedkortet. I dual-boot-systemer er manglende synlighet i BIOS det sikreste tegnet på at feilsøking må flyttes fra programvare til fysisk maskinvare.
+Etter at nettverkskortet ble koblet fra og remontert i sporet, ble kortet gjenkjent i BIOS. Nettverkskortet fungerer nå i begge operativsystemene. Som en konsekvens av dette arbeidet fikk maskinen normal tilgang til nettverket. Det ble erfart at systemkrasj eller mekaniske vibrasjoner kan føre til at komponentene mister kontakt, og at maskinvaren bør kontrolleres fysisk når den ikke lenger registreres på systemnivå.
