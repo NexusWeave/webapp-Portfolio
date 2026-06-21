@@ -2,33 +2,31 @@
 date: 2026-03-16T00:00:00.000Z
 title: Fjerning av «spøkelses-disker»
 ingress: |
-  Etter observasjoner av spøkelsesdisker i Garuda, ble det identifisert at automatiske Docker-prosesser genererte uønskede virtuelle lag ved systemoppstart. Ved å identifisere aktive containere og deaktivere både Docker-tjenesten og dens socket-enhet, ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
+  Etter observasjoner av spøkelsesdisker i Garuda Linux ble det identifisert at Docker-prosesser kjørte ved systemoppstart og genererte uønskede virtuelle lag. Aktive containere ble stanset og systemet ble ryddet for ubrukte ressurser. Ved å deaktivere Docker-tjenesten og dens socket-enhet ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
 status: |
-  #### Program informasjon
+  #### Programinformasjon
   *Skrevet i samarbeid med AI - Gemini*
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
   **Verktøy** - Docker, TypeScript
 
-  #### Dagens Aktiviteter
-  * Finne årsaken til at systemet viser "falske" disker.
-  * Stoppe tunge programmer som kjører uten at de trengs.
-  * Endre innstillinger slik at jeg selv bestemmer når verktøyene skal starte.
+  #### Dagens aktiviteter
+  * Identifisering av årsak til at systemet viser virtuelle spøkelsesdisker.
+  * Stansing av inaktive bakgrunnsprosesser for å frigjøre systemressurser.
+  * Konfigurering av oppstartsinnstillinger for manuell kontroll av tjenester.
 
   #### Motivasjon & Energi - 10 / 10
-  Dagen er så fin den kan bli.
+  Dagen er så fin den kunne bli.
 sources: |
   Offisiell dokumentasjon : [docs.docker.com](https://docs.docker.com/engine/manage-resources/pruning/)
---- 
+---
 
-I mitt nåværende oppsett med operativsystemet, fikk jeg en uventet brukeropplevelse. Systemet viste flere lagringsdisker i oversikten som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». Jeg mistenkte at dette skyldtes Docker, og at disse ble koblet til automatisk ved oppstart uten at jeg hadde bruk for dem.
+Under oppstart av operativsystemet ble det observert flere uventede lagringsstasjoner i systemoversikten, såkalte spøkelsesdisker. Det oppstod antagelse om at  Docker-prosessene startet automatisk som en prosess under oppstart av operativsystemet.
 
-Hensikten var å stoppe denne automatiske handlingen for å hindre at maskinen monterte disse falske diskene ved oppstart. Dette ble gjort for at oversikten over lagringsplass ble korrekt og at systemet ikke brukte unødvendige ressurser på tjenester som ikke var i bruk.
+Hensikten er å deaktivere den automatiske bakgrunnsprosessen som starter opp ved oppstart av operativsystemet og fjerne de virtuelle monteringspunktene for å sikre en korrekt systemoversikt.
 
-* For å løse dette utførte jeg følgende tiltak:
+* Inspiserte Dockers bakgrunnsprosesser med kommandoen `docker ps`  og det ble oppdaget at tre inaktive containere fra tidligere prosjekter ble kjørt i bakgrunnen.
+* Stanset de identifiserte containerne  ved bruk av kommandoen `docker stop` for å frigjøre ressurser.
+* Utførte en systemopprydding med kommandoen `docker system prune` for å fjerne midlertidige lagringsrester og ubrukte volumer.
+* Deaktiverte Docker-tjenesten ved systemoppstart ved hjelp av kommandoen `sudo systemctl disable --now docker.service docker.socket`.
 
-* Jeg undersøkte hvilke tjenester som kjørte i det skjulte. Ved å bruke kommandoen `docker ps`, oppdaget jeg at tre ulike containere fra to tidligere prosjekter sto og kjørte virtuelt uten at de ble brukt aktivt.
-* For å frigjøre systemressurser umiddelbart, stoppet jeg de inaktive prosessene manuelt med kommandoen `docker stop`. Dette avsluttet koblingen mellom de virtuelle arbeidsområdene og systemets filoversikt.
-* Jeg kjørte en grundig rengjøring med kommandoen `docker system prune`. Dette slettet midlertidige filer og rester som skapte rot i listene over disker, slik at de falske stasjonene forsvant.
-* For å være sikker på at utfordringen ikke oppstår igjen ved neste oppstart, deaktiverte jeg selve tjenesten helt med kommandoen `sudo systemctl disable --now`. Dette endret maskinens innstillinger slik at Docker-motoren forblir avslått frem til jeg selv velger å starte den manuelt.
-
-Resultatet ble at de falske «spøkelses-diskene» forsvant umiddelbart. Nå starter maskinen opp helt rent, og jeg kan manuelt koble til de diskene jeg faktisk trenger. erfaringen jeg sitter igjen med var at bakgrunnstjenester kan påvirke systemets visuelle oversikt, og at det er lurt å deaktivere tunge verktøy man ikke bruker daglig.
+De virtuelle spøkelsesdiskene ble fjernet, og systemet starter nå uten uønskede bakgrunnstjenester. Som en konsekvens av dette ble lagringsoversikten normalisert og unødig ressursbruk redusert. Erfaringen viser at bakgrunnstjenester kan påvirke systemets visuelle visning uventet, og at deaktivering av inaktive verktøy bidrar til en mer stabil systemdrift.
