@@ -5,6 +5,7 @@ ingress: |
   For å standardisere måten innholdet styres på, har jeg koblet et redaktørpanel til prosjektet. Ved å rydde i hvordan systemet finner frem i mappene, har jeg fjernet feilmeldinger og utfordringer med bilder som ikke viste seg. Dette har skapt en trygg og ryddig arbeidsflyt der tekst og bilder kan endres fritt uten at man risikerer å ødelegge selve nettsiden. Resultatet er en stabil og enkel løsning som er klar for fremtidig vekst.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript
 
@@ -20,13 +21,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
 sources: ''
----
+--- 
 
 For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt TinaCMS. Utfordringen lå i prosjektets struktur, hvor  nettsiden  lever i en undermappe som Dette skapte synkroniserings utfordringer med Tina Cloud, som i utgangspunktet ikke klarte å lese innholdsgrenen hvor dokumentasjonen og tekstene lagres.
 
 Hensikten var å etablere en effektiv og feilfri flyt mellom redaktørpanelet og selve kildekoden til nettsiden. Dette krevde oppsettsmetode for hvordan panelet tolker mappestrukturen min. I tillegg måtte jeg sikre at alle filer, bilder og ressurser ble lastet korrekt, selv om de ligger lagret i ulike undermapper i prosjektet.
 
-Jeg utførte en systematisk feilsøking og rekonfigurering:
+* Jeg utførte en systematisk feilsøking og rekonfigurering:
 
 * Jeg bekreftet først at digitale nøkler og adgangskort fungerte som de skulle. Dette gjorde jeg for å avklare om utfordringene skyldtes manglende tilgang, eller om det var selve koblingen til riktig mappe i GitHub som var utfordringen.
 * I oppsettet hos leverandøren la jeg inn stien til konfigurasjonsfilene. Dette tvinger bindeleddet å lete på riktig sted i prosjektet.

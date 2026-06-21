@@ -5,6 +5,7 @@ ingress: |
   Stilarkene og testene som hører til ble oppdatert for å gjøre koden lettere å jobbe med. Ved å bytte til en nyere versjon og rydde i hvordan ting testes, ble koden både ryddigere og tryggere. Prosessen sørget også for at alle endringer ble signert digitalt for å bevise at koden er ekte.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - <abbr title="Språk for å lage stilark">Sass</abbr>
   **Verktøy** - <abbr title="Verktøy for å styre pakker">npm</abbr>, <abbr title="Verktøy for å kjøre tester">Vitest</abbr>, <abbr title="Verktøy for digital signering">GPG</abbr>
   **Prinsipper** - Sikkerhet, Enkelt vedlikehold
@@ -16,7 +17,7 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Koden er nå mye lettere å forstå og endre på. Dagen er så fin den kunne bli.
----
+--- 
 
 Situasjonen i prosjektet var at stilarkene hadde blitt vanskelige å vedlikeholde fordi testene var altfor lange og gjentok seg selv mange ganger. Dette gjorde at det tok unødvendig lang tid å sjekke om nye endringer fungerte som de skulle. Utfordringen var en konsekvens av at verktøyene ikke hadde blitt fulgt opp med de nyeste og enkleste metodene for koding.
 

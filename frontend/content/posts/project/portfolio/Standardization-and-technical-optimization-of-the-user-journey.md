@@ -5,6 +5,7 @@ ingress: |
   Gjennom teknisk opprydding og standardisering har jeg styrket nettsidens identitet og brukeropplevelse. Ved å forenkle navigasjonslogikken og etablere standardiserte bildebeskrivelser, har jeg fjernet teknisk etterslep og visuell støy. Resultatet er en stabil og responsiv plattform som øker brukernes opplevelse, forbedrer tilgjengelighet og optimaliserer applikasjonen for effektiv videre vekst og forenkler vedlikehold i fremtiden.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript
   **Prinsipper** - Standardisering
@@ -15,7 +16,8 @@ status: |
   * Forbedret logikken for bildekomponenter slik at bildets alternative tekst automatisk brukes som bildetekst når spesifikk beskrivelse mangler.
   * Oppgradert backend-modellen for å sikre at bildebeskrivelser leveres i riktig format, samt innført typesikkerhet for å øke applikasjonens langsiktige vekstevne.
 sources: ''
----
+--- 
+
 Datoer og ikoner ble vist på ulike måter på tvers av nettstedet, uten en felles standard for hvordan informasjon skulle presenteres. Dette hadde en risiko for at besøkede kunne få en uventet brukeropplevelse.
 
 Hensikten var å samle all visuell presentasjon av dato- og medieinformasjon under en felles standard, for å sikre at det digitale uttrykket var  gjenkjennelig og profesjonell opplevelse for brukeren.

@@ -5,6 +5,7 @@ ingress: |
   Jeg har transformert et ustabilt overvåkingssystem til en pålitelig og selvgående løsning som fjerner unødvendig støy og sikrer datakvalitet. Ved å automatisere sortering og lagring, leveres nå prosjekter ferdig kategorisert direkte til skyen. Dette fjerner behovet for manuelt vedlikehold og feilsøking, samtidig som det gir besøkende tilgang til relevante data for raskere og mer presise analyser.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python, asyncio, SQLAlchemy
   **Verktøy** - GitHub API, httpx
 
@@ -18,7 +19,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Systemet er nå stabilt og driftssikkert.
 sources: ''
----
+--- 
 
 Situasjonen var at overvåkningssystemet for GitHub-prosjekter var ustabilt og ineffektivt. Det ble overbelastet av unødvendige skoleprosjekter, noe som utfordret systemet når det gjaldt å skille relevante prosjekter fra støy.
 

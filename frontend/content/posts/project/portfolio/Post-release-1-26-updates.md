@@ -5,6 +5,7 @@ ingress: |
   Etter at den nye versjonen av nettsiden ble lansert, ble det tydelig at det var behov for å rydde litt i kulissene og gjøre koden enklere å forstå. Det handlet spesielt om å sikre at nettsiden er bygget opp på en logisk måte med riktig <abbr title="HyperText Markup Language">HTML</abbr>. Jeg ønsket å gjøre systemet enklere å vedlikeholde, og fikk på plass bedre verktøy som automatisk sjekker at ting fungerer som de skal, i tillegg til tydeligere veiledninger.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt
   **Verktøy** - GitHub Actions, Sass
   **Prinsipper** - Semantikk, UU
@@ -19,7 +20,8 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kan bli !
----
+--- 
+
 * La til et verktøy som automatisk sjekker at nettsiden er bygget opp riktig.
 * Skrev om veiledningene og dokumentasjonen til et enklere og tydeligere språk.
 * Ryddet opp og endret navn på noen mapper slik at det er lettere å finne frem i koden for nettsidens utseende.

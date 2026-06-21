@@ -5,6 +5,7 @@ ingress: |
   Før var det litt uklart hvilken utgave av logikken som ble brukt rundt omkring i systemet. Ved å innføre en fast standard for versjonering av verktøyene mine, har jeg fjerna all tvil. Nå som jeg vet nøyaktig hva som kjører hvor, er det mye tryggere å gjøre store endringer.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript
 
@@ -17,13 +18,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli!
 sources: ''
----
+--- 
 
 Jeg hadde ikke helt kontroll på hvilken versjon av logikken som var i sving i de ulike delene av koden, og det gjorde meg litt usikker hver gang jeg skulle oppdatere noe.
 
 Hensikten var å få på plass en fast standard for å merke de viktigste verktøyene mine, så jeg til enhver tid vet nøyaktig hva som ruller og går.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har lagt inn et fast versjonsnummer på verktøyet som snakker med GitHub.
 * Jeg har merka databasemodulen min med en egen versjonskode så jeg kan spore den bedre.

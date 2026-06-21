@@ -5,6 +5,7 @@ ingress: |
   GitHub-dataene er nå kartlagt til et reaktiv frontend-format med automatisk sortering og organisering av kildekodestatistikk. Ved å flytte logikken ut av visningslaget og optimalisere servermodellen, oppnås en ren separasjon av ansvar og redusert båndbreddebruk. Samtidig sikrer standardisering av datoer, GitHub-kort og bildebehandling et enhetlig visuelt uttrykk,  universell utforming og en smidigere navigasjon for de besøkende.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - JSON, TypeScript
   **Prinsipper** - UU
@@ -23,7 +24,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
 sources: ''
----
+--- 
 
 #
 

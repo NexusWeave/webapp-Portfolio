@@ -5,6 +5,7 @@ ingress: |
   Jeg har utviklet en løsning for rollebasert tilgangskontroll i hierarkiske datalister. Ved å bruke en « *to-pass-algoritme*» arves rettigheter korrekt i trestrukturer, mens sensitive data skjermes etter prinsippet om *minste privilegium*. Arbeidet reduserer manuelle feilkilder, tetter sikkerhetshull og sikrer uavbrutt tilgang til innhold. Dette gir en stabil grunnmur for bedriftens datasikkerhet.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - CSV, KI, TypeScript
   **Prinsipper** - Minste privilegium
@@ -20,14 +21,14 @@ status: |
   Dagen er så fin den kunne bli.
 sources: |
   1. [Tree Traversal](https://www.geeksforgeeks.org/dsa/tree-traversals-inorder-preorder-and-postorder/)
----
+--- 
 
 Nettsiden viser innhold fra CSV-baserte datalister med komplekse hierarkier (foreldre-barn-relasjoner som også er kalt for content-nodes). Tidligere manglet systemet en pålitelig metode for å kontrollere at brukere kun så det innholdet de faktisk hadde rettighet til, spesielt når tilgangen var avhengig av hvor i trestrukturen informasjonen lå.
 
 Hensikten med dette arbeidet var å omstrukturere innholdsfiltreringen for å implementere en pålitelig rollebasert tilgangskontroll som ivaretar logikken i et hierarki. Jeg var oppmerksom på om at tilgangen automatisk skulle arves fra foreldrekategorier til underliggende dokumenter, samtidig som at vi måtte garantere at ingen dokumenter ble utilgjengelige ved en feil. Det var avgjørende å bygge fullstendige navigasjonsstier dynamisk fra rådataene og samtidig sikre et ryddigere skille mellom den generelle sikkerhetslogikken og de spesifikke dataoperasjonene for å forenkle fremtidig vedlikehold og revisjon.
 
-For å løse disse kravene la jeg til en `Tree Traversal` algoritme i samarbeid med **Claude 3.5 Sonnet ([1](https://www.geeksforgeeks.org/dsa/tree-traversals-inorder-preorder-and-postorder/))**.
-ølgende tiltak ble gjennomført:
+* For å løse disse kravene la jeg til en `Tree Traversal` algoritme i samarbeid med **Claude 3.5 Sonnet ([1](https://www.geeksforgeeks.org/dsa/tree-traversals-inorder-preorder-and-postorder/))**.
+* ølgende tiltak ble gjennomført:
 
 * I algoritmens første fase omdannes flate dokumentlister til en logisk trestruktur i systemets minne for å kartlegge alle relasjoner.
 * I andre fase utføres selve tilgangssjekken på øverste nivå i treet, hvor tilgang automatisk rulles ut til alle barneelementer dersom forelderen er godkjent.

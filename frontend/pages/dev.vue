@@ -4,9 +4,9 @@
             <Suspense>
             <template #default>
                 <section class="dev-skill flex-col flex-center" >
-                    <h2> Min Kode Aktivitet</h2>
-                    <span> Aktivteten er basert på mine bidrag og oppdateres fortløpende for å reflektere min nåværende engasjement og bidrag til ulike teknologier. </span>
-                    <span> Aktiviteten er målt i KB og MB</span>
+                    <h2>Min Kode Aktivitet</h2>
+                    <span>Aktivteten er basert på mine bidrag og oppdateres fortløpende for å reflektere min nåværende engasjement og bidrag til ulike teknologier. </span>
+                    <span>Aktiviteten er målt i KB og MB</span>
                     <span> </span>
                     <section class="flex-wrap-row flex-center">
                         <div v-for="(data, i) in formattedLanguages" :key="i" class="col-3">

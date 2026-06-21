@@ -5,6 +5,7 @@ ingress: |
   Før var det litt vrient å holde styr på alle de løse delene i prosjektet. Ved å gi alt sammen skikkelige navn og rydde opp i rotet, er det nå mye lettere å se hva som faktisk kjører og hvordan ting henger sammen. Det gjør det både tryggere og enklere å bygge videre på ting, siden jeg nå har stålkontroll på hvem som snakker med hvem.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript, KI
 
@@ -18,13 +19,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er helt grei, men litt irriterende når AI-en ikke helt tar tegninga på hva jeg ber om.
 sources: ''
----
+--- 
 
 De forskjellige "veiene" og funksjonene i systemet mitt manglet skikkelige navn, så det ble fort litt kaotisk å vite hva som faktisk var i drift og hvordan de presterte.
 
 Hensikten var å gi hver del av systemet et tydelig navn så jeg fikk bedre kontroll, og gjøre det lettere å legge til nye ting senere uten at alt kneler.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har oppdatert alle definisjonene i systemet med unike merkelapper så det er lett å kjenne igjen hver eneste rute.
 * Jeg har fiksa på hvordan systemet rapporterer tilstanden sin ved å bruke disse nye navnene i oversikten.

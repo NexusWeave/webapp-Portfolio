@@ -5,6 +5,7 @@ ingress: |
   Etter observasjoner av spøkelsesdisker i Garuda, ble det identifisert at automatiske Docker-prosesser genererte uønskede virtuelle lag ved systemoppstart. Ved å identifisere aktive containere og deaktivere både Docker-tjenesten og dens socket-enhet, ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
   **Verktøy** - Docker, TypeScript
 
@@ -17,13 +18,13 @@ status: |
   Dagen er så fin den kan bli.
 sources: |
   Offisiell dokumentasjon : [docs.docker.com](https://docs.docker.com/engine/manage-resources/pruning/)
----
+--- 
 
 I mitt nåværende oppsett med operativsystemet, fikk jeg en uventet brukeropplevelse. Systemet viste flere lagringsdisker i oversikten som ikke eksisterte i virkeligheten – såkalte «spøkelses-disker». Jeg mistenkte at dette skyldtes Docker, og at disse ble koblet til automatisk ved oppstart uten at jeg hadde bruk for dem.
 
 Hensikten var å stoppe denne automatiske handlingen for å hindre at maskinen monterte disse falske diskene ved oppstart. Dette ble gjort for at oversikten over lagringsplass ble korrekt og at systemet ikke brukte unødvendige ressurser på tjenester som ikke var i bruk.
 
-For å løse dette utførte jeg følgende tiltak:
+* For å løse dette utførte jeg følgende tiltak:
 
 * Jeg undersøkte hvilke tjenester som kjørte i det skjulte. Ved å bruke kommandoen `docker ps`, oppdaget jeg at tre ulike containere fra to tidligere prosjekter sto og kjørte virtuelt uten at de ble brukt aktivt.
 * For å frigjøre systemressurser umiddelbart, stoppet jeg de inaktive prosessene manuelt med kommandoen `docker stop`. Dette avsluttet koblingen mellom de virtuelle arbeidsområdene og systemets filoversikt.

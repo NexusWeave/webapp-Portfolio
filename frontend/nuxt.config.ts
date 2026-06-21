@@ -7,13 +7,19 @@ const srcDir = dirname(fileURLToPath(import.meta.url)); // Du har denne allerede
 
 export default defineNuxtConfig({
 
-  
   ssr:true,
   dir: { public:'public' },
   devtools: { enabled: true },
   compatibilityDate: '2025-07-15',
+  experimental: { payloadExtraction: false},
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
+  routeRules: { '/logs/records/**': { prerender: true } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
+  site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
+  runtimeConfig:{ public:{ GCLOUD: process.env.GOOGLE_CLOUD } },
+  sitemap: { autoLastmod: true, includeAppSources:true, exclude: [ '/admin/**' ], sources: ['/api/log-urls'], defaults: { priority: 0.9, changefreq: 'daily'} },
+  nitro: { preset: 'static', prerender: { crawlLinks: true, routes: ['/sitemap.xml', '/'], ignore: [ '/logs/records/.gitkeep', '**/.gitkeep', '**/.DS_Store'] } },
+
   modules: [
     '@nuxt/ui',
     'nuxt-gtag',
@@ -22,14 +28,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/eslint',
     '@nuxt/content',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxt/test-utils/module'
   ],
-  experimental: { payloadExtraction: false},
-  routeRules: { '/logs/records/**': { prerender: true } },
-  site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
-  runtimeConfig:{ public:{ GCLOUD: process.env.GOOGLE_CLOUD } },
-  sitemap: { autoLastmod: true, includeAppSources:true, exclude: [ '/admin/**' ], sources: ['/api/log-urls'], defaults: { priority: 0.9, changefreq: 'daily'} },
-  nitro: { preset: 'static', prerender: { crawlLinks: true, routes: ['/sitemap.xml', '/'], ignore: [ '/logs/records/.gitkeep', '**/.gitkeep', '**/.DS_Store'] } },
    hooks: {
     async 'nitro:config'(nitroConfig) {
       async function getRoutes(dir: string): Promise<string[]> {

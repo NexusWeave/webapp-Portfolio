@@ -5,6 +5,7 @@ ingress: |
   Ved å sikre redaktørpanelt mot datainnbrudd har jeg lagt grunnlaget for en trygg og selvstendig drift. Jeg løste feil i kompileringen ved å legge til en sikker håndtering av miljøvariabler og sensitive tilgangsnøkler. Gjennom bruk av profesjonelle verktøy hindres lekkasje av konfidensiell data, samtidig som systemet er stabilisert. Dette har etablert en ny standard som forenkler videre utvikling og beskytter bedriftens digitale verdier.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt.js
   **Verktøy** - TypeScript, dotenv-cli
 
@@ -17,10 +18,12 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kan bli.
 sources: ''
----
+--- 
 
 Det hadde tidligere blitt laget til et tilpasset redaktørpanelt, dette skulle hjelpe bedriften for å bli mer selvstendig og redusere behovet for teknisk hjelp. Da jeg skulle klargjøre dette systemet for bruk, oppstod det et avbrudd i kompileringen som en konskekvens av systemet manglet digitale identifikasjoner og nøkler for å koble seg trygt til skyen. Jeg forsto at systemet ikke fant de nødvendige tilgangskodene i den lokale miljø-filen kalt `**.env**.`.
 Hensikten var å få systemet tilgjenglig på nett, uten at dette gikk utover sikkerheten. Oppgaven var å mate bedriftens plattform med disse hemmlige nøklene, på en måte de ikke er offentliggjort.
+
+
 
 * Jeg installerte et hjelpeverktøy kalt `dotenv-cli`, som har ansvaret for å finne `.env`-filen. Jeg endret også oppstartskommandoen slik at hjelpeverktøyet henter de sensitive nøklene og verdiene fra miljø filen og overleverer dem direkte til systemet i bygge fasen. Ved å bruke denne metoden sikret jeg at hemmlige nøkler ikke blir offentliggjort, ved å skrive de inn direkte i filen, dette holder systemet trygt for uønskede gjester.
 

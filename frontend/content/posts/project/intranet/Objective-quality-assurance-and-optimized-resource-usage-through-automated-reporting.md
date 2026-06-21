@@ -5,6 +5,7 @@ ingress: |
   Ved å fjerne tekniske blindsoner har vi etablert et målesystem som gir full innsikt i den digitale løsningens kvalitet. Gjennom automatisert rapportering har vi gått fra antakelser til faktabasert styring, noe som sikrer målrettet ressursbruk og høy driftssikkerhet. Denne oppgraderingen reduserer faren for uforutsette feil og gir bedriften et pålitelig produkt som er klargjort for stabil leveranse i takt med forretningens behov.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - Coverlet, TypeScript
 
@@ -19,10 +20,12 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
 sources: ''
----
+--- 
 
 Utviklingsmiljøet manglet et system for å måle og visualisere hvor stor del av den digitale løsningen som faktisk ble kontrollert av tester. Dette skapte blindsoner i utviklingsprosessen. Uten objektive data var det umulig å vurdere den faktiske risikoen for feil eller størrelsen på teknisk etterslep, noe som gjorde bedriften sårbar for uforutsette utfordringer i drift.
 Hensikten var å etablere en automatisert målingsmekanisme som gir full innsikt i systemets kvalitet. Oppgaven innebar å implementere verktøy som genererer konkrete rapporter over testdekning. Disse rapportene skal fungere som et styringsverktøy for ledelsen og utviklerne, slik at ressurser kan målrettes mot de delene av applikasjonen som har høyest risiko.
+
+
 
 * Gjennomførte en grundig analyse av prosjektoppsettet for å identifisere hvorfor måledata ikke ble generert.
 * Identifiserte og La til  manglende komponenter i systemets instruksjonsfiler som er nødvendige for å kunne lese testresultatene korrekt.

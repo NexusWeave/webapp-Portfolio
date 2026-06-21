@@ -5,6 +5,7 @@ ingress: |
   For å sikre at ting holder seg stabilt fremover, har jeg tatt en skikkelig sjau på grunnmuren i applikasjonen. Ved å tette gapet mellom det som står i dokumentasjonen og det som faktisk skjer i koden, har jeg gjort det mye enklere å vedlikeholde og fjerna kjipe hindringer i utviklingsløpet. Det betyr at jeg nå kan pushe nye ting mye raskere enn før.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript
 
@@ -18,13 +19,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
----
+--- 
 
 Applikasjonen hadde etter hvert vokst seg til et punkt der dokumentasjonen ikke stemte med virkeligheten lenger. Det førte til at jeg brukte unødvendig mye tid på vedlikehold. Samtidig hadde den indre strukturen blitt litt vel kronglete, noe som gjorde det risikabelt å legge til nye funksjoner uten at noe knakk.
 
 Hensikten var å rydde opp i systemet for å få en mer stabil drift. Jeg ville forenkle organiseringen, fjerne unødvendig kompleksitet, og sørge for at diagrammer og oversikter faktisk stemte med hvordan koden ser ut i dag. Alt for å kunne jobbe raskere og tryggere.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har flytta diagrammer og oversiktskart dit selve koden bor, så jeg alltid har oppdatert info rett foran meg når jeg gjør endringer.
 * Jeg har samla fellesoppgaver på ett sentralt sted istedenfor at de ligger og slenger rundt, noe som gjør at systemet snakker mye bedre med eksterne tjenester.

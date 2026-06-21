@@ -5,6 +5,7 @@ ingress: |
   Eliminert krasj under statisk sidegenerering (prerendering) i Nuxt 4 ved å flytte dynamisk tittel-oppløsning ut av definePageMeta-makroen. Ved å innføre en sentralisert Nuxt composable (preprosessor-utils.ts) løste vi feil ved aksessering av route.params før instansiering, noe som sikrer stabil pre-rendering og korrekt metadata-oppdatering.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt 4, Vue 3, TypeScript
   **Verktøy** - Nuxt Content, Composables
 
@@ -19,7 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Ekstremt tilfredsstillende å flytte kompleksitet fra skjøre compiler-makroer til robuste, testbare composables.
 sources: ''
----
+--- 
 
 Applikasjonen opplevde ustabilitet under bygg-prosessen, spesielt ved generering av statiske sider (prerendering). Problemet skyldtes at dynamiske rute-parametre ble forsøkt hentet inne i `definePageMeta`-makroen. Siden denne makroen evalueres av Nuxt-compileren før ruten i det hele tatt eksisterer i nettleseren, resulterte dette i feilmeldinger som "Cannot read properties of undefined". Samtidig var SEO-metadataene statiske, noe som førte til at sidetitler ikke oppdaterte seg korrekt når brukeren navigerte mellom artikler i SPA-modus.
 

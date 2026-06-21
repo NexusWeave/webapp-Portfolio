@@ -5,6 +5,7 @@ ingress: |
   Etablert en automatisert struktur for det virtuelle Python-miljøet under Garuda Linux ved å opprette lokale baner i ~/.local/bin. Dette eliminerer behovet for manuell aktivering ved oppstart, sikrer at pakker installeres i riktig kontekst via "which python"-validering, og forenkler utviklingsflyten.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **OS** - Garuda Drag0nized Linux
   **Verktøy** - CodeVS, TypeScript
 
@@ -19,7 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli
 sources: ''
----
+--- 
 
 Under oppstarten av arbeidsmiljøet for et prosjekt oppstod det en situasjon der operativ systemet ikke klarte å finne riktig Virtuelt miljø. Dette hindret systemet å lese de nødvendige konfigurasjonsfilene, noe som førte til at utviklingsverktøyet ikke var pålitelig, som det skulle være. Jeg hadde et behov for at maskinen skulle vite nøyaktig hvor den skulle lete for å finne prosjektets virtuelle miljø, uten at jeg manuelt måtte gripe inn.
 

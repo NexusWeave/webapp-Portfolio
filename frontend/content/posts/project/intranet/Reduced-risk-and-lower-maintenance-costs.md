@@ -5,6 +5,7 @@ ingress: |
   Vi har styrket systemets grunnmur ved å skille forretningslogikk fra infrastruktur. Tidligere sammenkobling gjorde sikkerhetskontroll vanskelig og økte risikoen for feil. Ved å rydde i arkitekturen og innføre automatiserte testrutiner, har vi skapt en løsning som er enkel å verifisere. Resultatet er en pålitelig arkitektur som sikrer korrekt tilgangsstyring, reduserer vedlikeholdstiden og klargjør prosjektet for trygg videreutvikling.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - TypeScript
 
@@ -19,13 +20,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli
 sources: ''
----
+--- 
 
 Systemets funksjon for tilgangsstyring var organisert på en måte som blandet foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken isolert, som øker risiko for feil ved fremtidige endringer og gjorde det vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer som planlagt.
 
 Hensikten var å separere ansvarsområdene i systemet for å sikre at reglene kan kontrolleres uavhengig av tekniske lagringsløsninger mens oppgaven var å øke systemets pålitelighet og bygge et rammeverk for effektiv og automatisert kvalitetssikring.
 
-Jeg har ryddet i systemets oppbygging.
+* Jeg har ryddet i systemets oppbygging.
 
 * Skilt ut logikken for tilgangskontroll slik at denne kan kontrolleres uten å påvirke resten av infrastrukturen.
 * Sørget for at systemet kan simulere ulike sikkerhetsscenarioer uten å være avhengig av eksterne filer.

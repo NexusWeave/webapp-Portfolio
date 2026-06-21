@@ -5,6 +5,7 @@ ingress: |
   TinaCMS feilet med å laste nødvendige ressurser i admin-panelet, noe som førte til feilmeldingen "Failed loading TinaCMS assets". Dette skjedde både i lokal utvikling og under bygging av prosjektet for produksjon. Utfordringen skyldtes at miljøvariabler manglet, og at systemet ikke genererte de statiske resursene.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt.js, TinaCMS
   **Verktøy** - TypeScript, dotenv-cli
   **Prinsipper** - Miljøhåndtering, Statisk generering
@@ -16,7 +17,8 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Utfordringen ble løst systematisk, og systemet fungerer nå optimalt.
----
+--- 
+
 Kunden fikk ikke tilgang til redigeringsverktøyet, og sendte en forespørsel om jeg kunne sjekke dette. Jeg oppdaget at TinaCMS feilet med å laste nødvendige ressurser i admin-panelet, noe som førte til feilmeldingen "Failed loading TinaCMS assets" eller en <abbr title="En respons som sender brukeren videre">304-respons</abbr>. Dette skjedde både i produksjon og under bygging av prosjektet for produksjon. Utfordringen var en konsekvens av at miljøvariabler manglet, og at systemet ikke genererte de statiske resursene.
 
 Hensikten var å sikre at miljøvariablene lastes inn korrekt og at admin-panelet blir tilgjengelig og funksjonelt i alle miljøer.

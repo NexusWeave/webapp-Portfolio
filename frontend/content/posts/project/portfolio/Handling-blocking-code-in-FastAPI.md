@@ -5,6 +5,7 @@ ingress: |
   For å få hele systemet over på en moderne plattform, har jeg tatt det siste steget og flytta de gjenværende delene til FastAPI. Ved å samle alt under samme tak har jeg fjerna teknisk etterslep og gjort siden mye mer stabil. Med automatisk datavalidering og smart trådhåndtering er appen nå klar for å vokse uten at ytelsen kveles.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - FastAPI
   **Verktøy** - Python, Pydantic
 
@@ -19,13 +20,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli. Det er deilig å endelig være helt over på FastAPI!
 sources: ''
----
+--- 
 
 Etter at jeg starta flyttingen til FastAPI, hang `Announcement`-endepunktet fortsatt igjen i det gamle Flask-oppsettet. Siden Flask bruker WSGI og FastAPI bruker ASGI, ble det krøll når de skulle prøve å snakke sammen, og endepunktet fungerte rett og slett ikke som det skulle lenger.
 
 Hensikten var å få alt over på FastAPI for å samle applikasjonen under én moderne standard. Utfordringen var å integrere den gamle, synkrone logikken uten at den skulle blokkere for alt det andre som skjer i systemet.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har skrevet om den gamle logikken til å bruke Pydantic-modeller for å få skikkelig typesikkerhet og automatisk validering.
 * Jeg har bytta ut Flask-rutingen med FastAPIs `@app.get` direkte i hovedapplikasjonen.

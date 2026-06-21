@@ -9,6 +9,7 @@ ingress: |
   gjør at jeg sparer tid.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript
 
@@ -21,7 +22,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kan bli
 sources: ''
----
+--- 
 
 For at besøkende på nettsiden min raskt skal kunne finne frem til relevante prosjekter, trengte jeg en tydelig kategorisering av teknologien bak hvert prosjekt, slik at det er lettere for besøkende å finne ut hva jeg kan. Å sortere dette manuelt ville vært en ineffektiv bruk av tid og en løsning som ikke ville tåle fremtidig vekst i antall prosjekter.
 

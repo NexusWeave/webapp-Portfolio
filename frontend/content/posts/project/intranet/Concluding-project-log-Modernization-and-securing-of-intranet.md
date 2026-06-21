@@ -8,21 +8,22 @@ status: |
   **Teknologi** - C#
   **Verktøy** - Coverlet, KI, TypeScript
   **Prinsipper** - DIP, Minste privilegium, RBAC, Singleton
+  *Skrevet i samarbeid med AI - Gemini*
 
   #### Dagens Aktiviteter
-  * Denne loggen oppsummerer de viktigste aktivitetene, resultatene og læringspunktene fra prosjektperioden (November – Desember 2025).
+  * Denne loggen oppsummerer de viktigste aktivitetene, resultatene og erfaringen fra prosjektperioden (November – Desember 2025).
   * Transformert intranettet til en stabil, sikker og profesjonell plattform for hele organisasjonen.
 
   #### Motivasjon & Energi - 10 / 10
   Prosjektet er fullført med gode resultater.
 sources: ''
----
+--- 
 
 Dette prosjektet har handlet om å profesjonalisere bedriftens intranett. Ved å rydde opp i **ustabil kildekode** og innføre moderne sikkerhetsstandarder, har vi gått fra en sårbar løsning til en plattform som er klargjort for fremtidig vekst og effektiv drift.
 
 #
 
-Etter en automatisk flytting av kodespråk (fra **PHP** til **C#** via **KI**) krasjet intranettet for utviklere med plattformen **Mac** eller **Linux**. Dette skapte full stans i videreutviklingen.
+* Etter en automatisk flytting av kodespråk (fra **PHP** til **C#** via **KI**) krasjet intranettet for utviklere med plattformen **Mac** eller **Linux**. Dette skapte full stans i videreutviklingen.
 
 Min oppgave var å finne feilen og sørge for at systemet fungerte uavhengig av hvilket operativsystem som brukes som publiserings løsningen.
 

@@ -5,6 +5,7 @@ ingress: |
   I kjølvannet av database-migreringen til Turso oppsto utfordringer i applikasjonens API-logikk, manifestert som en 500 Internal Server Error. Denne artikkelen dokumenterer diagnostiseringen og rettingen av en "Breaking Change" i objekt-instansieringen, der en uoverensstemmelse mellom klasse-definisjon og parameter-kall i Python førte til systemstans. Ved å bruke målrettet logging for å synkronisere navngivningen i LanguageModel, ble datastrømmen mellom GitHub og Turso gjenopprettet.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python, Turso, SQLAlchemy
   **Verktøy** - Logging, Google Cloud Run
 
@@ -17,7 +18,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Erfaringen understreker viktigheten av nøyaktighet i dynamiske språk.
 sources: ''
----
+--- 
 
 Situasjonen var at etter å ha etablert tilkoblingen til Turso-databasen, oppstod det en ny hindring i API-et som henter GitHub-repositorier. Applikasjonen sendte en 500-feil som indikerte at serveren sviktet; loggen avslørte utfordringen: TypeError: 'language' is an invalid keyword argument for LanguageModel.
 

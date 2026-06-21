@@ -6,6 +6,7 @@ ingress: |
 
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - TypeScript
 
@@ -19,7 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
 sources: ''
----
+--- 
 
 Systemet som håndterer bedriftens dataflyt og navigasjonslenker, produserte duplikater i de registrerte filene. Dette førte til at informasjonen som ble lagret ikke var unik, dette skapte rot i datagrunnlaget og forstyrret den tiltenkte flyten i systemet. For brukerne ville dette bety en uforutsigbar opplevelse og risiko for feilinformasjon.
 
@@ -32,4 +33,3 @@ Hensikten var å garantere at hver eneste lenke og underseksjon kun registreres 
 Vurdering av effektivitet: Jeg gjorde en grundig vurdering av løsningens ytelse. Selv om det finnes mer avanserte metoder for enorme datamengder, valgte jeg en løsning som er optimal for vårt nåværende behov. Dette sikrer en stabil drift uten å bruke unødvendige ressurser på overflødig komplekse systemer.
 
 Gjennom denne utbedringen har vi styrket dataintegriteten, som har forbedret brukeropplevelsen, da ansatte og studenter ikke lenger møter forvirrende duplikater i systemet. Ved å velge en løsning som er skreddersydd for våre nåværende datamengder, har vi oppnådd en kostnadseffektiv stabilisering av driften uten å innføre unødvendig kompleksitet. Samtidig har arbeidet gitt oss en klar plan for hvordan vi skal videreutvikle sikkerhetsmekanismene dersom datamengden øker i fremtiden, noe som gjør virksomheten rustet for digital vekst.
-

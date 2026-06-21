@@ -5,6 +5,7 @@ ingress: |
   For å gi besøkende en rask opplevelse har jeg fjernet ventetiden ved visning av mine prosjekter. Ved å lage et eget digitalt arkiv som samler alt på ett sted, slipper nettsiden å hente informasjon fra andre steder hver gang man trykker på en lenke. Systemet rydder og oppdaterer seg nå automatisk om natten når det er få brukere. Dette gir en ryddig og effektiv nettside som alltid viser frem siste nytt uten irriterende venting.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - FastAPI
   **Verktøy** - SQLAlchemy, TypeScript
   **Prinsipper** - SRP
@@ -25,7 +26,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli
 sources: ''
----
+--- 
 
 Koblingspunktet for henting av prosjektene mine som ligger på Github, brukte for lang tid på å hente alle prosjekter; dette er en konsekvens av at systemet må hente og formatere data x antall ganger hvor x er antall prosjekter. Dette bidrar til at informasjonen hentes tregere for besøkende. Under testingen oppsto det to utfordringer ved at tabellene ikke ble pålitelig lagret ved oppstart, og `APScheduler`-logikken ble ikke installert i applikasjonens livssyklus, som er en konsekvens av at mellomlagrings-dataene aldri blir oppdatert.
 
@@ -49,16 +50,16 @@ async def lifespan_function(app:FastAPI):
   except Exception as e:
     raise e
 
-  await DB_INSTANCE.connection
+await DB_INSTANCE.connection
 
-  #  Scheduler Start up 
+#  Scheduler Start up 
   SCHEDULER = AsyncIOScheduler()
   SchedulerConfig().configure_jobs(SCHEDULER)
   SCHEDULER.start()
   
   yield
 
-  SCHEDULER.shutdown()
+SCHEDULER.shutdown()
 
 #  Initialize FastAPI app.
 app = FastAPI(lifespan=lifespan_function)

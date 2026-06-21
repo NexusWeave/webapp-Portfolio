@@ -5,6 +5,7 @@ ingress: |
   Da en feil i den rollebaserte tilgangskontrollen hindret systemet å starte, ble sikkerheten prioritert foran drift. Ved å identifisere en manglende klargjøring av `AccessService`-klassen, fikk jeg rettet kommunikasjonssvikten som hindret innlasting av tilgangsreglene. Resultatet er en stabil og trygg innlogging for kollegaer og studenter, der en pålitelig sikkerhetskontroll nå sikrer en uavbrutt arbeidshverdag og trygghet for alle.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - JSON, TypeScript
 
@@ -20,13 +21,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli
 sources: ''
----
+--- 
 
 Systemet har en Rollebasert tilgangskontroll som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.
 
 Oppgaven min var å feilsøke for å finne ut grunnen til at instruksjonslisten og mottakeren i systemet ikke lenger kommuniserte på samme språk. Som en konsekvens av at de to systemene er avhengig av hverandre for at sikkerhets laget skal fungere, var hensikten mitt å korrigere feilene slik at systemet kunne vertifisere tilganger og sikre en normal oppstart.
 
-Jeg gjennomførte en systematisk feilsøkingsprosess i sikkerhetstjenesten for å identifisere hvorfor de tilgangsreglene ikke ble akseptert av systemet. Ved dykke ned i koden oppdaget jeg at kilden til utfordringen var en manglende klargjøring av klassen `AccessService` som skulle ta imot dataene.
+* Jeg gjennomførte en systematisk feilsøkingsprosess i sikkerhetstjenesten for å identifisere hvorfor de tilgangsreglene ikke ble akseptert av systemet. Ved dykke ned i koden oppdaget jeg at kilden til utfordringen var en manglende klargjøring av klassen `AccessService` som skulle ta imot dataene.
 
 * Jeg sikret for at systemet nå oppretter en ny og klar instans av `AccessService` klassen før selve innlastingen av reglene begynner.
 * Ved å sikre at klassen var klargjort i tide, kunne systemet korrekt overføre verdiene fra instruksjonslisten til de interne egenskapene i koden uten avbrudd.

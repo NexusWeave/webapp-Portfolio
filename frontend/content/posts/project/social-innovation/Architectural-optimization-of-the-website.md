@@ -5,6 +5,7 @@ ingress: |
   Da en ny lansering skapte uforutsette feil, valgte jeg å gå tilbake til en eldre, men stabil versjon av nettsiden. Denne hadde imidlertid flere svakheter under overflaten som gjorde vedlikeholdet krevende. Gjennom en målrettet opprydding har jeg forvandlet denne versjonen til en pålitelig plattform. Ved å forenkle hvordan informasjon hentes og vises, er siden nå blitt både raskere og langt tryggere for absolutt alle brukerne.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt.js
   **Verktøy** - TypeScript
   **Prinsipper** - SEO, UU
@@ -27,7 +28,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
 sources: ''
----
+--- 
 
 Etter at en 2 uker gammel lansering førte uforutsette feil på kundens nettside, ble det nødvendig å rulle tilbake til en tidligere versjon som fungerte. Denne eldre versjonen hadde tekniske etterslep og utfordringer som påvirket brukeropplevelsen, men var stabil. Versjonen hadde mange feilmeldinger i bakgrunnen, og en uoversiktlig kodestruktur som gjorde det tidkrevende å rette de gamle feilene uten å introdusere nye feil.
 Hensikten var å raskt stabilisere den eldre versjonen etter tilbakerullingen, samtidig som jeg fjernet noe av det teknisk etterslepet. Ønsket jeg å skape en flytende brukeropplevelse og forbedre det tekniske bilde som forenkler videreutviklingen av nettsiden uten at det tekniske etterslepet forhindrer fremdriften.

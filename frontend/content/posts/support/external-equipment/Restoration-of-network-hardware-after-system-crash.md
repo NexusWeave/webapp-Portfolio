@@ -5,6 +5,7 @@ ingress: |
   Denne tekniske loggen dokumenterer feilsøking av et nettverksbrudd i et dual-boot-system etter en krasj i Garuda Linux. Gjennom en metodisk tilnærming, fra programvarebasert tilbakestilling til dypere analyse av BIOS, ble feilkilden identifisert som et fysisk kontaktbrudd i maskinvaren. Ved å remontere PCIe-kortet ble internett og Bluetooth gjenopprettet, noe som viser at man alltid bør sjekke maskinvaren når BIOS-oppstarten svikter.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
   **Verktøy** - MSI Z270 Gaming Pro hovedkort med ASUS PCIe WiFi-kort, TypeScript
 
@@ -19,7 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Ble litt stresset av utfordringen når jeg ikke hadde mulighet til å gjøre jobben min den dagen, men jeg er fornøyd med at det ordnet seg. Dagen er så fin den kunne bli !
 sources: ''
----
+--- 
 
 Etter en uventet systemkrasj i Garuda Linux, oppstod det svikt i nettverksfunksjonaliteten. Utfordringen påvirket både Linux og Windows-partisjonen; verken trådløst nettverk (Wi-Fi) eller Bluetooth var tilgjengelig. Siden maskinen nylig hadde gjennomgått en systemoppdatering før krasjen, var mistanken rettet mot programvarekonflikter eller korrupte drivere.
 Hensikten var å stabilisere maskinvaren og gjenopprette forbindelsen til internett og Bluetooth-enheter.

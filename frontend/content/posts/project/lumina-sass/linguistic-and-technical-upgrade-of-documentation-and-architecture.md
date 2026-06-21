@@ -5,6 +5,7 @@ ingress: |
   For å sikre et solid fundament fremover, har det blitt tatt en skikkelig opprydding i både dokumentasjonen og mappestrukturen i lumina-sass. Ved å fjerne utdatert innhold og tette gapet mellom teksten og den faktiske koden, er biblioteket nå langt enklere å vedlikeholde. Det betyr at koden raskt kan gjenbrukes i andre prosjekter uten unødvendig forvirring.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Sass, Node.js, Markdown
   **Verktøy** - npm, JavaScript
   **Prinsipper** – <abbr title="Single source of truth er prinsippet om at informasjon skal lagres på ett sted.">Single source of truth</abbr>, <abbr title="Clean code er prinsippet om å skrive kode som er lett å lese og forstå.">Clean code</abbr>, <abbr title="Single responsibility principle er prinsippet om at en modul skal ha ett ansvarsområde.">Single Responsibility Principle</abbr> og <abbr title="Don't repeat yourself er prinsippet om å unngå duplisering av logikk eller informasjon.">Don't repeat yourself</abbr>
@@ -17,7 +18,7 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Det gir en mestringsfølelse å få ryddet skikkelig opp i gammelt rot. Nå føles biblioteket utrolig mye lettere å jobbe med og bygge videre på.
----
+--- 
 
 Biblioteket hadde over tid samlet opp en del rot, og trengte en skikkelig opprydding både i hvordan teksten var skrevet og i selve koden. Dokumentasjonen var litt tunglest med for mange filer som lå strødd rundt, og prosjektstrukturen gjorde det unødvendig vanskelig å skjønne hvordan modulene skulle brukes ved integrasjon i nye prosjekter.
 

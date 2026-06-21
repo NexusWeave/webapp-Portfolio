@@ -5,6 +5,7 @@ ingress: |
   Vi har innført en intelligent navigasjonsløsning som automatisk tilpasser menyer etter brukernes rettigheter. Ved å filtrere bort utilgjengelig innhold har vi fjernet støy og styrket sikkerheten for ansatte og studenter. Den nye strukturen sikrer en profesjonell brukeropplevelse og forenkler vedlikehold, da vi nå kan oppdatere tilgangsnivåer uten omprogrammering. Resultatet er et verktøy som øker effektiviteten i organisasjonen betraktelig.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - CSV, JSON, TypeScript
   **Prinsipper** - RBAC
@@ -19,13 +20,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
----
+--- 
 
 Systemet vårt benytter en sentral oversikt (en CSV-fil ved bruk av [`CsvHelper`](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file)) for å styre innholdslister og hovedmenyer. Utfordringen var at denne listen var statisk; alle brukere så de samme lenkene og menyvalgene, uavhengig av hvilke rettigheter de faktisk hadde i systemet. Dette skapte en uoversiktlig brukeropplevelse og potensielle sikkerhetsspørsmål, da brukere kunne se navigasjonsstier de ikke hadde tillatelse til å besøke.
 
 Hensikten var å designe og skape en intelligent løsning som automatisk kobler menyoversikten sammen med brukernes rettighetsnivå (**"RBAC**). Oppgaven var å skape en dynamisk navigasjon som filtrerer bort utilgjengelig innhold, slik at hver enkelt bruker kun presenteres for de lenkene og funksjonene de faktisk har tilgang til å bruke.
 
-For å løse dette har jeg utviklet en ny tjeneste som fungerer som et filter mellom datakilden og brukerflaten:
+* For å løse dette har jeg utviklet en ny tjeneste som fungerer som et filter mellom datakilden og brukerflaten:
 
 * Jeg satte opp en løsning i som leser den sentrale oversikten og tolker innholdet systematisk.
 * Selve kontrollen av rettigheter er lagt til en egen, skjermet modul. Dette sikrer at sikkerhetsreglene er adskilt fra resten av systemet for enklere vedlikehold.

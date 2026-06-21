@@ -5,19 +5,20 @@ ingress: |
   Her dokumenterer jeg reisen fra lokalt utviklingsmiljø til produksjon på Google Cloud Run. Det dukka opp litt krøll med Docker-containere og lokale avhengigheter når jeg flytta backend-logikken til skyen. Ved å styre `WORKDIR` og trikse litt med `PYTHONPATH`, fikk jeg synkronisert alt for et skikkelig "Cloud Native" oppsett.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - Docker, Google Cloud Run
   **Verktøy** - Python, Shell
   Dagen er så fin den kunne bli. Det er digg å se appen kjøre i skyen!
 sources: ''
----
+--- 
 
 Etter å ha fått appen til å rulle stabilt lokalt med Turso-databasen, var det på tide å ta steget ut i den store verden. For å gjøre det skikkelig valgte jeg å flytte alt til Google Cloud Run. Det er en ryddig måte å kjøre containeriserte apper på uten at jeg trenger å drifte selve serverne selv.
 
 Problemet var bare at Cloud Run ikke fant de lokale avhengighetene mine når jeg først prøvde å deploye. Når du flytter kode fra din egen maskin til en plattform som Google Cloud, endrer spillereglene seg helt for hvordan koden leter etter bibliotekene sine.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har konfigurert en Dockerfile som setter opp et skikkelig arbeidsområde (`WORKDIR`) inne i containeren, så alle stier starter fra samme sted.
 * Jeg har triksa med `PYTHONPATH` i Docker-instruksjonene for å sikre at Python finner både backend-koden og de interne bibliotekene mine uavhengig av filstruktur.

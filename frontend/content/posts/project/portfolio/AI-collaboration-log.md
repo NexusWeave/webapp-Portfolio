@@ -5,6 +5,7 @@ ingress: |
   I dag har jeg jobba med å få datamodellene og det som faktisk vises på skjermen til å snakke bedre sammen. Ved å bruke AI som en aktiv sparringspartner har jeg fått synkronisert språkteknologiene i backend, fiksa noen irriterende bygg-feil med ressursmapping, og polert litt på brukeropplevelsen i porteføljen.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - FastAPI, Nuxt 4, SQLAlchemy, Sass
   **Verktøy** - Gemini CLI, Git, Shell-integrasjon
 
@@ -17,13 +18,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært skikkelig produktiv. Samarbeidet med AI har tatt unna mye manuelt dritarbeid, og det føles godt å se ting falle på plass. Dagen er så fin den kunne bli.
 sources: ''
----
+--- 
 
 Datamodellene i systemet og det visuelle hang ikke helt sammen, noe som førte til bygg-feil og en litt luggete brukeropplevelse, spesielt når det kom til mapping av ressurser og ikoner.
 
 Hensikten var å tette dette gapet ved å rydde opp i dataene i backend og flikke litt på frontenden, slik at vi endelig fikk en feilfri produksjonsbygg.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har forbedret `GithubDatabaseHandler` slik at den automatisk synkroniserer språkbytes og teknologi fra GitHub, og tvinger alle språknavn til små bokstaver for å holde dataen ryddig.
 * Jeg har funnet og fiksa skrivefeil i ikon-referansene og oppdatert whitelisten for å slippe unna feil under Nuxt-prerendering.

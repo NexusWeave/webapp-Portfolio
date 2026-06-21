@@ -5,6 +5,7 @@ ingress: |
   For at det skal være lett å finne frem i det jeg skriver, har jeg snekra sammen en automatisk sortering. Ved å fjerne manuelt rot og la systemet ta seg av kategoriseringen, har jeg gjort brukeropplevelsen mye smidigere. Her er hvordan jeg tok kontroll på kaoset!
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript
 
@@ -15,13 +16,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
----
+--- 
 
 Jeg merka at det var litt vrient for folk å finne frem til de artiklene de faktisk ville lese. Alt lå egentlig i en stor haug, og det gjorde hele brukeropplevelsen ganske rotete.
 
 Hensikten var å få på plass en løsning som sorterer artiklene helt av seg selv. Den største nøtta var å finne ut hvilken metode som var mest stabil over tid: å bruke mappestrukturen eller å drive med manuell tagging.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har gått for den raskeste og mest stabile løsningen, nemlig å bruke den eksisterende mappestrukturen til å styre filtreringen.
 * Jeg har automatisert hele kategoriseringsprosessen så jeg slipper å tenke på det hver gang jeg legger ut noe nytt.

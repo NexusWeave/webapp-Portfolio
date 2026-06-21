@@ -5,6 +5,7 @@ ingress: |
   For å beskytte bedriftens interne informasjon har jeg utviklet en sikkerhetsløsning som sikrer at brukere kun ser data de har rettmessig tilgang til. Ved å flytte filtreringen til serveren i tråd med prinsippet om *minste privilegium*, har vi tettet lekkasjer av systemets struktur. Tiltaket fjerner unødvendig støy, styrker motstandskraften mot angrep og sikrer at våre systemer nå opererer profesjonelt og etter beste praksis.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - TypeScript
   **Prinsipper** - Minste privilegium
@@ -20,13 +21,13 @@ status: |
   Dagen er så fin den kunne bli i øyblikket.
 sources: |
   1. [Minst Privilegium](https://learn.microsoft.com/en-us/entra/identity-platform/secure-least-privileged-access)
----
+--- 
 
 Det ble oppdaget en sårbarhet knyttet til tilgangsstyring på nettsiden. Navigasjonslenker som skulle skjermes var eksponert for brukere. Dette var en konsekvens av at det ikke har vært lagt inn et filter for å filtrere vekk dataen i backend. Dette utgjorde en lekasje av intern informasjon om systemets struktur.
 
 Min oppgave var å finne ut hvorfor denne informasjonen ble lekket og vurdere risikoen opp mot anerkjente sikkerhetsstandarder og lage en løsning som sikrer at bedriftens interne data forblir skjulte for brukere uten tilgang.
 
-Jeg undersøkte hvordan dataene ble hentet ut og oppdaget at sikkerhetskontrollen ble gjort for sent i prosessen (hos brukeren istedenfor på serveren).
+* Jeg undersøkte hvordan dataene ble hentet ut og oppdaget at sikkerhetskontrollen ble gjort for sent i prosessen (hos brukeren istedenfor på serveren).
 
 * Jeg fant ut av at det manglet en filtrering i øyblikket da dataen ble hentet ut av systemtes underliggende filer.
 * Jeg sammenlignet dagens praksis med prinsippet om «*minste privilegium*».

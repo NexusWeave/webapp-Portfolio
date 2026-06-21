@@ -5,6 +5,7 @@ ingress: |
   Dagens arbeid har fokusert på en omfattende konsolidering av applikasjonens innholdsstruktur og en totalrenovering av de tekniske verktøyene for innholdsstyring. Ved å fjerne unødvendig kompleksitet knyttet til personlige logger og gå tilbake til en renere 'posts'-struktur, har jeg skapt en mer fokusert plattform. Samtidig er de underliggende feilene i CMS-logikken rettet, noe som sikrer en feilfri og type-sikker arbeidsflyt for fremtiden.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt 3, TinaCMS
   **Verktøy** - TypeScript, Sass, Nuxt Content
   **Prinsipper** - Arkitektonisk konsolidering, Separation of Concerns
@@ -20,13 +21,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
----
+--- 
 
 Dagens utgangspunkt var et system preget av en voksende teknisk gjeld i innholdsarkitekturen og underliggende ustabilitet i CMS-verktøyene. Ved å ha både `logs` og `posts` som begreper, samt en kunstig inndeling mellom `technical` og `personal`, hadde systemet blitt unødvendig komplisert å vedlikeholde og videreutvikle.
 
 Hensikten for dagen var å rydde opp i systemets indre struktur for å gjøre det mer stabilt i drift. Jeg ønsket å forenkle hvordan systemet er organisert ved å fjerne unødvendig kompleksitet i mappestrukturen, samtidig som jeg skulle reparere de tekniske verktøyene som driver redaktørpanelet for å sikre en feilfri brukeropplevelse.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har konsolidert innholdsstrukturen ved å fjerne `personal`-kategorien og flytte alle tekniske logger direkte under `content/posts`, noe som forenkler både indeksering og navigasjon.
 * Jeg har gjennomgått og rettet de interne utility-funksjonene for TinaCMS, der jeg fjernet variabel-shadowing og rettet ugyldig syntaks for å sikre at redaktørpanelet fungerer forutsigbart.

@@ -5,6 +5,7 @@ ingress: |
   Siden stilene brukes på tvers av flere ulike prosjekter, ble all Sass-kode samlet i en egen, sentralisert pakke. Flyttingen til *lumina-sass* betyr at det nå eksisterer én eneste kilde for all stil, noe som dramatisk reduserer kodeduplisering. Det forenkler ikke bare vedlikeholdet betraktelig, men gjør også at byggetiden i prosjektene går raskere.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Sass, Node.js
   **Verktøy** - npm, Vite, TypeScript
   **Prinsipper** – <abbr title="hver modul har ett tydelig ansvar">Single Responsibility Principle</abbr>, <abbr title="en kilde er den definitive sannheten for data">Single source of truth</abbr>, <abbr title="kode holdes ren og lett forståelig">Clean code</abbr> og <abbr title="unngå duplisering av kode, gjenbruk funksjoner">Don't repeat yourself</abbr>
@@ -17,7 +18,8 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Mestringsfølelsen er på topp, og dagen er så fin den kan bli.
----
+--- 
+
 Siden stilene brukes over flere prosjekter, var det behov for en sentralisert stil‑løsning for å redusere duplisering og forenkle vedlikeholdet.
 
 Hensikten var å samle all eksisterende Sass‑kode i en egen npm‑pakke kalt *lumina‑sass*, for å unngå repetisjon av kode, og holde kodebasen ren.

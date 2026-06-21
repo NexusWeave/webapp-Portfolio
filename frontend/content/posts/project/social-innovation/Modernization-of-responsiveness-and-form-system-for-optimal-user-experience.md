@@ -5,6 +5,7 @@ ingress: |
   Gjennom en omfattende teknisk gjennomgang har jeg modernisert nettsidens responsive rammeverk og optimalisert redaktøropplevelsen i TinaCMS. Ved å innføre industristandarder for brytningspunkter, rydde i CSS-arkitekturen og utvikle intelligente, betingede skjemafelt, har jeg skapt en plattform som er både visuelt sømløs på tvers av enheter og teknisk robust for fremtidig skalering.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt.js, TinaCMS
   **Verktøy** - TypeScript, Sass, React
   **Prinsipper** - Responsivt Design, UU, Dataintegritet
@@ -22,7 +23,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Utrolig tilfredsstillende å se arkitekturen falle på plass med så rene løsninger!
 sources: ''
----
+--- 
 
 Dagens arbeid har implementert responsiv mobilnavigasjon med fullskjerm-overlay og standardisert brytningspunktene (xs til 5xl) i Sass. I TinaCMS er det lagt til en intelligent valideringssjekk som automatisk krever alt-tekst og bildetekst kun når et bilde faktisk er lastet opp, for å sikre universell utforming. I tillegg er en feil i navigasjonskomponentens CSS-klasser, som forårsaket visningsfeil på desktop, rettet.
 

@@ -5,6 +5,7 @@ ingress: |
   En bakgrunnsprosess krasjet systematisk under oppstart av utviklingsmiljøet, dette resulterte i en feilmelding om brudd på IPC. Situasjonen stanset all videre utvikling ettersom systemet ikke lot seg kompilere lokalt. Utfordringen var en konsekvens av korrupte filer og versjonskonflikter mellom pakkene.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt, TinaCMS
   **Verktøy** - Node, npm
   **Prinsipper** - Avhengighetshåndtering
@@ -17,7 +18,8 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Utfordringen ble løst raskt og utviklingsmiljøet er nå stabilt.
----
+--- 
+
 bakgrunnsprossen krasjet under oppstart av utviklingsmiljøet, noe som resulterte i en feilmelding om brudd på <abbr title="Inter-Process Communication: Hvordan ulike prosesser prater sammen">IPC</abbr>. Situasjonen stanset videre utviklingen siden koden ikke lot seg kompilere lokalt. Utfordringen oppsto som en konsekvens av korrupte filer og versjonskonflikter mellom pakkene.
 
 Hensikten var å gjenopprette et stabilt utviklingsmiljø ved å fjerne korrupt data og tvinge frem en kompatibel versjon av plattformen.

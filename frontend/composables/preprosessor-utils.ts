@@ -86,7 +86,7 @@ export const useNavigation = () => {
             {
                 title: title, description: description,
                 ogTitle: title, ogImage: image, ogLocale: 'nb_NO', ogType: 'website', ogDescription: description,
-                twitterImage: image, twitterTitle: title, twitterDescription: description, twitterCard: 'summary_large_image', themeColor: '#ffffff'
+                twitterImage: image, twitterTitle: title, twitterDescription: description, twitterCard: 'summary_large_image', themeColor: '#f5f5f5'
             }); }, { immediate: true });
 
         return computed<RouterItem[]>(() => {

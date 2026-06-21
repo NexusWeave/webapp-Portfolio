@@ -5,6 +5,7 @@ ingress: |
   Ved å rette en logikkfeil i systemets tilgangskontroll har vi fjernet tekniske hindringer som tidligere låste ute ansatte med tilgang. Feilen førte til unødvendig avbrudd i arbeidet. Gjennom en systematisk opprydding har vi sørget for at sikkerheten er både streng og sikker. Dette sikrer at de ansatte får gjort jobben sin effektivt, samtidig som bedriften har full kontroll på dataene. Arbeidet gir oss en mer stabil og forutsigbar drift i fremtiden.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - JSON, TypeScript
   **Prinsipper** - RBAC
@@ -20,13 +21,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
 sources: ''
----
+--- 
 
 Systemets rollebasert tilgangs kontroll (RBAC) hadde en logikkfeil som gjorde den altfor streng. Når ansatte hadde fått tillatelse til flere kategorier ved hjelp av en "samlenøkkel" (stjerne-symbolet \*), forsto ikke systemet instruksjonen. Selv om de ansatte var godkjente i systemet og skulle hatt tilgang, ble de nektet å åpne tillate filer og verktøy. Ansatte mistet tid fordi de ble stående foran en ei side de egentlig hadde tilgang til.
 
 Hensikten mitt var å finne ut hvorfor  tilgangslogikken ikke forsto sine egne instruksjoner når det ble brukt samletegn. Oppgaven ble å rette denne logikken slik at sikkerhetslaget skjermer innholdet for brukere uten spesifikke roller. Dette handler om å sikre at de ansatte får gjort jobben sin uten tekniske hindringer, samtidig som bedriften har kontroll på hvem som har tilgang til hva.
 
-Jeg gjennomførte en systematisk feilsøkningsprosess for å finne ut hvorfor systemet ikke kjente igjen rollene som var lagt inn.
+* Jeg gjennomførte en systematisk feilsøkningsprosess for å finne ut hvorfor systemet ikke kjente igjen rollene som var lagt inn.
 
 * Ved å sammenligne hvordan tilgangene var skrevet i konfigurasjonsfilen med hvordan systemet leste dem, oppdaget jeg en liten skrivefeil. Det var lagt inn et ekstra tegn i filstiene som gjorde at mønsteret ikke stemte overes med rollen.
 * Jeg fjernet de unødvendige tegnene fra alle stiene i instruksjonsfilen.

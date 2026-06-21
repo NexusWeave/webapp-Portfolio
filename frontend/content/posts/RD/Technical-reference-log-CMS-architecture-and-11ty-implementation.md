@@ -7,6 +7,7 @@ ingress: |
   I dag har jeg investert tid til å bli kjent med verktøyene for å bygge enkle redaktørpanelt som er enkle for kunden å bruke. Ved å tette kunnskapshullene mine har jeg ikke bare fjernet unødvendig stress, men også skaffet oss en oversikt over løsninger som eksisterer. Dette sikrer at vi leverer produkter, som er gjennomtenkte og reduserer ressurs bruken.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **OS** - Ikke spesifisert
   **Verktøy** - 11ty, Tina CMS, TypeScript
 
@@ -23,9 +24,11 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli.
 sources: ''
----
+--- 
 
 I dag hadde jeg behov for å videre utvikle kunnskapen min innen CMS panel, dette var en konsekvens av at vi fikk en oppgave fra lederen våres om å lage til et CMS panel som skulle brukes for en kunde.
+
+
 
 * Jeg satte av tid til å lese fagstoff og dokumentasjonen for `11ty`- rammeverket.
 * For å få en praktisk innsikt analyserte jeg eksisterende kode og gjorde en undersøkelse  av ulike redaktørpanel verktøy, kostnadseffektive løsninger til avanserte systemer.

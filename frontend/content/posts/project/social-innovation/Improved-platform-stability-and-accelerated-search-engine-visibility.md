@@ -5,6 +5,7 @@ ingress: |
   Dagens oppdatering fokuserer på å styrke plattformens profesjonalitet og forbedret synlighet gjennom en mer effektiv brukeropplevelse og en ryddigere nettside. Ved å fjerne visuelle forsinkelser, automatisere SEO og fjerne tekniske hindringer, har jeg redusert risikoen for brukerfrafall og lagt til rette for en langt raskere videreutvikling av tjenesten og en forbedret digital profil for samtlige av organisasjonens mange medlemmer.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt.js
   **Verktøy** - TypeScript
   **Prinsipper** - Brukeropplevelse, SEO
@@ -19,7 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli.
 sources: ''
----
+--- 
 
 Prosjektet hadde enkelte utfordringer knyttet til hvordan innhold ble presentert for brukerne mens det lastet, samt enkelte svakheter i hvordan forfatterinformasjon og datoer ble koblet sammen. Dette medførte en risiko for en uventet brukeropplevelse og økt tidsbruk ved vedlikehold og videreutvikling.
 

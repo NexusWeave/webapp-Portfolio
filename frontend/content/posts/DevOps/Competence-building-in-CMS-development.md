@@ -5,6 +5,7 @@ ingress: |
   Denne loggen dokumenterer hvordan vi ved å velge et ferdig redaktørpanel som Tina CMS har spart betydelig utviklingstid sammenlignet med å bygge en egen database. Ved å kombinere offisiell dokumentasjon med moderne KI-verktøy, har jeg etablert en stabil løsning for Vue.js som kunden enkelt kan styre selv. Arbeidet har resultert i en gjenbrukbar metode som sikrer høyere kvalitet og langt raskere leveranse i alle fremtidige prosjekter.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **OS** - Garuda Drag0nized Linux
   **Verktøy** - Tina CMS, Vue.js, TypeScript
 
@@ -19,7 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli. Hodet ble litt sliten løpet av dagen.
 sources: ''
----
+--- 
 
 Jeg skulle sette opp et redaktørpanelt Tina CMS for en nettside, Utfordringen var at dette systemet ikke var laget spesielt for rammeverket Vue.js og det var første gang jeg skulle sette opp redaktørpanelet for dette rammeverket.
 

@@ -5,6 +5,7 @@ ingress: |
   Overgangen fra versjon 2.11.1 til 3.1.0 markerer en betydelig utvikling av biblioteket, med fokus på intuitiv navngivning og teknisk stabilitet. Hovedendringene inkluderer en fullstendig refaktorering av kjernemoduler for å fremme klarhet, samt utvidelse av generatorer med strengere feilhåndtering. Dette sikrer en mer robust plattform for brukere og bidragsytere.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Sass, TypeScript
   **Verktøy** - Git, npm
   **Prinsipper** - Semantisk versjonering, Arkitektonisk konsistens
@@ -16,7 +17,7 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Moderniseringen av biblioteket gir økt verdi og forenkler videreutvikling.
----
+--- 
 
 Overgangen fra versjon 2.11.1 til 3.1.0 var en konsekvens av behovet for en mer intuitiv kodebase. Tidligere versjoner hadde tekniske benevnelser som kunne virke uklare, noe som førte til en beslutning om å innføre beskrivende hverdagsnavn for alle kjernemoduler i <abbr title="Syntactically Awesome Stylesheets - et språk som utvider CSS">Sass</abbr>. Samtidig ble det identifisert behov for forbedret kontroll over <abbr title="Utility classes - små, gjenbrukbare CSS-klasser">hjelpeklasser</abbr> og feilhåndtering.
 

@@ -5,6 +5,7 @@ ingress: |
   Jeg har tatt en skikkelig opprydning i hvordan jeg dokumenterer prosjektet. Istedenfor å være avhengig av tekstbaserte diagrammer, har jeg flyttet mye av arkitektur-oversikten over til det nye visuelle diagrammer (Drawio). Det gjør det enklere å forstå hvordan systemet henger sammen.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Drawio, Markdown
   **Verktøy** - Dokumentasjon, Arkitektur
 
@@ -17,7 +18,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Jeg er fornøyd med innsatsen i dag.
 sources: ''
----
+--- 
 
 Dokumentasjonen hadde begynt å bli litt utdatert, og det var vanskelig å få et raskt blikk på hvordan systemet hadde blitt bygget opp.
 
@@ -30,4 +31,3 @@ Hensikten var å forbedre strukturen i dokumentasjonen, og flytte over til å br
 Dette arbeidet har redusert støy når en utvikler skal forstå hvordan backend- og frontend-systemene spiller sammen. Det gir en helt annen trygghet i utviklingsarbeidet når dokumentasjonen er oppdatert til å reflektere hvordan systemet er satt sammen.
 
 Jeg erfarte det å visualisere arkitektur med Drawio istedenfor Mermaid gir en mer organisert og ryddig struktur.
-

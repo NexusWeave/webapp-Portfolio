@@ -5,6 +5,7 @@ ingress: |
   For å sikre full kontroll over prosjektet har jeg utviklet et eget varslingssystem som overvåker alle koblinger i sanntid. Ved å bytte ut generelle feilmeldinger med detaljerte statusrapporter, har jeg fjernet usikkerheten rundt hvor feil oppstår. Dette betyr at jeg kan løse utfordringer umiddelbart fremfor å lete i blinde. Resultatet er en mer stabil tjeneste for brukerne og en effektiv arbeidsflyt der teknisk rusk stoppes raskt.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript, KI
 
@@ -17,7 +18,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Kjenner at jeg er klar for en ferie :)
 sources: ''
----
+--- 
 
 Jeg hadde ingen oversiktlig måte å vite om en utfordring skyldtes min egen kode eller om det var utfordringer hos de eksterne tjenestene jeg henter data fra. Dette gjorde det vanskelig å vite hvor jeg skulle starte feilsøkingen når noe stoppet opp fremgangen av prosjektet.
 

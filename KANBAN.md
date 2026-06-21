@@ -107,7 +107,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 * **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [TinaCMS CLI Reference](https://tina.io/docs/tina-cloud/cli/)
 * **Subtasks**:
   - [ ] **Schema Integrity Audit**:
-    - [ ] Run `tinacms schema audit` via CLI build checks to confirm configuration validity
+    Run `tinacms schema audit` via CLI build checks to confirm configuration validity
     - [ ] Verify `collections.ts` schema exports valid schema shapes for all content collections
   - [ ] **Custom Fields Validation**:
     - [ ] Write unit tests for custom schema field helpers in `tina/utils/fields.tsx` and `utilsFields.ts`

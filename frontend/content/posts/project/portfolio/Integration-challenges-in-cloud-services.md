@@ -5,17 +5,15 @@ ingress: |
   Denne artikkelen tar for seg utfordringene som oppstår når en applikasjon migrerer fra et lokalt utviklingsmiljø til en profesjonell tjenestestruktur i Google Cloud. Gjennom feilsøking av brutte kommunikasjonslinjer mellom klient og tjeneste, belyses det av presis URL-adressering og korrekt oppsett av miljøvariabler. Erfaringen gir verdifull innsikt i hvordan produksjonsmiljøer krever en annen tilnærming enn utviklingsstadier, og reiser viktige arkitektoniske spørsmål rundt behovet for autentisering i leseoperasjoner kontra modifisering av data.
 status: ''
 sources: ''
----
-
-#
+--- 
 
 I denne fasen var hensikten å etablere kommunikasjon mellom Klientsiden og tjenestesiden i Google Cloud. Sende en forespørsel fra klienten som tjenesten kan tolke og respondere på.
 
 Planen var å implementere en standard HTTPS-header for å definere datatypen og autentisere forespørseken ved hjelp av et Cloud-token.
 
-```json
+* ```json
 
-  {
+{
   "Content-Type": "Application/json",
     "Authorization": "GCLOUD-TOKEN"
    }

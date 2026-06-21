@@ -5,6 +5,7 @@ ingress: |
   For å slippe å dulle med manuelle oppdateringer hele tiden, har jeg automatisert innsamlingen av teknologidata til porteføljen. Ved å la systemet hente inn tallene selv, er oversikten over hva jeg faktisk kan alltid spot-on. Sammen med litt visuell finpuss og teknisk opprydding, har plattformen blitt mye mer proff og stabil.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript
 
@@ -19,13 +20,13 @@ status: |
   #
   Dagen er så fin den kunne bli. Det er deilig når ting bare ruller og går av seg selv.
 sources: ''
----
+--- 
 
 Før måtte jeg sitte og oppdatere oversikten over kodespråk og kompetanse manuelt. Det var ikke bare kjedelig, men det førte også til at tallene på siden ikke alltid stemte med det jeg faktisk hadde i repoene mine. Hele plattformen trengte egentlig en skikkelig modernisering for å holde koken.
 
 Hensikten var å få alt dette inn i en automatisert flyt, så kompetanseoversikten alltid er fersk uten at jeg trenger å løfte en finger. Samtidig ville jeg gjøre det hele mer visuelt og oppgradere de tekniske kjernekomponentene for å sikre at alt er rigget for fremtiden.
 
-For å løse dette har jeg gjennomført følgende tiltak:
+* For å løse dette har jeg gjennomført følgende tiltak:
 
 * Jeg har snekra sammen en datamotor (Pinia store) som automatisk teller og summerer bruken av ulike kodespråk i alle prosjektene mine.
 * Jeg har bytta ut de kjedelige statiske listene med dynamiske fremdriftsmålere som viser data i sanntid, og flikka litt på designet.

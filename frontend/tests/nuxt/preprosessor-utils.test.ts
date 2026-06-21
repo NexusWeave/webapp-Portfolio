@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { sortbyDate, setDateFormat, useCarousel, useNavigation} from '../../composables/preprosessor-utils';
-import { sortObject, expectedSort, setDateFormatData, setDateFormatData_1, setDateFormatExpected,setDateFormatExpected_1 } from './data'
+import { sortbyDate, setDateFormat, useCarousel, useNavigation } from '#imports';
+import { sortObject, expectedSort, setDateFormatData, setDateFormatData_1, setDateFormatExpected,setDateFormatExpected_1 } from '../data/preprosessor-data';
 
 
 describe('Preprocessor Utils', () => {

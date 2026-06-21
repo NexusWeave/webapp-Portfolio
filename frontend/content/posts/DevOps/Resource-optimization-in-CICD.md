@@ -5,6 +5,7 @@ ingress: |
   Ved å la prosessen fra ferdig kode til publisering gå helt av seg selv, har jeg skapt en moderne løsning som sparer både tid og penger. Jeg har valgt et rimelig alternativ som effektivt forlenger tilgjengelige byggeminutter i GitHub Actions. Resultatet er et stabilt og selvgående system som reduserer både direkte kostnader og utviklertid ved å fjerne manuelle rutineoppgaver, slik at fokuset heller kan ligge på videreutvikling av selve kjernefunksjonaliteten.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **OS** - Garuda Drag0nized Linux
   **Verktøy** - GitHub Actions, TypeScript
 
@@ -18,17 +19,17 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin, som det har vært mulig
 sources: ''
----
+--- 
 
 Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører rutiner, ved en produksjons klar programvare.I GitHub har man en fast månedlig kvote på **2000 gratis bygge minutter** for både offentlige og private prosjekter.
 
 #
 
-| **Operativsystem** | **Multiplikator** | **Forbruk per minutt** |
-| ------------------ | ----------------- | ---------------------- |
-| Linux              | 1x                | 1 minutt               |
-| Windows            | 2x                | 2 minutt               |
-| macOS              | 10x\*             | 10 minutt              |
+* | **Operativsystem** | **Multiplikator** | **Forbruk per minutt** |
+* | ------------------ | ----------------- | ---------------------- |
+* | Linux              | 1x                | 1 minutt               |
+* | Windows            | 2x                | 2 minutt               |
+* | macOS              | 10x\*             | 10 minutt              |
 
 Min oppgave var å løse utfordringen på hvordan jeg kunne bruke de byggeminuttene i Github maksimalt, for å ha en rimlig løsning, både for meg selv og kunden, uten om å betale mer enn nødvendig.
 

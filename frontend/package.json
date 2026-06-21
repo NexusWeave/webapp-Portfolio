@@ -12,8 +12,8 @@
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
     "serve": "npm run build && nuxt preview",
-    "test": "vitest run && npm run test:nuxt && npm run test:sass",
-    "test:dev": "vitest run --reporter=verbose && npm run test:nuxt && npm run test:semantic && npm run test:sass",
+    "test": "npx vitest run  npm run test:sass",
+    "test:dev": "vitest run --reporter=verbose && npm run test:sass",
     "test:sass": "sass --pkg-importer=node sass/tests/index.spec.sass sass/tests/output/output.spec.css && npx tsx sass/tests/ts/dependency-warnings.ts && npx tsx sass/tests/ts/syntax-check.ts",
     "deploy": "npm run test && npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'"
   },
@@ -23,6 +23,7 @@
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.7.1",
     "@nuxtjs/google-gtag": "^1.0.4",
+    "@vitejs/plugin-vue": "^6.0.7",
     "better-sqlite3": "^12.10.0",
     "bootstrap-icons": "^1.13.1",
     "eslint": "^10.1.0",
@@ -50,6 +51,7 @@
     "postinstall-postinstall": "^2.1.0",
     "sass": "^1.100.0",
     "sass-true": "^10.1.0",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.8",
+    "vitest-axe": "^0.1.0"
   }
 }

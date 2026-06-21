@@ -5,6 +5,7 @@ ingress: |
   Løst filstibindingsfeil i TinaCMS ved å erstatte absolutte baner (~/) med relative stier i kolleksjons- og maldefinisjoner. I tillegg er globale stilark refakturert for å forhindre stilkonflikter, og en ReferenceError i createPage-funksjonen er rettet.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt.js
   **Verktøy** - TypeScript, TinaCMS, React
   **Prinsipper** - Arkitektur, Modulisering
@@ -21,7 +22,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Veldig tilfredsstillende å se systemet kjøre knirkefritt igjen!
 sources: ''
----
+--- 
 
 Dagen startet med utfordringer i redaktørpanelet (TinaCMS), der build-prosessen feilet på grunn av problemer med filstier og en udefinert variabel i kjerne-logikken. Samtidig var det behov for å rydde opp i stilarkene og type-definisjonene for å sikre at prosjektet forblir oversiktlig og lett å utvide.
 Hensikten var å raskt gjenopprette stabiliteten i redaktørpanelet, samtidig som jeg gjennomførte en nødvendig refaktorering av CMS-skjemaene. Jeg ønsket også å forbedre kodestil og typesikkerhet for å redusere risikoen for fremtidige "runtime errors".

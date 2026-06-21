@@ -5,6 +5,7 @@ ingress: |
   Da en lynrask teknologiovergang lammet bedriftens intranett, ble det produksjonsstans. Ved å utbedre svakheter i AI-generert kode, ble systemet transformert fra en ustabil kilde til feil til en pålitelig, plattformuavhengig løsning. Resultatet er et feilfritt arbeidsverktøy for alle ansatte, uavhengig av operativsystem, slik at utviklingsteamet nå kan jobbe effektivt uten frykt for nye driftsstans.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - KI, TypeScript
 
@@ -16,13 +17,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen var så fin den kunne bli !
 sources: ''
----
+--- 
 
 Bedriftens intranett krasjet ved innlogging på nettsiden under testing etter at systemet ble flyttet fra kodespråket **PHP** → **C#** ved hjelp av AI-generert kode. Den halv automatiske flyttingen skapte hindringer som gjorde nettsiden utilgjengelig, og videre utviklingsarbeidet stanset. Dette betydde stopp i produksjon for bedriften.
 
 Min oppgave var å feilsøke den AI-genererte koden, finne årsaken til at nettsiden krasjet og få nettsiden klar til videreutvikling, så raskt som mulig. Samtidig skulle jeg sikre at systemet hadde støtte for **MacOS**, **Windows** og **Linux**.
 
-Da denne feilen kun rammet utviklere på visse datasystemer, gjennomførte jeg en feilsøking for å sikre at intranettet var stabilt for alle.
+* Da denne feilen kun rammet utviklere på visse datasystemer, gjennomførte jeg en feilsøking for å sikre at intranettet var stabilt for alle.
 
 * Jeg analyserte den AI-genererte koden for å finne ut hvorfor den fungerte på Windows, men sviktet på andre datasystemer.
 * Jeg erstattet den ustabile koden med en universell løsning som automatisk gjenkjenner riktig filsti, uavhengig av hvilket datasystem den ansatte bruker.

@@ -5,6 +5,7 @@ ingress: |
   Jeg har gjennomført en modernisering av prosjektet [SosialInnovasjon](https://sosent.no) for å sikre en raskere og mer stabil brukeropplevelse. Ved å rydde i systemets grunnmur har jeg fjernet hindringer som tidligere skapte visuelle feil og treghet. Resultatet er en profesjonell digital flate hvor informasjon alltid vises korrekt. Dette sparer meg for vedlikehold og gjør det enklere å videreutvikle siden i tråd med bedriftens behov i fremtiden.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Nuxt.js
   **Verktøy** - TypeScript
   **Prinsipper** - Datakvalitet, Fallbacks, Standardisering
@@ -18,13 +19,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli, selv om det har vært litt små irriterende med uforutsigbare feil.
 sources: ''
----
+--- 
 
 Prosjektet tekniske fundament hadde over tid blitt oppdelt. Forskjellige deler av siden brukte ulike metoder for å vise frem innhold, som artikler, forfattere og arrangementer. Dette gjorde siden tyngre å laste, økte risikoen for småfeil i visningen (som feil datoformater), og gjorde det tidkrevende for selv små endringer uten at noe annet ble påvirket.
 
 Hensikten var å rydde opp i nettsidens logikk for å sikre en mer stabil og profesjonell brukeropplevelse. Oppgaven innebar å standardisere hvordan legoklossene brukes, forenkle logikken bak visning av innhold, og fjerne gammel "gjeld" (ubrukt kode) som bare tok opp plass.
 
-Jeg har gjennomført en omfattende forbedring av nettsidens kjerne:
+* Jeg har gjennomført en omfattende forbedring av nettsidens kjerne:
 
 * Jeg har skrevet om logikken for hvordan artikler, forfattere og arrangementer hentes frem. Nå blir for eksempel arrangementer automatisk sortert etter dato, og forfatterprofiler kobles alltid riktig sammen med sine artikler.
 * Jeg har lagt inn sikkerhetsmekanismer (fallbacks) som gjør at siden ikke "krasjer" eller ser tom ut hvis et bilde eller en tekst bruker litt lang tid på å laste.

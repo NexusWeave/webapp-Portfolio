@@ -5,6 +5,7 @@ ingress: |
   Da deler av nettsiden ble hengende igjen i gammel teknologi, merket brukerne at ting gikk tregt. Jeg valgte å fornye selve motoren i systemet slik at den nå kan håndtere mange oppgaver samtidig i stedet for én og én. Ved å rydde i hvordan data hentes og kontrolleres, har jeg fjernet ventetiden og gjort siden langt mer pålitelig. Resultatet er en raskere opplevelse for gjestene og en løsning som er klar for fremtidig vekst.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - FastAPI
   **Verktøy** - KI, TypeScript
 
@@ -18,13 +19,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
 sources: ''
----
+--- 
 
 Jeg satt med en hybrid-løsning der det meste av systemet var moderne og raskt, men koblingen mot GitHub hang igjen i det utdaterte Flask systemet. Jeg tok en besluttning om  å utsette denne oppgraderingen, for å forenkle og fokusere på en oppgradering om gangen, men dette førte til at satt jeg igjen med en bremset brukeropplevelse.
 
 Hensikten var å fjerne all kode som gjorde en og en oppgave, slik at systemet kan håndtere flere forespørsler samtidig uten å stoppe opp. Oppgaven besto av å flytte GitHub-koblingen fra det utdaterte WSGI standarden og over til det moderne ASGI standarden.
 
-For å løse dette gjorde jeg tre ting:
+* For å løse dette gjorde jeg tre ting:
 
 * Jeg laget til et digital filter ved bruk av Pyndantic biblioteket som automatisk validerer dataene fra GitHub er riktige og lager intern dokumentasjon selv. Denne teknikken reduserer feilmeldinger, og dokumenterer koden, som igjen påvirker stabiliteten.
 * Jeg byttet ut det utdaterte `request`-biblioteket, som utfører bare en og en oppgave,  med et moderne nettsøkings httpx-biblioteket som utfører flere forespørsler samtidig.

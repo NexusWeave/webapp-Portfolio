@@ -5,6 +5,7 @@ ingress: |
   Gjennom en målrettet modernisering har vi fjernet vedlikeholdsetterslep og driftsrisiko i systemet. Ved å skille forretningsregler fra datalagring og innføre universelle grensesnitt, har vi skapt en fleksibel arkitektur. Dette reduserer feilmarginer og forenkler opplæringen av nye ansatte, samtidig som koden er kortere. Systemet er nå en pålitelig plattform som sikrer både rimeligere og raskere videreutvikling.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - CSV, JSON, TypeScript
   **Prinsipper** - Flerlagsløsning
@@ -19,13 +20,13 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: ''
----
+--- 
 
 Prosjektet hadde et preg av et økende vedlikeholdsetterslep som følge av å følge prinsippet om "Make it work, make it right, make it fast" i startfasen. Systemet fungerte, men manglet strukturen som kreves for stabil drift over tid. Oppbyggingen skapte en risiko der små endringer kunne føre til uforutsette feil, noe som kan risikere å bremse fremdriften.
 
 Hensikten var å transformere systemet fra en sårbar struktur til en fleksibel og moderne arkitektur. Jeg skulle separere ulike ansvarsområder slik at **forretningsregler** og **datalagring** var uavhengige av hverandre, noe som sikrer at fremtidige utvidelser kan gjøres raskere og rimligere.
 
-For å oppnå dette har jeg gjennomført følgende tiltak:
+* For å oppnå dette har jeg gjennomført følgende tiltak:
 
 * Flyttet håndteringen av data bort fra kjernevirksomheten i koden, slik at hver del nå har et isolert og klart ansvarsområde.
 * Innførte universelle grensesnitt ("plug-and-play") mellom modulene, som fjerner behovet for spesialtilpasninger i hovedlogikken.

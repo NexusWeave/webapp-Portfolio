@@ -5,6 +5,7 @@ ingress: |
   Ved å rydde opp i prosjektets grunnmur har vi fjernet tekniske konflikter som hindret stabil drift og ferdigstillelse. Gjennom en logisk omorganisering av systemets filer har vi oppnådd en forutsigbar byggeprosess uten feilmeldinger. Dette reduserer teknisk etterslep og sikrer at utviklingstiden brukes på verdiskaping fremfor feilretting. Resultatet er en trygg produksjonslinje som leverer høy kvalitet uten uforutsette avbrudd.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - C#
   **Verktøy** - TypeScript
 
@@ -18,7 +19,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
 sources: ''
----
+--- 
 
 Bedriftens sentrale programvareoppsett opplevde tekniske konflikter som hindret systemet i å bli ferdigstilt og tatt i bruk. Ulike deler av systemet snakket forbi hverandre, noe som førte til feilmeldinger og stans i hele produksjonslinjen for programvaren. For organisasjonen betydde dette uforutsigbarhet og risiko for forsinkelser i leveranser.
 

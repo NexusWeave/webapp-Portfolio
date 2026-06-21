@@ -5,6 +5,7 @@ ingress: |
   Tidligere var prosessen med å hente informasjon både treg og full av støy. Ved å lære verktøyet å kjenne igjen og fjerne uinteressant innhold automatisk, leveres nå ferdigvaskede data. Med evnen til å gjøre mange oppgaver samtidig og tåle små avbrudd, spares det mye tid. I tillegg er feil med manglende sider løst, slik at alt alltid er klart til bruk.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - Python
   **Verktøy** - TypeScript, KI
 
@@ -19,7 +20,7 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
 sources: ''
----
+--- 
 
 Verktøyet jeg bruker for å hente informasjon fra nettsiden var tregt og tok ofte med seg mye unødvendig "støy" fra nettsiden, som krevde mye tid på å vaske dataene i etterkant.
 

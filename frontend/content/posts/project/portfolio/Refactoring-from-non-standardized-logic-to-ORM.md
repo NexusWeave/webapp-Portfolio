@@ -5,6 +5,7 @@ ingress: |
   Jeg har gjennomført en omfattende fornyelse av databasetjenesten for å sikre en langt mer stabil og effektiv hverdag i prosjektet mitt. Ved å rydde opp i hvordan informasjon håndteres, har jeg skapt et skille som gjør løsningen min enklere å pleie og videreutvikle i fremtiden. Dette grepet reduserer risikoen for feil og sikrer at jeg kan levere nye funksjoner raskere. Resultatet er en ryddig og trygg oppbygging med stor verdi.
 status: |
   #### Program informasjon
+  *Skrevet i samarbeid med AI - Gemini*
   **Teknologi** - FastAPI
   **Verktøy** - SQLAlchemy, TypeScript
   **Prinsipper** - DAO
@@ -20,9 +21,9 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
 sources: ''
----
+--- 
 
-Systemets måte å kommunisere med databasen på var utdatert. Selv om det fungerte, var det ikke verken pålitelig eller en optimalt system. Dette gjorde det vanskelig å vedlikeholde koden, og koden var ikke optimalisert for en fremtidige funksjonaliteter, 
+Systemets måte å kommunisere med databasen på var utdatert. Selv om det fungerte, var det ikke verken pålitelig eller en optimalt system. Dette gjorde det vanskelig å vedlikeholde koden, og koden var ikke optimalisert for en fremtidige funksjonaliteter,
 
 Hensikten mitt var å bygge om dette systemet ved hjelp av biblioteket `SQLAlchemy`. Oppgaven handlet om å standardisere hvordan data lagres og hentes, slik at systemet er pålitelig, og klargjør tjenesten for framtidig vekst.
 
