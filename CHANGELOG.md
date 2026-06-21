@@ -1,3 +1,10 @@
+## [1.30.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.0...v1.30.1) (2026-06-21)
+
+
+### Bug Fixes
+
+* **frontend:** chain test commands with && to run both Vitest & SASS checks sequentially without treating secondary command as test filters. ([b424c1a](https://github.com/NexusWeave/webapp-Portfolio/commit/b424c1a57476d289a7860aa85c1966810466eec5))
+
 # [1.30.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.29.0...v1.30.0) (2026-06-18)
 
 
