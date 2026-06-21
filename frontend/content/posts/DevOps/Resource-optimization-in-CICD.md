@@ -1,40 +1,33 @@
 ---
 date: 2025-12-23T00:00:00.000Z
-title: Fra manuell rutine til selvgående CI/CD prossees
+title: Manuell rutine arbeid til selvgående CI/CD-prosess
 ingress: |
-  Ved å la prosessen fra ferdig kode til publisering gå helt av seg selv, har jeg skapt en moderne løsning som sparer både tid og penger. Jeg har valgt et rimelig alternativ som effektivt forlenger tilgjengelige byggeminutter i GitHub Actions. Resultatet er et stabilt og selvgående system som reduserer både direkte kostnader og utviklertid ved å fjerne manuelle rutineoppgaver, slik at fokuset heller kan ligge på videreutvikling av selve kjernefunksjonaliteten.
+  Ved å automatisere prosessen fra ferdig kode til publisering er det opprettet en løsning som reduserer tids- og ressursbruken. Det ble valgt en kostnadseffektiv plattform for å maksimere tilgjengelige byggeminutter i GitHub Actions. Resultatet er et stabilt, selvgående system som sparer kostnader og utviklingstid ved å redusere manuelle rutineoppgaver.
 status: |
-  #### Program informasjon
+  #### Programinformasjon
   *Skrevet i samarbeid med AI - Gemini*
   **OS** - Garuda Drag0nized Linux
   **Verktøy** - GitHub Actions, TypeScript
 
   #### Dagens Aktiviteter
-  * Gjennomgang av GitHubs kvote på 2000 bygge-minutter og hvordan jeg kan unngå å gå tom.
-  * Avsløring av "10x-fellen" – hvorfor jeg velger Linux fremfor Mac for å få 10 ganger mer arbeid for pengene.
-  * Hvordan vi sparer tid ved å la maskinene hvile helt til koden er klar for produksjon.
-  * Erstatte manuelt rutinearbeid med en selvgående prosess (CI/CD) for versjonering og nettsidebygging.
-  * Oppsummering av hvordan jeg kutter utviklingstid.
+  * Gjennomgang av GitHub Actions offisielle dokumentasjon for å analysere multiplikatorer for ulike operativsystemer
+  * Gjennomgang av kvoten på 2000 byggeminutter i GitHub Actions for å unngå overskridelser.
+  * Konfigurering av byggeprosesser til kun å trigges ved sammenslåing til hovedgrenen.
+  * Oppretting av automatisert <abbr title="Continuous Integration / Continuous Delivery (Kontinuerlig integrasjon og kontinuerlig leveranse)">CI/CD</abbr>-prosess for versjonering, testing og distribusjon.
+  * Optimalisering av ressursbruk og tidsforbruk i utviklingsløpet.
 
   #### Motivasjon & Energi - 10 / 10
-  Dagen har vært så fin, som det har vært mulig
-sources: ''
---- 
+  Dagen har vært så fin som det er mulig.
 
-Jeg skulle innføre en automatisk rutine av versjonering, Utvikler notater og bygging av nettsiden for prosjektet, slik at prosjektet automatisk kjører rutiner, ved en produksjons klar programvare.I GitHub har man en fast månedlig kvote på **2000 gratis bygge minutter** for både offentlige og private prosjekter.
+sources: '[GitHub Docs: Product usage included with each plan](https://docs.github.com/en/billing/reference/product-usage-included) [GitHub Docs: About billing for GitHub Actions](https://docs.github.com/en/billing/concepts/product-billing/github-actions)'
+---
+Gjennom utviklingen oppstod det et behov for å innføre automatiserte rutiner for versjonering, utviklingsnotater, testing og bygging av nettsiden når den er produksjonsklar. I GitHub Actions tildeles en fast månedlig kvote på 2000 gratis byggeminutter for private <abbr title="Et arkiv for hvor prosjekter lagres">repositorier</abbr>. Kvoten forbrukes med ulik hastighet, hvor Linux forbruker 1x, mens Windows forbruker 2x og macOS forbruker 10x av kvoten per minutt.
 
-#
+Hensikten var å maksimere utnyttelsen av byggeminuttene i GitHub Actions gjennom en kostnadseffektiv konfigurasjon og samtidig fjerne manuelle rutine oppgaver.
 
-* | **Operativsystem** | **Multiplikator** | **Forbruk per minutt** |
-* | ------------------ | ----------------- | ---------------------- |
-* | Linux              | 1x                | 1 minutt               |
-* | Windows            | 2x                | 2 minutt               |
-* | macOS              | 10x\*             | 10 minutt              |
+* Undersøkte den offisielle dokumentasjonen for fakturering av GitHub Actions for å kartlegge ressursforbruket på tvers av plattformer.
+* Valgte å kjøre alle byggeprosesser på Linux for å opprettholde en multiplikator på **1x** fremfor multiplikatoren til macOS på 10x.
+* Begrenset kjøringen av byggejobbene til å utløses når kode slås sammen med hovedgrenen og når alle testene har bestått, i stedet for ved hver enkelt oppdatering.
+* Opprettet en automatisert <abbr title="Continuous Integration / Continuous Delivery (Kontinuerlig integrasjon og kontinuerlig leveranse)">CI/CD</abbr>-prosess for å håndtere versjonering, tester og nettsidebygging uten at utvikleren griper inn i prosessen.
 
-Min oppgave var å løse utfordringen på hvordan jeg kunne bruke de byggeminuttene i Github maksimalt, for å ha en rimlig løsning, både for meg selv og kunden, uten om å betale mer enn nødvendig.
-
-* Under undersøkingenen av dokumentasjonen om [GitHub Action billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions), oppdaget jeg at mac-maskiner i skyen har en multiplier på 10, som vil si at 1min med bygging koster 10min av bygge kvoten.
-* Som tabellen over viser at Linux kun har en kostnad på 1x per minutt, besluttet jeg i å kjøre alle prosessene på Linux. Dette er klart det rimligste alternativet som gir mest verdi for meg.
-* Istedet for at maskinen starter opp hver gang det skjer en liten endring, satte jeg opp systemet til å kun kjøre når koden blir sammenslått til hovedprosjektet. Dette sparer store mengder med tid, da det er ofte behov for mange endringen løpet av et prosjekt.
-
-I stedet for å gjøre alt dette manuelle arbeidet hver gang en ny versjon, lanseres, har jeg laget en prosess som kjører av seg selv på en rask og rimlig måte og jeg sikrer at kvoten på 2 000 bygge minutter varer så lenge som mulig. Dette reduserer unødvendig bruk av ressurser og at jeg har full kontroll på utgiftene knyttet til sky-tjenesten.
+Den automatiserte byggeprosessen er nå stabil og kostnadseffektiv. Dette sikrer at kvoten på 2000 byggeminutter varer lengst mulig. Som en konsekvens av disse tiltakene ble prosjektets **ressursbruk** og forbedret kontrollen over utgiftene knyttet til skytjenesten. Erfaringen viser at bevisste valg av kjøremiljø og triggere er avgjørende for å forhindre unødvendig ressursbruk i skybaserte verktøy.
