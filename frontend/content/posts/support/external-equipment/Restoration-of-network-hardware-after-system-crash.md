@@ -9,7 +9,7 @@ status: |
   **Verktøy** - MSI Z270 Gaming Pro hovedkort med ASUS PCIe WiFi-kort, 
   *Skrevet i samarbeid med AI - Gemini*
 
-  #### Dagens Aktiviteter
+  #### Dagens aktiviteter
   * Registrering av fullstendig bortfall av trådløst nettverk og Bluetooth etter systemkrasj.
   * Tilbakerulling av operativsystemet til et tidligere snapshot for å utelukke driverfeil.
   * Utførelse av strømtømming på hovedkortet for å nullstille eventuell låst maskinvare.

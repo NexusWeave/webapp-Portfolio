@@ -10,7 +10,7 @@ status: |
   **Verktøy** - GitHub Actions, TypeScript
   *Skrevet i samarbeid med AI - Gemini*
 
-  #### Dagens Aktiviteter
+  #### Dagens aktiviteter
   * Gjennomgang av GitHub Actions offisielle dokumentasjon for å analysere multiplikatorer for ulike operativsystemer
   * Gjennomgang av kvoten på 2000 byggeminutter i GitHub Actions for å unngå overskridelser.
   * Konfigurering av byggeprosesser til kun å trigges ved sammenslåing til hovedgrenen.

@@ -9,7 +9,7 @@ status: |
   **Verktøy** - 11ty, Tina CMS, TypeScript
   *Skrevet i samarbeid med AI - Gemini*
 
-  #### Dagens Aktiviteter
+  #### Dagens aktiviteter
   * Analysere eksisterende kodebaser for praktisk forståelse.
   * Kartlegging av ulike redaktørpaneler fra enkle to-pass-løsninger til mer avanserte systemer.
   * Sammenligning av verktøy med fokus på brukervennlighet og økonomi.
