@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest';
+import { ref } from 'vue'
+import { describe, it, expect, vi } from 'vitest';
 import { axe, toHaveNoViolations } from 'vitest-axe';
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 
@@ -11,6 +12,13 @@ import DevPage from '../../pages/dev.vue';
 import IndexPage from '../../pages/index.vue';
 import LogsPage from '../../pages/logs/index.vue';
 import PersonalPage from '../../pages/personal.vue';
+
+vi.mock('~/composables/backendAPI-utils', () => ({
+  fetchRepositories: () => Promise.resolve({
+    repo: { value: [] },
+    refresh: () => {}
+  })
+}))
 
 describe('Accessibility (A11y) Audits', () => {
   it('Index page has no accessibility violations', async () => {
