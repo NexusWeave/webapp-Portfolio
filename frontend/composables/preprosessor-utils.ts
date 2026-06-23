@@ -1,6 +1,6 @@
 
+import { useRoute, useRouter } from '#app';
 import { ref, computed, type Ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
 
 import type { DateItem } from '~/types/date';
 import type { RouterItem } from '~/types/navigation';
@@ -71,28 +71,31 @@ export const useNavigation = () => {
     const router = useRouter();
         
 
-    watch(() => route.path, () => {
-        const name = "LMCS";
-        const image = 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg';
-        const description = (route.meta.description as string) || '';
-        
-        let label = route.meta.label ? route.meta.label as string : String(route.params.slug).replace(/-/g, ' ');
-        label = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase()
-        
-        const title = label ? `${name} - ${label}` : name;
+    if (route) {
+        watch(() => route.path, () => {
+            const name = "LMCS";
+            const image = 'https://krigjo25.no/media/images/carousel/20240903_165612.jpg';
+            const description = (route.meta?.description as string) || '';
+            
+            let label = route.meta?.label ? route.meta.label as string : String(route.params?.slug || '').replace(/-/g, ' ');
+            label = label ? label.charAt(0).toUpperCase() + label.slice(1).toLowerCase() : '';
+            
+            const title = label ? `${name} - ${label}` : name;
 
-        useSeoMeta(
-            {
-                title: title, description: description,
-                ogTitle: title, ogImage: image, ogLocale: 'nb_NO', ogType: 'website', ogDescription: description,
-                twitterImage: image, twitterTitle: title, twitterDescription: description, twitterCard: 'summary_large_image', themeColor: '#f5f5f5'
-            }); }, { immediate: true });
+            useSeoMeta(
+                {
+                    title: title, description: description,
+                    ogTitle: title, ogImage: image, ogLocale: 'nb_NO', ogType: 'website', ogDescription: description,
+                    twitterImage: image, twitterTitle: title, twitterDescription: description, twitterCard: 'summary_large_image', themeColor: '#f5f5f5'
+                }); }, { immediate: true });
+    }
 
-        return computed<RouterItem[]>(() => {
+    return computed<RouterItem[]>(() => {
+        if (!router || typeof router.getRoutes !== 'function') return [];
         const routes = router.getRoutes();
 
         const navItems: RouterItem[] = routes
-            .map(route => { return { type: ['router'], path: route.path, order: route.meta.order as number || 0, label: route.meta.label as string }; })
+            .map(route => { return { type: ['router'], path: route.path, order: route.meta?.order as number || 0, label: route.meta?.label as string }; })
             .filter(route => !route.path.includes(':') && route.label)
             .sort((a, b) => a.order - b.order);
 
