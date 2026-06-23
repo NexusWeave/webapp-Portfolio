@@ -1,3 +1,11 @@
+## [1.30.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.1...v1.30.2) (2026-06-23)
+
+
+### Bug Fixes
+
+* **config:** Converted language used in console.warn into english. ([8a34486](https://github.com/NexusWeave/webapp-Portfolio/commit/8a34486c5746d08ec6018d43720eef21501d3eba))
+* **utils:** prevent test & SSR failures by adding safety checks for missing route elements. ([53ebb64](https://github.com/NexusWeave/webapp-Portfolio/commit/53ebb640bb1596d07b253e6b8ca557d2c87e604d))
+
 ## [1.30.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.0...v1.30.1) (2026-06-21)
 
 
