@@ -55,7 +55,7 @@ export default defineNuxtConfig({
           ...routes
         ]
       } catch (e) {
-        console.warn('[prerender] Klarte ikke lese content-mappen:', e)
+        console.warn('[prerender] An error occured with the content directory:', e)
       }
     }
   },
