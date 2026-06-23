@@ -31,7 +31,7 @@ frontend/.nuxt
 frontend/.nitro
 frontend/.cache
 frontend/.output
-
+frontend/coverage
 
 #   TinaCMS outputs
 frontend/.gitkeep.md
