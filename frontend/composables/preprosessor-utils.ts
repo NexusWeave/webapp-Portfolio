@@ -56,15 +56,14 @@ export function setDateFormat(data:DateItem) : DateItem | undefined
     return dateData;
 }
 
-
-export const useCarousel = (length:number, interval: number = 5000) => {
+export const useRotateCollections = (length:number, interval: number = 5000) => {
     const index = ref(Math.floor(Math.random() * length));
 
     let timer: ReturnType<typeof setInterval> | null = null;
     const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
-    const start = () => { if (length <= 1) return; timer = setInterval(() => { index.value = (index.value + 1) % length }, interval) };
+    const start = () => { if (length <= 1) return; timer = setInterval(() => { index.value = (index.value + 1) % length }, interval ) };
     onUnmounted(() => stop());
-    return { index, start};
+    return { index, start };
     };
 
 export const useNavigation = () => {
