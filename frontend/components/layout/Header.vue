@@ -38,7 +38,7 @@
 
     //  --- Import & types logic
     import { onMounted, fetchCollection } from '#imports';
-    import { useNavigation } from '@/composables/preprosessor-utils';
+    import { useNavigation, useRotateCollections } from '@/composables/preprosessor-utils';
 
     import type { ReferenceCollectionItem } from '@nuxt/content';
     import { mapReference } from '~/composables/maps/mapReferences';
@@ -63,7 +63,7 @@
     const media = { type: 'jpg', src: '/media/images/carousel/20240903_165612.jpg', srcset: '/media/images/carousel/20240903_165612.jpg', alt: 'Portrett av Kristoffer Gjøsund'}
 
     //  --- Timer Logic
-    const { index, start } = useCarousel(reference.value.length - 1, 10000);
+    const { index, start } = useRotateCollections(reference.value.length - 1, 10000);
 
     // --- Lifecycle Logic
     onMounted(() => { start(); });
