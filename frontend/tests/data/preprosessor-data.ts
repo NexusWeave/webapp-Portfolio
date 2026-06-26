@@ -1,6 +1,7 @@
 import type { DateItem } from '~/types/date';
 
-
+export const emptyObject = [
+]
 export const sortObject = [
     { created: new Date('2024-02-01') },
     { created: new Date('2024-11-01') },
