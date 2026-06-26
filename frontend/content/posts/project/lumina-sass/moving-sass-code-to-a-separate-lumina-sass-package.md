@@ -33,5 +33,3 @@ Hensikten var å samle all eksisterende Sass‑kode i en egen npm‑pakke kalt *
 
 Byggetiden ble ca. 15 % raskere med redusert vedlikeholdstid og færre feil som en konsekvens av at all styling er samlet på ett sted. Alle prosjekter kan nå importere *lumina‑sass* som en avhengighet, og det blir mye enklere å sette seg inn i koden igjen senere via README. Dette understreker det som ble erfart; et eget stil‑bibliotek gjør endringer automatisk tilgjengelige overalt, og god dokumentasjon er nøkkelen til å jobbe effektivt over tid (*Alle tester går gjennom, og CI-pipelineen bekrefter at pakken fungerer som den skal*).
 
-Ingress: |
-  Denne loggen beskriver flyttingen av Sass-koden til en egen npm-pakke, som gir gjenbrukbar stil, reduserer duplisering og forbedrer vedlikehold og byggetid.
