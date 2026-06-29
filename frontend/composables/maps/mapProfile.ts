@@ -1,20 +1,26 @@
 
 import { setDateFormat } from '#imports';
 
-export const mapProfile = (data: any) => {
+import type { Profile } from '~/types/maps';
+import type { DateItem } from '~/types/date';
+import type { ProfileInfoCollectionItem } from '@nuxt/content';
+
+
+export const mapProfile = (data: ProfileInfoCollectionItem[]): Profile[] => {
     if (!data) return [];
+
     return data.map((item: any) => {
 
         const date = setDateFormat({date: item.date});
         return {
             date: date,
+            id: item.id,
             body: item.body,
             coop: item.coop,
-            title: item.title ?? '',
-            summary: item.summary,
             stem: item.stem,
             path: item.path,
-            id: item.id,
+            summary: item.summary,
+            title: item.title ?? "",
         }
     });
 };
