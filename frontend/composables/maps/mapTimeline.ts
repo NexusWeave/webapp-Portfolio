@@ -42,7 +42,7 @@ export function mapTimeline(data: AcademicCollectionItem[]): TimelineItem[] {
         
         // Sort subjects newest first
         const sortedSubjects = doc.subjects ? sortbyDate(doc.subjects) : [];
-        
+
         const subjects: Subject[] = sortedSubjects.map(sub => {
             const subTech = fetchTechType(sub.techStack);
             return {

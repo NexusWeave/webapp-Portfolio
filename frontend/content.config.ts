@@ -36,7 +36,7 @@ const blogCollection = z.object({
     sources: z.string().optional()
 })
 
-const profileInformationCollection = z.object({ date:z.string(), title: z.string(), coop: z.string(), summary: z.string(), body: z.strictObject({}) })
+const profileInformationCollection = z.object({ id: z.string(), date: z.string(), title: z.string(), coop: z.string(), summary: z.string(), path: z.string(), stem: z.string(), body: z.strictObject({}) })
 
 // defineContentConfig & collections definition
 export default defineContentConfig({

@@ -4,6 +4,8 @@ import type { RepositoryData, GithubData, LanguageData } from "@/types/props";
 
 export function mapRepoData(data: RepositoryData): GithubData[]
 {
+    if (!data) return [];
+
     const repositories = [...data].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
     return repositories.map((item: any) => {
@@ -38,16 +40,16 @@ export function mapRepoData(data: RepositoryData): GithubData[]
             .join(' ');
 
         return {
-            id: String(item.id),
-            label: cleanedLabel || item.label,
-            date : date as { date: string },
             media: media,
-            anchor: item.anchor || [],
-            flags: item.flags || {},
             owner: item.owner,
-            owner_url: item.owner_url,
+            id: String(item.id),
             languages: languages,
+            flags: item.flags || {},
+            anchor: item.anchor || [],
+            owner_url: item.owner_url,
             description: item.description,
+            date : date.current,
+            label: cleanedLabel || item.label,
             collaborators: item.collaborators || [],
             contribution_ratio: item.contribution_ratio,
         }
