@@ -1,9 +1,9 @@
 import { ref } from 'vue';
 import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { dummyApp, mockRoutes, routerItem } from '../utils/utils';
+import { dummyApp, mockRoutes, routerItem } from '../../utils/utils';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { sortbyDate, setDateFormat, useRotateCollections, useNavigation, fetchCollection } from '~/composables/preprosessor-utils';
-import { sortObject, expectedSort, setDateFormatData, setDateFormatData_1, setDateFormatExpected,setDateFormatExpected_1, emptyObject } from '../data/preprosessor-data';
+import { sortObject, expectedSort, setDateFormatData, setDateFormatData_1, setDateFormatExpected,setDateFormatExpected_1, emptyObject } from '../../data/preprosessor-data';
 
 
 vi.mock(import("#app"), async (importOriginal) =>

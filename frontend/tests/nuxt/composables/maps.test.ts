@@ -4,7 +4,7 @@ import { mapRepoData } from '~/composables/maps/mapRepoData';
 import { mapTimeline } from '~/composables/maps/mapTimeline';
 import { mapReference } from '~/composables/maps/mapReferences';
 import { mapBlogData, generatePostTags } from '~/composables/maps/mapBlogPost';
-import { mockProfile, mockReferences, mockTimeline, mockBlogData,  mockRepoData, mockPostTags } from '../data/mapData';
+import { mockProfile, mockReferences, mockTimeline, mockBlogData,  mockRepoData, mockPostTags } from '../../data/mapData';
 
 import type { PostTag } from '~/types/documents';
 describe('Test maps', () => {
