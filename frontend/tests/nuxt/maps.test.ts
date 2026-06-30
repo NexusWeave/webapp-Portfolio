@@ -1,13 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { mapProfile } from '~/composables/maps/mapProfile';
 import { mapRepoData } from '~/composables/maps/mapRepoData';
-import { mapBlogData } from '~/composables/maps/mapBlogPost';
 import { mapTimeline } from '~/composables/maps/mapTimeline';
 import { mapReference } from '~/composables/maps/mapReferences';
-import { setDateFormat } from '~/composables/preprosessor-utils';
-import {  mockProfile, mockReferences, mockTimeline, mockBlogData,  mockRepoData } from '../data/mapData';
+import { mapBlogData, generatePostTags } from '~/composables/maps/mapBlogPost';
+import { mockProfile, mockReferences, mockTimeline, mockBlogData,  mockRepoData, mockPostTags } from '../data/mapData';
 
-
+import type { PostTag } from '~/types/documents';
 describe('Test maps', () => {
 
     describe('Mapping Profile', () => {
@@ -134,6 +133,39 @@ describe('Test maps', () => {
         it('Returns an empty array when no data is provided', () => {
             expect(mapBlogData(null as any)).toEqual([]);
             expect(mapBlogData(undefined as any)).toEqual([]);
+        });
+
+        it('Returns fallback tag', () => {
+            const dir = "";
+            const defaulth = "misc";
+            
+            const expectedOutput: PostTag[] = [{ name: defaulth, cls: [defaulth], type: ['tag', 'dir'], href: `${dir}/tags/${defaulth}`, path: defaulth, label: 'Misc', labels: [defaulth, 'blog-post'] }]
+            expect(generatePostTags(mockPostTags.fallback, dir)).toEqual(expectedOutput);
+        });
+
+        it('Returns correctly formated Posts', () => {
+            const testDir = 'posts/project/intranet';
+            const expectedOutput: PostTag[] = [
+                {
+                    name: "project",
+                    cls: ["project"],
+                    type: ['tag', 'dir'],
+                    href: `${testDir}/tags/project`,
+                    path: "project",
+                    label: "project",
+                    labels: ["project", "blog-post"]
+                },
+                {
+                    name: "webapps",
+                    cls: ["webapps"],
+                    type: ['tag', 'dir'],
+                    href: `${testDir}/tags/webapps`,
+                    path: "webapps",
+                    label: "Webapps",
+                    labels: ["webapps", "blog-post"]
+                }
+            ];
+            expect(generatePostTags(mockPostTags.valid, testDir)).toEqual(expectedOutput);
         });
 
         it('Maps blog post data correctly', () => {
@@ -284,5 +316,4 @@ describe('Test maps', () => {
             expect(mapTimeline(mockTimeline)).toEqual(expectedOutput);
         });
     });
-
 });

@@ -1,6 +1,7 @@
 import type { RepositoryData } from "~/types/props";
 import type { AcademicCollectionItem, ProfileInfoCollectionItem, ReferenceCollectionItem, DevPostsCollectionItem } from "@nuxt/content";
 
+
 export const mockProfile = [
     {
         body: {},
@@ -14,7 +15,6 @@ export const mockProfile = [
     },
     {
         body: {},
-        title: "",
         id: "sample-id",
         date: "2023-01-01",
         coop: "Sample coop",
@@ -92,3 +92,8 @@ export const mockRepoData: RepositoryData = [
         ]
     }
 ];
+
+export const mockPostTags = {
+    fallback: [],
+    valid: ["project", "webapps"]
+};
