@@ -2,29 +2,24 @@ import type { DateItem } from '~/types/date';
 import type { PostItem, PostTag } from '~/types/documents';
 import type { DevPostsCollectionItem } from '@nuxt/content';
 
-const generatePostTags = (id: string[], dir: string): PostTag[] => {
+export const generatePostTags = (id: string[], dir: string): PostTag[] => {
     const misc = 'misc';
-    const miscTag = { name: misc, cls: ['misc'], type: ['tag', 'dir'], href: `${dir}/tags/misc`, path: 'misc', label: 'Misc', labels: ['misc', 'blog-post'] };
+    const miscTag = { name: misc, cls: [misc], type: ['tag', 'dir'], href: `${dir}/tags/${misc}`, path: misc, label: 'Misc', labels: [misc, 'blog-post'] };
     const listOfAvailableTags = ['project', 'support', 'os', 'devops', 'rd', 'mentalt-vedlikehold' ];
     const index:number = id.findIndex(p => listOfAvailableTags.includes(p.toLowerCase()));
 
     if (index === -1 || !id[index]) return [miscTag];
 
     const result: PostTag[] = [];
-    
+
     // Generate a tag for every folder level from the matched root folder
     for (let i = index; i < id.length; i++) {
         const currentLabel = id[i];
         if (!currentLabel) continue;
         const name = currentLabel.toLowerCase();
-        result.push({
-            name: name, cls: [name], type: ['tag', 'dir'],
-            href: `${dir}/tags/${name}`, path: name,
-            label: !listOfAvailableTags.includes(name) ? currentLabel.charAt(0).toUpperCase() + currentLabel.slice(1).replace(/-/g, ' ') : currentLabel,
-            labels: [name, 'blog-post']
-        });
+        result.push({ name: name, cls: [name], path: name, type: ['tag', 'dir'], href: `${dir}/tags/${name}`, labels: [name, 'blog-post'], label: !listOfAvailableTags.includes(name) ? currentLabel.charAt(0).toUpperCase() + currentLabel.slice(1).replace(/-/g, ' ') : currentLabel });
     }
-    
+
     return result.length > 0 ? result : [miscTag];
 };
 
