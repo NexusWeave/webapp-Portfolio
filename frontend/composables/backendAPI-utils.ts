@@ -20,4 +20,3 @@ export async function fetchRepositories<T>(cacheKey: string): Promise<{repo: Com
     const mappedData = computed<GithubData[]>(() => data.value ? mapRepoData(data.value as RepositoryData) : []);
     return {repo : mappedData ,  refresh: refresh };
 }
-

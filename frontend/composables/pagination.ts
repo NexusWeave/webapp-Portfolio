@@ -1,7 +1,5 @@
 import type { PostItem } from '~/types/documents';
 
-import type { DevPostsCollectionItem } from '@nuxt/content';
-
 export const blogPagination =  (data:PostItem[], currentPage:number, n:number, label:string = 'blog-post') =>
     {
         if (!data) return [];
