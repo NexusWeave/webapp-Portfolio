@@ -21,7 +21,7 @@ anyio==4.12.1
     #   watchfiles
 asyncpg==0.31.0
     # via -r requirements.in
-beautifulsoup4==4.14.3
+beautifulsoup4==4.15.0
     # via -r requirements.in
 build==1.4.2
     # via pip-tools
