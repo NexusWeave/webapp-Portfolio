@@ -54,7 +54,10 @@
     });
 
     const dynamicMenu = useNavigation();
-    const anchorMenu:AnchorItem[] = [{ label: 'CV - Portefølje', href: '/media/documents/CV-Portfolio.pdf', type: ['pdf'], cls: ['button', 'primary-btn'] }];
+    const ext = 'pdf';
+    const CV = "/CV-Kristoffer-Gjøsund";
+    const path = `/media/docs${CV}.${ext}`;
+    const anchorMenu:AnchorItem[] = [{ label: 'CV & Portefølje', href: `${path}`, type: ['pdf'], cls: ['button', 'primary-btn'] }];
     const SocialMedia: AnchorItem[] = [ { type: ['linkedin'], href: 'https://www.linkedin.com/in/krigjo25' }, { type: ['github'],  href: 'https://www.github.com/krigjo25' }, { type: ['mail','external'], href: 'mailto:krigjo25@outlook.com' }, { type: ['ytube','external'], href: 'https://www.youtube.com/@krigjo25' }, { type: ['facebook'], href: 'https://www.facebook.com/krigjo25' }, { type: ['instagram'], href: 'https://www.instagram.com/krigjo25' } ];
 
     const referencePath = 'reference';
