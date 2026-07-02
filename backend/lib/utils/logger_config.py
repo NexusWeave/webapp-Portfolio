@@ -1,6 +1,5 @@
 #   Built-in Libraries
 from typing import Optional
-from __future__ import annotations
 
 #   Third Party Libraries
 from std_log import Logger
