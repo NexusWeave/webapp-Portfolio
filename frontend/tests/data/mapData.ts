@@ -62,13 +62,30 @@ export const mockTimeline = [
 
 export const mockBlogData = [
     {
-        id: "/logs/dev/my-first-post.md",
-        date: "2026-01-01T12:00:00.000Z",
-        title: "My First Blog Post",
         body: {},
-        ingress: "This is the entry summary of my first blog post.",
         status: "published",
-        sources: "Self study"
+        sources: "Self study",
+        title: "My First Blog Post",
+        date: "2026-01-01T12:00:00.000Z",
+        id: "/logs/dev/my-first-post.md",
+        ingress: "This is the entry summary of my first blog post."
+    },
+    {
+        body: {},
+        status: "published",
+        title: "My Second Blog Post",
+        date: "2026-01-01T12:00:00.000Z",
+        id: "/logs/dev/my-second-post.md",
+        ingress: "This is the entry summary of my second blog post."
+    },
+        {
+        body: {},
+        status: "published",
+        sources: "Self study",
+        title: "My Third Blog Post",
+        date: "2026-01-01T12:00:00.000Z",
+        id: "/logs/dev/my-third-post.md",
+        ingress: "This is the entry summary of my third blog post."
     }
 ] as unknown as DevPostsCollectionItem[];
 

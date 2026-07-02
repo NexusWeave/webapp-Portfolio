@@ -3,10 +3,13 @@ import { mapProfile } from '~/composables/maps/mapProfile';
 import { mapRepoData } from '~/composables/maps/mapRepoData';
 import { mapTimeline } from '~/composables/maps/mapTimeline';
 import { mapReference } from '~/composables/maps/mapReferences';
+import { mockBlogData as mappedData } from '~/tests/data/miscData';
 import { mapBlogData, generatePostTags } from '~/composables/maps/mapBlogPost';
 import { mockProfile, mockReferences, mockTimeline, mockBlogData,  mockRepoData, mockPostTags } from '../../data/mapData';
 
 import type { PostTag } from '~/types/documents';
+
+
 describe('Test maps', () => {
 
     describe('Mapping Profile', () => {
@@ -169,46 +172,7 @@ describe('Test maps', () => {
         });
 
         it('Maps blog post data correctly', () => {
-            const expectedOutput = [
-                {
-                    id: 0,
-                    path: "my-first-post",
-                    tags: [
-                        {
-                            name: 'misc',
-                            cls: ['misc'],
-                            type: ['tag', 'dir'],
-                            href: '/logs/tags/misc',
-                            path: 'misc',
-                            label: 'Misc',
-                            labels: ['misc', 'blog-post']
-                        }
-                    ],
-                    status: "published",
-                    body: {},
-                    ingress: "This is the entry summary of my first blog post.",
-                    sources: "Self study",
-                    isArchived: false,
-                    title: "My First Blog Post",
-                    isPublished: true,
-                    date: {
-                        delimiter: 'dot',
-                        text: 'Publisert',
-                        time: '13:00',
-                        date: 'tor. 1. jan. 2026',
-                        updated: null
-                    },
-                    anchor: [
-                        {
-                            type: ['router'],
-                            path: '/logs/records/my-first-post',
-                            label: 'Les mer',
-                            cls: ['read-more-btn']
-                        }
-                    ]
-                }
-            ];
-
+            const expectedOutput = mappedData;
             expect(mapBlogData(mockBlogData)).toEqual(expectedOutput);
         });
     });
