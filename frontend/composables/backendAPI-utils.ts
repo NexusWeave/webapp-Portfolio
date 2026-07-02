@@ -1,4 +1,4 @@
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { mapRepoData } from "./maps/mapRepoData";
 
 import type { GithubData, RepositoryData } from "~/types/props";
@@ -7,7 +7,17 @@ import type { GithubData, RepositoryData } from "~/types/props";
 export async function fetchRepositories<T>(cacheKey: string): Promise<{repo: ComputedRef<GithubData[]>, refresh: () => void}>
 {
     const {public: env} = useRuntimeConfig();
-    const {data, refresh} = await backendEndpoint<RepositoryData>(env.GCLOUD, 1, '/repositories', cacheKey);
+    let data = ref<RepositoryData | null>(null);
+    let refresh = () => {};
+    
+    try {
+        const res = await backendEndpoint<RepositoryData>(env.GCLOUD, 1, '/repositories', cacheKey);
+        data = res.data;
+        refresh = res.refresh;
+    } catch (error) {
+        console.warn(`[fetchRepositories] Failed to fetch repositories from backend:`, error);
+    }
+    
     const mappedData = computed<GithubData[]>(() => data.value ? mapRepoData(data.value as RepositoryData) : []);
     return {repo : mappedData ,  refresh: refresh };
 }
