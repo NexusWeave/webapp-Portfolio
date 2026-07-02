@@ -1,3 +1,10 @@
+## [1.30.5](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.4...v1.30.5) (2026-07-02)
+
+
+### Bug Fixes
+
+* **frontend:** handle backend API fetch errors gracefully during prerender ([dcebc36](https://github.com/NexusWeave/webapp-Portfolio/commit/dcebc36181760b88bcb5184115f4d8b656e151ad))
+
 ## [1.30.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.3...v1.30.4) (2026-07-02)
 
 
