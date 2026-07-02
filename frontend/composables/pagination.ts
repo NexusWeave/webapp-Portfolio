@@ -7,5 +7,5 @@ export const blogPagination =  (data:PostItem[], currentPage:number, n:number, l
         const start = (currentPage - 1) * n;
         const end = start + n;
         const filteredData = data.filter(post => post.isPublished && post.tags.some(t => t.labels?.includes(label)));
-        return !!filteredData ? filteredData.slice(start, end) : null;
+        return !!filteredData ? filteredData.slice(start, end) : [];
     }
