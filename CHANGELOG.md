@@ -1,3 +1,10 @@
+## [1.30.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.3...v1.30.4) (2026-07-02)
+
+
+### Bug Fixes
+
+* **backend:** remove invalid syntax placement in logger config ([d4abc82](https://github.com/NexusWeave/webapp-Portfolio/commit/d4abc820b63d173a845a661d9789e46adda6dc5e))
+
 ## [1.30.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.2...v1.30.3) (2026-06-24)
 
 
