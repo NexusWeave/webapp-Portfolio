@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   routeRules: { '/logs/records/**': { prerender: true } },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
   site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
-  runtimeConfig:{ public:{ GCLOUD: process.env.GCLOUD || "http://0.0.0.0:8000/" } },
+  runtimeConfig:{ public:{ GCLOUD: process.env.GOOGLE_CLOUD || "http://0.0.0.0:8000/" } },
   sitemap: { autoLastmod: true, includeAppSources:true, exclude: [ '/admin/**' ], sources: ['/api/log-urls'], defaults: { priority: 0.9, changefreq: 'daily'} },
   nitro: { preset: 'static', prerender: { crawlLinks: true, routes: ['/sitemap.xml', '/'], ignore: [ '/logs/records/.gitkeep', '**/.gitkeep', '**/.DS_Store'] } },
 
