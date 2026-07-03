@@ -1,3 +1,10 @@
+## [1.30.6](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.5...v1.30.6) (2026-07-03)
+
+
+### Bug Fixes
+
+* add missing slash to backendEndpoint path ([304959b](https://github.com/NexusWeave/webapp-Portfolio/commit/304959b7f3ef5a9b0b93a62a403a0624957f3a14))
+
 ## [1.30.5](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.4...v1.30.5) (2026-07-02)
 
 
