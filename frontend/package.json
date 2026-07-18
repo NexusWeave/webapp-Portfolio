@@ -21,7 +21,7 @@
     "@nuxt/content": "^3.14.0",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/image": "^2.0.0",
-    "@nuxt/ui": "^4.7.1",
+    "@nuxt/ui": "^4.9.0",
     "@nuxtjs/google-gtag": "^1.0.4",
     "@vitejs/plugin-vue": "^6.0.7",
     "better-sqlite3": "^12.10.0",
