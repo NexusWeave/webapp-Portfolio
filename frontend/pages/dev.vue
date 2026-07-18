@@ -66,8 +66,8 @@
 
     //  --- Progress Bar Logic
     const { updateFromRepositories } = useLanguageStore();
-    const { formattedLanguages } = storeToRefs(useLanguageStore());
     const { repo } = await fetchRepositories<RepositoryData>('github');
+    const { configuredLanguages: formattedLanguages } = storeToRefs(useLanguageStore());
 
     const maxProgress = computed(() => {
         if (formattedLanguages.value.length === 0) return 10240;
