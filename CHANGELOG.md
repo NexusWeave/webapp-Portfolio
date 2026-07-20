@@ -1,3 +1,10 @@
+## [1.30.7](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.6...v1.30.7) (2026-07-20)
+
+
+### Bug Fixes
+
+* **header:** correct casing mismatch in socialMedia navigation binding to restore links. ([b814678](https://github.com/NexusWeave/webapp-Portfolio/commit/b8146784d9f1b8e5738e0430a3cc5d9319bd40a3))
+
 ## [1.30.6](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.5...v1.30.6) (2026-07-03)
 
 
