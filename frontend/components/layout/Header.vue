@@ -27,7 +27,7 @@
                 </section>
                 <section class="flex-col-align-center some">
                     <h3>Sosial media Linker / Kontakt</h3>
-                    <NavigationNavMenu :data="SocialMedia" :cls="['some-nav']"/>
+                    <NavigationNavMenu :data="socialMedia" :cls="['some-nav']"/>
                 </section>
             </section>
         </article>
@@ -58,7 +58,13 @@
     const CV = "/CV-Kristoffer-Gjøsund";
     const path = `/media/docs${CV}.${ext}`;
     const anchorMenu:AnchorItem[] = [{ label: 'CV & Portefølje', href: `${path}`, type: ['pdf'], cls: ['button', 'primary-btn'] }];
-    const SocialMedia: AnchorItem[] = [ { type: ['linkedin'], href: 'https://www.linkedin.com/in/krigjo25' }, { type: ['github'],  href: 'https://www.github.com/krigjo25' }, { type: ['mail','external'], href: 'mailto:krigjo25@outlook.com' }, { type: ['ytube','external'], href: 'https://www.youtube.com/@krigjo25' }, { type: ['facebook'], href: 'https://www.facebook.com/krigjo25' }, { type: ['instagram'], href: 'https://www.instagram.com/krigjo25' } ];
+    const socialMedia: AnchorItem[] = [ { 
+        type: ['linkedin'], 
+        href: 'https://www.linkedin.com/in/krigjo25' },
+        { type: ['github'],  href: 'https://www.github.com/krigjo25' },
+        { type: ['mail','external'], href: 'mailto:krigjo25@outlook.com' },
+        { type: ['ytube','external'], href: 'https://www.youtube.com/@krigjo25' }, { type: ['facebook'], href: 'https://www.facebook.com/krigjo25' },
+        { type: ['instagram'], href: 'https://www.instagram.com/krigjo25' } ];
 
     const referencePath = 'reference';
     const referenceCache = 'referenceCache';
