@@ -17,6 +17,8 @@
         </Suspense>
     </article>
 
+    <RepositoryPortfolio />
+
     <section class="flex-wrap-row-items-center-justify-evenly">
         <Suspense>
             <template #default>
@@ -32,9 +34,7 @@
                 </section>
             </template>
         </Suspense>
-
     </section>
-    <RepositoryPortfolio /> 
 </template>
 <script setup lang="ts">
 
