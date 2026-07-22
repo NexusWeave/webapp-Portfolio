@@ -1,10 +1,10 @@
 ---
-title: Løsnings Orientert Utvikler
+title: Orientert Utvikler
 date: 2026-04-02T23:00:00.000Z
 summary: |
   #### Profil informasjon
 
-  Jeg overfører min HMS- og planleggingstenkning fra byggfag, og min verdi for kommunikasjon og vern fra helsefaget, direkte inn i IT-rollen. Ved å bruke diagramtegninger og KI-verktøy som Gemini og Claude, forenkler jeg tekniske utfordringer og sikrer god dokumentasjon. Jeg bruker smidige metoder og DevOps (CI/CD) for å opprettholde en pålitelig og trygg drift av applikasjonene. Med en allsidig bakgrunn er jeg tilpasningsdyktig og samarbeider godt med teamet.
+  Jeg prøver å overføre erfaringen min med **HMS**-**struktur** og **planlegging** fra byggfag, og min forståelse for **presis kommunikasjon** og **personsikkerhet** fra helsefaget, direkte inn i IT-rollen. Gjennom filosofi, CS50 og GET Academy har jeg trent på en logisk tilnærming for å diagnostisere IT-verktøy og omsette behov til verdiøkende produkter. For å støtte arbeidet mitt bruker jeg gjerne **KI**-**verktøy** som **Gemini** og **Claude** til **produksjon**, **strukturert dokumentasjon**, **læring og feilsøking**. Gjennom **smidig testing** og **DevOps**-**prosesser** forsøker jeg å bidra til en **pålitelig** og **sikker** drift av applikasjonene, og jeg trives best når jeg kan **samarbeide** og **utvikle meg** sammen med kolleger.
 coop: |
   #### **Smidig arbeidsmetodikk**
 
