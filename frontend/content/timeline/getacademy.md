@@ -6,7 +6,7 @@ org_link: 'https://getacademy.no/'
 subjects:
   - title: Start IT
     body: |
-      Gjennomgang av fundamentet i IT-utvikling over 20 uker. Fokus på Model-View-Controller (MVC) mønsteret ved bruk av **HTML**, **CSS** og **JavaScript**, samt introduksjon til **C#** og **.NET**. Det legges stor vekt på problemløsning, enhetstesting og logisk tenkning fra første dag.
+      Gjennom disse 20 ukene videreutviklet jeg ferdighetene mine innen **HTML** og **CSS**, og bygget opp praktisk kompetanse i å strukturere applikasjoner etter **<abbr title="Model-View-Controller">MVC</abbr>**-mønsteret med **JavaScript**. I tillegg videreutviklet jeg forståelse for objektorientert programmering i **C#** og **.NET**. Ved å skrive enhetstester og løse programmeringsoppgaver daglig, utviklet jeg evnen til å skrive pålitelig kode og løse tekniske utfordringer systematisk.
     created: 2024-08-18T12:59:38.764Z
     end: 2024-12-31T13:59:53.194Z
     techStack:
@@ -18,16 +18,22 @@ subjects:
       - html
   - title: Get Prepear
     body: |
-      En intensiv fase med fokus på fordypning og forberedelse til arbeidslivet. Her videreutvikles ferdigheter i moderne rammeverk som **Vue.js** og mer avansert **C#**, med fokus på å bygge pålitelige og arkitektonisk sunne applikasjoner.
+      I denne intensive fasen bygget jeg videre på programmeringsferdighetene mine for å forberede meg til arbeidslivet. Jeg utviklet praktisk kompetanse i moderne rammeverk som **Vue.js Composition API** og mer avanserte konsepter i **C#**, med fokus på å bygge strukturerte og pålitelige applikasjoner.
     created: 2025-01-20T07:43:08.909Z
     end: 2025-04-28T06:43:28.422Z
     techStack:
       - vue
-      - css
       - cs
+      - sass
   - title: Get IT
     body: |
-      Et **12-måneders praksisløp** i bedrift med fokus på profesjonell utvikling i et ekte arbeidsmiljø. Her lærer man å levere produksjonsklar kode, jobbe i team og anvende smidige metodikker i praksis.
+      Gjennom dette 12-måneders praksisløpet arbeidet jeg som full-stack utvikler på flere interne prosjekter. Erfaringene ga meg teknisk bredde og forståelse for hele utviklingsløpet, fra arkitektur og testoppsett til ferdige brukergrensesnitt.
+
+      De viktigste prosjektene jeg deltok i var:
+      * **GetNews:** En backend-tjeneste for abonnementshåndtering. Her jobbet jeg med testgrunnlag og testdekning, og oppnådde en **<abbr title="testdekning">coverage</abbr>** på 90 % for applikasjonen.
+      * **FlappyBird-prosjektet:** Spillutvikling brukt til undervisningsformål. Prosjektet styrket min forståelse for hvordan spillogikk og klassesystemer kan utformes enkelt etter **<abbr title="Single Responsibility Principle">SRP</abbr>** og **<abbr title="Don't Repeat Yourself">DRY</abbr>**, for å demonstrere at **<abbr title="ren kode">Clean Code</abbr>** ikke trenger å være komplisert.
+      * **Intranett-prosjektet:** En intern kommunikasjonsplattform der jeg **tilrettela** **teknisk struktur**, **prosjektoppsett** og **testmiljøer**, samt implementerte en **to-pass-algoritme** for **<abbr title="rollebasert tilgangskontroll">RBAC</abbr>** etter prinsippet om **<abbr title="minste privilegium">least privilege</abbr>**.
+      * **Kodeklubb-prosjektet:** En læringsplattform der studenter løser koderelaterte oppgaver. Her arbeidet jeg med **frontend-arkitektur** etter prinsipper for **<abbr title="ren kode">Clean Code</abbr>** i et **<abbr title="smidig">agile</abbr>** utviklingsteam, inkludert oppsett av **routing**, **komponentstruktur** og **state management**.
     created: 2025-05-01T06:44:55.070Z
     end: 2026-05-01T06:44:59.563Z
     ref_link: 'https://drive.google.com/file/d/1Q3bN5Hw7g4cePjKOEBn8912de2pW5scT/view?usp=drive_link'
@@ -52,6 +58,8 @@ techStack:
   - GIT
 ---
 
-Fokuset i denne skolegangen er **intensiv**, **prosjektbasert læring** innen moderne full-stack utvikling. Skolen bidro til å videreutvikle og spesialisere kompetansen innen objektorientert programmering (**OOP**) og **databasehåndtering**, med praktisk erfaring i å bygge pålitelige applikasjoner ved bruk av skolens tech stack.
+GetAcademy er en yrkesrettet fagskole som kombinerer teknisk opplæring med et ettårig praksisløp i en IT-bedrift. Utdanningen er bygget opp slik:
 
-En sentral del av utdanningen er faget **Nøkkelkompetanser**, som fokuserer på **Growth Mindset**, **psykologisk trygghet** og **effektivt samarbeid**. Dette gir et solid fundament for både teknisk mestring og profesjonell vekst i IT-bransjen.
+* Første del består av 20 uker med intensiv, prosjektbasert programmering hvor studentene utvikler  applikasjoner med **C#**, **JavaScript**, **SQL** og **Git**.
+* Det er daglig fokus på samarbeid, tilbakemeldinger og Growth Mindset gjennom faget Nøkkelkompetanser.
+* Løpet avsluttes med 12 måneders praksis som utvikler i en bedrift, med daglig deltakelse i tverrfaglige team og levering av produksjonsklar kode.
