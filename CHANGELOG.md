@@ -1,3 +1,10 @@
+## [1.30.8](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.7...v1.30.8) (2026-07-24)
+
+
+### Bug Fixes
+
+* Resolve API issue. ([f0cbb74](https://github.com/NexusWeave/webapp-Portfolio/commit/f0cbb744338b051eba896bde5ba31fb1dfd25bf2))
+
 ## [1.30.7](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.6...v1.30.7) (2026-07-20)
 
 
