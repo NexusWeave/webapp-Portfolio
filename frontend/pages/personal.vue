@@ -19,7 +19,7 @@
 <script setup lang="ts">
 
     //  --- Meta information
-    definePageMeta( { order: 3, label: 'Autobiografi', description: "En personlig side som går i dybden på Kristoffers filosofi, verdier og personlige logger. Inneholder også en biografi med et mer personlig perspektiv." });
+    definePageMeta( { order: 3, label: 'Autobiografi', description: "En personlig side som går i dybden på Kristoffers verdier. Inneholder også en biografi med et mer personlig perspektiv." });
 
     //  --- Importing dependencies & types
     import { ref, computed } from 'vue';
