@@ -19,18 +19,15 @@
 <script setup lang="ts">
 
     //  --- Meta information
-    definePageMeta( { order: 3, label: 'Om Kristoffer Gjøsund', description: "En personlig side som går i dybden på Kristoffers filosofi, verdier og personlige logger. Inneholder også en biografi med et mer personlig perspektiv." });
+    definePageMeta( { order: 3, label: 'Autobiografi', description: "En personlig side som går i dybden på Kristoffers filosofi, verdier og personlige logger. Inneholder også en biografi med et mer personlig perspektiv." });
 
     //  --- Importing dependencies & types
     import { ref, computed } from 'vue';
     import { fetchCollection } from '#imports';
-    import { blogPagination } from '@/composables/pagination';
     import { mapProfile } from '~/composables/maps/mapProfile';
-    import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
-    import type { ButtonItem } from '~/types/navigation';
     // @ts-ignore - TypeScript error: Cannot find module '@nuxt/content' or its corresponding type declarations.
-    import type { DevPostsCollectionItem, ProfileInformationCollectionItem } from '@nuxt/content';
+    import type { ProfileInformationCollectionItem } from '@nuxt/content';
 
 
     //  --- Content fetching logic
