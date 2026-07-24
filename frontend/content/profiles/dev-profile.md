@@ -1,5 +1,5 @@
 ---
-title: Orientert Utvikler
+title: Løsnings Orientert Utvikler
 date: 2026-04-02T23:00:00.000Z
 summary: |
   #### Profil informasjon
@@ -17,7 +17,7 @@ coop: |
 
 #### **Struktur & Planlegging** (Fra Bygg & Anlegg)
 
-Fra skolegangen min i Bygg & Anlegg har jeg tatt med meg både **HMS** og **arkitektur**-tenkningen inn i IT-rollen hvor jeg fokuserer på **struktur**, **diagrammer** og **sikkerhet**. 
+Fra skolegangen min i Bygg & Anlegg har jeg tatt med meg både **HMS** og **arkitektur**-tenkningen inn i IT-rollen hvor jeg fokuserer på **struktur**, **diagrammer** og **sikkerhet**.
 
 * **S**trukturen  hjelper meg med å bruke universelle prinsipper for ren og kvalitetssikret kode og brukerveiledninger. Hensikten er å stabilisere og forenkle vedlikeholdet for alle involverte parter.
 * **S**ikkerheten fokuserer jeg på tidlig i arbeidet, med løsninger som tåler fremtiden. Hensikten med  HMS-tenkningen i bunn er å forebygge feil og sikre at løsningene er trygge og beskyttet.
