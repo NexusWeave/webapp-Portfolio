@@ -24,7 +24,7 @@ export async function fetchRepositories<T>(cacheKey: string): Promise<{repo: Com
 
 export async function backendEndpoint<T>(baseUrl: string, version:number, endpoint: string, cacheKey:string) {
 
-    const path = `${baseUrl}api/v${version}${endpoint}`;
+    const path = `${baseUrl}/api/v${version}${endpoint}`;
     const {data, error, refresh} = await useFetch<T>(path, { key: cacheKey, headers: { 'Content-Type': 'application/json' } });
     if (error.value) throw Error(`An error occured while trying to fetch the api ${error.value} ${path}`);
 
