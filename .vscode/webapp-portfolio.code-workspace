@@ -76,7 +76,9 @@
             "Tag",
             "Form",
             "Portfolio",
-            "personal"
+            "personal",
+            "dev-profile",
+            "index"
         ],
     },
 }
