@@ -1,3 +1,10 @@
+## [1.30.9](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.8...v1.30.9) (2026-07-24)
+
+
+### Bug Fixes
+
+* **UI:** Rename labels for pages to adhere to consistency. ([0ad61a2](https://github.com/NexusWeave/webapp-Portfolio/commit/0ad61a2c40612ac7000596344c3c7271e715c812))
+
 ## [1.30.8](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.7...v1.30.8) (2026-07-24)
 
 
