@@ -59,5 +59,5 @@ export default defineNuxtConfig({
       }
     }
   },
-  app: {head : {title: 'Portefølje - Kristoffer Gjøsund(krigjo25)', viewport: 'width=device-width, initial-scale=1', htmlAttrs: { lang: 'no' }, meta: [{name:'description', content:'Portefølje side for Kristoffer Gjøsund'}, {charset:'utf-8'}, {name: 'google-site-verification', content: '8gvx99aCgKbc489qfagbKyJyY9Wv4KUKC9AAk8fLxUs'}], link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]}}
+  app: {head : {title: 'Portefølje - Kristoffer Gjøsund(krigjo25)', viewport: 'width=device-width, initial-scale=1', htmlAttrs: { lang: 'no' }, meta: [{name:'description', content:'Portefølje side for Kristoffer Gjøsund'}, {charset:'utf-8'}], link: [ { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]}}
 })
