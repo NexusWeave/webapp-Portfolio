@@ -1,3 +1,11 @@
+# [1.31.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.9...v1.31.0) (2026-07-27)
+
+
+### Features
+
+* **seo:** add Schema.org JSON-LD structured data for Sitelinks ([418e6ae](https://github.com/NexusWeave/webapp-Portfolio/commit/418e6ae884864ed8fc7b9689d96103ae855efd6c))
+* **seo:** update Schema.org descriptions for competence profile, technical logs and NexusWeave ([10ecb8f](https://github.com/NexusWeave/webapp-Portfolio/commit/10ecb8ffd7f48ed49a64324a02153f6c2b89d3f9))
+
 ## [1.30.9](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.8...v1.30.9) (2026-07-24)
 
 
