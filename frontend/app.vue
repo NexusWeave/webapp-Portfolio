@@ -36,7 +36,11 @@ useHead({
               'url': 'https://krigjo25.no',
               'sameAs': [
                 'https://github.com/krigjo25',
-                'https://github.com/NexusWeave'
+                'https://github.com/NexusWeave',
+                'https://www.linkedin.com/in/krigjo25',
+                'https://www.facebook.com/krigjo25',
+                'https://www.instagram.com/krigjo25',
+                'https://www.youtube.com/@krigjo25'
               ]
             },
             'hasPart': [
@@ -45,7 +49,7 @@ useHead({
                 '@id': 'https://krigjo25.no/#developer',
                 'url': 'https://krigjo25.no/dev',
                 'name': 'Kompetanse profil',
-                'description': 'En detaljert side om Kristoffers tekniske kompetanse. Viser sanntids GitHub-aktivitet og biografi med fokus på teknisk utvikling og teknologier.',
+                'description': 'En side om Kristoffers tekniske kompetanse og bakgrunn. Viser GitHub-aktivitet fokus på bakgrunn og teknisk utvikling.',
                 'author': {
                   '@id': 'https://krigjo25.no/#nexusweave'
                 }
@@ -62,7 +66,7 @@ useHead({
                 '@id': 'https://krigjo25.no/#logs',
                 'url': 'https://krigjo25.no/logs',
                 'name': 'Tekniske logger',
-                'description': 'Artikler, logger og dokumentasjon om IT, KI, DevOps og utvikling'
+                'description': 'Tekniske logger - Logger og dokumentasjon på prosjekter, devops og support'
               }
             ]
           },
@@ -71,7 +75,7 @@ useHead({
             '@id': 'https://krigjo25.no/#nexusweave',
             'name': 'NexusWeave',
             'url': 'https://github.com/NexusWeave',
-            'description': 'Kristoffer Gjøsund sin organisasjon og utviklerprofil for profesjonelt arbeid',
+            'description': 'Offisiell GitHub-organisasjon og utviklerprofil for Kristoffer Gjøsund sine profesjonelle IT-prosjekter.',
             'founder': {
               '@id': 'https://krigjo25.no/#person'
             }
