@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 
   ssr:true,
   dir: { public:'public' },
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV !== 'production' },
   compatibilityDate: '2025-07-15',
   experimental: { payloadExtraction: false},
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
@@ -28,8 +28,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/eslint',
     '@nuxt/content',
-    '@nuxtjs/sitemap',
-    '@nuxt/test-utils/module'
+    '@nuxtjs/sitemap'
   ],
    hooks: {
     async 'nitro:config'(nitroConfig) {

@@ -72,7 +72,8 @@
     const media = { type: 'jpg', src: '/media/images/carousel/20240903_165612.jpg', srcset: '/media/images/carousel/20240903_165612.jpg', alt: 'Portrett av Kristoffer Gjøsund'}
 
     //  --- Timer Logic
-    const { index, start } = useRotateCollections(reference.value.length - 1, 10000);
+    const referenceLength = computed(() => reference.value?.length || 1);
+    const { index, start } = useRotateCollections(referenceLength.value - 1, 10000);
 
     // --- Lifecycle Logic
     onMounted(() => { start(); });
