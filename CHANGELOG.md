@@ -1,3 +1,10 @@
+## [1.31.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.31.0...v1.31.1) (2026-07-27)
+
+
+### Performance Improvements
+
+* **app:** disable devtools in production, remove test-utils module, and fix reference timer safety ([883069f](https://github.com/NexusWeave/webapp-Portfolio/commit/883069feccc06b75ce7320bc48ac50831daee735))
+
 # [1.31.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.30.9...v1.31.0) (2026-07-27)
 
 
