@@ -35,7 +35,8 @@ useHead({
               'name': 'Kristoffer Gjøsund',
               'url': 'https://krigjo25.no',
               'sameAs': [
-                'https://github.com/krigjo25'
+                'https://github.com/krigjo25',
+                'https://github.com/NexusWeave'
               ]
             },
             'hasPart': [
@@ -43,24 +44,37 @@ useHead({
                 '@type': 'WebPage',
                 '@id': 'https://krigjo25.no/#developer',
                 'url': 'https://krigjo25.no/dev',
-                'name': 'Utvikler & IT',
-                'description': 'Utviklingsprosjekter, erfaring og teknologisk kompetanse'
+                'name': 'Kompetanse profil',
+                'description': 'En detaljert side om Kristoffers tekniske kompetanse. Viser sanntids GitHub-aktivitet og biografi med fokus på teknisk utvikling og teknologier.',
+                'author': {
+                  '@id': 'https://krigjo25.no/#nexusweave'
+                }
               },
               {
                 '@type': 'WebPage',
                 '@id': 'https://krigjo25.no/#personal',
                 'url': 'https://krigjo25.no/personal',
-                'name': 'Personlig & Om meg',
-                'description': 'Informasjon om Kristoffer Gjøsund sin bakgrunn'
+                'name': 'Autobiografi',
+                'description': 'En personlig side som går i dybden på Kristoffers verdier. Inneholder også en biografi med et mer personlig perspektiv.'
               },
               {
                 '@type': 'WebPage',
                 '@id': 'https://krigjo25.no/#logs',
                 'url': 'https://krigjo25.no/logs',
-                'name': 'Tekniske logger & Artikler',
-                'description': 'Artikler, logger og dokumentasjon om IT, KI og utvikling'
+                'name': 'Tekniske logger',
+                'description': 'Artikler, logger og dokumentasjon om IT, KI, DevOps og utvikling'
               }
             ]
+          },
+          {
+            '@type': 'Organization',
+            '@id': 'https://krigjo25.no/#nexusweave',
+            'name': 'NexusWeave',
+            'url': 'https://github.com/NexusWeave',
+            'description': 'Kristoffer Gjøsund sin organisasjon og utviklerprofil for profesjonelt arbeid',
+            'founder': {
+              '@id': 'https://krigjo25.no/#person'
+            }
           },
           {
             '@type': 'SiteNavigationElement',
@@ -69,17 +83,17 @@ useHead({
             'hasPart': [
               {
                 '@type': 'WebPage',
-                'name': 'Utvikler',
+                'name': 'Kompetanse profil',
                 'url': 'https://krigjo25.no/dev'
               },
               {
                 '@type': 'WebPage',
-                'name': 'Personlig',
+                'name': 'Autobiografi',
                 'url': 'https://krigjo25.no/personal'
               },
               {
                 '@type': 'WebPage',
-                'name': 'Logger',
+                'name': 'Tekniske logger',
                 'url': 'https://krigjo25.no/logs'
               }
             ]
