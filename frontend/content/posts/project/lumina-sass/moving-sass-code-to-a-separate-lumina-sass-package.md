@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Sass, Node.js
   **Verktøy** - npm, Vite, TypeScript
   **Prinsipper** – <abbr title="hver modul har ett tydelig ansvar">Single Responsibility Principle</abbr>, <abbr title="en kilde er den definitive sannheten for data">Single source of truth</abbr>, <abbr title="kode holdes ren og lett forståelig">Clean code</abbr> og <abbr title="unngå duplisering av kode, gjenbruk funksjoner">Don't repeat yourself</abbr>

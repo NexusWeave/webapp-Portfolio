@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Omdømme** - Feilfri og profesjonell digital flate bygger tillit hos partnere.
   **Effektivitet** - Modulær oppbygging gjør det raskt og rimelig å rulle ut nye funksjoner.
   **Inkludering** - Universell utforming sikrer at budskapet når alle, uavhengig av utstyr.

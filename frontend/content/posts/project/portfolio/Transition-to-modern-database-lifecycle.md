@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Applikasjon** - `FastAPI` **ORM** - `SQLAlchemy`
 
   **Teknologi** - FastAPI

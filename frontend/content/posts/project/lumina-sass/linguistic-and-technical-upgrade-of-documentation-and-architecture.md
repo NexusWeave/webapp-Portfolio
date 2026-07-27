@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Sass, Node.js, Markdown
   **Verktøy** - npm, JavaScript
   **Prinsipper** – <abbr title="Single source of truth er prinsippet om at informasjon skal lagres på ett sted.">Single source of truth</abbr>, <abbr title="Clean code er prinsippet om å skrive kode som er lett å lese og forstå.">Clean code</abbr>, <abbr title="Single responsibility principle er prinsippet om at en modul skal ha ett ansvarsområde.">Single Responsibility Principle</abbr> og <abbr title="Don't repeat yourself er prinsippet om å unngå duplisering av logikk eller informasjon.">Don't repeat yourself</abbr>

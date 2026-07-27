@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Programinformasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **OS** - Garuda Arch Linux
   **Verktøy** - VS Code, downgrade, KDE-Plasma, TypeScript
 

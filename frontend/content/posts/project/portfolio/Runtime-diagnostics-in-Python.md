@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Python, Turso, SQLAlchemy
   **Verktøy** - Logging, Google Cloud Run
 

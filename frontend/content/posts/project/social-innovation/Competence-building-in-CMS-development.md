@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **OS** - Garuda Drag0nized Linux
   **Verktøy** - Tina CMS, Vue.js, TypeScript
 

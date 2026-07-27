@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Nuxt.js, TinaCMS
   **Verktøy** - TypeScript, Sass, React
   **Prinsipper** - Responsivt Design, UU, Dataintegritet

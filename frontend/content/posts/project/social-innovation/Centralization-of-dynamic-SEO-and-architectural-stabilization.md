@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Nuxt 4, Vue 3, TypeScript
   **Verktøy** - Nuxt Content, Composables
 

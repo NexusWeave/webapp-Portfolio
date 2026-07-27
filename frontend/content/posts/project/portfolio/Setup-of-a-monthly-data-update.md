@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - FastAPI, Google Cloud Scheduler
   **Verktøy** - GitHub, Google Cloud Platform
 

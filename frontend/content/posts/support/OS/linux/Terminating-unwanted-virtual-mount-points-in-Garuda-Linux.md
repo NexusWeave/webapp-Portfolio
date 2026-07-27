@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Programinformasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
   **Verktøy** - Docker, TypeScript
 

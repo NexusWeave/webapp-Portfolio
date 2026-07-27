@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - C#
   **Verktøy** - JSON, KI, TypeScript
   **Prinsipper** - RBAC, SRP, Singleton

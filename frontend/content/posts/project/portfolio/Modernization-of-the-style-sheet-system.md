@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - <abbr title="Språk for å lage stilark">Sass</abbr>
   **Verktøy** - <abbr title="Verktøy for å styre pakker">npm</abbr>, <abbr title="Verktøy for å kjøre tester">Vitest</abbr>, <abbr title="Verktøy for digital signering">GPG</abbr>
   **Prinsipper** - Sikkerhet, Enkelt vedlikehold

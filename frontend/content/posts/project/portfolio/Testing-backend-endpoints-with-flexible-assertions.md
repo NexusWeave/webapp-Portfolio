@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Programinformasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Nuxt, TypeScript, Vitest, Python
   **Verktøy** - Vitest, npm, git
 

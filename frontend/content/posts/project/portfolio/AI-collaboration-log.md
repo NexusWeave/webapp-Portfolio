@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - FastAPI, Nuxt 4, SQLAlchemy, Sass
   **Verktøy** - Gemini CLI, Git, Shell-integrasjon
 

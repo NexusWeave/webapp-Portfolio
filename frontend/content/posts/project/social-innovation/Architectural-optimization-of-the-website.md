@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Program informasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Nuxt.js
   **Verktøy** - TypeScript
   **Prinsipper** - SEO, UU

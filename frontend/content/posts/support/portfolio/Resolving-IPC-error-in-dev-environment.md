@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Programinformasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Nuxt, TinaCMS
   **Verktøy** - Node, npm
   **Prinsipper** - Avhengighetshåndtering

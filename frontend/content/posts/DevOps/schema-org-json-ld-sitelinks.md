@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Programinformasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Nuxt 3/4, TypeScript, JSON-LD
   **Verktøy** - Git, Google Search Console, Schema.org
   **Prinsipper** - <abbr title="Search Engine Optimization">SEO</abbr>, Semantisk Web, Brukeradopsjon

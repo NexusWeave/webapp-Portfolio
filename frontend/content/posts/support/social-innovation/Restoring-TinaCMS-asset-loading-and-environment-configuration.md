@@ -6,6 +6,7 @@ ingress: |
 status: |
   #### Programinformasjon
   *Skrevet i samarbeid med AI - Gemini*
+
   **Teknologi** - Nuxt.js, TinaCMS
   **Verktøy** - TypeScript, dotenv-cli
   **Prinsipper** - Miljøhåndtering, Statisk generering
