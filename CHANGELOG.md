@@ -1,3 +1,10 @@
+## [1.31.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.31.1...v1.31.2) (2026-07-28)
+
+
+### Performance Improvements
+
+* **frontend:** enable lazy fetching for backend endpoints and collections to eliminate route navigation delay ([68b98a3](https://github.com/NexusWeave/webapp-Portfolio/commit/68b98a32606ee47108a41c816db7adf6c377c615))
+
 ## [1.31.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.31.0...v1.31.1) (2026-07-27)
 
 
