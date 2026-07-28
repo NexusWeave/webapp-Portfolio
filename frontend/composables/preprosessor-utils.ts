@@ -12,7 +12,7 @@ export async function fetchCollection<T, R>(path:any, cacheKey:string, mapper: (
         if (queryModifier) query = queryModifier(query);
         
         return query.all();
-    });
+    }, { lazy: true });
 
     if (error.value) throw error.value;
 

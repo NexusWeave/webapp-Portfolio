@@ -157,7 +157,7 @@ describe('Preprocessor Utils', () => {
                 await fetchCollection(path, cacheKey, mockMapper);
 
                 expect(asyncDataSpy).toHaveBeenCalled();
-                expect(asyncDataSpy).toHaveBeenCalledWith(cacheKey, expect.any(Function), expect.any(String));
+                expect(asyncDataSpy).toHaveBeenCalledWith(cacheKey, expect.any(Function), { lazy: true });
         });
 
         it('Returns computed property', async() => { 
