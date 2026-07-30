@@ -39,7 +39,7 @@
 <script setup lang="ts">
 
     //  --- Meta information
-    definePageMeta( { order: 2, label: 'Kompetanse profil', description: "En detaljert side om Kristoffers tekniske kompetanse. Viser sanntids GitHub-aktivitet og biografi med fokus på teknisk utvikling og teknologier." });
+    definePageMeta( { order: 2, label: 'Kompetanse profil', description: "En side om Kristoffers tekniske kompetanse og bakgrunn. Viser GitHub-aktivitet fokus på bakgrunn og teknisk utvikling." });
 
     //  --- Import & types logic
     import { fetchCollection, fetchRepositories } from '#imports';
