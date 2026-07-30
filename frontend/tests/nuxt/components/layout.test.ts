@@ -1,6 +1,6 @@
+import { ref } from "vue";
 import { describe, it, expect, vi } from "vitest";
 import { mountSuspended, mockNuxtImport } from "@nuxt/test-utils/runtime";
-import { ref } from "vue";
 
 import Header from "@/components/layout/Header.vue"
 import Footer from "@/components/layout/Footer.vue"
@@ -58,9 +58,29 @@ describe("Layout components", () => {
         });
     });
 
-    describe("Footer Component", () => {
-        it ("renders Header component correctly", async() => {
-            expect(true).toBe(true);
+    describe("Footer Component renders correctly", () => {
+
+        it ("renders Footer component correctly", async() => {
+            const wrapper = await mountSuspended(Footer, { props: {}});
+            const tags: string[] = ['section', 'a', 'span', 'p', 'form', 'input'];
+
+            expect(wrapper.find('a[href*="/"]'));
+            tags.forEach( tag => expect( wrapper.find(tag) ));
+            expect(wrapper.text()).toContain('All rights reserved. By');
+        });
+
+        it( 'Renders forms correctly', async() => {
+            vi.stubEnv('NODE_ENV', 'development');
+            const wrapper = await mountSuspended(Footer, { props: {}});
+            const form: boolean = wrapper.find('form[action="https://validator.w3.org/check"]').exists();
+            const inputs: string[] = ["input[name='fragment']", "input[name='doctype']", "input[type='image']"];
+
+            expect(form).toBe(true);
+
+            inputs.forEach( input => {
+                const exsist = wrapper.find(input).exists();
+                if (input != "input['name' = 'docstring']") expect(exsist).toBe(true); else expect(exsist).toEqual('HTML5');
+            });
         });
     });
 });
