@@ -1,22 +1,23 @@
 import { describe, it, expect } from "vitest";
 import { mountSuspended } from "@nuxt/test-utils/runtime";
+import type { DateItem } from "@/types/date";
 
 import DateComponent from "@/components/Dates/Date.vue";
 import YearComponent from "@/components/Dates/Year.vue";
 
 // Dummy data for Date.vue component tests
-const dummyDatePublished = {
+const dummyDatePublished: DateItem = {
     date: '2026-07-20T10:00:00.000Z'
 };
 
-const dummyDateUpdated = {
+const dummyDateUpdated: DateItem = {
     date: '2026-07-20T10:00:00.000Z',
     updated: '2026-07-21T12:00:00.000Z'
 };
 
 // Dummy data for Year.vue component tests
-const dummyYearString = '2026-07-20T10:00:00.000Z';
-const dummyYearObject = {
+const dummyYearString: string = '2026-07-20T10:00:00.000Z';
+const dummyYearObject: DateItem = {
     current: '2024-05-15T00:00:00.000Z'
 };
 

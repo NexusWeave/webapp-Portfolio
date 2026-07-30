@@ -1,35 +1,35 @@
 import { ref } from "vue";
 import { describe, it, expect, vi } from "vitest";
 import { mountSuspended, mockNuxtImport } from "@nuxt/test-utils/runtime";
+import type { ReferenceItem } from "@/types/documents";
 
 import Header from "@/components/layout/Header.vue"
 import Footer from "@/components/layout/Footer.vue"
 
 const { dummyReferences } = vi.hoisted(() => {
-    return {
-        dummyReferences: [
-            {
-                id: 0,
-                title: "Test Referanse 1",
-                body: {
-                    type: "root",
-                    children: [
-                        {
-                            type: "element",
-                            tag: "p",
-                            props: {},
-                            children: [{ type: "text", value: "Dette er en test-referanse." }]
-                        }
-                    ]
-                },
-                anchor: {
-                    type: ["pdf"],
-                    href: "/media/docs/test-ref-1.pdf",
-                    label: " - Test Referanse 1"
-                }
+    const refs: ReferenceItem[] = [
+        {
+            id: 0,
+            title: "Test Referanse 1",
+            body: {
+                type: "root",
+                children: [
+                    {
+                        type: "element",
+                        tag: "p",
+                        props: {},
+                        children: [{ type: "text", value: "Dette er en test-referanse." }]
+                    }
+                ]
+            },
+            anchor: {
+                type: ["pdf"],
+                href: "/media/docs/test-ref-1.pdf",
+                label: " - Test Referanse 1"
             }
-        ]
-    };
+        }
+    ];
+    return { dummyReferences: refs };
 });
 
 mockNuxtImport('fetchCollection', () => {
