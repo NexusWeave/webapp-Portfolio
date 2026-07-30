@@ -1,15 +1,13 @@
 <template>
-    <div :class="['page-container', ...(article?.tags?.[0]?.cls || [])]">
-        <NavigationButton  v-if="isPage || isTagPage"  :data="button" :class="['primary-btn']"/>
-        <article class = 'article-wrapper flex-column'>
-           <header>
+    <article :class="['article-wrapper', 'flex-column', ...(article?.tags?.[0]?.cls || [])]">
+        <NavigationButton v-if="isPage || isTagPage" :data="button" :class="['primary-btn']"/>
+        <header>
             <ArticleHead :article="article" :isPost="isPage"/>
-           </header>
-           <main v-if="isPage && !isTagPage">
+        </header>
+        <section v-if="isPage && !isTagPage">
             <ArticleBody :data="article" />
-           </main>        
-        </article>
-    </div>
+        </section>        
+    </article>
 </template>
 
 <script lang="ts" setup>
