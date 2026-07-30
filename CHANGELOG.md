@@ -1,3 +1,10 @@
+## [1.31.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.31.2...v1.31.3) (2026-07-30)
+
+
+### Bug Fixes
+
+* **dev:** improve SEO, by correcting metadata. ([d83758f](https://github.com/NexusWeave/webapp-Portfolio/commit/d83758fd4273874527ca978dbda0aeff3094d8f4))
+
 ## [1.31.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.31.1...v1.31.2) (2026-07-28)
 
 
