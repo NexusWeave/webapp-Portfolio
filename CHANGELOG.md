@@ -1,3 +1,10 @@
+## [1.33.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.33.0...v1.33.1) (2026-07-31)
+
+
+### Bug Fixes
+
+* **backend:** pin pip version below 25.0 in Dockerfile ([712aa57](https://github.com/NexusWeave/webapp-Portfolio/commit/712aa572e0ae50faf4fb10d1a187b059f46286e4))
+
 # [1.33.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.32.0...v1.33.0) (2026-07-31)
 
 
