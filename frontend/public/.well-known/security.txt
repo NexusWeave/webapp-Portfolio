@@ -1,0 +1,4 @@
+Contact: mailto:krigjo25@gmail.com
+Preferred-Languages: no, en
+Canonical: https://krigjo25.no/.well-known/security.txt
+Policy: https://krigjo25.no/personal
