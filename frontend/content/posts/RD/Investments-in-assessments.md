@@ -5,7 +5,6 @@ ingress: |
   Brukte tid på å kartlegge enkle innholdsverktøy som er brukervennlige for ikke-tekniske brukere. Ved å tette eksisterende kunnskapshull ble usikkerheten redusert og oversikten over tilgjengelige løsninger forbedret. Dette sikrer leveranse av gjennomtenkte produkter og redusert ressursbruk i fremtidige prosjekter.
 status: |
   #### Programinformasjon
-  **OS** - Ikke spesifisert
   **Verktøy** - 11ty, Tina CMS, TypeScript
   *Skrevet i samarbeid med AI - Gemini*
 

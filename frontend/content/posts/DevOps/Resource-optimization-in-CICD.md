@@ -6,7 +6,6 @@ ingress: |
 status: |
   #### Programinformasjon
   
-  **OS** - Garuda Drag0nized Linux
   **Verktøy** - GitHub Actions, TypeScript
   *Skrevet i samarbeid med AI - Gemini*
 
