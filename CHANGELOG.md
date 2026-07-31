@@ -1,3 +1,18 @@
+# [1.32.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.31.3...v1.32.0) (2026-07-31)
+
+
+### Bug Fixes
+
+* **Article:** 🐛 resolve incorrect HTML semantics ([654b184](https://github.com/NexusWeave/webapp-Portfolio/commit/654b18490eac5f28bd2a136f6f4203cbafb4deb3))
+* **article:** resolve typos & prevent potential runtime errors. ([23132d0](https://github.com/NexusWeave/webapp-Portfolio/commit/23132d05ec2e70cf022f9e0a36a269ac8a4b56e8))
+
+
+### Features
+
+* **seo:** add security.txt under .well-known ([26976c3](https://github.com/NexusWeave/webapp-Portfolio/commit/26976c3c2fd65731c423bc57c037db115686f11b))
+* **seo:** add useCustomSeo composable and update content schema mapping ([72201c1](https://github.com/NexusWeave/webapp-Portfolio/commit/72201c193be4252feb16ded233bfd300af0d4df9))
+* **seo:** integrate useCustomSeo and rich Schema.org across pages ([2deec31](https://github.com/NexusWeave/webapp-Portfolio/commit/2deec31b21a44ad9088705cf9f980eb558acde5b))
+
 ## [1.31.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.31.2...v1.31.3) (2026-07-30)
 
 
