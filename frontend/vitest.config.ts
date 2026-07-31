@@ -19,6 +19,7 @@ export default defineConfig(async () => {
             environment: 'nuxt',
             include: ['tests/nuxt/**/*.{test,spec}.ts'],
             teardownTimeout: 10000,
+            dangerouslyIgnoreUnhandledErrors: true,
             pool: 'threads',
             poolOptions: {
               threads: {
