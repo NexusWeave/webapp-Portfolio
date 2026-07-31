@@ -18,6 +18,13 @@ export default defineConfig(async () => {
             name: 'nuxt',
             environment: 'nuxt',
             include: ['tests/nuxt/**/*.{test,spec}.ts'],
+            teardownTimeout: 10000,
+            pool: 'threads',
+            poolOptions: {
+              threads: {
+                singleThread: true
+              }
+            },
             environmentOptions: {
               nuxt: {
                 domEnvironment: 'jsdom'
