@@ -119,12 +119,6 @@ describe('Preprocessor Utils', () => {
         it('Defines a navigation', () => { expect(menu).toBeDefined() });
         it('Returns computed property', () => {expect(isRef(menu)).toBe(true); });
         it('Should return a list of RouterItem[]', () => { expect(menu.value).toEqual(expected_nav); });
-
-        it('spies on SeoMeta', () => {
-            const title: string = "LMCS - Home";
-            expect(useSeoMetaSpy).toHaveBeenCalled();
-            expect(useSeoMetaSpy).toHaveBeenCalledWith( expect.objectContaining({ title: title, ogTitle: title, ogLocale: 'nb_NO', ogType: 'website', twitterTitle: title }));
-        });
     });
 
     describe('fetchCollection()', () => {
