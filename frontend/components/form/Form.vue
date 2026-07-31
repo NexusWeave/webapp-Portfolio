@@ -79,13 +79,12 @@
         </section>
     </form>
 </template>
-<script setup>
 
+<script setup lang="ts">
+    import { ref, computed } from 'vue';
+    import type { FormProps } from '@/types/forms';
 
-    const props = defineProps({
-        data: {
-            type: Object,
-            required: true
-        }
-    });
+    const props = defineProps<FormProps>();
+    const data = computed(() => props.data);
+    const formData = ref<Record<string, any>>({});
 </script>

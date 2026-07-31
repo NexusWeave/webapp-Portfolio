@@ -24,28 +24,19 @@
         @input="emit('update:modelValue', $event.target.value)"
     />
 </template>
-<script setup>
+<script setup lang="ts">
     import { computed } from 'vue';
+    import type { InputProps } from '@/types/forms';
 
-    const props = defineProps({
-        data: {
-            type: Object,
-            required: true
-        },
-        cls: {
-            type: Array,
-            required: false,
-            default: () => []
-        },
-        modelValue: {
-            type: [String, Number, Boolean],
-            required: false
-        }
+    const props = withDefaults(defineProps<InputProps>(), {
+        cls: () => []
     });
 
     const data = computed(() => props.data);
     const cls = computed(() => props.cls);
-    const emit = defineEmits(['update:modelValue']);
+    const emit = defineEmits<{
+        (e: 'update:modelValue', value: string | number | boolean): void
+    }>();
 
     //console.warn("Inputs.vue : ", data.value);
 </script>
