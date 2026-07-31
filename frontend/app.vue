@@ -1,19 +1,4 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Portefølje - Kristoffer Gjøsund (krigjo25)',
-  description: 'Portefølje side for Kristoffer Gjøsund',
-  googleSiteVerification: '8gvx99aCgKbc489qfagbKyJyY9Wv4KUKC9AAk8fLxUs',
-  robots: 'index, follow',
-  ogTitle: 'Kristoffer Gjøsund - Portefølje',
-  ogDescription: 'Portefølje side for Kristoffer Gjøsund',
-  ogType: 'website',
-  ogUrl: 'https://krigjo25.no',
-  ogImage: 'https://krigjo25.no/og-image.png',
-  twitterCard: 'summary_large_image',
-  twitterTitle: 'Kristoffer Gjøsund - Portefølje',
-  twitterDescription: 'Portefølje side for Kristoffer Gjøsund',
-  twitterImage: 'https://krigjo25.no/og-image.png'
-})
 
 useHead({
   script: [
@@ -31,43 +16,24 @@ useHead({
             'inLanguage': 'nb-NO',
             'publisher': {
               '@type': 'Person',
-              '@id': 'https://krigjo25.no/#person',
-              'name': 'Kristoffer Gjøsund',
-              'url': 'https://krigjo25.no',
-              'sameAs': [
-                'https://github.com/krigjo25',
-                'https://github.com/NexusWeave',
-                'https://www.linkedin.com/in/krigjo25',
-                'https://www.facebook.com/krigjo25',
-                'https://www.instagram.com/krigjo25',
-                'https://www.youtube.com/@krigjo25'
-              ]
-            },
-            'hasPart': [
-              {
-                '@type': 'WebPage',
-                '@id': 'https://krigjo25.no/#developer',
-                'url': 'https://krigjo25.no/dev',
-                'name': 'Kompetanse profil',
-                'description': 'En side om Kristoffers tekniske kompetanse og bakgrunn. Viser GitHub-aktivitet fokus på bakgrunn og teknisk utvikling.',
-                'author': {
-                  '@id': 'https://krigjo25.no/#nexusweave'
-                }
-              },
-              {
-                '@type': 'WebPage',
-                '@id': 'https://krigjo25.no/#personal',
-                'url': 'https://krigjo25.no/personal',
-                'name': 'Autobiografi',
-                'description': 'En personlig side som går i dybden på Kristoffers verdier. Inneholder også en biografi med et mer personlig perspektiv.'
-              },
-              {
-                '@type': 'WebPage',
-                '@id': 'https://krigjo25.no/#logs',
-                'url': 'https://krigjo25.no/logs',
-                'name': 'Tekniske logger',
-                'description': 'Tekniske logger - Logger og dokumentasjon på prosjekter, devops og support'
-              }
+              '@id': 'https://krigjo25.no/#person'
+            }
+          },
+          {
+            '@type': 'Person',
+            '@id': 'https://krigjo25.no/#person',
+            'name': 'Kristoffer Gjøsund',
+            
+            'url': 'https://krigjo25.no',
+            'alternateName': ['Kriss', 'krigjo25'],
+            'jobTitle': 'IT-konsulent & Utvikler',
+            'sameAs': [
+              'https://github.com/krigjo25',
+              'https://github.com/NexusWeave',
+              'https://www.linkedin.com/in/krigjo25',
+              'https://www.facebook.com/krigjo25',
+              'https://www.instagram.com/krigjo25',
+              'https://www.youtube.com/@krigjo25'
             ]
           },
           {
@@ -87,6 +53,11 @@ useHead({
             'hasPart': [
               {
                 '@type': 'WebPage',
+                'name': 'Hjem',
+                'url': 'https://krigjo25.no/'
+              },
+              {
+                '@type': 'WebPage',
                 'name': 'Kompetanse profil',
                 'url': 'https://krigjo25.no/dev'
               },
@@ -99,6 +70,36 @@ useHead({
                 '@type': 'WebPage',
                 'name': 'Tekniske logger',
                 'url': 'https://krigjo25.no/logs'
+              }
+            ]
+          },
+          {
+            '@type': 'BreadcrumbList',
+            '@id': 'https://krigjo25.no/#breadcrumb',
+            'itemListElement': [
+              {
+                '@type': 'ListItem',
+                'position': 1,
+                'name': 'Hjem',
+                'item': 'https://krigjo25.no/'
+              },
+              {
+                '@type': 'ListItem',
+                'position': 2,
+                'name': 'Kompetanse',
+                'item': 'https://krigjo25.no/dev'
+              },
+              {
+                '@type': 'ListItem',
+                'position': 3,
+                'name': 'Personlig',
+                'item': 'https://krigjo25.no/personal'
+              },
+              {
+                '@type': 'ListItem',
+                'position': 4,
+                'name': 'Tekniske logger',
+                'item': 'https://krigjo25.no/logs'
               }
             ]
           }

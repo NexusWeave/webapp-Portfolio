@@ -18,17 +18,20 @@
 </template>
 <script setup lang="ts">
 
-    //  --- Meta information
-    definePageMeta( { order: 3, label: 'Autobiografi', description: "En personlig side som går i dybden på Kristoffers verdier. Inneholder også en biografi med et mer personlig perspektiv." });
-
     //  --- Importing dependencies & types
-    import { ref, computed } from 'vue';
+    import { computed } from 'vue';
     import { fetchCollection } from '#imports';
+    import { useCustomSeo } from '~/composables/useCustomSeo';
     import { mapProfile } from '~/composables/maps/mapProfile';
 
+    import type { SeoOptions } from '~/types/utils';
     // @ts-ignore - TypeScript error: Cannot find module '@nuxt/content' or its corresponding type declarations.
     import type { ProfileInformationCollectionItem } from '@nuxt/content';
 
+        //  --- Meta information
+    const seoData: SeoOptions = { urlPath: '/personal', title: 'Autobiografi', description: 'En personlig side som går i dybden på Kristoffers verdier og biografi. Inneholder også en biografi med et mer personlig perspektiv.' }
+    definePageMeta( { order: 3, label: seoData.title, description: seoData.description });
+    useCustomSeo(seoData);
 
     //  --- Content fetching logic
     const profilePath = 'profileInfo';

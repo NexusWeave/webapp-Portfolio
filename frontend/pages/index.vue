@@ -38,21 +38,23 @@
 </template>
 <script setup lang="ts">
 
-    //  --- Meta information
-    definePageMeta( { order: 0, label: 'Portefølje', description: "Hovedsiden som gir en oversikt over Kristoffers prosjekter, akademiske reise og de nyeste tekniske loggene. Fungerer som en inngangsport til hele nettstedet." });
-
     //  --- Import dependencies & Types
     import { computed } from 'vue';
     import { fetchCollection } from '#imports';
-    
+
+    import { useCustomSeo } from '~/composables/useCustomSeo';
     import { blogPagination } from '@/composables/pagination';
     import { mapTimeline } from '@/composables/maps/mapTimeline';
     import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
+    import type { SeoOptions } from "~/types/utils";
     //@ts-ignore - TypeScript error: Cannot find module '@nuxt/content' or its corresponding type declarations.
     import type { DevPostsCollectionItem, AcademicCollectionItem, TimelineCollectionItem } from '@nuxt/content';
 
-
+    //  --- Meta information
+    const seoData: SeoOptions = { urlPath: '/', title: 'Portefølje', description: 'Hovedsiden med oversikt over Kristoffers prosjekter, akademiske reise og nyeste tekniske logger. Inngangsporten til nettsiden.' };
+    definePageMeta( { order: 0, label: seoData.title, description: seoData.description });
+    useCustomSeo(seoData);
 
     //  --- Component logic
     const academicData = await fetchCollection<AcademicCollectionItem, ReturnType<typeof mapTimeline>>('academic', 'academic-info', mapTimeline);

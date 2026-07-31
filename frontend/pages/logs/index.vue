@@ -70,14 +70,19 @@
 
     import { ref, computed } from 'vue';
     import { fetchCollection } from '#imports';
+    import { useCustomSeo } from '~/composables/useCustomSeo';
     import { blogPagination } from '@/composables/pagination';
     import { mapBlogData } from '~/composables/maps/mapBlogPost';
 
+    import type { SeoOptions } from '~/types/utils';
     import type { ButtonItem } from '~/types/navigation';
     import type { DevPostsCollectionItem } from '@nuxt/content';
+    
 
     //  --- Meta information
-    definePageMeta( { order: 1, label: 'Tekniske Logger', description : "En samling av tekniske artikler og erfaringer fra hverdagen som utvikler. Her kan man filtrere logger etter emneknagger for å finne spesifikke temaer."});
+    const seoData: SeoOptions = { urlPath: '/logs', title: 'Tekniske Logger', description: 'En samling av tekniske artikler og erfaringer fra hverdagen som utvikler. Her kan man filtrere logger etter emneknagger for å finne spesifikke temaer.' };
+    definePageMeta( { order: 1, label: seoData.title, description : seoData.description});
+    useCustomSeo(seoData);
 
     //  --- Content logic
     const devPostPath = 'devPosts';

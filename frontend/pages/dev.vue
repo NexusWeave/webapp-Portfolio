@@ -38,20 +38,24 @@
 
 <script setup lang="ts">
 
-    //  --- Meta information
-    definePageMeta( { order: 2, label: 'Kompetanse profil', description: "En side om Kristoffers tekniske kompetanse og bakgrunn. Viser GitHub-aktivitet fokus på bakgrunn og teknisk utvikling." });
-
     //  --- Import & types logic
-    import { fetchCollection, fetchRepositories } from '#imports';
+    import { useCustomSeo } from '~/composables/useCustomSeo';
     import { mapProfile } from '~/composables/maps/mapProfile';
+    import { fetchCollection, fetchRepositories } from '#imports';
     import { useLanguageStore } from '@/stores/languageBytesStore';
 
+    import type { SeoOptions } from "~/types/utils";
     import type { RepositoryData } from '~/types/props';
     // @ts-ignore - TypeScript error: Cannot find module '@nuxt/content' or its corresponding type declarations.
     import type { ProfileInformationCollectionItem } from '@nuxt/content';
 
+    const seoData: SeoOptions = {title: "Kompetanse profil", urlPath: '/dev', description: "En side om Kristoffers tekniske kompetanse og bakgrunn. Viser GitHub-aktivitet fokus på bakgrunn og teknisk utvikling."};
 
-    //  --- Conent logic
+    //  --- Meta information
+    definePageMeta( { order: 2, label: seoData.title, description: seoData.description });
+    useCustomSeo(seoData);
+
+    //  --- Content logic
     const devPath = 'profileInfo';
     const devCache = 'devProfileCache';
     const rawBiography = await fetchCollection<ProfileInformationCollectionItem, ReturnType<typeof mapProfile>>(devPath, devCache, mapProfile);
