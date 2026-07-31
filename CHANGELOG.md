@@ -1,3 +1,11 @@
+## [1.33.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.33.1...v1.33.2) (2026-07-31)
+
+
+### Bug Fixes
+
+* **vitest:** add teardownTimeout and singleThread pool option to prevent teardown error in CI ([4c2dc2c](https://github.com/NexusWeave/webapp-Portfolio/commit/4c2dc2c99ccc83c298b2af413a5de4b074fc881c))
+* **vitest:** ignore unhandled async teardown errors from third party reka-ui dependencies in CI ([ff9da8b](https://github.com/NexusWeave/webapp-Portfolio/commit/ff9da8b8a3c02c678703ccccf77033286eb82465))
+
 ## [1.33.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.33.0...v1.33.1) (2026-07-31)
 
 
