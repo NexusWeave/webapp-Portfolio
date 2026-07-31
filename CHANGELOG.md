@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.32.0...v1.33.0) (2026-07-31)
+
+
+### Features
+
+* **security:** add Vue security policy page and update security.txt URL ([ba481e2](https://github.com/NexusWeave/webapp-Portfolio/commit/ba481e238fc6a2ee3f39c9a10a46c24ffb098c30))
+
 # [1.32.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.31.3...v1.32.0) (2026-07-31)
 
 
