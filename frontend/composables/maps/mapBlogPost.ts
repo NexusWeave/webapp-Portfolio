@@ -38,6 +38,6 @@ export const mapBlogData = (data: DevPostsCollectionItem[]): PostItem[] => {
             const dir = '/logs';
             const tags:PostTag[] = generatePostTags(id, dir);
 
-            return { id: index, path: path!, tags: tags, status: item.status!, body: item.body ?? {}, ingress: item.ingress, sources: item.sources, isArchived: index > 4, title: item.title ?? '', isPublished: isPublished, date: setDateFormat(date), anchor: [{ type: ['router'], path: `${dir}/records/${path}`, label: 'Les mer', cls: ['read-more-btn'] }] }
+            return { id: index, path: path!, tags: tags, status: item.status!, body: item.body ?? {}, ingress: item.ingress, image: item.image, meta: item.meta, sources: item.sources, isArchived: index > 4, title: item.title ?? '', isPublished: isPublished, date: setDateFormat(date), anchor: [{ type: ['router'], path: `${dir}/records/${path}`, label: 'Les mer', cls: ['read-more-btn'] }] }
         });
     };

@@ -28,12 +28,19 @@ const achievementsCollection = z.object({
 });
 
 const blogCollection = z.object({
-    date:z.string(),
+    date: z.string(),
     title: z.string(),
     body: z.strictObject({}),
     ingress: z.string(),
+    image: z.string().optional(),
     status: z.string().optional(),
-    sources: z.string().optional()
+    sources: z.string().optional(),
+    meta: z.object({
+        title: z.string().optional(),
+        description: z.string().optional(),
+        image: z.string().optional(),
+        keywords: z.array(z.string()).optional()
+    }).optional()
 })
 
 const profileInformationCollection = z.object({ id: z.string(), date: z.string(), title: z.string(), coop: z.string(), summary: z.string(), path: z.string(), stem: z.string(), body: z.strictObject({}) })
