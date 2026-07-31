@@ -5,7 +5,6 @@ ingress: |
   For å få hele systemet over på en moderne plattform, har jeg tatt det siste steget og flytta de gjenværende delene til FastAPI. Ved å samle alt under samme tak har jeg fjerna teknisk etterslep og gjort siden mye mer stabil. Med automatisk datavalidering og smart trådhåndtering er appen nå klar for å vokse uten at ytelsen kveles.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - FastAPI
   **Verktøy** - Python, Pydantic

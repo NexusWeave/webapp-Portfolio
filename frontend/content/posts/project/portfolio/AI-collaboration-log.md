@@ -5,7 +5,6 @@ ingress: |
   I dag har jeg jobba med å få datamodellene og det som faktisk vises på skjermen til å snakke bedre sammen. Ved å bruke AI som en aktiv sparringspartner har jeg fått synkronisert språkteknologiene i backend, fiksa noen irriterende bygg-feil med ressursmapping, og polert litt på brukeropplevelsen i porteføljen.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - FastAPI, Nuxt 4, SQLAlchemy, Sass
   **Verktøy** - Gemini CLI, Git, Shell-integrasjon

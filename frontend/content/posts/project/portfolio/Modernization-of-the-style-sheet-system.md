@@ -5,7 +5,6 @@ ingress: |
   Stilarkene og testene som hører til ble oppdatert for å gjøre koden lettere å jobbe med. Ved å bytte til en nyere versjon og rydde i hvordan ting testes, ble koden både ryddigere og tryggere. Prosessen sørget også for at alle endringer ble signert digitalt for å bevise at koden er ekte.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - <abbr title="Språk for å lage stilark">Sass</abbr>
   **Verktøy** - <abbr title="Verktøy for å styre pakker">npm</abbr>, <abbr title="Verktøy for å kjøre tester">Vitest</abbr>, <abbr title="Verktøy for digital signering">GPG</abbr>

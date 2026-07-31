@@ -5,7 +5,6 @@ ingress: |
   For å sikre at ting holder seg stabilt fremover, har jeg tatt en skikkelig sjau på grunnmuren i applikasjonen. Ved å tette gapet mellom det som står i dokumentasjonen og det som faktisk skjer i koden, har jeg gjort det mye enklere å vedlikeholde og fjerna kjipe hindringer i utviklingsløpet. Det betyr at jeg nå kan pushe nye ting mye raskere enn før.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript

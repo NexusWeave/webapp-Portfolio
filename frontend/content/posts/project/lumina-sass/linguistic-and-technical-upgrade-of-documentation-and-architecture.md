@@ -5,7 +5,6 @@ ingress: |
   For å sikre et solid fundament fremover, har det blitt tatt en skikkelig opprydding i både dokumentasjonen og mappestrukturen i lumina-sass. Ved å fjerne utdatert innhold og tette gapet mellom teksten og den faktiske koden, er biblioteket nå langt enklere å vedlikeholde. Det betyr at koden raskt kan gjenbrukes i andre prosjekter uten unødvendig forvirring.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Sass, Node.js, Markdown
   **Verktøy** - npm, JavaScript

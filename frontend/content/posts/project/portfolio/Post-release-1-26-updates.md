@@ -5,7 +5,6 @@ ingress: |
   Etter at den nye versjonen av nettsiden ble lansert, ble det tydelig at det var behov for å rydde litt i kulissene og gjøre koden enklere å forstå. Det handlet spesielt om å sikre at nettsiden er bygget opp på en logisk måte med riktig <abbr title="HyperText Markup Language">HTML</abbr>. Jeg ønsket å gjøre systemet enklere å vedlikeholde, og fikk på plass bedre verktøy som automatisk sjekker at ting fungerer som de skal, i tillegg til tydeligere veiledninger.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt
   **Verktøy** - GitHub Actions, Sass

@@ -5,7 +5,6 @@ ingress: |
   Prosjektet har gjennomgått en rekke oppdateringer for å heve kodekvaliteten, forbedre ytelsen og styrke funksjonaliteten. Det ble lagt til ny funksjonalitet for deling til eksterne plattformer, samtidig som integrasjonen mot eksterne dataforbindelser fikk lagt inn hastighetsbegrensninger. Det ble også lagt til testrutiner for både stilsett og frontend-logikk for å forbedre kodekvaliteten.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - <abbr title="Bibliotek for brukergrensesnitt">Vue</abbr>, <abbr title="Type-sikker JavaScript">TypeScript</abbr>, <abbr title="Språk for å lage stilark">Sass</abbr>
   **Verktøy** - <abbr title="Verktøy for å kjøre tester">Vitest</abbr>, <abbr title="Verktøy for versjonshåndtering">git</abbr>, <abbr title="Plattform for automatisk bygging og utrulling">GitHub Actions</abbr>

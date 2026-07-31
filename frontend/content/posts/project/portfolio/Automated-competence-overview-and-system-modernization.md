@@ -5,7 +5,6 @@ ingress: |
   For å slippe å dulle med manuelle oppdateringer hele tiden, har jeg automatisert innsamlingen av teknologidata til porteføljen. Ved å la systemet hente inn tallene selv, er oversikten over hva jeg faktisk kan alltid spot-on. Sammen med litt visuell finpuss og teknisk opprydding, har plattformen blitt mye mer proff og stabil.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript

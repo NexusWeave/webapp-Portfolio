@@ -5,7 +5,6 @@ ingress: |
   I denne runden har jeg tatt tak i stabiliteten i databaselaget. Ved å innføre en "Get or Create"-strategi og oppgradere Pydantic-modellene til V2, har jeg sikra oss mot irriterende valideringskrasj og duplikate data. Det meste begynner nå å falle på plass, selv om jeg fortsatt har en liten nøtt igjen å knekke i assosiasjonstabellen.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - FastAPI, Pydantic

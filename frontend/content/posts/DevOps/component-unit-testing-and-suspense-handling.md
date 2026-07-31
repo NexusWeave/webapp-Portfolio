@@ -4,7 +4,7 @@ title: Fullstendig testdekning for artikkelkomponenter og semantisk strukturerin
 ingress: |
   I <abbr title="den delen av en webapplikasjon som brukeren samhandler med">frontend</abbr>-applikasjonen oppstod det et behov for å bygge fullstendig testdekning for artikkel<abbr title="En sammensattbar klosse">komponent</abbr>ene samt forbedre den semantiske <abbr title="HyperText Markup Language">HTML</abbr>-strukturen. Ved å lage enhetstester for layout- og artikkelkomponenter, <abbr title="Forenkling av komplekse underelementer under testkjøring">stubbe</abbr> asynkrone underelementer og refaktorere siderammen til ren HTML5, oppnås forutsigbarhet for brukergrensesnittet. Som en konsekvens av dette reduseres feilmarginen ved fremtidige oppdateringer, samtidig som universell utforming ivaretas for skjermlesere og søkemotorer.
 status: |
-  *Skrevet i samarbeid med AI - Gemini*
+  *Loggen er skrevet i samarbeid med KI - Gemini*
 
   #### Programinformasjon
   **Verktøy** - Vitest, Vue Test Utils, Nuxt Test Utils, TypeScript

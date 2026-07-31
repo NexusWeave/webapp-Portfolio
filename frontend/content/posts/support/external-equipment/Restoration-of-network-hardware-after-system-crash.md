@@ -4,10 +4,11 @@ title: Gjenoppretting av nettverksmaskinvare etter systemkrasj
 ingress: |
   Uventet systemkrasj i Garuda Linux førte til fullstendig svikt i nettverk og Bluetooth på et dual-boot-system. Etter feilsøking i både programvare og BIOS ble feilen sporet til manglende fysisk kontakt med hovedkortet. Ved å remontere PCIe-nettverkskortet ble forbindelsen gjenopprettet i operativsystemene, noe som bekrefter verdien av fysisk inspeksjon.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
   **Verktøy** - MSI Z270 Gaming Pro hovedkort med ASUS PCIe WiFi-kort, 
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Dagens aktiviteter
   * Registrering av fullstendig bortfall av trådløst nettverk og Bluetooth etter systemkrasj.

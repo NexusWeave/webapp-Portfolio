@@ -5,7 +5,6 @@ ingress: |
   I denne runden har jeg dykka ned i integritetsfeil i et asynkront system. Etter å ha opplevd krasj med mange-til-mange-relasjoner, har jeg refakturert hele ID-styringen. Ved å bruke ORM-ens "Unit of Work"-mønster har jeg fått på plass en atomær lagring som faktisk holder vann, og sikra at relasjonene mellom prosjekter og språk lagres i riktig rekkefølge.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - Python, SQLAlchemy

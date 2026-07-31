@@ -5,7 +5,6 @@ ingress: |
   I dag har jeg fokusert på å kverke en irriterende 500-feil under bygging og rydde opp i dokumentasjonen. Ved å flytte den dynamiske SEO-logikken over til en sentralisert composable, har jeg blitt kvitt hydreringsfeil og fått en stabil prerendering. Resultatet er en arkitektur som skiller klart mellom statisk metadata og det som skjer i runtime.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt 4, Vue 3
   **Verktøy** - TypeScript, Nuxt Content

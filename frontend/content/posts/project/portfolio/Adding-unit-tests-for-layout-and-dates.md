@@ -4,8 +4,9 @@ title: Opprette enhetstester for dato- og layoutkomponenter
 ingress: |
   Det oppstod et behov for å sikre stabiliteten til datoformateringen og layout-strukturen på nettstedet ved hjelp av automatiserte tester. Dette behovet oppstod som en konsekvens av hyppige oppdateringer i grensesnittet, noe som økte risikoen for visuelle feil og ødelagte koblinger. Opprettelse av tester ble igangsatt for å fange opp slike regresjoner tidlig i utviklingsløpet.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini 3.5 Flash*
   **Verktøy** - Git, VS Code, Vitest
   **Teknologi** - Vue 3, Nuxt, Vitest, TypeScript
   **Prinsipper** - Enhetstesting, Type-sikkerhet, Regresjonstesting

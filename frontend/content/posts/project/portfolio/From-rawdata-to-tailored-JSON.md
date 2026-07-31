@@ -5,7 +5,6 @@ ingress: |
   Etter å ha fiksa de asynkrone greiene i backend, var neste utfordring å få presentert dataene på en ryddig måte. Jeg har tatt et dypdykk i Pydantic for å fjerne "ekkoet" i API-responsen – duplikater som bare skaper støy. Ved å skille klart mellom hva backend beregner og hva frontenden trenger, har jeg fått på plass et skreddersydd og profesjonelt grensesnitt.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - Python, Pydantic

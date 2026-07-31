@@ -5,7 +5,6 @@ ingress: |
   For at det skal være lett å finne frem i det jeg skriver, har jeg snekra sammen en automatisk sortering. Ved å fjerne manuelt rot og la systemet ta seg av kategoriseringen, har jeg gjort brukeropplevelsen mye smidigere. Her er hvordan jeg tok kontroll på kaoset!
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript

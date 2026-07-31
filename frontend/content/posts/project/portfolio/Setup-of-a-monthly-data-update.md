@@ -5,7 +5,6 @@ ingress: |
   Denne loggføringen dokumenterer overgangen fra manuelt vedlikehold til en fullstendig automatisert datainnsamling. Ved å automatisere månedlig kjøreplan i skyen, sikrer jeg at oversikten over GitHub-prosjekter holdes oppdatert uten menneskelig innblanding, noe som optimaliserer ressursbruken i prosjektet.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - FastAPI, Google Cloud Scheduler
   **Verktøy** - GitHub, Google Cloud Platform

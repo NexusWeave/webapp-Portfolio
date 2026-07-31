@@ -5,7 +5,6 @@ ingress: |
   Gjennom en omfattende teknisk gjennomgang har jeg modernisert nettsidens responsive rammeverk og optimalisert redaktøropplevelsen i TinaCMS. Ved å innføre industristandarder for brytningspunkter, rydde i CSS-arkitekturen og utvikle intelligente, betingede skjemafelt, har jeg skapt en plattform som er både visuelt sømløs på tvers av enheter og teknisk robust for fremtidig skalering.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt.js, TinaCMS
   **Verktøy** - TypeScript, Sass, React

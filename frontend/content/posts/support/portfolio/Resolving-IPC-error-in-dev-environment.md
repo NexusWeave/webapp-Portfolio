@@ -4,8 +4,9 @@ title: Løsning på IPC-feil i utviklingsmiljøet
 ingress: |
   En bakgrunnsprosess krasjet under oppstart av utviklingsmiljøet, noe som resulterte i en feilmelding om brudd på <abbr title="Inter-Process Communication (kommunikasjon mellom prosesser)">IPC</abbr>. Situasjonen stanset videre utvikling ettersom koden ikke lot seg kompilere lokalt. Utfordringen oppstod som en konsekvens av korrupte filer og versjonskonflikter mellom pakkene.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt, TinaCMS
   **Verktøy** - Node, npm

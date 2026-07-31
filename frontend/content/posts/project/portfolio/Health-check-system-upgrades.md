@@ -5,7 +5,6 @@ ingress: |
   For å sikre full kontroll over prosjektet har jeg utviklet et eget varslingssystem som overvåker alle koblinger i sanntid. Ved å bytte ut generelle feilmeldinger med detaljerte statusrapporter, har jeg fjernet usikkerheten rundt hvor feil oppstår. Dette betyr at jeg kan løse utfordringer umiddelbart fremfor å lete i blinde. Resultatet er en mer stabil tjeneste for brukerne og en effektiv arbeidsflyt der teknisk rusk stoppes raskt.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript, KI

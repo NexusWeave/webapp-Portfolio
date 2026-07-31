@@ -5,7 +5,6 @@ ingress: |
   Denne loggføringen dokumenterer feilsøking og løsning av en oppstartsfeil (port 8080-krasj) under publisering av en FastAPI-applikasjon til Google Cloud Run. Ved å rette port-eksponeringen i Dockerfile og rekonfigurere miljøvariabler, ble applikasjonen stabilisert for skymiljøet.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - FastAPI

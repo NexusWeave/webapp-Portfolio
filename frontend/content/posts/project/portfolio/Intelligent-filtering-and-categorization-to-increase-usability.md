@@ -5,7 +5,6 @@ ingress: |
   Jeg har transformert et ustabilt overvåkingssystem til en pålitelig og selvgående løsning som fjerner unødvendig støy og sikrer datakvalitet. Ved å automatisere sortering og lagring, leveres nå prosjekter ferdig kategorisert direkte til skyen. Dette fjerner behovet for manuelt vedlikehold og feilsøking, samtidig som det gir besøkende tilgang til relevante data for raskere og mer presise analyser.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python, asyncio, SQLAlchemy
   **Verktøy** - GitHub API, httpx

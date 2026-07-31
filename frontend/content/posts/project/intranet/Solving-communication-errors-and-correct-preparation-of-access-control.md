@@ -5,7 +5,6 @@ ingress: |
   Da en feil i den rollebaserte tilgangskontrollen hindret systemet å starte, ble sikkerheten prioritert foran drift. Ved å identifisere en manglende klargjøring av `AccessService`-klassen, fikk jeg rettet kommunikasjonssvikten som hindret innlasting av tilgangsreglene. Resultatet er en stabil og trygg innlogging for kollegaer og studenter, der en pålitelig sikkerhetskontroll nå sikrer en uavbrutt arbeidshverdag og trygghet for alle.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - C#
   **Verktøy** - JSON, TypeScript

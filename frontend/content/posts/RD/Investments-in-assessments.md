@@ -4,9 +4,10 @@ title: 'Investering i Kartlegging.'
 ingress: |
   Brukte tid på å kartlegge enkle innholdsverktøy som er brukervennlige for ikke-tekniske brukere. Ved å tette eksisterende kunnskapshull ble usikkerheten redusert og oversikten over tilgjengelige løsninger forbedret. Dette sikrer leveranse av gjennomtenkte produkter og redusert ressursbruk i fremtidige prosjekter.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
   **Verktøy** - 11ty, Tina CMS, TypeScript
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Dagens aktiviteter
   * Analysere eksisterende kodebaser for praktisk forståelse.

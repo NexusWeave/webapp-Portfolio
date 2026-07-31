@@ -5,7 +5,6 @@ ingress: |
   Det siste døgnet har jeg gitt GitHub-integrasjonen et skikkelig løft. Jeg har gått bort fra en låst modell og over til en åpen arkitektur som faktisk fanger opp hvem som bidrar. Ved å normalisere databasen og fikse filtreringen har vi nå full støtte for både organisasjonsprosjekter og eksterne bidragsytere uten at det går utover ytelsen.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - FastAPI, Nuxt 4, SQLAlchemy (PostgreSQL), Alembic, Sass
   **Verktøy** - Gemini CLI, GitHub REST API, SQLAlchemy

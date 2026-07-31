@@ -5,7 +5,6 @@ ingress: |
   Overgangen fra versjon 2.11.1 til 3.1.0 markerer en betydelig utvikling av biblioteket, med fokus på intuitiv navngivning og teknisk stabilitet. Hovedendringene inkluderer en fullstendig refaktorering av kjernemoduler for å fremme klarhet, samt utvidelse av generatorer med strengere feilhåndtering. Dette sikrer en mer robust plattform for brukere og bidragsytere.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Sass, TypeScript
   **Verktøy** - Git, npm

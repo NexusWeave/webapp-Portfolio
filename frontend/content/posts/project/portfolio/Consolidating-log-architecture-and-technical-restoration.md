@@ -5,7 +5,6 @@ ingress: |
   Dagens arbeid har fokusert på en omfattende konsolidering av applikasjonens innholdsstruktur og en totalrenovering av de tekniske verktøyene for innholdsstyring. Ved å fjerne unødvendig kompleksitet knyttet til personlige logger og gå tilbake til en renere 'posts'-struktur, har jeg skapt en mer fokusert plattform. Samtidig er de underliggende feilene i CMS-logikken rettet, noe som sikrer en feilfri og type-sikker arbeidsflyt for fremtiden.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt 3, TinaCMS
   **Verktøy** - TypeScript, Sass, Nuxt Content

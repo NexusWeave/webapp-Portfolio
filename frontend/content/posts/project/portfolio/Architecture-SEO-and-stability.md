@@ -5,7 +5,6 @@ ingress: |
   I dette skippertaket tok jeg tak i utfordringene med manuelt vedlikehold av navigasjon og SEO, som gjorde hele opplegget uoversiktlig og teknisk ustabilt. Ved å få på plass en felles sannhetskilde har jeg automatisert kjedelige rutineoppgaver og fjerna irriterende innlastingsfeil. Resultatet er en plattform som er klar for fremtiden med bedre ressursbruk og en bunnsolid struktur.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt.js
   **Verktøy** - TypeScript, KI

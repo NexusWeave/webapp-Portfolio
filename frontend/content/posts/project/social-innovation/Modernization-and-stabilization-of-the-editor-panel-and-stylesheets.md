@@ -5,7 +5,6 @@ ingress: |
   Løst filstibindingsfeil i TinaCMS ved å erstatte absolutte baner (~/) med relative stier i kolleksjons- og maldefinisjoner. I tillegg er globale stilark refakturert for å forhindre stilkonflikter, og en ReferenceError i createPage-funksjonen er rettet.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt.js
   **Verktøy** - TypeScript, TinaCMS, React

@@ -4,8 +4,9 @@ title: Kvalitetssikring, forbedringer av koblingspunkt og testoptimalisering
 ingress: |
   Opprettelsen av testdekning for prosjektets backend-kobling og pagineringslogikk avdekket et behov for en teststruktur. Ved å skille ut tilkoblingslogikk og legge til falske Nuxt-runtime-miljøer, er fundamentet for testingen modernisert. Det sikrer en stabil drift og raskere endringer av endepunktsstrukturer uten behov for tunge mock-filer.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt, TypeScript, Vitest, Python
   **Verktøy** - Vitest, npm, git

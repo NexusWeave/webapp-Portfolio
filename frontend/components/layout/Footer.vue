@@ -7,7 +7,12 @@
                 </form>
 
     </section>
-    <section class="copy" v-else> <p>&copy; 2024 - {{date}}. All rights reserved. By <a href="/"><span>@krigjo25</span></a></p></section>
+    <section class="copy" v-else>
+        <p>
+            &copy; 2024 - {{date}}. All rights reserved. By <a href="/"><span>@krigjo25</span></a>
+            &bull; <NuxtLink to="/security-policy">Sikkerhetspolicy</NuxtLink>
+        </p>
+    </section>
 
 </template>
 

@@ -5,7 +5,6 @@ ingress: |
   For å standardisere måten innholdet styres på, har jeg koblet et redaktørpanel til prosjektet. Ved å rydde i hvordan systemet finner frem i mappene, har jeg fjernet feilmeldinger og utfordringer med bilder som ikke viste seg. Dette har skapt en trygg og ryddig arbeidsflyt der tekst og bilder kan endres fritt uten at man risikerer å ødelegge selve nettsiden. Resultatet er en stabil og enkel løsning som er klar for fremtidig vekst.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript

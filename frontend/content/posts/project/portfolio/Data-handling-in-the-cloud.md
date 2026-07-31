@@ -5,7 +5,6 @@ ingress: |
   Når man skal lansere noe skikkelig, må man ofte tenke nytt rundt hvordan data lagres. Her går jeg gjennom flyttingen fra en lokal SQLite-løsning til den skybaserte plattformen Turso. Jeg tar for meg de arkitektoniske valgene, som overgangen til synkron tilkobling, og hvordan jeg har sikra alt med skikkelig miljøstyring.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - Python, SQLAlchemy

@@ -5,7 +5,6 @@ ingress: |
   Gjennom en oppretting av systemets logikk har jeg transformert en ustabil prosess til en sikker og selvgående løsning. Ved å eliminere unødvendig sirkelgang og optimalisere arbeidstempoet, leverer programmet nå data på en brøkdel av tiden. For virksomheten betyr dette økt driftssikkerhet, reduserte kostnader og et system som er rigget for fremtidig vekst uten behov for manuelt tilsyn eller dyre avbrudd.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript

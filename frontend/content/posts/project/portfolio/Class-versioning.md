@@ -5,7 +5,6 @@ ingress: |
   Før var det litt uklart hvilken utgave av logikken som ble brukt rundt omkring i systemet. Ved å innføre en fast standard for versjonering av verktøyene mine, har jeg fjerna all tvil. Nå som jeg vet nøyaktig hva som kjører hvor, er det mye tryggere å gjøre store endringer.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript

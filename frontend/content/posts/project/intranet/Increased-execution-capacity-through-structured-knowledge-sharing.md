@@ -5,7 +5,6 @@ ingress: |
   Mangel på sentral informasjon og lang opplæringstid utgjorde en risiko for prosjektet. Ved å designe en strukturert dokumentasjonsbase med klare guider, systemoversikt og vedlikeholdsplaner, har vi transformert hvordan nye medarbeidere onboardes. Resultatet er et intuitivt rammeverk som fjerner dødtid og sikrer at nødvendig kunnskap er tilgjengelig for alle. Nå blir nye ressurser raskt selvgående, noe som øker teamets totale verdiskaping.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - C#
   **Verktøy** - TypeScript

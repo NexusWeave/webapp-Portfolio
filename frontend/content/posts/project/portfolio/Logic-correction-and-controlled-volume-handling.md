@@ -5,7 +5,6 @@ ingress: |
   En logisk feilkobling begrenset tidligere datainnsamlingen til kun forsiden, noe som ga et mangelfullt datagrunnlag. Ved å erstatte den enkle forespørselen med en grundig metode for å hente ut informasjon, prosesserer systemet nå hele lister med lenker. For å sikre stabilitet og unngå overbelastning, er arbeidsflyten transformert med kontrollert gruppering av oppgaver. Dette har ført til en effektiv og pålitelig tjeneste klargjort for vekst.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript, KI

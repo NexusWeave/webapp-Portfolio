@@ -5,7 +5,6 @@ ingress: |
   For å sikre en stabil nettside har jeg fornyet måten systemet starter opp på. Ved å flytte viktige forberedelser til en moderne løsning, unngår vi nå tekniske feil som tidligere gjorde siden treg og ustabil. Jeg har samlet styringen på ett sted og lagt inn sikkerhetsmekanismer som hindrer krasj. Resultatet er en trygg og rask opplevelse for alle besøkende, hvor informasjon alltid er klar til bruk uten unødvendig venting.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Applikasjon** - `FastAPI` **ORM** - `SQLAlchemy`
 

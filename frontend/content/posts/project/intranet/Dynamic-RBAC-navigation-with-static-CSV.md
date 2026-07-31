@@ -5,7 +5,6 @@ ingress: |
   Vi har innført en intelligent navigasjonsløsning som automatisk tilpasser menyer etter brukernes rettigheter. Ved å filtrere bort utilgjengelig innhold har vi fjernet støy og styrket sikkerheten for ansatte og studenter. Den nye strukturen sikrer en profesjonell brukeropplevelse og forenkler vedlikehold, da vi nå kan oppdatere tilgangsnivåer uten omprogrammering. Resultatet er et verktøy som øker effektiviteten i organisasjonen betraktelig.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - C#
   **Verktøy** - CSV, JSON, TypeScript

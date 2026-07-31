@@ -5,7 +5,6 @@ ingress: |
   Eliminert krasj under statisk sidegenerering (prerendering) i Nuxt 4 ved å flytte dynamisk tittel-oppløsning ut av definePageMeta-makroen. Ved å innføre en sentralisert Nuxt composable (preprosessor-utils.ts) løste vi feil ved aksessering av route.params før instansiering, noe som sikrer stabil pre-rendering og korrekt metadata-oppdatering.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt 4, Vue 3, TypeScript
   **Verktøy** - Nuxt Content, Composables

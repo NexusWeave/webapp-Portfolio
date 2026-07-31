@@ -8,7 +8,6 @@ status: |
   **Teknologi** - C#
   **Verktøy** - Coverlet, KI, TypeScript
   **Prinsipper** - DIP, Minste privilegium, RBAC, Singleton
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Dagens Aktiviteter
   * Denne loggen oppsummerer de viktigste aktivitetene, resultatene og erfaringen fra prosjektperioden (November – Desember 2025).

@@ -5,7 +5,6 @@ ingress: |
   Her dokumenterer jeg reisen fra lokalt utviklingsmiljø til produksjon på Google Cloud Run. Det dukka opp litt krøll med Docker-containere og lokale avhengigheter når jeg flytta backend-logikken til skyen. Ved å styre `WORKDIR` og trikse litt med `PYTHONPATH`, fikk jeg synkronisert alt for et skikkelig "Cloud Native" oppsett.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - Docker, Google Cloud Run

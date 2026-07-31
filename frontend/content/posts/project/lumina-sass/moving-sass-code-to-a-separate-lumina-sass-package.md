@@ -5,7 +5,6 @@ ingress: |
   Siden stilene brukes på tvers av flere ulike prosjekter, ble all Sass-kode samlet i en egen, sentralisert pakke. Flyttingen til *lumina-sass* betyr at det nå eksisterer én eneste kilde for all stil, noe som dramatisk reduserer kodeduplisering. Det forenkler ikke bare vedlikeholdet betraktelig, men gjør også at byggetiden i prosjektene går raskere.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Sass, Node.js
   **Verktøy** - npm, Vite, TypeScript

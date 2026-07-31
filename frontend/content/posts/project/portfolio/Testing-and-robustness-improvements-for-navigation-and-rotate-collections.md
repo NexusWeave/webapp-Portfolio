@@ -4,8 +4,9 @@ title: Enhetstesting av navigasjon og kjerne-composables
 ingress: |
   Opprettelsen av enhetstester for navigasjons- og karusell-composables har økt testdekningen og sikret at løsningen som er utviklet er pålitelig. Ved å innføre en test-helper, skrive spiontester for SEO-metadata, og legge til sikkerhetsbarrierer i kildekoden, garanteres en stabil og feilfri drift av applikasjonens kjernefunksjoner i miljøet.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini 3.5 Flash*
   **Teknologi** - Nuxt.js, Vitest
   **Verktøy** - TypeScript, Vitest Coverage
   **Prinsipper** - Enhetstesting, Pålitelige komponenter

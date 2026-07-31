@@ -5,7 +5,6 @@ ingress: |
   Jeg har tatt en skikkelig opprydning i hvordan jeg dokumenterer prosjektet. Istedenfor å være avhengig av tekstbaserte diagrammer, har jeg flyttet mye av arkitektur-oversikten over til det nye visuelle diagrammer (Drawio). Det gjør det enklere å forstå hvordan systemet henger sammen.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Drawio, Markdown
   **Verktøy** - Dokumentasjon, Arkitektur

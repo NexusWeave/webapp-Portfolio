@@ -9,7 +9,6 @@ ingress: |
   gjør at jeg sparer tid.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript

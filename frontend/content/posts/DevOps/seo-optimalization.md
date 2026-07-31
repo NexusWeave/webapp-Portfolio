@@ -4,9 +4,9 @@ date: 2026-07-24T00:00:00.000Z
 ingress: |
   For å sikre synlighet i søkemotorer og legge til rette for AI-skannere er det konfigurert <abbr title="Search Engine Optimization">SEO</abbr>, robots.txt og sitemap. Eierskap av domenene ble verifisert mot Google ved hjelp av meta-tagger integrert direkte i Nuxt sin useSeoMeta-løsning. Resultatet er en strukturert og standardisert tilnærming til metadata i prosjektet.
 status: |
-  #### Programinformasjon
+  *Loggen er skrevet i samarbeid med KI - Gemini*
 
-  *Skrevet i samarbeid med AI - Gemini*
+  #### Programinformasjon
 
   **Teknologi** - Nuxt 3/4, TypeScript
   **Verktøy** - Git, Google Search Console

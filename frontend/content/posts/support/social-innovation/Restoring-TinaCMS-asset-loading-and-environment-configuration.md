@@ -4,8 +4,9 @@ title: Restaurering av TinaCMS-innlasting og miljøkonfigurasjon
 ingress: |
   TinaCMS feilet med å laste ressurser i admin-panelet som en konsekvens av manglende miljøvariabler og statisk ressursgenerering. Utfordringen ble løst ved å opprette en lokal `.env`-fil samt integrere `dotenv-cli` og `tinacms build` i kjøreskriptene. Dette sikrer at administrasjonspanelet laster feilfritt i alle miljøer og gjenoppretter stabil tilgang til redigeringsverktøyet.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Nuxt.js, TinaCMS
   **Verktøy** - TypeScript, dotenv-cli

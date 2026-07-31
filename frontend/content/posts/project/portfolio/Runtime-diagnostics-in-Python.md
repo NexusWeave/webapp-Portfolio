@@ -5,7 +5,6 @@ ingress: |
   I kjølvannet av database-migreringen til Turso oppsto utfordringer i applikasjonens API-logikk, manifestert som en 500 Internal Server Error. Denne artikkelen dokumenterer diagnostiseringen og rettingen av en "Breaking Change" i objekt-instansieringen, der en uoverensstemmelse mellom klasse-definisjon og parameter-kall i Python førte til systemstans. Ved å bruke målrettet logging for å synkronisere navngivningen i LanguageModel, ble datastrømmen mellom GitHub og Turso gjenopprettet.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python, Turso, SQLAlchemy
   **Verktøy** - Logging, Google Cloud Run

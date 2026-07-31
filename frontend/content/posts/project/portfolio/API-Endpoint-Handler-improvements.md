@@ -5,7 +5,6 @@ ingress: |
   Før var det litt vrient å holde styr på alle de løse delene i prosjektet. Ved å gi alt sammen skikkelige navn og rydde opp i rotet, er det nå mye lettere å se hva som faktisk kjører og hvordan ting henger sammen. Det gjør det både tryggere og enklere å bygge videre på ting, siden jeg nå har stålkontroll på hvem som snakker med hvem.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - Python
   **Verktøy** - TypeScript, KI

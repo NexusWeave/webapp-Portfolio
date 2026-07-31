@@ -5,7 +5,6 @@ ingress: |
   Gjennom en omfattende teknisk profesjonalisering har vi levert en digital plattform som gir SosEnt Norge økt slagkraft og trygghet. Ved å eliminere teknisk gjeld og innføre en fremtidsrettet arkitektur, har vi gått fra en sårbar nettside til et strategisk verktøy. Resultatet er en lynrask, tilgjengelig og pålitelig portal som styrker organisasjonens profesjonelle omdømme, sikrer maksimal rekkevidde og reduserer fremtidige driftskostnader betydelig.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Omdømme** - Feilfri og profesjonell digital flate bygger tillit hos partnere.
   **Effektivitet** - Modulær oppbygging gjør det raskt og rimelig å rulle ut nye funksjoner.

@@ -4,8 +4,9 @@ title: Forbedring av typesikkerhet og enhetstester for kartleggingsverktøy
 ingress: |
   Kartleggingsverktøyene for innhold i porteføljen manglet tilstrekkelig testdekning mot eksterne datastrukturer. Dette ble løst ved å opprette enhetstester med simulerte testdata for samtlige funksjoner i applikasjonen. Endringene gjør det enkelt å verifisere oppførselen uten å være avhengig av eksterne systemer under testing.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini 3.5 Flash*
   **Teknologi** - Nuxt.js, Vitest
   **Verktøy** - TypeScript, Git
   **Prinsipper** - Enhetstesting, Typesikkerhet

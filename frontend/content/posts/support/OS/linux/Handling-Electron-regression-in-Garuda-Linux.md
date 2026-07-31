@@ -4,8 +4,9 @@ title: Håndtering av Electron-tilbakerulling i Garuda-Linux
 ingress: |
   En systemoppdatering forårsaket en konflikt med skrivebordsmiljøet som deaktiverte hovedmenyen i VS Code og stanset pågående arbeid. I stedet for tidkrevende feilsøking ble det valgt å rulle tilbake VS Code til en foregående stabil versjon ved hjelp av verktøyet `downgrade`. Dette gjenopprettet den grafiske visningen av menyene raskt og eliminerte nedetid uten risiko for datatap.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **OS** - Garuda Arch Linux
   **Verktøy** - VS Code, downgrade, KDE-Plasma, TypeScript

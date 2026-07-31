@@ -5,7 +5,6 @@ ingress: |
   Ved å fjerne tekniske blindsoner har vi etablert et målesystem som gir full innsikt i den digitale løsningens kvalitet. Gjennom automatisert rapportering har vi gått fra antakelser til faktabasert styring, noe som sikrer målrettet ressursbruk og høy driftssikkerhet. Denne oppgraderingen reduserer faren for uforutsette feil og gir bedriften et pålitelig produkt som er klargjort for stabil leveranse i takt med forretningens behov.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - C#
   **Verktøy** - Coverlet, TypeScript

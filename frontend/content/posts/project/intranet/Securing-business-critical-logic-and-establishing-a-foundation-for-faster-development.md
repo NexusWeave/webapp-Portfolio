@@ -5,7 +5,6 @@ ingress: |
   Ved å <abbr title="Å restrukturere eksisterende kode uten å endre dens ytre oppførsel">refaktorere</abbr> <abbr title="Systemets overordnede struktur og organisering av kode">arkitekturen</abbr> til en <abbr title="En arkitektur der koden er delt inn i lag med ulike ansvarsområder">flerlagsmodell</abbr> har vi eliminert tette koblinger. Gjennom <abbr title="Dependency Inversion Principle: Et designprinsipp der høynivåmoduler ikke skal avhenge av lavnivåmoduler, men av abstraksjoner">avhengighetsinversjon</abbr> har vi skilt forretningslogikken fra <abbr title="Koden som håndterer eksterne tjenester som databaser og nettverk">infrastrukturen</abbr>, noe som muliggjør isolerte enhetstester og forenkler fremtidig oppgradering av teknologistakken.
 status: |
   #### Program informasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **Teknologi** - C#
   **Verktøy** - TypeScript

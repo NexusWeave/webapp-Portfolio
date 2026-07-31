@@ -4,8 +4,9 @@ title: Fjerning av «spøkelses-disker»
 ingress: |
   Etter observasjoner av spøkelsesdisker i Garuda Linux ble det identifisert at Docker-prosesser kjørte ved systemoppstart og genererte uønskede virtuelle lag. Aktive containere ble stanset og systemet ble ryddet for ubrukte ressurser. Ved å deaktivere Docker-tjenesten og dens socket-enhet ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini*
 
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
   **Verktøy** - Docker, TypeScript

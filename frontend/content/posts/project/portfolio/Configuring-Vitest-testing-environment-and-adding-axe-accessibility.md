@@ -8,7 +8,6 @@ status: |
   **Teknologi** - Nuxt.js, Vitest
   **Verktøy** - vitest-axe, jsdom
   **Prinsipper** - Universell utforming, Testdrevet utvikling
-  *Skrevet i samarbeid med AI - Gemini Flash (Low)*
 
   #### Dagens Aktiviteter
   * Etablere et isolert testmiljø for <abbr title="Et javascript bibliotek">Nuxt</abbr>-komponenter og enhetstester.

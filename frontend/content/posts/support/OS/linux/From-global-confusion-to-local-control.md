@@ -4,8 +4,9 @@ title: Automatisert infrastruktur for isolerte Python-miljøer
 ingress: |
   Under Garuda Linux ble installasjon av Python-pakker blokkert globalt av operativsystemet for å unngå systemkonflikter. Dette krevde at utviklingsverktøyene måtte kjøres innenfor et isolert, virtuelt miljø for hvert enkelt prosjekt. For å slippe manuell aktivering av dette miljøet ved hver oppstart, ble det etablert en automatisk stibane-kobling.
 status: |
+  *Loggen er skrevet i samarbeid med KI - Gemini*
+
   #### Programinformasjon
-  *Skrevet i samarbeid med AI - Gemini 3.5 Flash*
   **OS** - Garuda Drag0nized Linux
   **Verktøy** - Python, Bash
   **Prinsipper** - Miljøisolering, Stibanehåndtering
