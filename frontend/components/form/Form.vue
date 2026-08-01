@@ -1,88 +1,28 @@
 <template>
     <form 
-        method="post"     
+        :method="data.method"     
         :name="data.name"
         :action="data.action"
-        :rel="data.rel? data.rel : 'noopener'"
-        :target="data.target? data.target : '_self'"
-        :novalidate="data.novalidate? data.novalidate : false"
-        v-on:encrypted="data.encrypted? data.encrypted : false"
-        :autocomplete="data.autocomplete? data.autocomplete : 'off'"
-        :acceptcharset="data.acceptcharset? data.acceptcharset : 'UTF-8'">
-        <legend class="section-title">
+        :rel="data.rel ? data.rel : 'noopener'"
+        :target="data.target ? data.target : '_self'"
+        :novalidate="data.novalidate ? data.novalidate : false"
+        v-on:encrypted="data.encrypted ? data.encrypted : false"
+        :autocomplete="data.autocomplete ? data.autocomplete : 'off'"
+        :acceptcharset="data.acceptcharset ? data.acceptcharset : 'UTF-8'">
+        <legend v-if="data.title" class="section-title">
             <h1>{{ data.title }}</h1>
         </legend>
-        <section v-for="field in data.fields" :key="field.id">
-            <label :for="field.name">{{ field.label }}</label>
-            <input 
-                :id="field.id"
-                :type="field.type ? field.type : 'text'"
-                v-model="formData[field.name]" 
-                :placeholder="field.placeholder"
-                :size="field.size ? field.size : '30'"
-                :width="field.width ? field.width : ''"
-                :height="field.height ? field.height : ''"
-                :pattern="field.pattern ? field.pattern : ''"
-                :readonly="field.readonly ? field.readonly : false"
-                :required="field.required ? field.required : false"
-                :disabled="field.disabled ? field.disabled : false"
-                :maxlength="field.maxlength ? field.maxlength : ''"
-                :minlength="field.minlength ? field.minlength : ''"
-                :autofocus="field.autofocus ? field.autofocus : false"
-                :multiple="field.multiple && field.type == 'file' ? field.multiple : false"
-
-                
-                />
-        </section>
-        <section v-if="data.selections" v-for="selection in data.selections" :key="selection.id">
-            <label :for="selection.label">{{ selection.label }}</label>
-            <select v-model="formData.selectedOption" 
-                    :multiple="selection.multiple ? selection.multiple : false">
-                <option v-for="option in data.selectOptions" :key="option.id" :value="option.value">
-                    {{ option.label }}
-                </option>
-            </select>
-        </section>
-        <section v-if="data.textarea">
-            <label :for="data.textarea.name">{{ data.textarea.label }}</label>
-            <textarea 
-                :id="data.textarea.id"
-                v-model="formData[data.textarea.name]"
-                :placeholder="data.textarea.placeholder"
-                :rows="data.textarea.rows ? data.textarea.rows : 4"
-                :cols="data.textarea.cols ? data.textarea.cols : 50"
-                :maxlength="data.textarea.maxlength ? data.textarea.maxlength : ''"
-                :required="data.textarea.required ? data.textarea.required : false">
-            </textarea>
-        </section>
-        <section v-if="data.dataList">
-            <label :for="data.dataList.name">{{ data.dataList.label }}</label>
-            <input 
-                :id="data.dataList.id"
-                v-model="formData[data.dataList.name]"
-                :list="data.dataList.list"
-                :placeholder="data.dataList.placeholder"
-                :required="data.dataList.required ? data.dataList.required : false" />
-            <datalist :id="data.dataList.list">
-                <option v-for="option in data.dataList.options" :key="option.id" :value="option.value">
-                    {{ option.label }}
-                </option>
-            </datalist>
-        </section>
-        <section v-if="data.outputs">
-            <label :for="data.outputs.name">{{ data.outputs.label }}</label>
-            <output 
-                :id="data.outputs.id"
-                :for="data.outputs.for"
-                :v-model="formData[data.outputs.name]">
-            </output>
-        </section>
+        <FormInputs v-if="data.inputs" v-for="field in data.inputs" :key="field.id || field.name" :data="field" v-model="formData[field.name]" />
+        <FormSelection v-if="data.selections" v-for="selection in data.selections" :key="selection.id" :data="selection" :options="data.selectionOptions || (data as any).selectOptions" v-model="formData[selection.id || 'selectedOption']" />
+        <FormTextarea v-if="data.textarea" :data="data.textarea" v-model="formData[data.textarea.name]" />
+        <FormDatalist v-if="data.dataList" :data="data.dataList" v-model="formData[data.dataList.name]" />
+        <FormOutput v-if="data.outputs" :data="data.outputs" :form-data="formData" />
     </form>
 </template>
 
 <script setup lang="ts">
     import { ref, computed } from 'vue';
-    import type { FormProps } from '@/types/forms';
+    import type { FormProps } from '@/types/form';
 
     const props = defineProps<FormProps>();
     const data = computed(() => props.data);

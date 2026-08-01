@@ -1,90 +1,88 @@
 export interface InputField {
     id?: string;
     name: string;
-    label?: string;
-    placeholder?: string;
+    step?: number;
     type?: string;
-    value?: string | number | boolean;
-    size?: string | number;
-    width?: string | number;
-    height?: string | number;
     pattern?: string;
+    rangeMin?: number;
+    rangeMax?: number;
     readonly?: boolean;
     required?: boolean;
     disabled?: boolean;
+    multiple?: boolean;
+    autofocus?: boolean;
+    placeholder?: string;
+    size?: string | number;
+    width?: string | number;
+    height?: string | number;
     maxlength?: string | number;
     minlength?: string | number;
-    autofocus?: boolean;
-    multiple?: boolean;
-    rangeMin?: number;
-    rangeMax?: number;
-    step?: number;
+    value?: string | number | boolean;
+    label?: { name:string; label:string; }
 }
 
-export interface SelectOption {
+export interface SelectonOption {
     id: number | string;
     value: string | number;
-    label: string;
 }
 
 export interface FormSelection {
-    id: number | string;
-    label: string;
     multiple?: boolean;
+    id: number | string;
+    label?: { name:string; label:string; }
 }
 
 export interface FormTextarea {
     id?: string;
     name: string;
-    label?: string;
+    required?: boolean;
     placeholder?: string;
     rows?: number | string;
     cols?: number | string;
     maxlength?: number | string;
-    required?: boolean;
+    label?: { name:string; label:string; }
 }
 
 export interface FormDataList {
     id?: string;
     name: string;
-    label?: string;
     list: string;
-    placeholder?: string;
     required?: boolean;
-    options: SelectOption[];
+    placeholder?: string;
+    options: SelectonOption[];
+    label?: { name:string; label:string; }
 }
 
 export interface FormOutput {
     id?: string;
     name: string;
-    label?: string;
     for?: string;
+    label?: { name:string; label:string; }
 }
 
 export interface FormItem {
     name?: string;
+    method?: string;
     title: string;
-    action?: string;
     rel?: string;
+    action?: string;
     target?: string;
-    novalidate?: boolean;
     encrypted?: boolean;
+    novalidate?: boolean;
+    outputs?: FormOutput;
+    inputs?: InputField[];
     autocomplete?: string;
     acceptcharset?: string;
-    fields?: InputField[];
-    selections?: FormSelection[];
-    selectOptions?: SelectOption[];
     textarea?: FormTextarea;
     dataList?: FormDataList;
-    outputs?: FormOutput;
+    selections?: FormSelection[];
+    selectionOptions?: SelectonOption[];
 }
 
-export interface FormProps {
-    data: FormItem;
-}
+export interface FormProps { data: FormItem; }
 
 export interface InputProps {
-    data: InputField;
     cls?: string[];
+    data: InputField;
     modelValue?: string | number | boolean;
 }

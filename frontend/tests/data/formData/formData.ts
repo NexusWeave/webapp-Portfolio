@@ -1,14 +1,13 @@
-import type { InputField, FormItem } from '@/types/forms';
+import type { InputField, FormItem, FormDataList, FormOutput, FormSelection, SelectonOption, FormTextarea } from '@/types/form';
 
 // ----------------------------------------------------------------------
-// 1. Testdata for inputs.vue (liste med alle varianter)
+// 1. Testdata for inputs.vue
 // ----------------------------------------------------------------------
 export const dummyInputsData: InputField[] = [
-    // 0: Fullversjon med alle valgfrie egenskaper satt
     {
         id: 'input-full-id',
         name: 'fullname',
-        label: 'Fullt navn',
+        label: { name: 'fullname', label: 'Fullt navn' },
         placeholder: 'Skriv ditt fulle navn',
         type: 'text',
         value: 'Ola Nordmann',
@@ -23,36 +22,32 @@ export const dummyInputsData: InputField[] = [
         minlength: '2',
         autofocus: true
     },
-    // 1: Range input (rangeMin, rangeMax, step)
     {
         id: 'input-range-id',
         name: 'volume',
-        label: 'Volum',
+        label: { name: 'volume', label: 'Volum' },
         type: 'range',
         rangeMin: 10,
         rangeMax: 90,
         step: 5,
         value: 50
     },
-    // 2: File input med multiple
     {
         id: 'input-file-id',
         name: 'documents',
-        label: 'Last opp filer',
+        label: { name: 'documents', label: 'Last opp filer' },
         type: 'file',
         multiple: true
     },
-    // 3: Minimal input (bruker standard fallbacks)
     {
         name: 'username'
     }
 ];
 
 // ----------------------------------------------------------------------
-// 2. Testdata for Form.vue (liste med alle varianter)
+// 2. Testdata for Form.vue
 // ----------------------------------------------------------------------
 export const dummyFormData: FormItem[] = [
-    // 0: Fullstendig Form-objekt med alle valgfrie egenskaper og seksjoner
     {
         name: 'comprehensive-contact-form',
         title: 'Kontakt og tilbakemelding',
@@ -63,11 +58,11 @@ export const dummyFormData: FormItem[] = [
         encrypted: true,
         autocomplete: 'on',
         acceptcharset: 'ISO-8859-1',
-        fields: [
+        inputs: [
             {
                 id: 'field-1',
                 name: 'full_name',
-                label: 'Navn',
+                label: { name: 'full_name', label: 'Navn' },
                 type: 'text',
                 placeholder: 'Ditt navn',
                 size: '35',
@@ -84,7 +79,7 @@ export const dummyFormData: FormItem[] = [
             {
                 id: 'field-2',
                 name: 'attachment',
-                label: 'Vedlegg',
+                label: { name: 'attachment', label: 'Vedlegg' },
                 type: 'file',
                 multiple: true
             }
@@ -92,7 +87,7 @@ export const dummyFormData: FormItem[] = [
         selections: [
             {
                 id: 'sel-1',
-                label: 'Emneområde',
+                label: { name: 'sel-1', label: 'Emneområde' },
                 multiple: true
             }
         ],
@@ -103,7 +98,7 @@ export const dummyFormData: FormItem[] = [
         textarea: {
             id: 'txt-1',
             name: 'message_body',
-            label: 'Melding',
+            label: { name: 'message_body', label: 'Melding' },
             placeholder: 'Beskriv henvendelsen i detalj...',
             rows: 8,
             cols: 60,
@@ -113,7 +108,7 @@ export const dummyFormData: FormItem[] = [
         dataList: {
             id: 'dl-1',
             name: 'preferred_tool',
-            label: 'Foretrukket verktøy',
+            label: { name: 'preferred_tool', label: 'Foretrukket verktøy' },
             list: 'tools-list',
             placeholder: 'Velg eller skriv inn verktøy',
             required: true,
@@ -125,17 +120,67 @@ export const dummyFormData: FormItem[] = [
         outputs: {
             id: 'out-1',
             name: 'calculation_output',
-            label: 'Beregnet resultat',
+            label: { name: 'calculation_output', label: 'Beregnet resultat' },
             for: 'field-1'
         }
     },
-    // 1: Minimalt Form-objekt (bruker standard fallbacks som rel='noopener', target='_self')
     {
         name: 'minimal-form',
         title: 'Enkel form',
         action: '/api/simple',
-        fields: [
-            { id: 'f-min', name: 'simple_input', label: 'Enkelt felt' }
+        inputs: [
+            { id: 'f-min', name: 'simple_input', label: { name: 'simple_input', label: 'Enkelt felt' } }
         ]
     }
 ];
+
+// ----------------------------------------------------------------------
+// 3. Testdata for FormDatalist
+// ----------------------------------------------------------------------
+export const dummyDatalistData: FormDataList = {
+    id: 'dl-test',
+    name: 'test-datalist',
+    list: 'options-list',
+    options: [
+        { id: 1, value: 'val-1', label: 'Label 1' },
+        { id: 2, value: 'val-2', label: 'Label 2' }
+    ],
+    label: { name: 'test-datalist', label: 'Datalist Label' }
+};
+
+// ----------------------------------------------------------------------
+// 4. Testdata for FormOutput
+// ----------------------------------------------------------------------
+export const dummyOutputData: FormOutput = {
+    id: 'out-test',
+    name: 'test-output',
+    for: 'field-id',
+    label: { name: 'test-output', label: 'Output Label' }
+};
+
+// ----------------------------------------------------------------------
+// 5. Testdata for FormSelection
+// ----------------------------------------------------------------------
+export const dummySelectionData: FormSelection = {
+    id: 'select-test',
+    multiple: false,
+    label: { name: 'select-test', label: 'Select Label' }
+};
+
+export const dummySelectOptions: SelectonOption[] = [
+    { id: 1, value: 'opt-1', label: 'Option 1' },
+    { id: 2, value: 'opt-2', label: 'Option 2' }
+];
+
+// ----------------------------------------------------------------------
+// 6. Testdata for FormTextarea
+// ----------------------------------------------------------------------
+export const dummyTextareaData: FormTextarea = {
+    id: 'text-test',
+    name: 'test-textarea',
+    placeholder: 'Type here...',
+    rows: 5,
+    cols: 40,
+    required: true,
+    label: { name: 'test-textarea', label: 'Textarea Label' }
+};
