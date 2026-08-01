@@ -8,7 +8,7 @@ import {
     dummySelectionData, 
     dummySelectOptions, 
     dummyTextareaData 
-} from '@/tests/data/formData/formData';
+} from '@/tests/data/formData';
 
 import type { Component } from 'vue';
 import type { InputField, FormItem } from '@/types/form';
