@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ref, computed, unref, type Ref, type ComputedRef } from 'vue';
 import { mockNuxtImport } from '@nuxt/test-utils/runtime';
 import { useCustomSeo } from '~/composables/useCustomSeo';
+import { dummySeoOptionsCustom } from '~/tests/data/seoData';
 import type { SeoOptions } from '~/types/utils';
 
 const useSeoMetaSpy = vi.fn();
@@ -56,13 +57,7 @@ describe('useCustomSeo()', () => {
     });
 
     it('sets custom title, description, and urlPath', () => {
-        const options: SeoOptions = {
-            title: 'Kompetanse profil',
-            description: 'En side om min bakgrunn.',
-            urlPath: '/dev'
-        };
-
-        useCustomSeo(options);
+        useCustomSeo(dummySeoOptionsCustom);
 
         expect(useSeoMetaSpy).toHaveBeenCalledWith(expect.objectContaining({
             title: 'Kompetanse profil - Kristoffer Gjøsund',
