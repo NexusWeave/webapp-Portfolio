@@ -1,6 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { it, describe, expect, beforeEach } from 'vitest';
 import { useLanguageStore } from '@/stores/languageBytesStore';
+import { dummyRepos } from '@/tests/data/storeData';
 
 describe('Nuxt Store Tests', () => {
 
@@ -62,21 +63,6 @@ describe('Nuxt Store Tests', () => {
     });
 
     it('Should update from repositories correctly', () => {
-        // 1. Arrange: Opprett simulert data (dummy-data) for GitHub-repos
-        const dummyRepos = [
-            {
-                languages: [
-                    { label: 'TypeScript', bytes: 102400 },
-                    { label: 'CSS', bytes: 51200 }
-                ]
-            },
-            {
-                languages: [
-                    { label: 'JavaScript', bytes: 51200 }
-                ]
-            }
-        ] as any; // Vi bruker "as any" for å slippe å fylle ut alle påkrevde GitHub-felter vi ikke tester her
-
         store.updateFromRepositories(dummyRepos);
 
         expect(languages).toEqual({TypeScript:102400, CSS:51200, JavaScript: 51200});
