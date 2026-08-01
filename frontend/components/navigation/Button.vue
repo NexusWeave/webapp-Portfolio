@@ -1,5 +1,5 @@
 <template>
-    <button :class="['inline-items-justify-center', cls]" :type="btn.btnType ?? 'button'" @click="btn.action ? btn.action($event) : null" :disabled="isDisabled">
+    <button :class="['inline-items-justify-center', cls]" :type="typeof btn.type === 'string' ? btn.type : 'button'" @click="btn.action ? btn.action($event) : null" :disabled="isDisabled">
 
         <NavigationAnchor v-if="btn.anchor" :data="btn.anchor"/>
         <span v-else-if="isIcon()" class="icon inline-items-justify-center">
@@ -28,8 +28,7 @@
     const isIcon = () => { const dataProps = btn.value; if (!dataProps.type) return false; const iconTypes = ['docs', 'pdf', 'mail', 'telephone', 'school', 'globe', 'map-pin', 'diploma', 'github', 'ytube', 'linkedin', 'facebook', 'instagram','dir']; return iconTypes.some(type => dataProps.type && dataProps.type.includes(type)); };
 
 
-    //  --- Watcher
-    watch(() => props.data, (newValue) => { Object.assign(btn.value, newValue); }, { immediate: true });
+
 
     //  --- Debug logic
     //console.log("Button component loaded with data: ", btn);
