@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.33.2...v1.34.0) (2026-08-01)
+
+
+### Features
+
+* **form:** implement dynamic form components, add comprehensive tests, refactor mockup data structure and types ([3ed1c73](https://github.com/NexusWeave/webapp-Portfolio/commit/3ed1c739620d04ed1bb32aebc866ba8f22f281a2))
+
 ## [1.33.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.33.1...v1.33.2) (2026-07-31)
 
 
