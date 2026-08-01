@@ -2,17 +2,17 @@
         <section :class="[...cls, 'timeline-explorer-wrapper', 'flex-col-items-center']">
             <h2 class="timeline-title">{{ props.title }}</h2>
 
-            <section class="timeline-track-container">
+            <nav aria-label="Tidslinje kontroll" class="timeline-track-container">
                 <section class="timeline-track-wrapper flex-row-items-center">
                     <div class="timeline-track"></div>
-                    <div class="timeline-dots flex-row-justify-between">
-                        <div v-for="item in data" :key="'dot-'+item.id" 
+                    <ol class="timeline-dots flex-row-justify-between">
+                        <li v-for="item in data" :key="'dot-'+item.id" 
                              :class="['timeline-dot', { 'active': item.isVisible }]">
-                        </div>
-                    </div>
+                        </li>
+                    </ol>
                     <TimelineFilter :data="filter" :cls="[['timeline-item'], 'timeline-filter-title', 'timeline-input']" @toggleVisibility="toggleVisibility" />
                 </section>
-            </section>
+            </nav>
 
             <section :class="['timeline-content-wrapper', 'flex-row-justify-center']">
                 <TimelineCard v-for="item in data" :key="item.id"
@@ -46,46 +46,45 @@
             return c;
         });
 
-        return [
-            ...modDefault,
-            ...parentCls.slice(1).filter(c => !modDefault.includes(c))
-        ];
+        return parentCls.length > 0 ? modDefault : defaultCls;
     });
 
-   const data = ref<TimelineItem[]>(props.data);
-   
-   // Initialize visibility: if no item is visible, make the first one visible
-   if (data.value.length > 0 && !data.value.some(item => item.isVisible)) {
-       data.value[0].isVisible = true;
-   }
+    const data = computed(() => props.data);
+    const rangeValue = ref<string>('0');
 
-   const rangeValue = ref('0');
-
-    const filter = computed(() => (
-        {
-            title: props.title,
-            range:
-            {
+    const filter = computed(() => 
+    {
+        const title: string = props.title;
+        const max: number = data.value?.length - 1 || 0; 
+        
+        return {
+            title: title, 
+            range: {
                 value: rangeValue.value,
-                step: 0.1,
+                step: 1,
                 type: 'range',
                 name: "timeline-input",
-                rangeMax: Math.max(0, data.value.length - 1),
+                rangeMax: max
             }
-        }));
-
-    function toggleVisibility(id:number): void
-        {
-            rangeValue.value = String(id);
-            const target = Math.round(Number(id));
-            data.value.forEach((item) => 
-            {
-                item.isVisible = (item.id === target);
-            });
         };
+    });
 
-        //  --- Debugging Logic
-        //console.log("Timeline.vue\n Transfered data :", data);
-        //console.log("Timeline.vue\n Processed data :", data);
-        //console.log("Timeline.vue\n Transfered filter :", filter);
+    //  --- Method definitions
+    function toggleVisibility(id: number): void
+    {
+        rangeValue.value = String(id);
+        const target = Math.round(Number(id));
+        data.value.forEach((item) =>
+        {
+            if (item.id === target) {
+                item.isVisible = true;
+            } else {
+                item.isVisible = false;
+            }
+        });
+    }
+
+    //  --- Debugging / log logic
+    //console.log("Timeline component data : ", data.value);
+
 </script>

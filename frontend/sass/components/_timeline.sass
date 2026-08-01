@@ -168,7 +168,7 @@
 
             .timeline-subjects-list
 
-                div
+                li
                     @include utils.margin($inline: 0)
 
                 gap: 1.5rem
@@ -193,6 +193,9 @@
                         transform: rotate(180deg)
 
                 .subject-grid-container
+                    list-style: none
+                    &::-webkit-details-marker
+                        display: none
                     gap: 2rem
                     display: grid
                     align-items: start

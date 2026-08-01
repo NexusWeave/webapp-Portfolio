@@ -1,59 +1,86 @@
 import { ref } from "vue";
 import { describe, it, expect, vi } from "vitest";
-import { mountSuspended, mockNuxtImport } from "@nuxt/test-utils/runtime";
+import { flushPromises } from "@vue/test-utils";
 import { dummyReferences } from "@/tests/data/layoutData";
+import { mountSuspended, mockNuxtImport } from "@nuxt/test-utils/runtime";
 
-import Header from "@/components/layout/Header.vue"
-import Footer from "@/components/layout/Footer.vue"
+import Header from "@/components/layout/Header.vue";
+import Footer from "@/components/layout/Footer.vue";
 
-mockNuxtImport('fetchCollection', () => {
-    return vi.fn().mockResolvedValue(ref(dummyReferences));
-});
+mockNuxtImport('fetchCollection', () => { return vi.fn().mockResolvedValue(ref(dummyReferences)); });
 
-describe("Layout components", () => {
+describe("Layout module tests", () => {
+    it("components are defined", () => {
+        const components = [Header, Footer];
+        components.forEach(comp => expect(comp).toBeDefined());
+    });
 
-    
-    describe("Header Component", () =>{
-
+    describe("Renders HTML & CSS correctly", () => {
         
-        const links: string[] = ['a[href*="/dev"]', 'a[href*="/personal"]', 'a[href*="/dev"]', 'a[href*="/CV-Kristoffer-Gjøsund.pdf"]', 'a[href*="mailto:krigjo25@outlook.com"]', 'a[href*="https://www.github.com/krigjo25"]', 'a[href*="https://www.facebook.com/krigjo25"]', 'a[href*="https://www.instagram.com/krigjo25"]', 'a[href*="https://www.youtube.com/in/krigjo25"]', 'a[href*="https://www.linkedin.com/in/krigjo25"]'];
-        const tags: string[] =['img', 'span', 'p', 'a', 'h3', 'h4' ];
-        const text:string[] = ['Kristoffer Gjøsund', 'Forener min akademiske reise fra bygg, helse og IT. Til å skape løsninger gjennom samarbeid. For meg er utfordringer en felles reise'];
-        const classes: string[] = [ 'flex-wrap-row-items-center-justify-around', 'flex-wrap-row-items-center-justify-center', 'logo-nav', 'profile-bar', 'flex-wrap-row-items-center', 'profile', 'flex-col-align-center', 'loading', 'profile-content', 'flex-col', 'slogan-wrapper', 'slogan', 'flex-wrap-row-justify-center', 'flex-col-align-center', 'some', 'some-nav' ];
+        describe("Header component", () => {
+            const tags: string[] = ['img', 'span', 'p', 'a', 'h3'];
+            const text: string[] = [
+                'Kristoffer Gjøsund', 
+                'Forener min akademiske reise fra bygg, helse og IT. Til å skape løsninger gjennom samarbeid. For meg er utfordringer en felles reise'
+            ];
+            const links: string[] = [
+                '/dev', '/personal', '/media/docs/CV-Kristoffer-Gjøsund.pdf', 
+                'mailto:krigjo25@outlook.com', 'https://www.github.com/krigjo25', 
+                'https://www.facebook.com/krigjo25', 'https://www.instagram.com/krigjo25', 
+                'https://www.youtube.com/@krigjo25', 'https://www.linkedin.com/in/krigjo25'
+            ];
 
-        it ("renders Header component correctly", async() => {
-            const wrapper = await mountSuspended(Header, { props: {} });
+            it("renders Header layout elements, profile info and navigation links", async () => {
+                const wrapper = await mountSuspended(Header, { 
+                    props: {},
+                    global: {
+                        stubs: {
+                            ContentRenderer: { props: ['value'], template: '<div><slot /></div>' }
+                        }
+                    }
+                });
+                await flushPromises();
 
-            tags.forEach( tag => expect( wrapper.find(tag) ) );
-            links.forEach( link => expect( wrapper.find(link) ) );
-            text.forEach( txt => expect(wrapper.text()).toContain(txt) );
+                expect(wrapper.exists()).toBe(true);
+                tags.forEach(tag => expect(wrapper.find(tag).exists()).toBe(true));
+                
+                links.forEach(link => {
+                    const findLink: boolean = wrapper.find(`a[href*="${link}"]`).exists();
+                    expect(findLink).toBe(true);
+                });
 
-            classes.forEach( cls => expect( wrapper.find(cls) ) );
+                text.forEach(txt => expect(wrapper.text()).toContain(txt));
+            });
+        });
+
+        describe("Footer component", () => {
+            it("renders Footer metadata, copyrights and links", async () => {
+                const wrapper = await mountSuspended(Footer, { props: {} });
+                const tags: string[] = ['section', 'a', 'span', 'p'];
+
+                expect(wrapper.exists()).toBe(true);
+                expect(wrapper.find('a[href*="/"]').exists()).toBe(true);
+                tags.forEach(tag => expect(wrapper.find(tag).exists()).toBe(true));
+                expect(wrapper.text()).toContain('All rights reserved. By');
+            });
         });
     });
 
-    describe("Footer Component renders correctly", () => {
+    describe("Environment specific behaviors", () => {
+        
+        describe("Footer component", () => {
+            it("renders W3C HTML validator forms when NODE_ENV is development", async () => {
+                vi.resetModules();
+                process.env.NODE_ENV = 'development';
+                vi.stubEnv('NODE_ENV', 'development');
+                
+                const FooterComponent = (await import("@/components/layout/Footer.vue")).default;
+                const wrapper = await mountSuspended(FooterComponent, { props: {} });
+                const form = wrapper.find('form[action="https://validator.w3.org/check"]');
+                const inputs = [ ['name', 'fragment'], ['name', 'doctype'], ['type', 'image']];
 
-        it ("renders Footer component correctly", async() => {
-            const wrapper = await mountSuspended(Footer, { props: {}});
-            const tags: string[] = ['section', 'a', 'span', 'p', 'form', 'input'];
-
-            expect(wrapper.find('a[href*="/"]'));
-            tags.forEach( tag => expect( wrapper.find(tag) ));
-            expect(wrapper.text()).toContain('All rights reserved. By');
-        });
-
-        it( 'Renders forms correctly', async() => {
-            vi.stubEnv('NODE_ENV', 'development');
-            const wrapper = await mountSuspended(Footer, { props: {}});
-            const form: boolean = wrapper.find('form[action="https://validator.w3.org/check"]').exists();
-            const inputs: string[] = ["input[name='fragment']", "input[name='doctype']", "input[type='image']"];
-
-            expect(form).toBe(true);
-
-            inputs.forEach( input => {
-                const exsist = wrapper.find(input).exists();
-                if (input != "input['name' = 'docstring']") expect(exsist).toBe(true); else expect(exsist).toEqual('HTML5');
+                expect(form.exists()).toBe(true);
+                inputs.forEach(([attr, val]) => { const findInput: boolean = wrapper.find(`input[${attr}='${val}']`).exists(); expect(findInput).toBe(true);});
             });
         });
     });
