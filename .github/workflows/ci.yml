@@ -1,4 +1,4 @@
-name: CI Test Suite
+name: CI/CD Pipeline
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Run Unit, Integration & SASS Tests
+    name: 1. Run Automated Test Suite
     runs-on: ubuntu-latest
 
     steps:
@@ -36,3 +36,27 @@ jobs:
         run: |
           cd frontend
           npm run test:sass
+
+  build:
+    name: 2. Build & Generate Project Output
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm install --legacy-peer-deps
+
+      - name: Build Project Output
+        run: |
+          cd frontend
+          npm run build
