@@ -19,6 +19,7 @@ export default defineConfig(async () => {
             name: 'nuxt',
             environment: 'nuxt',
             include: ['tests/nuxt/**/*.{test,spec}.ts'],
+            setupFiles: ['tests/utils/setup.ts'],
             teardownTimeout: 30000,
             dangerouslyIgnoreUnhandledErrors: true,
             pool: 'threads',
@@ -31,7 +32,15 @@ export default defineConfig(async () => {
               nuxt: {
                 domEnvironment: 'jsdom'
               }
+            },
+            server: {
+              deps: {
+                moduleNameMapper: {
+                  'reka-ui/dist/shared/createContext\.js': '<rootDir>/tests/utils/reka-ui-stub.ts'
+                }
+              }
             }
+          }
         })
       ]
     }
