@@ -45,8 +45,10 @@ email-validator==2.3.0
     # via
     #   fastapi
     #   pydantic
-fastapi[standard]==0.139.2
-    # via -r requirements.in
+fastapi[standard]==0.141.1
+    # via
+    #   -r requirements.in
+    #   fastapi
 fastapi-cli[standard]==0.0.32
     # via fastapi
 fastapi-cloud-cli==0.22.2
