@@ -36,7 +36,8 @@ export default defineConfig(async () => {
             server: {
               deps: {
                 moduleNameMapper: {
-                  'reka-ui/dist/shared/createContext\.js': '<rootDir>/tests/utils/reka-ui-stub.ts'
+                  'reka-ui/dist/shared/createContext\.js': '<rootDir>/tests/utils/reka-ui-stub.ts',
+                  'reka-ui/dist/shared/arrays\.js': '<rootDir>/tests/utils/reka-ui-stub.ts'
                 }
               }
             }
