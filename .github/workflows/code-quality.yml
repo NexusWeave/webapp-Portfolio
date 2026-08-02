@@ -1,16 +1,16 @@
-name: Semantic Release
+name: Code Quality Check
 
 on:
   workflow_run:
-    workflows: ["Code Quality Check"]
+    workflows: ["Application Tests"]
     types:
       - completed
     branches:
       - main
 
 jobs:
-  release:
-    name: Semantic Release
+  code_quality:
+    name: Code Quality Check
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
@@ -28,10 +28,7 @@ jobs:
           cd frontend
           npm install --legacy-peer-deps
 
-      - name: Run Semantic Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Run Vue TypeScript Type Check
         run: |
           cd frontend
-          npx semantic-release
+          npx vue-tsc --noEmit
