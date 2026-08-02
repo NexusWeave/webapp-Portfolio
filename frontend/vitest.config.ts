@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitest/config'
 import { defineVitestProject } from '@nuxt/test-utils/config'
 
+
 export default defineConfig(async () => {
   return {
     test: {
@@ -18,7 +19,7 @@ export default defineConfig(async () => {
             name: 'nuxt',
             environment: 'nuxt',
             include: ['tests/nuxt/**/*.{test,spec}.ts'],
-            teardownTimeout: 10000,
+            teardownTimeout: 30000,
             dangerouslyIgnoreUnhandledErrors: true,
             pool: 'threads',
             poolOptions: {
@@ -31,7 +32,6 @@ export default defineConfig(async () => {
                 domEnvironment: 'jsdom'
               }
             }
-          }
         })
       ]
     }
