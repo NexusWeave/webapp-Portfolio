@@ -9,16 +9,16 @@ export default defineNuxtConfig({
 
   ssr:true,
   dir: { public:'public' },
-  devtools: { enabled: process.env.NODE_ENV !== 'production' },
   compatibilityDate: '2025-07-15',
   experimental: { payloadExtraction: false},
   vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
   routeRules: { '/logs/records/**': { prerender: true } },
+  devtools: { enabled: process.env.NODE_ENV !== 'production' },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
-  site: { url: 'https://krigjo25.no', name: 'Kristoffer Gjøsund - Portfolio'},
+  site: { url: 'https://krigjo25.no', name: 'Portfolio - Kristoffer Gjøsund'},
   runtimeConfig:{ public:{ GCLOUD: process.env.GOOGLE_CLOUD || "http://0.0.0.0:8000/" } },
   sitemap: { autoLastmod: true, includeAppSources:true, exclude: [ '/admin/**' ], sources: ['/api/log-urls'], defaults: { priority: 0.9, changefreq: 'daily'} },
-  nitro: { preset: 'static', prerender: { crawlLinks: true, routes: ['/sitemap.xml', '/', '/dev', '/personal', '/logs', '/media/docs/CV-Kristoffer-Gjøsund.pdf'], ignore: [ '/logs/records/.gitkeep', '**/.gitkeep', '**/.DS_Store'] } },
+  nitro: { preset: 'static', prerender: { crawlLinks: true, routes: ['/sitemap.xml', '/', '/security-policy', '/dev', '/personal', '/logs', '/media/docs/CV-Kristoffer-Gjøsund.pdf'], ignore: [ '/logs/records/.gitkeep', '**/.gitkeep', '**/.DS_Store'] } },
 
   modules: [
     '@nuxt/ui',
