@@ -1,8 +1,8 @@
-# 📋 Project Kanban Board
+#  Project Kanban Board
 
 This Kanban board tracks the status and objectives of the Portfolio Web Application project.
 
-### 🎯 Execution Priority
+###  Execution Priority
 1. **Test (Priority 1)**: `[TASK-01]`, `[TASK-02]`, `[TASK-03]`, `[TASK-04]`
 2. **Fixes (Priority 2)**: `[TASK-05]`, `[TASK-06]`
 3. **New Integrations (Priority 3)**: `[TASK-07]`
@@ -10,9 +10,9 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 ---
 
-## 🗂️ Task Board
+## ️ Task Board
 
-| 📥 To Do | ⚙️ In Progress | ✅ Completed |
+|  To Do | ️ In Progress |  Completed |
 | :--- | :--- | :--- |
 | | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, fetchCollection, API mocks, and CMS parsing.* | |
 | **[TASK-02] Create Sass Tests**<br>↳ *Cover card-base, transitions, circle-border mixins, responsive breakpoints, and theme utilities.* | | |
@@ -24,32 +24,35 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 ---
 
-## 📝 Issue Details
+##  Issue Details
 
-### 📥 To Do Issues
+###  To Do Issues
 
 #### [TASK-01] Create Vue Tests
 * **Documentation**: [frontend/docs/testing.md](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/docs/testing.md) | [Nuxt Testing Docs](https://nuxt.com/docs/getting-started/testing)
 * **Subtasks**:
-  - [ ] **Composables Testing**:
-    - [ x ] `sortbyDate` (preprosessor-utils.ts)
-    - [ x ] `setDateFormat` (preprosessor-utils.ts)
-    - [ ] `fetchCollection` (preprosessor-utils.ts)
-    - [ ] `useCarousel` (preprosessor-utils.ts)
-    - [ ] `useNavigation` (preprosessor-utils.ts)
-    - [ ] `fetchRepositories` (backendAPI-utils.ts)
-    - [ ] Mock API response status codes (200, 404, 500)
-  - [ ] **State Management Testing**:
-    - [ ] Pinia `languageBytesStore.ts` store state storage
-    - [ ] Pinia store sorting filters and reactivity
+  - [x] **Composables Testing**:
+    - [x] `sortbyDate` (preprosessor-utils.ts)
+    - [x] `setDateFormat` (preprosessor-utils.ts)
+    - [x] `fetchCollection` (preprosessor-utils.ts)
+    - [x] `useRotateCollections` (preprosessor-utils.ts)
+    - [x] `useNavigation` (preprosessor-utils.ts)
+    - [x] `fetchRepositories` (backendAPI-utils.ts)
+    - [x] Mock API response status codes (200, 404, 500)
+  - [x] **State Management Testing**:
+    - [x] Pinia `languageBytesStore.ts` store state storage
+    - [x] Pinia store sorting filters and reactivity
   - [ ] **Component Testing**:
-    - [ ] `Card.vue` (Portfolio) loading/error/empty states
-    - [ ] `Portfolio.vue` (Repository) integration
+    - [x] `Card.vue` & `Timeline.vue` & `Filter.vue` (Timeline module integration)
+    - [x] `Card.vue` (Portfolio) loading/error/empty states
+    - [x] `Portfolio.vue` & `BusinessCard.vue` (Repository) integration
     - [ ] `NavMenu.vue` (Navigation) active link states
+  - [ ] **Pages Testing**:
+    - [x] `index.vue`, `dev.vue`, `personal.vue`, `security-policy.vue` integration
   - [ ] **Content & CMS Integration**:
     - [ ] TinaCMS content parser schema integrity
-  - [ ] **Semantic & SEO Validation**:
-    - [ ] SEO tags (title, description, ogImage)
+  - [x] **Semantic & SEO Validation**:
+    - [x] SEO tags (title, description, ogImage)
     - [ ] Semantic HTML landmark tags (main, header, footer)
     - [ ] Unique element IDs check
 * **Target Files**: 
@@ -190,7 +193,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 ---
 
-## 🔗 Unconnected Services & Endpoints
+##  Unconnected Services & Endpoints
 
 The following services or endpoints are present in the `backend/lib/services/` codebase but are **not connected** or registered within the main FastAPI application (`app.py`).
 
