@@ -23,7 +23,7 @@
     "@nuxt/image": "~2.0.0",
     "@nuxt/ui": "~4.10.0",
     "@nuxtjs/google-gtag": "~1.0.0",
-    "@vitejs/plugin-vue": "~6.0.0",
+    "@vitejs/plugin-vue": "~6.0.8",
     "better-sqlite3": "~12.10.0",
     "bootstrap-icons": "~1.13.0",
     "eslint": "~10.6.0",
