@@ -1,13 +1,27 @@
 # Security Policy
 
+## Supported Versions
+
+Use this section to tell people about which versions of your project are currently being supported with security updates.
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 2.0.x   | :white_check_mark: |
+| 1.x.x   | :x:                |
+| < 1.0   | :x:                |
+
 ## Reporting a Vulnerability
 
 We take the security of our project seriously. If you discover a security vulnerability, we appreciate your help in disclosing it to us responsibly.
 
 Please report security issues directly by emailing: **[krigjo25@gmail.com](mailto:krigjo25@gmail.com)**.
 
-### What to Include in Your Report
+### What to Expect
+- **Response Time:** You can expect an initial acknowledgment within 48 hours.
+- **Updates:** We will keep you updated on progress as we investigate and develop a fix.
+- **Resolution:** Once confirmed and resolved, security fixes will be released in the latest supported version line.
 
+### What to Include in Your Report
 To help us investigate and address the issue efficiently, please include:
 - A brief description of the vulnerability.
 - Clear steps to reproduce the issue (proof of concept, code snippets, or screenshots).
