@@ -46,7 +46,7 @@
     "@vue/test-utils": "~2.4.0",
     "conventional-changelog": "~8.0.0",
     "jsdom": "~29.1.0",
-    "netlify-cli": "~26.1.0",
+    "netlify-cli": "~27.0.1",
     "patch-package": "~8.0.0",
     "pinia": "~3.0.0",
     "postinstall-postinstall": "~2.1.0",
