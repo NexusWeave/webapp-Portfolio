@@ -10,9 +10,8 @@ on:
 
 jobs:
   test:
-    name: 1. Run Automated Test Suite
+    name: Automated Test Suite
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
@@ -38,10 +37,9 @@ jobs:
           npm run test:sass
 
   build:
-    name: 2. Build & Generate Project Output
+    name: Nuxt & Netlify Build
     needs: test
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
@@ -60,3 +58,30 @@ jobs:
         run: |
           cd frontend
           npm run build
+
+  release:
+    name: Semantic Release
+    needs: [test, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm install --legacy-peer-deps
+
+      - name: Run Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          cd frontend
+          npx semantic-release
