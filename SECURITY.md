@@ -14,7 +14,7 @@ Use this section to tell people about which versions of your project are current
 
 We take the security of our project seriously. If you discover a security vulnerability, we appreciate your help in disclosing it to us responsibly.
 
-Please report security issues directly by emailing: **[krigjo25@gmail.com](mailto:krigjo25@gmail.com)**.
+Please report security issues directly by emailing: **[krigjo25@outlook.com](mailto:krigjo25@outlook.com)**.
 
 ### What to Expect
 - **Response Time:** You can expect an initial acknowledgment within 48 hours.
