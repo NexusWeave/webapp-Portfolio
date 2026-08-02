@@ -26,7 +26,7 @@
     "@vitejs/plugin-vue": "^6.0.7",
     "better-sqlite3": "^12.10.0",
     "bootstrap-icons": "^1.13.1",
-    "eslint": "^10.6.0",
+    "eslint": "^10.8.0",
     "lumina-sass": "^3.3.5",
     "n": "^10.2.0",
     "nuxt": "^4.4.2",
