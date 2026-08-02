@@ -1,3 +1,15 @@
+# [1.35.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.34.0...v1.35.0) (2026-08-02)
+
+
+### Features
+
+* convert security-policy to markdown and add prerender routes ([fbeeb8f](https://github.com/NexusWeave/webapp-Portfolio/commit/fbeeb8fe6653615c458fbeb317185255b4071163))
+
+
+### Reverts
+
+* restore Card.vue, Timeline.vue and _timeline.sass to pre-965901b state ([f70ac2b](https://github.com/NexusWeave/webapp-Portfolio/commit/f70ac2bb0589084fce6e96d2c560f594066897ab))
+
 # [1.34.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.33.2...v1.34.0) (2026-08-01)
 
 
