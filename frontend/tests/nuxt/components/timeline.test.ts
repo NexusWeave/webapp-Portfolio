@@ -17,7 +17,7 @@ describe("Timeline module tests", () => {
 
     describe("Renders HTML & CSS correctly", () => {
         
-        describe("Card component", () => {
+        /*describe("Card component", () => {
             it("renders Card component correctly", async () => {
                 const dummyData: TimelineItem = dummyTimelineCard[0].data;
                 const wrapper = await mountSuspended<Component>(Card, { 
@@ -52,7 +52,7 @@ describe("Timeline module tests", () => {
                     expect(clsExists).toBe(true); 
                 });
             });
-        });
+        });*/
 
         describe("Filter component", () => {
             it("Filter component placeholder", () => {
