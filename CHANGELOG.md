@@ -1,3 +1,11 @@
+## [1.35.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.35.0...v1.35.1) (2026-08-02)
+
+
+### Bug Fixes
+
+* increase teardownTimeout to 30s for reka-ui environment teardown ([b0dc234](https://github.com/NexusWeave/webapp-Portfolio/commit/b0dc2342ea2eae6dd1b57836e49606dd75d74b29))
+* resolve vitest config parse error, sqlite3 rebuild, and reka-ui teardown error ([9034388](https://github.com/NexusWeave/webapp-Portfolio/commit/90343881b2fcd47208f8bdcbfa20f44b9ad681c7))
+
 # [1.35.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.34.0...v1.35.0) (2026-08-02)
 
 
