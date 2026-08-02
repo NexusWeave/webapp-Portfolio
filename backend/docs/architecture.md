@@ -1,4 +1,4 @@
-# ⚙️ Backend Architecture
+# ️ Backend Architecture
 
 > **Framework:** FastAPI  
 > **Language:** Python 3.13  
@@ -7,7 +7,7 @@
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 1. [Overview](#-overview)
 2. [Project Structure](#-project-structure)
@@ -22,40 +22,40 @@
 
 ---
 
-## 🎯 Overview
+##  Overview
 
 The backend application is built using **FastAPI**. Its core features include:
 
-- ✅ **RESTful API** design
-- ✅ **Type safety** with Pydantic models
-- ✅ **Async/await** for optimal performance
-- ✅ **SQLAlchemy** for database ORM
-- ✅ **Exception handling** and logging
-- ✅ **CORS** configuration for frontend
+-  **RESTful API** design
+-  **Type safety** with Pydantic models
+-  **Async/await** for optimal performance
+-  **SQLAlchemy** for database ORM
+-  **Exception handling** and logging
+-  **CORS** configuration for frontend
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 backend/
-├── 📄 app.py                   # Main FastAPI application
-├── 📄 requirements.txt         # Python dependencies
-├── 📄 pyproject.toml          # Project configuration
-├── 📄 README.md               # Backend documentation
-├── 📄 CHANGELOG.md            # Change log
+├──  app.py                   # Main FastAPI application
+├──  requirements.txt         # Python dependencies
+├──  pyproject.toml          # Project configuration
+├──  README.md               # Backend documentation
+├──  CHANGELOG.md            # Change log
 │
-├── 📁 lib/                    # Core libraries
-│   ├── 📁 database/           # Database engine and providers
+├──  lib/                    # Core libraries
+│   ├──  database/           # Database engine and providers
 │   │   ├── db_engine.py
 │   │   └── db_providers.py
 │   │
-│   ├── 📁 models/             # Data models
+│   ├──  models/             # Data models
 │   │   ├── github_model.py
 │   │   └── database_models/   # SQLAlchemy models
 │   │       └── GithubModel.py
 │   │
-│   ├── 📁 services/           # Business logic
+│   ├──  services/           # Business logic
 │   │   ├── api_db_bridge.py
 │   │   ├── base_service.py
 │   │   ├── scheduler_service.py
@@ -65,17 +65,17 @@ backend/
 │   │   │   └── repository_handler.py
 │   │   └── health/             # Health check service
 │   │
-│   ├── 📁 settings/           # Configuration
+│   ├──  settings/           # Configuration
 │   │   ├── api_config.py
 │   │   ├── app_config.py
 │   │   ├── database_config.py
 │   │   └── env_config.py
 │   │
-│   └── 📁 utils/              # Utilities
+│   └──  utils/              # Utilities
 │       ├── logger_config.py
 │       └── exception_handler.py
 │
-└── 📁 tests/                  # Test suite
+└──  tests/                  # Test suite
     ├── algorithms.py
     ├── conftest.py
     ├── Makefile
@@ -86,7 +86,7 @@ backend/
 
 ---
 
-## 🌐 API Endpoints
+##  API Endpoints
 
 ### Base URL
 
@@ -167,7 +167,7 @@ API health status.
 
 ---
 
-## 🗄️ Database
+## ️ Database
 
 ### Neon Postgres
 
@@ -284,7 +284,7 @@ class GithubDatabaseHandler:
 
 ---
 
-## 🔧 Services
+##  Services
 
 ### Database Handler (`lib/services/github/repository_handler.py`)
 
@@ -310,7 +310,7 @@ Schedules periodic tasks for background execution.
 
 ---
 
-## 📦 Models
+##  Models
 
 All models use **Pydantic** for validation and serialization.
 
@@ -363,7 +363,7 @@ class RepositoryModel(BaseModel):
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 Test suite is located in the `tests/` folder with various test types.
 
@@ -408,7 +408,7 @@ make test
 
 ---
 
-## 🛠️ Utilities
+## ️ Utilities
 
 ### Logger Config (`lib/utils/logger_config.py`)
 
@@ -451,7 +451,7 @@ class NotFoundError(Exception):
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 ### Requirements (`requirements.txt`)
 
@@ -516,7 +516,7 @@ See `Dockerfile` in the root folder for containerization.
 
 ---
 
-## 🔐 Configuration
+##  Configuration
 
 ### Settings (`lib/settings/`)
 
@@ -527,7 +527,7 @@ See `Dockerfile` in the root folder for containerization.
 
 ---
 
-## 📊 Project Statistics
+##  Project Statistics
 
 **Main Python Modules:**
 - Models: 1 primary (GitHub) + Database Models
@@ -538,7 +538,7 @@ See `Dockerfile` in the root folder for containerization.
 
 ---
 
-## 🔗 Related Documentation
+##  Related Documentation
 
 - [Main Architecture](../ARCHITECTURE.md)
 - [Frontend Architecture](../frontend/FRONTEND-ARCHITECTURE.md)
@@ -547,7 +547,7 @@ See `Dockerfile` in the root folder for containerization.
 
 ---
 
-## 📝 Notes
+##  Notes
 
 - Backend uses **FastAPI** as the main framework
 - Database operations are handled via **SQLAlchemy ORM** with **Neon Postgres**

@@ -1,10 +1,10 @@
-# 🔗 LinkedIn Automation Service (MVP)
+#  LinkedIn Automation Service (MVP)
 
 This service automates sharing your blog posts directly to LinkedIn whenever you submit a new post. It only shares the post **ingress** and a link back to your **homepage**, encouraging readers to read the full content.
 
 ---
 
-## 📐 Architecture Overview
+##  Architecture Overview
 
 We have implemented two options to provide maximum flexibility:
 
@@ -18,7 +18,7 @@ We have implemented two options to provide maximum flexibility:
 
 ---
 
-## 🛠️ Configuration & Credentials
+## ️ Configuration & Credentials
 
 To authenticate with the LinkedIn API, you need:
 
@@ -42,7 +42,7 @@ HOMEPAGE_URL=https://krigjo25.no
 
 ---
 
-## 🚀 Usage Guide
+##  Usage Guide
 
 ### Using Option A: GitHub Actions Pipeline
 To automate via GitHub Actions, add a file like `.github/workflows/linkedin-share.yml` in your repository:
@@ -104,5 +104,5 @@ To trigger sharing directly, send a request to the FastAPI application:
 
 ---
 
-## 🎨 Diagram Reference
+##  Diagram Reference
 A corresponding diagram illustrating this system's architecture has been saved to [linkedin_automation.drawio](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/services/linkedin/docs/linkedin_automation.drawio) and can be opened directly inside Draw.io.

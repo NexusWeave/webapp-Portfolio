@@ -1,10 +1,10 @@
-# 🧪 Backend Pytest Documentation Guide
+#  Backend Pytest Documentation Guide
 
 This document outlines the testing strategy, setup instructions, and code execution patterns for the FastAPI backend, along with concrete examples for each of our primary test targets.
 
 ---
 
-## 🚀 Setup & Execution
+##  Setup & Execution
 
 ### 1. Prerequisites
 From the `backend/` directory, ensure your virtual environment is active and all test dependencies are installed:
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🗂️ Database Fixtures (`conftest.py`)
+## ️ Database Fixtures (`conftest.py`)
 
 All database-reliant tests run against an isolated **SQLite in-memory or file-based database** (via `aiosqlite`) to keep tests fast and side-effect free:
 ```python
@@ -72,7 +72,7 @@ async def db_session(engine, setup_database):
 
 ---
 
-## 📝 Test Target Examples
+##  Test Target Examples
 
 Here is a testing template containing code examples for each of the 6 recommended test suites.
 

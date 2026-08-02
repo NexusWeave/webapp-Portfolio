@@ -44,13 +44,13 @@ npm run test:sass
 #### SASS Test Output Example:
 ```text
 Checking for SASS dependency warnings...
-⚠️  SASS Compilation Error: Can't find stylesheet to import.
-💡 This error is likely due to missing context during standalone compilation of a partial.
-✅ PASS: No dependency warnings detected (ignoring build errors for warning check).
+️  SASS Compilation Error: Can't find stylesheet to import.
+ This error is likely due to missing context during standalone compilation of a partial.
+ PASS: No dependency warnings detected (ignoring build errors for warning check).
 
 Checking 22 Sass files for syntax and namespace validity...
-✅ sass/pages/_dev.sass
-⚠️ sass/assets/_images.sass (Partial: Undefined mixin.)
+ sass/pages/_dev.sass
+️ sass/assets/_images.sass (Partial: Undefined mixin.)
 ...
 All Sass files passed syntax and namespace validation.
 ```

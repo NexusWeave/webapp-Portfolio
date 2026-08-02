@@ -1,5 +1,13 @@
+# Allow all bots and crawlers to access the public site
 User-agent: *
+Allow: /
+
+# Restrict access to sensitive internal and admin paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /.git/
+
+# Respectful crawl delay to protect server performance
+Crawl-delay: 30
+
 Sitemap: https://krigjo25.no/sitemap.xml
-Disallow: /admin/   # Disallow crawling the entire admin directory
-
-
