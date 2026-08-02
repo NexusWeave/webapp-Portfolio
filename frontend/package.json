@@ -30,7 +30,7 @@
     "lumina-sass": "~3.3.0",
     "nuxt": "~4.5.0",
     "nuxt-gtag": "~4.1.0",
-    "tinacms": "~3.6.0",
+    "tinacms": "~3.11.0",
     "typescript": "~5.9.0",
     "vue": "~3.5.0",
     "vue-router": "~5.1.0"
