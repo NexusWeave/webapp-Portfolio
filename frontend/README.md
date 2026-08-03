@@ -60,6 +60,9 @@ All Sass files passed syntax and namespace validation.
 | Changelog | [../CHANGELOG.md](../CHANGELOG.md) |
 
 ## Getting Started
+
+Use [Node.js 24 LTS](https://nodejs.org/) for local development.
+
 Install dependencies:
 
 ```bash
