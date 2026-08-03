@@ -26,8 +26,5 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install Vue TypeScript Compiler
-        run: npm install -D vue-tsc
-
       - name: Run Vue TypeScript Type Check
-        run: npx vue-tsc --noEmit
+        run: npx --package=vue-tsc --package=typescript vue-tsc --noEmit
