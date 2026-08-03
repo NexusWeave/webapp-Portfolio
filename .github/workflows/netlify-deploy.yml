@@ -15,6 +15,10 @@ jobs:
   build-and-deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -22,17 +26,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
           cache: 'npm'
           cache-dependency-path: frontend/package.json
 
       - name: Install dependencies
-        run: cd frontend && npm ci
+        run: npm ci && npm install netlify-cli 
 
       - name: Build and Deploy
-        run: |
-          cd frontend
-          npm run deploy
+        run: npm run build && npm run generate && netlify deploy --dir=.output/public --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'
         env:
           # Netlify
           NETLIFY_SITE_ID:  ${{ secrets.NETLIFY_ID }}

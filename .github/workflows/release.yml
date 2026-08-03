@@ -13,6 +13,9 @@ jobs:
     name: Semantic Release
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - name: Checkout Source Code
@@ -21,17 +24,13 @@ jobs:
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
 
-      - name: Install Frontend Dependencies
-        run: |
-          cd frontend
-          npm ci
+      - name: Install Dependencies
+        run: npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git
 
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          cd frontend
-          npx semantic-release
+        run:  npx semantic-release
