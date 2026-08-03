@@ -27,7 +27,7 @@ jobs:
           node-version: '24'
 
       - name: Install Dependencies
-        run: npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git
+        run: npm install -D semantic-release @semantic-release/changelog @semantic-release/git
 
       - name: Run Semantic Release
         env:
