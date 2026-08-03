@@ -2,13 +2,13 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are currently being supported with security updates.
+The latest versions of both application components are currently supported with security updates.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 2.0.x   | :white_check_mark: |
-| 1.x.x   | :x:                |
-| < 1.0   | :x:                |
+| Component | Version | Supported          |
+| --------- | ------- | ------------------ |
+| Frontend  | v2.0.x  | :white_check_mark: |
+| Backend   | v1.1.x  | :white_check_mark: |
+| Older versions | All | :x:            |
 
 ## Reporting a Vulnerability
 
@@ -21,13 +21,6 @@ Please report security issues directly by emailing: **[krigjo25@outlook.com](mai
 - **Updates:** We will keep you updated on progress as we investigate and develop a fix.
 - **Resolution:** Once confirmed and resolved, security fixes will be released in the latest supported version line.
 
-### What to Include in Your Report
-To help us investigate and address the issue efficiently, please include:
-- A brief description of the vulnerability.
-- Clear steps to reproduce the issue (proof of concept, code snippets, or screenshots).
-- Any potential impact associated with the vulnerability.
-
----
 
 ## Bot & Automated Scanner Policy
 
