@@ -21,7 +21,7 @@ This repository contains a full-stack biography and project showcase application
 
 ### Prerequisites
 - [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
-- [Node.js](https://nodejs.org/) (LTS recommended)
+- [Node.js 24 LTS](https://nodejs.org/) (required)
 - [Python 3.14+](https://www.python.org/)
 
 ### Using Docker (Recommended)
