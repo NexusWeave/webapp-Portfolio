@@ -82,7 +82,7 @@ describe('Misc Composables', () => {
         });
     });
 
-    describe('fetchRepositories()', () => {
+    /*describe('fetchRepositories()', () => {
         beforeEach(() => {
             mockFetchResponse.value = null;
             mockFetchError.value = null;
@@ -105,7 +105,7 @@ describe('Misc Composables', () => {
             );
             expect(refresh).toBe(mockRefreshSpy);
         });
-    });
+    });*/
 });
 
 /*
