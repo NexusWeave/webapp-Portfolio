@@ -10,14 +10,12 @@ The frontend provides a fast, accessible, and content-driven interface. It displ
 | [SASS](https://sass-lang.com) | Structured, maintainable styling | Variables, mixins, and modular partials prevent duplicated CSS. This makes changing the design faster and less error-prone. |
 
 ## Available Commands
-
 | Command | Description | Source |
 |---|---|---|
 | `npm run dev` | Start development server (TinaCMS + Nuxt) | `package.json` |
 | `npm run build` | Build for production | `package.json` |
 | `npm run generate` | Generate static site | `package.json` |
 | `npm run serve` | Build and preview production build | `package.json` |
-| `npm run deploy` | Build and deploy to Netlify | `package.json` |
 | `npm run clean` | Clean up build artifacts and cache | `package.json` |
 | `npm run test` | Run all frontend tests (Vitest + SASS) | `package.json` |
 
@@ -58,13 +56,10 @@ All Sass files passed syntax and namespace validation.
 ## Documentation
 | Resource | Path |
 |---|---|
-| Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
-| Context diagram | [docs/context-diagram.md](docs/context-diagram.md) |
-| Changelog | [docs/logs/CHANGELOG.md](docs/logs/CHANGELOG.md) |
-| Testing Strategy | [tests/recommended-tests.md](tests/recommended-tests.md) |
+| Architecture | [docs/architecture.md](docs/architecture.md) |
+| Changelog | [../CHANGELOG.md](../CHANGELOG.md) |
 
 ## Getting Started
-
 Install dependencies:
 
 ```bash
