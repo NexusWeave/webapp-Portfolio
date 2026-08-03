@@ -6,7 +6,7 @@ const workFlow = ["tinacms", "sass", "agile", "git", "decapcms", "cms"]
 const internal = ["webapp", "nexus", "vupy", "console", "codealong", "fiveem", "cli", "py"]
 const javascript = ["vue", "nuxt", "typescript", "react", "javascript", "js", "ts"]
 const rationalDB = ["mssql", "mysql", "sqlite", "postgresql", "mariadb", "sql", "database"]
-const python = ["python", "flask", "django", "py-cord", "pandas", "numpy", "matplotlib", "reflex", "fastapi", "jupyter", "cython", "py"]
+const python = ["python", "flask", "django", "py-cord", "pandas", "numpy", "matplotlib", "reflex", "fastapi", "jupyter", "cython", "py", "pytest"]
 const misc = ["batchfile", "dockerfile", "fortran", "hack", "jinja", "makefile", "meson", "go", "lua", "php", "powershell", "roff", "scratch", "shell", "smarty"]
 
 
