@@ -103,6 +103,3 @@ To trigger sharing directly, send a request to the FastAPI application:
   ```
 
 ---
-
-##  Diagram Reference
-A corresponding diagram illustrating this system's architecture has been saved to [linkedin_automation.drawio](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/backend/lib/services/linkedin/docs/linkedin_automation.drawio) and can be opened directly inside Draw.io.

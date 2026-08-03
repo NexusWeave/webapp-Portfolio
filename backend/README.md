@@ -68,3 +68,4 @@ The report will be available in `backend/htmlcov/index.html`.
 - GitHub service ER diagram: [lib/services/github/docs/github-erDiagram.md](./lib/services/github/docs/github-erDiagram.md)
 - Announcements class diagram: [lib/services/announcements/docs/announcements-classErdiagram.md](./lib/services/announcements/docs/announcements-classErdiagram.md)
 - Announcements sequence diagram: [lib/services/announcements/docs/announcements-sequenceDiagram.md](./lib/services/announcements/docs/announcements-sequenceDiagram.md)
+- LinkedIn automation service diagram: [lib/services/linkedin/docs/linkedin_automation.drawio](./lib/services/linkedin/docs/linkedin_automation.drawio)
