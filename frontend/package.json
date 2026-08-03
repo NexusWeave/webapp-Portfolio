@@ -56,11 +56,15 @@
   "config": {
     "legacy-peer-deps": true
   },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
+  "plugins": [
+      [
+        "semantic-release-ignore",
+        {
+          "paths": [
+            "frontend/**"
+          ]
+        }
+      ],
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       [
@@ -86,8 +90,7 @@
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
       ]
-    ]
-  },
+  ],
   "allowScripts": {
     "better-sqlite3": true
   }
