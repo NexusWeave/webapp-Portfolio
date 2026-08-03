@@ -33,4 +33,4 @@ jobs:
         run: npx nuxi prepare
 
       - name: Run Vue TypeScript Type Check
-        run: npx nuxi typecheck
+        run: npx --package=vue-tsc@latest --package=typescript@latest vue-tsc --noEmit
