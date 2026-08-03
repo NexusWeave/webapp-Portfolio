@@ -31,9 +31,22 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install Release Plugins (Temporary)
+      - name: Check for Frontend Changes
+        id: frontend-changes
+        shell: bash
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
-          npm install --no-save \
+          if git diff --quiet "${HEAD_SHA}^" "${HEAD_SHA}" -- .; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install Release Plugins (Temporary)
+        if: steps.frontend-changes.outputs.changed == 'true'
+        run: |
+          npm install --no-save --package-lock=false \
             semantic-release \
             @semantic-release/changelog \
             @semantic-release/git \
@@ -41,6 +54,53 @@ jobs:
             @semantic-release/github
 
       - name: Run Semantic Release
+        if: steps.frontend-changes.outputs.changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+
+  backend-release:
+    name: Backend Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Check for Backend Changes
+        id: backend-changes
+        shell: bash
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          if git diff --quiet "${HEAD_SHA}^" "${HEAD_SHA}" -- backend; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Python
+        if: steps.backend-changes.outputs.changed == 'true'
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install Commitizen
+        if: steps.backend-changes.outputs.changed == 'true'
+        run: python -m pip install commitizen
+
+      - name: Bump Backend Version
+        if: steps.backend-changes.outputs.changed == 'true'
+        working-directory: backend
+        run: cz bump --yes
+
+      - name: Push Backend Release
+        if: steps.backend-changes.outputs.changed == 'true'
+        run: git push origin main --follow-tags
