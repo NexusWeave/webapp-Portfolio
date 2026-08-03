@@ -13,6 +13,9 @@ jobs:
   test-frontend:
     name: Run Unit Tests (Frontend)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,14 +23,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: Install dependencies
-        run: |
-          cd frontend
-          npm ci
+        run: npm ci
 
       - name: Run Tests
-        run: |
-          cd frontend
-          npm run test
+        run: npm run test
