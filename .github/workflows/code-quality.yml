@@ -33,4 +33,4 @@ jobs:
         run: npx nuxi prepare
 
       - name: Run Vue TypeScript Type Check
-        run: npx nuxi type-check
+        run: npx nuxi typecheck
