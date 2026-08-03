@@ -36,6 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx --package=semantic-release \
+              --package=semantic-release-ignore \
               --package=@semantic-release/changelog \
               --package=@semantic-release/git \
               --package=@semantic-release/npm \
