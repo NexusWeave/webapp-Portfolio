@@ -1,6 +1,6 @@
 {
   "name": "webapp-portfolio",
-  "version": "2.0.3",
+  "version": "1.35.2",
   "type": "module",
   "private": true,
   "scripts": {
