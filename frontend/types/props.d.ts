@@ -9,6 +9,7 @@ interface RepositoryBase
     owner: string;
     owner_url?: string;
     description: string;
+    media?: FigureItem[];
     flags?: Record<string, boolean>;
     collaborators?: { name: string; profile_url: string; }[];
     languages?: GithubRepoLanguage[];
