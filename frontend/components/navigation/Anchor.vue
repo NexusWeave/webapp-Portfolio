@@ -1,21 +1,20 @@
 <template>
     <a
         v-if="data"
-        :class="['inline-items-justify-center', ...cls]"
         :href="data.href"
         :aria-label="data.label"
         :aria-disabled="!!isDisabled()"
         :download="isDownload() ? '' : null"
         :data-external-link="!!isExternal()"
         :target="isExternal() ? '_blank' : '_self'"
+        :class="['inline-items-justify-center', ...cls]"
         :rel="isExternal() ? 'noopener noreferrer' : undefined"
     >
-        <span v-if="isImage()"> <MediaFigure :data="media" :cls="cls" /> </span>
-        <span v-else-if="isIcon()" class="icon inline-items-justify-center">
-            <template v-if="data.label"> {{ data.label }} </template>
-            <MediaIcon :cls="data.type"/>
+        <span>
+            <template v-if="isImage()"> <MediaFigure :data="media" :cls="cls" /> </template>
+            <template v-if="!isImage() && isIcon()"> <MediaIcon :cls="data.type"/> </template>
+            <template v-else> {{ data.label }} </template>
         </span>
-        <span v-else> {{ data.label }} </span>
     </a>
 </template>
 
