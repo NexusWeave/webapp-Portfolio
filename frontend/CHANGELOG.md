@@ -1,3 +1,11 @@
+## [1.35.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.35.3...v1.35.4) (2026-08-07)
+
+
+### Bug Fixes
+
+* **card:** 🐛 Resolving minor issues such as date, technology logos. ([f69def5](https://github.com/NexusWeave/webapp-Portfolio/commit/f69def599e89e94d5a7a766806c184873343f8c6))
+* **composable:** 🐛 Filter languages w/o icon & resolving date issue. ([4600813](https://github.com/NexusWeave/webapp-Portfolio/commit/4600813e22317abc720afdd7f4f7087693be5a4c))
+
 ## [1.35.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.35.1...v1.35.2) (2026-08-03)
 
 
