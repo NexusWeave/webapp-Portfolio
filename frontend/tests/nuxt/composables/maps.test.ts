@@ -96,7 +96,7 @@ describe('Test maps', () => {
                     owner: "test-owner",
                     owner_url: "https://github.com/test-owner",
                     description: "A description of the test repository",
-                    date: undefined,
+                    date: 'tir. 30. juni 2026',
                     flags: {
                         isBacked: true
                     },
