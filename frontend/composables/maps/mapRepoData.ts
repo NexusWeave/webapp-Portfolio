@@ -17,41 +17,37 @@ export function mapRepoData(data: RepositoryData): GithubData[]
         });
 
         const media = languages.map((lang: any) => {
-
-            const rawLabel = lang.label || lang.language || "";
-            const label = String(rawLabel).toLowerCase();
-            const hasIcon = validIcons.includes(label);
-            const src = hasIcon ? `/media/tech-lang-icons/${label}.svg` : "";
             
-            return { 
-                type: 'image/svg+xml', 
-                caption: ' ', 
-                alt: ` Visual Representation of ${label}`, 
-                src: src,
-                srcset: src
+            const rawLabel = lang.label || lang.language || "";
+            const label = String(rawLabel).toLowerCase(); 
+
+            if (validIcons.includes(label))
+            {
+                const src =`/media/tech-lang-icons/${label}.svg`;
+                return {  src: src, srcset: src, caption: ' ', type: 'image/svg+xml',  alt: ` Visual Representation of ${label}` }
             }
         });
         
         const date = setDateFormat({date: item.created_at, updated: null});
         
-        const cleanedLabel = item.label
+        const cleanLabel = item.label
             .split(/[-_]/)
             .filter((part: string) => !forbiddenWords.includes(part.toLowerCase()))
             .join(' ');
 
         return {
-            media: media,
             owner: item.owner,
             id: String(item.id),
+            date : date?.date,
             languages: languages,
             flags: item.flags || {},
             anchor: item.anchor || [],
             owner_url: item.owner_url,
             description: item.description,
-            date : date.current,
-            label: cleanedLabel || item.label,
+            label: cleanLabel || item.label,
             collaborators: item.collaborators || [],
             contribution_ratio: item.contribution_ratio,
+            media: media.filter(item => item !== undefined)
         }
     });
 }
