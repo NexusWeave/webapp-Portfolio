@@ -3,7 +3,7 @@ import type { FigureItem } from '~/types/media';
 interface BaseItem { id?: string; label?: string; cls?: string[]; type?: string[]; }
 
 export interface RouterItem extends BaseItem { path: string; order?: number; }
-export interface AnchorItem extends BaseItem { href: string; media?: FigureItem; isDownload?: boolean; isDisabled?: boolean;}
+export interface AnchorItem extends BaseItem { href: string; media?: FigureItem; isDownload?: boolean;isDisabled?: boolean; label?:string}
 export interface ButtonItem extends BaseItem { disabled?: boolean; anchor?: AnchorItem; action?: () =>  string |number | void; type?: "submit" | "reset" | string[]; }
 
 export interface ButtonProps { cls?: string[]; data: ButtonItem; }
