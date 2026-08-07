@@ -1,36 +1,43 @@
 <template>
     <section class="business-card grid-layout">
         <header class="card-header flex-wrap-row-justify-between">
-            <MediaFigure v-if="hasLanguages && data?.media" :data="data.media[num]" :cls="['tech-figure', 'tech-img']" />
-            <span class="date-container"> <b> <time v-if="data?.date?.date" :datetime="data.date.date"> {{ data.date.date }} </time> </b> </span>
+            <MediaFigure v-if="hasLanguages && repo?.media" :data="repo.media[num]" :cls="['tech-figure', 'tech-img']" />
+            <span v-if="repo?.date?.date" class="date-container" ><b><time :datetime="repo.date.date"> {{ repo.date.date }} </time></b></span>
         </header>
 
         <main class="card-content">
             <section class="card-content flex-col flex-center">
-                <h3> {{ data?.label || 'Ukjent' }} </h3>
+                <h2> {{ repo?.label || 'Ukjent' }} </h2>
                 <p class="description">{{ truncatedDescription }}</p>
             </section>
 
-            <nav class="card-nav flex-wrap-row-content-center-justify-evenly">
-                <NavigationNavMenu v-if="hasAnchor && data?.anchor" :cls="['portofolio-nav']" :data="data.anchor" />
-            </nav>
+            <section v-if="hasAnchor && repo?.anchor?.[0]" class="card-nav flex-wrap-row-content-center-justify-evenly">
+                <NavigationAnchor :cls="['portofolio-nav']" :data="repo.anchor[0]" />
+            </section>
         </main>
 
-        <footer v-if="hasTechnology && data?.media" class="card-footer">
+        <footer v-if="repo?.media" class="card-footer">
             <section v-if="isCollaboration" class="credits flex-wrap-row-content-center-justify-evenly">
-                <p v-if="displayOwner.name && displayOwner.url" class="collab-name">
-                    <span class="flex-wrap-row flex-center">Eier: <NavigationAnchor :data="{ href: displayOwner.url, label: `@${displayOwner.name}` }" /></span>
+                <p v-if="displayOwner.label && displayOwner.href" class="collab-name">
+                    Eier - <NavigationAnchor :data="displayOwner" />
                 </p>
-                <p v-if="contributors?.length > 0" class="collab-name">
-                    <span class="flex-wrap-row flex-center">Bidragsytere: <template v-for="(part, i) in contributorParts" :key="i"><NavigationAnchor v-if="part.type === 'collab'" :data="{ href: part.data.profile_url, label: `@${part.data.name}` }" /><template v-else>{{ part.value }}</template></template></span>
+                <br>
+                <p v-if="contributors?.length > 0" class="collab-name flex-wrap-row flex-center">
+                    Bidragsytere - 
+                    <template v-for="(part, i) in contributor" :key="i">
+                        <NavigationAnchor v-if="part.type === 'collab'" :data="{ label: `@${part.data.name}`, href: part.data.profile_url }" />
+                        <template v-else>{{ part.value }}</template>
+                    </template>
                 </p>
             </section>
-            <h4>Andre teknologi(er) : </h4>
-            <section class="flex-wrap-row-content-center-justify-evenly">
-                <template v-for="(media, i) in data.media" :key="i">
-                    <MediaFigure v-if="i > num" :data="media" :cls="['tech-figure', 'tech-img']" />
-                </template>
-            </section>
+            <template v-if="repo.languages?.length > 1">
+                <h3>Andre teknologi(er)</h3>
+                <section class="flex-wrap-row-content-center-justify-evenly">
+                    <template v-for="(media, i) in repo.media.slice(1, 6)" :key="i">
+                        <MediaFigure :data="media" :cls="['tech-figure', 'tech-img']" />
+                    </template>
+                </section>
+            </template>
         </footer>
     </section>
 </template>
@@ -42,72 +49,62 @@
 
     //  --- Props Definition Logic
     const props = defineProps<RepoProps>();
-    const data = computed(() => props.data);
+
+    const data = props.data;
+    const repo = computed(() => data);
 
     //  --- Flags & Computed Logic
-    const num = 0;
-    const hasAnchor = computed(() => (props.data?.anchor?.length || 0) > num);
-    const hasLanguages = computed(() => (props.data?.languages?.length || 0) > num);
-    const hasTechnology = computed(() => (props.data?.languages?.length || 0) > 1);
+    const num:number = 0;
+    const hasAnchor = computed(() => (data.anchor?.length || 0) > num);
+    const hasLanguages = computed(() => (data.languages?.length || 0) > num);
 
     const truncatedDescription = computed(() => {
-        const description = data.value?.description || '';
-        const limit = 81; // Basert på eksempelet ditt
+        const limit = 68;
+        const description = data?.description || '';
         return description.length > limit ? description.substring(0, limit) + '...' : description;
     });
 
-    const isCollaboration = computed(() => {
-        if (!props.data) return false;
-        // Bruk 'collaborator' flagget fra backenden, som er true hvis det er flere bidragsytere eller eid av andre
-        return !!props.data.flags?.collaborator;
-    });
-
-    const displayOwner = computed(() => {
-        return { name: data.value?.owner, url: data.value?.owner_url };
-    });
+    //  --- Collaboration logic
+    const maxCollaborators: number = 2;
+    const collaborators = data.collaborators;
+    const isCollaboration = computed(() => { if (!data) return false; return !!data.flags?.collaborator; });
+    const displayOwner = computed(() => { return { label: `@${data?.owner}`, href: `${data?.owner_url}` };});
 
     const contributors = computed(() => {
-        if (!props.data?.collaborators) return [];
-        const ownerName = displayOwner.value.name?.toLowerCase() || '';
+        if (!collaborators) return [];
+        const ownerName = data.owner?.toLowerCase() || '';
         
-        // Filtrer ut den viste eieren og boter. Inkluderer 'krigjo25' hvis han ikke er eier.
-        const filtered = props.data.collaborators.filter(c => {
-            const name = c?.name?.toLowerCase() || '';
+        // Filtrer ut den viste eieren og boter
+        const filtered = collaborators.filter(collab => {
+            const name = collab?.name?.toLowerCase() || '';
             return name !== ownerName && !name.includes('[bot]');
         });
-
-        return filtered.slice(0, 5); 
+        return filtered.slice(0, maxCollaborators); 
     });
 
     const hasMoreContributors = computed(() => {
-        const ownerName = displayOwner.value.name?.toLowerCase() || '';
-        const filtered = props.data.collaborators?.filter(c => {
-            const name = c?.name?.toLowerCase() || '';
+        const ownerName = displayOwner.value.label?.toLowerCase() || '';
+        const filtered = collaborators?.filter(collab => {
+            const name = collab?.name?.toLowerCase() || '';
             return name !== ownerName && !name.includes('[bot]');
         }) || [];
-        return filtered.length > 5;
+        return filtered.length > maxCollaborators;
     });
 
-    const contributorParts = computed(() => {
-        const parts: any[] = [];
+    const contributor = computed(() => {
+        const collabs: any[] = [];
         const items = contributors.value;
         items.forEach((collab, i) => {
-            parts.push({ type: 'collab', data: collab });
-            if (i < items.length - 2) {
-                parts.push({ type: 'separator', value: ', ' });
-            } else if (i === items.length - 2) {
-                parts.push({ type: 'separator', value: ' & ' });
-            }
+            collabs.push({ type: 'collab', data: collab });
+            if (i < items.length - 2) collabs.push({ type: 'separator', value: ', ' }); 
+            else if (i === items.length - 2) collabs.push({ type: 'separator', value: ' & ' });
         });
 
-        if (hasMoreContributors.value) {
-            parts.push({ type: 'separator', value: '...' });
-        }
-
-        return parts;
+        if (hasMoreContributors.value) collabs.push({ type: 'separator', value: '...' });
+        return collabs;
     });
 
     //  --- Debugging Logic
-    //console.log("BusinessCard props:", props.data);
+    console.log("BusinessCard props:", props.data);
     //console.error("BusinessCard data:", data.value);
 </script>
