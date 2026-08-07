@@ -78,7 +78,8 @@
             "portfolio",
             "personal",
             "dev-profile",
-            "index"
+            "index",
+            "card"
         ],
     },
 }
