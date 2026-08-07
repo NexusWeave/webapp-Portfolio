@@ -57,6 +57,8 @@
                 @include utils.margin($block: 0.25rem)
 
             grid-area: content
+            min-block-size: 0
+            max-block-size: 100%
             @include utils.padding(0)
 
         .card-nav
@@ -86,6 +88,11 @@
     section
         @include utils.margin($block: 0 0rem)
 
+    header, main, footer
+        inline-size: 100%
+
+    h2, h3
+        font-weight: bold
     .card-content
         h3
             span.icon
@@ -98,6 +105,9 @@
             font-size: 2rem
             @include utils.padding(0)
 
+        .description
+            inline-size: 18rem
+
     inline-size: 100%
     max-block-size: 29rem
     max-inline-size: 23rem
@@ -106,7 +116,7 @@
     
     .credits
         .collab-name
-            span
+            p
                 a
                     gap: 0.2rem
                     @include utils.margin(0)
@@ -115,6 +125,9 @@
                         @include utils.margin(0)
                         @include mix.font($size: 1.1rem)
 
+            inline-size: 100%
+            display: inline-block
+            
             @include utils.margin($block: 0.1rem, $inline: auto)
 
         @include mix.font($size: 0.9rem)
