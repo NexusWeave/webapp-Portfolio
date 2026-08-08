@@ -1,3 +1,10 @@
+## [1.36.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.36.0...v1.36.1) (2026-08-08)
+
+
+### Bug Fixes
+
+* **timeline:** 🐛 Improving RD experience for timeline cards, by  updating  classes. ([fb52c42](https://github.com/NexusWeave/webapp-Portfolio/commit/fb52c422174e2ec7ca22f067eff1fe2bcc3d3a34))
+
 # [1.36.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.35.4...v1.36.0) (2026-08-08)
 
 
