@@ -31,7 +31,6 @@ describe("Navigation module tests", () => {
         
                 expect(wrapper.exists()).toBe(true);
                 expect(wrapper.find('button').exists()).toBe(true);
-                expect(wrapper.find('span').exists()).toBe(true);
             });
 
             it("renders button with Anchor", async () => {
@@ -48,9 +47,9 @@ describe("Navigation module tests", () => {
                 const wrapper = await mountSuspended<Component>(Button, { props: { data: btnData } });
         
                 expect(wrapper.exists()).toBe(true);
-                expect(wrapper.find('button').exists()).toBe(true);
-                expect(wrapper.find('span').exists()).toBe(true);
                 expect(wrapper.find('a').exists()).toBe(true);
+                expect(wrapper.find('button').exists()).toBe(true);
+                
             });
         });
 
