@@ -9,5 +9,5 @@ export interface FigureItem
     width? : number | string;
     height? : number | string;
 }
-export interface iconProps { cls?: string[]; }
+export interface iconProps { cls?: string[]; label?: string; }
 export interface FigureProps { cls?   : string[]; data    : FigureItem; }

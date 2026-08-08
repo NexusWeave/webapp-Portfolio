@@ -23,9 +23,7 @@ import { useCustomSeo } from '~/composables/useCustomSeo';
 import type { SeoOptions } from '~/types/utils';
 
 // Ved å IKKE angi 'label' i definePageMeta, ekskluderes siden automatisk fra hovedmenyen (useNavigation)
-definePageMeta({
-  order: 99
-});
+definePageMeta({ order: 99 });
 
 const { data: page } = await useAsyncData('security-policy', () =>
   queryCollection('content').path('/security-policy').first()
