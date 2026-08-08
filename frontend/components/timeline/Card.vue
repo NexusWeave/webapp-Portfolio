@@ -42,11 +42,12 @@
                         
                         <div class="subject-date ">
                             <template v-if="sub.date.created && sub.date.end">
-                                <DatesYear v-if="sub.date.created" :data="sub.date.created.date" :isVisible="!!props.isVisible" />
+
+                                <DatesYear :data="sub.date.created.date" :isVisible="!!props.isVisible" />
                                 <span> - </span>
-                                <DatesYear v-if="sub.date.end" :data="sub.date.end.date" :isVisible="!!props.isVisible" />
+                                <DatesYear :data="sub.date.end.date" :isVisible="!!props.isVisible" />
                             </template>
-                            <span v-else class="ongoing">Pågående</span>
+                            <span v-else>Pågående</span>
                         </div>
 
 
