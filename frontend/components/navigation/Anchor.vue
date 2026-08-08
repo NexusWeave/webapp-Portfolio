@@ -10,11 +10,9 @@
         :class="['inline-items-justify-center', ...cls]"
         :rel="isExternal() ? 'noopener noreferrer' : undefined"
     >
-        <span>
-            <template v-if="isImage()"> <MediaFigure :data="media" :cls="cls" /> </template>
-            <template v-if="!isImage() && isIcon()"> <MediaIcon :cls="data.type"/> </template>
-            <template v-else> {{ data.label }} </template>
-        </span>
+        <template v-if="isImage()"> <MediaFigure :data="media" :cls="cls" /> </template>
+        <template v-if="!isImage() && isIcon()"> <MediaIcon :cls="data.type" :label="data.label"/> </template>
+        <template v-else> {{ data.label }} </template>
     </a>
 </template>
 
