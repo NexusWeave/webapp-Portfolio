@@ -1,23 +1,25 @@
 <template>
     <h2> Informasjons side om trenings utstyr</h2>
-    <section>
+    <section class="eq-info">
         <details>
-            <summary>Pivot Olympisk Tricep stang</summary>
+            <summary>{{ tool }}</summary>
             <ul>
                 <li>
-                    Vekt : 9KG
+                    <span>Vekt uten vekter : </span><span>{{ equipmentInfo.weight }}  KG</span>
                 </li>
                 <li>
-                    <b>Maxvekt :</b> 100 KG per side  (total vekt : max 200 KG)
+                    <span>Maxvekt : </span>
+                    <span>{{ equipmentInfo.max }}</span>
                 </li>
                 <li>
-                    Notes : Dette produktet kan brukes for alle medlemmer hos {{ gym }} i {{ street }}.
+                    <span>Notes :</span> <span>{{ equipmentInfo.notes }}</span>
                 </li>
             </ul>
-            Eier Informasjon :
-            Kristoffer Gjøsund
-            krigjo25@gmail.com
-            46652938
+            <details>
+                <summary>Eier Informasjon</summary>
+                <p> {{ contact.name }} {{ contact.phone }} {{ contact.email }}</p>
+            </details>
+            
         </details>
         
     </section>
@@ -35,5 +37,21 @@
     useCustomSeo(seoData);
 
     const gym = 'EVO';
-    const street = "Grunderløkka"
+    const street = "Grunderløkka";
+    const tool = "Pivot Olympisk Tricep stang";
+
+    const  equipmentInfo = computed(() => {
+        const data =  {
+            weight: 9,
+            max: '100 KG per side  (total vekt : max 200 KG)',
+            notes: `${tool}en er tilgjengelig for alle medlemmene hos ${gym} i ${street}.`}
+
+        return data
+    });
+
+    const contact = {
+        phone: '',//'46 65 29 38',
+        name : 'Kristoffer Gjøsund',
+        email: '' //'krigjo25@gmail.com'
+    }
 </script>
