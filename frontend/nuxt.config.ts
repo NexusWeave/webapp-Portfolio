@@ -21,7 +21,6 @@ export default defineNuxtConfig({
   nitro: { preset: 'static', prerender: { crawlLinks: true, routes: ['/sitemap.xml', '/', '/security-policy', '/dev', '/personal', '/logs', '/media/docs/CV-Kristoffer-Gjøsund.pdf'], ignore: [ '/logs/records/.gitkeep', '**/.gitkeep', '**/.DS_Store'] } },
 
   modules: [
-    '@nuxt/ui',
     'nuxt-gtag',
     '@nuxt/fonts',
     '@nuxt/image',
