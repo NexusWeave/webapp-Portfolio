@@ -79,7 +79,8 @@
             "personal",
             "dev-profile",
             "index",
-            "card"
+            "card",
+            "timeline"
         ],
     },
 }
