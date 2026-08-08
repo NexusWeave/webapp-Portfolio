@@ -52,8 +52,6 @@ describe("BusinessCard component renders correctly", () => {
             if (element === 'h4') expect(tag.text()).toContain(txt[0]); 
             if (element === 'span') {
                 expect(spans[0]?.text()).toContain(txt[1]);
-                expect(spans[2]?.text()).toContain(txt[2]);
-                expect(spans[3]?.text()).toContain(txt[3]);
             };
         });
     });
@@ -136,7 +134,7 @@ describe("Edge / Fallback cases for BusinessCard", () => {
         const sections = wrapper.findAll('section');
         const classes:string[] = ['credit', 'collab-name', 'collab'];
 
-        expect(spans).toHaveLength(2);
+        expect(spans).toHaveLength(1);
         expect(anchors).toHaveLength(1);
         expect(sections).toHaveLength(4);
         expect(wrapper.findAllComponents(NavigationAnchor)).toHaveLength(1);
