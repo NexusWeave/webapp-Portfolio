@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.35.4...v1.36.0) (2026-08-08)
+
+
+### Features
+
+* **equipments-info:** add page for equipment info for workout equipments. ([5c0cf50](https://github.com/NexusWeave/webapp-Portfolio/commit/5c0cf50005db002d2df061ed5ec035de655d7940))
+
 ## [1.35.4](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.35.3...v1.35.4) (2026-08-07)
 
 
