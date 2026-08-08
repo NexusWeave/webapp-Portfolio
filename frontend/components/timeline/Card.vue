@@ -29,30 +29,34 @@
                 </Suspense>
             </section>
 
-            <section class="timeline-subjects-list flex-col">
-                <div v-for="sub, i in data.subjects" :key="i" 
-                     :class="['subject-item', { 'subject-expandable': !!sub.body, 'subject-expanded': expandedSubjects.includes(i) }]">
+            <section class="timeline-sub-list">
+                <div v-for="sub, i in data.subjects" :key="i" :class="['subject-item', 'flex-wrap-row-justify-content-evenly', 
+                { 'subject-expandable': !!sub.body, 'subject-expanded': expandedSubjects.includes(i) }]">
+
                     
-                    <div class="subject-grid-container" @click="sub.body ? toggleSubject(i) : null">
-                        <div class="subject-date flex-col">
-                            <template v-if="sub.date">
-                                <DatesYear v-if="sub.date.created" :data="sub.date.created.current" :isVisible="!!props.isVisible" />
-                                <span class="date-dash"> - </span>
-                                <DatesYear v-if="sub.date.end" :data="sub.date.end.current" :isVisible="!!props.isVisible" />
-                                <span v-else class="ongoing">Pågående</span>
-                            </template>
-                        </div>
+
+                    <div class="flex-wrap-row-justify-between" @click="sub.body ? toggleSubject(i) : null">
+                        <span v-if="sub.body" class="expand-icon inline-items-justify-center">
+                            {{ expandedSubjects.includes(i) ? '−' : '+' }}
+                        </span>
                         
+                        <div class="subject-date ">
+                            <template v-if="sub.date.created && sub.date.end">
+                                <DatesYear v-if="sub.date.created" :data="sub.date.created.date" :isVisible="!!props.isVisible" />
+                                <span> - </span>
+                                <DatesYear v-if="sub.date.end" :data="sub.date.end.date" :isVisible="!!props.isVisible" />
+                            </template>
+                            <span v-else class="ongoing">Pågående</span>
+                        </div>
+
+
                         <div class="subject-content flex-col">
                             <div class="subject-header flex-row-items-center-justify-content-space-between">
                                 <h4 v-if="!!sub.title.href" class="subject-title"> 
                                     <NavigationAnchor :data="sub.title" /> 
                                 </h4>
                                 <h4 v-else class="subject-title">{{ sub.title.label }}</h4>
-                                
-                                <span v-if="sub.body" class="expand-icon inline-items-justify-center">
-                                    {{ expandedSubjects.includes(i) ? '−' : '+' }}
-                                </span>
+
                             </div>
 
                             <div v-if="!!sub.techStack && sub.techStack.length > 0" class="tech-container flex-col">
@@ -66,14 +70,14 @@
                     </div>
 
                     <transition name="expand">
-                        <div v-if="sub.body && expandedSubjects.includes(i)" class="subject-details">
+                        <div v-if="sub.body && expandedSubjects.includes(i)" class="sub-details">
                             <div class="details-content">
                                 <Suspense>
                                     <template #default>
                                         <MDC :value="sub.body" />
                                     </template>
                                     <template #fallback>
-                                        <section class="alert-info"><p>Laster beskrivelse...</p></section>
+                                        <section class="alert-info"><p>Laster inn beskrivelse...</p></section>
                                     </template>
                                 </Suspense>
                             </div>

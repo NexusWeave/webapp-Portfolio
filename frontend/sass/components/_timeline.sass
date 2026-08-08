@@ -166,12 +166,28 @@
                 strong
                     color: l-color.$deep-midnight-blue
 
-            .timeline-subjects-list
+            .timeline-sub-list
 
                 div
                     @include utils.margin($inline: 0)
 
+                
                 gap: 1.5rem
+                padding: 1rem
+                inline-size: 100%
+
+            .expand-icon
+                &:hover
+                    color: l-color.$neutral-white
+                    background-color: l-color.$sea-green
+
+                color: l-color.$sea-green
+                @include utils.radius(50%)
+                transition: all 0.3s ease
+                @include utils.logical-size(2rem, 2rem)
+                @include utils.margin($inline: 0 0.5rem)
+                background-color: rgba(l-color.$sea-green, 0.1)
+                @include l-mix.font($size: 1.1rem, $weight: 700)
 
             .subject-item
                 @include utils.padding($block: 1rem)
@@ -192,12 +208,6 @@
                         color: l-color.$logo-red
                         transform: rotate(180deg)
 
-                .subject-grid-container
-                    gap: 2rem
-                    display: grid
-                    align-items: start
-                    grid-template-columns: 7.5rem 1fr
-
                 .subject-date
                     gap: 0.2rem
                     color: l-color.$sea-green
@@ -212,7 +222,7 @@
 
                 .subject-content
                     gap: 0.8rem
-                    min-inline-size: 28rem
+                    max-inline-size: 28rem
 
                     .subject-header
                         gap: 1.5rem
@@ -225,20 +235,7 @@
                         @include utils.margin($block: 0, $inline: 0)
                         @include l-mix.font($size: 1.2rem, $weight: 700)
 
-                    .expand-icon
-                        &:hover
-                            color: l-color.$neutral-white
-                            background-color: l-color.$sea-green
-
-                        color: l-color.$sea-green
-                        @include utils.radius(50%)
-                        transition: all 0.3s ease
-                        @include utils.logical-size(2rem, 2rem)
-                        @include utils.margin($inline: 0 0.5rem)
-                        background-color: rgba(l-color.$sea-green, 0.1)
-                        @include l-mix.font($size: 1.1rem, $weight: 700)
-
-            .subject-details
+            .sub-details
                 .details-content
                     line-height: 1.5
                     padding-inline-start: 1rem
@@ -247,8 +244,9 @@
                     border-inline-start: 0.1875rem solid l-color.$sea-green
 
                 overflow: hidden
-                inline-size: 36rem
+                
                 margin-inline: 0.5rem
+                max-inline-size: 36rem
                 @include utils.padding(1rem)
                 @include utils.radius(0.5rem)
                 background: rgba(l-color.$neutral-soft-white, 0.5)
@@ -313,7 +311,7 @@
                     gap: 0.5rem
 
                 .subject-item
-                    .subject-details
+                    .sub-details
                         margin: 1rem 5%
                         inline-size: auto
 

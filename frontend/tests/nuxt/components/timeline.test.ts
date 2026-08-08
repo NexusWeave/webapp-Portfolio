@@ -27,7 +27,11 @@ describe("Timeline module tests", () => {
                 await flushPromises();
 
                 const tags: string[] = ['section', 'div', 'header', 'h3', 'h4', 'span',]// 'summary','address', 'details', 'ul', 'li'];
-                const classes: string[] = ['timeline-card-wrapper', 'timeline-pointer',  'timeline-card-content', 'timeline-body-content', 'timeline-card-header', 'timeline-main-title', 'timeline-location', 'timeline-subjects-list', 'subject-item', 'subject-grid-container', 'subject-date',  'subject-content', 'subject-header', 'subject-title','location-icon', 'header-main', 'date-dash', 'flex-row-justify-between','flex-row-items-center-justify-content-space-between', 'flex-col'];
+                const classes: string[] = ['timeline-card-wrapper', 'timeline-pointer',  'timeline-card-content', 
+                    'timeline-body-content', 'timeline-card-header', 'timeline-main-title', 'timeline-location',
+                    'timeline-sub-list', 'subject-item', 'subject-date',  'subject-content', 'subject-header', 'subject-title',
+                    'location-icon', 'header-main',
+                    'flex-wrap-row-justify-content-evenly','flex-wrap-row','flex-row-justify-between','flex-row-items-center-justify-content-space-between', 'flex-col'];
 
                 expect(wrapper.exists()).toBe(true);
                 tags.forEach(tag => { const tagExists = wrapper.find(tag).exists(); expect(tagExists).toBe(true); });
