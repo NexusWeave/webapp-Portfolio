@@ -5,9 +5,9 @@
             
             <header class="timeline-card-header flex-col">
                 <div class="header-main flex-row-justify-between">
-                    <h3 v-if="!!data.title?.href" class="timeline-main-title"> 
+                    <h2 v-if="!!data.title?.href" class="timeline-main-title"> 
                         <NavigationAnchor :data="data.title" /> 
-                    </h3>
+                    </h2>
                     <h3 v-else class="timeline-main-title"> {{ data.title?.label }} </h3>
                     
                     <div class="timeline-location flex-row-items-center">
@@ -33,33 +33,28 @@
                 <div v-for="sub, i in data.subjects" :key="i" :class="['subject-item', 'flex-wrap-row-justify-content-evenly', 
                 { 'subject-expandable': !!sub.body, 'subject-expanded': expandedSubjects.includes(i) }]">
 
-                    
-
+                <h3 class="flex-row-items-center-justify-content-space-between">
+                    <template v-if="!!sub.title.href" >
+                        <NavigationAnchor :data="sub.title" /> 
+                    </template>
+                    <template v-else> {{ sub.title.label }} </template>
+                </h3>
                     <div class="flex-wrap-row-justify-between" @click="sub.body ? toggleSubject(i) : null">
                         <span v-if="sub.body" class="expand-icon inline-items-justify-center">
                             {{ expandedSubjects.includes(i) ? '−' : '+' }}
                         </span>
                         
-                        <div class="subject-date ">
+                        <span class="subject-date ">
                             <template v-if="sub.date.created && sub.date.end">
-
                                 <DatesYear :data="sub.date.created.date" :isVisible="!!props.isVisible" />
                                 <span> - </span>
                                 <DatesYear :data="sub.date.end.date" :isVisible="!!props.isVisible" />
                             </template>
                             <span v-else>Pågående</span>
-                        </div>
+                        </span>
 
 
                         <div class="subject-content flex-col">
-                            <div class="subject-header flex-row-items-center-justify-content-space-between">
-                                <h4 v-if="!!sub.title.href" class="subject-title"> 
-                                    <NavigationAnchor :data="sub.title" /> 
-                                </h4>
-                                <h4 v-else class="subject-title">{{ sub.title.label }}</h4>
-
-                            </div>
-
                             <div v-if="!!sub.techStack && sub.techStack.length > 0" class="tech-container flex-col">
                                 <div class="tech-icons flex-wrap-row"> 
                                     <template v-for="(tech, j) in sub.techStack" :key="j">
@@ -69,6 +64,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <transition name="expand">
                         <div v-if="sub.body && expandedSubjects.includes(i)" class="sub-details">

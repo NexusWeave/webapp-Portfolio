@@ -26,10 +26,10 @@ describe("Timeline module tests", () => {
                 const wrapper = await mountSuspended<Component>(Card, { props: { data: dummyData }, global: { stubs: { MDC: { props: ['value'], template: '<div><slot /></div>' }, ContentRenderer: { props: ['value'], template: '<div><slot /></div>' } }}});
                 await flushPromises();
 
-                const tags: string[] = ['section', 'div', 'header', 'h3', 'h4', 'span',]// 'summary','address', 'details', 'ul', 'li'];
+                const tags: string[] = ['section', 'header', 'h2', 'h3', 'span',]// 'summary','address', 'details', 'ul', 'li'];
                 const classes: string[] = ['timeline-card-wrapper', 'timeline-pointer',  'timeline-card-content', 
                     'timeline-body-content', 'timeline-card-header', 'timeline-main-title', 'timeline-location',
-                    'timeline-sub-list', 'subject-item', 'subject-date',  'subject-content', 'subject-header', 'subject-title',
+                    'timeline-sub-list', 'subject-item', 'subject-date',  'subject-content',
                     'location-icon', 'header-main',
                     'flex-wrap-row-justify-content-evenly','flex-wrap-row','flex-row-justify-between','flex-row-items-center-justify-content-space-between', 'flex-col'];
 
