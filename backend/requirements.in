@@ -5,7 +5,9 @@ asyncpg
 aiosqlite
 aiofiles
 pydantic
-pip-tools
+uv
+mypy
+ruff
 sqlAlchemy
 pydantic-core
 beautifulsoup4

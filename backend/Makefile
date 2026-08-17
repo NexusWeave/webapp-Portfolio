@@ -1,4 +1,16 @@
-I.PHONY: test coverage html-report clean
+.PHONY: test coverage html-report clean compile sync typecheck lint
+
+compile: # Kompiler requirements.in til requirements.txt med uv
+	uv pip compile requirements.in -o requirements.txt
+
+sync: # Synkroniser det virtuelle miljøet med uv
+	uv pip sync requirements.txt
+
+lint: # Kjør linters med ruff
+	uv run ruff check .
+
+typecheck: # Kjør statisk type-sjekk (mypy / framtidig ty)
+	uv run mypy .
 
 ci-pipeline: clean
 test-reports: # Running tests with coverage and generating HTML report # Not working propperly

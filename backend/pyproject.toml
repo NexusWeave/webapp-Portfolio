@@ -24,3 +24,24 @@ omit = [".venv/*"]
 [tool.coverage.report]
 
 show_missing = true
+
+[tool.uv]
+pip.compile-command = "uv pip compile requirements.in -o requirements.txt"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = false
+warn_return_any = true
+warn_unused_configs = true
+
+# Forberedelse for framtidige Astral 'ty' / type-checking regler
+[tool.ty]
+# Når Astral slipper ty konfigurasjonsskjema vil innstillinger defineres her
+python_version = "3.12"
