@@ -6,7 +6,6 @@ export default defineConfig(async () => {
   return {
     test: {
       globals: true,
-      pool: 'forks',
       projects: [
         {
           test: {
