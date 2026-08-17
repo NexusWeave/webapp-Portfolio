@@ -1,3 +1,10 @@
+## [1.36.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.36.1...v1.36.2) (2026-08-17)
+
+
+### Bug Fixes
+
+* **deploy:** downgrade node version. ([40d0017](https://github.com/NexusWeave/webapp-Portfolio/commit/40d001728c56605620830810545828dbd7e489df))
+
 ## [1.36.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.36.0...v1.36.1) (2026-08-08)
 
 
