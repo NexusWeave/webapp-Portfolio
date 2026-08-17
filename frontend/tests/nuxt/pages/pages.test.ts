@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+import { ref } from 'vue';
 import { flushPromises } from '@vue/test-utils';
-import { mountSuspended } from '@nuxt/test-utils/runtime';
+import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime';
 import { Component } from 'nuxt/schema';
 
 import IndexPage from '~/pages/index.vue';
@@ -8,9 +9,12 @@ import DevPage from '~/pages/dev.vue';
 import PersonalPage from '~/pages/personal.vue';
 import SecurityPolicyPage from '~/pages/security-policy.vue';
 
+import RecordSlugPage from '~/pages/logs/records/[slug].vue';
+import TagSlugPage from '~/pages/logs/tags/[slug].vue';
+
 describe("Pages module tests", () => {
     it("page components are defined", () => {
-        const pages = [IndexPage, DevPage, PersonalPage, SecurityPolicyPage];
+        const pages = [IndexPage, DevPage, PersonalPage, SecurityPolicyPage, RecordSlugPage, TagSlugPage];
         pages.forEach(page => expect(page).toBeDefined());
     });
 
@@ -79,6 +83,41 @@ describe("Pages module tests", () => {
 
                 expect(wrapper.exists()).toBe(true);
                 expect(wrapper.find('.article-wrapper').exists()).toBe(true);
+            });
+        });
+
+        describe("Logs Record [slug] page", () => {
+            it("renders record page component", async () => {
+                const wrapper = await mountSuspended<Component>(RecordSlugPage, {
+                    route: '/logs/records/test-slug',
+                    global: {
+                        stubs: {
+                            ArticlePage: { template: '<div class="stub-article-page"></div>' }
+                        }
+                    }
+                });
+                await flushPromises();
+
+                expect(wrapper.exists()).toBe(true);
+            });
+        });
+
+        describe("Logs Tag [slug] page", () => {
+            it("renders tag page component", async () => {
+                mockNuxtImport('fetchCollection', () => vi.fn().mockResolvedValue(ref([])));
+
+                const wrapper = await mountSuspended<Component>(TagSlugPage, {
+                    route: '/logs/tags/vue',
+                    global: {
+                        stubs: {
+                            ArticleHead: { template: '<div class="stub-article-head"></div>' },
+                            NavigationButton: { template: '<button></button>' }
+                        }
+                    }
+                });
+                await flushPromises();
+
+                expect(wrapper.exists()).toBe(true);
             });
         });
     });

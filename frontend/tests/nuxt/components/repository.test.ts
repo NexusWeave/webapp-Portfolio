@@ -1,8 +1,6 @@
 import { computed } from 'vue';
 
-import { flushPromises } from '@vue/test-utils';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { mapRepoData } from '~/composables/maps/mapRepoData';
 import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime';
 import { cardDummyData, portfolioDummyData, portfolioPaginationDummyData } from '~/tests/data/repositoryData';
 
@@ -14,7 +12,9 @@ import BusinessCard from '~/components/repository/BusinessCard.vue';
 //  --- Child Components to be tested
 import MediaFigure from '~/components/media/Figure.vue';
 import NavigationAnchor from '~/components/navigation/Anchor.vue';
+import NavigationButton from '~/components/navigation/Button.vue';
 import NavigationNavMenu from '~/components/navigation/NavMenu.vue';
+
 
 import type { GithubData } from '~/types/props';
 import type { AnchorItem } from '~/types/navigation';
@@ -25,7 +25,7 @@ mockNuxtImport('fetchRepositories', () => fetchRepositoriesMock);
 
 describe("Repository module tests", () => {
     it("components are defined", () => {
-        const components = [Portfolio, BusinessCard, MediaFigure, NavigationAnchor, NavigationNavMenu];
+        const components = [Portfolio, BusinessCard, MediaFigure, NavigationButton, NavigationAnchor, NavigationNavMenu];
         components.forEach(comp => expect(comp).toBeDefined());
     });
 });
@@ -118,10 +118,10 @@ describe("Edge / Fallback cases for BusinessCard", () => {
         const section = wrapper.findAll('section');
         const classes:string[] = ['card-nav'];
 
-        //expect(spans).toHaveLength(2);
-        //expect(anchors).toHaveLength(2);
-        //expect(section).toHaveLength(4);
-        //expect(wrapper.findAllComponents(NavigationAnchor)).toHaveLength(2);
+        expect(spans).toHaveLength(1);
+        expect(anchors).toHaveLength(2);
+        expect(section).toHaveLength(4);
+        expect(wrapper.findAllComponents(NavigationAnchor)).toHaveLength(2);
         classes.forEach(cls => { const selector = `.${cls}`; const clsExists = wrapper.find(selector).exists(); expect(clsExists).toBe(false); });
     });
 
@@ -149,21 +149,10 @@ describe("Edge / Fallback cases for BusinessCard", () => {
         const collaborators = wrapper.findAll('.collab-name')[0]?.findAllComponents(NavigationAnchor);
 
         expect(credits.exists()).toBe(true);
-        //expect(collaborators).toHaveLength(5);
+        expect(collaborators).toHaveLength(1);
         expect(credits.text()).toContain('...');
-        //expect(collaborators[0].props('data').label).toBe('@collab');
 
-        collaborators.forEach((collab: any, index: number) => {
-            const coll = collab.props('data');
-            const dummy = dummyData.collaborators?.[index];
-
-            expect(collab.exists()).toBe(true);
-            if (dummy) {
-                //expect(coll.label).toBe(`@${dummy.name}`);
-                //expect(coll.href).toBe(`https://github.com/${dummy.name}`);
-            }
-        });
-        
+        collaborators.forEach((collab: any, index: number) => { expect(collab.exists()).toBe(true); });
     });
 
     it("Filter bots corretly", async() => { 
@@ -185,11 +174,9 @@ describe("Edge / Fallback cases for BusinessCard", () => {
     it("Filter repo owner from collaboration correctly", async() => {
         const dummyData = cardDummyData[8] as unknown as GithubData;
         const wrapper = await mountSuspended(BusinessCard, { props: { data: dummyData }});
-        
-        const credits = wrapper.find('.credits');
-        const collaborators = wrapper.findAll('.collab-name');
 
-        
+        const credits = wrapper.find('.credits');
+
         expect(credits.exists()).toBe(true);
         expect(credits.text()).toContain('Eier - @owner-name Bidragsytere - @collab1');
     });
@@ -224,13 +211,6 @@ describe("Edge / Fallback cases for BusinessCard", () => {
         
     });
 
-    it("Formats collab seperators correctly", async() => {
-        const dummyData = cardDummyData[12] as unknown as GithubData;
-        const wrapper = await mountSuspended(BusinessCard, { props: { data: dummyData }});
-
-        //spy
-    });
-
     it("Renders single language correctly", async() => { 
         const dummyData = cardDummyData[13] as unknown as GithubData;
         const wrapper = await mountSuspended(BusinessCard, { props: { data: dummyData }});
@@ -250,9 +230,160 @@ describe("Edge / Fallback cases for BusinessCard", () => {
 });
 
 describe("Portfolio component renders correctly", () => {
-    it("", () => { expect(true).toBe(true); });
+    beforeEach(async () => {
+        fetchRepositoriesMock.mockResolvedValue({
+            repo: ref(portfolioDummyData),
+            refresh: vi.fn()
+        });
+    });
+
+    it("Renders HTML & CSS correctly", async () => { 
+        const wrapper = await mountSuspended(Portfolio);
+
+        const cards = wrapper.findAllComponents(BusinessCard);
+        const elements = ['section', 'h2', 'p', 'button'];
+        const buttons = wrapper.findAllComponents(NavigationButton);
+        const classes = ['repo-container', 'project-wrapper', 'flex-col', 'flex-wrap-row-items-center-justify-center', 'flex-wrap-row-items-center-justify-around'];
+
+        expect(wrapper.exists()).toBe(true);
+        expect(cards).toHaveLength(portfolioDummyData.length);
+        expect(buttons).toHaveLength(6); // 6 filter-knapper ('Diverse', 'Backend', 'Frontend', 'Fullstack', 'Samarbeidsprosjekt', 'reset')
+        elements.forEach(element => { const tag = wrapper.find(element); expect(tag.exists()).toBe(true); });
+        classes.forEach(cls => { const selector = `.${cls}`; const classExits = wrapper.find(selector).exists(); expect(classExits).toBe(true); });
+    });
+
+    it("filters repositories correctly when clicking category buttons", async () => {
+        const wrapper = await mountSuspended(Portfolio);
+        const buttons = wrapper.findAllComponents(NavigationButton);
+
+        // Finn Backend-knappen
+        const backendBtn = buttons.find(b => b.text().includes('Backend'));
+        expect(backendBtn?.exists()).toBe(true);
+
+        // Klikk på Backend-filter
+        await backendBtn?.trigger('click');
+
+        // Sjekk at kun Backend-prosjekter vises (ID 0 & 4 har backend: true)
+        const cards = wrapper.findAllComponents(BusinessCard);
+        expect(cards).toHaveLength(2);
+
+        // Klikk på reset-knappen for å vise alle igjen
+        const resetBtn = buttons.find(b => b.text().includes('reset'));
+        await resetBtn?.trigger('click');
+        expect(wrapper.findAllComponents(BusinessCard)).toHaveLength(portfolioDummyData.length);
+    });
+
+    it("Renders Pagination logic correctly", async () => {
+        // Sett opp mock til 10 elementer for å utløse 2 sider
+        fetchRepositoriesMock.mockResolvedValue({
+            repo: ref(portfolioPaginationDummyData),
+            refresh: vi.fn()
+        });
+
+        const wrapper = await mountSuspended(Portfolio);
+
+        // Side 1: Skal vise 9 elementer
+        expect(wrapper.findAllComponents(BusinessCard)).toHaveLength(9);
+        expect(wrapper.text()).toContain('Side 1 / 2');
+
+        // Finn 'Neste'-knappen (pagineringsknapp)
+        const pagButtons = wrapper.findAllComponents(NavigationButton);
+        const nextBtn = pagButtons.find(b => b.text().includes('Neste'));
+        expect(nextBtn?.exists()).toBe(true);
+
+        // Klikk på 'Neste'
+        await nextBtn?.trigger('click');
+
+        // Side 2: Skal vise 1 element
+        expect(wrapper.findAllComponents(BusinessCard)).toHaveLength(1);
+        expect(wrapper.text()).toContain('Side 2 / 2');
+    });
 });
 
 describe("Edge / Fallback cases for Portfolio", () => {
-    it("", () => { expect(true).toBe(true); });
+    it("Triggers fallback when repository list is empty", async () => { 
+        fetchRepositoriesMock.mockResolvedValue({ 
+            repo: ref([]), 
+            refresh: vi.fn() 
+        });
+
+        const wrapper = await mountSuspended(Portfolio);
+
+        const elements = ['section', 'p', 'a'];
+        const classes = ['repo-container', 'alert-info', 'flex-col'];
+        const cards = wrapper.findAllComponents(BusinessCard);
+        const anchor = wrapper.findAllComponents(NavigationAnchor);
+
+        expect(anchor).toHaveLength(1);
+        expect(wrapper.exists()).toBe(true);
+        expect(cards).toHaveLength(0);
+        expect(wrapper.find('.project-wrapper').exists()).toBe(false);
+        elements.forEach(element => { const tag = wrapper.find(element); expect(tag.exists()).toBe(true); });
+        classes.forEach(cls => { const selector = `.${cls}`; const classExits = wrapper.find(selector).exists(); expect(classExits).toBe(true); });
+    });
+
+    it("hides filter header when there are not multiple active categories", async () => {
+        // Kun 1 backend prosjekt uten samarbeidspartnere
+        const singleRepo = {
+            id: 0,
+            repo_id: 1000,
+            label: 'Single Repo',
+            owner: 'krigjo25',
+            flags: { backend: true },
+            collaborators: []
+        };
+
+        fetchRepositoriesMock.mockResolvedValue({
+            repo: ref([singleRepo]),
+            refresh: vi.fn()
+        });
+
+        const wrapper = await mountSuspended(Portfolio);
+
+        // hasMultipleCategories blir false, så overskriften 'Filtrer prosjekter etter type:' skal ikke vises
+        expect(wrapper.text()).not.toContain("Filtrer prosjekter etter type:");
+    });
+
+    it("navigates back to page 1 using 'Forrige' button", async () => {
+        fetchRepositoriesMock.mockResolvedValue({
+            repo: ref(portfolioPaginationDummyData),
+            refresh: vi.fn()
+        });
+
+        const wrapper = await mountSuspended(Portfolio);
+        
+        // Gå til side 2
+        const nextBtn = wrapper.findAllComponents(NavigationButton).find(b => b.text().includes('Neste'));
+        await nextBtn?.trigger('click');
+        expect(wrapper.text()).toContain('Side 2 / 2');
+
+        // Klikk på 'Forrige'
+        const prevBtn = wrapper.findAllComponents(NavigationButton).find(b => b.text().includes('Forrige'));
+        expect(prevBtn?.exists()).toBe(true);
+        await prevBtn?.trigger('click');
+
+        // Skal være tilbake på side 1
+        expect(wrapper.text()).toContain('Side 1 / 2');
+    });
+
+    it("resets current page to 1 when filter changes while on page 2", async () => {
+        fetchRepositoriesMock.mockResolvedValue({
+            repo: ref(portfolioPaginationDummyData),
+            refresh: vi.fn()
+        });
+
+        const wrapper = await mountSuspended(Portfolio);
+
+        // Gå til side 2
+        const nextBtn = wrapper.findAllComponents(NavigationButton).find(b => b.text().includes('Neste'));
+        await nextBtn?.trigger('click');
+        expect(wrapper.text()).toContain('Side 2 / 2');
+
+        // Velg 'Backend'-filteret
+        const backendBtn = wrapper.findAllComponents(NavigationButton).find(b => b.text().includes('Backend'));
+        await backendBtn?.trigger('click');
+
+        // Tilbakestilling skjer automatisk, og totalPages blir 1
+        expect(wrapper.vm.currentPage).toBe(1);
+    });
 });
