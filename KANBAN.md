@@ -4,9 +4,10 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 ###  Execution Priority
 1. **Test (Priority 1)**: `[TASK-01]`, `[TASK-02]`, `[TASK-03]`, `[TASK-04]`
-2. **Fixes (Priority 2)**: `[TASK-05]`, `[TASK-06]`
-3. **New Integrations (Priority 3)**: `[TASK-07]`
-4. **New Features (Priority 4)**: Unconnected services and endpoints (LinkedIn Sharing, Announcements)
+2. **Features & Presentation (Priority 2)**: `[TASK-08]`
+3. **Fixes (Priority 3)**: `[TASK-05]`, `[TASK-06]`
+4. **New Integrations (Priority 4)**: `[TASK-07]`
+5. **Unconnected Features (Priority 5)**: Unconnected services and endpoints (LinkedIn Sharing, Announcements)
 
 ---
 
@@ -14,9 +15,8 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
 
 |  To Do | ️ In Progress |  Completed |
 | :--- | :--- | :--- |
-| | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, fetchCollection, API mocks, and CMS parsing.* | |
+| **[TASK-08] Add Presentation Page & Index Slide**<br>↳ *Create dedicated /presentation page and add interactive presentation slide to index.vue.* | **[TASK-03] Test TinaCMS Configuration & Schema Audit**<br>↳ *Audit TinaCMS collections, fields schema validity, and CLI build checks.* | **[TASK-01] Create Vue Tests**<br>↳ *Cover store language bytes mapping, useCarousel, useNavigation, fetchCollection, API mocks, and CMS parsing.* |
 | **[TASK-02] Create Sass Tests**<br>↳ *Cover card-base, transitions, circle-border mixins, responsive breakpoints, and theme utilities.* | | |
-| **[TASK-03] Test TinaCMS Configuration & Schema Audit**<br>↳ *Audit TinaCMS collections, fields schema validity, and CLI build checks.* | | |
 | **[TASK-04] Update Python Tests**<br>↳ *Verify endpoint outputs, API logic, rate limits, scanner resilience, health checks, schemas, validations, and migrations.* | | |
 | **[TASK-05] Resolve Responsive Design Errors**<br>↳ *Fix layout shifts and CSS grid/flex breaks on mobile views.* | | |
 | **[TASK-06] Resolve Health Check**<br>↳ *Fix github service checks, Specialist check coverage, and Heavy API monitoring.* | | |
@@ -47,16 +47,16 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
     - [x] `Card.vue` (Portfolio) loading/error/empty states
     - [x] `Portfolio.vue` & `BusinessCard.vue` (Repository) integration
     - [x] `Announcements.vue` & `Progress.vue` (Utils module integration)
-    - [ ] `NavMenu.vue` (Navigation) active link states
+    - [x] `NavMenu.vue` (Navigation) active link & router/anchor states
   - [x] **Pages Testing**:
     - [x] `index.vue`, `dev.vue`, `personal.vue`, `security-policy.vue` integration
     - [x] `records/[slug].vue` & `tags/[slug].vue` integration
-  - [ ] **Content & CMS Integration**:
-    - [ ] TinaCMS content parser schema integrity
+  - [x] **Content & CMS Integration**:
+    - [x] TinaCMS content parser schema integrity (Zod schema tests in cms-schema.spec.ts)
   - [x] **Semantic & SEO Validation**:
     - [x] SEO tags (title, description, ogImage)
     - [x] Semantic HTML landmark tags (main, header, footer)
-    - [ ] Unique element IDs check
+    - [x] Unique element IDs check (Tested in unique-ids.spec.ts)
 * **Target Files**: 
   - [languageBytesStore.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/stores/languageBytesStore.ts)
   - [preprosessor-utils.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/composables/preprosessor-utils.ts)
@@ -66,7 +66,7 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [NavMenu.vue (Navigation)](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/components/navigation/NavMenu.vue)
   - [content.config.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/content.config.ts)
 * **Priority**: 1 (Test)
-* **Status**: In Progress.
+* **Status**: Completed.
  
 #### [TASK-02] Create Sass Tests
 * **Description**: Expand testing coverage for SASS mixins (`card-base`, `transitions`, `circle-border`) using `sass-true`.
@@ -190,7 +190,21 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [ ] **Frontend Components**:
     - [ ] Fetch and display workout data in portfolio/repository views
     - [ ] Implement loading, error, and empty states for workouts dashboard
-* **Priority**: 3 (New Integrations)
+* **Priority**: 4 (New Integrations)
+* **Status**: To Do.
+
+#### [TASK-08] Add Presentation Page & Index Slide
+* **Description**: Build a dedicated presentation page (`pages/presentation.vue`) for the Vue 3 / Nuxt 3 (TypeScript) slide deck, and integrate a showcase slide on the main `pages/index.vue` page.
+* **Subtasks**:
+  - [ ] **Presentation Page (`pages/presentation.vue`)**:
+    - [ ] Create full-screen interactive slide viewer component using Markdown / MDC parsing
+    - [ ] Support keyboard navigation (Arrow left/right, Space) and touch swipe
+  - [ ] **Index Page Slide Showcase**:
+    - [ ] Add a presentation preview slide / carousel item on `pages/index.vue`
+    - [ ] Link directly from index showcase slide to `/presentation`
+  - [ ] **Navigation Menu Integration**:
+    - [ ] Add `Presentation` link item to `NavMenu.vue` router data items
+* **Priority**: 2 (Features & Presentation - Execution right after testing phase)
 * **Status**: To Do.
 
 ---
