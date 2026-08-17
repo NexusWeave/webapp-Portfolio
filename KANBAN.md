@@ -42,18 +42,20 @@ This Kanban board tracks the status and objectives of the Portfolio Web Applicat
   - [x] **State Management Testing**:
     - [x] Pinia `languageBytesStore.ts` store state storage
     - [x] Pinia store sorting filters and reactivity
-  - [ ] **Component Testing**:
+  - [x] **Component Testing**:
     - [x] `Card.vue` & `Timeline.vue` & `Filter.vue` (Timeline module integration)
     - [x] `Card.vue` (Portfolio) loading/error/empty states
     - [x] `Portfolio.vue` & `BusinessCard.vue` (Repository) integration
+    - [x] `Announcements.vue` & `Progress.vue` (Utils module integration)
     - [ ] `NavMenu.vue` (Navigation) active link states
-  - [ ] **Pages Testing**:
+  - [x] **Pages Testing**:
     - [x] `index.vue`, `dev.vue`, `personal.vue`, `security-policy.vue` integration
+    - [x] `records/[slug].vue` & `tags/[slug].vue` integration
   - [ ] **Content & CMS Integration**:
     - [ ] TinaCMS content parser schema integrity
   - [x] **Semantic & SEO Validation**:
     - [x] SEO tags (title, description, ogImage)
-    - [ ] Semantic HTML landmark tags (main, header, footer)
+    - [x] Semantic HTML landmark tags (main, header, footer)
     - [ ] Unique element IDs check
 * **Target Files**: 
   - [languageBytesStore.ts](file:///home/kristoffer/Documents/Repository/webapp-Portfolio/frontend/stores/languageBytesStore.ts)
