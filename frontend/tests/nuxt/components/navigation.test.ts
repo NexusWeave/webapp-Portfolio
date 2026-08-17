@@ -59,5 +59,33 @@ describe("Navigation module tests", () => {
                 expect(wrapper.exists()).toBe(true);
             });
         });
+
+        describe("NavMenu component", () => {
+            it("renders router links correctly when data includes router items", async () => {
+                const navData = [
+                    { id: '1', label: 'Hjem', path: '/', type: 'router' },
+                    { id: '2', label: 'Om meg', path: '/dev', type: 'router' }
+                ];
+                const wrapper = await mountSuspended<Component>(NavMenu, { props: { data: navData } });
+
+                expect(wrapper.exists()).toBe(true);
+                expect(wrapper.find('nav').exists()).toBe(true);
+                expect(wrapper.findAll('a').length).toBe(2);
+                expect(wrapper.text()).toContain('Hjem');
+                expect(wrapper.text()).toContain('Om meg');
+            });
+
+            it("renders anchor navigation items when data items are anchors", async () => {
+                const anchorNavData = [
+                    { id: 'a1', label: 'GitHub', link: 'https://github.com', type: 'anchor', cls: ['some-nav'] }
+                ];
+                const wrapper = await mountSuspended<Component>(NavMenu, { 
+                    props: { data: anchorNavData, cls: ['some-nav'] } 
+                });
+
+                expect(wrapper.exists()).toBe(true);
+                expect(wrapper.find('nav').classes()).toContain('some-nav');
+            });
+        });
     });
 });
