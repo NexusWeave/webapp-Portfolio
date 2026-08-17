@@ -1,8 +1,7 @@
 <template>
     <section class="flex-col repo-container">
-        <h2>Erfaringen min fra Utviklings prosjekter</h2>
-        
         <section v-if="hasProjects" class="flex-col">
+            <h2>Erfaringen min fra Utviklings prosjekter</h2>
             <template v-if="hasMultipleCategories">
                 <p>Filtrer prosjekter etter type:</p>
             
@@ -27,9 +26,9 @@
 
         </section>
 
-        <div class="alert-info" v-if="!hasProjects">
+        <section class="alert-info" v-if="!hasProjects">
             <p>Github prosjekter er for tiden under revisjon. Vennligst benytt <NavigationAnchor :data="errorLink"/> for mer informasjon for å se min generelle GitHub-aktivitet og historikk. Jeg jobber med å oppdatere og strukturere mine nyeste kodeeksempler.</p>
-        </div>
+        </section>
     </section>
 </template>
 
