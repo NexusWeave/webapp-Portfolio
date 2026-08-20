@@ -42,6 +42,7 @@
 
     import type { ReferenceCollectionItem } from '@nuxt/content';
     import { mapReference } from '~/composables/maps/mapReferences';
+import type { FigureItem } from '~/types/media';
     import type { AnchorItem } from '~/types/navigation';
 
     const logo = computed(() =>
@@ -69,7 +70,7 @@
     const referencePath = 'reference';
     const referenceCache = 'referenceCache';
     const reference = await fetchCollection<ReferenceCollectionItem, ReturnType<typeof mapReference>>(referencePath, referenceCache, mapReference);
-    const media = { type: 'jpg', src: '/media/images/carousel/20240903_165612.jpg', srcset: '/media/images/carousel/20240903_165612.jpg', alt: 'Portrett av Kristoffer Gjøsund'}
+    const media:FigureItem = { type: 'jpg', src: '/media/images/carousel/20240903_165612.jpg', srcset: '/media/images/carousel/20240903_165612.jpg', alt: 'Portrett av Kristoffer Gjøsund'}
 
     //  --- Timer Logic
     const referenceLength = computed(() => reference.value?.length || 1);
