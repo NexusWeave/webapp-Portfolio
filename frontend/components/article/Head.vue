@@ -8,7 +8,7 @@
                         <span v-if="!!article.date" :class="'meta-date'"> Publisert: <b><time :datetime="article.date.date">{{ article.date.date }}</time></b></span>
                         <NavigationAnchor v-for="(tag) in article.tags" :data="tag" :class="[...tag.cls, 'button', 'tag-btn']" />
                     </p>
-                    <MDC :value="article.ingress" class="ingress-content" />
+                    <MDC :value="convertedIngress" class="ingress-content" />
                     <NavigationNavMenu v-if="!isPost && !!article.anchor" :data="article.anchor" :class="['nav-bar', 'read-more']"/>
                 </section>
             </template>
@@ -29,10 +29,13 @@
     const article = computed(() => props.article);
     const isPost = computed(() => props.isPost);
 
-    //  --- Debugging logic
-    //console.log("Article Header Component - Article :", article.value);
-    //console.log("Article Header Component - Button :", button.value);
-    //console.log("Article Header Component - isPostPage :", isPost.value);
-    //console.log("Article Header Component - Article Anchor :", article.anchor);
-    //console.log("Article Header Component - Article Ingress :", article.value.tags);
+    // Maksimal lengde for ingress i kortvisning (oversikt/forside)
+    const MAX_INGRESS_LENGTH = 350;
+
+    const convertedIngress = computed(() => {
+        const text = article.value?.ingress ?? '';
+        if (!isPost.value && text.length > MAX_INGRESS_LENGTH) return text.slice(0, MAX_INGRESS_LENGTH).trim() + '...';
+        return text;
+    });
+
 </script>
