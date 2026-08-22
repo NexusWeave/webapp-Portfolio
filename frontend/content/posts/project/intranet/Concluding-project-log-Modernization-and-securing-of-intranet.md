@@ -4,6 +4,8 @@ title: Avsluttende prosjektlogg - Modernisering og sikring av intranett
 ingress: |
   Gjennom en omfattende modernisering har vi profesjonalisert intranettet ved å erstatte ustabil kildekode med en legobasert arkitektur. Ved å innføre universell filhåndtering og streng tilgangsstyring har vi fjernet driftsfeil og styrket personvernet. Oppgraderingen gir oss full kontroll over systemets helse, reduserer teknisk etterslep og sikrer en pålitelig plattform som er klargjort for fremtidig vekst og effektiv drift.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
   **Teknologi** - C#
   **Verktøy** - Coverlet, KI, TypeScript
@@ -15,7 +17,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Prosjektet er fullført med gode resultater.
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Dette prosjektet har handlet om å profesjonalisere bedriftens intranett. Ved å rydde opp i **ustabil kildekode** og innføre moderne sikkerhetsstandarder, har vi gått fra en sårbar løsning til en plattform som er klargjort for fremtidig vekst og effektiv drift.
@@ -34,7 +39,7 @@ Vi fjernet tekniske skiller mellom ansatte og studenter, ved å fjernet risikoen
 
 Systemet manglet kontroll på hvem som så hva. Sensitiv intern informasjon og navigasjonslenker var synlig for alle, inkludert studenter. Dette utgjorde en sikkerhetsrisiko og skapte et uoversiktlig arbeidsmiljø.
 
-Etablere en sikkerhetsløsning **RBAC**) som skiller mellom roller og beskytter bedriftens data i alle ledd.
+Etablere en sikkerhetsløsning **<abbr title="Role-Based Access Control | rollebasert tilgangskontroll">RBAC</abbr>**) som skiller mellom roller og beskytter bedriftens data i alle ledd.
 
 Jeg flyttet sikkerhetskontrollen fra brukeren til systemets backend. Jeg la til en *«To-pass algoritme»*<abbr> som håndterer rettigheter i mapper og mapperstrukturer, og brukte en <abbr title ="Den delen av koden som er den eneste kilden til sannhet">*«Singleton-tjeneste»* for å sikre at sikkerhetssjekken skjer raskt uten å belaste serveren.
 
@@ -45,7 +50,7 @@ Vi følger nå internasjonale standarder for personvern *«minst priviligum»*. 
 Systemet var bygget som en helhet hvor alt hang sammen med alt. Små endringer kunne føre til uforutsette feil, og det var umulig å utføre automatisert **testing** for å sjekke om systemet faktisk var friskt.
 Hensikten mitt var å strukturere Rydde i systemarkitekturen for å gjøre det enklere, tryggere og billigere å vedlikeholde over tid.
 
-* Jeg separerte bedriftens regler fra den tekniske motoren ved bruk av *«DIP-prinsippet»*. Jeg fjernet over 50 linjer med overflødig kode og innførte det objektivt målesystemet <abbr title="Et Verktøy som måler systemets kvalitet i prosent">**Coverlet** dette forenkler prosessen med å identifisere systemets kvalitet.
+* Jeg separerte bedriftens regler fra den tekniske motoren ved bruk av *«<abbr title="Dependency Inversion Principle | prinsipp for avhengighetsinversjon">DIP</abbr>-prinsippet»*. Jeg fjernet over 50 linjer med overflødig kode og innførte det objektivt målesystemet <abbr title="Et Verktøy som måler systemets kvalitet i prosent">**Coverlet** dette forenkler prosessen med å identifisere systemets kvalitet.
 
 Vi har redusert det tekniske etterslepet. Vi kan nå koble på nye datakilder eller oppgradere teknologien i fremtiden uten å måtte bygge om alt på nytt. Dette sparer bedriften for tid i fremtidig vedlikehold.
 

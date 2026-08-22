@@ -4,6 +4,8 @@ title: Overgang til moderne livssyklus for database
 ingress: |
   For å sikre en stabil nettside har jeg fornyet måten systemet starter opp på. Ved å flytte viktige forberedelser til en moderne løsning, unngår vi nå tekniske feil som tidligere gjorde siden treg og ustabil. Jeg har samlet styringen på ett sted og lagt inn sikkerhetsmekanismer som hindrer krasj. Resultatet er en trygg og rask opplevelse for alle besøkende, hvor informasjon alltid er klar til bruk uten unødvendig venting.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Applikasjon** - `FastAPI` **ORM** - `SQLAlchemy`
@@ -24,12 +26,16 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Som det ble dokumentert i den tidligere loggen *[Smartere lagring forbedrer flyten i nettsiden](https://krigjo25.no/logs/records/implementering-av-vedvarende-caching-med-sqlalchemy-og-sqlite/)*, ble det identifisert en feil i hvordan database-tabellene alikavel ikke ble pålitelig lagret i oppstartsfasen. Dette forhindret at systemet ikke lagret dataene fra koblingspunktene. De identifiserte feilene indikerer på en ukorrekthet i oppstartslogikken til applikasjonens livssyklushendelse.
 
-Hensikten er å sikre at ORM-en klargjør de nødvendige databasetabellene før applikasjonen begynner å behandle forespørsler. Dette sikrer at mellomlagringen gir brukerene den raske opplevelsen som er forventet i en moderne nettside.
+Hensikten er å sikre at <abbr title="Object-Relational Mapping | objekt-relasjonell mapping">ORM</abbr>-en klargjør de nødvendige databasetabellene før applikasjonen begynner å behandle forespørsler. Dette sikrer at mellomlagringen gir brukerene den raske opplevelsen som er forventet i en moderne nettside.
 
 * For at livssyklusen til applikasjonen kan behandle flere forespørsler samtidig, ble det lagt til nøkkelordet `async` slik at livssyklusen, kan håndtere flere forespørsler samtidig
 

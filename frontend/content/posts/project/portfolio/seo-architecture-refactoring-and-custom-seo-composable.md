@@ -4,7 +4,7 @@ title: Refaktorering av SEO-arkitektur med gjenbrukbar useCustomSeo, Sitelinks o
 ingress: |
   I <abbr title="Den delen av webapplikasjonen som brukeren samhandler med">frontend</abbr>-applikasjonen var <abbr title="Search Engine Optimization - Søkemotoroptimalisering">SEO</abbr>-strukturen uoversiktlig, da enkelte <abbr title="En sammensattbar klosse">komponent</abbr>er overskrev metadata via eldre watch-løkker. Ved å bygge en gjenbrukbar useCustomSeo-<abbr title="En gjenbrukbar funksjon som pakker inn reaktiv logikk i Vue">composable</abbr>, utvide Schema.org (<abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr>) for <abbr title="Lenker til undersider som vises direkte under hovedresultatet i Google">Sitelinks</abbr> og Breadcrumbs, opprette security.txt med tilhørende sikkerhetspolicy i bunnteksten samt tilrettelegge for dynamisk metadata, sikres forutsigbarhet for brukergrensesnittet. Som en konsekvens av dette elimineres dupliserte metadata-kall, mens original-lenker og OpenGraph-tagger automatiseres med 100 % grønn testdekning i Vitest.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
 

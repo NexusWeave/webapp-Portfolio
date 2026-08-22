@@ -4,6 +4,8 @@ title: Sikring av sensitive URL-stier og forbedring av systemets tilgangskontrol
 ingress: |
   For å beskytte bedriftens interne informasjon har jeg utviklet en sikkerhetsløsning som sikrer at brukere kun ser data de har rettmessig tilgang til. Ved å flytte filtreringen til serveren i tråd med prinsippet om *minste privilegium*, har vi tettet lekkasjer av systemets struktur. Tiltaket fjerner unødvendig støy, styrker motstandskraften mot angrep og sikrer at våre systemer nå opererer profesjonelt og etter beste praksis.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -20,6 +22,9 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli i øyblikket.
 sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
   1. [Minst Privilegium](https://learn.microsoft.com/en-us/entra/identity-platform/secure-least-privileged-access)
 --- 
 

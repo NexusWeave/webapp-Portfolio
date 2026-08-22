@@ -4,6 +4,8 @@ title: Arkitektonisk optimalisering av nettsiden
 ingress: |
   Da en ny lansering skapte uforutsette feil, valgte jeg å gå tilbake til en eldre, men stabil versjon av nettsiden. Denne hadde imidlertid flere svakheter under overflaten som gjorde vedlikeholdet krevende. Gjennom en målrettet opprydding har jeg forvandlet denne versjonen til en pålitelig plattform. Ved å forenkle hvordan informasjon hentes og vises, er siden nå blitt både raskere og langt tryggere for absolutt alle brukerne.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt.js
@@ -27,7 +29,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Etter at en 2 uker gammel lansering førte uforutsette feil på kundens nettside, ble det nødvendig å rulle tilbake til en tidligere versjon som fungerte. Denne eldre versjonen hadde tekniske etterslep og utfordringer som påvirket brukeropplevelsen, men var stabil. Versjonen hadde mange feilmeldinger i bakgrunnen, og en uoversiktlig kodestruktur som gjorde det tidkrevende å rette de gamle feilene uten å introdusere nye feil.
@@ -43,6 +48,6 @@ Hensikten var å raskt stabilisere den eldre versjonen etter tilbakerullingen, s
 
 ***
 
-Arbeidet har resultert i en feilfri oppstart av hjemsiden der alle de gamle feilmeldingene i bakgrunnen er fjernet. Ved å flytte kartleggingen til hentingsfasen og rydde i den visuelle strukturen, har jeg forbedret ytelsen og forbedret flyten på nettsiden. Den forbedrede semantikken og universelle utformingen gjør siden pålitelig for både søkemotorer og brukere med hjelpemidler. Viktigst av alt har jeg snudd en utfordrende situasjon til en mulighet for modernisering og læring en del av koden er nå logisk organisert at kunden har en plattform som er trygg, rask og enkel å videreutvikle.
+Arbeidet har resultert i en stabil oppstart av hjemsiden der alle de gamle feilmeldingene i bakgrunnen er fjernet. Ved å flytte kartleggingen til hentingsfasen og rydde i den visuelle strukturen, har jeg forbedret ytelsen og forbedret flyten på nettsiden. Den forbedrede semantikken og universelle utformingen gjør siden pålitelig for både søkemotorer og brukere med hjelpemidler. Viktigst av alt har jeg snudd en utfordrende situasjon til en mulighet for modernisering og læring en del av koden er nå logisk organisert at kunden har en plattform som er trygg, rask og enkel å videreutvikle.
 
 Gjennom denne prosessen har jeg erfart at når man ruller tilbake til en versjon med teknisk etterslep, er det avgjørende å adressere grunnstrukturen med en gang fremfor å bare lappe på enkelte feil. Jeg har sett verdien av å kombinere hente- og kartleggingslogikken som en Single Source of Truth noe som gir en stabilitet man ikke oppnår når logikken er spredt. Ved å løskoble komponenter har jeg erfart hvordan man bygger pålitelige moduler som tåler fremtidige endringer.

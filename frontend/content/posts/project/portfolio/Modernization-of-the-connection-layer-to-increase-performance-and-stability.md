@@ -4,6 +4,8 @@ title: Modernisering av bindeledd for å øke ytelse og stabilitet
 ingress: |
   For å standardisere og forbedre flyten i prosjektet har jeg oppgradert den tekniske grunnmuren til en moderne løsning. Ved å bytte ut verktøyene som håndterte dataene, har jeg fjernet køer og venting som tidligere gjorde siden treg. Dette har skapt et mer pålitelig system som kan gjøre mange oppgaver samtidig uten å stoppe opp. Resultatet er en raskere og tryggere nettside som enkelt kan vokse i takt med brukernes behov.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - FastAPI
@@ -19,7 +21,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Da prosjektet vokste, ble det tydelig at den eksisterende arkitekturen basert på Flask ikke lenger klarte å holde tritt med kravene til effektivitet. Applikasjonen fungerte primært som et bindeledd mot eksterne tjenester som GitHub, og den tradisjonelle metoden for å håndtere data førte til at hele systemet ble stående og vente på svar. Dette skapte en kø som begrenset systemets kapasitet og resulterte i en tregere opplevelse for sluttbrukerne etter hvert som datamengden økte.

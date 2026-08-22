@@ -4,7 +4,7 @@ title: Håndtering av Electron-tilbakerulling i Garuda-Linux
 ingress: |
   En systemoppdatering forårsaket en konflikt med skrivebordsmiljøet som deaktiverte hovedmenyen i VS Code og stanset pågående arbeid. I stedet for tidkrevende feilsøking ble det valgt å rulle tilbake VS Code til en foregående stabil versjon ved hjelp av verktøyet `downgrade`. Dette gjenopprettet den grafiske visningen av menyene raskt og eliminerte nedetid uten risiko for datatap.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
 
@@ -18,7 +18,9 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli.
-sources: ''
+sources: |
+  * [Arch Linux & Kernel Documentation](https://wiki.archlinux.org)
+  * [Electron IPC & Process Model Dokumentasjon](https://www.electronjs.org/docs/latest/tutorial/ipc)
 ---
 
 Etter en systemoppdatering oppstod det en uforutsett utfordring som deaktiverte hovedmenyen i VS Code. Dette førte til at det ble utfordrende å navigere i prosjekter og bruke andre menyvalg. Etter en grundig inspeksjon av utfordringen ble det avdekket en konflikt mellom programvaren og skrivebordsmiljøet knyttet til den grafiske visningen av menyene.

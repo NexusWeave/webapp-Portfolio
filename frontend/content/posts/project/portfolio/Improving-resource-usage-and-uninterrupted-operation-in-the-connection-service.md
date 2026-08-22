@@ -4,6 +4,8 @@ title: Forbedre ressursbruk og uavbrutt drift i koblingspunkt-tjenesten
 ingress: |
   Jeg har fornyet koblingspunkt-tjenesten i prosjektet for å fjerne hindringer som førte til at systemet stoppet opp. Ved å endre hvordan informasjon hentes, har jeg sørget for at programmet nå kan håndtere mange oppgaver samtidig uten å låse seg. Dette frigjør ressurser og gjør at hele flyten i systemet er langt mer effektiv. Grepet sikrer at løsningen er klar for vekst og alltid har kapasitet til å utføre mange nye oppgaver.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -18,7 +20,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Den underliggende logikken i hovedklassen for Koblingspunkt-konfigurasjoner inneholdt et synkront I/O-kall, med denne teknikken ble ressursene låst til en oppgave om gangen, noe som kunne føre til at applikasjonen stoppet uventet ved høy belastning.

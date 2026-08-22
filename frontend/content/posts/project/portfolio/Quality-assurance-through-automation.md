@@ -8,6 +8,8 @@ ingress: |
   laget en løsning som merker prosjektene ved å lese filene. Denne forbedringen
   gjør at jeg sparer tid.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -21,7 +23,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kan bli
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 For at besøkende på nettsiden min raskt skal kunne finne frem til relevante prosjekter, trengte jeg en tydelig kategorisering av teknologien bak hvert prosjekt, slik at det er lettere for besøkende å finne ut hva jeg kan. Å sortere dette manuelt ville vært en ineffektiv bruk av tid og en løsning som ikke ville tåle fremtidig vekst i antall prosjekter.

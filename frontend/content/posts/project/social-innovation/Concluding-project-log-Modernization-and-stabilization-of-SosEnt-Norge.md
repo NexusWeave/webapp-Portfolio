@@ -4,9 +4,11 @@ title: Avsluttende prosjektlogg - Strategisk verdi og modernisering for SosEnt N
 ingress: |
   Gjennom en omfattende teknisk profesjonalisering har vi levert en digital plattform som gir SosEnt Norge økt slagkraft og trygghet. Ved å eliminere teknisk gjeld og innføre en fremtidsrettet arkitektur, har vi gått fra en sårbar nettside til et strategisk verktøy. Resultatet er en lynrask, tilgjengelig og pålitelig portal som styrker organisasjonens profesjonelle omdømme, sikrer maksimal rekkevidde og reduserer fremtidige driftskostnader betydelig.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
-  **Omdømme** - Feilfri og profesjonell digital flate bygger tillit hos partnere.
+  **Omdømme** - stabil og profesjonell digital flate bygger tillit hos partnere.
   **Effektivitet** - Modulær oppbygging gjør det raskt og rimelig å rulle ut nye funksjoner.
   **Inkludering** - Universell utforming sikrer at budskapet når alle, uavhengig av utstyr.
   **Driftsstabilitet** - En robust grunnmur fjerner risiko for uforutsette avbrudd.
@@ -18,7 +20,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Prosjektet har levert dokumentert verdi som rigger kunden for fremtiden.
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Dette prosjektet har handlet om mer enn bare koding; det har handlet om å gi SosEnt Norge en digital grunnmur de kan vokse på. Ved å transformere systemet fra en kilde til bekymring til en kilde til stolthet, har vi sikret at organisasjonens digitale ansikt utad nå står i stil med deres profesjonelle samfunnsoppdrag.
@@ -37,9 +42,9 @@ Før moderniseringen var selv små endringer tidkrevende og risikable på grunn 
 
 #
 
-En nettside har ingen verdi hvis den ikke blir funnet, eller hvis deler av målgruppen blir stengt ute på grunn av dårlig universell utforming (UU).
+En nettside har ingen verdi hvis den ikke blir funnet, eller hvis deler av målgruppen blir stengt ute på grunn av dårlig universell utforming (<abbr title="Universell Utforming | tilgjengelighet for alle">UU</abbr>).
 
-*Verdien for SosEnt Norge:* Gjennom en omfattende SEO-optimalisering og fokus på UU, har vi sørget for at SosEnt Norges budskap når bredere enn noen gang. Siden er nå bygget for å rangere høyt på Google og fungerer feilfritt for brukere med hjelpemidler. Dette sikrer at organisasjonen oppfyller sitt samfunnsansvar om inkludering, samtidig som de når ut til potensielle partnere og gründere de tidligere kunne ha gått glipp av.
+*Verdien for SosEnt Norge:* Gjennom en omfattende <abbr title="Search Engine Optimization | søkemotoroptimalisering">SEO</abbr>-optimalisering og fokus på UU, har vi sørget for at SosEnt Norges budskap når bredere enn noen gang. Siden er nå bygget for å rangere høyt på Google og fungerer stabilt for brukere med hjelpemidler. Dette sikrer at organisasjonen oppfyller sitt samfunnsansvar om inkludering, samtidig som de når ut til potensielle partnere og gründere de tidligere kunne ha gått glipp av.
 
 #
 

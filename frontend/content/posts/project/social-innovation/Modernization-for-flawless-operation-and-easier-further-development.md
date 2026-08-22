@@ -1,9 +1,11 @@
 ---
 date: 2026-03-24T00:00:00.000Z
-title: Modernisering for feilfri drift og enklere videreutvikling
+title: Modernisering for stabil drift og enklere videreutvikling
 ingress: |
   Jeg har gjennomført en modernisering av prosjektet [SosialInnovasjon](https://sosent.no) for å sikre en raskere og mer stabil brukeropplevelse. Ved å rydde i systemets grunnmur har jeg fjernet hindringer som tidligere skapte visuelle feil og treghet. Resultatet er en profesjonell digital flate hvor informasjon alltid vises korrekt. Dette sparer meg for vedlikehold og gjør det enklere å videreutvikle siden i tråd med bedriftens behov i fremtiden.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt.js
@@ -18,7 +20,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli, selv om det har vært litt små irriterende med uforutsigbare feil.
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Prosjektet tekniske fundament hadde over tid blitt oppdelt. Forskjellige deler av siden brukte ulike metoder for å vise frem innhold, som artikler, forfattere og arrangementer. Dette gjorde siden tyngre å laste, økte risikoen for småfeil i visningen (som feil datoformater), og gjorde det tidkrevende for selv små endringer uten at noe annet ble påvirket.

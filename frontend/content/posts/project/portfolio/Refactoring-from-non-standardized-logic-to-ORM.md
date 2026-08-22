@@ -4,6 +4,8 @@ title: Omgjøring fra Ustandardisert Logikk til ORM
 ingress: |
   Jeg har gjennomført en omfattende fornyelse av databasetjenesten for å sikre en langt mer stabil og effektiv hverdag i prosjektet mitt. Ved å rydde opp i hvordan informasjon håndteres, har jeg skapt et skille som gjør løsningen min enklere å pleie og videreutvikle i fremtiden. Dette grepet reduserer risikoen for feil og sikrer at jeg kan levere nye funksjoner raskere. Resultatet er en ryddig og trygg oppbygging med stor verdi.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - FastAPI
@@ -20,7 +22,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Systemets måte å kommunisere med databasen på var utdatert. Selv om det fungerte, var det ikke verken pålitelig eller en optimalt system. Dette gjorde det vanskelig å vedlikeholde koden, og koden var ikke optimalisert for en fremtidige funksjonaliteter,

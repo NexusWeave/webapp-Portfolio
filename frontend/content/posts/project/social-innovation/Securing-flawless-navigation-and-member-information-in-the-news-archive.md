@@ -1,9 +1,11 @@
 ---
 date: 2025-12-28T00:00:00.000Z
-title: Sikring av Feilfri Navigasjon og Medlemsinformasjon i Nyhetsarkivet
+title: Sikring av stabil Navigasjon og Medlemsinformasjon i Nyhetsarkivet
 ingress: |
   Dette arbeidet handler om å sørge for at organisasjonens digitale identitet virker korrekt. Ved å løse utfordringene med navigasjonen i nyhetsarkivet har jeg sikret at medlemmene faktisk finner informasjonen de leter etter, noe som bygger tillit og profesjonalitet. Samtidig har jeg ryddet i logikken på nettsiden slik at den blir enklere å vedlikeholde. Jeg har redusert teknisk etterslep for å sikre at budskapet når helt frem.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt.js
@@ -18,7 +20,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli.
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Jeg utviklet et nyhetsarkiv slik at besøkede kunne kunne finne eldre artikler. Under testingen av løsningen, oppdaget jeg at navigasjonen oppførte seg på en uventet måte. Når man trykket på knappen «Neste side», endret sidetallet seg, men artiklene på skjermen forble det samme. Selv om side tallet forandret seg.
@@ -29,4 +34,4 @@ Oppgaven var å sikre at innholdet oppdaterte seg når brukere navigerte til nes
 * Det ble installert en lytter som følger med på hvilken knapp som er trykket på, slik at systemet reagerer umiddelbart.
 * la til typesikkerhet for å rydde opp i hvordan dataene håndteres og sikre at systemet alltid får korrekt informasjon, dette fjerner usikkerhet og skjulte feil i koden.
 
-Besøkede kan nå navigere feilfritt gjennom hele arkivet til organisasjonen, noe som sikrer at innholdet deres blir lest, kunden kan bli trygg på at medlemmene sine får oppdatert informasjon om arbeidet organisasjonen gjør. Over tid vil dette gjøre det enklere og raskere for utviklere å vedlikeholde siden. Systemet er nå en pålitelig løsning som hindrer at organisasjonen fremstår som uprofesjonell på grunn av tekniske mangler.
+Besøkede kan nå navigere stabilt gjennom hele arkivet til organisasjonen, noe som sikrer at innholdet deres blir lest, kunden kan bli trygg på at medlemmene sine får oppdatert informasjon om arbeidet organisasjonen gjør. Over tid vil dette gjøre det enklere og raskere for utviklere å vedlikeholde siden. Systemet er nå en pålitelig løsning som hindrer at organisasjonen fremstår som uprofesjonell på grunn av tekniske mangler.

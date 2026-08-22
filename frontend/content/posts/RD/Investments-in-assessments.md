@@ -4,7 +4,7 @@ title: 'Investering i Kartlegging.'
 ingress: |
   Brukte tid på å kartlegge enkle innholdsverktøy som er brukervennlige for ikke-tekniske brukere. Ved å tette eksisterende kunnskapshull ble usikkerheten redusert og oversikten over tilgjengelige løsninger forbedret. Dette sikrer leveranse av gjennomtenkte produkter og redusert ressursbruk i fremtidige prosjekter.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
   **Verktøy** - 11ty, Tina CMS, TypeScript
@@ -18,7 +18,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli.
-sources: ''
+sources: |
+  * [TheLadders Eye-Tracking Study: Recruiter Screening Time](https://www.theladders.com)
+  * [Nielsen Norman Group: F-Shaped Pattern for Reading Web Content](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/)
+  * [Roy F. Baumeister: Decision Fatigue and Ego Depletion](https://www.sciencedirect.com)
 ---
 
 For kunden oppsto det et behov for å videreutvikling av nettsiden deres, slik at de kunne administrere innhold selv. Dette utløste et behov om å  videreutvikle kunnskapen innen <abbr title="Content Management System | innholdsverktøy for redaktører">CMS</abbr>-paneler for å løse  oppgaven med å opprette et innholdsverktøy for kunden. Arbeidet krevde innsikt i <abbr title="programvare språk">JavaSript</abbr>-<abbr title="en samling av kode">bibliotek</abbr>er  som **11ty** og en tilpassning av egne administrasjonsverktøy. 

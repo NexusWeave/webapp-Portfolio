@@ -4,6 +4,8 @@ title: Modernisering av arkitektur og dokumentasjon for fremtidig vekst
 ingress: |
   For å sikre at ting holder seg stabilt fremover, har jeg tatt en skikkelig sjau på grunnmuren i applikasjonen. Ved å tette gapet mellom det som står i dokumentasjonen og det som faktisk skjer i koden, har jeg gjort det mye enklere å vedlikeholde og fjerna kjipe hindringer i utviklingsløpet. Det betyr at jeg nå kan pushe nye ting mye raskere enn før.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -18,7 +20,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Applikasjonen hadde etter hvert vokst seg til et punkt der dokumentasjonen ikke stemte med virkeligheten lenger. Det førte til at jeg brukte unødvendig mye tid på vedlikehold. Samtidig hadde den indre strukturen blitt litt vel kronglete, noe som gjorde det risikabelt å legge til nye funksjoner uten at noe knakk.

@@ -4,7 +4,7 @@ title: Integrasjon av Schema.org JSON-LD for Sitelinks og AI-skanning
 ingress: |
   For å styrke synligheten i søkemotorer som Google og Bing, samt tilrettelegge for automatisk visning av nettstedslenker, ble det konfigurert strukturert Schema.org-data via <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> i Nuxt-applikasjonen. Løsningen benytter `useHead` for å etablere et semantisk `@graph` bestående av `WebSite`, `Person`, `Organization` (NexusWeave) og `SiteNavigationElement`.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
 

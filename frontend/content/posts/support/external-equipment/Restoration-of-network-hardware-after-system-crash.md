@@ -4,7 +4,7 @@ title: Gjenoppretting av nettverksmaskinvare etter systemkrasj
 ingress: |
   Uventet systemkrasj i Garuda Linux førte til fullstendig svikt i nettverk og Bluetooth på et dual-boot-system. Etter feilsøking i både programvare og BIOS ble feilen sporet til manglende fysisk kontakt med hovedkortet. Ved å remontere PCIe-nettverkskortet ble forbindelsen gjenopprettet i operativsystemene, noe som bekrefter verdien av fysisk inspeksjon.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
   **OS** - Garuda Arch Linux / Windows 10 (Dual Boot)
@@ -19,7 +19,9 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli.
-sources: ''
+sources: |
+  * [Arch Linux & Kernel Documentation](https://wiki.archlinux.org)
+  * [Electron IPC & Process Model Dokumentasjon](https://www.electronjs.org/docs/latest/tutorial/ipc)
 ---
 
 Etter en uventet systemkrasj i Garuda Linux oppstod det svikt i nettverksfunksjonaliteten på tvers av både Linux- og Windows-partisjonene. Hverken trådløst nettverk (<abbr title="Wireless Fidelity ">WiFi</abbr>) eller Bluetooth var tilgjengelige på systemene. Ettersom det nylig var utført en systemoppdatering, ble det tatt en antagelse på at feilen skyldtes programvarekonflikter eller korrupte drivere.

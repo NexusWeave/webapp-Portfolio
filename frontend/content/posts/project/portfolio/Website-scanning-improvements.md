@@ -4,6 +4,8 @@ title: Forbedringer av nettside skanning
 ingress: |
   Tidligere var prosessen med å hente informasjon både treg og full av støy. Ved å lære verktøyet å kjenne igjen og fjerne uinteressant innhold automatisk, leveres nå ferdigvaskede data. Med evnen til å gjøre mange oppgaver samtidig og tåle små avbrudd, spares det mye tid. I tillegg er feil med manglende sider løst, slik at alt alltid er klart til bruk.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -19,7 +21,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Verktøyet jeg bruker for å hente informasjon fra nettsiden var tregt og tok ofte med seg mye unødvendig "støy" fra nettsiden, som krevde mye tid på å vaske dataene i etterkant.

@@ -4,6 +4,8 @@ title: Forbedret plattformstabilitet og akselerert synlighet i søkemotorer
 ingress: |
   Dagens oppdatering fokuserer på å styrke plattformens profesjonalitet og forbedret synlighet gjennom en mer effektiv brukeropplevelse og en ryddigere nettside. Ved å fjerne visuelle forsinkelser, automatisere SEO og fjerne tekniske hindringer, har jeg redusert risikoen for brukerfrafall og lagt til rette for en langt raskere videreutvikling av tjenesten og en forbedret digital profil for samtlige av organisasjonens mange medlemmer.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt.js
@@ -19,7 +21,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli.
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Prosjektet hadde enkelte utfordringer knyttet til hvordan innhold ble presentert for brukerne mens det lastet, samt enkelte svakheter i hvordan forfatterinformasjon og datoer ble koblet sammen. Dette medførte en risiko for en uventet brukeropplevelse og økt tidsbruk ved vedlikehold og videreutvikling.
@@ -29,6 +34,6 @@ Hensikten var å forbedre brukeropplevelsen, fjerne ukorrektheter i visningen og
 * Jeg har lagt inn visuelle indikatorer som gir brukeren umiddelbar tilbakemelding mens innholdet hentes, slik at man unngår inntrykket av at siden har fryst.
 * Logikken bak kobling av forfattere og artikler er forbedret for å sikre at riktig informasjon alltid vises på tvers av hele nettstedet.
 * Jeg har fjernet overflødig kode og organisert arbeidsmiljøet bedre for å redusere risikoen for fremtidige feil.
-* Jeg har automatisert Optimalisert muligheten for at SEO'n kan hente ny informasjon fra nettsiden raskere
+* Jeg har automatisert Optimalisert muligheten for at <abbr title="Search Engine Optimization | søkemotoroptimalisering">SEO</abbr>'n kan hente ny informasjon fra nettsiden raskere
 
 Gjennom disse endringene har jeg styrket plattformen ved å levere en mer stabil og tillitvekkende brukeropplevelse som reduserer sjansen for at besøkende forlater siden på grunn av treghet eller visuelle mangler. Ved å rydde opp i den underliggende strukturen og standardisere komponentene, har jeg også redusert fremtidige forsinkelser betydelig. Dette betyr at fremtidig utvikling vil gå raskere, samtidig som systemet est klargjort for å håndtere vekst uten at kvaliteten på innholdet som presenteres for kunden svekkes.

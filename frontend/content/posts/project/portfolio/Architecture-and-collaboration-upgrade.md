@@ -4,6 +4,8 @@ title: Utvidelse av organisasjonsstøtte og normalisering av bidragsyter-arkitek
 ingress: |
   Det siste døgnet har jeg gitt GitHub-integrasjonen et skikkelig løft. Jeg har gått bort fra en låst modell og over til en åpen arkitektur som faktisk fanger opp hvem som bidrar. Ved å normalisere databasen og fikse filtreringen har vi nå full støtte for både organisasjonsprosjekter og eksterne bidragsytere uten at det går utover ytelsen.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - FastAPI, Nuxt 4, SQLAlchemy (PostgreSQL), Alembic, Sass
@@ -18,7 +20,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært lang, men jeg har fått gjort utrolig mye. Dagen er så fin den kunne bli.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Før brukte prosjektet en litt for streng modell for GitHub-integrasjonen, noe som gjorde at vi ikke fikk med organisasjonsprosjekter (som GetAcademy) eller eksterne folk som bidro. Databasemodellen var for flat og manglet skikkelige relasjoner, og det oppstod ofte tidsone-feil når vi skulle synkronisere data.

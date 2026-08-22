@@ -4,7 +4,7 @@ title: Løsning på IPC-feil i utviklingsmiljøet
 ingress: |
   En bakgrunnsprosess krasjet under oppstart av utviklingsmiljøet, noe som resulterte i en feilmelding om brudd på <abbr title="Inter-Process Communication (kommunikasjon mellom prosesser)">IPC</abbr>. Situasjonen stanset videre utvikling ettersom koden ikke lot seg kompilere lokalt. Utfordringen oppstod som en konsekvens av korrupte filer og versjonskonflikter mellom pakkene.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
 
@@ -20,6 +20,9 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Utfordringen ble løst raskt og utviklingsmiljøet er nå stabilt.
+sources: |
+  * [Arch Linux & Kernel Documentation](https://wiki.archlinux.org)
+  * [Electron IPC & Process Model Dokumentasjon](https://www.electronjs.org/docs/latest/tutorial/ipc)
 ---
 
 En bakgrunnsprosess krasjet under oppstart av utviklingsmiljøet, noe som resulterte i en feilmelding om brudd på <abbr title="Inter-Process Communication (kommunikasjon mellom prosesser)">IPC</abbr>. Situasjonen stanset videre utvikling ettersom koden ikke lot seg kompilere lokalt. Utfordringen oppstod som en konsekvens av korrupte filer og versjonskonflikter mellom pakkene.

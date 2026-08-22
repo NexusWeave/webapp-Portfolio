@@ -4,6 +4,8 @@ title: Modernisering av responsivitet og skjemasystem for optimal brukeropplevel
 ingress: |
   Gjennom en omfattende teknisk gjennomgang har jeg modernisert nettsidens responsive rammeverk og optimalisert redaktøropplevelsen i TinaCMS. Ved å innføre industristandarder for brytningspunkter, rydde i CSS-arkitekturen og utvikle intelligente, betingede skjemafelt, har jeg skapt en plattform som er både visuelt sømløs på tvers av enheter og teknisk robust for fremtidig skalering.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt.js, TinaCMS
@@ -22,7 +24,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Utrolig tilfredsstillende å se arkitekturen falle på plass med så rene løsninger!
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Dagens arbeid har implementert responsiv mobilnavigasjon med fullskjerm-overlay og standardisert brytningspunktene (xs til 5xl) i Sass. I TinaCMS er det lagt til en intelligent valideringssjekk som automatisk krever alt-tekst og bildetekst kun når et bilde faktisk er lastet opp, for å sikre universell utforming. I tillegg er en feil i navigasjonskomponentens CSS-klasser, som forårsaket visningsfeil på desktop, rettet.
@@ -35,6 +40,6 @@ Dagens arbeid har implementert responsiv mobilnavigasjon med fullskjerm-overlay 
 
 ***
 
-Arbeidet har resultert i en feilfri oppstart av hjemsiden der alle de gamle feilmeldingene i bakgrunnen er fjernet. Ved å flytte kartleggingen til hentingsfasen og rydde i den visuelle strukturen, har jeg forbedret ytelsen og forbedret flyten på nettsiden. Den forbedrede semantikken og universelle utformingen gjør siden pålitelig for både søkemotorer og brukere med hjelpemidler. Viktigst av alt har jeg snudd en utfordrende situasjon til en mulighet for modernisering og læring – en del av koden er nå så logisk organisert at kunden har en plattform som er trygg, rask og enkel å videreutvikle.
+Arbeidet har resultert i en stabil oppstart av hjemsiden der alle de gamle feilmeldingene i bakgrunnen er fjernet. Ved å flytte kartleggingen til hentingsfasen og rydde i den visuelle strukturen, har jeg forbedret ytelsen og forbedret flyten på nettsiden. Den forbedrede semantikken og universelle utformingen gjør siden pålitelig for både søkemotorer og brukere med hjelpemidler. Viktigst av alt har jeg snudd en utfordrende situasjon til en mulighet for modernisering og læring – en del av koden er nå så logisk organisert at kunden har en plattform som er trygg, rask og enkel å videreutvikle.
 
-Gjennom denne prosessen har jeg sett verdien av å bygge "hjelpe-arkitektur" fremfor bare å legge til felt. Ved å sentralisere logikken for betingede felt, har jeg spart fremtidig utviklingstid og sikret en Single Source of Truth for skjemaoppførsel. Erfaringen med å integrere React-logikk direkte i CMS-konfigurasjonen har også åpnet nye muligheter for hvordan vi kan skreddersy redaktøropplevelsen fremover uten å miste den tekniske integriteten.
+Gjennom denne prosessen har jeg sett verdien av å bygge "hjelpe-arkitektur" fremfor bare å legge til felt. Ved å sentralisere logikken for betingede felt, har jeg spart fremtidig utviklingstid og sikret en Single Source of Truth for skjemaoppførsel. Erfaringen med å integrere React-logikk direkte i <abbr title="Content Management System | publiseringssystem">CMS</abbr>-konfigurasjonen har også åpnet nye muligheter for hvordan vi kan skreddersy redaktøropplevelsen fremover uten å miste den tekniske integriteten.

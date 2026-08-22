@@ -4,6 +4,8 @@ title: Runtime-diagnostikk i Python
 ingress: |
   I kjølvannet av database-migreringen til Turso oppsto utfordringer i applikasjonens API-logikk, manifestert som en 500 Internal Server Error. Denne artikkelen dokumenterer diagnostiseringen og rettingen av en "Breaking Change" i objekt-instansieringen, der en uoverensstemmelse mellom klasse-definisjon og parameter-kall i Python førte til systemstans. Ved å bruke målrettet logging for å synkronisere navngivningen i LanguageModel, ble datastrømmen mellom GitHub og Turso gjenopprettet.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python, Turso, SQLAlchemy
@@ -17,7 +19,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Erfaringen understreker viktigheten av nøyaktighet i dynamiske språk.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Situasjonen var at etter å ha etablert tilkoblingen til Turso-databasen, oppstod det en ny hindring i API-et som henter GitHub-repositorier. Applikasjonen sendte en 500-feil som indikerte at serveren sviktet; loggen avslørte utfordringen: TypeError: 'language' is an invalid keyword argument for LanguageModel.
@@ -29,6 +35,6 @@ Hensikten med arbeidet var å eliminere 500-feilen og gjenopprette systemstabili
 
 Rettingen førte til at API-et umiddelbart stabiliserte seg. Ved å synkronisere navngivningen mellom klassedefinisjon og instansieringen ble datastrømmen fra GitHub til Turso gjenopprettet.
 
-Gjennom denne diagnostiseringen ble det erfart at moderne ORM-verktøy krever stor nøyaktighet i instansieringsprosessen. Erfaringen understreker også hvor viktig det er å ha loggingspunkter i koden, da gode logger forkorter tiden fra diagnose til løsning drastisk. Dette har gitt en dypere forståelse for hvordan endringer i én del av arkitekturen krever koordinerte oppdateringer i logikken.
+Gjennom denne diagnostiseringen ble det erfart at moderne <abbr title="Object-Relational Mapping | objekt-relasjonell mapping">ORM</abbr>-verktøy krever stor nøyaktighet i instansieringsprosessen. Erfaringen understreker også hvor viktig det er å ha loggingspunkter i koden, da gode logger forkorter tiden fra diagnose til løsning drastisk. Dette har gitt en dypere forståelse for hvordan endringer i én del av arkitekturen krever koordinerte oppdateringer i logikken.
 
 Neste steg er å publisere backend-delen av applikasjonen til en tjeneste som Google Cloud Run for å sikre profesjonell drift og spesialisert infrastruktur.

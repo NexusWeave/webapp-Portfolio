@@ -4,7 +4,7 @@ title: Forbedring av typesikkerhet og enhetstester for kartleggingsverktøy
 ingress: |
   Kartleggingsverktøyene for innhold i porteføljen manglet tilstrekkelig testdekning mot eksterne datastrukturer. Dette ble løst ved å opprette enhetstester med simulerte testdata for samtlige funksjoner i applikasjonen. Endringene gjør det enkelt å verifisere oppførselen uten å være avhengig av eksterne systemer under testing.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
   **Teknologi** - Nuxt.js, Vitest
@@ -18,6 +18,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kan bli.
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 ---
 
 For å sikre at data-kartleggerne for nettsiden var pålitelige, trenger kartleggingsfunksjonaliteten enhetstester, for å dokumentere hvordan funksjonene fungerer i praksis. Kartleggingsfunksjonene skal i praksis ta i mot rådata som er automatisk generert fra <abbr title="Redaktørpanel">CMS</abbr>-Panelet og konvertere disse til definerte objekter for TypeScript programvaren, men dette er simulert gjennom <abbr title="Simulering av data">mocking</abbr>.

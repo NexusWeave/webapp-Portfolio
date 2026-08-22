@@ -4,6 +4,8 @@ title: Separering av kode og innhold i et moderne prosjekt
 ingress: |
   For å standardisere måten innholdet styres på, har jeg koblet et redaktørpanel til prosjektet. Ved å rydde i hvordan systemet finner frem i mappene, har jeg fjernet feilmeldinger og utfordringer med bilder som ikke viste seg. Dette har skapt en trygg og ryddig arbeidsflyt der tekst og bilder kan endres fritt uten at man risikerer å ødelegge selve nettsiden. Resultatet er en stabil og enkel løsning som er klar for fremtidig vekst.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -20,12 +22,16 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 For å forenkle innholdsstyringen i porteføljen min, la jeg til et redaktør panel kalt TinaCMS. Utfordringen lå i prosjektets struktur, hvor  nettsiden  lever i en undermappe som Dette skapte synkroniserings utfordringer med Tina Cloud, som i utgangspunktet ikke klarte å lese innholdsgrenen hvor dokumentasjonen og tekstene lagres.
 
-Hensikten var å etablere en effektiv og feilfri flyt mellom redaktørpanelet og selve kildekoden til nettsiden. Dette krevde oppsettsmetode for hvordan panelet tolker mappestrukturen min. I tillegg måtte jeg sikre at alle filer, bilder og ressurser ble lastet korrekt, selv om de ligger lagret i ulike undermapper i prosjektet.
+Hensikten var å etablere en effektiv og stabil flyt mellom redaktørpanelet og selve kildekoden til nettsiden. Dette krevde oppsettsmetode for hvordan panelet tolker mappestrukturen min. I tillegg måtte jeg sikre at alle filer, bilder og ressurser ble lastet korrekt, selv om de ligger lagret i ulike undermapper i prosjektet.
 
 * Jeg utførte en systematisk feilsøking og rekonfigurering:
 

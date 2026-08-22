@@ -4,6 +4,8 @@ title: Løsning av kommunikasjonsfeil og korrekt klargjøring av tilgangskontrol
 ingress: |
   Da en feil i den rollebaserte tilgangskontrollen hindret systemet å starte, ble sikkerheten prioritert foran drift. Ved å identifisere en manglende klargjøring av `AccessService`-klassen, fikk jeg rettet kommunikasjonssvikten som hindret innlasting av tilgangsreglene. Resultatet er en stabil og trygg innlogging for kollegaer og studenter, der en pålitelig sikkerhetskontroll nå sikrer en uavbrutt arbeidshverdag og trygghet for alle.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -20,7 +22,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Systemet har en Rollebasert tilgangskontroll som har ansvaret for å skjerme informasjon for uvelkommende brukere. Ved oppstart oppsto det en feil der instruksjonslisten ikke lot seg lese korrekt inn i systemet. Dette hindret tjenesten fra å lagre tilgangsreglene i minnet, noe som førte til at hele applikasjonen stoppet opp for å ivareta sikkerheten.

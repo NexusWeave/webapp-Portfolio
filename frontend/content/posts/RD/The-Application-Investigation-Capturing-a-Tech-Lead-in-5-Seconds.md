@@ -4,7 +4,7 @@ title: 'Søknadsundersøkelsen: Kunsten å Fange en Tech Lead på 5 Sekunder'
 ingress: |
   Ved hjelp av kunstig intelligens ble 77 historiske søknadsdokumenter systematisk analysert for å kartlegge hvorfor tradisjonelle tekstblokker og kulepunkter underpresterer i tekniske ansettelsesprosesser. Arbeidet resulterte i et skannbart salgsprinsipp forankret i verdidrevet og forkortet tekst, tekniske årsaksforklaringer og en to-prosjektsregel. Dette sikrer maksimal lesbarhet og at kjernekompetansen oppfattes på under fem sekunder i førstegangsscreeningen.
 status: |
-  *Skrevet i samarbeid med AI - Gemini 3.7 Flash*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Dagens aktiviteter
   * Benytte kunstig intelligens til å skanne 77 historiske søknadsdokumenter for mønstergjenkjenning.
@@ -20,7 +20,6 @@ sources: |
   * [Roy F. Baumeister: Decision Fatigue & Ego Depletion](https://www.sciencedirect.com)
   * [TheLadders Eye-Tracking Study: How Recruiters Read Resumes](https://www.theladders.com)
   * [Nielsen Norman Group: F-Shaped Pattern for Reading Web Content](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/)
-  
 ---
 
 Gjennom analyser av tidligere utsendelser oppsto det et behov for å forstå hvorfor tradisjonelle søknadstekster ofte forsvinner i rekrutteringsprosessens innledende fase. Erfaringen viser at rekrutterere og tekniske ledere har høyt arbeidspress og store søknadsmengder. Dette forsterker beslutningstrettheten ved gjennomgang av kandidater, noe som gjør lange avsnitt og oppramsende lister lite hensiktsmessige.

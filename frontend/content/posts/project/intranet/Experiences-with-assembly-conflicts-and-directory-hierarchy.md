@@ -4,6 +4,8 @@ title: Erfaringer med assembly-konflikter og mappehierarki
 ingress: |
   Ved å rydde opp i prosjektets grunnmur har vi fjernet tekniske konflikter som hindret stabil drift og ferdigstillelse. Gjennom en logisk omorganisering av systemets filer har vi oppnådd en forutsigbar byggeprosess uten feilmeldinger. Dette reduserer teknisk etterslep og sikrer at utviklingstiden brukes på verdiskaping fremfor feilretting. Resultatet er en trygg produksjonslinje som leverer høy kvalitet uten uforutsette avbrudd.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -18,12 +20,15 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Bedriftens sentrale programvareoppsett opplevde tekniske konflikter som hindret systemet i å bli ferdigstilt og tatt i bruk. Ulike deler av systemet snakket forbi hverandre, noe som førte til feilmeldinger og stans i hele produksjonslinjen for programvaren. For organisasjonen betydde dette uforutsigbarhet og risiko for forsinkelser i leveranser.
 
-Hensikten var å fjerne de tekniske blokkeringene og sikre at systemet kunne bygges feilfritt hver gang. Dette krevde en dypere analyse av hvordan filene i prosjektet var organisert, for å fjerne duplikater og sikre at alle komponenter fant hverandre i systemstrukturen.
+Hensikten var å fjerne de tekniske blokkeringene og sikre at systemet kunne bygges stabilt hver gang. Dette krevde en dypere analyse av hvordan filene i prosjektet var organisert, for å fjerne duplikater og sikre at alle komponenter fant hverandre i systemstrukturen.
 
 * Gjennomførte en gjennomgang av hvordan systemet genererer sine egne startfiler for å isolere kilden til de gjentakende feilmeldingene.
 * Identifiserte at en for dyp og uoversiktlig mappestruktur skapte forvirring for systemets interne søkeverktøy.

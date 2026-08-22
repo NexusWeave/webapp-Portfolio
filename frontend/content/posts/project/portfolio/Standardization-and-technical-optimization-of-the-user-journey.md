@@ -4,6 +4,8 @@ title: Standardisering og teknisk optimalisering av brukerreisen
 ingress: |
   Gjennom teknisk opprydding og standardisering har jeg styrket nettsidens identitet og brukeropplevelse. Ved å forenkle navigasjonslogikken og etablere standardiserte bildebeskrivelser, har jeg fjernet teknisk etterslep og visuell støy. Resultatet er en stabil og responsiv plattform som øker brukernes opplevelse, forbedrer tilgjengelighet og optimaliserer applikasjonen for effektiv videre vekst og forenkler vedlikehold i fremtiden.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -15,7 +17,11 @@ status: |
   * Reduserte kompleksitet i header-seksjonen ved å rydde i navigasjons- og logologikken, noe som har resultert i en forutsigbar og flytende brukeropplevelse.
   * Forbedret logikken for bildekomponenter slik at bildets alternative tekst automatisk brukes som bildetekst når spesifikk beskrivelse mangler.
   * Oppgradert backend-modellen for å sikre at bildebeskrivelser leveres i riktig format, samt innført typesikkerhet for å øke applikasjonens langsiktige vekstevne.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Datoer og ikoner ble vist på ulike måter på tvers av nettstedet, uten en felles standard for hvordan informasjon skulle presenteres. Dette hadde en risiko for at besøkede kunne få en uventet brukeropplevelse.

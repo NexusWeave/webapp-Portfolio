@@ -4,6 +4,8 @@ title: Arkitektur, SEO og stabilitet
 ingress: |
   I dette skippertaket tok jeg tak i utfordringene med manuelt vedlikehold av navigasjon og SEO, som gjorde hele opplegget uoversiktlig og teknisk ustabilt. Ved å få på plass en felles sannhetskilde har jeg automatisert kjedelige rutineoppgaver og fjerna irriterende innlastingsfeil. Resultatet er en plattform som er klar for fremtiden med bedre ressursbruk og en bunnsolid struktur.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt.js
@@ -19,10 +21,14 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
-Prosjektet slet med en hybridløsning der jeg måtte dulle med navigasjon og SEO-info manuelt overalt. Det ble fort rotete. Samtidig var systemet litt treigt fordi ting skjedde synkront og låste opp ressurser, og det dukka opp feil når ting skulle lastes inn i nettleseren – noe som ga både visuell flimring og stygge advarsler i konsollen.
+Prosjektet slet med en hybridløsning der jeg måtte dulle med navigasjon og <abbr title="Search Engine Optimization | søkemotoroptimalisering">SEO</abbr>-info manuelt overalt. Det ble fort rotete. Samtidig var systemet litt treigt fordi ting skjedde synkront og låste opp ressurser, og det dukka opp feil når ting skulle lastes inn i nettleseren – noe som ga både visuell flimring og stygge advarsler i konsollen.
 
 Hensikten var å få alt inn i en "Single Source of Truth" for å automatisere både navigasjon og SEO. Jeg skulle også rydde opp i innholdsarkivet og sørge for at alt lasta inn knirkefritt uten layout-skift eller hydrerings-tull.
 

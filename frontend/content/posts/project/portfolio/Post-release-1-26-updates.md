@@ -4,6 +4,8 @@ title: Optimalisering og kvalitetsheving etter versjon 1.26
 ingress: |
   Etter at den nye versjonen av nettsiden ble lansert, ble det tydelig at det var behov for å rydde litt i kulissene og gjøre koden enklere å forstå. Det handlet spesielt om å sikre at nettsiden er bygget opp på en logisk måte med riktig <abbr title="HyperText Markup Language">HTML</abbr>. Jeg ønsket å gjøre systemet enklere å vedlikeholde, og fikk på plass bedre verktøy som automatisk sjekker at ting fungerer som de skal, i tillegg til tydeligere veiledninger.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt
@@ -20,6 +22,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kan bli !
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 * La til et verktøy som automatisk sjekker at nettsiden er bygget opp riktig.

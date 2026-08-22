@@ -4,6 +4,8 @@ title: Intelligent filtrering og kategorisering for å øke brukervennlighet
 ingress: |
   Jeg har transformert et ustabilt overvåkingssystem til en pålitelig og selvgående løsning som fjerner unødvendig støy og sikrer datakvalitet. Ved å automatisere sortering og lagring, leveres nå prosjekter ferdig kategorisert direkte til skyen. Dette fjerner behovet for manuelt vedlikehold og feilsøking, samtidig som det gir besøkende tilgang til relevante data for raskere og mer presise analyser.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python, asyncio, SQLAlchemy
@@ -18,7 +20,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Systemet er nå stabilt og driftssikkert.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Situasjonen var at overvåkningssystemet for GitHub-prosjekter var ustabilt og ineffektivt. Det ble overbelastet av unødvendige skoleprosjekter, noe som utfordret systemet når det gjaldt å skille relevante prosjekter fra støy.

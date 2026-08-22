@@ -3,8 +3,20 @@ date: 2025-12-18T00:00:00.000Z
 title: Jakten på Rampenissen
 ingress: |
   I moderne asynkron webutvikling kan samspillet mellom database og API-modeller by på uventede utfordringer, her omtalt som "rampenisser". Denne loggen dokumenterer feilsøkingen av en s`qlalchemy.exc.MissingGreenlet`-feil, utløst av ulovlig Lazy Loading i en asynkron sesjon. Ved å navigere fra en enkel spørring til en dypere, nøstet Eager Loading-struktur, belyses ikke bare den tekniske løsningen, men også de påfølgende konsekvensene for API-kontrakten. Gjennom en analyse av Pydantics computed properties og SQLAlchemys relasjonsstier, utforskes balansen mellom å hente komplette data og å unngå teknisk gjeld i presentasjonslaget.
-status: ''
-sources: ''
+status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
+  #### Programinformasjon
+  **Teknologi** - Python, FastAPI, SQLAlchemy
+  **Verktøy** - Pydantic, Greenlet
+
+  #### Motivasjon & Energi - 10 / 10
+  Dagen har vært strukturert og lærerik.
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 ### Eliminering av ulovlig Lazy Loading i SQLAlchemy

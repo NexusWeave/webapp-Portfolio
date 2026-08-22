@@ -4,6 +4,8 @@ title: Fra "Make it Work" til "Make it Right"
 ingress: |
   Gjennom en målrettet modernisering har vi fjernet vedlikeholdsetterslep og driftsrisiko i systemet. Ved å skille forretningsregler fra datalagring og innføre universelle grensesnitt, har vi skapt en fleksibel arkitektur. Dette reduserer feilmarginer og forenkler opplæringen av nye ansatte, samtidig som koden er kortere. Systemet er nå en pålitelig plattform som sikrer både rimeligere og raskere videreutvikling.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -19,7 +21,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Prosjektet hadde et preg av et økende vedlikeholdsetterslep som følge av å følge prinsippet om "Make it work, make it right, make it fast" i startfasen. Systemet fungerte, men manglet strukturen som kreves for stabil drift over tid. Oppbyggingen skapte en risiko der små endringer kunne føre til uforutsette feil, noe som kan risikere å bremse fremdriften.

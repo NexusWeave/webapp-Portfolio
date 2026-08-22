@@ -1,10 +1,12 @@
 ---
 date: 2025-11-25T00:00:00.000Z
-title: Sikring av datakvalitet og en feilfri brukeropplevelse
+title: Sikring av datakvalitet og en stabil brukeropplevelse
 ingress: |
   Ved å utbedre logiske feil i bedriftens dataflyt, har vi i dag styrket informasjonskvaliteten og fjernet tekniske hindringer som skapte unødvendig tidsbruk for ansatte og studenter. Gjennom en målrettet og kostnadseffektiv stabilisering av systemet har vi ikke bare sikret en mer pålitelig brukeropplevelse her og nå, men også lagt et solid mur for fremtidig digital vekst.
 
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -19,7 +21,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Systemet som håndterer bedriftens dataflyt og navigasjonslenker, produserte duplikater i de registrerte filene. Dette førte til at informasjonen som ble lagret ikke var unik, dette skapte rot i datagrunnlaget og forstyrret den tiltenkte flyten i systemet. For brukerne ville dette bety en uforutsigbar opplevelse og risiko for feilinformasjon.

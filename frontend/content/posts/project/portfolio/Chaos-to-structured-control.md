@@ -4,6 +4,8 @@ title: Kaos til Strukturert Kontroll
 ingress: |
   For at det skal være lett å finne frem i det jeg skriver, har jeg snekra sammen en automatisk sortering. Ved å fjerne manuelt rot og la systemet ta seg av kategoriseringen, har jeg gjort brukeropplevelsen mye smidigere. Her er hvordan jeg tok kontroll på kaoset!
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -15,7 +17,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Jeg merka at det var litt vrient for folk å finne frem til de artiklene de faktisk ville lese. Alt lå egentlig i en stor haug, og det gjorde hele brukeropplevelsen ganske rotete.

@@ -2,8 +2,10 @@
 date: 2026-06-02T12:00:00.000Z
 title: Konsolidering av logg-arkitektur og teknisk gjeninnføring
 ingress: |
-  Dagens arbeid har fokusert på en omfattende konsolidering av applikasjonens innholdsstruktur og en totalrenovering av de tekniske verktøyene for innholdsstyring. Ved å fjerne unødvendig kompleksitet knyttet til personlige logger og gå tilbake til en renere 'posts'-struktur, har jeg skapt en mer fokusert plattform. Samtidig er de underliggende feilene i CMS-logikken rettet, noe som sikrer en feilfri og type-sikker arbeidsflyt for fremtiden.
+  Dagens arbeid har fokusert på en omfattende konsolidering av applikasjonens innholdsstruktur og en totalrenovering av de tekniske verktøyene for innholdsstyring. Ved å fjerne unødvendig kompleksitet knyttet til personlige logger og gå tilbake til en renere 'posts'-struktur, har jeg skapt en mer fokusert plattform. Samtidig er de underliggende feilene i CMS-logikken rettet, noe som sikrer en stabil og type-sikker arbeidsflyt for fremtiden.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt 3, TinaCMS
@@ -20,12 +22,16 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
-Dagens utgangspunkt var et system preget av en voksende teknisk gjeld i innholdsarkitekturen og underliggende ustabilitet i CMS-verktøyene. Ved å ha både `logs` og `posts` som begreper, samt en kunstig inndeling mellom `technical` og `personal`, hadde systemet blitt unødvendig komplisert å vedlikeholde og videreutvikle.
+Dagens utgangspunkt var et system preget av en voksende teknisk gjeld i innholdsarkitekturen og underliggende ustabilitet i <abbr title="Content Management System | publiseringssystem">CMS</abbr>-verktøyene. Ved å ha både `logs` og `posts` som begreper, samt en kunstig inndeling mellom `technical` og `personal`, hadde systemet blitt unødvendig komplisert å vedlikeholde og videreutvikle.
 
-Hensikten for dagen var å rydde opp i systemets indre struktur for å gjøre det mer stabilt i drift. Jeg ønsket å forenkle hvordan systemet er organisert ved å fjerne unødvendig kompleksitet i mappestrukturen, samtidig som jeg skulle reparere de tekniske verktøyene som driver redaktørpanelet for å sikre en feilfri brukeropplevelse.
+Hensikten for dagen var å rydde opp i systemets indre struktur for å gjøre det mer stabilt i drift. Jeg ønsket å forenkle hvordan systemet er organisert ved å fjerne unødvendig kompleksitet i mappestrukturen, samtidig som jeg skulle reparere de tekniske verktøyene som driver redaktørpanelet for å sikre en stabil brukeropplevelse.
 
 * For å løse dette har jeg gjennomført følgende tiltak:
 

@@ -4,6 +4,8 @@ title: Korrigering av logikk og kontrollert mengdehåndtering
 ingress: |
   En logisk feilkobling begrenset tidligere datainnsamlingen til kun forsiden, noe som ga et mangelfullt datagrunnlag. Ved å erstatte den enkle forespørselen med en grundig metode for å hente ut informasjon, prosesserer systemet nå hele lister med lenker. For å sikre stabilitet og unngå overbelastning, er arbeidsflyten transformert med kontrollert gruppering av oppgaver. Dette har ført til en effektiv og pålitelig tjeneste klargjort for vekst.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -20,7 +22,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Kjenner at jeg er litt slapp idag, men ellers en ok dag.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Jeg hadde ved et uhell koblet systemet til en funksjon som kun sendte forespørsler til hovednettsiden. Dette førte til at verktøyet bare samlet inn informasjon fra forsiden, i stedet for å gå gjennom den faktiske listen med lenker som var tilgjengelig. Systemet manglet dermed informasjon, noe som resulterte i et mangelfullt datagrunnlag for applikasjonen. Jeg ønsket også å rette funksjonaliteten for å gruppere flere forespørsler til å håndtere større mengder med data.

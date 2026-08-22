@@ -4,6 +4,8 @@ title: Dynamisk RBAC-Navigasjon med Statisk CSV
 ingress: |
   Vi har innført en intelligent navigasjonsløsning som automatisk tilpasser menyer etter brukernes rettigheter. Ved å filtrere bort utilgjengelig innhold har vi fjernet støy og styrket sikkerheten for ansatte og studenter. Den nye strukturen sikrer en profesjonell brukeropplevelse og forenkler vedlikehold, da vi nå kan oppdatere tilgangsnivåer uten omprogrammering. Resultatet er et verktøy som øker effektiviteten i organisasjonen betraktelig.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -19,12 +21,15 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Systemet vårt benytter en sentral oversikt (en CSV-fil ved bruk av [`CsvHelper`](https://joshclose.github.io/CsvHelper/getting-started/#reading-a-csv-file)) for å styre innholdslister og hovedmenyer. Utfordringen var at denne listen var statisk; alle brukere så de samme lenkene og menyvalgene, uavhengig av hvilke rettigheter de faktisk hadde i systemet. Dette skapte en uoversiktlig brukeropplevelse og potensielle sikkerhetsspørsmål, da brukere kunne se navigasjonsstier de ikke hadde tillatelse til å besøke.
 
-Hensikten var å designe og skape en intelligent løsning som automatisk kobler menyoversikten sammen med brukernes rettighetsnivå (**"RBAC**). Oppgaven var å skape en dynamisk navigasjon som filtrerer bort utilgjengelig innhold, slik at hver enkelt bruker kun presenteres for de lenkene og funksjonene de faktisk har tilgang til å bruke.
+Hensikten var å designe og skape en intelligent løsning som automatisk kobler menyoversikten sammen med brukernes rettighetsnivå (**"<abbr title="Role-Based Access Control | rollebasert tilgangskontroll">RBAC</abbr>**). Oppgaven var å skape en dynamisk navigasjon som filtrerer bort utilgjengelig innhold, slik at hver enkelt bruker kun presenteres for de lenkene og funksjonene de faktisk har tilgang til å bruke.
 
 * For å løse dette har jeg utviklet en ny tjeneste som fungerer som et filter mellom datakilden og brukerflaten:
 

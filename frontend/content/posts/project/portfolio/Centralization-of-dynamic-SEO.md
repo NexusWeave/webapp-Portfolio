@@ -4,6 +4,8 @@ title: "Sentralisering av dynamisk SEO"
 ingress: |
   I dag har jeg fokusert på å kverke en irriterende 500-feil under bygging og rydde opp i dokumentasjonen. Ved å flytte den dynamiske SEO-logikken over til en sentralisert composable, har jeg blitt kvitt hydreringsfeil og fått en stabil prerendering. Resultatet er en arkitektur som skiller klart mellom statisk metadata og det som skjer i runtime.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt 4, Vue 3
@@ -17,12 +19,16 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli. Veldig deilig å løse en dyp teknisk feil og samtidig få skikk på standardene i prosjektet.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Appen ble plutselig litt ustabil når jeg skulle bygge den, og spytta ut 500-feil i hytt og gevær. Det viste seg at jeg prøvde å aksessere rute-parametre inni `definePageMeta`, noe man ikke kan gjøre siden den evalueres før ruten er helt klar. I tillegg trengte jeg en bedre oversikt over alle sidene i prosjektet etter hvert som det har vokst.
 
-Hensikten var å få dokumentert alle sidene ordentlig for å gjøre det lettere å vedlikeholde, og selvfølgelig fikse byggfeilen ved å skille mellom det som er statisk og det som er dynamisk SEO-logikk.
+Hensikten var å få dokumentert alle sidene ordentlig for å gjøre det lettere å vedlikeholde, og selvfølgelig fikse byggfeilen ved å skille mellom det som er statisk og det som er dynamisk <abbr title="Search Engine Optimization | søkemotoroptimalisering">SEO</abbr>-logikk.
 
 * For å løse dette har jeg gjennomført følgende tiltak:
 
@@ -30,4 +36,4 @@ Hensikten var å få dokumentert alle sidene ordentlig for å gjøre det lettere
 * Jeg har utvidet navigasjons-logikken med en `watch` som følger med på side-stien og formaterer slugs til menneskevennlige titler for `useSeoMeta`.
 * Jeg har oppdatert de globale instruksene for prosjektet så alle fremtidige commits følger Conventional Commits-standarden.
 
-Gjennom dette arbeidet har jeg fått en feilfri byggprosess uten tull. Nå håndterer `definePageMeta` den statiske biten, mens `useNavigation` tar seg av alt det dynamiske mot brukeren og søkemotorene. Det har gjort systemet mye mer forutsigbart og fjerna en god del teknisk gjeld.
+Gjennom dette arbeidet har jeg fått en stabil byggprosess uten tull. Nå håndterer `definePageMeta` den statiske biten, mens `useNavigation` tar seg av alt det dynamiske mot brukeren og søkemotorene. Det har gjort systemet mye mer forutsigbart og fjerna en god del teknisk gjeld.

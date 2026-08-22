@@ -4,6 +4,8 @@ title: Trygg og stabil oppstart av nettsidens redaktørpanel
 ingress: |
   Ved å sikre redaktørpanelt mot datainnbrudd har jeg lagt grunnlaget for en trygg og selvstendig drift. Jeg løste feil i kompileringen ved å legge til en sikker håndtering av miljøvariabler og sensitive tilgangsnøkler. Gjennom bruk av profesjonelle verktøy hindres lekkasje av konfidensiell data, samtidig som systemet er stabilisert. Dette har etablert en ny standard som forenkler videre utvikling og beskytter bedriftens digitale verdier.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt.js
@@ -17,7 +19,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kan bli.
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Det hadde tidligere blitt laget til et tilpasset redaktørpanelt, dette skulle hjelpe bedriften for å bli mer selvstendig og redusere behovet for teknisk hjelp. Da jeg skulle klargjøre dette systemet for bruk, oppstod det et avbrudd i kompileringen som en konskekvens av systemet manglet digitale identifikasjoner og nøkler for å koble seg trygt til skyen. Jeg forsto at systemet ikke fant de nødvendige tilgangskodene i den lokale miljø-filen kalt `**.env**.`.

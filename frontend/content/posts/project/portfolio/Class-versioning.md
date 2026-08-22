@@ -4,6 +4,8 @@ title: Versjonering av Klasser
 ingress: |
   Før var det litt uklart hvilken utgave av logikken som ble brukt rundt omkring i systemet. Ved å innføre en fast standard for versjonering av verktøyene mine, har jeg fjerna all tvil. Nå som jeg vet nøyaktig hva som kjører hvor, er det mye tryggere å gjøre store endringer.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -17,7 +19,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli!
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Jeg hadde ikke helt kontroll på hvilken versjon av logikken som var i sving i de ulike delene av koden, og det gjorde meg litt usikker hver gang jeg skulle oppdatere noe.

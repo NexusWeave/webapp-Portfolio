@@ -4,6 +4,8 @@ title: Oppgradering til versjon 3.1.0 og arkitektonisk modernisering
 ingress: |
   Overgangen fra versjon 2.11.1 til 3.1.0 markerer en betydelig utvikling av biblioteket, med fokus på intuitiv navngivning og teknisk stabilitet. Hovedendringene inkluderer en fullstendig refaktorering av kjernemoduler for å fremme klarhet, samt utvidelse av generatorer med strengere feilhåndtering. Dette sikrer en mer robust plattform for brukere og bidragsytere.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Sass, TypeScript
@@ -17,6 +19,9 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Moderniseringen av biblioteket gir økt verdi og forenkler videreutvikling.
+sources: |
+  * [Sass Språkspesifikasjon og Dokumentasjon](https://sass-lang.com)
+  * [MDN Web Docs: CSS Arkitektur og Modularitet](https://developer.mozilla.org/en-US/docs/Web/CSS)
 --- 
 
 Overgangen fra versjon 2.11.1 til 3.1.0 var en konsekvens av behovet for en mer intuitiv kodebase. Tidligere versjoner hadde tekniske benevnelser som kunne virke uklare, noe som førte til en beslutning om å innføre beskrivende hverdagsnavn for alle kjernemoduler i <abbr title="Syntactically Awesome Stylesheets - et språk som utvider CSS">Sass</abbr>. Samtidig ble det identifisert behov for forbedret kontroll over <abbr title="Utility classes - små, gjenbrukbare CSS-klasser">hjelpeklasser</abbr> og feilhåndtering.

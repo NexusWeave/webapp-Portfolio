@@ -4,7 +4,7 @@ title: Kvalitetssikring, forbedringer av koblingspunkt og testoptimalisering
 ingress: |
   Opprettelsen av testdekning for prosjektets backend-kobling og pagineringslogikk avdekket et behov for en teststruktur. Ved å skille ut tilkoblingslogikk og legge til falske Nuxt-runtime-miljøer, er fundamentet for testingen modernisert. Det sikrer en stabil drift og raskere endringer av endepunktsstrukturer uten behov for tunge mock-filer.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
 
@@ -18,9 +18,13 @@ status: |
   * Forenklet testene for kartleggingsfunksjonaliteten ved å ta i bruk delvise objekt-sjekker (`expect.objectContaining`) og lengdesjekker, samt konfigurert pålitelige `Nuxt-runtime-config`- og `fetch`-mocks.
 
   #### Motivasjon & Energi - 10 / 10
-  Dagen har vært proaktiv og perfekt.
+  Dagen har vært proaktiv og optimalt.
   
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 ---
 
 Det manglet testdekning for både <abbr title="Systemets bakdel/serverdel">backend</abbr>-koblingen som henter prosjektene fra GitHub og <abbr title="Sidedeling av innhold">pagineringslogikken</abbr> som viser frem prosjektene. Testdekningen for koblingspunktene krevde store mengder med repeterende og hardkodede data.

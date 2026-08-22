@@ -4,6 +4,8 @@ title: Kvalitetsheving og arkitekturforbedringer
 ingress: |
   Prosjektet har gjennomgått en rekke oppdateringer for å heve kodekvaliteten, forbedre ytelsen og styrke funksjonaliteten. Det ble lagt til ny funksjonalitet for deling til eksterne plattformer, samtidig som integrasjonen mot eksterne dataforbindelser fikk lagt inn hastighetsbegrensninger. Det ble også lagt til testrutiner for både stilsett og frontend-logikk for å forbedre kodekvaliteten.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - <abbr title="Bibliotek for brukergrensesnitt">Vue</abbr>, <abbr title="Type-sikker JavaScript">TypeScript</abbr>, <abbr title="Språk for å lage stilark">Sass</abbr>
@@ -20,6 +22,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli, selv om jeg oppdaget at jeg hadde noen øyblikk med høy puls under refaktoreringen.
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Prosjektet manglet enhetstesting på hjelpefunksjonene. I tillegg ble det oppdagetat en del av systemet overskide kvotene sine mot Github- rest api og visse stil elementer manglet tilstrekkelig fleksibilitet.

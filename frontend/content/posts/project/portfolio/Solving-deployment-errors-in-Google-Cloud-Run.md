@@ -4,11 +4,18 @@ title: Løsning av Deployment-feil i Google Cloud Run
 ingress: |
   Denne loggføringen dokumenterer feilsøking og løsning av en oppstartsfeil (port 8080-krasj) under publisering av en FastAPI-applikasjon til Google Cloud Run. Ved å rette port-eksponeringen i Dockerfile og rekonfigurere miljøvariabler, ble applikasjonen stabilisert for skymiljøet.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - FastAPI
   **Verktøy** - TypeScript, KI
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Applikasjonen krasjet under publisering til Google Cloud med feilmeldingen Container failed to start and listen to port 8080. Lokale publiseringer viser seg å fungere, men umiddelbart feilet skymiljøet ved oppstart.

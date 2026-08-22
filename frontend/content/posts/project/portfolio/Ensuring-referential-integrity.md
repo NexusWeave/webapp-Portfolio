@@ -4,13 +4,19 @@ title: Sikring av Referanseintegritet
 ingress: |
   I denne runden har jeg dykka ned i integritetsfeil i et asynkront system. Etter å ha opplevd krasj med mange-til-mange-relasjoner, har jeg refakturert hele ID-styringen. Ved å bruke ORM-ens "Unit of Work"-mønster har jeg fått på plass en atomær lagring som faktisk holder vann, og sikra at relasjonene mellom prosjekter og språk lagres i riktig rekkefølge.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   #### Motivasjon & Energi - 10 / 10
   **Teknologi** - Python, SQLAlchemy
   **Verktøy** - PostgreSQL
   Dagen er så fin den kunne bli. Litt hodebry med relasjoner, men løsningen ble bra!
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Etter at jeg fikk orden på hentingen av repoer og språk-data, dukka det opp en ny utfordring når jeg skulle koble dem sammen i databasen. Systemet krasja rett og slett fordi jeg prøvde å registrere koblingene før selve prosjektene og språkene var ferdig oppretta og hadde fått sine egne ID-er.

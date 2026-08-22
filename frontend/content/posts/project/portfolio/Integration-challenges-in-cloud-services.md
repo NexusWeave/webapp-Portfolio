@@ -3,8 +3,20 @@ date: 2025-12-23T00:00:00.000Z
 title: Integrasjonsutfordringer i Skytjenesten
 ingress: |
   Denne artikkelen tar for seg utfordringene som oppstår når en applikasjon migrerer fra et lokalt utviklingsmiljø til en profesjonell tjenestestruktur i Google Cloud. Gjennom feilsøking av brutte kommunikasjonslinjer mellom klient og tjeneste, belyses det av presis URL-adressering og korrekt oppsett av miljøvariabler. Erfaringen gir verdifull innsikt i hvordan produksjonsmiljøer krever en annen tilnærming enn utviklingsstadier, og reiser viktige arkitektoniske spørsmål rundt behovet for autentisering i leseoperasjoner kontra modifisering av data.
-status: ''
-sources: ''
+status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
+  #### Programinformasjon
+  **Teknologi** - Google Cloud, Python, FastAPI
+  **Verktøy** - Git, Cloud Run
+
+  #### Motivasjon & Energi - 10 / 10
+  Dagen har vært strukturert og lærerik.
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 I denne fasen var hensikten å etablere kommunikasjon mellom Klientsiden og tjenestesiden i Google Cloud. Sende en forespørsel fra klienten som tjenesten kan tolke og respondere på.

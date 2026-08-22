@@ -4,6 +4,8 @@ title: Oppsett av en månedlig data-oppdatering
 ingress: |
   Denne loggføringen dokumenterer overgangen fra manuelt vedlikehold til en fullstendig automatisert datainnsamling. Ved å automatisere månedlig kjøreplan i skyen, sikrer jeg at oversikten over GitHub-prosjekter holdes oppdatert uten menneskelig innblanding, noe som optimaliserer ressursbruken i prosjektet.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - FastAPI, Google Cloud Scheduler
@@ -16,6 +18,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Situasjonen var at applikasjonen krevde manuell henting av nye Github-prosjekter. Dette er en rutine som ikke har behov for menneskelig overvåkning, noe som gjorde dette til en ineffektiv oppgave.

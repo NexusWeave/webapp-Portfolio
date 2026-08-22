@@ -4,6 +4,8 @@ title: Økt hastighet og forbedret driftssikkerhet
 ingress: |
   Gjennom en oppretting av systemets logikk har jeg transformert en ustabil prosess til en sikker og selvgående løsning. Ved å eliminere unødvendig sirkelgang og optimalisere arbeidstempoet, leverer programmet nå data på en brøkdel av tiden. For virksomheten betyr dette økt driftssikkerhet, reduserte kostnader og et system som er rigget for fremtidig vekst uten behov for manuelt tilsyn eller dyre avbrudd.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -19,7 +21,11 @@ status: |
   Endret logikken slik at programmet faktisk "legger fra seg" gammel informasjon og henter ny.
   # Motivasjon & Energi 10 - 10
   Dagen er så fin den kan bli.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Programmet som henter informasjon fra prosjekter, stoppet gjentatte ganger før det ble ferdig. Systemet rapporterte om tidsavbrudd (timeout) og nektet å opprettholde forbindelsen med eksterne tjenester hver gang det nådde side 2 i arbeidslisten. Forsøk på å løse dette ved å gi programmet mer tid eller ved å sette ned arbeidshastigheten manuelt, ga ingen resultater.

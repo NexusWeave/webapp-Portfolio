@@ -4,6 +4,8 @@ title: opprydding i dokumentasjon og arkitektur
 ingress: |
   For å sikre et solid fundament fremover, har det blitt tatt en skikkelig opprydding i både dokumentasjonen og mappestrukturen i lumina-sass. Ved å fjerne utdatert innhold og tette gapet mellom teksten og den faktiske koden, er biblioteket nå langt enklere å vedlikeholde. Det betyr at koden raskt kan gjenbrukes i andre prosjekter uten unødvendig forvirring.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Sass, Node.js, Markdown
@@ -18,6 +20,9 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Det gir en mestringsfølelse å få ryddet skikkelig opp i gammelt rot. Nå føles biblioteket utrolig mye lettere å jobbe med og bygge videre på.
+sources: |
+  * [Sass Språkspesifikasjon og Dokumentasjon](https://sass-lang.com)
+  * [MDN Web Docs: CSS Arkitektur og Modularitet](https://developer.mozilla.org/en-US/docs/Web/CSS)
 --- 
 
 Biblioteket hadde over tid samlet opp en del rot, og trengte en skikkelig opprydding både i hvordan teksten var skrevet og i selve koden. Dokumentasjonen var litt tunglest med for mange filer som lå strødd rundt, og prosjektstrukturen gjorde det unødvendig vanskelig å skjønne hvordan modulene skulle brukes ved integrasjon i nye prosjekter.

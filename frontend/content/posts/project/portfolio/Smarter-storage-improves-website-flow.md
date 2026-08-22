@@ -4,6 +4,8 @@ title: Smartere lagring forbedrer flyten i nettsiden
 ingress: |
   For å gi besøkende en rask opplevelse har jeg fjernet ventetiden ved visning av mine prosjekter. Ved å lage et eget digitalt arkiv som samler alt på ett sted, slipper nettsiden å hente informasjon fra andre steder hver gang man trykker på en lenke. Systemet rydder og oppdaterer seg nå automatisk om natten når det er få brukere. Dette gir en ryddig og effektiv nettside som alltid viser frem siste nytt uten irriterende venting.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - FastAPI
@@ -25,7 +27,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Koblingspunktet for henting av prosjektene mine som ligger på Github, brukte for lang tid på å hente alle prosjekter; dette er en konsekvens av at systemet må hente og formatere data x antall ganger hvor x er antall prosjekter. Dette bidrar til at informasjonen hentes tregere for besøkende. Under testingen oppsto det to utfordringer ved at tabellene ikke ble pålitelig lagret ved oppstart, og `APScheduler`-logikken ble ikke installert i applikasjonens livssyklus, som er en konsekvens av at mellomlagrings-dataene aldri blir oppdatert.
@@ -34,7 +40,7 @@ Hensikten var å redusere tiden for at prosjekter ble vist for besøkende, som g
 
 * Jeg fjernet den direkte koblingspunktet mellom Github og hjemmesiden og heller la til et **databaselag** som er basert på Orm'en**SQLAlchemy**, med  **SQLite** driver, for å lagre den formaterte Github-informasjonen, slik at frontend-applikasjonen kan hente data og redusere ventetiden før brukeren har tilgang til prosjektene.
 * Jeg slo sammen tilleggsinformasjonen om prosjektene som video-, demo- og prosjekt-lenker inn i den nye databasen for å sikre enhetlig datalagring og fjerne sekundære kall.
-* Jeg utviklet databasemodellene for Prosjektdata, Bidragsytere og Programmeringsspråk, samt assosiasjonstabeller for å håndtere relasjoner via SQLAlchemy som ORM.
+* Jeg utviklet databasemodellene for Prosjektdata, Bidragsytere og Programmeringsspråk, samt assosiasjonstabeller for å håndtere relasjoner via SQLAlchemy som <abbr title="Object-Relational Mapping | objekt-relasjonell mapping">ORM</abbr>.
 * Jeg fjernet den utdaterte `@app.on_event`-definasjonen og la til nøkkel ordet `async` til livvsyklusen slik at den håndterer flere forespørsler samtidig.
 * Jeg la til en `try/except`-blokk der motoren brukes til å kjøre den synkrone DDL-kommandoen via `await conn.run_sync()` for å sikre integriteten til tabellopprettelsen.
 * Jeg separerte livssyklusen fra bindeleddet mellom applikasjonen og brukerens forespørsel ut av hovedapplikasjonen og plasserte dem i en dedikert konfigurasjonsklasse for å sikre separasjon av ansvar (SRP).

@@ -4,6 +4,8 @@ title: Konfigurering av Vitest testmiljø og universell utforming med Axe
 ingress: |
   I arbeidet med å etablere automatisert testing var det behov for å sette opp et korrekt testmiljø for Nuxt og enhetstester. Siden standard testing mangler støtte for virtuelle moduler som `#imports` og Vue-komponenter, krevdes det et tilpasset oppsett i vitest.config.ts. Løsningen ble å konfigurere et asynkront testmiljø og samtidig integrere automatiserte tilgjengelighetsrevisjoner for å erstatte den eldre semantiske HTML-sjekkeren.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
   **Teknologi** - Nuxt.js, Vitest
   **Verktøy** - vitest-axe, jsdom
@@ -16,6 +18,11 @@ status: |
 
   #### Motivasjon & Energi - 5 / 10
   Opplever at hode er anspent, noe som trekker ned på energien jeg har, men ellers er dagen er så fin den kan bli.
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 I arbeidet med å konfiguere automatisert testing, innså jeg at testmiljøet ikke var korrekt i henhold til [Nuxt dokumentasjonen](https://nuxt.com/docs/4.x/getting-started/testing), dette utløste behovet for å rette opp testmiljøet som følger standarden for Nuxt og enhetstester. Som en konsekvens av at standard testing mangler støtte for virtuelle moduler som `#imports` og Vue-komponenter, kreves det et tilpasset oppsett i `vitest.config.ts`. Løsningen ble å konfigurere et asynkront testmiljø og samtidig integrere automatiserte tilgjengelighetsrevisjoner for å erstatte den eldre semantiske HTML-sjekkeren.
@@ -27,4 +34,4 @@ Hensikten var å lage et stabilt, pålitelig og korrekt isolert testmiljø med V
 * Integrerte <abbr title="Et verktøy for tilgjengelighetstesting integrert med Vitest">vitest-axe</abbr> som erstatning for den tidligere semantiske HTML-sjekkeren.
 * Antigravity-cli la til en ny testsuite `accessibility.test.ts` som monterer og sjekker alle sider for tilgjengelighetsavvik ved å simulere korrekte rammeverklandemerker.
 
-Konfigurasjonen ble oppdatert og testene kjører nå feilfritt. Personlig erfarte jeg at `Vitest` prosjektkonfigurasjoner må løses asynkront i `vitest.config.ts` for å sikre at Nuxt-miljøet og Vue-kompilatorer lastes inn korrekt før importanalyse starter. Dette sikrer at fremtidige endringer ikke bryter retningslinjer for <abbr title="Universell utforming av IKT-løsninger">universell utforming</abbr>, som stabiliserer nettsiden, forbedrer kvaliteten på nettsiden og gjør nettsiden søkbar.
+Konfigurasjonen ble oppdatert og testene kjører nå stabilt. Personlig erfarte jeg at `Vitest` prosjektkonfigurasjoner må løses asynkront i `vitest.config.ts` for å sikre at Nuxt-miljøet og Vue-kompilatorer lastes inn korrekt før importanalyse starter. Dette sikrer at fremtidige endringer ikke bryter retningslinjer for <abbr title="Universell utforming av IKT-løsninger">universell utforming</abbr>, som stabiliserer nettsiden, forbedrer kvaliteten på nettsiden og gjør nettsiden søkbar.

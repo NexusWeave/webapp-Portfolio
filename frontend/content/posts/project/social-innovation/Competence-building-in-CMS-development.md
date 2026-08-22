@@ -4,7 +4,7 @@ title: Raskere Nettsideutvikling med Stabilt Redaktørpanel
 ingress: |
   Valget av et ferdig redaktørpanel som Tina CMS sparer betydelig utviklingstid sammenlignet med å bygge en egen database. Ved å kombinere offisiell dokumentasjon med moderne KI-verktøy ble det etablert en stabil løsning for <abbr title="Et JavaScript-rammeverk for brukergrensesnitt">Vue.js</abbr> som kunden selv kan styre. Arbeidet har resultert i en gjenbrukbar metode som sikrer raskere leveranse.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
 
@@ -17,7 +17,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli.
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 ---
 
 Under opprettelsen av en <abbr title="Content Management System / Redaktørpanel">CMS</abbr>-løsning (Tina CMS) for en nettside, ble det lagt merke til at systemet ikke hadde egen støtte for <abbr title="Et JavaScript-bibliotek for brukergrensesnitt">Vue.js</abbr>. Det var også første gang dette systemet skulle settes opp for dette <abbr title="en samling med kode">biblioteket</abbr>.

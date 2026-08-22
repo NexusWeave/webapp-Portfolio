@@ -4,6 +4,8 @@ title: API Endepunkt &Handler forbedringer
 ingress: |
   Før var det litt vrient å holde styr på alle de løse delene i prosjektet. Ved å gi alt sammen skikkelige navn og rydde opp i rotet, er det nå mye lettere å se hva som faktisk kjører og hvordan ting henger sammen. Det gjør det både tryggere og enklere å bygge videre på ting, siden jeg nå har stålkontroll på hvem som snakker med hvem.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -18,7 +20,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er helt grei, men litt irriterende når AI-en ikke helt tar tegninga på hva jeg ber om.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 De forskjellige "veiene" og funksjonene i systemet mitt manglet skikkelige navn, så det ble fort litt kaotisk å vite hva som faktisk var i drift og hvordan de presterte.

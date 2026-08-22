@@ -4,6 +4,8 @@ title: Modernisering av stilark-systemet
 ingress: |
   Stilarkene og testene som hører til ble oppdatert for å gjøre koden lettere å jobbe med. Ved å bytte til en nyere versjon og rydde i hvordan ting testes, ble koden både ryddigere og tryggere. Prosessen sørget også for at alle endringer ble signert digitalt for å bevise at koden er ekte.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - <abbr title="Språk for å lage stilark">Sass</abbr>
@@ -17,6 +19,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Koden er nå mye lettere å forstå og endre på. Dagen er så fin den kunne bli.
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Situasjonen i prosjektet var at stilarkene hadde blitt vanskelige å vedlikeholde fordi testene var altfor lange og gjentok seg selv mange ganger. Dette gjorde at det tok unødvendig lang tid å sjekke om nye endringer fungerte som de skulle. Utfordringen var en konsekvens av at verktøyene ikke hadde blitt fulgt opp med de nyeste og enkleste metodene for koding.

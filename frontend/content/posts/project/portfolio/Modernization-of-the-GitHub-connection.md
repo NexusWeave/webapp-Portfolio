@@ -4,6 +4,8 @@ title: Modernisering av GitHub-koblingen
 ingress: |
   Da deler av nettsiden ble hengende igjen i gammel teknologi, merket brukerne at ting gikk tregt. Jeg valgte å fornye selve motoren i systemet slik at den nå kan håndtere mange oppgaver samtidig i stedet for én og én. Ved å rydde i hvordan data hentes og kontrolleres, har jeg fjernet ventetiden og gjort siden langt mer pålitelig. Resultatet er en raskere opplevelse for gjestene og en løsning som er klar for fremtidig vekst.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - FastAPI
@@ -18,7 +20,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Jeg satt med en hybrid-løsning der det meste av systemet var moderne og raskt, men koblingen mot GitHub hang igjen i det utdaterte Flask systemet. Jeg tok en besluttning om  å utsette denne oppgraderingen, for å forenkle og fokusere på en oppgradering om gangen, men dette førte til at satt jeg igjen med en bremset brukeropplevelse.

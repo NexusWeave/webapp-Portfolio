@@ -4,6 +4,8 @@ title: Modernisering og stabilisering av redaktørpanelet og stilark
 ingress: |
   Løst filstibindingsfeil i TinaCMS ved å erstatte absolutte baner (~/) med relative stier i kolleksjons- og maldefinisjoner. I tillegg er globale stilark refakturert for å forhindre stilkonflikter, og en ReferenceError i createPage-funksjonen er rettet.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt.js
@@ -21,11 +23,14 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Veldig tilfredsstillende å se systemet kjøre knirkefritt igjen!
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Dagen startet med utfordringer i redaktørpanelet (TinaCMS), der build-prosessen feilet på grunn av problemer med filstier og en udefinert variabel i kjerne-logikken. Samtidig var det behov for å rydde opp i stilarkene og type-definisjonene for å sikre at prosjektet forblir oversiktlig og lett å utvide.
-Hensikten var å raskt gjenopprette stabiliteten i redaktørpanelet, samtidig som jeg gjennomførte en nødvendig refaktorering av CMS-skjemaene. Jeg ønsket også å forbedre kodestil og typesikkerhet for å redusere risikoen for fremtidige "runtime errors".
+Hensikten var å raskt gjenopprette stabiliteten i redaktørpanelet, samtidig som jeg gjennomførte en nødvendig refaktorering av <abbr title="Content Management System | publiseringssystem">CMS</abbr>-skjemaene. Jeg ønsket også å forbedre kodestil og typesikkerhet for å redusere risikoen for fremtidige "runtime errors".
 
 * Jeg identifiserte at TinaCMS sin build-prosess ikke klarte å håndtere "~/"-aliaser for visse hjelpefiler. Ved å konvertere disse til relative stier i alle kolleksjons- og mal-filer, sikret jeg at build-verktøyet fant de nødvendige ressursene uavhengig av miljø.
 * Jeg rettet en `ReferenceError` i `createPage`-funksjonen, der en variabel var feilstavet. Dette var en direkte årsak til at redaktørpanelet ikke klarte å generere sider basert på malene.

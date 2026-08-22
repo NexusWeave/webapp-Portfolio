@@ -4,6 +4,8 @@ title: Flytting av Sass-kode til et eget lumina‑sass‑pakke
 ingress: |
   Siden stilene brukes på tvers av flere ulike prosjekter, ble all Sass-kode samlet i en egen, sentralisert pakke. Flyttingen til *lumina-sass* betyr at det nå eksisterer én eneste kilde for all stil, noe som dramatisk reduserer kodeduplisering. Det forenkler ikke bare vedlikeholdet betraktelig, men gjør også at byggetiden i prosjektene går raskere.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Sass, Node.js
@@ -18,6 +20,9 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Mestringsfølelsen er på topp, og dagen er så fin den kan bli.
+sources: |
+  * [Sass Språkspesifikasjon og Dokumentasjon](https://sass-lang.com)
+  * [MDN Web Docs: CSS Arkitektur og Modularitet](https://developer.mozilla.org/en-US/docs/Web/CSS)
 --- 
 
 Siden stilene brukes over flere prosjekter, var det behov for en sentralisert stil‑løsning for å redusere duplisering og forenkle vedlikeholdet.

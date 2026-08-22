@@ -4,7 +4,7 @@ title: Manuell rutine arbeid til selvgående CI/CD-prosess
 ingress: |
   Ved å automatisere prosessen fra ferdig kode til publisering er det opprettet en løsning som reduserer tids- og ressursbruken. Det ble valgt en kostnadseffektiv plattform for å maksimere tilgjengelige byggeminutter i GitHub Actions. Resultatet er et stabilt, selvgående system som sparer kostnader og utviklingstid ved å redusere manuelle rutineoppgaver.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
   

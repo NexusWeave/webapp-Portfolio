@@ -4,6 +4,8 @@ title: Sikring av forretningsviktig logikk og etablering av fundament for rasker
 ingress: |
   Ved å <abbr title="Å restrukturere eksisterende kode uten å endre dens ytre oppførsel">refaktorere</abbr> <abbr title="Systemets overordnede struktur og organisering av kode">arkitekturen</abbr> til en <abbr title="En arkitektur der koden er delt inn i lag med ulike ansvarsområder">flerlagsmodell</abbr> har vi eliminert tette koblinger. Gjennom <abbr title="Dependency Inversion Principle: Et designprinsipp der høynivåmoduler ikke skal avhenge av lavnivåmoduler, men av abstraksjoner">avhengighetsinversjon</abbr> har vi skilt forretningslogikken fra <abbr title="Koden som håndterer eksterne tjenester som databaser og nettverk">infrastrukturen</abbr>, noe som muliggjør isolerte enhetstester og forenkler fremtidig oppgradering av teknologistakken.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -20,7 +22,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Systemets oppbygning var preget av en sammenvevd struktur der kjernefunksjonaliteten var låst til spesifikke tekniske verktøy og eksterne biblioteker. Dette skapte en teknisk blokkering som gjorde det umulig å utføre automatiserte tester. For bedriften innebar dette økt risiko for feil ved oppdateringer, tregere utviklingstid og manglende innsyn i systemets faktiske helsetilstand.

@@ -4,6 +4,8 @@ title: Automatisert kompetanseoversikt og systemmodernisering
 ingress: |
   For å slippe å dulle med manuelle oppdateringer hele tiden, har jeg automatisert innsamlingen av teknologidata til porteføljen. Ved å la systemet hente inn tallene selv, er oversikten over hva jeg faktisk kan alltid spot-on. Sammen med litt visuell finpuss og teknisk opprydding, har plattformen blitt mye mer proff og stabil.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -19,7 +21,11 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   #
   Dagen er så fin den kunne bli. Det er deilig når ting bare ruller og går av seg selv.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Før måtte jeg sitte og oppdatere oversikten over kodespråk og kompetanse manuelt. Det var ikke bare kjedelig, men det førte også til at tallene på siden ikke alltid stemte med det jeg faktisk hadde i repoene mine. Hele plattformen trengte egentlig en skikkelig modernisering for å holde koken.

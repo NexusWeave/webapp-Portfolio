@@ -4,6 +4,8 @@ title: "Sentralisering av dynamisk SEO og arkitektonisk stabilisering"
 ingress: |
   Eliminert krasj under statisk sidegenerering (prerendering) i Nuxt 4 ved å flytte dynamisk tittel-oppløsning ut av definePageMeta-makroen. Ved å innføre en sentralisert Nuxt composable (preprosessor-utils.ts) løste vi feil ved aksessering av route.params før instansiering, noe som sikrer stabil pre-rendering og korrekt metadata-oppdatering.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Nuxt 4, Vue 3, TypeScript
@@ -19,18 +21,21 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Ekstremt tilfredsstillende å flytte kompleksitet fra skjøre compiler-makroer til robuste, testbare composables.
-sources: ''
+sources: |
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [TinaCMS Headless Content Management](https://tina.io)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
-Applikasjonen opplevde ustabilitet under bygg-prosessen, spesielt ved generering av statiske sider (prerendering). Problemet skyldtes at dynamiske rute-parametre ble forsøkt hentet inne i `definePageMeta`-makroen. Siden denne makroen evalueres av Nuxt-compileren før ruten i det hele tatt eksisterer i nettleseren, resulterte dette i feilmeldinger som "Cannot read properties of undefined". Samtidig var SEO-metadataene statiske, noe som førte til at sidetitler ikke oppdaterte seg korrekt når brukeren navigerte mellom artikler i SPA-modus.
+Applikasjonen opplevde ustabilitet under bygg-prosessen, spesielt ved generering av statiske sider (prerendering). Problemet skyldtes at dynamiske rute-parametre ble forsøkt hentet inne i `definePageMeta`-makroen. Siden denne makroen evalueres av Nuxt-compileren før ruten i det hele tatt eksisterer i nettleseren, resulterte dette i feilmeldinger som "Cannot read properties of undefined". Samtidig var <abbr title="Search Engine Optimization | søkemotoroptimalisering">SEO</abbr>-metadataene statiske, noe som førte til at sidetitler ikke oppdaterte seg korrekt når brukeren navigerte mellom artikler i <abbr title="Single Page Application | enkeltsideapplikasjon">SPA</abbr>-modus.
 
 Hensikten for dagen var å stabilisere bygg-pipelinen ved å skille statiske metadata fra dynamisk <abbr title="Logikk som kjøres mens applikasjonen er aktiv i nettleseren">runtime-logikk</abbr>, samt å automatisere SEO-arbeidet for å redusere manuelt vedlikehold.
 
 * **Arkitektonisk refaktorering:** Jeg startet med å flytte all logikk som omhandler oppløsning av dynamiske titler fra `definePageMeta` i de enkelte sidene og inne i `frontend/composables/preprosessor-utils.ts` (via `useNavigation`). 
 * **Reaktiv SEO-håndtering:** Inne i composablen implementerte jeg en `watch` på den aktive ruten. Denne vakten fanger opp endringer i `route.params.slug`, vasker <abbr title="Den delen av en URL som identifiserer en spesifikk side i et menneskevennlig format">sluggen</abbr> (fjerner bindestreker, legger til stor forbokstav) og oppdaterer sidetittelen dynamisk via `useSeoMeta`. Dette sikrer at både brukere og søkemotorer alltid ser korrekt informasjon.
 * **Stabilisering av makroer:** Jeg ryddet i alle side-komponenter og sørget for at `definePageMeta` kun inneholder statiske verdier som trengs for rute-organisering. Dynamiske beskrivelser ble i stedet flyttet til det sentraliserte SEO-systemet.
-* **UI-forenkling:** Parallelt med SEO-arbeidet refaktorerte jeg `frontend/components/article/Body.vue`. Ved å erstatte komplisert imperativ logikk med reaktiv synlighet, ble komponenten betydelig lettere å vedlikeholde og mindre utsatt for feil.
+* **<abbr title="User Interface | brukergrensesnitt">UI</abbr>-forenkling:** Parallelt med SEO-arbeidet refaktorerte jeg `frontend/components/article/Body.vue`. Ved å erstatte komplisert imperativ logikk med reaktiv synlighet, ble komponenten betydelig lettere å vedlikeholde og mindre utsatt for feil.
 
-Resultatet er en applikasjon som bygger feilfritt hver gang. Vi har oppnådd en tydelig separation of concerns: `definePageMeta` brukes kun til statisk rute-konfigurasjon, mens `useNavigation`-composablen håndterer den dynamiske presentasjonen. Dette har ikke bare fjernet build-feil, men også gjort det langt enklere å legge til nye sider med full SEO-støtte uten ekstra koding.
+Resultatet er en applikasjon som bygger stabilt hver gang. Vi har oppnådd en tydelig separation of concerns: `definePageMeta` brukes kun til statisk rute-konfigurasjon, mens `useNavigation`-composablen håndterer den dynamiske presentasjonen. Dette har ikke bare fjernet build-feil, men også gjort det langt enklere å legge til nye sider med full SEO-støtte uten ekstra koding.
 
 Dagens arbeid har understreket viktigheten av å forstå livssyklusen til moderne rammeverk. Ved å respektere skillet mellom <abbr title="Kodesnutter som kjøres under kompileringsfasen for å transformere eller generere kode">build-time</abbr> og <abbr title="Logikk som kjøres mens applikasjonen er aktiv i nettleseren">runtime</abbr>, har vi transformert en potensielt skjør løsning til en robust og skalerbar arkitektur.

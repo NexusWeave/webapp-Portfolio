@@ -4,6 +4,8 @@ title: AI-assistert utvikling av testarkitektur for trening på koderevisjon og 
 ingress: |
   Det ble gjennomført en systematisk prosess i samarbeid med AI for å bygge og kvalitetssikre et helhetlig testoppsett i Nuxt-applikasjonen. Formålet var å etablere en faglig og metodisk mal for test-driven utvikling, slik at man kan trene på å analysere, forbedre og refaktorere eksisterende kildekode uten å skade funksjonalitet.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
   **Verktøy** - Vitest, Vue Test Utils, Nuxt Test Utils, Antigravity AI
   **Teknologi** - Vue 3, Nuxt 3, TypeScript
@@ -17,6 +19,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Etablering av et ryddig testmønster gir verdifull trening i trygg koderevisjon og refaktorering.
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 ---
 
 Det ble gjennomført en systematisk prosess i samarbeid med AI for å bygge og kvalitetssikre et helhetlig testoppsett i Nuxt-applikasjonen. Formålet var å etablere en faglig og metodisk mal for test-driven utvikling, slik at man kan trene på å analysere, forbedre og refaktorere eksisterende kildekode uten å skade funksjonalitet.

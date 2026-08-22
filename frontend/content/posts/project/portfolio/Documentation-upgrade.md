@@ -4,6 +4,8 @@ title: Fra kode til visuelle oversikter
 ingress: |
   Jeg har tatt en skikkelig opprydning i hvordan jeg dokumenterer prosjektet. Istedenfor å være avhengig av tekstbaserte diagrammer, har jeg flyttet mye av arkitektur-oversikten over til det nye visuelle diagrammer (Drawio). Det gjør det enklere å forstå hvordan systemet henger sammen.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Drawio, Markdown
@@ -17,7 +19,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Jeg er fornøyd med innsatsen i dag.
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Dokumentasjonen hadde begynt å bli litt utdatert, og det var vanskelig å få et raskt blikk på hvordan systemet hadde blitt bygget opp.

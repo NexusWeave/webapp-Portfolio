@@ -4,6 +4,8 @@ title: Health Check system oppgraderinger
 ingress: |
   For å sikre full kontroll over prosjektet har jeg utviklet et eget varslingssystem som overvåker alle koblinger i sanntid. Ved å bytte ut generelle feilmeldinger med detaljerte statusrapporter, har jeg fjernet usikkerheten rundt hvor feil oppstår. Dette betyr at jeg kan løse utfordringer umiddelbart fremfor å lete i blinde. Resultatet er en mer stabil tjeneste for brukerne og en effektiv arbeidsflyt der teknisk rusk stoppes raskt.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -17,7 +19,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Kjenner at jeg er klar for en ferie :)
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 Jeg hadde ingen oversiktlig måte å vite om en utfordring skyldtes min egen kode eller om det var utfordringer hos de eksterne tjenestene jeg henter data fra. Dette gjorde det vanskelig å vite hvor jeg skulle starte feilsøkingen når noe stoppet opp fremgangen av prosjektet.

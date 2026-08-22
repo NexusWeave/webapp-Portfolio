@@ -4,7 +4,7 @@ title: Fjerning av «spøkelses-disker»
 ingress: |
   Etter observasjoner av spøkelsesdisker i Garuda Linux ble det identifisert at Docker-prosesser kjørte ved systemoppstart og genererte uønskede virtuelle lag. Aktive containere ble stanset og systemet ble ryddet for ubrukte ressurser. Ved å deaktivere Docker-tjenesten og dens socket-enhet ble systemet tilbakestilt til en tilstand med full manuell kontroll over diskmontering.
 status: |
-  *Loggen er skrevet i samarbeid med KI - Gemini*
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
 
   #### Programinformasjon
 
@@ -19,6 +19,8 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: |
+  * [Arch Linux & Kernel Documentation](https://wiki.archlinux.org)
+  * [Electron IPC & Process Model Dokumentasjon](https://www.electronjs.org/docs/latest/tutorial/ipc)
   Offisiell dokumentasjon : [docs.docker.com](https://docs.docker.com/engine/manage-resources/pruning/)
 ---
 

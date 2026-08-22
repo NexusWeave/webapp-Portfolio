@@ -4,6 +4,8 @@ title: Styrket informasjonssikkerhet
 ingress: |
   Jeg har utviklet en løsning for rollebasert tilgangskontroll i hierarkiske datalister. Ved å bruke en « *to-pass-algoritme*» arves rettigheter korrekt i trestrukturer, mens sensitive data skjermes etter prinsippet om *minste privilegium*. Arbeidet reduserer manuelle feilkilder, tetter sikkerhetshull og sikrer uavbrutt tilgang til innhold. Dette gir en stabil grunnmur for bedriftens datasikkerhet.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -12,7 +14,7 @@ status: |
 
   #### Dagens Aktiviteter
   * Utviklet en modul som omdanner flate lister til en logisk trestruktur i systemets minne. Dette gir full kontroll over informasjonsrelasjoner og fjerner teknisk risiko knyttet til uoversiktlige datasett.
-  * Programmert logikk for automatisk rettighetsarv, slik at tilgang gitt på hovednivå automatisk flyter ned til alle underliggende dokumenter. Dette sikrer en effektiv og feilfri brukeropplevelse.
+  * Programmert logikk for automatisk rettighetsarv, slik at tilgang gitt på hovednivå automatisk flyter ned til alle underliggende dokumenter. Dette sikrer en effektiv og stabil brukeropplevelse.
   * Skilt ut sikkerhetslogikken fra de tekniske dataoperasjonene. Dette forenkler fremtidig vedlikehold og gjør det betydelig lettere å dokumentere etterlevelse overfor revisorer.
   * Ferdigstilt filtreringslogikk som sikrer at brukere kun har innsyn i data de er autorisert for. Dette tetter tidligere sikkerhetshull i navigasjonsdata og reduserer virksomhetens operasjonelle risiko for datalekkasjer.
   * Etablert en robust teknisk grunnmur for håndtering av komplekse datasett, noe som gjør løsningen mer pålitelig og rimeligere å drifte over tid.
@@ -20,6 +22,9 @@ status: |
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli.
 sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
   1. [Tree Traversal](https://www.geeksforgeeks.org/dsa/tree-traversals-inorder-preorder-and-postorder/)
 --- 
 

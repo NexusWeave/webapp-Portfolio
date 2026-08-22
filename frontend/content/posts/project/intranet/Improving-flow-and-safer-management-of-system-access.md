@@ -4,6 +4,8 @@ title: Forbedre flyt og tryggere styring av systemtilganger
 ingress: |
   Ved å rette en logikkfeil i systemets tilgangskontroll har vi fjernet tekniske hindringer som tidligere låste ute ansatte med tilgang. Feilen førte til unødvendig avbrudd i arbeidet. Gjennom en systematisk opprydding har vi sørget for at sikkerheten er både streng og sikker. Dette sikrer at de ansatte får gjort jobben sin effektivt, samtidig som bedriften har full kontroll på dataene. Arbeidet gir oss en mer stabil og forutsigbar drift i fremtiden.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -20,10 +22,13 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kunne bli
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
-Systemets rollebasert tilgangs kontroll (RBAC) hadde en logikkfeil som gjorde den altfor streng. Når ansatte hadde fått tillatelse til flere kategorier ved hjelp av en "samlenøkkel" (stjerne-symbolet \*), forsto ikke systemet instruksjonen. Selv om de ansatte var godkjente i systemet og skulle hatt tilgang, ble de nektet å åpne tillate filer og verktøy. Ansatte mistet tid fordi de ble stående foran en ei side de egentlig hadde tilgang til.
+Systemets rollebasert tilgangs kontroll (<abbr title="Role-Based Access Control | rollebasert tilgangskontroll">RBAC</abbr>) hadde en logikkfeil som gjorde den altfor streng. Når ansatte hadde fått tillatelse til flere kategorier ved hjelp av en "samlenøkkel" (stjerne-symbolet \*), forsto ikke systemet instruksjonen. Selv om de ansatte var godkjente i systemet og skulle hatt tilgang, ble de nektet å åpne tillate filer og verktøy. Ansatte mistet tid fordi de ble stående foran en ei side de egentlig hadde tilgang til.
 
 Hensikten mitt var å finne ut hvorfor  tilgangslogikken ikke forsto sine egne instruksjoner når det ble brukt samletegn. Oppgaven ble å rette denne logikken slik at sikkerhetslaget skjermer innholdet for brukere uten spesifikke roller. Dette handler om å sikre at de ansatte får gjort jobben sin uten tekniske hindringer, samtidig som bedriften har kontroll på hvem som har tilgang til hva.
 

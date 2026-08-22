@@ -4,6 +4,8 @@ title: Systemforbedringer
 ingress: |
   GitHub-dataene er nå kartlagt til et reaktiv frontend-format med automatisk sortering og organisering av kildekodestatistikk. Ved å flytte logikken ut av visningslaget og optimalisere servermodellen, oppnås en ren separasjon av ansvar og redusert båndbreddebruk. Samtidig sikrer standardisering av datoer, GitHub-kort og bildebehandling et enhetlig visuelt uttrykk,  universell utforming og en smidigere navigasjon for de besøkende.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - Python
@@ -23,7 +25,11 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen er så fin den kan bli !
-sources: ''
+sources: |
+  * [Nuxt Framework Dokumentasjon](https://nuxt.com)
+  * [Vue.js Offisiell Dokumentasjon](https://vuejs.org)
+  * [Vitest Testing Framework](https://vitest.dev)
+  * [W3C WCAG 2.2 Retningslinjer for Universell Utforming](https://www.w3.org/WAI/standards-guidelines/wcag/)
 --- 
 
 #
@@ -50,7 +56,7 @@ Denne omgjøringen resulterte til et visuelt helhetlig grensesnitt hvor all info
 
 ## Konsistens er fundamentet i en brukeropplevelse. Små visuelle avvik kan virke som bagateller isolert sett, men i det helhetlige er detaljene nettsiden oppleves som stabilt eller uprofesjonelt.
 
-Hoved navigasjonen i Header> var veldig kompleks og media komponentet manglet en presis måte å håndtere bildetekster på, noe som førte til at bildene ikke hadde en beskrivelse. Dette svekker både brukeropplevelsen,  UU.
+Hoved navigasjonen i Header> var veldig kompleks og media komponentet manglet en presis måte å håndtere bildetekster på, noe som førte til at bildene ikke hadde en beskrivelse. Dette svekker både brukeropplevelsen,  <abbr title="Universell Utforming | tilgjengelighet for alle">UU</abbr>.
 Hensikten var å forenkle navigasjonsstrukturen for å gi besøkende en smidigere brukeropplevelse og legge til en kontrollert løsning for metadata som sikrer at riktig innhold vises i riktig situasjon.
 
 * Jeg forenklet oppbyggingen av Hovednavigasjonen ved å ta i bruk `computed properties` for navigasjons- og håndtering av logo. \[^6]

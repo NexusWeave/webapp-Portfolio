@@ -4,6 +4,8 @@ title: Økt gjennomføringsevne gjennom strukturert kunnskapsdeling
 ingress: |
   Mangel på sentral informasjon og lang opplæringstid utgjorde en risiko for prosjektet. Ved å designe en strukturert dokumentasjonsbase med klare guider, systemoversikt og vedlikeholdsplaner, har vi transformert hvordan nye medarbeidere onboardes. Resultatet er et intuitivt rammeverk som fjerner dødtid og sikrer at nødvendig kunnskap er tilgjengelig for alle. Nå blir nye ressurser raskt selvgående, noe som øker teamets totale verdiskaping.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -18,7 +20,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli !
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Prosjektet manglet sentralisert teknisk dokumentasjon og onboarding-retningslinjer, noe som forsinket integrasjonen av nye utviklere. Mangelen på oversikt forlenget opplæringsfasen og økte risikoen for feiltolkning av systemarkitekturen.

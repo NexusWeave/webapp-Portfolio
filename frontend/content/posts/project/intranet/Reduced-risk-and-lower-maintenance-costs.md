@@ -4,6 +4,8 @@ title: Redusert risiko og lavere vedlikeholdskostnader
 ingress: |
   Vi har styrket systemets grunnmur ved å skille forretningslogikk fra infrastruktur. Tidligere sammenkobling gjorde sikkerhetskontroll vanskelig og økte risikoen for feil. Ved å rydde i arkitekturen og innføre automatiserte testrutiner, har vi skapt en løsning som er enkel å verifisere. Resultatet er en pålitelig arkitektur som sikrer korrekt tilgangsstyring, reduserer vedlikeholdstiden og klargjør prosjektet for trygg videreutvikling.
 status: |
+  *Skrevet i samarbeid med KI - Gemini 3.7 Flash*
+
   #### Program informasjon
 
   **Teknologi** - C#
@@ -19,7 +21,10 @@ status: |
 
   #### Motivasjon & Energi - 10 / 10
   Dagen har vært så fin den kunne bli
-sources: ''
+sources: |
+  * [Microsoft .NET Dokumentasjon](https://learn.microsoft.com/en-us/dotnet/)
+  * [ASP.NET Core Authorization & RBAC Arkitektur](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles)
+  * [CsvHelper Dokumentasjon for .NET](https://joshclose.github.io/CsvHelper/)
 --- 
 
 Systemets funksjon for tilgangsstyring var organisert på en måte som blandet foretningslogikken med infrastruktur. Dette bruddet på prinsippet om klare ansvarsforhold som gjorde det utfordrende å vertifisere sikkerhetslogikken isolert, som øker risiko for feil ved fremtidige endringer og gjorde det vanskelig å etablere automatiske kontroller som bekrefter at systemet fungerer som planlagt.
