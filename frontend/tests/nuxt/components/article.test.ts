@@ -58,6 +58,85 @@ describe("Article module tests", () => {
                 tags.forEach(tag => { const tagExists = wrapper.find(tag).exists(); expect(tagExists).toBe(true); });
                 classes.forEach(cls => { const selector = `.${cls}`; const clas = wrapper.find(selector).exists(); expect(clas).toBe(true); });
             });
+
+            it("Truncates ingress with ellipsis (...) when !isPost and length > 350", async () => {
+                const longIngress = 'A'.repeat(400);
+                const articleWithLongIngress = { ...dummyPostItem, ingress: longIngress };
+                let passedMdcValue = '';
+
+                const wrapper = await mountSuspended<Component>(Head, {
+                    props: { isPost: false, article: articleWithLongIngress },
+                    global: {
+                        stubs: {
+                            MDC: {
+                                props: ['value'],
+                                setup(props) {
+                                    passedMdcValue = props.value;
+                                },
+                                template: '<div class="ingress-content">{{ value }}</div>'
+                            },
+                            NavigationNavMenu: true
+                        }
+                    }
+                });
+                await flushPromises();
+
+                expect(passedMdcValue.length).toBe(353);
+                expect(passedMdcValue.endsWith('...')).toBe(true);
+                expect(passedMdcValue).toBe('A'.repeat(350) + '...');
+            });
+
+            it("Does not truncate ingress when !isPost and length <= 350", async () => {
+                const shortIngress = 'Dette er en kort ingress under 350 tegn.';
+                const articleWithShortIngress = { ...dummyPostItem, ingress: shortIngress };
+                let passedMdcValue = '';
+
+                const wrapper = await mountSuspended<Component>(Head, {
+                    props: { isPost: false, article: articleWithShortIngress },
+                    global: {
+                        stubs: {
+                            MDC: {
+                                props: ['value'],
+                                setup(props) {
+                                    passedMdcValue = props.value;
+                                },
+                                template: '<div class="ingress-content">{{ value }}</div>'
+                            },
+                            NavigationNavMenu: true
+                        }
+                    }
+                });
+                await flushPromises();
+
+                expect(passedMdcValue).toBe(shortIngress);
+                expect(passedMdcValue.endsWith('...')).toBe(false);
+            });
+
+            it("Does not truncate long ingress when isPost is true", async () => {
+                const longIngress = 'A'.repeat(400);
+                const articleWithLongIngress = { ...dummyHeaderData, ingress: longIngress };
+                let passedMdcValue = '';
+
+                const wrapper = await mountSuspended<Component>(Head, {
+                    props: { isPost: true, article: articleWithLongIngress },
+                    global: {
+                        stubs: {
+                            MDC: {
+                                props: ['value'],
+                                setup(props) {
+                                    passedMdcValue = props.value;
+                                },
+                                template: '<div class="ingress-content">{{ value }}</div>'
+                            },
+                            NavigationNavMenu: true
+                        }
+                    }
+                });
+                await flushPromises();
+
+                expect(passedMdcValue).toBe(longIngress);
+                expect(passedMdcValue.length).toBe(400);
+            });
         });
 
         describe("Body component", () => {
