@@ -36,7 +36,7 @@ subjects:
       * **Kodeklubb-prosjektet:** En læringsplattform der studenter løser koderelaterte oppgaver. Her arbeidet jeg med **frontend-arkitektur** etter prinsipper for **<abbr title="ren kode">Clean Code</abbr>** i et **<abbr title="smidig">agile</abbr>** utviklingsteam, inkludert oppsett av **routing**, **komponentstruktur** og **state management**.
     created: 2025-05-01T06:44:55.070Z
     end: 2026-05-01T06:44:59.563Z
-    ref_link: 'https://drive.google.com/file/d/1Q3bN5Hw7g4cePjKOEBn8912de2pW5scT/view?usp=drive_link'
+    ref_link: 'https://drive.google.com/file/d/1Msd-5luN6CtavZNjmNT6gVeWhU4Sqz6D/view?usp=sharing'
     techStack:
       - cs
       - typescript
