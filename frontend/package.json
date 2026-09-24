@@ -24,7 +24,7 @@
     "better-sqlite3": "^11.10.0",
     "bootstrap-icons": "^1.13.0",
     "eslint": "^9.39.0",
-    "lumina-sass": "^4.1.0",
+    "lumina-sass": "^4.1.1",
     "nuxt": "^4.5.0",
     "nuxt-gtag": "^3.0.0",
     "react-dnd": "16.0.1",

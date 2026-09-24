@@ -2,6 +2,7 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readdir } from 'fs/promises';
+import * as sass from 'sass';
 
 const srcDir = dirname(fileURLToPath(import.meta.url)); // Du har denne allerede
 
@@ -11,7 +12,15 @@ export default defineNuxtConfig({
   dir: { public:'public' },
   compatibilityDate: '2025-07-15',
   experimental: { payloadExtraction: false},
-  vite: { resolve: { alias: {'$src': `${srcDir}`,} } },
+  vite: {
+    resolve: { alias: {'$src': `${srcDir}`,} },
+    css: {
+      preprocessorOptions: {
+        sass: { api: 'modern-compiler', importers: [new sass.NodePackageImporter()] },
+        scss: { api: 'modern-compiler', importers: [new sass.NodePackageImporter()] }
+      }
+    }
+  },
   routeRules: { '/logs/records/**': { prerender: true } },
   devtools: { enabled: process.env.NODE_ENV === 'development' },
   css: [ `~/sass/index.sass`, 'bootstrap-icons/font/bootstrap-icons.css' ],
