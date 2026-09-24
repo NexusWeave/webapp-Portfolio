@@ -1,3 +1,10 @@
+## [1.37.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.37.0...v1.37.1) (2026-09-24)
+
+
+### Bug Fixes
+
+* **deps:** update @nuxtjs/sitemap & resolve nuxtseo-shared from npm registry. ([1abdfaf](https://github.com/NexusWeave/webapp-Portfolio/commit/1abdfaf7f03b699f3ea31c5e5d0c95766eee87c2))
+
 # [1.37.0](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.36.2...v1.37.0) (2026-08-26)
 
 
