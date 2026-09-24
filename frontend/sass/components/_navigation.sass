@@ -1,13 +1,12 @@
 // Third-party dependencies
-@use 'lumina-sass/mix' as l-mix
-@use 'lumina-sass/color' as l-color
+@use 'pkg:lumina-sass/mix' as l-mix
+@use 'pkg:lumina-sass/color' as l-color
 
 // Internal dependencies
-@use '../utilities/utilities' as utils
-@use '../utilities/button-helpers' as btn
+@use '../mixins' as mix
 
 nav.router-nav
-    @include utils.nav-list-reset()
+    @include mix.nav-list-reset()
     ul
         li
             a
@@ -19,9 +18,9 @@ nav.router-nav
                     opacity: 1
                     transform: translateY(0.0625rem)
 
+                @include mix.button-neumorphism()
                 @include l-mix.font($size: 0.9rem)
-                @include btn.button-neumorphism()
-                @include utils.margin($block: 0.1rem, $inline: 0.25rem)
+                @include l-mix.margin($block: 0.1rem, $inline: 0.25rem)
 
             @include l-mix.link-color(l-color.$text-base-dark-grey, l-color.$logo-red, l-color.$neutral-soft-white, l-color.$text-base-dark-grey)
 
@@ -29,40 +28,43 @@ nav.logo-nav
     ul
         li
             a
+                
+                padding: 0
+                border: none
                 display: block
+                box-shadow: none
+                border-radius: 0
                 text-decoration: none
-                @include utils.margin(0)
-                @include utils.radius(0)
-                @include utils.padding(0)
-                @include utils.border(none)
-                @include utils.shadow(none)
                 background-color: transparent
-                @include utils.logical-size($inline: auto, $block: auto)
+
+                @include l-mix.margin(0)
+                @include l-mix.size(auto, auto)
+
 
                 &:hover
                     transform: none
-                    @include utils.shadow(none)
+                    box-shadow: none
                     background-color: transparent
 
+        padding: 0
         list-style: none
-        @include utils.margin(0)
-        @include utils.padding(0)
+        @include l-mix.margin(0)
 
 nav.anchor-nav, nav.portofolio-nav
-    @include utils.nav-list-reset()
+    @include mix.nav-list-reset()
     ul
         li
             a
-                @include utils.padding(0)
-                @include utils.radius(50%)
-                @include l-mix.font($size: 1rem)
+                padding: 0
+                border-radius: 50%
                 text-decoration: none !important
-                @include btn.button-neumorphism()
-                @include utils.logical-size(2.2rem, 2.2rem)
-                @include utils.margin($block: 0, $inline: 0.15rem)
+                @include l-mix.font($size: 1rem)
+                @include mix.button-neumorphism()
+                @include l-mix.size(2.2rem, 2.2rem)
+                @include l-mix.margin($block: 0, $inline: 0.15rem)
 
                 .icon
-                    @include utils.margin(0)
+                    @include l-mix.margin(0)
                     @include l-mix.font($size: 1.8rem)
 
                     span, .bi, [type="icon"]
@@ -73,18 +75,18 @@ nav.anchor-nav, nav.portofolio-nav
                     display: none
 
 nav.some-nav
-    @include utils.nav-list-reset()
+    @include mix.nav-list-reset()
     ul
         li
             a
-                @include utils.padding(0)
-                @include utils.radius(50%)
+                padding: 0
+                border-radius: 50%
                 text-decoration: none !important
-                @include btn.button-neumorphism()
-                @include utils.logical-size(3.2rem, 3.2rem)
-                @include utils.margin($block: 0, $inline: 0.25rem)
+                @include mix.button-neumorphism()
+                @include l-mix.size(3.2rem, 3.2rem)
+                @include l-mix.margin($block: 0, $inline: 0.25rem)
 
                 .icon
                     @include l-mix.font($size: 2rem)
 
-        @include utils.logical-center()
+        @include l-mix.margin($inline: auto)

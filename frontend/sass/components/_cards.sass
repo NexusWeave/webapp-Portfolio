@@ -1,132 +1,128 @@
 // Third-party dependencies
-@use 'lumina-sass/mix' as mix
-@use 'lumina-sass/color' as color
+@use 'pkg:lumina-sass' as l-lumina
+@use 'pkg:lumina-sass/mix' as l-mix
+@use 'pkg:lumina-sass/color' as l-color
 
 // Internal dependencies
-@use '../utilities/utilities' as utils
+@use '../mixins' as mix
 
 // Card styles, with clear separation of concerns
 
 .card-container
-    @include utils.card-base()
+    @include l-mix.card($shape: square)
     p
         text-align: justify
-        @include mix.font($size: 1rem)
+        @include l-mix.font($size: 1rem)
 
     h3, h4
-        @include mix.font($font: "Nunito")
+        @include l-mix.font($font: "Nunito")
 
     .tech
-        @include utils.list-inline-reset()
+        @include mix.list-inline-reset()
 
         ul
             li
                 cursor: default
-                @include utils.radius(.5rem)
-                @include utils.padding($inline: 1rem)
-                @include utils.border(0.0625rem solid black)
+                padding-inline: 1rem
+                border-radius: 0.5rem
+                border: 0.0625rem solid black
 
-    max-inline-size: 24rem
+    @include l-mix.size($max-inline: 24rem)
 
 .timeline-card
     h3
-        @include utils.margin($inline: 1rem)
-        @include mix.font($font: "Roboto")
+        @include l-mix.margin($inline: 1rem)
+        @include l-mix.font($font: "Roboto")
 
 .business-card
-    @include utils.card-base()
+    @include l-mix.card($shape: square)
 
     &.grid-layout
         .card-header
-            min-block-size: 0
+            padding: 0
             grid-area: header
-            @include utils.margin(0)
-            @include utils.padding(0)
-            @include utils.logical-size($inline: 100%)
+            @include l-mix.margin(0)
+            @include l-mix.size($min-block: 0, $inline: 100%)
 
             .date-container
-                margin: 0
                 display: block
                 text-align: right
+                @include l-mix.margin(0)
 
         .card-content
             h3
-                @include utils.margin(0)
-                @include utils.padding($block: 0.5rem)
-            p
-                @include utils.margin($block: 0.25rem)
+                padding-block: 0.5rem
+                @include l-mix.margin(0)
 
+            p
+                @include l-mix.margin($block: 0.25rem)
+
+            padding: 0
             grid-area: content
-            min-block-size: 0
-            max-block-size: 100%
-            @include utils.padding(0)
+            @include l-mix.size($min-block: 0, $max-block: 100%)
 
         .card-nav
-            @include utils.padding($block: 0.25rem)
+            padding-block: 0.25rem
 
-   
         .card-footer
             h4
-                @include mix.font($size: 0.9rem)
-                @include utils.margin($block: 0 0.25rem)
-            
+                @include l-mix.font($size: 0.9rem)
+                @include l-mix.margin($block: 0 0.25rem)
+
+            padding: 0
             grid-area: footer
-            @include utils.margin(0)
-            @include utils.padding(0)
+            @include l-mix.margin(0)
 
         display: grid
-        align-content: center
-        @include utils.padding(0.75rem)
+        padding: 0.75rem
+        @extend .content-center
         grid-template-rows: 2rem 9rem 1fr
         grid-template-areas: "header" "content" "footer"
 
     p
         text-align: center
-        @include mix.font($size: 1rem)
-        @include utils.margin($block: 0.25rem, $inline: 0)
+        @include l-mix.font($size: 1rem)
+        @include l-mix.margin($block: 0.25rem, $inline: 0)
 
     section
-        @include utils.margin($block: 0 0rem)
+        @include l-mix.margin($block: 0)
 
     header, main, footer
-        inline-size: 100%
+        @include l-mix.size($inline: 100%)
 
     .card-content
         h3
             span.icon
+                padding: 0
                 font-size: 1rem
-                @include utils.padding(0)
 
-            @include utils.logical-size($inline: 100%)
+            @include l-mix.size($inline: 100%)
             
         .icon
+            padding: 0
             font-size: 2rem
-            @include utils.padding(0)
 
         .description
-            inline-size: 18rem
+            @include l-mix.size($inline: 18rem)
 
-    inline-size: 100%
-    max-block-size: 29rem
-    max-inline-size: 23rem
-    @include utils.list-inline-reset()
-    @include mix.link-color(color.$logo-red, color.$dark-orange, color.$light-orange, color.$logo-red)
+    @include mix.list-inline-reset()
+    @include l-mix.size($inline: 100%, $max-block: 29rem, $max-inline: 23rem)
+    @include l-mix.link-color(l-color.$logo-red, l-color.$dark-orange, l-color.$light-orange, l-color.$logo-red)
     
     .credits
         .collab-name
             p
                 a
                     gap: 0.2rem
-                    @include utils.margin(0)
+                    @include l-mix.margin(0)
 
                     .icon
-                        @include utils.margin(0)
-                        @include mix.font($size: 1.1rem)
+                        @include l-mix.margin(0)
+                        @include l-mix.font($size: 1.1rem)
 
-            inline-size: 100%
             display: inline-block
-            
-            @include utils.margin($block: 0.1rem, $inline: auto)
+            @include l-mix.size($inline: 100%)
+            @include l-mix.margin($inline: auto, $block: 0.1rem)
 
-        @include mix.font($size: 0.9rem)
-        @include utils.margin($block: 0.5rem)
+        @include l-mix.font($size: 0.9rem)
+        @include l-mix.margin($block: 0.5rem)

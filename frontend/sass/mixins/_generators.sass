@@ -3,16 +3,16 @@
 @use 'sass:color' as sass-color
 
 // Third-party dependencies
-@use 'lumina-sass' as lumina
-@use 'lumina-sass/mix' as mix
-@use 'lumina-sass/color' as color
-@use 'lumina-sass/func' as func-color
-@use 'lumina-sass/contrast' as contrast
+@use 'pkg:lumina-sass' as l-lumina
+@use 'pkg:lumina-sass/mix' as l-mix
+@use 'pkg:lumina-sass/func' as l-func
+@use 'pkg:lumina-sass/color' as l-color
+@use 'pkg:lumina-sass/contrast' as l-contrast
 
 // Internal dependencies
+@use '../map/tags' as tag-map
 @use './button-helpers' as btn
 @use '../map/icons' as icons-map
-@use '../map/tags' as tag-map
 @use '../map/tech-icons' as tech-map
 
 
@@ -25,23 +25,21 @@
             $background-color: map.get($props, background)
             
             @if not $color
-                $color: func-color.best-contrast-color($background-color)
+                $color: l-func.best-contrast-color($background-color)
             
-            @include contrast.assert-contrast($color, $background-color)
+            @include l-contrast.assert-contrast($color, $background-color)
 
             @if not $hover-color
                 $hover-color: sass-color.scale($background-color, $lightness: 40%)
     
             // Using high specificity to ensure tag colors win over base button styles
             button.#{$tag}, .button.#{$tag}, a.#{$tag}
-                @include btn.colored-button-neumorphism($background-color)
-                @include mix.background-color($bg-color: $background-color !important, $text-color: $color !important)
-
                 text-align: center
-                padding: .5rem 1.2rem
+                padding: 0.5rem 1.2rem
                 border-radius: 0.75rem
-
-                @include lumina.gen-icons('dir', $color)
+                @include l-lumina.gen-icons('dir', $color)
+                @include btn.colored-button-neumorphism($background-color)
+                @include l-mix.background-color($bg-color: $background-color !important, $text-color: $color !important)
 
 @mixin tech-generator($boolean : false, $element: null)
     @each $category, $maps in tech-map.$tech-languages
@@ -63,11 +61,11 @@
                 progress.#{$tech}
 
                     &::-webkit-progress-value
-                        @include mix.background-color($bg-color: $color-map, $text-color: $color-map)
+                        @include l-mix.background-color($bg-color: $color-map, $text-color: $color-map)
 
             @else
                 .#{$tech}
-                    @include mix.background-color($bg-color: $color-map, $text-color: $color-map)
+                    @include l-mix.background-color($bg-color: $color-map, $text-color: $color-map)
 
 @mixin article-theme-generator()
     @each $name, $color in tag-map.$tag-theme-colors
@@ -78,7 +76,7 @@
 @include article-theme-generator()
 
 @each $name, $color in icons-map.$project-icons
-    @include lumina.gen-icons($name, $color)
+    @include l-lumina.gen-icons($name, $color)
 
 
 .tech-container

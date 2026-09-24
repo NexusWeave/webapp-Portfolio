@@ -2,109 +2,32 @@
 @use '../../node_modules/sass-true' as true
 
 // Internal dependencies
-@use '../utilities/_utilities.sass' as mixins
+@use '../mixins' as mix
 
-@include true.test-module('Mixins')
-  @include true.test('logical-size mixin outputs inline and block sizes')
-    @include true.assert
-      @include true.output
-        .test
-          @include mixins.logical-size(100px, 200px)
-      @include true.expect
-        .test
-          inline-size: 100px
-          block-size: 200px
-
-  @include true.test('absolute-inset mixin outputs position and inset')
-    @include true.assert
-      @include true.output
-        .test
-          @include mixins.absolute-inset(10px)
-      @include true.expect
-        .test
-          inset: 10px
-          position: absolute
-
-  @include true.test('logical-center mixin outputs margin-inline: auto')
-    @include true.assert
-      @include true.output
-        .test
-          @include mixins.logical-center()
-      @include true.expect
-        .test
-          margin-inline: auto
-
-  @include true.test('radius mixin outputs border-radius')
-    @include true.assert
-      @include true.output
-        .test
-          @include mixins.radius(10px)
-      @include true.expect
-        .test
-          border-radius: 10px
-
-  @include true.test('border mixin outputs border')
-    @include true.assert
-      @include true.output
-        .test
-          @include mixins.border(1px solid black)
-      @include true.expect
-        .test
-          border: 1px solid black
-
-  @include true.test('margin mixin outputs margin-block and margin-inline')
-    @include true.assert
-      @include true.output
-        .test
-          @include mixins.margin($block: 10px, $inline: 20px)
-      @include true.expect
-        .test
-          margin-block: 10px
-          margin-inline: 20px
-
-  @include true.test('padding mixin outputs padding-block and padding-inline')
-    @include true.assert
-      @include true.output
-        .test
-          @include mixins.padding($block: 10px, $inline: 20px)
-      @include true.expect
-        .test
-          padding-block: 10px
-          padding-inline: 20px
-
-  @include true.test('card-shadow-box mixin outputs margin, padding and box-shadow')
-    @include true.assert
-      @include true.output
-        .test
-          @include mixins.card-shadow-box()
-      @include true.expect
-        .test
-          margin: 1rem
-          padding: 1rem
-          box-shadow: 0.25rem 0.25rem 1.25rem 0.25rem rgba(0, 0, 0, 0.1)
-
+@include true.test-module('Portfolio Utility Mixins')
   @include true.test('list-inline-reset mixin resets list styles for inline display')
     @include true.assert
       @include true.output
         .test
-          @include mixins.list-inline-reset()
+          @include mix.list-inline-reset()
       @include true.expect
         .test
           ul
             li
-              margin: 0.5rem
               display: inline
+              margin: 0.5rem
             padding: 0
 
   @include true.test('nav-list-reset mixin resets list styles for navigation')
     @include true.assert
       @include true.output
         .test
-          @include mixins.nav-list-reset()
+          @include mix.nav-list-reset()
       @include true.expect
         .test
           ul
             padding: 0
             list-style: none
-            inline-size: 100%
             border-radius: 0.5rem
+            inline-size: 100%
+            block-size: auto

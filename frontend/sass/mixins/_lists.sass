@@ -1,11 +1,11 @@
 // Third-party dependencies
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap")
+@use 'pkg:lumina-sass/mix' as l-mix
 
 @mixin list-inline-reset()
     ul 
         li
-            margin: .5rem
             display: inline
+            @include l-mix.margin(0.5rem)
 
         padding: 0
 
@@ -13,7 +13,5 @@
     ul
         padding: 0
         list-style: none
-        inline-size: 100%
-        border-radius: .5rem
-
-
+        border-radius: 0.5rem
+        @include l-mix.size($inline: 100%)

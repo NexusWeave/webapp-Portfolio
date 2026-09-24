@@ -1,19 +1,18 @@
-// Internal dependencies
-@use '../utilities/utilities' as mix
+// Third-party dependencies
+@use 'pkg:lumina-sass/mix' as l-mix
 
 // Base container for the whole section
 .repo-container
     .filter-btn
-        @include mix.margin($block: .5rem, $inline: .5rem)
+        @include l-mix.margin($block: 0.5rem, $inline: 0.5rem)
 
     .project-wrapper
-        max-inline-size: 75rem
+        @include l-mix.size($max-inline: 75rem)
 
     .alert-info
-        inline-size: 100%
-        max-inline-size: 35rem
+        @include l-mix.size($inline: 100%, $max-inline: 35rem)
 
     p
-        @include mix.margin($block: auto, $inline: auto)
+        @include l-mix.margin(auto)
     
-    @include mix.logical-size($inline: 100%, $block: 100%)
+    @include l-mix.size($inline: 100%, $block: 100%)

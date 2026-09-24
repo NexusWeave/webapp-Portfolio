@@ -53,23 +53,7 @@ function runSyntaxCheck(): void {
           path.join(ROOT_DIR, 'node_modules/lumina-sass/src'),
           path.join(ROOT_DIR, 'node_modules/lumina-sass/src/mix')
         ],
-        importers: [{
-          findFileUrl(url) {
-            if (url === 'lumina-sass') return new URL('file://' + path.resolve(ROOT_DIR, 'node_modules/lumina-sass/src/_index.sass'));
-            if (url.startsWith('lumina-sass/')) {
-              const part = url.substring('lumina-sass/'.length);
-              const candidates = [
-                path.resolve(ROOT_DIR, `node_modules/lumina-sass/src/${part}/_index.sass`),
-                path.resolve(ROOT_DIR, `node_modules/lumina-sass/src/${part}.sass`),
-                path.resolve(ROOT_DIR, `node_modules/lumina-sass/src/mix/_${part}.sass`)
-              ];
-              for (const c of candidates) {
-                if (fs.existsSync(c)) return new URL('file://' + c);
-              }
-            }
-            return null;
-          }
-        }],
+        importers: [new sass.NodePackageImporter()],
         quietDeps: true,
         logger: {
           warn: () => {

@@ -1,42 +1,36 @@
 // Third-party dependencies
-@use 'lumina-sass/mix' as mix
-@use 'lumina-sass/color' as color
-
-// Internal dependencies
-@use '../utilities/utilities' as utils
-
+@use 'pkg:lumina-sass/mix' as l-mix
+@use 'pkg:lumina-sass/color' as l-color
 
 .alert-warning
-    @include mix.alert(color.$warning, $icon: 'warning', $inline-size: 35rem)
+    @include l-mix.alert(l-color.$warning, $icon: 'warning', $inline-size: 35rem)
 
 .alert-info
-    @include mix.alert(color.$info, $icon: 'info', $inline-size: 35rem)
+    @include l-mix.alert(l-color.$info, $icon: 'info', $inline-size: 35rem)
 
 .component-blue
-    @include mix.background-color(color.$deep-midnight-blue, color.$neutral-off-white)
+    @include l-mix.background-color(l-color.$deep-midnight-blue, l-color.$neutral-off-white)
 
 .component-slate
-    @include mix.background-color(color.$text-base-dark-grey, color.$neutral-off-white)
+    @include l-mix.background-color(l-color.$text-base-dark-grey, l-color.$neutral-off-white)
 
 .component-seagreen
-    @include mix.background-color(color.$sea-green, color.$neutral-off-white)
-    @include mix.link-color(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
-
+    @include l-mix.background-color(l-color.$sea-green, l-color.$neutral-off-white)
+    @include l-mix.link-color(l-color.$light-orange, rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
 .component-w-g-b
-    @include mix.background-color(color.$neutral-off-white, color.$deep-midnight-blue)
-    @include mix.link-color(color.$light-blue , rgb(60, 156, 221),rgb(147, 200, 236), rgb(27, 101, 152))
+    @include l-mix.background-color(l-color.$neutral-off-white, l-color.$deep-midnight-blue)
+    @include l-mix.link-color(l-color.$light-blue, rgb(60, 156, 221), rgb(147, 200, 236), rgb(27, 101, 152))
     
     a 
         text-decoration: underline
 
 .component-w-g-t
-    @include mix.background-color(color.$neutral-off-white, color.$sea-green)
-    @include mix.link-color(color.$light-orange , rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
-
+    @include l-mix.background-color(l-color.$neutral-off-white, l-color.$sea-green)
+    @include l-mix.link-color(l-color.$light-orange, rgb(229, 102, 115), rgb(244, 190, 195), rgb(65, 11, 17))
 
 .component-blue, .component-seagreen, .component-slate
     h2, h3, h4
         color: inherit
-        @include utils.margin(0, 0)
-        @include mix.font($font: 'Roboto')
+        @include l-mix.margin(0)
+        @include l-mix.font($font: 'Roboto')

@@ -1,10 +1,7 @@
 // Third-party dependencies
-@use 'pkg:lumina-sass/color' as color
-@use 'pkg:lumina-sass/mix' as lumina-mix
+@use 'pkg:lumina-sass/mix' as l-mix
+@use 'pkg:lumina-sass/color' as l-color
 @use '../../node_modules/sass-true' as true
-
-// Internal dependencies
-@use '../utilities/utilities' as mixins
 
 
 @include true.test-module('Alerts')
@@ -12,23 +9,24 @@
     @include true.assert
       @include true.output
         .alert-info
-          @include lumina-mix.alert(color.$info, $icon: 'info', $inline-size: 35rem)
+          @include l-mix.alert(l-color.$info, $icon: 'info', $inline-size: 35rem)
       @include true.expect
         .alert-info
           gap: 1.5rem
           margin: auto
-          padding: 1.5rem
+          padding: 0.5rem
           border-radius: 0.5rem
           inline-size: 35rem
-          @include mixins.border(0.0625rem solid rgba(0, 0, 0, 0.1))
-          @include lumina-mix.font($weight: 800)
-          @include lumina-mix.background-color(color.$info)
+          border: 0.0625rem solid rgba(0, 0, 0, 0.1)
+          @include l-mix.font($weight: 800)
+          @include l-mix.background-color(l-color.$info)
           display: grid
-          grid-template-columns: auto 1fr
           align-items: start
+          grid-template-columns: auto 1fr
           &::before
-            @include lumina-mix.font("bootstrap-icons", $size: 2rem)
             content: "\f431"
+            font-family: 'bootstrap-icons'
+            font-size: 2rem
           &::before
             grid-column: 1
             grid-row: 1
@@ -37,23 +35,24 @@
     @include true.assert
       @include true.output
         .alert-warning
-          @include lumina-mix.alert(color.$warning, $icon: 'warning', $inline-size: 35rem)
+          @include l-mix.alert(l-color.$warning, $icon: 'warning', $inline-size: 35rem)
       @include true.expect
         .alert-warning
           gap: 1.5rem
           margin: auto
-          padding: 1.5rem
+          padding: 0.5rem
           border-radius: 0.5rem
           inline-size: 35rem
-          @include mixins.border(0.0625rem solid rgba(0, 0, 0, 0.1))
-          @include lumina-mix.font($weight: 800)
-          @include lumina-mix.background-color(color.$warning)
+          border: 0.0625rem solid rgba(0, 0, 0, 0.1)
+          @include l-mix.font($weight: 800)
+          @include l-mix.background-color(l-color.$warning)
           display: grid
-          grid-template-columns: auto 1fr
           align-items: start
+          grid-template-columns: auto 1fr
           &::before
-            @include lumina-mix.font("bootstrap-icons", $size: 2rem)
             content: "\f33a"
+            font-family: 'bootstrap-icons'
+            font-size: 2rem
           &::before
             grid-column: 1
             grid-row: 1

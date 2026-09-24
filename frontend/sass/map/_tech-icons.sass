@@ -1,99 +1,98 @@
 // Third-party dependencies
-@use 'lumina-sass/color' as color
+@use 'pkg:lumina-sass/color' as l-color
 
 $compiled-orange-tech-language:(
     'c': (
-        color: color.$c-silver,
-        hover: color.$compiled-light-orange
+        color: l-color.$c-silver,
+        hover: l-color.$compiled-light-orange
     ),
     'go': (
-        color: color.$go-teal, 
-        hover: color.$compiled-light-orange
+        color: l-color.$go-teal, 
+        hover: l-color.$compiled-light-orange
     ),
     'cp': (
-        color: color.$cplus-blue, 
-        hover: color.$compiled-light-orange
+        color: l-color.$cplus-blue, 
+        hover: l-color.$compiled-light-orange
     ),
     'cs': (
-        color: color.$microsoft-green, 
-        hover: color.$compiled-light-orange
+        color: l-color.$microsoft-green, 
+        hover: l-color.$compiled-light-orange
     ),
     'fortran': (
-        color: color.$fortran-purple, 
-        hover: color.$compiled-light-orange
+        color: l-color.$fortran-purple, 
+        hover: l-color.$compiled-light-orange
     ),
 )
 
 $scripting-tech-language:(
     'lua':(
-        color: color.$lua-blue, 
-        hover: color.$scripting-light-yellow
+        color: l-color.$lua-blue, 
+        hover: l-color.$scripting-light-yellow
         ),
     'powershell':(
-        color: color.$powershell-blue, 
-        hover: color.$scripting-light-yellow
+        color: l-color.$powershell-blue, 
+        hover: l-color.$scripting-light-yellow
         ),
     'shell':(
-        color: color.$shell-green, 
-        hover: color.$scripting-light-yellow
+        color: l-color.$shell-green, 
+        hover: l-color.$scripting-light-yellow
         ),
         )
 
 $interpreted-tech-language:(
     'liquid': (
-        color: color.$cyan-blue-azure, 
-        hover: color.$interpreted-light-green
+        color: l-color.$cyan-blue-azure, 
+        hover: l-color.$interpreted-light-green
     ),
     'python': (
-        color: color.$cyan-blue-azure, 
-        hover: color.$interpreted-light-green
+        color: l-color.$cyan-blue-azure, 
+        hover: l-color.$interpreted-light-green
     ),
     'cython': (
-        color: color.$cyan-blue-azure, 
-        hover: color.$interpreted-light-green
+        color: l-color.$cyan-blue-azure, 
+        hover: l-color.$interpreted-light-green
     ),
     'javascript': (
-        color: color.$javascript-yellow,
-        hover: color.$interpreted-light-green
+        color: l-color.$javascript-yellow,
+        hover: l-color.$interpreted-light-green
     ),
     'typescript': (
-        color: color.$typescript-blue,
-        hover: color.$interpreted-light-green
+        color: l-color.$typescript-blue,
+        hover: l-color.$interpreted-light-green
     ),
     'php': (
-        color: color.$microsoft-purple, 
-        hover: color.$interpreted-light-green
+        color: l-color.$microsoft-purple, 
+        hover: l-color.$interpreted-light-green
     ),
 )
 
 $database-tech-language:(
-    'nosql-db': ( color: color.$db-red,  hover: color.$db-light-red ),
-    'rational-db': ( color: color.$db-red, hover: color.$db-light-red ),
+    'nosql-db': ( color: l-color.$db-red,  hover: l-color.$db-light-red ),
+    'rational-db': ( color: l-color.$db-red, hover: l-color.$db-light-red ),
 )
 
 $workflow-blue-tools:(
-    
-    'roff': ( color: color.$roff-grey, hover: color.$workflow-light-blue ),
-    'meson': ( color: color.$jinja-red, hover: color.$workflow-light-blue ),
-    'jinja': ( color: color.$jinja-red, hover: color.$workflow-light-blue ),
-    'cms': ( color: color.$workflow-blue, hover: color.$workflow-light-blue ),
-    'sass': ( color: color.$workflow-blue, hover: color.$workflow-light-blue ),
-    'jp-nb': ( color: color.$jupyter-peach, hover: color.$workflow-light-blue ),
-    'smarty': ( color: color.$smarty-orange, hover: color.$workflow-light-blue ),
-    'workflow': ( color: color.$workflow-blue, hover: color.$workflow-light-blue),
-    'default': ( color: color.$workflow-blue, hover: color.$workflow-light-blue )
+    'roff': ( color: l-color.$roff-grey, hover: l-color.$workflow-light-blue ),
+    'meson': ( color: l-color.$jinja-red, hover: l-color.$workflow-light-blue ),
+    'jinja': ( color: l-color.$jinja-red, hover: l-color.$workflow-light-blue ),
+    'cms': ( color: l-color.$workflow-blue, hover: l-color.$workflow-light-blue ),
+    'sass': ( color: l-color.$workflow-blue, hover: l-color.$workflow-light-blue ),
+    'jp-nb': ( color: l-color.$jupyter-peach, hover: l-color.$workflow-light-blue ),
+    'smarty': ( color: l-color.$smarty-orange, hover: l-color.$workflow-light-blue ),
+    'workflow': ( color: l-color.$workflow-blue, hover: l-color.$workflow-light-blue),
+    'default': ( color: l-color.$workflow-blue, hover: l-color.$workflow-light-blue )
 )
 
 $frontend:(
-    'css': ( path:"", color: color.$frontend-sky-blue ),
-    'html': ( path:"", color: color.$frontend-sky-blue ),
+    'css': ( path:"", color: l-color.$frontend-sky-blue ),
+    'html': ( path:"", color: l-color.$frontend-sky-blue ),
 )
 
 $style:(
     'styling': (
         path:"",
-        color: color.$c-silver, 
-        hover: color.$compiled-light-orange
+        color: l-color.$c-silver, 
+        hover: l-color.$compiled-light-orange
     )
 )
 

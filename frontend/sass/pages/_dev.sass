@@ -1,29 +1,28 @@
+// Third-party dependencies
+@use 'pkg:lumina-sass/mix' as l-mix
+
 // Internal dependencies
-@use '../utilities/utilities' as mix
-@use '../utilities/generators' as gen
+@use '../mixins' as mix
 
 section
     .dev-bar
         .dev-skill
-            h3
+            h3, p
                 text-align: center
-                @include mix.margin($block: 0)
-
-            p
-                text-align: center
-                @include mix.margin($block: 0rem)
+                @include l-mix.margin($block: 0)
 
             progress
                 overflow: hidden
                 appearance: none
+                border-radius: 1rem
                 -moz-appearance: none
                 -webkit-appearance: none
-                @include mix.radius(1rem)
 
-            @include mix.margin($block: 1rem)
-            @include mix.logical-size($inline: 100%)
-            @include gen.tech-generator($boolean: false, $element:'progress')
+            
+            @include l-mix.size($inline: 100%)
+            @include l-mix.margin($block: 1rem)
+            @include mix.tech-generator($boolean: false, $element: 'progress')
 
-        max-inline-size: 24rem
+        @include l-mix.size($max-inline: 24rem)
 
-    @include mix.margin($block: 2rem)
+    @include l-mix.margin($block: 2rem)

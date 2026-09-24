@@ -1,30 +1,26 @@
 // Third-party dependencies
-@use 'lumina-sass' as *
-@use 'lumina-sass/mix' as mix
-@use 'lumina-sass/color' as color
-
-// Internal dependencies
-@use '../utilities/utilities' as utility
+@use 'pkg:lumina-sass/mix' as l-mix
+@use 'pkg:lumina-sass/color' as l-color
 
 // --- Global Figure and Image styles ---
 figure
-    @include utility.margin()
-    @include utility.padding(0)
-    max-inline-size: 28rem
-
     figcaption
-        @include mix.font($size: 0.7rem, $style: italic)
         text-align: center
-        @include utility.margin($block-start: 0.5rem)
+        @include l-mix.margin($b-start: 0.5rem)
+        @include l-mix.font($size: 0.7rem, $style: italic)
 
     picture
         img, source
-            @include utility.radius(100%)
-            @include utility.logical-size($block: auto)
+            border-radius: 100%
+            @include l-mix.size($block: auto)
 
     img, picture
-        @include utility.radius(.5rem)
-        @include utility.logical-size($inline: 100%, $block: auto)
+        border-radius: 0.5rem
+        @include l-mix.size($inline: 100%, $block: auto)
+
+    padding: 0
+    @include l-mix.margin(0)
+    @include l-mix.size($max-inline: 28rem)
 
 // --- Navigation Styles ---
 nav.logo-nav
@@ -32,51 +28,49 @@ nav.logo-nav
         li
             a
                 figure
-                    max-inline-size: none
+                    @include l-mix.size($max-inline: none)
 
                     img
-                        @include utility.logical-size($inline: 7rem)
                         object-fit: contain
+                        @include l-mix.size($inline: 7rem)
 
 // --- Profile Bar Styles ---
 article.profile-bar
     figure
         picture
             img, source
-                @include utility.radius(100%)
+                border-radius: 100%
 
-        max-inline-size: 8rem
+        @include l-mix.size($max-inline: 8rem)
 
 // --- Business Card Styles ---
 .business-card
-    @include mix.background-image("/media/images/cards/portfolio-card.svg", $size: 9rem, $position: top left, $origin: border-box)
-    
     img 
-        @include utility.radius(0)
+        border-radius: 0
 
     figure
-        @include utility.logical-size($inline: 3rem)
-
         picture, img
+            border-radius: 0
             object-fit: contain
-            @include utility.radius(0)
-            @include utility.logical-size($inline: 100%)
+            @include l-mix.size($inline: 100%)
 
         picture
             img, source
+                border-radius: 0
                 object-fit: contain
-                @include utility.radius(0)
-                @include utility.logical-size($inline: 100%)
+                @include l-mix.size($inline: 100%)
+
+        @include l-mix.size($inline: 3rem)
 
     .card-content
         figure
-            @include utility.logical-size($inline: 2rem)
+            @include l-mix.size($inline: 2rem)
 
     &.grid-layout
         .tech-img, .tech-figure
             object-fit: contain !important
-            @include utility.margin(0 !important)
-            @include utility.logical-size($inline: 3.2rem !important, $block: 3.2rem !important)
+            @include l-mix.margin(0 !important)
+            @include l-mix.size($inline: 3.2rem !important, $block: 3.2rem !important)
 
         .card-header
             figure
@@ -86,33 +80,37 @@ article.profile-bar
         .card-footer
             .tech-img, .tech-figure
                 object-fit: contain !important
-                @include utility.margin(0 !important)
-                @include utility.logical-size(2rem !important, 2rem !important)
+                @include l-mix.margin(0 !important)
+                @include l-mix.size(2rem !important, 2rem !important)
 
             figure
                 figcaption
                     display: none
-                @include utility.margin()
+
+                @include l-mix.margin(0)
 
     .tech-container
         img
             object-fit: contain
-            @include utility.logical-size(1.5rem, 1.5rem)
+            @include l-mix.size(1.5rem, 1.5rem)
+
+    @include l-mix.background-image("/media/images/cards/portfolio-card.svg", $size: 9rem, $position: top left, $origin: border-box)
 
 // --- Timeline Styles ---
 .timeline-active
     figure
-        @include utility.margin()
-        max-inline-size: 2rem
 
         img, source
             object-fit: contain
-            @include utility.logical-size($inline: 100%, $block: auto)
+            @include l-mix.size($inline: 100%, $block: auto)
+
+        @include l-mix.margin(0)
+        @include l-mix.size($max-inline: 2rem)
 
 .tech-container
     .tech-figure
-        @include utility.logical-size(2rem, 2rem)
+        @include l-mix.size(2rem, 2rem)
         
         img
-            @include utility.logical-size(100%, 100%)
             object-fit: contain
+            @include l-mix.size(100%, 100%)

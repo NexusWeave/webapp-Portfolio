@@ -1,3 +1,6 @@
+// Third-party dependencies
+@use 'pkg:lumina-sass/mix' as l-mix
+
 .eq-info
     details
         summary
@@ -8,6 +11,7 @@
                 span
                     &:nth-of-type(1)
                         font-weight: bold
-        margin: auto
+
         font-size: 2rem
         display: inline-block
+        @include l-mix.margin(auto)

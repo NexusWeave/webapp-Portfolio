@@ -1,15 +1,13 @@
 // Third-party dependencies
-@use 'lumina-sass/mix' as mix
-
+@use 'pkg:lumina-sass' as l-lumina
+@use 'pkg:lumina-sass/mix' as l-mix
 
 .inline-items-justify-center
-    align-items: center
-    justify-content: center
-    @include mix.gen-flexbox('inline-flex')
+    @extend .flex-inline-items-justify-center
 
 .icon
-    @include mix.font($line-height: 1)
     gap: 0.5rem
+    @include l-mix.font($line-height: 1)
 
     &::before, &::after, *::before, *::after
         font-size: inherit !important

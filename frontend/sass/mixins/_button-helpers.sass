@@ -1,19 +1,21 @@
-// Third-party dependencies
+// Built-in dependencies
 @use 'sass:color' as sass-color
-@use 'lumina-sass/mix' as mix
-@use 'lumina-sass/color' as color
 
-@mixin button-neumorphism($bg: color.$neutral-soft-white, $text: color.$text-base-dark-grey, $shadow-dark: rgba(0, 0, 0, 0.1), $shadow-light: rgba(255, 255, 255, 0.8), $hover-text: rgb(179, 34, 20))
+// Third-party dependencies
+@use 'pkg:lumina-sass/mix' as l-mix
+@use 'pkg:lumina-sass/color' as l-color
+
+
+@mixin button-neumorphism($bg: l-color.$neutral-soft-white, $text: l-color.$text-base-dark-grey, $shadow-dark: rgba(0, 0, 0, 0.1), $shadow-light: rgba(255, 255, 255, 0.8), $hover-text: rgb(179, 34, 20))
     outline: none
     cursor: pointer
     text-align: center
-    border-radius: 0.75rem
     text-decoration: none
-    background-color: $bg
+    border-radius: 0.75rem
     padding: 0.8rem 1.5rem
-    color: $text !important
-    @include mix.font($size: 1rem, $weight: bold)
+    @include l-mix.font($size: 1rem, $weight: bold)
     border: 0.0625rem solid rgba(255, 255, 255, 0.4)
+    @include l-mix.background-color($bg, $text !important )
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
     box-shadow: 0.375rem 0.375rem 0.75rem $shadow-dark, -0.375rem -0.375rem 0.75rem $shadow-light
     
@@ -39,14 +41,14 @@
 
 @mixin primary-button-neumorphism()
     &:hover
-        background-color: sass-color.scale(color.$logo-red, $lightness: -15%) !important
+        background-color: sass-color.scale(l-color.$logo-red, $lightness: -15%) !important
         box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4), -0.375rem -0.375rem 0.875rem rgba(255, 255, 255, 0.3)
 
     &:active
         box-shadow: inset 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.4), inset -0.25rem -0.25rem 0.5rem rgba(255, 255, 255, 0.1)
 
     border: 0.0625rem solid rgba(255, 255, 255, 0.1)
-    @include button-neumorphism(color.$logo-red, color.$neutral-white, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.2), $hover-text: color.$neutral-white)
+    @include button-neumorphism(l-color.$logo-red, l-color.$neutral-white, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.2), $hover-text: l-color.$neutral-white)
 
 @mixin colored-button-neumorphism($bg-color)
     &:hover
@@ -56,4 +58,4 @@
         box-shadow: inset 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2), inset -0.25rem -0.25rem 0.5rem rgba(255, 255, 255, 0.1)
 
     border: 0.0625rem solid rgba(255, 255, 255, 0.1)
-    @include button-neumorphism($bg-color, color.$neutral-white, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2), $hover-text: color.$neutral-white)
+    @include button-neumorphism($bg-color, l-color.$neutral-white, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2), $hover-text: l-color.$neutral-white)
