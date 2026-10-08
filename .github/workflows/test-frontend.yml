@@ -1,21 +1,22 @@
-name: Application Tests
+name: Automatic Frontend Test
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Frontend Quality Check"]
+    types:
+      - completed
     branches:
       - '**'
-  pull_request:
-    branches:
-      - '**'
-  workflow_call:
 
 jobs:
   test-frontend:
     name: Run Unit Tests (Frontend)
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     defaults:
       run:
         working-directory: frontend
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
