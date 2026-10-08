@@ -1,38 +1,34 @@
 #   Dependencies
-import __future__
-from typing import Dict, List
 from dotenv import load_dotenv
+
+from lib.settings.api_config import AsyncAPIClientConfig
 
 #   Internal Dependencies
 from lib.utils.logger_config import APIWatcher
-from lib.settings.api_config import AsyncAPIClientConfig
 
 #  Loading the environment variables
 load_dotenv()
 
-logger = APIWatcher(dir="logs", name='Heavy-API')
+logger = APIWatcher(dir="logs", name="Heavy-API")
 logger.file_handler()
 
 
 class HeavyAPI(AsyncAPIClientConfig):
-
-    def __init__(self, URL:str, KEY:str, version: str):
+    def __init__(self, URL: str, KEY: str, version: str):
         super().__init__(URL=URL, KEY=KEY)
         self.VERSION = version
         self.HEAD = {"accept": "application/json", "api-key": f"{self.API_KEY}"}
 
-    async def fetch_data(self, endpoint: str) -> List[Dict[str, str | object]]:
+    async def fetch_data(self, endpoint: str) -> list[dict[str, str | object]]:
         """
-            Fetching the workouts
-            param: endpoint: str - The endpoint to fetch the workouts
+        Fetching the workouts
+        param: endpoint: str - The endpoint to fetch the workouts
         """
         path = f"{self.API_URL}{self.VERSION}{endpoint}"
 
-        response: List[Dict[str, object]]
-        response = await self.api_call(endpoint = f"{path}", head = self.HEAD)
+        res = await self.api_call(endpoint=f"{path}", head=self.HEAD)
+        return res.json()
 
-        return response
-    
     def map_sessions(self):
         """session_entry: Dict[str, str | object] = {}
         pages:List[Dict[str, str | object ]] = [{"pages": await self.calculate_n(path, self.HEAD)}]
@@ -72,7 +68,7 @@ class HeavyAPI(AsyncAPIClientConfig):
                         'reps': sets['reps'],
                         'weight_kg': sets['weight_kg'],
                         'rpe': sets['rpe']}]
-                    
+
                     if sets['distance_meters'] != None:
                         set_details[k]['distance'] = sets['distance_meters']
                         set_details[k]['duration'] = (int(sets['duration_seconds']) / 60 ) / 60  #type: ignore

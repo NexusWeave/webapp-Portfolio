@@ -1,21 +1,20 @@
 # Built-in Libraries
-import __future__, os
-from typing import List, Optional, Dict
+import os
 
 # Third Party Libraries
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-
 #   Initialize Enviorment variables
 load_dotenv()
+
 
 class Config(BaseSettings):
     __VERSION__ = "v1.0.0"
     DEBUG: bool = False
-    
+
     API_VERSION: str = "v1"
-    CORS_ORIGINS: List[str] = []
+    CORS_ORIGINS: list[str] = []
     ENVIRONMENT: str = "development"
     API_NAME: str = "Portfolio Backend API"
 
@@ -25,9 +24,7 @@ class Config(BaseSettings):
     CONTRIBUTOR: str = ""
     GITHUB_TOKEN: str = ""
     GITHUB_ENDPOINT: str = ""
-    GITHUB_PARAMS: Dict[str, str | int] = {}
-    
-
+    GITHUB_PARAMS: dict[str, str | int] = {}
 
     # Heavy Workout API
     HEAVY_V: str = ""
@@ -37,27 +34,30 @@ class Config(BaseSettings):
     HEAVY_WORKOUTS: str = ""
 
     #   AI Specialist
-    SPECIALIST_LINKS: List[str] = []
+    SPECIALIST_LINKS: list[str] = []
 
     #   Database
     PG_USER: str = ""
     PG_HOST: str = ""
     PG_PASSWORD: str = ""
     PG_SSL_MODE: str = ""
-    PG_DATABASE : str = ""
+    PG_DATABASE: str = ""
     PG_CHANNEL_BINDING: str = ""
+    DATABASE_URL: str | None = None
+    DATABASE_TOKEN: str | None = None
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
 
 class ProdConfig(Config):
     __VERSION__ = "v1.0.0"
-    SECRET_KEY: Optional[str] = os.getenv('SECRET_KEY', None)
-    DATABASE_URL: Optional[str] = os.getenv('PROD_DATABASE', None)
-    DATABASE_TOKEN: Optional[str] = os.getenv('TURSO_WRITE_TOKEN', None)
+    SECRET_KEY: str | None = os.getenv("SECRET_KEY", None)
+    DATABASE_URL: str | None = os.getenv("PROD_DATABASE", None)
+    DATABASE_TOKEN: str | None = os.getenv("TURSO_WRITE_TOKEN", None)
+
 
 class DevelopmentConfig(Config):
     __VERSION__ = "v1.0.0"
     DEBUG: bool = True
-    SECRET_KEY: Optional[str] = os.getenv('SECRET_KEY', None)
-    DATABASE_URL: Optional[str] = os.getenv('DEV_DATABASE', None)
-    DATABASE_TOKEN: Optional[str] = os.getenv('DEV_DATABASE_TOKEN', None)
+    SECRET_KEY: str | None = os.getenv("SECRET_KEY", None)
+    DATABASE_URL: str | None = os.getenv("DEV_DATABASE", None)
+    DATABASE_TOKEN: str | None = os.getenv("DEV_DATABASE_TOKEN", None)

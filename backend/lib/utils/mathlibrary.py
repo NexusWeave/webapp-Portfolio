@@ -1,6 +1,7 @@
 #   This class is used to perform the mathematical operations.
 
-class MathInterPreter(object):
+
+class MathInterPreter:
     __VERSION__ = "v1.0.0"
 
     def __init__(self):
@@ -17,33 +18,32 @@ class MathInterPreter(object):
 
     def Division(self, x, y):
         return x / y
-    
-    def Exponentiation(self, x:int, y:int):
 
+    def Exponentiation(self, x: int, y: int):
         """
-            Title       :   Exponentiation
-            Description :
-                Defining a function to calculate the Exponentiation.
-                The formula of Exponentiation we use the formula x ** y.
-        
-            :param x: Base (x)
-            :param y: Exponent (y)
-            :return: Exponentiation
-        """
-        
-        return x ** y
+        Title       :   Exponentiation
+        Description :
+            Defining a function to calculate the Exponentiation.
+            The formula of Exponentiation we use the formula x ** y.
 
-    def Energy(self, m:int):
+        :param x: Base (x)
+        :param y: Exponent (y)
+        :return: Exponentiation
         """
-            Title       :   EnergyMeasured
-            Description :
-                Defining a function to calculate the Energy.
-                The formula of Energy we use the formula E = ms2.
-                m = Mass (kg) * s = Speed of light which is 3*10**8
 
-            :param m: Mass (kg)
-            :param c: Speed of light which is 3*10**8
-            :return: Energy
+        return x**y
+
+    def Energy(self, m: int):
+        """
+        Title       :   EnergyMeasured
+        Description :
+            Defining a function to calculate the Energy.
+            The formula of Energy we use the formula E = ms2.
+            m = Mass (kg) * s = Speed of light which is 3*10**8
+
+        :param m: Mass (kg)
+        :param c: Speed of light which is 3*10**8
+        :return: Energy
         """
 
         #   Calculating the Speed of light
@@ -51,17 +51,17 @@ class MathInterPreter(object):
 
         return self.Multiplication(m, self.Exponentiation(c, 2))
 
-    def SpeedCalculation(self, d:int, t:int):
+    def SpeedCalculation(self, d: int, t: int):
         """
-            Title       :   SpeedMeasured
-            Description :
-                Defining a function to calculate the Speed.
-                The formula of Speed we use the formula S = d/t.
-                d = Distance (m) * t = Time (s)
+        Title       :   SpeedMeasured
+        Description :
+            Defining a function to calculate the Speed.
+            The formula of Speed we use the formula S = d/t.
+            d = Distance (m) * t = Time (s)
 
-            :param d: Distance (m)
-            :param t: Time (s)
-            :return: Speed
+        :param d: Distance (m)
+        :param t: Time (s)
+        :return: Speed
         """
 
         return self.Division(d, t)

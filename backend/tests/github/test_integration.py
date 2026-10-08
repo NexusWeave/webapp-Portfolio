@@ -1,68 +1,74 @@
 # Python Standard Library
 import os
-from typing import List
-from datetime import datetime, UTC
+from datetime import UTC, datetime
+
+import httpx
 
 # Third-Party Libraries
-import pytest, httpx
+import pytest
 from dotenv import load_dotenv
 from httpx import ASGITransport
 from sqlalchemy.future import select
 
+from app import app
+from lib.models.database_models.GithubModel import (
+    CollaboratorModel,
+    LanguageAssosiationModel,
+    LanguageModel,
+    RepoCollaboratorAssociationModel,
+    RepositoryModel,
+)
 
 #   Internal Libraries
 from lib.services.github.github_api import GithubAPI
-from lib.models.database_models.GithubModel import RepositoryModel, LanguageModel, LanguageAssosiationModel, CollaboratorModel, RepoCollaboratorAssociationModel
 
-from app import app
 load_dotenv()
 
 
 MOCK_PATH = "lib.services.base_services.api_config.AsyncAPIClientConfig.ApiCall"
 PYTESTMARK = pytest.mark.integration
 
+
 class TestIntegrationAPIs:
-
     """
-        Integration Tests for External APIs
+    Integration Tests for External APIs
 
-        Google : https://api.google.com/docs/
+    Google : https://api.google.com/docs/
     """
-    
+
     @pytest.mark.asyncio
     @pytest.mark.integration
-    async def test_github_Connection(self)-> None:
+    async def test_github_Connection(self) -> None:
         """
-            #   Testing the connection to the GithubAPI module
-            #   Github API : https://api.github.com/user/
+        #   Testing the connection to the GithubAPI module
+        #   Github API : https://api.github.com/user/
         """
 
         GITHUB_TOKEN = os.getenv("GithubToken", None)
 
         if not GITHUB_TOKEN:
             pytest.skip("GITHUB_TOKEN not set in environment variables, skipping test...")
-        
+
         ENDPOINT = "user/repos"
 
         try:
-            GAPI = GithubAPI(URL="https://api.github.com", KEY = GITHUB_TOKEN)
+            GAPI = GithubAPI(URL="https://api.github.com", KEY=GITHUB_TOKEN)
 
-            data = await GAPI.fetch_data(endpoint = ENDPOINT)
+            data = await GAPI.fetch_data(endpoint=ENDPOINT)
 
             assert data is not None
-            assert isinstance(data, List)
+            assert isinstance(data, list)
 
-            
-            assert 'updated_at' in data[0]
-            assert 'lang' in data[0]
-            assert 'owner' in data[0]
-            assert 'label' in data[0]
+            assert "updated_at" in data[0]
+            assert "lang" in data[0]
+            assert "owner" in data[0]
+            assert "label" in data[0]
 
         except Exception as e:
             pytest.fail(f"Github API connection test failed with exception: {e}")
 
-class TestDatabaseIntegration:
 
+class TestDatabaseIntegration:
     @pytest.fixture(scope="session")
     async def client(self):
         """
@@ -70,9 +76,10 @@ class TestDatabaseIntegration:
         """
         # Bruker TestClient-funksjonalitet via httpx.AsyncClient for å håndtere
         # applikasjonen som en kontekst.
-        async with httpx.AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        async with httpx.AsyncClient(
+            transport=ASGITransport(app=app), base_url="http://test"
+        ) as client:
             yield client
-
 
     @pytest.mark.asyncio
     async def test_persist_and_retrieve_github_repo(self, db_session, client):
@@ -80,7 +87,7 @@ class TestDatabaseIntegration:
         # Initializing languages
         python_lang = LanguageModel(language="Python")
         js_lang = LanguageModel(language="JavaScript")
-        
+
         # FIKS: Initialiser CollaboratorModel-objekter
         collab_one = CollaboratorModel(name="collab1", github_id="id-c1")
         collab_two = CollaboratorModel(name="collab2", github_id="id-c2")
@@ -89,37 +96,39 @@ class TestDatabaseIntegration:
         db_session.add_all([python_lang, js_lang])
         await db_session.commit()
 
-        js_assosiation = LanguageAssosiationModel( language = js_lang, code_bytes=67890)
-        python_assosiation = LanguageAssosiationModel( language = python_lang, code_bytes=12345)
-        
+        js_assosiation = LanguageAssosiationModel(language=js_lang, code_bytes=67890)
+        python_assosiation = LanguageAssosiationModel(language=python_lang, code_bytes=12345)
+
         #   Creating a test RepositoryModel instance
         test_data = RepositoryModel(
-                repo_id=123456789, 
-                label="my-test-repo",
-                owner="dev_user", 
-                created_at=datetime.now(UTC),
-                description="En beskrivelse for integrasjonstesten.",
-                repo_url="https://github.com/dev_user/test-repo",
-                collaborator_associations=[
-                    RepoCollaboratorAssociationModel(collaborator=collab_one),
-                    RepoCollaboratorAssociationModel(collaborator=collab_two)
-                ],
-                lang_assosiations=[python_assosiation, js_assosiation],
-            )
-        
+            repo_id=123456789,
+            label="my-test-repo",
+            owner="dev_user",
+            created_at=datetime.now(UTC),
+            description="En beskrivelse for integrasjonstesten.",
+            repo_url="https://github.com/dev_user/test-repo",
+            collaborator_associations=[
+                RepoCollaboratorAssociationModel(collaborator=collab_one),
+                RepoCollaboratorAssociationModel(collaborator=collab_two),
+            ],
+            lang_assosiations=[python_assosiation, js_assosiation],
+        )
+
         db_session.add(test_data)
         await db_session.commit()
 
-        result = await db_session.execute(select(RepositoryModel).where(RepositoryModel.repo_id == 123456789))
+        result = await db_session.execute(
+            select(RepositoryModel).where(RepositoryModel.repo_id == 123456789)
+        )
         retrieved_item = result.scalars().first()
-        
+
         # Bruker repo_id for sjekk av sletting senere
         REPO_ID = 123456789
 
         assert retrieved_item is not None, "Fant ikke elementet etter lagring"
         assert retrieved_item.owner == "dev_user"
         assert retrieved_item.label == "my-test-repo"
-        
+
         # Sjekker collaborators relasjonen
         assert len(retrieved_item.collaborator_associations) == 2
         # Sjekker lang_assosiations relasjonen
@@ -127,47 +136,58 @@ class TestDatabaseIntegration:
         assert "En beskrivelse" in retrieved_item.description
 
         found_data = {
-            assoc.language.language: assoc.code_bytes 
-            for assoc in retrieved_item.lang_assosiations
+            assoc.language.language: assoc.code_bytes for assoc in retrieved_item.lang_assosiations
         }
         assert found_data["Python"] == 12345
         assert found_data["JavaScript"] == 67890
 
         # --- TEST AV SLETTEADFERD ---
-        
+
         # Hent IDene til LanguageModel-objektene for senere sjekk
         python_id = python_lang.id
         js_id = js_lang.id
         # FIKS: Hent Collaborator-IDer for senere sjekk
         collab1_id = collab_one.id
         collab2_id = collab_two.id
-        
+
         # 5. SLETT REPOSITORYET (Forelderen)
         await db_session.delete(retrieved_item)
         await db_session.commit()
-        
+
         # 6. VERIFISER AT REPOSITORYET ER BORTE
-        repo_gone = await db_session.execute(select(RepositoryModel).where(RepositoryModel.repo_id == REPO_ID))
+        repo_gone = await db_session.execute(
+            select(RepositoryModel).where(RepositoryModel.repo_id == REPO_ID)
+        )
         assert repo_gone.scalars().first() is None
-        
+
         # 7. VERIFISER AT SPRÅK-DATAENE FORTATT EKSISTERER
         languages_remaining = await db_session.execute(
             select(LanguageModel).where(LanguageModel.id.in_([python_id, js_id]))
         )
-        assert len(languages_remaining.scalars().all()) == 2, "LanguageModel-objektene ble slettet, men skulle vært beholdt"
-        
+        assert len(languages_remaining.scalars().all()) == 2, (
+            "LanguageModel-objektene ble slettet, men skulle vært beholdt"
+        )
+
         # VERIFISER AT COLLABORATOR-DATAENE FORTATT EKSISTERER (Mange-til-Mange)
         collaborators_remaining = await db_session.execute(
             select(CollaboratorModel).where(CollaboratorModel.id.in_([collab1_id, collab2_id]))
         )
-        assert len(collaborators_remaining.scalars().all()) == 2, "CollaboratorModel-objektene skal fortsatt eksistere"
-        
+        assert len(collaborators_remaining.scalars().all()) == 2, (
+            "CollaboratorModel-objektene skal fortsatt eksistere"
+        )
+
         # 8. VERIFISER AT ASSOSIASJONS-OBJEKTENE BLE SLETTET
         lang_associations_gone = await db_session.execute(select(LanguageAssosiationModel))
-        assert len(lang_associations_gone.scalars().all()) == 0, "Språk-assosiasjons-objektene skulle vært slettet"
+        assert len(lang_associations_gone.scalars().all()) == 0, (
+            "Språk-assosiasjons-objektene skulle vært slettet"
+        )
 
-        collab_associations_gone = await db_session.execute(select(RepoCollaboratorAssociationModel))
-        assert len(collab_associations_gone.scalars().all()) == 0, "Kollaboratør-assosiasjons-objektene skulle vært slettet"
+        collab_associations_gone = await db_session.execute(
+            select(RepoCollaboratorAssociationModel)
+        )
+        assert len(collab_associations_gone.scalars().all()) == 0, (
+            "Kollaboratør-assosiasjons-objektene skulle vært slettet"
+        )
 
     @pytest.mark.asyncio
     async def test_clean_database(self, db_session, client):
@@ -176,6 +196,6 @@ class TestDatabaseIntegration:
 
         result = await db_session.execute(select(RepositoryModel))
 
-        remaining_items = result.scalars().all() 
+        remaining_items = result.scalars().all()
 
         assert len(remaining_items) == 0, "Databasen ble ikke tømt etter test."

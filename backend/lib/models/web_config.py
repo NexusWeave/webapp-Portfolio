@@ -1,10 +1,8 @@
 #   Built-in Libraries
-import __future__
-from typing import List, Dict
 from abc import ABC, abstractmethod
 
-class WebAPIModel(ABC):
 
+class WebAPIModel(ABC):
     #   Initialize methods and database
     GET: str = "GET"
     PUT: str = "PUT"
@@ -12,14 +10,14 @@ class WebAPIModel(ABC):
     PATCH: str = "PATCH"
     DELETE: str = "DELETE"
 
-    conflict: List[int] = [409]
-    notFound: List[int] = [404]
-    badRequest: List[int] = [400]
-    timeout: List[int] = [408, 504]
-    unauthorized: List[int] = [401, 403]
-    success: List[int] = [200, 201, 202, 203, 204]
-    server_error: List[int] = [500, 501, 502, 503, 504]
+    conflict: list[int] = [409]
+    notFound: list[int] = [404]
+    badRequest: list[int] = [400]
+    timeout: list[int] = [408, 504]
+    unauthorized: list[int] = [401, 403]
+    success: list[int] = [200, 201, 202, 203, 204]
+    server_error: list[int] = [500, 501, 502, 503, 504]
 
     @abstractmethod
-    def api_call(self, endpoint: str, head: Dict[str, str]) ->  Dict[str, object] | object:
+    def api_call(self, endpoint: str, head: dict[str, str]) -> dict[str, object] | object:
         pass

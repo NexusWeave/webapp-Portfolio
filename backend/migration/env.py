@@ -1,12 +1,12 @@
-import asyncio, os
+import asyncio
+import os
 from logging.config import fileConfig
 
+from alembic import context
+from dotenv import load_dotenv
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
-from dotenv import load_dotenv
-
-from alembic import context
 
 from lib.models.database_models.GithubModel import RepositoryModel
 
@@ -16,12 +16,14 @@ load_dotenv()
 # access to the values within the .ini file in use.
 config = context.config
 
+
 def get_url():
     user = os.getenv("PG_USER")
     password = os.getenv("PG_PASSWORD")
     host = os.getenv("PG_HOST")
     database = os.getenv("PG_DATABASE")
     return f"postgresql+asyncpg://{user}:{password}@{host}/{database}?ssl=require"
+
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

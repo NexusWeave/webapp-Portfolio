@@ -1,39 +1,56 @@
 #   Standard Libraries
-import time, datetime
+import datetime
+import time
+from typing import Any
 from urllib.parse import urljoin
-from typing import Dict, List, Any, Optional
 
 #   Third-Party Libraries
 import httpx
 
+from lib.services.github.utils.github_maps import GithubUtils
+from lib.settings.api_config import AsyncAPIClientConfig
+from lib.utils.exception_handler import NotFoundError
+
 #   Internal Libraries
 from lib.utils.logger_config import APIWatcher
-from lib.utils.exception_handler import NotFoundError
-from lib.settings.api_config import AsyncAPIClientConfig
-from lib.services.github.utils.github_maps import GithubUtils
 
 #   Initialize Logger
-LOG = APIWatcher(name='Github-API')
+LOG = APIWatcher(name="Github-API")
 LOG.file_handler()
 
+
 class GithubAPI(AsyncAPIClientConfig):
-
-    """ Github API Configuration
-        API : https://api.github.com/
+    """Github API Configuration
+    API : https://api.github.com/
     """
-    __VERSION__ = 'v1.3.6'
 
-    def __init__(self, URL:str, KEY:str):
+    __VERSION__ = "v1.3.6"
+
+    def __init__(self, URL: str, KEY: str):
         super().__init__(URL=URL, KEY=KEY)
-        auth_token = self.API_KEY if self.API_KEY.startswith(('token ', 'Bearer ')) else f"token {self.API_KEY}"
-        self.HEADER: Dict[str, str] = {'Content-Type': 'application/json','Authorization': auth_token}
+        auth_token = (
+            self.API_KEY
+            if self.API_KEY.startswith(("token ", "Bearer "))
+            else f"token {self.API_KEY}"
+        )
+        self.HEADER: dict[str, str] = {
+            "Content-Type": "application/json",
+            "Authorization": auth_token,
+        }
 
-    async def fetch_contribution_ratio(self, owner: str, repo: str, target_user: str, collaborators: List[Dict[str, str]] = None, is_fork_repo: bool = False) -> float:
-        """ Fetches the contribution ratio for a user, with optimization for solo projects. """
+    async def fetch_contribution_ratio(
+        self,
+        owner: str,
+        repo: str,
+        target_user: str,
+        collaborators: list[dict[str, str]] | None = None,
+        is_fork_repo: bool = False,
+    ) -> float:
+        """Fetches the contribution ratio for a user, with optimization for solo projects."""
         target_user = target_user.lower()
         collaborators = collaborators or []
-        
-        collab_names = [c.get('name', '').lower() for c in collaborators]
+
+        collab_names = [c.get("name", "").lower() for c in collaborators]
 
         # Optimization: If it's not a fork and there's only one collaborator (the user), it's 100%
         if not is_fork_repo and target_user in collab_names and len(collab_names) == 1:
@@ -41,37 +58,44 @@ class GithubAPI(AsyncAPIClientConfig):
             return 1.0
 
         path = urljoin(self.API_URL, f"repos/{owner}/{repo}/stats/contributors")
-        
+
         for attempt in range(5):
             try:
                 response = await self.wait_in_queue(self.api_call(path, head=self.HEADER))
-                
+
                 if response.status_code == 200:
                     stats = response.json()
                     if not stats or not isinstance(stats, list):
                         break
-                        
+
                     total_touched = 0
                     user_touched = 0
-                    
+
                     for contributor in stats:
-                        cont_additions = sum(week.get('a', 0) for week in contributor.get('weeks', []))
-                        cont_deletions = sum(week.get('d', 0) for week in contributor.get('weeks', []))
+                        cont_additions = sum(
+                            week.get("a", 0) for week in contributor.get("weeks", [])
+                        )
+                        cont_deletions = sum(
+                            week.get("d", 0) for week in contributor.get("weeks", [])
+                        )
                         cont_touched = cont_additions + cont_deletions
                         total_touched += cont_touched
-                        
-                        if contributor.get('author', {}).get('login', '').lower() == target_user:
+
+                        if contributor.get("author", {}).get("login", "").lower() == target_user:
                             user_touched = cont_touched
-                    
+
                     if total_touched > 0:
                         return user_touched / total_touched
-                    
+
                     break
-                    
+
                 elif response.status_code == 202:
                     wait_time = (attempt + 1) * 2.0
-                    LOG.debug(f"GitHub is calculating stats for {repo} (Attempt {attempt+1}/5). Waiting {wait_time}s...")
+                    LOG.debug(
+                        f"GitHub is calculating stats for {repo} (Attempt {attempt + 1}/5). Waiting {wait_time}s..."
+                    )
                     import asyncio
+
                     await asyncio.sleep(wait_time)
                     continue
                 else:
@@ -79,39 +103,51 @@ class GithubAPI(AsyncAPIClientConfig):
             except Exception as e:
                 LOG.error(f"Error fetching contribution ratio for {repo}: {str(e)}")
                 break
-                
+
         # Fallback logic
         if owner.lower() == target_user or target_user in collab_names:
             # If it's a collaborative project or a fork, we can't safely default to 100%
             if len(collab_names) > 1 or is_fork_repo:
-                LOG.warn(f"Stats unavailable for {repo} (Collab/Fork). Defaulting to 0% to avoid overestimation.")
+                LOG.warn(
+                    f"Stats unavailable for {repo} (Collab/Fork). Defaulting to 0% to avoid overestimation."
+                )
                 return 0.0
-            
+
             LOG.warn(f"Stats unavailable for solo repo {repo}. Defaulting to 100%.")
             return 1.0
 
         LOG.warn(f"Failed to fetch stats for {repo}. Defaulting to 0%.")
         return 0.0
 
-    async def fetch_data(self, endpoint:str, contributor: str = "", params: Optional[Dict[str, str | int]] = None, existing_timestamps: Optional[Dict[str, datetime.datetime]] = None) -> List[Dict[str, Any]] | NotFoundError:
+    async def fetch_data(
+        self,
+        endpoint: str,
+        contributor: str = "",
+        params: dict[str, str | int] | None = None,
+        existing_timestamps: dict[str, datetime.datetime] | None = None,
+    ) -> list[dict[str, Any]] | NotFoundError:
         start = time.perf_counter()
         existing_timestamps = existing_timestamps or {}
 
         path = urljoin(self.API_URL, endpoint)
 
         response: httpx.Response
-        try: 
-            response = await self.wait_in_queue(self.api_call(path, head=self.HEADER, params=params))
+        try:
+            response = await self.wait_in_queue(
+                self.api_call(path, head=self.HEADER, params=params)
+            )
         except Exception as e:
-            LOG.error(f"Error fetching data from endpoint: {endpoint} - {e.__class__.__name__} - {str(e)}")
+            LOG.error(
+                f"Error fetching data from endpoint: {endpoint} - {e.__class__.__name__} - {str(e)}"
+            )
             raise e
 
         repo_list = []
-        excluded_repositories = ['me50', 'code50', 'cs50', 'martininn', 'Husseinabdulameer11']
+        excluded_repositories = ["me50", "code50", "cs50", "martininn", "Husseinabdulameer11"]
 
         while True:
             response_data = response.json()
-            
+
             if isinstance(response_data, list):
                 raw_json = response_data
             elif isinstance(response_data, dict):
@@ -124,72 +160,85 @@ class GithubAPI(AsyncAPIClientConfig):
             for item in raw_json:
                 if not isinstance(item, dict):
                     continue
-                
-                name = item.get('name')
-                size = item.get('size')
-                owner_info = item.get('owner')
-                
+
+                name = item.get("name")
+                size = item.get("size")
+                owner_info = item.get("owner")
+
                 if not (name and size is not None and isinstance(owner_info, dict)):
                     continue
-                
-                owner_login = owner_info.get('login')
+
+                owner_login = owner_info.get("login")
                 if not owner_login:
                     continue
-                
+
                 if size == 0:
                     continue
-                
+
                 is_excluded = False
                 for word in excluded_repositories:
-                    if word.lower() in str(name).lower() or word.lower() in str(owner_login).lower():
+                    if (
+                        word.lower() in str(name).lower()
+                        or word.lower() in str(owner_login).lower()
+                    ):
                         is_excluded = True
                         break
                 if is_excluded:
                     continue
-                
+
                 validated_data.append(item)
 
             for res in validated_data:
-                processed_repo = await self._process_repository_item(res, contributor, existing_timestamps)
+                processed_repo = await self._process_repository_item(
+                    res, contributor, existing_timestamps
+                )
                 if processed_repo:
                     repo_list.append(processed_repo)
 
-            _next_page_ = getattr(response, 'links', {})
-            if not 'next' in _next_page_: 
+            _next_page_ = getattr(response, "links", {})
+            if "next" not in _next_page_:
                 break
-            
-            next_page = _next_page_['next']['url']
+
+            next_page = _next_page_["next"]["url"]
             LOG.debug(f"Fetching next page of repositories from URL: {next_page}")
 
-            try: 
+            try:
                 response = await self.wait_in_queue(self.api_call(next_page, head=self.HEADER))
             except Exception as e:
                 LOG.error(f"Error fetching next page: {e.__class__.__name__} - {str(e)}")
                 raise e
 
-        LOG.info(f"Successfully fetched and processed data from endpoint: {endpoint}. Time elapsed: {time.perf_counter() - start} seconds.")
+        LOG.info(
+            f"Successfully fetched and processed data from endpoint: {endpoint}. Time elapsed: {time.perf_counter() - start} seconds."
+        )
         return repo_list
 
-    async def _process_repository_item(self, item: Dict[str, Any], contributor: str, existing_timestamps: Dict[str, datetime.datetime]) -> Optional[Dict[str, Any]]:
-        name = item.get('name')
-        repo_id = str(item.get('id', ''))
-        owner_info = item.get('owner', {})
-        owner = owner_info.get('login') if isinstance(owner_info, dict) else None
+    async def _process_repository_item(
+        self,
+        item: dict[str, Any],
+        contributor: str,
+        existing_timestamps: dict[str, datetime.datetime],
+    ) -> dict[str, Any] | None:
+        name = item.get("name")
+        repo_id = str(item.get("id", ""))
+        owner_info = item.get("owner", {})
+        owner = owner_info.get("login") if isinstance(owner_info, dict) else None
 
         if not (name and repo_id and owner):
             LOG.warn(f"Skipping repository item due to missing fields: {item}")
             return None
 
-        needs_update = True #self._should_update_repo(item, existing_timestamps.get(repo_id))
+        needs_update = True  # self._should_update_repo(item, existing_timestamps.get(repo_id))
 
         # If it's a fork, we need full details to get the 'parent' (original owner)
-        if item.get('fork'):
+        if item.get("fork"):
             LOG.info(f"Fork detected for {name}. Fetching full details to identify original owner.")
             details = await self.fetch_repo_details(owner, name)
             if details:
                 item.update(details)
 
         import asyncio
+
         await asyncio.sleep(0.5)
         LOG.info(f"Fetching collaborators for repo: {name}")
         collaborators = await self.fetch_collaborators(owner, name)
@@ -203,20 +252,28 @@ class GithubAPI(AsyncAPIClientConfig):
         ratio = None
         if needs_update:
             LOG.info(f"Fetching details for updated/new repo: {name}")
-            
-            ratio = await self.fetch_contribution_ratio(owner, name, contributor, collaborators, is_fork_repo=item.get('fork', False))
+
+            ratio = await self.fetch_contribution_ratio(
+                owner, name, contributor, collaborators, is_fork_repo=item.get("fork", False)
+            )
             LOG.info(f"Contribution ratio for {contributor} in {name}: {ratio:.2%}")
-            
+
             languages = await self.fetch_languages(owner, name)
-        
+
         utils = GithubUtils()
         try:
-            return await utils.map_repository(item, languages, collaborators, skip_analysis=not needs_update, contribution_ratio=ratio)
+            return await utils.map_repository(
+                item,
+                languages,
+                collaborators,
+                skip_analysis=not needs_update,
+                contribution_ratio=ratio,
+            )
         except Exception as e:
             LOG.error(f"Error mapping {name}: {str(e)}")
             return None
 
-    async def fetch_repo_details(self, owner: str, name: str) -> Dict[str, Any]:
+    async def fetch_repo_details(self, owner: str, name: str) -> dict[str, Any]:
         path = urljoin(self.API_URL, f"repos/{owner}/{name}")
         try:
             response = await self.wait_in_queue(self.api_call(path, head=self.HEADER))
@@ -229,10 +286,10 @@ class GithubAPI(AsyncAPIClientConfig):
             LOG.error(f"Error fetching repo details for {owner}/{name}: {str(e)}")
             return {}
 
-    async def fetch_languages(self, owner:str, name: str) -> List[Dict[str, Any]]:
+    async def fetch_languages(self, owner: str, name: str) -> list[dict[str, Any]]:
         path = urljoin(self.API_URL, f"repos/{owner}/{name}/languages")
         try:
-            response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
+            response = await self.wait_in_queue(self.api_call(path, head=self.HEADER))
             languages_data = response.json()
         except Exception as e:
             LOG.error(f"Error fetching languages for {owner}/{name}: {str(e)}")
@@ -242,56 +299,69 @@ class GithubAPI(AsyncAPIClientConfig):
         if isinstance(languages_data, dict):
             for lang, value in languages_data.items():
                 lang_name = str(lang).lower()
-                match(lang_name):
-                    case "c#": lang_name = "cs"
-                    case "c++": lang_name = "cp"
-                    case "jupyter notebook": lang_name = "jupyter"
-                    case _: lang_name = lang_name
+                match lang_name:
+                    case "c#":
+                        lang_name = "cs"
+                    case "c++":
+                        lang_name = "cp"
+                    case "jupyter notebook":
+                        lang_name = "jupyter"
+                    case _:
+                        lang_name = lang_name
 
                 languages.append({"language": lang_name, "bytes": value})
         return languages
 
-    async def fetch_collaborators(self, owner:str, name: str) -> List[Dict[str, str]]:
-        path = urljoin(self.API_URL, f"repos/{owner}/{name}/contributors")
-        
+    async def fetch_collaborators(self, owner: str, name: str) -> list[dict[str, str]]:
+        path: str | None = urljoin(self.API_URL, f"repos/{owner}/{name}/contributors")
+
         collaborators = []
 
         while path:
             try:
-                response = await self.wait_in_queue(self.api_call(path, head = self.HEADER))
+                response = await self.wait_in_queue(self.api_call(path, head=self.HEADER))
                 contributors_data = response.json()
             except Exception as e:
                 LOG.error(f"Error fetching collaborators for {owner}/{name}: {str(e)}")
                 break
-                
+
             if not isinstance(contributors_data, list):
-                LOG.warn(f"Unexpected contributors format for {owner}/{name}: {type(contributors_data)}")
+                LOG.warn(
+                    f"Unexpected contributors format for {owner}/{name}: {type(contributors_data)}"
+                )
                 break
 
             for contributor in contributors_data:
                 if not isinstance(contributor, dict):
                     continue
-                    
-                login = contributor.get('login')
+
+                login = contributor.get("login")
                 if not login:
                     continue
-                    
+
                 login_lower = login.lower()
-                if (contributor.get('type') != 'User' or login_lower in ['[bot]','semantic-release-bot', 'copilot', 'tinacms']):
+                if contributor.get("type") != "User" or login_lower in [
+                    "[bot]",
+                    "semantic-release-bot",
+                    "copilot",
+                    "tinacms",
+                ]:
                     continue
-                    
-                collaborators.append({ 
-                    "name": login,  
-                    "collab_id": str(contributor.get('id', '')), 
-                    "html_url": contributor.get('html_url', f"https://github.com/{login}") 
-                })
-            
-            _next_page_ = getattr(response, 'links', {})
-            path = _next_page_.get('next', {}).get('url') if 'next' in _next_page_ else None
+
+                collaborators.append(
+                    {
+                        "name": login,
+                        "collab_id": str(contributor.get("id", "")),
+                        "html_url": contributor.get("html_url", f"https://github.com/{login}"),
+                    }
+                )
+
+            _next_page_ = getattr(response, "links", {})
+            path = _next_page_.get("next", {}).get("url") if "next" in _next_page_ else None
 
         return collaborators
 
-    async def analyze_repository(self,trees_url: str) -> Dict[str, Any]:
+    async def analyze_repository(self, trees_url: str) -> dict[str, Any]:
         try:
             response = await self.wait_in_queue(self.api_call(trees_url, head=self.HEADER))
             return response.json()
@@ -300,27 +370,40 @@ class GithubAPI(AsyncAPIClientConfig):
             raise e
 
     @staticmethod
-    def _should_update_repo( item: Dict[str, Any], db_updated_at: Optional[datetime.datetime]) -> bool:
-        if db_updated_at is None: return True
-        
-        def date_parser(d:str) -> datetime.datetime:
-            return datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
+    def _should_update_repo(item: dict[str, Any], db_updated_at: datetime.datetime | None) -> bool:
+        if db_updated_at is None:
+            return True
 
-        updated_at_str = item.get('updated_at')
+        def date_parser(d: str) -> datetime.datetime:
+            return datetime.datetime.fromisoformat(d.replace("Z", "+00:00"))
+
+        updated_at_str = item.get("updated_at")
         if not updated_at_str:
             return True
-            
-        api_updated_at = date_parser(updated_at_str)
-        
-        api_comp = api_updated_at.replace(tzinfo=None) if hasattr(api_updated_at, 'replace') else api_updated_at
-        db_comp = db_updated_at.replace(tzinfo=None) if hasattr(db_updated_at, 'replace') else db_updated_at
 
-        try: return api_comp > db_comp
-        except TypeError: return True
+        api_updated_at = date_parser(updated_at_str)
+
+        api_comp = (
+            api_updated_at.replace(tzinfo=None)
+            if hasattr(api_updated_at, "replace")
+            else api_updated_at
+        )
+        db_comp = (
+            db_updated_at.replace(tzinfo=None)
+            if hasattr(db_updated_at, "replace")
+            else db_updated_at
+        )
+
+        try:
+            return api_comp > db_comp
+        except TypeError:
+            return True
 
     @staticmethod
-    def _verify_contribution( owner: str, collaborators: List[Dict[str, str]], target_user: str) -> bool:
+    def _verify_contribution(
+        owner: str, collaborators: list[dict[str, str]], target_user: str
+    ) -> bool:
         target_user = str(target_user).lower()
         is_owner = str(owner).lower() == target_user
-        is_contributor = any(str(c.get('name', '')).lower() == target_user for c in collaborators)
+        is_contributor = any(str(c.get("name", "")).lower() == target_user for c in collaborators)
         return is_owner or is_contributor

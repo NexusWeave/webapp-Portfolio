@@ -1,5 +1,4 @@
 # Built-in Libraries
-import __future__
 
 # Third-Party Libraries
 from fastapi import APIRouter
@@ -14,17 +13,18 @@ class BaseService:
     Base interface for all router services to inherit from.
     Ensures standard access to ENVIRONMENT variables and APIRouter initialization.
     """
+
     def __init__(self, PATH: str, ENVIRONMENT: Config):
         self.PATH = PATH
         self.ENVIRONMENT = ENVIRONMENT
-        
+
         self.NAME = ENVIRONMENT.API_NAME
         self.VERSION = ENVIRONMENT.API_VERSION
-        
+
         # Initialize Router
         self.router = APIRouter()
         self.routes = self.router.routes
-        
+
         # Enforce implementation of routes
         self._setup_routes()
 
@@ -33,9 +33,13 @@ class BaseService:
         Must be overridden by child classes to register their endpoints.
         Example: self.router.add_api_route(f"{self.PATH}/endpoint", self.method, ...)
         """
-        raise NotImplementedError("Subclasses must implement _setup_routes() to register their endpoints.")
+        raise NotImplementedError(
+            "Subclasses must implement _setup_routes() to register their endpoints."
+        )
+
 
 class DatabaseQueries:
     __VERSION__ = "v1.0.0"
+
     def __init__(self, session: AsyncSession):
         self.session = session

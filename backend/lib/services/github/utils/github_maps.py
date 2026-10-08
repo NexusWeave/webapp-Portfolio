@@ -1,72 +1,106 @@
 #   Standard Libraries
-import datetime, uuid, os
-from typing import Dict, List, Optional, Callable, Any
+import datetime
+import os
+import uuid
+from typing import Any
 
 #   Third Party Libraries
 from dotenv import load_dotenv
 
 #   Internal Libraries
 from lib.utils.logger_config import ServiceWatcher
+
 load_dotenv()
 
-LOG = ServiceWatcher(name='Github-Utils')
+LOG = ServiceWatcher(name="Github-Utils")
 LOG.file_handler()
+
 
 class GithubUtils:
     __VERSION__ = "v1.0.0"
 
     @staticmethod
-    async def map_repository(data: Dict[str, str | object], languages: List[Dict[str, str | int]], collaborators: Optional[List[Dict[str, str ]]] = None, skip_analysis: bool = False, contribution_ratio: Optional[float] = None) -> Dict[str, str | object | List[str] | object]:
-        """ Maps the repository data to a structured format. """
+    async def map_repository(
+        data: dict[str, Any],
+        languages: list[dict[str, Any]],
+        collaborators: list[dict[str, str]] | None = None,
+        skip_analysis: bool = False,
+        contribution_ratio: float | None = None,
+    ) -> dict[str, Any]:
+        """Maps the repository data to a structured format."""
         num_collabs = len(collaborators) if collaborators else 0
-        date_parser: Callable[[str],object] = lambda d: datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
-        anchor_obj : List[Dict[str, str | object ]] = [ { 'name': 'github', 'id': uuid.uuid4().hex, 'href': data['html_url'], 'type': ['github','external'] }]
+        def date_parser(d: str) -> object:
+            return datetime.datetime.fromisoformat(
+                    d.replace("Z", "+00:00")
+                )
+        anchor_obj: list[dict[str, Any]] = [
+            {
+                "name": "github",
+                "id": uuid.uuid4().hex,
+                "href": data["html_url"],
+                "type": ["github", "external"],
+            }
+        ]
 
-        repoObject: Dict[str, str | object | List[str] | object]= {}
-        repoObject['lang'] = languages
-        repoObject['anchor'] = anchor_obj
-        repoObject['repo_id'] = data['id']
+        repoObject: dict[str, Any] = {}
+        repoObject["lang"] = languages
+        repoObject["anchor"] = anchor_obj
+        repoObject["repo_id"] = data["id"]
         # Use parent owner for forks, otherwise fallback to repo owner
-        parent_info = data.get('parent', {})
-        parent_owner = parent_info.get('owner', {}).get('login') if isinstance(parent_info, dict) else None
+        parent_info = data.get("parent", {})
+        parent_owner = (
+            parent_info.get("owner", {}).get("login") if isinstance(parent_info, dict) else None
+        )
 
-        repoObject['owner'] = parent_owner if (parent_owner) else str(data['owner']['login'])
-        repoObject['owner_url'] = parent_info.get('owner', {}).get('html_url') if (data.get('fork') and parent_owner) else data['owner'].get('html_url', f"https://github.com/{data['owner']['login']}")
+        repoObject["owner"] = parent_owner if (parent_owner) else str(data["owner"]["login"])
+        repoObject["owner_url"] = (
+            parent_info.get("owner", {}).get("html_url")
+            if (data.get("fork") and parent_owner)
+            else data["owner"].get("html_url", f"https://github.com/{data['owner']['login']}")
+        )
 
-        repoObject['updated_at'] = date_parser(data['updated_at'])
-        repoObject['created_at'] = date_parser(data['created_at'])
-        repoObject['is_private'] = True if data['private'] else False
+        repoObject["updated_at"] = date_parser(data["updated_at"])
+        repoObject["created_at"] = date_parser(data["created_at"])
+        repoObject["is_private"] = True if data["private"] else False
 
         if contribution_ratio is not None:
-            repoObject['contribution_ratio'] = int(contribution_ratio * 100)
+            repoObject["contribution_ratio"] = int(contribution_ratio * 100)
 
-        repoObject['collaborators'] = collaborators if collaborators else []
-        repoObject['label'] = GithubUtils.replace_prefix_tech_suffix (data['name'])
-        repoObject['description'] = data['description'] if data['description'] else "No description provided."
-        repoObject['is_collaborator'] = True if (str(repoObject['owner']).lower() != 'krigjo25' or num_collabs > 1) else False
+        repoObject["collaborators"] = collaborators if collaborators else []
+        repoObject["label"] = GithubUtils.replace_prefix_tech_suffix(data["name"])
+        repoObject["description"] = (
+            data["description"] if data["description"] else "No description provided."
+        )
+        repoObject["is_collaborator"] = (
+            True if (str(repoObject["owner"]).lower() != "krigjo25" or num_collabs > 1) else False
+        )
 
-        if data['homepage']: repoObject['anchor'].append({ 'name': 'webapp', 'id': uuid.uuid4().hex, 'href': data['homepage']})
+        if data["homepage"]:
+            repoObject["anchor"].append(
+                {"name": "webapp", "id": uuid.uuid4().hex, "href": data["homepage"]}
+            )
 
-        stack: Dict[str, bool] = {}
-        if not skip_analysis: 
-            stack = await GithubUtils.track_project_stack(str(data['default_branch']), str(data['trees_url']), n=1)
+        stack: dict[str, bool] = {}
+        if not skip_analysis:
+            stack = await GithubUtils.track_project_stack(
+                str(data["default_branch"]), str(data["trees_url"]), n=1
+            )
 
-        repoObject['needs_full_sync'] = not skip_analysis
-        repoObject['is_backend'] = stack.get('is_backend', False)
-        repoObject['is_frontend'] = stack.get('is_frontend', False)
-        repoObject['is_fullstack'] = stack.get('is_fullstack', False)
-
+        repoObject["needs_full_sync"] = not skip_analysis
+        repoObject["is_backend"] = stack.get("is_backend", False)
+        repoObject["is_frontend"] = stack.get("is_frontend", False)
+        repoObject["is_fullstack"] = stack.get("is_fullstack", False)
 
         return repoObject
 
     @staticmethod
-    def replace_prefix_tech_suffix(name: str): 
+    def replace_prefix_tech_suffix(name: str):
 
-        list_of_forbidden_names = ['webapp', 'console', 'fiveem']
+        list_of_forbidden_names = ["webapp", "console", "fiveem"]
 
         for i in list_of_forbidden_names:
             if name.startswith(i):
-                parts = name.split('-')
+                parts = name.split("-")
                 if len(parts) >= 3:
                     # Remove 'webapp-' and the last part (technology)
                     processed_name = "-".join(parts[1:-1])
@@ -78,8 +112,8 @@ class GithubUtils:
         return name
 
     @staticmethod
-    async def track_project_stack(branch:str, tree_path:str, n:int = 1) -> Dict[str, bool]:
-        """ Analyzes the repository data to determine its characteristics. """
+    async def track_project_stack(branch: str, tree_path: str, n: int = 1) -> dict[str, bool]:
+        """Analyzes the repository data to determine its characteristics."""
 
         from lib.services.github.github_api import GithubAPI
 
@@ -88,7 +122,9 @@ class GithubUtils:
 
         try:
             if not URL or not TOKEN:
-                raise ValueError("GITHUB_REST and GITHUB_TOKEN must be set in the environment variables.")
+                raise ValueError(
+                    "GITHUB_REST and GITHUB_TOKEN must be set in the environment variables."
+                )
 
         except ValueError as e:
             LOG.error(f"Error initializing GithubAPI: {e.__class__.__name__} - {str(e)}")
@@ -99,11 +135,11 @@ class GithubUtils:
 
         LOG.info(f"Analyzing repository stack: {tree_path}")
         try:
-            repo_tree:Dict[str, Any] = await github.analyze_repository(tree_path)
-            if not isinstance(repo_tree, dict) or 'tree' not in repo_tree:
-                 LOG.error(f"Unexpected tree format for {tree_path}")
-                 return {}
-            tree: List[Dict[str, Any]] = repo_tree['tree']
+            repo_tree: dict[str, Any] = await github.analyze_repository(tree_path)
+            if not isinstance(repo_tree, dict) or "tree" not in repo_tree:
+                LOG.error(f"Unexpected tree format for {tree_path}")
+                return {}
+            tree: list[dict[str, Any]] = repo_tree["tree"]
         except Exception as e:
             LOG.error(f"Failed to fetch tree for {tree_path}: {str(e)}")
             return {}
@@ -112,36 +148,65 @@ class GithubUtils:
             LOG.warn(f"No tree data found for repository at {tree_path}.")
             return {}
 
-        frontend_extensions:List[str] = [
-            '.html', '.htm', '.css', '.scss', '.sass', '.less', 
-            '.jsx', '.tsx', '.ts', '.vue', '.svelte'
-            ]
+        frontend_extensions: list[str] = [
+            ".html",
+            ".htm",
+            ".css",
+            ".scss",
+            ".sass",
+            ".less",
+            ".jsx",
+            ".tsx",
+            ".ts",
+            ".vue",
+            ".svelte",
+        ]
 
-        backend_extensions:List[str] = [
-            '.py', '.cs', '.c', '.h','.cpp', '.hpp', '.go', '.rs',
-            '.sql', '.php', '.java', '.csproj', '.sln', '.sql', '.jupyter', '.ipynb'
-            ]
+        backend_extensions: list[str] = [
+            ".py",
+            ".cs",
+            ".c",
+            ".h",
+            ".cpp",
+            ".hpp",
+            ".go",
+            ".rs",
+            ".sql",
+            ".php",
+            ".java",
+            ".csproj",
+            ".sln",
+            ".sql",
+            ".jupyter",
+            ".ipynb",
+        ]
 
-        dictionary: Dict[str, bool] = {}
+        dictionary: dict[str, bool] = {}
 
         for item in tree:
-
-            path = str(item['path']).lower()
+            path = str(item["path"]).lower()
             if path:
                 utils = GithubUtils()
-                if not dictionary.get('is_backend'): dictionary['is_backend'] = utils.check_backend_frontend(path, backend_extensions)
-                if not dictionary.get('is_frontend'): dictionary['is_frontend'] = utils.check_backend_frontend(path, frontend_extensions)
+                if not dictionary.get("is_backend"):
+                    dictionary["is_backend"] = utils.check_backend_frontend(
+                        path, backend_extensions
+                    )
+                if not dictionary.get("is_frontend"):
+                    dictionary["is_frontend"] = utils.check_backend_frontend(
+                        path, frontend_extensions
+                    )
 
-        if dictionary.get('is_backend') and dictionary.get('is_frontend', False): 
-            dictionary = {'is_fullstack': True}
+        if dictionary.get("is_backend") and dictionary.get("is_frontend", False):
+            dictionary = {"is_fullstack": True}
 
         return dictionary
 
     @staticmethod
-    def check_backend_frontend(file: str, extensions: List[str]) -> bool:
+    def check_backend_frontend(file: str, extensions: list[str]) -> bool:
         file = file.lower()
 
         is_match = any(file.endswith(ext) for ext in extensions)
-        if is_match: return True
+        if is_match:
+            return True
 
         return False

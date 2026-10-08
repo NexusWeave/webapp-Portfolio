@@ -188,19 +188,15 @@ async def initialize_postgress_engine() -> PostgresProvider:
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
-    
+
     # Builds URL from PG_USER, PG_HOST, PG_PASSWORD, PG_DATABASE, etc.
     PATH = connection_pool("postgresql+asyncpg", "PG")
-    
+
     ASYNC_ENGINE = create_async_engine(
-        PATH, 
-        echo=False,  
-        pool_pre_ping=True, 
-        connect_args={
-            "ssl": ctx, 
-            "prepared_statement_cache_size": 0, 
-            "statement_cache_size": 0
-        }
+        PATH,
+        echo=False,
+        pool_pre_ping=True,
+        connect_args={"ssl": ctx, "prepared_statement_cache_size": 0, "statement_cache_size": 0},
     )
     # ...
 ```
@@ -223,18 +219,18 @@ PG_SSL_MODE=require
 
 ```python
 class RepositoryModel(BaseModel):
-    id: int                                    # Repository ID
-    label: str                                  # Repository name
-    owner: str                                  # Repository owner
-    repo_url: str                              # GitHub URL
-    is_private: bool                           # Private indicator
-    created_at: datetime                       # Creation timestamp
-    demo_url: Optional[str]                   # Demo URL
-    youtube_url: Optional[str]                # YouTube demo URL
-    description: Optional[str]                # Description
-    updated_at: Optional[datetime]            # Last update
+    id: int  # Repository ID
+    label: str  # Repository name
+    owner: str  # Repository owner
+    repo_url: str  # GitHub URL
+    is_private: bool  # Private indicator
+    created_at: datetime  # Creation timestamp
+    demo_url: Optional[str]  # Demo URL
+    youtube_url: Optional[str]  # YouTube demo URL
+    description: Optional[str]  # Description
+    updated_at: Optional[datetime]  # Last update
     lang_associations: List[LanguageAssociationModel]  # Languages
-    
+
     @computed_field
     def languages(self) -> List[Dict]:
         """Computed field for language information."""
@@ -244,9 +240,9 @@ class RepositoryModel(BaseModel):
 
 ```python
 class LanguageModel(BaseModel):
-    id: int                    # Language ID
-    language: str             # Language name (e.g., "Python")
-    
+    id: int  # Language ID
+    language: str  # Language name (e.g., "Python")
+
     model_config = ConfigDict(from_attributes=True)
 ```
 
@@ -254,11 +250,11 @@ class LanguageModel(BaseModel):
 
 ```python
 class LanguageAssociationModel(BaseModel):
-    lang_id: int              # Language ID
-    code_bytes: int          # Code bytes for language
-    repo_id: int             # Repository ID
+    lang_id: int  # Language ID
+    code_bytes: int  # Code bytes for language
+    repo_id: int  # Repository ID
     language: LanguageModel  # Relationship to language
-    
+
     model_config = ConfigDict(from_attributes=True)
 ```
 
@@ -321,41 +317,48 @@ All models use **Pydantic** for validation and serialization.
 ```python
 class LanguageImage(BaseModel):
     """Language icon/image metadata."""
+
     id: int
     alt: str
     src: str
     type: str = "svg"
 
+
 class LanguageModel(BaseModel):
     """Programming language model."""
+
     id: int
     language: str  # Language name (alias: "lang")
-    
+
     model_config = ConfigDict(from_attributes=True)
+
 
 class LanguageAssociationModel(BaseModel):
     """Language association with repository."""
+
     lang_id: int
     code_bytes: int
     repo_id: int
     language: LanguageModel  # Relationship
-    
+
     model_config = ConfigDict(from_attributes=True)
+
 
 class RepositoryModel(BaseModel):
     """GitHub repository model."""
-    label: str                                    # Repository name
-    owner: str                                    # Repository owner
-    is_private: bool                             # Private indicator
-    created_at: datetime                         # Creation timestamp
+
+    label: str  # Repository name
+    owner: str  # Repository owner
+    is_private: bool  # Private indicator
+    created_at: datetime  # Creation timestamp
     id: int  # Repository ID (alias: "repo_id")
-    demo_url: Optional[str]                      # Demo URL
-    repo_url: str                                # GitHub URL
-    youtube_url: Optional[str]                   # YouTube URL
-    updated_at: Optional[datetime]              # Last update
-    description: Optional[str]                  # Description
+    demo_url: Optional[str]  # Demo URL
+    repo_url: str  # GitHub URL
+    youtube_url: Optional[str]  # YouTube URL
+    updated_at: Optional[datetime]  # Last update
+    description: Optional[str]  # Description
     lang_assosiations: List[LanguageAssociationModel]
-    
+
     @computed_field
     def languages(self) -> List[Dict]:
         """Computed field for language information."""
@@ -417,19 +420,22 @@ Centralized logging for the application.
 ```python
 class AppWatcher:
     """Application logger."""
+
     def __init__(self, dir: str, name: str):
         self.log_dir = dir
         self.name = name
-    
+
     def file_handler(self):
         """Setup file handler for logging."""
 
+
 class DatabaseWatcher:
     """Database logger."""
+
     def __init__(self, dir: str, name: str):
         self.log_dir = dir
         self.name = name
-    
+
     def file_handler(self):
         """Setup file handler for database logging."""
 ```
@@ -443,6 +449,7 @@ Handling of custom exceptions.
 ```python
 class NotFoundError(Exception):
     """Custom exception for not found errors."""
+
     def __init__(self, status_code: int, message: str):
         self.status_code = status_code
         self.message = message
