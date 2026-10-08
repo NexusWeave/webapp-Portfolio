@@ -167,6 +167,30 @@ uv pip sync requirements.txt
 uv pip sync requirements.txt dev-requirements.txt
 ```
 
+### 4. Activating the Virtual Environment (Optional)
+Although `uv run` executes commands within `.venv` without manual activation, you can activate it in your shell:
+
+* **Linux / Ubuntu / macOS (Bash / Zsh)**:
+  ```bash
+  source .venv/bin/activate
+  ```
+* **Windows (Command Prompt)**:
+  ```cmd
+  .venv\Scripts\activate.bat
+  ```
+* **Windows (PowerShell)**:
+  ```powershell
+  .venv\Scripts\Activate.ps1
+  ```
+* **Windows (Git Bash / WSL)**:
+  ```bash
+  source .venv/Scripts/activate
+  ```
+* **Deactivate (All Platforms)**:
+  ```bash
+  deactivate
+  ```
+
 ---
 
 ## Development Dependencies Workflow
