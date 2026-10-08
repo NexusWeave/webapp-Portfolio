@@ -60,8 +60,8 @@ omit = [".venv/*"]
 
 show_missing = true
 
-[tool.uv]
-pip.compile-command = "uv pip compile requirements.in -o requirements.txt"
+[tool.uv.pip]
+custom-compile-command = "uv pip compile requirements.in -o requirements.txt"
 
 [tool.ruff]
 line-length = 100
