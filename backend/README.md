@@ -5,7 +5,9 @@ This service acts as the FastAPI backend for the portfolio platform. It provides
 - FastAPI + Uvicorn
 - Pydantic + pydantic-settings
 - SQLAlchemy (async) + asyncpg
+- uv (Package & Project Manager)
 - pytest + coverage + pytest-html
+- Ruff (Linter & Formatter) + Mypy (Type Checker)
 
 ## Project Structure
 - `app.py`: FastAPI app bootstrap and route registration
@@ -19,9 +21,36 @@ This service acts as the FastAPI backend for the portfolio platform. It provides
 ## Run Locally
 From the `backend/` directory:
 
-- Create and activate a virtual environment: `python -m venv .venv && source .venv/bin/activate`
-- Install the required dependencies: `pip install -r requirements.txt`
-- Run the server: `python app.py`
+1. **Synchronize virtual environment and dependencies**:
+   ```bash
+   uv sync
+   ```
+
+2. **Activate the virtual environment** *(Optional - not needed when using `uv run`)*:
+   - **Linux / Ubuntu / macOS (Bash / Zsh)**:
+     ```bash
+     source .venv/bin/activate
+     ```
+   - **Windows (Command Prompt)**:
+     ```cmd
+     .venv\Scripts\activate.bat
+     ```
+   - **Windows (PowerShell)**:
+     ```powershell
+     .venv\Scripts\Activate.ps1
+     ```
+   - **Windows (Git Bash / WSL)**:
+     ```bash
+     source .venv/Scripts/activate
+     ```
+
+3. **Run the server**:
+   ```bash
+   uv run python app.py
+   # or if the environment is activated:
+   python app.py
+   ```
+   *(Or using Uvicorn directly: `uv run uvicorn app:app --host 0.0.0.0 --port 8080 --reload`)*
 
 Default local port: `8080`.
 
@@ -38,19 +67,19 @@ The backend uses [Pytest](https://docs.pytest.org/) and Python's built-in [unitt
 
 Run all tests:
 ```bash
-pytest -v
+uv run pytest -v
 ```
 
 Generate a self-contained HTML test report:
 ```bash
-pytest --html=tests/reports/pytest_report.html --self-contained-html
+uv run pytest --html=tests/reports/pytest_report.html --self-contained-html
 ```
 
 ### Coverage Analysis
 To measure code coverage and generate an HTML report:
 ```bash
-coverage run -m pytest
-coverage html
+uv run coverage run -m pytest
+uv run coverage html
 ```
 The report will be available in `backend/htmlcov/index.html`.
 
@@ -62,7 +91,8 @@ The report will be available in `backend/htmlcov/index.html`.
 
 ## Documentation
 - Backend architecture: [docs/architecture.md](./docs/architecture.md)
-- Testing strategy: [tests/recommended-tests.md](./tests/recommended-tests.md)
+- Testing strategy & guide: [docs/testing.md](./docs/testing.md)
+- uv cheatsheet: [docs/uv-cheatsheet.md](./docs/uv-cheatsheet.md)
 - Service class diagram: [lib/services/docs/services-classDiagram.md](./lib/services/docs/services-classDiagram.md)
 - GitHub service sequence diagram: [lib/services/github/docs/github-sequenceDiagram.md](./lib/services/github/docs/github-sequenceDiagram.md)
 - GitHub service ER diagram: [lib/services/github/docs/github-erDiagram.md](./lib/services/github/docs/github-erDiagram.md)

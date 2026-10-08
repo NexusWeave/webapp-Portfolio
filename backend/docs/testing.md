@@ -7,27 +7,47 @@ This document outlines the testing strategy, setup instructions, and code execut
 ##  Setup & Execution
 
 ### 1. Prerequisites
-From the `backend/` directory, ensure your virtual environment is active and all test dependencies are installed:
+From the `backend/` directory, synchronize the environment using `uv` (this sets up `.venv` and installs all project and development dependencies, including `pytest`, `pytest-cov`, and `pytest-html`):
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+uv sync
 ```
 
+#### Activating the Virtual Environment (Optional)
+If you prefer running test commands directly without the `uv run` prefix, activate `.venv`:
+- **Linux / Ubuntu / macOS (Bash / Zsh)**:
+  ```bash
+  source .venv/bin/activate
+  ```
+- **Windows (Command Prompt)**:
+  ```cmd
+  .venv\Scripts\activate.bat
+  ```
+- **Windows (PowerShell)**:
+  ```powershell
+  .venv\Scripts\Activate.ps1
+  ```
+- **Windows (Git Bash / WSL)**:
+  ```bash
+  source .venv/Scripts/activate
+  ```
+
 ### 2. Execution Commands
+Using `uv run` executes commands directly within the virtual environment:
+
 - **Run the full test suite**:
   ```bash
-  pytest -v
+  uv run pytest -v
   ```
 - **Generate self-contained HTML reports**:
   ```bash
-  pytest --html=tests/reports/pytest_report.html --self-contained-html
+  uv run pytest --html=tests/reports/pytest_report.html --self-contained-html
   ```
 - **Run with coverage measurement**:
   ```bash
-  coverage run -m pytest
-  coverage html  # Generates backend/htmlcov/index.html
+  uv run coverage run -m pytest
+  uv run coverage html  # Generates backend/htmlcov/index.html
   ```
+  *(Or via pytest-cov: `uv run pytest --cov=. --cov-report=html`)*
 
 ---
 
@@ -39,13 +59,15 @@ All database-reliant tests run against an isolated **SQLite in-memory or file-ba
 import pytest
 from sqlalchemy import NullPool
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-from lib.settings.database_config import BASE 
+from lib.settings.database_config import BASE
 
 TEST_DATABASE_URL = "sqlite+aiosqlite:///./test_database.db"
+
 
 @pytest.fixture(scope="session")
 def engine():
     return create_async_engine(TEST_DATABASE_URL, echo=False, future=True, poolclass=NullPool)
+
 
 @pytest.fixture(scope="session")
 async def setup_database(engine):
@@ -56,11 +78,14 @@ async def setup_database(engine):
     # async with engine.begin() as conn:
     #     await conn.run_sync(BASE.metadata.drop_all)
 
+
 @pytest.fixture(scope="function")
 async def db_session(engine, setup_database):
     connection = await engine.connect()
     transaction = await connection.begin()
-    SessionLocal = async_sessionmaker(expire_on_commit=False, autoflush=False, bind=connection, class_=AsyncSession)
+    SessionLocal = async_sessionmaker(
+        expire_on_commit=False, autoflush=False, bind=connection, class_=AsyncSession
+    )
     session = SessionLocal()
     try:
         yield session
@@ -86,17 +111,18 @@ import httpx
 from unittest.mock import AsyncMock, patch
 from lib.services.github.github_api import GithubAPI
 
+
 @pytest.mark.asyncio
 async def test_github_api_rate_limit_retry():
     api = GithubAPI(URL="https://api.github.com", KEY="fake-token")
-    
+
     # Mocking first call to return 429, second call to succeed with 200
     with patch("httpx.AsyncClient.request") as mock_request:
         mock_request.side_effect = [
-            httpx.Response(429, headers={"X-RateLimit-Reset": "2"}), # Await reset for 2s
-            httpx.Response(200, json=[{"id": 1, "name": "repo1"}])
+            httpx.Response(429, headers={"X-RateLimit-Reset": "2"}),  # Await reset for 2s
+            httpx.Response(200, json=[{"id": 1, "name": "repo1"}]),
         ]
-        
+
         response = await api.fetch_data("/repos")
         assert len(response) == 1
         assert response[0]["name"] == "repo1"
@@ -116,23 +142,25 @@ from app import app
 
 client = TestClient(app)
 
+
 def test_specialist_endpoint_resilience():
     # Simulate a scenario where one link fails but the others succeed
-    with patch("lib.services.scanner.scanner_api.Scanner.check_status") as mock_status, \
-         patch("lib.services.scanner.scanner_api.Scanner.scrape_information") as mock_scrape:
-         
-         # First scanner fails, second scanner succeeds
-         mock_status.side_effect = [False, True]
-         mock_scrape.return_value = {"status": "success", "data": "Scraped Info"}
-         
-         response = client.get("/api/v1/specialist")
-         assert response.status_code == 200
-         data = response.json()
-         
-         # The list contains the error dict for the first, and success details for the second
-         assert len(data) == 2
-         assert data[0]["code"] == "500"
-         assert "Scraped Info" in data[1]["data"]
+    with (
+        patch("lib.services.scanner.scanner_api.Scanner.check_status") as mock_status,
+        patch("lib.services.scanner.scanner_api.Scanner.scrape_information") as mock_scrape,
+    ):
+        # First scanner fails, second scanner succeeds
+        mock_status.side_effect = [False, True]
+        mock_scrape.return_value = {"status": "success", "data": "Scraped Info"}
+
+        response = client.get("/api/v1/specialist")
+        assert response.status_code == 200
+        data = response.json()
+
+        # The list contains the error dict for the first, and success details for the second
+        assert len(data) == 2
+        assert data[0]["code"] == "500"
+        assert "Scraped Info" in data[1]["data"]
 ```
 
 ### 3. Health Service Logic Test
@@ -147,14 +175,17 @@ from app import app
 
 client = TestClient(app)
 
+
 def test_healthcheck_reports_database_down():
     # Force the database provider or engine connection check to fail
-    with patch("lib.services.health.health_check.HealthChecks.check_database", new_callable=AsyncMock) as mock_db:
+    with patch(
+        "lib.services.health.health_check.HealthChecks.check_database", new_callable=AsyncMock
+    ) as mock_db:
         mock_db.return_value = {"message": "NOT OK"}
-        
+
         response = client.get("/api/v1/healthcheck")
         assert response.status_code == 200
-        
+
         health_chart = response.json()
         assert health_chart["GET"][0]["Postgres Database"]["status"]["message"] == "NOT OK"
 ```
@@ -167,6 +198,7 @@ Ensure external Heavy Workout API data matches internal database model structure
 import pytest
 from lib.services.heavy.heavy_api import HeavyAPI
 from lib.models.heavy_model import HeavyWorkoutModel
+
 
 @pytest.mark.asyncio
 async def test_heavy_api_mapping():
@@ -181,15 +213,13 @@ async def test_heavy_api_mapping():
                 "exercises": [
                     {
                         "title": "Barbell Squats",
-                        "sets": [
-                            {"reps": 8, "weight_kg": 100, "rpe": 9, "distance_meters": None}
-                        ]
+                        "sets": [{"reps": 8, "weight_kg": 100, "rpe": 9, "distance_meters": None}],
                     }
-                ]
+                ],
             }
         ]
     }
-    
+
     # Test that model maps successfully
     workout_model = HeavyWorkoutModel(**mock_payload["workouts"][0])
     assert workout_model.title == "Leg Day"
@@ -205,14 +235,15 @@ import pytest
 from pydantic import ValidationError
 from lib.models.github_model import RepositoryModel
 
+
 def test_repo_model_validation_fails_on_malformed_url():
     with pytest.raises(ValidationError):
         # repo_url must be a valid URL string
         RepositoryModel(
-            repo_id="invalid-id-type", # Should be integer
+            repo_id="invalid-id-type",  # Should be integer
             label="Test Repo",
             owner="Owner",
-            repo_url="not-a-valid-url"
+            repo_url="not-a-valid-url",
         )
 ```
 
@@ -225,17 +256,18 @@ import pytest
 from sqlalchemy import inspect
 from sqlalchemy.ext.asyncio import AsyncSession
 
+
 @pytest.mark.asyncio
 async def test_migration_schema_matches_models(db_session: AsyncSession):
     # Retrieve the model metadata
     connection = await db_session.connection()
-    
+
     def inspect_tables(conn):
         inspector = inspect(conn)
         return inspector.get_table_names()
-        
+
     tables = await connection.run_sync(inspect_tables)
-    
+
     # Assert critical tables exist after setup migrations run
     assert "repositories" in tables
     assert "languages" in tables
