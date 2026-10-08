@@ -2,7 +2,7 @@ name: Share New Posts to LinkedIn
 
 on:
   workflow_run:
-    workflows: ["Application Tests"]
+    workflows: ["Automatic Frontend Test"]
     types:
       - completed
     branches:

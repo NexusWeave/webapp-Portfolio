@@ -5,9 +5,10 @@ env:
 
 on:
   workflow_run:
-    workflows: ["Semantic Release"]
+    workflows: ["Automatic Frontend Test"]
     types:
       - completed
+
     branches:
       - main
 
@@ -35,6 +36,7 @@ jobs:
         run: |
           npm run generate
           npx --package=netlify-cli netlify deploy --dir=.output/public --no-build --prod --message='Se_CHANGELOG.md_for_forbedringer_og_endringer'
+
         env:
           # Netlify
           NETLIFY_SITE_ID:  ${{ secrets.NETLIFY_ID }}
