@@ -1,18 +1,17 @@
-name: Code Quality Check
+name: Frontend Quality Check
 
 on:
-  workflow_run:
-    workflows: ["Application Tests"]
-    types:
-      - completed
+  push:
     branches:
-      - main
+      - "**"
+  pull_request:
+    branches:
+      - "**"
 
 jobs:
   code_quality:
     name: Code Quality Check
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     defaults:
       run:
         working-directory: frontend
