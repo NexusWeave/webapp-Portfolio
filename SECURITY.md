@@ -6,8 +6,8 @@ The latest versions of both application components are currently supported with 
 
 | Component | Version | Supported          |
 | --------- | ------- | ------------------ |
-| Frontend  | v2.0.x  | :white_check_mark: |
-| Backend   | v1.1.x  | :white_check_mark: |
+| Frontend  | v1.37.x  | :white_check_mark: |
+| Backend   | v1.30.x  | :white_check_mark: |
 | Older versions | All | :x:            |
 
 ## Reporting a Vulnerability
