@@ -2,21 +2,14 @@
     "folders": [{"path":"../"}],
     "settings": {
         "files.exclude": {
-            "**/dist": true,
-            "**/.venv": true,
-            "**/admin": true,
-            "**/.nuxt": true,
-            "**/.data": true,
-            "**/.logs": true,
-            "**/..logs": true,
-            "**/.output": true,
-            "**/.github": true,
-            "**/coverage": true,
-            "**/.benchmarks": true,
-            "**/__pycache__": true,
-            "**/.mypy_cache": true,
-            "**/node_modules": true,
-            "**/.pytest_cache": true
+
+            "**/.github":true,
+
+            "**/.venv": true, "**/.logs": true, "**/coverage": true, "**/.benchmarks": true,
+            "**/__pycache__": true, "**/.mypy_cache": true, "**/.pytest_cache": true,
+
+            "**/admin": true, "**/.nuxt": true, "**/.data": true,
+            "**/dist": true, "**/.output": true, "**/node_modules": true,
         },
         "python.defaultInterpreterPath": "./backend/.venv/bin/python",
         "python.testing.pytestArgs": [ "pytest"],
@@ -80,7 +73,10 @@
             "dev-profile",
             "index",
             "card",
-            "timeline"
+            "timeline",
+            "release",
+            "code-quality",
+            "toml"
         ],
     },
 }
