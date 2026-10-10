@@ -1,9 +1,11 @@
 [project]
 name = "Portfolio"
 version = "2.30.2"
+requires-python = ">=3.12"
 dependencies = [
     "lxml>=5.0.0",
     "httpx>=0.27.0",
+    "alembic>=1.20.0",
     "asyncpg>=0.31.0",
     "pydantic>=2.7.0",
     "aiofiles>=25.1.0",
@@ -15,11 +17,8 @@ dependencies = [
     "pydantic-settings>=2.2.0",
     "uvicorn[standard]>=0.52.0",
     "fastAPI[standard]>=0.141.0",
-    "alembic>=1.20.0",
     "types-aiofiles>=25.1.0.20260518",
 ]
-
-requires-python = ">=3.12"
 
 # Developer dependencies
 [dependency-groups]
@@ -36,30 +35,23 @@ dev = [
     "pytest-benchmark>=5.2.0",
 ]
 
-
 [tool.commitizen]
-name = "cz_conventional_commits"
-version_provider = "pep621"
-version_scheme = "pep440"
-tag_format = "backend-v$version"
-update_changelog_on_bump = true
-changelog_file = "CHANGELOG.md"
-
-addopts = [
-    "--strict-markers",
-    "--import-mode=importlib"
-]
-markers = [ "integration: marker for integration services"]
 
 asyncio_mode = "auto"
+version_scheme = "pep440"
+version_provider = "pep621"
+update_changelog_on_bump = true
+changelog_file = "CHANGELOG.md"
+name = "cz_conventional_commits"
+tag_format = "backend-v$version"
+addopts = [ "--strict-markers", "--import-mode=importlib"]
+markers = [ "integration: marker for integration services"]
 
 [tool.coverage.run]
 source = ["."] 
 omit = [".venv/*"]
 
-
 [tool.coverage.report]
-
 show_missing = true
 
 [tool.uv.pip]
@@ -70,23 +62,22 @@ line-length = 100
 target-version = "py311"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP"]
 ignore = ["E501"]
+select = ["E", "F", "I", "UP"]
+
 
 [tool.mypy]
-explicit_package_bases = true
 mypy_path = "."
 check_untyped_defs = false
+explicit_package_bases = true
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
 pythonpath = ["."]
+testpaths = ["tests"]
 python_files = ["test_*.py"]
 addopts = "-v -o cache_dir=/tmp/.pytest_cache"
 norecursedirs = [".git", ".venv", "data", "logs"]
 
-# Forberedelse for framtidige Astral 'ty' / type-checking regler
 [tool.ty]
-# Når Astral slipper ty konfigurasjonsskjema vil innstillinger defineres her
-python_version = "3.12"
+python_version = "3.12" # Define Astral configuration schema 
