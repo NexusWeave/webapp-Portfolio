@@ -5,8 +5,9 @@
 
             "**/.github":true,
 
-            "**/.venv": true, "**/.logs": true, "**/coverage": true, "**/.benchmarks": true,
-            "**/__pycache__": true, "**/.mypy_cache": true, "**/.pytest_cache": true,
+            "**/.ruff_cache":true, "**/.venv": true, "**/.logs": true, "**/coverage": true,
+            "**/.benchmarks": true, "**/__pycache__": true, "**/.mypy_cache": true,
+            "**/.pytest_cache": true,
 
             "**/admin": true, "**/.nuxt": true, "**/.data": true,
             "**/dist": true, "**/.output": true, "**/node_modules": true,
