@@ -41,6 +41,7 @@
     "@vitest/coverage-v8": "^4.1.0",
     "@vue/test-utils": "^2.4.6",
     "conventional-changelog": "^6.0.0",
+    "html-validate": "^11.16.2",
     "jsdom": "^26.0.0",
     "patch-package": "^8.0.0",
     "pinia": "^4.0.2",
