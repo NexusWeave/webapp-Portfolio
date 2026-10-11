@@ -1,6 +1,6 @@
 [project]
 name = "Portfolio"
-version = "2.30.2"
+version = "3.0.0"
 requires-python = ">=3.12"
 dependencies = [
     "lxml>=5.0.0",
