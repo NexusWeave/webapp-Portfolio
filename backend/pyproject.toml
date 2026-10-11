@@ -37,15 +37,12 @@ dev = [
 
 [tool.commitizen]
 
-asyncio_mode = "auto"
 version_scheme = "pep440"
 version_provider = "pep621"
 update_changelog_on_bump = true
 changelog_file = "CHANGELOG.md"
 name = "cz_conventional_commits"
 tag_format = "backend-v$version"
-addopts = [ "--strict-markers", "--import-mode=importlib"]
-markers = [ "integration: marker for integration services"]
 
 [tool.coverage.run]
 source = ["."] 
@@ -75,9 +72,12 @@ ignore_missing_imports = true
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+asyncio_mode = "auto"
 python_files = ["test_*.py"]
-addopts = "-v -o cache_dir=/tmp/.pytest_cache"
 norecursedirs = [".git", ".venv", "data", "logs"]
+markers = ["integration: marker for integration services"]
+
+addopts = "-v --strict-markers --import-mode=importlib -o cache_dir=/tmp/.pytest_cache"
 
 [tool.ty]
 python_version = "3.12" # Define Astral configuration schema 
