@@ -7,18 +7,6 @@
 
 
 @mixin button-neumorphism($bg: l-color.$neutral-soft-white, $text: l-color.$text-base-dark-grey, $shadow-dark: rgba(0, 0, 0, 0.1), $shadow-light: rgba(255, 255, 255, 0.8), $hover-text: rgb(179, 34, 20))
-    outline: none
-    cursor: pointer
-    text-align: center
-    text-decoration: none
-    border-radius: 0.75rem
-    padding: 0.8rem 1.5rem
-    @include l-mix.font($size: 1rem, $weight: bold)
-    border: 0.0625rem solid rgba(255, 255, 255, 0.4)
-    @include l-mix.background-color($bg, $text !important )
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-    box-shadow: 0.375rem 0.375rem 0.75rem $shadow-dark, -0.375rem -0.375rem 0.75rem $shadow-light
-    
 
     &:hover
         color: $hover-text !important
@@ -38,6 +26,15 @@
         transform: none
         box-shadow: none
         cursor: not-allowed
+
+    text-align: center
+    text-decoration: none
+    @include l-mix.base-btn($bg,$text)
+    @include l-mix.padding(0.8rem 1.5rem)
+    @include l-mix.font($size: 1rem, $weight: bold)
+    @include l-mix.background-color($bg, $text !important )
+    @include l-mix.transition(all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275))
+    @include l-mix.frame($border: 0.0625rem solid rgba(255, 255, 255, 0.4), $radius: .75rem, $box-shadow: 0.375rem 0.375rem 0.75rem $shadow-dark, -0.375rem -0.375rem 0.75rem $shadow-light, $outline: none)
 
 @mixin primary-button-neumorphism()
     &:hover

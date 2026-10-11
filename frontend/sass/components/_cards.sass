@@ -9,7 +9,7 @@
 // Card styles, with clear separation of concerns
 
 .card-container
-    @include l-mix.card($shape: square)
+    
     p
         text-align: justify
         @include l-mix.font($size: 1rem)
@@ -23,10 +23,10 @@
         ul
             li
                 cursor: default
-                padding-inline: 1rem
-                border-radius: 0.5rem
-                border: 0.0625rem solid black
+                @include l-mix.padding($inline: 1rem)
+                @include l-mix.frame($border: 0.0625rem solid black, $radius: .5rem )
 
+    @include l-mix.card($shape: square)
     @include l-mix.size($max-inline: 24rem)
 
 .timeline-card
@@ -35,13 +35,12 @@
         @include l-mix.font($font: "Roboto")
 
 .business-card
-    @include l-mix.card($shape: square)
 
     &.grid-layout
         .card-header
-            padding: 0
             grid-area: header
             @include l-mix.margin(0)
+            @include l-mix.padding(0)
             @include l-mix.size($min-block: 0, $inline: 100%)
 
             .date-container
@@ -51,33 +50,34 @@
 
         .card-content
             h3
-                padding-block: 0.5rem
                 @include l-mix.margin(0)
+                @include l-mix.padding($block: .5rem)
 
             p
                 @include l-mix.margin($block: 0.25rem)
 
-            padding: 0
             grid-area: content
+            @include l-mix.padding($padding: 0)
             @include l-mix.size($min-block: 0, $max-block: 100%)
 
         .card-nav
-            padding-block: 0.25rem
+            @include l-mix.padding($block: .25rem)
 
         .card-footer
             h4
                 @include l-mix.font($size: 0.9rem)
                 @include l-mix.margin($block: 0 0.25rem)
 
-            padding: 0
             grid-area: footer
             @include l-mix.margin(0)
+            @include l-mix.padding(0)
 
         display: grid
-        padding: 0.75rem
-        @extend .content-center
         grid-template-rows: 2rem 9rem 1fr
         grid-template-areas: "header" "content" "footer"
+
+        @extend .content-center
+        @include l-mix.padding(.75rem)
 
     p
         text-align: center
@@ -93,22 +93,19 @@
     .card-content
         h3
             span.icon
-                padding: 0
                 font-size: 1rem
+                @include l-mix.padding($padding 0)
 
             @include l-mix.size($inline: 100%)
             
+            
         .icon
-            padding: 0
             font-size: 2rem
+            @include l-mix.padding(0)
 
         .description
             @include l-mix.size($inline: 18rem)
 
-    @include mix.list-inline-reset()
-    @include l-mix.size($inline: 100%, $max-block: 29rem, $max-inline: 23rem)
-    @include l-mix.link-color(l-color.$logo-red, l-color.$dark-orange, l-color.$light-orange, l-color.$logo-red)
-    
     .credits
         .collab-name
             p
@@ -126,3 +123,8 @@
 
         @include l-mix.font($size: 0.9rem)
         @include l-mix.margin($block: 0.5rem)
+
+    @include mix.list-inline-reset()
+    @include l-mix.card($shape: rectangle)
+    @include l-mix.size($inline: 100%, $max-block: 29rem, $max-inline: 23rem)
+    @include l-mix.link-color(l-color.$logo-red, l-color.$dark-orange, l-color.$light-orange, l-color.$logo-red)

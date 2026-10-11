@@ -28,8 +28,6 @@ nav.logo-nav
     ul
         li
             a
-                
-                padding: 0
                 border: none
                 display: block
                 box-shadow: none
@@ -38,6 +36,7 @@ nav.logo-nav
                 background-color: transparent
 
                 @include l-mix.margin(0)
+                @include l-mix.padding(0)
                 @include l-mix.size(auto, auto)
 
 
@@ -46,18 +45,19 @@ nav.logo-nav
                     box-shadow: none
                     background-color: transparent
 
-        padding: 0
         list-style: none
         @include l-mix.margin(0)
+        @include l-mix.padding(0)
 
 nav.anchor-nav, nav.portofolio-nav
     @include mix.nav-list-reset()
     ul
         li
             a
-                padding: 0
-                border-radius: 50%
                 text-decoration: none !important
+
+                @include bo-ra(50%)
+                @include l-mix.padding(0)
                 @include l-mix.font($size: 1rem)
                 @include mix.button-neumorphism()
                 @include l-mix.size(2.2rem, 2.2rem)
@@ -79,9 +79,10 @@ nav.some-nav
     ul
         li
             a
-                padding: 0
-                border-radius: 50%
                 text-decoration: none !important
+
+                @include bo-ra(50%)
+                @include l-mix.padding(0)
                 @include mix.button-neumorphism()
                 @include l-mix.size(3.2rem, 3.2rem)
                 @include l-mix.margin($block: 0, $inline: 0.25rem)

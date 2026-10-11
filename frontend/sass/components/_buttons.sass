@@ -82,17 +82,17 @@ section.tag-wrapper
 
         @extend .flex-wrap-row
         @extend .justify-center
-
         @include l-mix.size($inline: 100%)
+        @include l-mix.padding($padding .5rem)
         @include l-mix.margin($b-start: 0.5rem)
 
-    @include l-mix.margin($block: 0, $inline: auto)
     @include l-mix.size($max-inline: 100%)
+    @include l-mix.margin($block: 0, $inline: auto)
 
 
 button.reset-btn, .button.reset-btn
-    padding: 0.5rem 1.2rem
     @include l-mix.margin(0.5rem)
     @include l-mix.font($size: 1.1rem)
+    @include l-mix.padding($padding .5rem 1.2rem)
     @include mix.button-neumorphism(l-color.$neutral-soft-white, l-color.$text-base-dark-grey)
     @include l-mix.background-color(l-color.$neutral-soft-white !important, l-color.$text-base-dark-grey !important)

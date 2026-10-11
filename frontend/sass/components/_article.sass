@@ -15,9 +15,9 @@ article
                 @include l-mix.margin($inline: 0 1rem)
 
             a
-                @include l-mix.margin(0.2rem)
                 display: inline-block
                 text-decoration: none
+                @include l-mix.margin(0.2rem)
                 @include l-mix.font($size: 0.85rem)
 
         @include l-mix.margin($block: 0, $inline: auto)
@@ -54,10 +54,9 @@ article
         @include l-mix.size($block: auto)
 
     .blog-header
-        box-shadow: 0 0 0.625rem rgba(l-color.$text-base-dark-grey, 0.2)
-
         @include l-mix.margin($block: 2rem, $inline: 0.5rem)
         @include l-mix.size($max-inline: 29rem, $block: 32rem)
+        @include l-mix.frame($box-shadow: 0 0 .625rem rgba(l-color.$text-base-dark-grey, 0.2))
 
     .blog-header, .ingress-header
         p.article-metadata
@@ -75,25 +74,23 @@ article
                 @include l-mix.font($size: 0.825rem)
 
         p
-            padding-inline: 1rem
-            padding-block: 0.5rem
             @include l-mix.font($size: 1.1rem)
+            @include l-mix.padding($inline: 1rem, $block: .5rem)
 
-        padding-block: 0
-        padding-inline: 0.5rem
+        @include l-mix.padding($inline: .5rem, $block: 0)
 
     .article-content, .blog-header, .ingress-header
         code
-            padding-block: 0.2rem
-            border-radius: 0.25rem
-            padding-inline: 0.4rem
+            @include l-mix.bo-ra($radius .25rem)
             @include l-mix.relative($z-index: -1)
+            @include l-mix.padding($inline: .4rem, $block: .2rem)
             @include l-mix.font($family: ('Courier New', Courier, monospace), $style: italic)
             @include l-mix.background-color(l-color.$text-base-dark-grey,l-color.$neutral-white)
 
         pre
             padding: 1rem
-            border-radius: 0.25rem
+            @include l-mix.bo-ra($radius .25rem)
+            @include l-mix.padding($padding: 1rem)
             background-color: l-color.$text-base-dark-grey
             border-inline-start: 0.1875rem solid $article-theme-color
 
