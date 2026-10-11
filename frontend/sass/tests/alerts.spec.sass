@@ -12,24 +12,25 @@
           @include l-mix.alert(l-color.$info, $icon: 'info', $inline-size: 35rem)
       @include true.expect
         .alert-info
-          gap: 1.5rem
-          margin: auto
-          padding: 0.5rem
-          border-radius: 0.5rem
-          inline-size: 35rem
-          border: 0.0625rem solid rgba(0, 0, 0, 0.1)
-          @include l-mix.font($weight: 800)
-          @include l-mix.background-color(l-color.$info)
           display: grid
           align-items: start
           grid-template-columns: auto 1fr
           &::before
+            grid-row: 1
+            grid-column: 1
+          &::before
             content: "\f431"
             font-family: 'bootstrap-icons'
             font-size: 2rem
-          &::before
-            grid-column: 1
-            grid-row: 1
+          gap: 1rem
+          padding: 0.5rem
+          border-radius: 0.5rem
+          border: 0.0625rem solid rgba(0, 0, 0, 0.1)
+          @include l-mix.font($weight: 800)
+          margin: auto
+          inline-size: 35rem
+          block-size: auto
+          @include l-mix.background-color(l-color.$info)
 
   @include true.test('alert-warning should have correct contrast and icon')
     @include true.assert
@@ -38,21 +39,23 @@
           @include l-mix.alert(l-color.$warning, $icon: 'warning', $inline-size: 35rem)
       @include true.expect
         .alert-warning
-          gap: 1.5rem
-          margin: auto
-          padding: 0.5rem
-          border-radius: 0.5rem
-          inline-size: 35rem
-          border: 0.0625rem solid rgba(0, 0, 0, 0.1)
-          @include l-mix.font($weight: 800)
-          @include l-mix.background-color(l-color.$warning)
           display: grid
           align-items: start
           grid-template-columns: auto 1fr
           &::before
+            grid-row: 1
+            grid-column: 1
+          &::before
             content: "\f33a"
             font-family: 'bootstrap-icons'
             font-size: 2rem
-          &::before
-            grid-column: 1
-            grid-row: 1
+          gap: 1rem
+          padding: 0.5rem
+          border-radius: 0.5rem
+          border: 0.0625rem solid rgba(0, 0, 0, 0.1)
+          @include l-mix.font($weight: 800)
+          margin: auto
+          inline-size: 35rem
+          block-size: auto
+          @include l-mix.background-color(l-color.$warning)
+

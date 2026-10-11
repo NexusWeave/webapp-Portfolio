@@ -3,7 +3,6 @@
     "settings": {
         "files.exclude": {
 
-            "**/.github":true,
 
             "**/.ruff_cache":true, "**/.venv": true, "**/.logs": true, "**/coverage": true,
             "**/.benchmarks": true, "**/__pycache__": true, "**/.mypy_cache": true,

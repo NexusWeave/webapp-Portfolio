@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare",
     "pre-release": "npm run test",
     "test:nuxt": "vitest run tests/nuxt",
+    "test:semantic": "vitest run tests/semantic",
     "dev": "tinacms dev -c \"nuxt dev\"",
     "build": "tinacms build && nuxt build",
     "serve": "npm run build && nuxt preview",

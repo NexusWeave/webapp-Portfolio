@@ -10,6 +10,9 @@ export default defineConfig(async () => {
         { test: { name: 'unit', environment: 'node', include: ['tests/unit/**/*.{test,spec}.ts'] }},
         await defineVitestProject({
           test: { name: 'nuxt', environment: 'nuxt', include: ['tests/nuxt/**/*.{test,spec}.ts'], environmentOptions: { nuxt: { domEnvironment: 'jsdom'}}}
+        }),
+        await defineVitestProject({
+          test: { name: 'semantic', environment: 'nuxt', include: ['tests/semantic/**/*.{test,spec}.ts'], environmentOptions: { nuxt: { domEnvironment: 'jsdom'}}}
         })
       ]
     }
