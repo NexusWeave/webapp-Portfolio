@@ -57,10 +57,31 @@ jobs:
         if: steps.backend-changes.outputs.changed == 'true'
         working-directory: backend
         run: |
-          cz bump --yes --changelog || [ $? -eq 21 ]
+          LAST_TAG=$(git describe --tags --match "backend-v*" --abbrev=0 2>/dev/null || echo "")
+          REV_RANGE="${LAST_TAG:+$LAST_TAG..}HEAD"
+
+          # Determine bump increment strictly from commits touching backend/
+          COMMITS=$(git log "$REV_RANGE" --format="%B---END---" -- .)
+
+          INCREMENT=""
+          if echo "$COMMITS" | grep -E "(BREAKING CHANGE:|!:)"; then
+            INCREMENT="MAJOR"
+          elif echo "$COMMITS" | grep -E "^feat(\([^)]+\))?:"; then
+            INCREMENT="MINOR"
+          elif echo "$COMMITS" | grep -E "^(fix|chore|refactor|perf|style|docs|build)(\([^)]+\))?:"; then
+            INCREMENT="PATCH"
+          fi
+
+          if [ -n "$INCREMENT" ]; then
+            echo "Bumping backend version with increment: $INCREMENT"
+            cz bump --increment "$INCREMENT" --yes --changelog
+          else
+            echo "No releasable backend commits found in range."
+          fi
 
       - name: Push Backend Release
         if: steps.backend-changes.outputs.changed == 'true'
         run: |
           git pull --rebase origin main
           git push origin main --follow-tags
+          git push origin --tags
