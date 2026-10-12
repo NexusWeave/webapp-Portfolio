@@ -1,3 +1,10 @@
+## [1.37.3](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.37.2...v1.37.3) (2026-10-12)
+
+
+### Bug Fixes
+
+* **frontend:** enforce mobile-first styles, .verdi notation and fix static prerender ([f7c79d2](https://github.com/NexusWeave/webapp-Portfolio/commit/f7c79d27aaf3a4854c0a1cfac74edbe7d2591a8d))
+
 ## [1.37.2](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.37.1...v1.37.2) (2026-10-11)
 
 
