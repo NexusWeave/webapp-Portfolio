@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   sitemap: { autoLastmod: true, includeAppSources:true, exclude: [ '/admin/**' ], sources: ['/api/log-urls'], defaults: { priority: 0.9, changefreq: 'daily'} },
   nitro: { preset: 'static', prerender: { crawlLinks: true, routes: ['/sitemap.xml', '/', '/security-policy', '/dev', '/personal', '/logs', '/media/docs/CV-Kristoffer-Gjøsund.pdf'], ignore: [ '/logs/records/.gitkeep', '**/.gitkeep', '**/.DS_Store'] } },
 
+  image: { provider: 'none' },
   modules: [
     'nuxt-gtag',
     '@nuxt/fonts',

@@ -5,22 +5,23 @@
 // Internal dependencies
 @use '../mixins' as mix
 
+
 nav.router-nav
     @include mix.nav-list-reset()
     ul
         li
             a
                 &:hover
-                    transform: translateY(-0.125rem)
+                    transform: translateY(-.125rem)
                     color: l-color.$logo-red !important
 
                 &:active
                     opacity: 1
-                    transform: translateY(0.0625rem)
+                    transform: translateY(.0625rem)
 
                 @include mix.button-neumorphism()
-                @include l-mix.font($size: 0.9rem)
-                @include l-mix.margin($block: 0.1rem, $inline: 0.25rem)
+                @include l-mix.font($size: .9rem)
+                @include l-mix.margin($block: .1rem, $inline: .25rem)
 
             @include l-mix.link-color(l-color.$text-base-dark-grey, l-color.$logo-red, l-color.$neutral-soft-white, l-color.$text-base-dark-grey)
 
@@ -56,12 +57,12 @@ nav.anchor-nav, nav.portofolio-nav
             a
                 text-decoration: none !important
 
-                @include bo-ra(50%)
+                @include l-mix.bo-ra(50%)
                 @include l-mix.padding(0)
                 @include l-mix.font($size: 1rem)
                 @include mix.button-neumorphism()
                 @include l-mix.size(2.2rem, 2.2rem)
-                @include l-mix.margin($block: 0, $inline: 0.15rem)
+                @include l-mix.margin($block: 0, $inline: .15rem)
 
                 .icon
                     @include l-mix.margin(0)
@@ -81,11 +82,11 @@ nav.some-nav
             a
                 text-decoration: none !important
 
-                @include bo-ra(50%)
+                @include l-mix.bo-ra(50%)
                 @include l-mix.padding(0)
                 @include mix.button-neumorphism()
                 @include l-mix.size(3.2rem, 3.2rem)
-                @include l-mix.margin($block: 0, $inline: 0.25rem)
+                @include l-mix.margin($block: 0, $inline: .25rem)
 
                 .icon
                     @include l-mix.font($size: 2rem)

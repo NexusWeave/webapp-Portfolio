@@ -21,7 +21,7 @@
                 :class="cls"
                 :sizes="size"
                 :height="height"
-                :modifiers="({ar : aspectRatio} as any) "
+                :modifiers="aspectRatio ? ({ ar: aspectRatio } as any) : undefined"
                 @error="hasError = true"
             />
         </template>
@@ -54,8 +54,7 @@
     const height = computed(() => { return props.data.height ?`${props.data.height}px` : undefined})
     const aspectRatio = computed(() => { 
         if (cls.value.includes('tech-img') || cls.value.includes('tech-figure')) return undefined;
-        if (!size.value || !height.value ) return 16 / 9
-        return undefined
+        return undefined;
      } )
 
     //  --- Flag logic

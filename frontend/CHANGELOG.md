@@ -3,9 +3,8 @@
 
 ### Bug Fixes
 
-* **backend:** 🩹 correct version bump to 2.30.3 and isolate changelog ([74a42b3](https://github.com/NexusWeave/webapp-Portfolio/commit/74a42b3e04126e764eedc353bbc177c7907e91d9))
-* **backend:** standardize code quality, typing and linting checks ([2b06c4b](https://github.com/NexusWeave/webapp-Portfolio/commit/2b06c4b5234bf2e349665b94da6c48b76cf51a22))
-* **config:** resolving build issues with sqlAlchemy ([d773152](https://github.com/NexusWeave/webapp-Portfolio/commit/d773152dcc2b2a205f73445426e98680b6aa6320))
+* **styles:** modernize stylesheets with mobile-first and Lumina-Sass
+* **media:** ensure reliable static image handling and prerendering
 
 ## [1.37.1](https://github.com/NexusWeave/webapp-Portfolio/compare/v1.37.0...v1.37.1) (2026-09-24)
 

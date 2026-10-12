@@ -5,12 +5,13 @@
 @use 'pkg:lumina-sass' as l-lumina
 @use 'pkg:lumina-sass/color' as l-color
 
+
 $fullstack-tags: (
     'project': ( background: sass-color.scale(l-lumina.$workflow-blue, $lightness: -40%) ),
     'lumina-sass': ( background: sass-color.scale(l-lumina.$workflow-blue, $lightness: -30%) ),
     'intranet': ( background: l-color.$fullstack-vibrant-orange, color: sass-color.scale(l-color.$text-base-dark-grey, $lightness: -10%) ),
     'portfolio': ( background: l-color.$fullstack-vibrant-orange, color: sass-color.scale(l-color.$text-base-dark-grey, $lightness: -10%) ),
-    'social-innovation': ( background: sass-color.scale(l-lumina.$frontend-sky-blue, $lightness: -75%), hover: rgba(l-lumina.$frontend-sky-blue, 0.8)),
+    'social-innovation': ( background: sass-color.scale(l-lumina.$frontend-sky-blue, $lightness: -75%), hover: rgba(l-lumina.$frontend-sky-blue, .8)),
 )
 
 $workflow-blue-tags: (
@@ -18,7 +19,7 @@ $workflow-blue-tags: (
     'misc': ( background: l-lumina.$fortran-purple ),
     'support': ( background: sass-color.scale(l-lumina.$microsoft-green, $lightness: -10%) ),
     'external-equipment': ( background: l-color.$human-emerald-glow),
-    'devops': ( background: sass-color.scale(l-lumina.$workflow-blue, $lightness: -30%), hover: rgba(l-lumina.$workflow-blue, 0.8) ),
+    'devops': ( background: sass-color.scale(l-lumina.$workflow-blue, $lightness: -30%), hover: rgba(l-lumina.$workflow-blue, .8) ),
 )
 
 $os-tags: ( 'os': ( background: l-lumina.$fortran-purple ), 'windows': ( background: l-lumina.$cplus-blue ), 'macos': ( background: l-color.$macos-silver ), 'linux': ( background: l-lumina.$logo-red ), )

@@ -29,10 +29,10 @@ button.primary-btn, .button.primary-btn
             color: inherit !important
 
         color: $article-btn-theme-color !important
-        text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2)
+        text-shadow: .0625rem .0625rem .125rem rgba(0, 0, 0, .2)
 
         @include l-mix.font($size: 1.5rem)
-        @include l-mix.margin($inline: 0.4rem 0)
+        @include l-mix.margin($inline: .4rem 0)
 
 
 // -- Categorized Filter Buttons (Matching Tag Colors) --
@@ -48,7 +48,7 @@ $filter-categories: ( 'backend': l-color.$db-red, 'frontend': l-color.$frontend-
 button.timeline-btn
     padding: 0
     border-radius: 100%
-    box-shadow: 0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.2), -0.1875rem -0.1875rem 0.375rem rgba(255, 255, 255, 0.8)
+    box-shadow: .1875rem .1875rem .375rem rgba(0, 0, 0, .2), -.1875rem -.1875rem .375rem rgba(255, 255, 255, .8)
 
     @include l-mix.size(1.2rem, 1.2rem)
     @include l-mix.background-color(l-color.$text-base-dark-grey, l-color.$neutral-soft-white)
@@ -59,7 +59,7 @@ section.tag-wrapper
         border: none
         box-shadow: none
 
-        @include l-mix.margin(0.5rem)
+        @include l-mix.margin(.5rem)
         @include l-mix.font($size: 1.1rem)
         @include l-mix.background-color(transparent, inherit) // Reset base button styles to allow tag-generator colors to show
         
@@ -75,24 +75,24 @@ section.tag-wrapper
         @extend .justify-center
 
     .child-tags-row
-        gap: 0.5rem
-        padding: 0.5rem
+        gap: .5rem
+        padding: .5rem
         border-radius: 8px
-        background-color: rgba(0,0,0,0.05)
+        background-color: rgba(0,0,0,.05)
 
         @extend .flex-wrap-row
         @extend .justify-center
         @include l-mix.size($inline: 100%)
-        @include l-mix.padding($padding .5rem)
-        @include l-mix.margin($b-start: 0.5rem)
+        @include l-mix.padding(.5rem)
+        @include l-mix.margin($block-start: .5rem)
 
     @include l-mix.size($max-inline: 100%)
     @include l-mix.margin($block: 0, $inline: auto)
 
 
 button.reset-btn, .button.reset-btn
-    @include l-mix.margin(0.5rem)
+    @include l-mix.margin(.5rem)
     @include l-mix.font($size: 1.1rem)
-    @include l-mix.padding($padding .5rem 1.2rem)
+    @include l-mix.padding(.5rem 1.2rem)
     @include mix.button-neumorphism(l-color.$neutral-soft-white, l-color.$text-base-dark-grey)
     @include l-mix.background-color(l-color.$neutral-soft-white !important, l-color.$text-base-dark-grey !important)

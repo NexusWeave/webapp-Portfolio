@@ -1,11 +1,12 @@
 // Third-party dependencies
 @use 'pkg:lumina-sass/mix' as l-mix
 
+
 @mixin list-inline-reset()
     ul 
         li
             display: inline
-            @include l-mix.margin(0.5rem)
+            @include l-mix.margin(.5rem)
 
         padding: 0
 
@@ -13,5 +14,5 @@
     ul
         padding: 0
         list-style: none
-        border-radius: 0.5rem
+        border-radius: .5rem
         @include l-mix.size($inline: 100%)
