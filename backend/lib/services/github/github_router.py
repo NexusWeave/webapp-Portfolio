@@ -54,8 +54,7 @@ class GithubService(BaseService):
 
         async with DB_CONTEXT.SessionLocal() as session:
             HANDLER = GithubDatabaseHandler(session=session)
-
-        return await HANDLER.fetch_all_repositories()
+            return await HANDLER.fetch_all_repositories()
 
     async def handle_repositories(self, request: Request) -> dict[str, str]:
 
