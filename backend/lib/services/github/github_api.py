@@ -228,7 +228,9 @@ class GithubAPI(AsyncAPIClientConfig):
             LOG.warn(f"Skipping repository item due to missing fields: {item}")
             return None
 
-        needs_update = True  # self._should_update_repo(item, existing_timestamps.get(repo_id))
+        needs_update = self._should_update_repo(
+            item, existing_timestamps.get(repo_id)
+        )
 
         # If it's a fork, we need full details to get the 'parent' (original owner)
         if item.get("fork"):

@@ -3,7 +3,7 @@ from collections.abc import Sequence
 from typing import Any
 
 #   Third-Party Libraries
-from fastapi import Request
+from fastapi import BackgroundTasks, Request
 
 from lib.models.github_model import RepositoryModel
 from lib.services.api_db_bridge import ApiDatabaseBridge
@@ -56,35 +56,21 @@ class GithubService(BaseService):
             HANDLER = GithubDatabaseHandler(session=session)
             return await HANDLER.fetch_all_repositories()
 
-    async def handle_repositories(self, request: Request) -> dict[str, str]:
+    async def handle_repositories(
+        self, request: Request, background_tasks: BackgroundTasks
+    ) -> dict[str, str]:
+        background_tasks.add_task(
+            ApiDatabaseBridge.repositories_sync,
+            request,
+            token=self.ENVIRONMENT.GITHUB_TOKEN,
+            contributor=self.GITHUB_CONTRIBUTOR,
+            url=self.ENVIRONMENT.GITHUB_REST,
+            endpoint=self.ENVIRONMENT.GITHUB_ENDPOINT,
+            params=self.ENVIRONMENT.GITHUB_PARAMS,
+        )
 
-        try:
-            await ApiDatabaseBridge.repositories_sync(
-                request,
-                token=self.ENVIRONMENT.GITHUB_TOKEN,
-                contributor=self.GITHUB_CONTRIBUTOR,
-                url=self.ENVIRONMENT.GITHUB_REST,
-                endpoint=self.ENVIRONMENT.GITHUB_ENDPOINT,
-                params=self.ENVIRONMENT.GITHUB_PARAMS,
-            )
-
-        except Exception as e:
-            if self.ENVIRONMENT.ENVIRONMENT == "development":
-                import traceback
-
-                error_details = traceback.format_exc()
-                LOG.critical(
-                    f"handle_repositories_endpoint - failed with error\n {e.__class__.__name__} - {e}\nTraceback:\n{error_details}"
-                )
-
-                return {"code": "500", "message": f"{e}", "traceback": error_details}
-
-            LOG.critical(
-                f"handle_repositories_endpoint : failed with error\n {e.__class__.__name__} - {e}"
-            )
-            return {"code": "500", "message": f"{e}"}
-
+        LOG.info("Repository sync task scheduled in background.")
         return {
-            "status": "200",
-            "message": "All Repositories has been successfully synced with database.",
+            "status": "202",
+            "message": "Repository synchronization initiated in background.",
         }
